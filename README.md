@@ -1,2 +1,0 @@
-# ahsweb
-AHS website
