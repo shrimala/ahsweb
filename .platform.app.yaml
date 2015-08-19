@@ -60,7 +60,7 @@ hooks:
 
     build: |
        #cd public
-       php public/modules/composer_manager/scripts/init.sh
+       php /public/modules/composer_manager/scripts/init.sh
        #cd core
        #composer drupal-rebuild
        #composer update
