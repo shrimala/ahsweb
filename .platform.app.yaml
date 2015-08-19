@@ -59,11 +59,11 @@ hooks:
 
 
     build: |
-       cd public
-       php modules/composer_manager/scripts/init.sh
-       cd core
-       composer drupal-rebuild
-       composer update
+       #cd public
+       #php modules/composer_manager/scripts/init.sh
+       #cd core
+       #composer drupal-rebuild
+       #composer update
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
@@ -78,7 +78,7 @@ hooks:
       #drush -y en entity_reference_revisions paragraphs
       #drush -y civicrm-install  --dbname=main --dbhost=database.internal
       #drush -y en civicrm
-      #drush -y en composer_manager
+      drush -y en composer_manager
       #drush en -y flysystem flysystem_dropbox flysystem_s3
 
 # The configuration of scheduled execution.
