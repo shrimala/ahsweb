@@ -59,17 +59,17 @@ hooks:
 
 
     build: |
-       cd public
-       php modules/composer_manager/scripts/init.sh
-       cd core
-       composer drupal-rebuild
-       composer update
+       #cd public
+       #php modules/composer_manager/scripts/init.sh
+       #cd core
+       #composer drupal-rebuild
+       #composer update
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
       mkdir -p config/active config/staging
       cd public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       #chmod -R 777 sites/default
       #drush -y en civicrm advanced_help eck eform layout_plugin page_manager inmail mailmute token
