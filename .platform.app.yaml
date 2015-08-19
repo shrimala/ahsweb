@@ -79,7 +79,7 @@ hooks:
       #drush -y civicrm-install  --dbname=main --dbhost=database.internal
       #drush -y en civicrm
       #drush -y en composer_manager
-      #drush en -y flysystem flysystem_dropbox flysystem_s3
+      drush en -y flysystem flysystem_dropbox flysystem_s3
 
 # The configuration of scheduled execution.
 crons:
