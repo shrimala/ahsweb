@@ -69,16 +69,16 @@ hooks:
       # automatically during install.
       mkdir -p config/active config/staging
       cd public
-      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       #chmod -R 777 sites/default
-      #drush -y en civicrm advanced_help eck eform layout_plugin page_manager inmail mailmute token
-      #drush -y en panels simplenews media_entity media_entity_image media_entity_twitter
-      #drush -y en media_entity_slideshow media_entity_instagram media_pinkeye pathauto
-      #drush -y en entity_reference_revisions paragraphs
+      drush -y en civicrm advanced_help eck eform layout_plugin page_manager inmail mailmute token
+      drush -y en panels simplenews media_entity media_entity_image media_entity_twitter
+      drush -y en media_entity_slideshow media_entity_instagram media_pinkeye pathauto
+      drush -y en entity_reference_revisions paragraphs
       #drush -y civicrm-install  --dbname=main --dbhost=database.internal
-      #drush -y en civicrm
-      #drush -y en composer_manager
+      drush -y en civicrm
+      drush -y en composer_manager
       #php modules/composer_manager/scripts/init.sh
       #cd core
       #composer drupal-rebuild
