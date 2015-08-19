@@ -31,7 +31,7 @@ libraries[civicrm][download][type] = get
 libraries[civicrm][download][url] = http://ssdkolkata.net/baisakhi/civicrm-core-3.tar.gz
 libraries[civicrm][overwrite] = TRUE
 libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-core-requirements2.patch
-libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-Install-Requirements-patch.patch
+;libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-Install-Requirements-patch.patch
 libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/ClassLoader-patch.patch
 
 ;******************************
