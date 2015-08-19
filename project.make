@@ -5,8 +5,8 @@ core = 8.x
 projects[drupal][type] = core
 projects[drupal][version] = 8.0.0-beta14
 ;project[drupal][patch][url]=/sites/default/files/civipatch1.patch
-projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_real.php.patch
-projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_flysystem_psr4.php.patch
+;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_real.php.patch
+;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_flysystem_psr4.php.patch
 
 ;******************************
 ;    civicrm-drupal
