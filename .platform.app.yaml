@@ -83,7 +83,7 @@ hooks:
       #cd core
       #composer drupal-rebuild
       #composer update
-      drush en -y flysystem flysystem_dropbox flysystem_s3
+      #drush en -y flysystem flysystem_dropbox flysystem_s3
 
 # The configuration of scheduled execution.
 crons:
