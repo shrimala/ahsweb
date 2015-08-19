@@ -4,8 +4,8 @@ core = 8.x
 ; Drupal core.
 projects[drupal][type] = core
 projects[drupal][version] = 8.0.0-beta14
-;project[drupal][patch][url]=/sites/default/files/civipatch1.patch
-;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_real.php.patch
+project[drupal][patch][url]=/sites/default/files/civipatch1.patch
+projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_real.php.patch
 ;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_flysystem_psr4.php.patch
 
 ;******************************
@@ -30,9 +30,9 @@ libraries[civicrm][directory_name] = civicrm
 libraries[civicrm][download][type] = get
 libraries[civicrm][download][url] = http://ssdkolkata.net/baisakhi/civicrm-core-3.tar.gz
 libraries[civicrm][overwrite] = TRUE
-;libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-core-requirements2.patch
+libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-core-requirements2.patch
 libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-Install-Requirements-patch.patch
-;libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/ClassLoader-patch.patch
+libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/ClassLoader-patch.patch
 
 ;******************************
 ;    Other Modules
