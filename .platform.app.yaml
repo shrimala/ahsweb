@@ -62,7 +62,7 @@ hooks:
        cd public
        php modules/composer_manager/scripts/init.php
        #cd core
-       composer drupal-rebuild
+       composer drupal-install
        composer update
     deploy: |
       # Drupal 8 currently fails to create config directories
