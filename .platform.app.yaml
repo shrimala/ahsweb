@@ -77,7 +77,7 @@ hooks:
       #drush -y en media_entity_slideshow media_entity_instagram media_pinkeye pathauto
       #drush -y en entity_reference_revisions paragraphs
       #drush -y en civicrm
-      drush -y en composer_manager
+      #drush -y en composer_manager
       #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       #drush dis -y image_title_caption
