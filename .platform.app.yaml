@@ -60,7 +60,7 @@ hooks:
 
     build: |
        cd public
-       php modules/composer_manager/scripts/init.php
+       #php modules/composer_manager/scripts/init.php
        cd core
        composer drupal-rebuild
        composer update
@@ -76,10 +76,10 @@ hooks:
       #drush -y en panels simplenews media_entity media_entity_image media_entity_twitter
       #drush -y en media_entity_slideshow media_entity_instagram media_pinkeye pathauto
       #drush -y en entity_reference_revisions paragraphs
-      #drush -y civicrm-install  --dbname=main --dbhost=database.internal
       #drush -y en civicrm
       #drush -y en composer_manager
-      drush en -y flysystem flysystem_dropbox flysystem_s3
+      #drush en -y flysystem flysystem_dropbox flysystem_s3
+      drush en -y jplayer
 
 # The configuration of scheduled execution.
 crons:
