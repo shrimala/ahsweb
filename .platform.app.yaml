@@ -80,7 +80,8 @@ hooks:
       #drush -y en composer_manager
       #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
-      #drush en -y image_title_caption
+      drush dis -y image_title_caption
+      drush -y updatedb
 
 # The configuration of scheduled execution.
 crons:
