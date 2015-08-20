@@ -142,8 +142,8 @@ libraries[media_entity_slideshow][download][type]=git
 libraries[media_entity_slideshow][download][url]=https://github.com/drupal-media/media_entity_slideshow.git
 libraries[media_entity_slideshow][overwrite]=True
 
-libraries[image_title_caption][destination]=modules/custom
-libraries[image_title_caption][directory_name]=image_title_caption
-libraries[image_title_caption][download][type]=git
-libraries[image_title_caption][download][url]=https://github.com/aritnath1990/image_title_caption.git
-libraries[image_title_caption][overwrite]=True
+;libraries[image_title_caption][destination]=modules/custom
+;libraries[image_title_caption][directory_name]=image_title_caption
+;libraries[image_title_caption][download][type]=git
+;libraries[image_title_caption][download][url]=https://github.com/aritnath1990/image_title_caption.git
+;libraries[image_title_caption][overwrite]=True
