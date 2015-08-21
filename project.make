@@ -159,5 +159,4 @@ libraries[drupal-swiftmailer][destination]=modules
 libraries[drupal-swiftmailer][directory_name]=drupal-swiftmailer
 libraries[drupal-swiftmailer][download][type]=git
 libraries[drupal-swiftmailer][dowload][url]=https://github.com/aritnath1990/swiftmailer.git
-libraries[drupal-swiftmailer][download][branch]=master
 libraries[drupal-swiftmailer][overwrite]=True
