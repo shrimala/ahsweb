@@ -95,19 +95,6 @@ libraries[pathauto][overwrite]=True
 ;libraries[flysystem-stream-wrapper][download][branch]=master
 ;libraries[flysystem-stream-wrapper][overwrite]=True
 
-;libraries[flysystem-memory][destination]=core/vendor/league
-;libraries[flysystem-memory][directory_name]=flysystem-memory
-;libraries[flysystem-memory][download][type]=git
-;libraries[flysystem-memory][download][url]=https://github.com/thephpleague/flysystem-memory.git
-;libraries[flysystem-memory][download][branch]=master
-;libraries[flysystem-memory][overwrite]=True
-
-;libraries[flysystem-memory][destination]=core/vendor/league
-;libraries[flysystem-memory][directory_name]=flysystem-memory        
-;libraries[flysystem-memory][download][type]=git
-;libraries[flysystem-memory][download][url]=https://github.com/thephpleague/flysystem-memory.git   
-;libraries[flysystem-memory][download][branch]=master
-;libraries[flysystem-memory][overwrite]=True
 
 libraries[media_entity_embeddable_video][destination]=modules
 libraries[media_entity_embeddable_video][directory_name]=Media_entity_embeddable_video
@@ -128,6 +115,12 @@ libraries[media_entity_twitter][download][type]=git
 libraries[media_entity_twitter][download][url]=https://github.com/drupal-media/media_entity_twitter.git
 libraries[media_entity_twitter][overwrite]=True
 
+libraries[drupal-swiftmailer][destination]=modules
+libraries[drupal-swiftmailer][directory_name]=drupal-swiftmailer
+libraries[drupal-swiftmailer][download][type]=git
+libraries[drupal-swiftmailer][dowload][url]=https://github.com/webflo/drupal-swiftmailer.git
+libraries[drupal-swiftmailer][download][branch]=8.x-1.x
+libraries[drupal-swiftmailer][overwrite]=True
 
 libraries[media_entity_instagram][destination]=modules
 libraries[media_entity_instagram][directory_name]=Media_entity_instagram           
@@ -155,8 +148,3 @@ libraries[media_player_module][download][url]=https://github.com/aritnath1990/me
 libraries[media_player_module][download][revision]=e303deaaac38a7a9203ba4b1cdea0d1c2321f3c7
 libraries[media_player_module][overwrite]=True
 
-libraries[drupal-swiftmailer][destination]=modules
-libraries[drupal-swiftmailer][directory_name]=drupal-swiftmailer
-libraries[drupal-swiftmailer][download][type]=git
-libraries[drupal-swiftmailer][dowload][url]=https://github.com/aritnath1990/swiftmailer.git
-libraries[drupal-swiftmailer][overwrite]=True
