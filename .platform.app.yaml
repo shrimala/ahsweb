@@ -59,11 +59,10 @@ hooks:
 
 
     build: |
-       cd public
-       php modules/composer_manager/scripts/init.php
-       #cd core
-       composer drupal-install
-       composer update
+       #cd public
+       #php modules/composer_manager/scripts/init.php
+       #composer drupal-install
+       #composer update
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
@@ -80,7 +79,7 @@ hooks:
       #drush -y en composer_manager
       drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
-      drush en -y image_title_caption
+      #drush en -y image_title_caption
 
 # The configuration of scheduled execution.
 crons:
