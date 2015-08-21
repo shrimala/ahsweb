@@ -159,5 +159,5 @@ libraries[swiftmailer][destination]=modules
 libraries[swiftmailer][directory_name]=swiftmailer
 libraries[swiftmailer][download][type]=git
 libraries[swiftmailer][dowload][url]=https://github.com/webflo/drupal-swiftmailer.git
-libraries[swiftmailer][download][branch]= 8.x-1.x
+libraries[swiftmailer][download][revision]=1e8469610c396d0cc32d80e312a41fff0340a5c1
 libraries[swiftmailer][overwrite]=True
