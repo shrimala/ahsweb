@@ -115,12 +115,12 @@ libraries[media_entity_twitter][download][type]=git
 libraries[media_entity_twitter][download][url]=https://github.com/drupal-media/media_entity_twitter.git
 libraries[media_entity_twitter][overwrite]=True
 
-libraries[arit_test][destination]=modules
-libraries[arit_test][directory_name]=swiftmailer
-libraries[arit_test][download][type]=git
-libraries[arit_test][dowload][url]=https://github.com/webflo/drupal-swiftmailer.git
-libraries[arit_test][download][branch]=8.x-1.x
-libraries[arit_test][overwrite]=True
+libraries[drupal-swiftmailer][destination]=modules
+libraries[drupal-swiftmailer][directory_name]=swiftmailer
+libraries[drupal-swiftmailer][download][type]=git
+libraries[drupal-swiftmailer][dowload][url]=https://github.com/webflo/drupal-swiftmailer.git
+libraries[drupal-swiftmailer][download][branch]=8.x-1.x
+libraries[drupal-swiftmailer][overwrite]=True
 
 libraries[media_entity_instagram][destination]=modules
 libraries[media_entity_instagram][directory_name]=Media_entity_instagram           
