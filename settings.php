@@ -10,7 +10,7 @@ $settings['install_profile'] = 'standard';
 // You should modify the hash_salt so that it is specific to your application.
 $settings['hash_salt'] = '4946c1912834b8477cc70af309a2c30dcec24c2103c724ff30bf13b4c10efd82';
 
-$base_url = 'http://jonathan-zj4rrk32qwbk6.eu.platform.sh:8888';
+$base_url = 'http://jonathan-zj4rrk32qwbk6.eu.platform.sh';
 
 /**
  * Default Drupal 8 settings.
