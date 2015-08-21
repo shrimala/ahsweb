@@ -155,8 +155,9 @@ libraries[media_player_module][download][url]=https://github.com/aritnath1990/me
 libraries[media_player_module][download][revision]=e303deaaac38a7a9203ba4b1cdea0d1c2321f3c7
 libraries[media_player_module][overwrite]=True
 
-libraries[swiftmailer][destination]=modules
-libraries[swiftmailer][download][type]=git
-libraries[swiftmailer][dowload][url]=https://github.com/webflo/drupal-swiftmailer.git
-libraries[swiftmailer][download][branch]=8.x-1.x
-libraries[swiftmailer][overwrite]=True
+libraries[drupal-swiftmailer][destination]=modules
+libraries[drupal-swiftmailer][directory_name]=drupal-swiftmailer
+libraries[drupal-swiftmailer][download][type]=git
+libraries[drupal-swiftmailer][dowload][url]=https://github.com/webflo/drupal-swiftmailer.git
+libraries[drupal-swiftmailer][download][branch]=8.x-1.x
+libraries[drupal-swiftmailer][overwrite]=True
