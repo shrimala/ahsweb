@@ -116,7 +116,7 @@ libraries[media_entity_twitter][download][url]=https://github.com/drupal-media/m
 libraries[media_entity_twitter][overwrite]=True
 
 libraries[drupal-swiftmailer][destination]=modules
-libraries[drupal-swiftmailer][directory_name]=drupal-swiftmailer
+libraries[drupal-swiftmailer][directory_name]=drupal_swiftmailer
 libraries[drupal-swiftmailer][download][type]=git
 libraries[drupal-swiftmailer][dowload][url]=https://github.com/webflo/drupal-swiftmailer.git
 libraries[drupal-swiftmailer][download][branch]=8.x-1.x
