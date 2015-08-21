@@ -80,7 +80,7 @@ hooks:
       drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       drush en -y image_title_caption
-      drush en -y media_player_module
+      #drush en -y media_player_module
 
 # The configuration of scheduled execution.
 crons:
