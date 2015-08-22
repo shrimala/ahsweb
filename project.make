@@ -120,7 +120,7 @@ libraries[drupal-swiftmailer][directory_name]=swiftmailer
 libraries[drupal-swiftmailer][download][type]=git
 libraries[drupal-swiftmailer][download][url]=https://github.com/webflo/drupal-swiftmailer.git
 libraries[drupal-swiftmailer][download][branch]=8.x-1.x
-libraries[drupal-swiftmailer][overwrite]=True
+;libraries[drupal-swiftmailer][overwrite]=True
 
 libraries[media_entity_instagram][destination]=modules
 libraries[media_entity_instagram][directory_name]=Media_entity_instagram           
