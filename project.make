@@ -55,7 +55,6 @@ projects[advanced_help][version]=1.x-dev
 projects[entity_reference_revisions][version]=1.x-dev
 projects[composer_manager][version]=1.x-dev
 projects[flysystem][version]=1.x-dev
-projects[devel][version]=1.x-dev
 
 libraries[pathauto][destination]=modules
 libraries[pathauto][directory_name]=pathauto
