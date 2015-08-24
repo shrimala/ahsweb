@@ -120,7 +120,7 @@ libraries[drupal-swiftmailer][directory_name]=swiftmailer
 libraries[drupal-swiftmailer][download][type]=git
 libraries[drupal-swiftmailer][download][url]=https://github.com/webflo/drupal-swiftmailer.git
 libraries[drupal-swiftmailer][download][branch]=8.x-1.x
-;libraries[drupal-swiftmailer][overwrite]=True
+libraries[drupal-swiftmailer][overwrite]=True
 
 libraries[media_entity_instagram][destination]=modules
 libraries[media_entity_instagram][directory_name]=Media_entity_instagram           
@@ -147,4 +147,3 @@ libraries[media_player_module][download][type]=git
 libraries[media_player_module][download][url]=https://github.com/aritnath1990/media_player_module.git
 libraries[media_player_module][download][revision]=e303deaaac38a7a9203ba4b1cdea0d1c2321f3c7
 libraries[media_player_module][overwrite]=True
-
