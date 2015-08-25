@@ -11,7 +11,8 @@ $settings['install_profile'] = 'standard';
 $settings['hash_salt'] = '4946c1912834b8477cc70af309a2c30dcec24c2103c724ff30bf13b4c10efd82';
 
 // Set base url, needed by simplenews module
-$main_route_url = 'http://{default}';
+/*
+$main_route_url = 'http://{default}/';
 $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
 foreach ($routes as $route_url => $route_info) {
   if ($route_info["original_url"] == $main_route_url) {
@@ -19,7 +20,7 @@ foreach ($routes as $route_url => $route_info) {
     break;
   }
 }
-
+*/
 /**
  * Default Drupal 8 settings.
  *
