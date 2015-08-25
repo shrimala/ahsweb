@@ -21,6 +21,7 @@ foreach ($routes as $route_url => $route_info) {
   }
 }
 
+$base_url = rtrim($base_url,'\\');
 
 /**
  * Default Drupal 8 settings.
