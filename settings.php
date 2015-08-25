@@ -23,6 +23,9 @@ foreach ($routes as $route_url => $route_info) {
 
 $base_url = rtrim($base_url,'/');
 
+// Setting private url
+
+$settings['file_private_path']='sites/default/files/private';
 
 /**
  * Default Drupal 8 settings.
