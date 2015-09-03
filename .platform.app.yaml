@@ -72,9 +72,9 @@ hooks:
       #chmod -R 777 sites/default
       #drush -y en civicrm advanced_help eck eform layout_plugin page_manager inmail mailmute token
       #drush -y en panels simplenews 
-      drush dis -y media_pinkeye
-      #drush dis -y  media_entity_audio media_entity_image media_entity_twitter
-      #drush -y dis media_entity_slideshow media_entity_instagram media_entity_embeddable_video 
+      #drush dis -y media_pinkeye
+      drush dis -y  media_entity_audio media_entity_image media_entity_twitter
+      drush -y dis media_entity_slideshow media_entity_instagram media_entity_embeddable_video 
       #drush -y dis media_entity
       #drush -y en entity_reference_revisions paragraphs
       #drush -y en civicrm
