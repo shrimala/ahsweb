@@ -67,35 +67,6 @@ libraries[pathauto][download][url]=https://github.com/md-systems/pathauto.git
 libraries[pathauto][download][branch]=8.x-1.x
 libraries[pathauto][overwrite]=True
 
-;libraries[flysystem][destination]=core/vendor/league
-;libraries[flysystem][directory_name]=flysystem
-;libraries[flysystem][download][type]=git
-;libraries[flysystem][download][url]=https://github.com/thephpleague/flysystem.git
-;libraries[flysystem][download][branch]=master
-;libraries[flysystem][overwrite]=True
-
-;libraries[flysystem-cached-adapter][destination]=core/vendor/league
-;libraries[flysystem-cached-adapter][directory_name]=flysystem-cached-adapter                  
-;libraries[flysystem-cached-adapter][download][type]=git
-;libraries[flysystem-cached-adapter][download][url]=https://github.com/thephpleague/flysystem-cached-adapter.git
-;libraries[flysystem-cached-adapter][download][branch]=master
-;libraries[flysystem-cached-adapter][overwrite]=True
-
-
-;libraries[flysystem-replicate-adapter][destination]=core/vendor/league
-;libraries[flysystem-replicate-adapter][directory_name]=flysystem-replicate-adapter
-;libraries[flysystem-replicate-adapter][download][type]=git
-;libraries[flysystem-replicate-adapter][download][url]=https://github.com/thephpleague/flysystem-replicate-adapter.git
-;libraries[flysystem-replicate-adapter][download][branch]=master
-;libraries[flysystem-replicate-adapter][overwrite]=True
-
-;libraries[flysystem-stream-wrapper][destination]=core/vendor/league
-;libraries[flysystem-stream-wrapper][directory_name]=flysystem-stream-wrapper
-;libraries[flysystem-stream-wrapper][download][type]=git
-;libraries[flysystem-stream-wrapper][download][url]=https://github.com/twistor/flysystem-stream-wrapper.git
-;libraries[flysystem-stream-wrapper][download][branch]=master
-;libraries[flysystem-stream-wrapper][overwrite]=True
-
 
 libraries[media_entity_embeddable_video][destination]=modules
 libraries[media_entity_embeddable_video][directory_name]=Media_entity_embeddable_video
@@ -103,17 +74,17 @@ libraries[media_entity_embeddable_video][download][type]=git
 libraries[media_entity_embeddable_video][download][url]=https://github.com/drupal-media/media_entity_embeddable_video.git
 libraries[media_entity_embeddable_video][overwrite]=True
 
-libraries[media_entity_image][destination]=modules
-libraries[media_entity_image][directory_name]=Media_entity_audio
-libraries[media_entity_image][download][type]=git
-libraries[media_entity_image][download][url]=https://github.com/aritnath1990/Media_entity_audio.git
-libraries[media_entity_image][overwrite]=True
+libraries[media_entity_audio][destination]=modules
+libraries[media_entity_audio][directory_name]=media_entity_audio
+libraries[media_entity_audio][download][type]=git
+libraries[media_entity_audio][download][url]=https://github.com/aritnath1990/Media_entity_audio.git
+libraries[media_entity_audio][overwrite]=True
 
-libraries[media_entity_image][destination]=modules
-libraries[media_entity_image][directory_name]=media_pinkeye
-libraries[media_entity_image][download][type]=git
-libraries[media_entity_image][download][url]=https://github.com/aritnath1990/media_pinkeye.git
-libraries[media_entity_image][overwrite]=True
+libraries[media_pinkeye][destination]=modules
+libraries[media_pinkeye][directory_name]=media_pinkeye
+libraries[media_pinkeye][download][type]=git
+libraries[media_pinkeye][download][url]=https://github.com/aritnath1990/media_pinkeye.git
+libraries[media_pinkeye][overwrite]=True
 
 
 libraries[media_entity_image][destination]=modules
