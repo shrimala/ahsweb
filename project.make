@@ -104,7 +104,7 @@ libraries[media_entity_embeddable_video][download][url]=https://github.com/drupa
 libraries[media_entity_embeddable_video][overwrite]=True
 
 libraries[media_entity_image][destination]=modules
-libraries[media_entity_image][directory_name]=media_entity_audio
+libraries[media_entity_image][directory_name]=Media_entity_audio
 libraries[media_entity_image][download][type]=git
 libraries[media_entity_image][download][url]=https://github.com/aritnath1990/Media_entity_audio.git
 libraries[media_entity_image][overwrite]=True
