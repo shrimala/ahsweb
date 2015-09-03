@@ -58,33 +58,33 @@ hooks:
 
 
     build: |
-       #cd public
-       #php modules/composer_manager/scripts/init.php
-       #composer drupal-install
-       #composer update
+       cd public
+       php modules/composer_manager/scripts/init.php
+       composer drupal-install
+       composer update
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
       mkdir -p config/active config/staging
       cd public
-      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
-      drush -y en civicrm advanced_help eck eform layout_plugin page_manager inmail mailmute token
+      #drush -y en civicrm advanced_help eck eform layout_plugin page_manager inmail mailmute token
       drush -y en panels simplenews 
       #drush en -y media_pinkeye
       #drush en -y  media_entity_audio media_entity_image media_entity_twitter
       #drush -y en media_entity_slideshow media_entity_instagram media_entity_embeddable_video 
-      #drush -y en media_entity
-      #drush -y en entity_reference_revisions paragraphs
-      #drush -y en civicrm
-      drush -y en composer_manager
-      #drush en -y flysystem flysystem_dropbox flysystem_s3
+      drush -y en media_entity
+      drush -y en entity_reference_revisions paragraphs
+      drush -y en civicrm
+      #drush -y en composer_manager
+      drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       #drush en -y image_title_caption
       #drush en -y media_player_module
-      #drush en -y swiftmailer
-      #drush en -y mailsystem
+      drush en -y swiftmailer
+      drush en -y mailsystem
       #drush en -y media_entity_audio media_entity_embeddable_video 
       #drush en -y media_pinkeye
 
