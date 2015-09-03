@@ -49,7 +49,7 @@ projects[eform][version]=1.x-dev
 projects[simplenews][version]=1.x-dev
 projects[inmail][version]=1.x-dev
 projects[mailmute][version]=1.x-dev
-projects[media_pinkeye][version]=1.x-dev
+;projects[media_pinkeye][version]=1.x-dev
 projects[media_entity][version]=1.x-dev
 projects[advanced_help][version]=1.x-dev
 projects[entity_reference_revisions][version]=1.x-dev
@@ -102,6 +102,18 @@ libraries[media_entity_embeddable_video][directory_name]=Media_entity_embeddable
 libraries[media_entity_embeddable_video][download][type]=git
 libraries[media_entity_embeddable_video][download][url]=https://github.com/drupal-media/media_entity_embeddable_video.git
 libraries[media_entity_embeddable_video][overwrite]=True
+
+libraries[media_entity_image][destination]=modules
+libraries[media_entity_image][directory_name]=media_entity_audio
+libraries[media_entity_image][download][type]=git
+libraries[media_entity_image][download][url]=https://github.com/aritnath1990/Media_entity_audio.git
+libraries[media_entity_image][overwrite]=True
+
+libraries[media_entity_image][destination]=modules
+libraries[media_entity_image][directory_name]=media_pinkeye
+libraries[media_entity_image][download][type]=git
+libraries[media_entity_image][download][url]=https://github.com/aritnath1990/media_pinkeye.git
+libraries[media_entity_image][overwrite]=True
 
 
 libraries[media_entity_image][destination]=modules
