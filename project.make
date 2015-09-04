@@ -18,7 +18,7 @@ libraries[civicrmdrupal][directory_name] = civicrm
 libraries[civicrmdrupal][download][type] = get
 libraries[civicrmdrupal][download][url] = http://ssdkolkata.net/baisakhi/civicrm-drupal-2.tar.gz
 libraries[civicrmdrupal][overwrite] = TRUE
-
+libraries[civicrmdrupal][patch][]=https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-drupal/pull/313.patch
 
 ;****************************
 ;     civicrm-core
