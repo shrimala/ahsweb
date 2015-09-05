@@ -87,6 +87,7 @@ hooks:
       #drush en -y mailsystem
       #drush en -y media_entity_audio media_entity_embeddable_video 
       #drush en -y media_pinkeye
+      drush pmu -y civicrm_views
 
 # The configuration of scheduled execution.
 crons:
