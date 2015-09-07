@@ -59,6 +59,15 @@ projects[flysystem_dropbox][version]=1.x-dev
 projects[flysystem_s3][version]=1.x-dev
 ;projects[jplayer][version]=2.x-dev
 projects[mailsystem][version]=4.x-dev
+projects[migrate_plus][version]=1.x-dev
+projects[views_field_view][version]=1.x-dev
+
+libraries[migrate_ahs][destination]=modules
+libraries[migrate_ahs][directory_name]=migrate_ahs
+libraries[migrate_ahs][download][type]=git
+libraries[migrate_ahs][download][url]=https://github.com/shrimala/migrate_ahs.git
+libraries[migrate_ahs][download][branch]=master
+libraries[migrate_ahs][overwrite]=True
 
 libraries[pathauto][destination]=modules
 libraries[pathauto][directory_name]=pathauto

@@ -83,10 +83,8 @@ hooks:
       #drush en -y jplayer
       #drush en -y image_title_caption
       #drush en -y media_player_module
-      #drush en -y swiftmailer
-      #drush en -y mailsystem 
-      #drush en -y media_pinkeye
-      #drush pmu -y civicrm_views
+      drush en -y swiftmailer
+      drush en -y mailsystem
 
 # The configuration of scheduled execution.
 crons:
