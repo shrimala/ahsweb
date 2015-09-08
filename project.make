@@ -133,9 +133,3 @@ libraries[media_entity_slideshow][overwrite]=True
 ;libraries[image_title_caption][download][url]=https://github.com/aritnath1990/image_title_caption.git
 ;libraries[image_title_caption][overwrite]=True
 
-;libraries[media_player_module][destination]=modules/custom
-;libraries[media_player_module][directory_name]=media_player_module
-;libraries[media_player_module][download][type]=git
-;libraries[media_player_module][download][url]=https://github.com/aritnath1990/media_player_module.git
-;libraries[media_player_module][download][revision]=e303deaaac38a7a9203ba4b1cdea0d1c2321f3c7
-;libraries[media_player_module][overwrite]=True
