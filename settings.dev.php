@@ -1,5 +1,8 @@
 <?php
 
+var_dump($_ENV);
+
+
 $schemes = [
   'dropboxexample' => [
     'driver' => 'dropbox',
