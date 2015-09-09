@@ -1,6 +1,6 @@
 <?php
 
-var_dump(json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE));
+var_dump(json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE));
 
 
 $schemes = [
