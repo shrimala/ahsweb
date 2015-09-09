@@ -2,7 +2,19 @@
 
 $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 
-var_dump($variables);
+
+
+$dropbox_token = $variables['dropbox_token'];
+$dropbox_client_id = $variables['dropbox_client_id'];
+
+$s3_key = $variables['s3_key'];
+$s3_secret = $variables['s3_secret'];
+$s3_region = $variables['s3_region'];
+$s3_bucket = $variables['s3_bucket'];
+$s3_prefix = $variables['s3_prefix'];
+$s3_cname = $variables['s3_cname'];
+
+var_dump($drop_token,$dropbox_client_id,$s3_key,$s3_secret);
 
 $schemes = [
   'dropboxexample' => [
