@@ -57,7 +57,6 @@ projects[composer_manager][version]=1.x-dev
 projects[flysystem][version]=1.x-dev
 projects[flysystem_dropbox][version]=1.x-dev
 projects[flysystem_s3][version]=1.x-dev
-;projects[jplayer][version]=2.x-dev
 projects[mailsystem][version]=4.x-dev
 projects[migrate_plus][version]=1.x-dev
 projects[views_field_view][version]=1.x-dev
