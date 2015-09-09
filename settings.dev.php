@@ -1,7 +1,8 @@
 <?php
 
-var_dump(json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE));
+$variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 
+var_dump($variables);
 
 $schemes = [
   'dropboxexample' => [
