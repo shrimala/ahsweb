@@ -85,7 +85,8 @@ hooks:
       #drush en -y media_player_module
       #drush en -y swiftmailer
       #drush en -y mailsystem
-      drush en -y media_entity_audio media_entity_embeddable_video
+      #drush en -y media_entity_audio media_entity_embeddable_video
+      drush pmu -y media_pinkeye
 
 # The configuration of scheduled execution.
 crons:
