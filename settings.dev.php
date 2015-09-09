@@ -6,14 +6,14 @@ $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 
 $dropbox_token = $variables['dropbox_token'];
 $dropbox_client_id = $variables['dropbox_client_id'];
-
+/*
 $s3_key = $variables['s3_key'];
 $s3_secret = $variables['s3_secret'];
 $s3_region = $variables['s3_region'];
 $s3_bucket = $variables['s3_bucket'];
 $s3_prefix = $variables['s3_prefix'];
 $s3_cname = $variables['s3_cname'];
-
+*/
 
 $schemes = [
   'dropboxexample' => [
@@ -23,7 +23,7 @@ $schemes = [
       'client_id' => $dropbox_client_id,
     ],
   ],
-  's3example' => [
+ /* 's3example' => [
     'type' => 's3',
     'driver' => 's3',
     'config' => [
@@ -34,7 +34,7 @@ $schemes = [
       'prefix'=> $s3_prefix,
       'cname' => $s3_cname,
     ],
-  ],
+  ],*/
   'localexample' => [
     'driver' => 'local',
     'config' => [
