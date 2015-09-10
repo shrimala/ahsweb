@@ -126,3 +126,9 @@ libraries[media_entity_slideshow][download][type]=git
 libraries[media_entity_slideshow][download][url]=https://github.com/drupal-media/media_entity_slideshow.git
 libraries[media_entity_slideshow][overwrite]=True
 
+libraries[filefield_sources][destination]=modules
+libraries[filefield_sources][directory_name]=filefield_sources
+libraries[filefield_sources][download][type]=git
+libraries[filefield_sources][download][url]=https://github.com/tienvx/filefield_sources.git
+libraries[filefield_sources][download][branch]=8.x-1.x
+libraries[filefield_sources][overwrite]=True
