@@ -132,3 +132,10 @@ libraries[filefield_sources][download][type]=git
 libraries[filefield_sources][download][url]=https://github.com/aritnath1990/filefield_sources.git
 libraries[filefield_sources][download][branch]=8.x-1.x
 libraries[filefield_sources][overwrite]=True
+
+libraries[filefield_sources][destination]=modules
+libraries[filefield_sources][directory_name]=filefield_sources_flysystem
+libraries[filefield_sources][download][type]=git
+libraries[filefield_sources][download][url]=https://github.com/aritnath1990/filefield_sources_flysystem.git
+libraries[filefield_sources][overwrite]=True
+
