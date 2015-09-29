@@ -133,10 +133,10 @@ libraries[filefield_sources][download][url]=https://github.com/aritnath1990/file
 libraries[filefield_sources][download][branch]=8.x-1.x
 libraries[filefield_sources][overwrite]=True
 
-libraries[filefield_sources][destination]=modules
-libraries[filefield_sources][directory_name]=filefield_sources_flysystem
-libraries[filefield_sources][download][type]=git
-libraries[filefield_sources][download][url]=https://github.com/aritnath1990/filefield_sources_flysystem.git
-libraries[filefield_sources][download][branch]=master
-libraries[filefield_sources][overwrite]=True
+libraries[filefield_sources_flysystem][destination]=modules
+libraries[filefield_sources_flysystem][directory_name]=filefield_sources_flysystem
+libraries[filefield_sources_flysystem][download][type]=git
+libraries[filefield_sources_flysystem][download][url]=https://github.com/aritnath1990/filefield_sources_flysystem.git
+libraries[filefield_sources_flysystem][download][branch]=master
+libraries[filefield_sources_flysystem][overwrite]=True
 
