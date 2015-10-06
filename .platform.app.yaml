@@ -58,6 +58,7 @@ hooks:
 
 
     build: |
+       cd /
        cd public
        php modules/composer_manager/scripts/init.php
        composer drupal-update
