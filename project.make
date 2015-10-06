@@ -53,7 +53,7 @@ projects[mailmute][version]=1.x-dev
 projects[media_entity][version]=1.x-dev
 projects[advanced_help][version]=1.x-dev
 projects[entity_reference_revisions][version]=1.x-dev
-projects[composer_manager][version]=1.x-dev
+;projects[composer_manager][version]=1.x-dev
 projects[flysystem][version]=1.x-dev
 projects[flysystem_dropbox][version]=1.x-dev
 projects[flysystem_s3][version]=1.x-dev
@@ -139,4 +139,11 @@ libraries[filefield_sources_flysystem][download][type]=git
 libraries[filefield_sources_flysystem][download][url]=https://github.com/aritnath1990/filefield_sources_flysystem.git
 libraries[filefield_sources_flysystem][download][branch]=master
 libraries[filefield_sources_flysystem][overwrite]=True
+
+libraries[composer_manager][destination]=modules
+libraries[composer_manager][directory_name]=composer_managr
+libraries[composer_manager][download][type]=git
+libraries[composer_manager][download][url]=https://github.com/aritnath1990/composer_manager.git
+libraries[composer_manager][download][branch]=master
+libraries[composer_manager][overwrite]=True
 
