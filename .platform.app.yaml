@@ -62,6 +62,7 @@ hooks:
        php modules/composer_manager/scripts/init.php
        composer drupal-install
        composer update
+
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
