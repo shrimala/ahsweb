@@ -62,9 +62,10 @@ hooks:
        php modules/composer_manager/scripts/init.php
        composer drupal-install
        composer update
-       cd vendor/behat/behat/
+       cd vendor/behat/behat
        bin/behat --init
        bin/behat -dl
+       cd /public
 
     deploy: |
       # Drupal 8 currently fails to create config directories
