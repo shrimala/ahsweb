@@ -61,7 +61,7 @@ hooks:
        cd public
        php modules/composer_manager/scripts/init.php
        composer drupal-install
-       #composer drupal-update
+       composer update
        #mv vendor/behat/
        #cd vendor/behat/behat
        #bin/behat --init
