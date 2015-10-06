@@ -59,7 +59,7 @@ hooks:
 
     build: |
        #cd /public
-       php modules/composer_manager/scripts/init.php
+       php public/modules/composer_manager/scripts/init.php
        composer drupal-install
        composer update
     deploy: |
