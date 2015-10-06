@@ -141,7 +141,7 @@ libraries[filefield_sources_flysystem][download][branch]=master
 libraries[filefield_sources_flysystem][overwrite]=True
 
 libraries[composer_manager][destination]=modules
-libraries[composer_manager][directory_name]=composer_managr
+libraries[composer_manager][directory_name]=composer_manager
 libraries[composer_manager][download][type]=git
 libraries[composer_manager][download][url]=https://github.com/aritnath1990/composer_manager.git
 libraries[composer_manager][download][branch]=master
