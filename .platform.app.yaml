@@ -63,6 +63,8 @@ hooks:
        composer drupal-install
        composer update
        composer require drupal/drupal-extension='~3.0'
+       vendor/bin/behat --init
+       vendor/bin/behat -dl
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
