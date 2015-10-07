@@ -148,8 +148,8 @@ libraries[filefield_sources_flysystem][overwrite]=True
 ;libraries[composer_manager][overwrite]=True
 
 libraries[behatyml][destination]=vendor
-libraries[behatyml][directory_name]=behat
-libraries[behatyml][download][type]=get
+;libraries[behatyml][directory_name]=behat
+libraries[behatyml][download][type]=file
 libraries[behatyml][download][url]=https://github.com/aritnath1990/behat/blob/master/behat.yml
 ;libraries[behatyml][download][branch]=master
 libraries[behatyml][overwrite]=True
