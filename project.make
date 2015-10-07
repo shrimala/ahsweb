@@ -146,4 +146,3 @@ libraries[composer_manager][download][type]=git
 libraries[composer_manager][download][url]=https://github.com/aritnath1990/composer_manager.git
 libraries[composer_manager][download][branch]=master
 libraries[composer_manager][overwrite]=True
-
