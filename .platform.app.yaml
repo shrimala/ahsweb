@@ -67,6 +67,7 @@ hooks:
        vendor/bin/behat -dl
        mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
        mv vendor/behatfiles/*.feature vendor/behat/behat/features/
+
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
