@@ -158,6 +158,6 @@ libraries[entity_reference_revisions][destination]=modules
 libraries[entity_reference_revisions][directory_name]=entity_reference_revisions
 libraries[entity_reference_revisions][download][type]=git
 libraries[entity_reference_revisions][download][url]=git://git.drupal.org/project/entity_reference_revisions.git
-libraries[entity_reference_revisions][download][revision]=da25d87e5df5fab2f6a164f2849a4e2139a28b02
+libraries[entity_reference_revisions][download][revision]=2740c03a43a52e040c2b154669c2af3814bdca13
 libraries[entity_reference_revisions][overwrite]=True
 
