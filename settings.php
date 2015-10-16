@@ -114,7 +114,7 @@ ini_set('session.gc_maxlifetime', 200000);
 ini_set('session.cookie_lifetime', 2000000);
 ini_set('pcre.backtrack_limit', 200000);
 ini_set('pcre.recursion_limit', 200000);
-
+ini_set('upload_max_filesize', '128M');
 // Force Drupal not to check for HTTP connectivity until we fixed the self test.
 $conf['drupal_http_request_fails'] = FALSE;
 
