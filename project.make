@@ -49,7 +49,6 @@ projects[eform][version]=1.x-dev
 projects[simplenews][version]=1.x-dev
 projects[inmail][version]=1.x-dev
 projects[mailmute][version]=1.x-dev
-;projects[media_pinkeye][version]=1.x-dev
 projects[media_entity][version]=1.x-dev
 projects[advanced_help][version]=1.x-dev
 ;projects[entity_reference_revisions][version]=1.0-rc1
