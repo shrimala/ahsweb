@@ -117,7 +117,7 @@ libraries[media_entity_instagram][destination]=modules
 libraries[media_entity_instagram][directory_name]=Media_entity_instagram           
 libraries[media_entity_instagram][download][type]=git
 libraries[media_entity_instagram][download][url]=https://github.com/drupal-media/media_entity_instagram.git
-libraries[media_entity_instagarm][download][revision]=04a92d55b9aeff87c0c256ce53b21f8ca7b0$
+libraries[media_entity_instagarm][download][revision]=04a92d55b9aeff87c0c256ce53b21f8ca7b0
 libraries[media_entity_instagram][overwrite]=True
 
 libraries[media_entity_slideshow][destination]=modules
