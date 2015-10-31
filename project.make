@@ -74,7 +74,6 @@ libraries[pathauto][download][url]=https://github.com/md-systems/pathauto.git
 libraries[pathauto][download][branch]=8.x-1.x
 libraries[pathauto][overwrite]=True
 
-
 libraries[media_entity_embeddable_video][destination]=modules
 libraries[media_entity_embeddable_video][directory_name]=Media_entity_embeddable_video
 libraries[media_entity_embeddable_video][download][type]=git
@@ -92,7 +91,6 @@ libraries[media_pinkeye][directory_name]=media_pinkeye
 libraries[media_pinkeye][download][type]=git
 libraries[media_pinkeye][download][url]=https://github.com/aritnath1990/media_pinkeye.git
 libraries[media_pinkeye][overwrite]=True
-
 
 libraries[media_entity_image][destination]=modules
 libraries[media_entity_image][directory_name]=Media_entity_image
