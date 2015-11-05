@@ -3,7 +3,7 @@ core = 8.x
 
 ; Drupal core.
 projects[drupal][type] = core
-projects[drupal][version] = 8.0.0-beta14
+projects[drupal][version] = 8.0.0-rc2
 ;project[drupal][patch][url]=/sites/default/files/civipatch1.patch
 ;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_real.php.patch
 ;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_flysystem_psr4.php.patch
@@ -51,8 +51,8 @@ projects[inmail][version]=1.x-dev
 projects[mailmute][version]=1.x-dev
 projects[media_entity][version]=1.x-dev
 projects[advanced_help][version]=1.x-dev
-;projects[entity_reference_revisions][version]=1.0-rc1
-projects[composer_manager][version]=1.0-beta4
+projects[entity_reference_revisions][version]=1.0-rc1
+projects[composer_manager][version]=1.0-rc1
 projects[flysystem][version]=1.x-dev
 projects[flysystem_dropbox][version]=1.x-dev
 projects[flysystem_s3][version]=1.x-dev
@@ -99,7 +99,7 @@ libraries[media_entity_image][download][url]=https://github.com/drupal-media/med
 libraries[media_entity_image][overwrite]=True
 
 libraries[media_entity_twitter][destination]=modules
-libraries[media_entity_twitter][directory_name]=Media_entity_twitter           
+libraries[media_entity_twitter][directory_name]=Media_entity_twitter
 libraries[media_entity_twitter][download][type]=git
 libraries[media_entity_twitter][download][url]=https://github.com/drupal-media/media_entity_twitter.git
 libraries[media_entity_twitter][overwrite]=True
@@ -112,13 +112,13 @@ libraries[drupal-swiftmailer][download][branch]=8.x-1.x
 libraries[drupal-swiftmailer][overwrite]=True
 
 libraries[media_entity_instagram][destination]=modules
-libraries[media_entity_instagram][directory_name]=Media_entity_instagram           
+libraries[media_entity_instagram][directory_name]=Media_entity_instagram
 libraries[media_entity_instagram][download][type]=git
 libraries[media_entity_instagram][download][url]=https://github.com/aritnath1990/media_entity_instragram.git
 libraries[media_entity_instagram][overwrite]=True
 
 libraries[media_entity_slideshow][destination]=modules
-libraries[media_entity_slideshow][directory_name]=Media_entity_slideshow       
+libraries[media_entity_slideshow][directory_name]=Media_entity_slideshow
 libraries[media_entity_slideshow][download][type]=git
 libraries[media_entity_slideshow][download][url]=https://github.com/drupal-media/media_entity_slideshow.git
 libraries[media_entity_slideshow][overwrite]=True
@@ -151,12 +151,9 @@ libraries[behatyml][download][url]=https://github.com/aritnath1990/behat.git
 libraries[behatyml][download][branch]=master
 libraries[behatyml][overwrite]=True
 
-libraries[entity_reference_revisions][destination]=modules
-libraries[entity_reference_revisions][directory_name]=entity_reference_revisions
-libraries[entity_reference_revisions][download][type]=git
-libraries[entity_reference_revisions][download][url]=git://git.drupal.org/project/entity_reference_revisions.git
-libraries[entity_reference_revisions][download][revision]=2740c03a43a52e040c2b154669c2af3814bdca13
-libraries[entity_reference_revisions][overwrite]=True
-	
-	
-
+;libraries[entity_reference_revisions][destination]=modules
+;libraries[entity_reference_revisions][directory_name]=entity_reference_revisions
+;libraries[entity_reference_revisions][download][type]=git
+;libraries[entity_reference_revisions][download][url]=git://git.drupal.org/project/entity_reference_revisions.git
+;libraries[entity_reference_revisions][download][revision]=2740c03a43a52e040c2b154669c2af3814bdca13
+;libraries[entity_reference_revisions][overwrite]=True
