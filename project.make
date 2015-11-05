@@ -80,11 +80,11 @@ libraries[media_entity_embeddable_video][download][type]=git
 libraries[media_entity_embeddable_video][download][url]=https://github.com/drupal-media/media_entity_embeddable_video.git
 libraries[media_entity_embeddable_video][overwrite]=True
 
-;libraries[media_entity_audio][destination]=modules
-;libraries[media_entity_audio][directory_name]=media_entity_audio
-;libraries[media_entity_audio][download][type]=git
-;libraries[media_entity_audio][download][url]=https://github.com/aritnath1990/Media_entity_audio.git
-;libraries[media_entity_audio][overwrite]=True
+libraries[media_entity_audio][destination]=modules
+libraries[media_entity_audio][directory_name]=media_entity_audio
+libraries[media_entity_audio][download][type]=git
+libraries[media_entity_audio][download][url]=https://github.com/aritnath1990/Media_entity_audio.git
+libraries[media_entity_audio][overwrite]=True
 
 libraries[media_pinkeye][destination]=modules
 libraries[media_pinkeye][directory_name]=media_pinkeye
