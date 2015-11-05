@@ -84,7 +84,7 @@ hooks:
       #drush -y en media_entity
       #drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm civicrm_views
-      #drush -y en composer_manager
+      drush -y en composer_manager
       #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       #drush en -y image_title_caption
