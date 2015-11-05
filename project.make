@@ -51,8 +51,8 @@ projects[inmail][version]=1.x-dev
 projects[mailmute][version]=1.x-dev
 projects[media_entity][version]=1.x-dev
 projects[advanced_help][version]=1.x-dev
-;projects[entity_reference_revisions][version]=1.0-rc1
-projects[composer_manager][version]=1.0-beta4
+projects[entity_reference_revisions][version]=1.0-rc1
+projects[composer_manager][version]=1.0-rc1
 projects[flysystem][version]=1.x-dev
 projects[flysystem_dropbox][version]=1.x-dev
 projects[flysystem_s3][version]=1.x-dev
@@ -151,12 +151,9 @@ libraries[behatyml][download][url]=https://github.com/aritnath1990/behat.git
 libraries[behatyml][download][branch]=master
 libraries[behatyml][overwrite]=True
 
-libraries[entity_reference_revisions][destination]=modules
-libraries[entity_reference_revisions][directory_name]=entity_reference_revisions
-libraries[entity_reference_revisions][download][type]=git
-libraries[entity_reference_revisions][download][url]=git://git.drupal.org/project/entity_reference_revisions.git
-libraries[entity_reference_revisions][download][revision]=2740c03a43a52e040c2b154669c2af3814bdca13
-libraries[entity_reference_revisions][overwrite]=True
-
-
-
+;libraries[entity_reference_revisions][destination]=modules
+;libraries[entity_reference_revisions][directory_name]=entity_reference_revisions
+;libraries[entity_reference_revisions][download][type]=git
+;libraries[entity_reference_revisions][download][url]=git://git.drupal.org/project/entity_reference_revisions.git
+;libraries[entity_reference_revisions][download][revision]=2740c03a43a52e040c2b154669c2af3814bdca13
+;libraries[entity_reference_revisions][overwrite]=True
