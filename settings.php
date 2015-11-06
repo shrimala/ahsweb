@@ -44,7 +44,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
   $config_directories = array(
     CONFIG_ACTIVE_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/active',
-    CONFIG_STAGING_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
+    CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
   );
 }
 
@@ -114,7 +114,7 @@ ini_set('session.gc_maxlifetime', 200000);
 ini_set('session.cookie_lifetime', 2000000);
 ini_set('pcre.backtrack_limit', 200000);
 ini_set('pcre.recursion_limit', 200000);
-
+ini_set('upload_max_filesize', '128M');
 // Force Drupal not to check for HTTP connectivity until we fixed the self test.
 $conf['drupal_http_request_fails'] = FALSE;
 
