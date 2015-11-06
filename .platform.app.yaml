@@ -77,11 +77,7 @@ hooks:
       drush -y updatedb
       #chmod -R 777 sites/default
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
-      #drush -y en panels simplenews 
-      #drush en -y media_pinkeye
-      #drush en -y  media_entity_audio media_entity_image media_entity_twitter
-      #drush -y en media_entity_slideshow media_entity_instagram media_entity_embeddable_video 
-      #drush -y en media_entity
+      #drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm civicrm_views
       #drush -y en composer_manager
@@ -90,17 +86,13 @@ hooks:
       #drush en -y image_title_caption
       #drush en -y media_player_module
       #drush en -y swiftmailer
-      drush en -y mailsystem
-      #drush en -y media_entity_audio media_entity_embeddable_video
+      #drush en -y mailsystem
       #drush en -y filefield_sources
-      #drush en -y filefield_sources_flysystem
-      #drush en -y media_entity_audio 
-      #drush en -y media_entity_embeddable_video
-      #drush pmu -y media_pinkeye
+      #drush en -y filefield_sources_flysystem 
       #drush en -y media_entity
       #drush en -y media_entity_audio media_entity_embeddable_video media_entity_image media_entity_slideshow
       #drush en -y media_entity_twitter media_entity_instagram
-      drush en -y media_pinkeye
+      drush pmu -y media_pinkeye
 
 # The configuration of scheduled execution.
 crons:
