@@ -86,8 +86,8 @@ hooks:
       #drush -y pmu civicrm civicrm_views
       #drush -y en composer_manager
       #drush en -y flysystem flysystem_dropbox flysystem_s3
-      #drush en -y jplayer
-      drush en -y image_title_caption
+      drush en -y jplayer
+      #drush en -y image_title_caption
       #drush en -y media_player_module
       #drush en -y swiftmailer
       #drush en -y mailsystem
