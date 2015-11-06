@@ -77,8 +77,8 @@ hooks:
       drush -y updatedb
       #chmod -R 777 sites/default
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
-      drush -y en panels simplenews
-      #drush -y en entity_reference_revisions paragraphs
+      #drush -y en panels simplenews
+      drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm civicrm_views
       #drush -y en composer_manager
       #drush en -y flysystem flysystem_dropbox flysystem_s3
