@@ -58,10 +58,10 @@ hooks:
 
 
     build: |
-       #cd ./public
-       #php modules/composer_manager/scripts/init.php
-       #composer drupal-update
-       #composer update
+       cd ./public
+       php modules/composer_manager/scripts/init.php
+       composer drupal-update
+       composer update
        #composer require drupal/drupal-extension='~3.0'
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
@@ -80,7 +80,7 @@ hooks:
       #drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm civicrm_views
-      drush -y en composer_manager
+      #drush -y en composer_manager
       #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       #drush en -y image_title_caption
