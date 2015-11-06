@@ -88,8 +88,8 @@ hooks:
       #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       #drush en -y image_title_caption
-      drush en -y media_player_module
-      #drush en -y swiftmailer
+      #drush en -y media_player_module
+      drush en -y swiftmailer
       #drush en -y mailsystem
       #drush en -y media_entity_audio media_entity_embeddable_video
       #drush en -y filefield_sources
