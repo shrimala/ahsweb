@@ -83,13 +83,13 @@ libraries[media_entity_embeddable_video][overwrite]=True
 libraries[media_entity_audio][destination]=modules
 libraries[media_entity_audio][directory_name]=media_entity_audio
 libraries[media_entity_audio][download][type]=git
-libraries[media_entity_audio][download][url]=https://github.com/aritnath1990/Media_entity_audio.git
+libraries[media_entity_audio][download][url]=https://github.com/shrimala/Media_entity_audio.git
 libraries[media_entity_audio][overwrite]=True
 
 libraries[media_pinkeye][destination]=modules
 libraries[media_pinkeye][directory_name]=media_pinkeye
 libraries[media_pinkeye][download][type]=git
-libraries[media_pinkeye][download][url]=https://github.com/aritnath1990/media_pinkeye.git
+libraries[media_pinkeye][download][url]=https://github.com/shrimala/media_pinkeye.git
 libraries[media_pinkeye][overwrite]=True
 
 libraries[media_entity_image][destination]=modules
@@ -126,14 +126,14 @@ libraries[media_entity_slideshow][overwrite]=True
 libraries[filefield_sources][destination]=modules
 libraries[filefield_sources][directory_name]=filefield_sources
 libraries[filefield_sources][download][type]=git
-libraries[filefield_sources][download][url]=https://github.com/aritnath1990/filefield_sources.git
-libraries[filefield_sources][download][branch]=8.x-1.x
+libraries[filefield_sources][download][url]=https://github.com/shrimala/filefield_sources.git
+libraries[filefield_sources][download][branch]=master
 libraries[filefield_sources][overwrite]=True
 
 libraries[filefield_sources_flysystem][destination]=modules
 libraries[filefield_sources_flysystem][directory_name]=filefield_sources_flysystem
 libraries[filefield_sources_flysystem][download][type]=git
-libraries[filefield_sources_flysystem][download][url]=https://github.com/aritnath1990/filefield_sources_flysystem.git
+libraries[filefield_sources_flysystem][download][url]=https://github.com/shrimala/filefield_sources_flysystem.git
 libraries[filefield_sources_flysystem][download][branch]=master
 libraries[filefield_sources_flysystem][overwrite]=True
 
@@ -150,4 +150,3 @@ libraries[behatyml][download][type]=git
 libraries[behatyml][download][url]=https://github.com/aritnath1990/behat.git
 libraries[behatyml][download][branch]=master
 libraries[behatyml][overwrite]=True
-
