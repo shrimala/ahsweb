@@ -46,7 +46,7 @@ projects[paragraphs][version]=1.x-dev
 projects[token][version]=1.x-dev
 ;projects[pathauto][version]=1.x
 projects[eform][version]=1.x-dev
-projects[simplenews][version]=1.x-dev
+;projects[simplenews][version]=1.x-dev
 projects[inmail][version]=1.x-dev
 projects[mailmute][version]=1.x-dev
 projects[media_entity][version]=1.x-dev
@@ -59,6 +59,14 @@ projects[flysystem_s3][version]=1.x-dev
 projects[mailsystem][version]=4.x-dev
 projects[migrate_plus][version]=1.x-dev
 projects[views_field_view][version]=1.x-dev
+
+
+libraries[simplenews][destination]=modules
+libraries[simplenews][directory_name]=simplenews
+libraries[simplenews][download][type]=git
+libraries[simplenews][download][url]=https://github.com/aritnath1990/simplenews.git
+libraries[simplenews][overwrite]=True
+
 
 libraries[migrate_ahs][destination]=modules
 libraries[migrate_ahs][directory_name]=migrate_ahs
