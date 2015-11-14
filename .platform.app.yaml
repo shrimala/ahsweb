@@ -98,7 +98,6 @@ hooks:
       #drush en -y media_entity_audio
       drush en -y media_pinkeye
 
-
 # The configuration of scheduled execution.
 crons:
     drupal:
