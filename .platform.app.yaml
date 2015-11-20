@@ -21,7 +21,7 @@ build:
 # with Drupal 8.
 dependencies:
     php:
-        "drush/drush": "8.0.0-rc1"
+        "drush/drush": "8.0.0-rc4"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -61,7 +61,7 @@ hooks:
        cd ./public
        php modules/composer_manager/scripts/init.php
        composer drupal-update
-       composer self-update
+       composer update
        composer require drupal/drupal-extension='~3.0'
        vendor/bin/behat --init
        vendor/bin/behat -dl
