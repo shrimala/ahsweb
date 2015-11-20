@@ -3,7 +3,7 @@ core = 8.x
 
 ; Drupal core.
 projects[drupal][type] = core
-projects[drupal][version] = 8.0.0-rc4
+projects[drupal][version] = 8.0.0
 ;project[drupal][patch][url]=/sites/default/files/civipatch1.patch
 ;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_real.php.patch
 ;projects[drupal][patch][]= http://ssdkolkata.net/baisakhi/autoload_flysystem_psr4.php.patch
