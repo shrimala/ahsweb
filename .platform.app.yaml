@@ -62,11 +62,11 @@ hooks:
        php modules/composer_manager/scripts/init.php
        composer drupal-update
        composer update
-       #composer require drupal/drupal-extension='~3.0'
-       #vendor/bin/behat --init
-       #vendor/bin/behat -dl
-       #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
-       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
+       composer require drupal/drupal-extension='~3.0'
+       vendor/bin/behat --init
+       vendor/bin/behat -dl
+       mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
+       mv vendor/behatfiles/*.feature vendor/behat/behat/features/
 
     deploy: |
       # Drupal 8 currently fails to create config directories
