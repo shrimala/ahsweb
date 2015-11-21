@@ -60,11 +60,11 @@ hooks:
     build: |
        cd ./public
        php modules/composer_manager/scripts/init.php
-       composer require composer/composer
-       #composer drupal-update
+       #composer require composer/composer
+       composer drupal-update
        composer update
        composer require drupal/drupal-extension='~3.0'
-       composer require twistor/flysystem-stream-wrapper
+       #composer require twistor/flysystem-stream-wrapper
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
        #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
