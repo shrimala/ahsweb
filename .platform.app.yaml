@@ -58,8 +58,9 @@ hooks:
 
 
     build: |
-       cd ./public
+       #cd ./public
        php modules/composer_manager/scripts/init.php
+       composer require composer/composer
        composer drupal-update
        composer update
        composer require drupal/drupal-extension='~3.0'
