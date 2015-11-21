@@ -61,9 +61,10 @@ hooks:
        cd ./public
        php modules/composer_manager/scripts/init.php
        #composer require composer/composer
-       composer drupal-update
+       #composer drupal-update
        composer update
-       composer require drupal/drupal-extension='~3.0'
+       composer global require drush/drush:8.*
+       #composer require drupal/drupal-extension='~3.0'
        #composer require twistor/flysystem-stream-wrapper
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
