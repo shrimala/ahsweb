@@ -58,8 +58,8 @@ hooks:
 
 
     build: |
-       cd ./public
-       drush dl composer_manager
+       #cd ./public
+       #drush dl composer_manager
        php modules/composer_manager/scripts/init.php
        #composer require composer/composer
        composer drupal-update
