@@ -68,10 +68,10 @@ hooks:
        #composer global require drush/drush:8.*
        composer require drupal/drupal-extension='~3.0'
        #composer require twistor/flysystem-stream-wrapper
-       #vendor/bin/behat --init
-       #vendor/bin/behat -dl
-       #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
-       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
+       vendor/bin/behat --init
+       vendor/bin/behat -dl
+       mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
+       mv vendor/behatfiles/*.feature vendor/behat/behat/features/
 
     deploy: |
       # Drupal 8 currently fails to create config directories
