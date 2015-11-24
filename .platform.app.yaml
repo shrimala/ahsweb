@@ -61,13 +61,13 @@ hooks:
        cd ./public
        #drush dl composer_manager
        php modules/composer_manager/scripts/init.php
-       php composer update --no-scripts
+       #php composer update --no-scripts
        #composer dump-autoload
        #/usr/bin/composer self-update
        #rm composer.lock
        #composer require composer/composer
-       composer drupal-update
-       composer update
+       #composer drupal-update
+       #composer update
        #composer self-update
        #composer global require drush/drush:8.*
        composer require drupal/drupal-extension='~3.0'
