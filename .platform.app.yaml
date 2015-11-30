@@ -46,7 +46,8 @@ mounts:
 hooks:
     # We run deploy hook after your application has been deployed and started.
     build: |
-      composer create-project drupal/drupal /app/public/ 8.0.x
+      composer update
+      #composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
       cd web
       drush -y updatedb
