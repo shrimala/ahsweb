@@ -59,18 +59,20 @@ hooks:
 
     build: |
        cd ./public
+       export COMPOSER_PROCESS_TIMEOUT=2000
+       composer create-project drupal/drupal /app/public/ 8.0.x
        #drush dl composer_manager
-       php modules/composer_manager/scripts/init.php
+       #php modules/composer_manager/scripts/init.php
        #php composer update --no-scripts
        #composer dump-autoload
        #/usr/bin/composer self-update
        #rm composer.lock
        #composer require composer/composer
-       composer drupal-update
-       composer update
+       #composer drupal-update
+       #composer update
        #composer self-update
        #composer global require drush/drush:8.*
-       composer require drupal/drupal-extension='~3.0'
+       #composer require drupal/drupal-extension='~3.0'
        #composer require twistor/flysystem-stream-wrapper
        vendor/bin/behat --init
        vendor/bin/behat -dl
@@ -81,8 +83,8 @@ hooks:
       # Drupal 8 currently fails to create config directories
       # automatically during install.
       mkdir -p config/active config/staging
-      cd public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      #cd public
+      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       #chmod -R 777 sites/default
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
