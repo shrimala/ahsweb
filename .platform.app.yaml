@@ -49,7 +49,7 @@ hooks:
       export PATH="$HOME/.composer/vendor/bin:$PATH"
       curl -sS https://getcomposer.org/installer | php
       #composer update
-      #composer create-project drupal/drupal /app/public/ 8.0.x
+      composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
       cd web
       drush -y updatedb
