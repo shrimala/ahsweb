@@ -58,7 +58,7 @@ hooks:
 
 
     build: |
-       export PATH="$HOME/.composer/vendor/bin:$PATH"
+       #export PATH="$HOME/.composer/vendor/bin:$PATH"
        cd ./public
        export COMPOSER_PROCESS_TIMEOUT=2000
        /usr/bin/composer self-update
