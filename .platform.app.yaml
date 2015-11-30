@@ -48,7 +48,7 @@ hooks:
     build: |
       export PATH="$HOME/.composer/vendor/bin:$PATH"
       curl -sS https://getcomposer.org/installer | php
-      #composer update
+      composer self-update
       composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
       cd web
