@@ -47,10 +47,10 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     build: |
       export PATH="$HOME/.composer/vendor/bin:$PATH"
-      cd /app/public
+      cd /app
       curl -sS https://getcomposer.org/installer | php
       composer self-update
-      composer create-project drupal/drupal /app/public/ 8.0.x
+      #composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
       cd web
       drush -y updatedb
