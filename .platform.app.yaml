@@ -41,6 +41,7 @@ mounts:
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
+    "/usr/bin": "shared:usr/bin"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
