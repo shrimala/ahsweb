@@ -61,7 +61,7 @@ hooks:
        export PATH="$HOME/.composer/vendor/bin:$PATH"
        cd ./public
        export COMPOSER_PROCESS_TIMEOUT=2000
-       composer update
+       /usr/bin/composer self-update
        composer create-project drupal/drupal /app/public/ 8.0.x
        #drush dl composer_manager
        #php modules/composer_manager/scripts/init.php
