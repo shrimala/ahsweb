@@ -58,6 +58,7 @@ hooks:
 
 
     build: |
+       curl -sS https://getcomposer.org/installer | php
        #export PATH="$HOME/.composer/vendor/bin:$PATH"
        cd ./public
        export COMPOSER_PROCESS_TIMEOUT=2000
