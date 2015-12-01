@@ -2,13 +2,6 @@
     "name": "drupal/drupal",
     "type": "project",
     "license": "GPL-2.0+",
-    // The process that will be executed by Composer
-	"composer" => function($task) {
-		return array(
-			$task->composer('self-update'),
-			$task->composer('install --no-interaction --no-dev --prefer-dist'),
-		);
-	},
     "require": {
         "swiftmailer/swiftmailer": "5.2.*@stable",
         "html2text/html2text": "*",
