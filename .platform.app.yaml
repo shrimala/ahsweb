@@ -59,7 +59,7 @@ hooks:
       #cd web
       composer update
       drush -y updatedb
-
+      composer create-project drupal/drupal /app/public/ 8.0.x
 # The configuration of scheduled execution.
 crons:
     drupal:
