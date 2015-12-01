@@ -53,7 +53,7 @@ hooks:
       chmod -R 777 public
       curl -sS https://getcomposer.org/installer | php
       php composer.phar
-      #composer update -o --no-dev
+      composer update
       #composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
       #cd web
