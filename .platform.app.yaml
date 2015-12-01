@@ -48,9 +48,9 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     build: |
       #composer install --optimize-autoloader
-      #cd /app
-      #mkdir public
-      #chmod -R 777 public
+      cd /app
+      mkdir /app/public
+      chmod -R 777 /app/public
       #curl -sS https://getcomposer.org/installer | php
       #php composer.phar
       #composer install --optimize-autoloader     
