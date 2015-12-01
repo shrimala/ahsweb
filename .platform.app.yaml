@@ -53,8 +53,8 @@ hooks:
     build: |
       curl -sS https://getcomposer.org/installer | php
       php composer.phar
-      sudo mkdir -p /usr/local/bin
-      sudo mv composer.phar /usr/local/bin/composer
+      mkdir -p /usr/local/bin
+      mv composer.phar /usr/local/bin/composer
       #composer install --optimize-autoloader
       #cd /app
       #mkdir /app/public
