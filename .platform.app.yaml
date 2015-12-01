@@ -49,7 +49,7 @@ hooks:
     build: |
       #export PATH="$HOME/.composer/vendor/bin:$PATH"
       cd /app
-      #mkdir public
+      mkdir public
       chmod -R 777 public
       #curl -sS https://getcomposer.org/installer | php
       #php composer.phar
