@@ -13,25 +13,25 @@ projects[drupal][version] = 8.0.0-beta14
 ;******************************
 
 
-libraries[civicrmdrupal][destination] = modules
-libraries[civicrmdrupal][directory_name] = civicrm
-libraries[civicrmdrupal][download][type] = get
-libraries[civicrmdrupal][download][url] = http://ssdkolkata.net/baisakhi/civicrm-drupal-2.tar.gz
-libraries[civicrmdrupal][overwrite] = TRUE
-libraries[civicrmdrupal][patch][]=https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-drupal/pull/313.patch
+;libraries[civicrmdrupal][destination] = modules
+;libraries[civicrmdrupal][directory_name] = civicrm
+;libraries[civicrmdrupal][download][type] = get
+;libraries[civicrmdrupal][download][url] = http://ssdkolkata.net/baisakhi/civicrm-drupal-2.tar.gz
+;libraries[civicrmdrupal][overwrite] = TRUE
+;libraries[civicrmdrupal][patch][]=https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-drupal/pull/313.patch
 
 ;****************************
 ;     civicrm-core
 ;****************************
 
 
-libraries[civicrm][destination] = libraries
-libraries[civicrm][directory_name] = civicrm
-libraries[civicrm][download][type] = get
-libraries[civicrm][download][url] = http://ssdkolkata.net/baisakhi/civicrm-core-3.tar.gz
-libraries[civicrm][overwrite] = TRUE
+;libraries[civicrm][destination] = libraries
+;libraries[civicrm][directory_name] = civicrm
+;libraries[civicrm][download][type] = get
+;libraries[civicrm][download][url] = http://ssdkolkata.net/baisakhi/civicrm-core-3.tar.gz
+;libraries[civicrm][overwrite] = TRUE
 ;libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-core-requirements2.patch
-libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-Install-Requirements-patch.patch
+;libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/civi-Install-Requirements-patch.patch
 ;libraries[civicrm][patch][] = http://ssdkolkata.net/baisakhi/ClassLoader-patch.patch
 
 ;******************************
