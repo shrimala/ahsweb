@@ -51,7 +51,7 @@ mounts:
 hooks:
     # We run deploy hook after your application has been deployed and started.
     build: |
-      composer install --optimize-autoloader
+      #composer install --optimize-autoloader
       #cd /app
       #mkdir /app/public
       #chmod -R 777 /app/public
