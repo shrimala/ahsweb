@@ -75,7 +75,7 @@ hooks:
       cd /app/public
       drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
-      #chmod -R 777 sites/default
+      chmod -R 777 sites/default
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
       #drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
@@ -96,7 +96,7 @@ hooks:
       #drush en -y media_entity_twitter media_entity_instagram media_entity_audio
       #drush pmu -y media_entity
       #drush en -y media_entity_audio
-      drush en -y media_pinkeye
+      #drush en -y media_pinkeye
 
 # The configuration of scheduled execution.
 crons:
