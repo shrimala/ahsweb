@@ -48,12 +48,13 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     build: |
       #export PATH="$HOME/.composer/vendor/bin:$PATH"
-      cd /app
-      mkdir public
-      chmod -R 777 public
-      curl -sS https://getcomposer.org/installer | php
-      php composer.phar
-      composer install --optimize-autoloader     
+      composer install --optimize-autoloader
+      #cd /app
+      #mkdir public
+      #chmod -R 777 public
+      #curl -sS https://getcomposer.org/installer | php
+      #php composer.phar
+      #composer install --optimize-autoloader     
       #composer self-update
       #composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
