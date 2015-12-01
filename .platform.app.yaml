@@ -53,8 +53,9 @@ hooks:
     build: |
       curl -sS https://getcomposer.org/installer | php
       php composer.phar
-      mkdir -p /usr/local/bin
-      mv composer.phar /usr/local/bin/composer
+      composer global require 'platformsh/cli:1.*'
+      #mkdir -p /usr/local/bin
+      #mv composer.phar /usr/local/bin/composer
       #composer install --optimize-autoloader
       #cd /app
       #mkdir /app/public
