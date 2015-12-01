@@ -60,7 +60,7 @@ hooks:
     build: |
        cd ./public
        curl -sS https://getcomposer.org/installer | php
-	   mv composer.phar /app/.global/bin/composer
+       mv composer.phar /app/.global/bin/composer
        #php modules/composer_manager/scripts/init.php
        #composer drupal-update
        composer update
