@@ -96,7 +96,7 @@ hooks:
       #drush en -y media_entity_twitter media_entity_instagram media_entity_audio
       #drush pmu -y media_entity
       #drush en -y media_entity_audio
-      #drush en -y media_pinkeye
+      drush pmu -y media_pinkeye
 
 # The configuration of scheduled execution.
 crons:
