@@ -62,6 +62,7 @@ hooks:
        curl -sS https://getcomposer.org/installer | php
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
+       composer create-project drupal/drupal /app/public/ 8.0.x
        #composer --version
        #php modules/composer_manager/scripts/init.php
        #composer drupal-update
