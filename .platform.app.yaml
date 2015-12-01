@@ -62,11 +62,11 @@ hooks:
        curl -sS https://getcomposer.org/installer | php
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
-       composer --version
+       #composer --version
        #php modules/composer_manager/scripts/init.php
        composer drupal-update
-       composer update
-       composer require drupal/drupal-extension='~3.0'
+       #composer update
+       #composer require drupal/drupal-extension='~3.0'
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
        #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
@@ -77,7 +77,7 @@ hooks:
       # automatically during install.
       mkdir -p config/active config/staging
       cd /app/public
-      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
       drush -y updatedb
       chmod -R 777 sites/default
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
