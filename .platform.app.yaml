@@ -7,18 +7,21 @@ name: php
 # The runtime the application uses.
 type: "php:5.6"
 
+
 runtime:
    extensions:
       - imap
 
 # Configuration of the build of this application.
 build:
-    flavor: composer
+    flavor: drupal
 
 # The build-time dependencies of the app.
+# Note: Drush 7.0.0 (stable) is released, but it purposefully does not work
+# with Drupal 8.
 dependencies:
     php:
-        "drush/drush": "8.0.0"
+        "drush/drush": "8.0.0-rc1"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -41,38 +44,62 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    #"/public/sites/default/files": "shared:files/files"
-    "/app/public/sites/default": "shared:files/app/public/sites/default"
+    "/public/sites/default/files": "shared:files/files"
+    #"/app/public/sites/default": "shared:files/app/public/sites/default"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    # We run deploy hook after your application has been deployed and started.
+       
+
+# We run deploy hook after your application has been deployed and started.
+
+
     build: |
-      curl -sS https://getcomposer.org/installer | php
-      php composer.phar
-      composer global require 'platformsh/cli:1.*'
-      #mkdir -p /usr/local/bin
-      #mv composer.phar /usr/local/bin/composer
-      #composer install --optimize-autoloader
-      #cd /app
-      #mkdir /app/public
-      #chmod -R 777 /app/public
-      #curl -sS https://getcomposer.org/installer | php
-      #php composer.phar
-      #composer install --optimize-autoloader     
-      #composer self-update
-      #composer create-project drupal/drupal /app/public/ 8.0.x
+       cd ./public
+       php modules/composer_manager/scripts/init.php
+       composer drupal-update
+       composer update
+       #composer require drupal/drupal-extension='~3.0'
+       #vendor/bin/behat --init
+       #vendor/bin/behat -dl
+       #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
+       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
+
     deploy: |
-      #cd web
-      #composer update
+      # Drupal 8 currently fails to create config directories
+      # automatically during install.
+      mkdir -p config/active config/staging
+      cd public
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
-      #composer create-project drupal/drupal /app/public/ 8.0.x
+      #chmod -R 777 sites/default
+      #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
+      #drush -y en panels simplenews
+      #drush -y en entity_reference_revisions paragraphs
+      #drush -y pmu civicrm_views
+      #drush -y pmu civicrm
+      #drush -y en composer_manager
+      #drush en -y flysystem flysystem_dropbox flysystem_s3
+      #drush en -y jplayer
+      #drush en -y image_title_caption
+      #drush en -y media_player_module
+      #drush en -y swiftmailer
+      #drush en -y mailsystem
+      #drush en -y filefield_sources
+      #drush en -y filefield_sources_flysystem 
+      #drush en -y media_entity
+      #drush pmu -y media_pinkeye
+      #drush en -y media_entity_embeddable_video media_entity_image media_entity_slideshow
+      #drush en -y media_entity_twitter media_entity_instagram media_entity_audio
+      #drush pmu -y media_entity
+      #drush en -y media_entity_audio
+      drush en -y media_pinkeye
+
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
-        cmd: "cd web ; drush core-cron"
-   
+        cmd: "cd public ; drush core-cron"
