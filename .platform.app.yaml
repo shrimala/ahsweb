@@ -14,7 +14,7 @@ build:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        "drush/drush": "dev-master"
+        "drush/drush": "8.0.0"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -54,7 +54,7 @@ hooks:
       curl -sS https://getcomposer.org/installer | php
       php composer.phar
       composer update -o --no-dev
-      composer create-project drupal/drupal /app/public/ 8.0.x
+      #composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
       #cd web
       drush -y updatedb
