@@ -47,8 +47,10 @@ mounts:
 hooks:
     # We run deploy hook after your application has been deployed and started.
     build: |
-      export PATH="$HOME/.composer/vendor/bin:$PATH"
+      #export PATH="$HOME/.composer/vendor/bin:$PATH"
       cd /app
+      mkdir public
+      chmod -R 777 public
       curl -sS https://getcomposer.org/installer | php
       php composer.phar
       #composer update
