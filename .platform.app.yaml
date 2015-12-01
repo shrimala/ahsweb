@@ -64,8 +64,8 @@ hooks:
        mv composer.phar "$COMPOSER_HOME"/bin/composer
        #composer --version
        #php modules/composer_manager/scripts/init.php
-       composer drupal-update
-       #composer update
+       #composer drupal-update
+       composer update
        #composer require drupal/drupal-extension='~3.0'
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
