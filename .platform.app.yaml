@@ -48,18 +48,18 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     #build: |
       #export PATH="$HOME/.composer/vendor/bin:$PATH"
-      #cd /app
+      cd /app
       #mkdir public
-      #chmod -R 777 public
+      chmod -R 777 public
       #curl -sS https://getcomposer.org/installer | php
       #php composer.phar
       #composer update -o --no-dev
       #composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
       #cd web
-      composer update
+      #composer update
       drush -y updatedb
-      composer create-project drupal/drupal /app/public/ 8.0.x
+      #composer create-project drupal/drupal /app/public/ 8.0.x
 # The configuration of scheduled execution.
 crons:
     drupal:
