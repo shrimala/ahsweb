@@ -61,6 +61,7 @@ hooks:
        cd ./public
        curl -sS https://getcomposer.org/installer | php
        mv composer.phar .global/bin/composer
+       composer --version
        #php modules/composer_manager/scripts/init.php
        composer drupal-update
        composer update
