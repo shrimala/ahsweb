@@ -52,9 +52,9 @@ hooks:
       curl -sS https://getcomposer.org/installer | php
       php composer.phar
       #composer update
-      composer create-project drupal/drupal /app/web/ 8.0.x
+      composer create-project drupal/drupal /app/public/ 8.0.x
     deploy: |
-      cd web
+      #cd web
       drush -y updatedb
 
 # The configuration of scheduled execution.
