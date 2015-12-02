@@ -1,183 +1,45 @@
 {
-    "name": "drupal/drupal",
+    "name": "drupal-composer/drupal-project",
+    "description": "Project template for Drupal 8 projects with composer",
     "type": "project",
     "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        }
+    ],
     "require": {
-        "swiftmailer/swiftmailer": "5.2.*@stable",
-        "html2text/html2text": "*",
-        "instaclick/bounce-mail-handler": "~5.2",
-        "cfortune/php-bounce-handler": "dev-master as 7.3",
-        "league/flysystem-aws-s3-v3": "~1.0",
-        "league/flysystem-dropbox": "~1.0",
-        "league/flysystem": "^1.0.3",
-        "league/flysystem-cached-adapter": "~1.0",
-        "league/flysystem-replicate-adapter": "~1.0",
-        "twistor/flysystem-stream-wrapper": "^1.0.5",
-        "j7mbo/twitter-api-php": "dev-master",
-        "PHP-Instagram-API/PHP-Instagram-API": "dev-master",
-        "symfony/class-loader": "2.7.*",
-        "symfony/console": "2.7.*",
-        "symfony/css-selector": "2.7.*",
-        "symfony/dependency-injection": "2.7.*",
-        "symfony/event-dispatcher": "2.7.*",
-        "symfony/http-foundation": "2.7.*",
-        "symfony/http-kernel": "2.7.*",
-        "symfony/routing": "2.7.*",
-        "symfony/serializer": "2.7.*",
-        "symfony/translation": "2.7.*",
-        "symfony/validator": "2.7.*",
-        "symfony/process": "2.7.*",
-        "symfony/yaml": "2.7.*",
-        "twig/twig": "1.18.*",
-        "doctrine/common": "~2.4.2",
-        "doctrine/annotations": "1.2.*",
-        "guzzlehttp/guzzle": "dev-master#1879fbe853b0c64d109e369c7aeff09849e62d1e",
-        "symfony-cmf/routing": "1.3.*",
-        "easyrdf/easyrdf": "0.9.*",
-        "phpunit/phpunit": "4.6.*",
-        "zendframework/zend-feed": "2.4.*",
-        "mikey179/vfsStream": "~1.2",
-        "stack/builder": "1.0.*",
-        "egulias/email-validator": "1.2.*",
-        "behat/mink": "~1.6",
-        "behat/mink-goutte-driver": "dev-master#cc5ce119b5a8e06662f634b35967aff0b0c7dfdd",
-        "fabpot/goutte": "~3.1",
-        "masterminds/html5": "~2.1",
-        "symfony/psr-http-message-bridge": "v0.2",
-        "zendframework/zend-diactoros": "1.1.0",
-        "composer/installers": "^1.0.20"
+        "composer/installers": "^1.0.20",
+        "drupal/core": "^8.0",
+        "drush/drush": "dev-master",
+        "drupal/console": "dev-master"
     },
     "require-dev": {
-        "league/flysystem-memory": "~1.0"
+        "behat/mink": "~1.6",
+        "behat/mink-goutte-driver": "~1.2",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "2.7.*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/instaclick/PHPMailer-BMH"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Rambomst/PHP-Bounce-Handler"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/designesse/PHP-Instagram-API.git"
-        }
-    ],
-    "replace": {
-        "drupal/action": "self.version",
-        "drupal/aggregator": "self.version",
-        "drupal/bartik": "self.version",
-        "drupal/ban": "self.version",
-        "drupal/basic_auth": "self.version",
-        "drupal/block": "self.version",
-        "drupal/block_content": "self.version",
-        "drupal/book": "self.version",
-        "drupal/breakpoint": "self.version",
-        "drupal/ckeditor": "self.version",
-        "drupal/classy": "self.version",
-        "drupal/color": "self.version",
-        "drupal/comment": "self.version",
-        "drupal/config": "self.version",
-        "drupal/config_translation": "self.version",
-        "drupal/contact": "self.version",
-        "drupal/content_translation": "self.version",
-        "drupal/contextual": "self.version",
-        "drupal/core-annotation": "self.version",
-        "drupal/core-bridge": "self.version",
-        "drupal/core-datetime": "self.version",
-        "drupal/core-diff": "self.version",
-        "drupal/core-discovery": "self.version",
-        "drupal/core-event-dispatcher": "self.version",
-        "drupal/core-file-cache": "self.version",
-        "drupal/core-gettext": "self.version",
-        "drupal/core-graph": "self.version",
-        "drupal/core-php-storage": "self.version",
-        "drupal/core-plugin": "self.version",
-        "drupal/core-proxy-builder": "self.version",
-        "drupal/core-serialization": "self.version",
-        "drupal/core-transliteration": "self.version",
-        "drupal/core-utility": "self.version",
-        "drupal/core-uuid": "self.version",
-        "drupal/datetime": "self.version",
-        "drupal/dblog": "self.version",
-        "drupal/editor": "self.version",
-        "drupal/entity_reference": "self.version",
-        "drupal/field": "self.version",
-        "drupal/field_ui": "self.version",
-        "drupal/file": "self.version",
-        "drupal/filter": "self.version",
-        "drupal/forum": "self.version",
-        "drupal/hal": "self.version",
-        "drupal/help": "self.version",
-        "drupal/history": "self.version",
-        "drupal/image": "self.version",
-        "drupal/language": "self.version",
-        "drupal/link": "self.version",
-        "drupal/locale": "self.version",
-        "drupal/minimal": "self.version",
-        "drupal/menu_link_content": "self.version",
-        "drupal/menu_ui": "self.version",
-        "drupal/migrate": "self.version",
-        "drupal/migrate_drupal": "self.version",
-        "drupal/node": "self.version",
-        "drupal/options": "self.version",
-        "drupal/page_cache": "self.version",
-        "drupal/path": "self.version",
-        "drupal/quickedit": "self.version",
-        "drupal/rdf": "self.version",
-        "drupal/responsive_image": "self.version",
-        "drupal/rest": "self.version",
-        "drupal/search": "self.version",
-        "drupal/serialization": "self.version",
-        "drupal/seven": "self.version",
-        "drupal/shortcut": "self.version",
-        "drupal/simpletest": "self.version",
-        "drupal/standard": "self.version",
-        "drupal/stark": "self.version",
-        "drupal/statistics": "self.version",
-        "drupal/syslog": "self.version",
-        "drupal/system": "self.version",
-        "drupal/taxonomy": "self.version",
-        "drupal/telephone": "self.version",
-        "drupal/text": "self.version",
-        "drupal/toolbar": "self.version",
-        "drupal/tour": "self.version",
-        "drupal/tracker": "self.version",
-        "drupal/update": "self.version",
-        "drupal/user": "self.version",
-        "drupal/views": "self.version",
-        "drupal/views_ui": "self.version",
-        "drupal/core": "self.version"
-    },
     "scripts": {
-        "pre-autoload-dump": "Drupal\\Core\\Composer\\Composer::preAutoloadDump",
-        "post-autoload-dump": "Drupal\\Core\\Composer\\Composer::ensureHtaccess",
-        "post-install-cmd": "Drupal\\composer_manager\\Composer\\Command::rewriteAutoload",
-        "post-update-cmd": "Drupal\\composer_manager\\Composer\\Command::rewriteAutoload",
-        "drupal-rebuild": "Drupal\\composer_manager\\Composer\\Command::rebuild",
-        "drupal-install": "Drupal\\composer_manager\\Composer\\Command::install",
-        "drupal-update": "Drupal\\composer_manager\\Composer\\Command::update"
-    },
-    "autoload": {
-        "psr-4": {
-            "Drupal\\Core\\": "core/lib/Drupal/Core",
-            "Drupal\\Component\\": "core/lib/Drupal/Component",
-            "Drupal\\Driver\\": "drivers/lib/Drupal/Driver",
-            "Drupal\\composer_manager\\Composer\\": "modules/composer_manager/src/Composer"
-        },
-        "files": [
-            "core/lib/Drupal.php"
-        ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "autoloader-suffix": "Drupal8"
+        "post-install-cmd": "scripts/composer/post-install.sh"
     },
     "extra": {
-        "_generator": "Generated by composer_manager",
-        "_sources": "drupal/core, drupal-contrib/media_entity_instagram, drupal-contrib:media_entity_twitter, drupal/flysystem, drupal/flysystem_dropbox, drupal/flysystem_s3, drupal/inmail_cfortune, drupal/inmail_phpmailerbmh, drupal/swiftmailer"
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/drush/commands/{$name}": ["type:drupal-drush"]
+        }
     }
-}   
+}
