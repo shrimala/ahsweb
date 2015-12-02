@@ -64,7 +64,7 @@ hooks:
        #export COMPOSER_PROCESS_TIMEOUT=2000
        composer create-project drupal/drupal my_site_name 8.0.*@dev
        #composer create-project drupal-composer/drupal-project:8.x-dev /app/public --stability dev --no-interaction
-       cd /app/public
+       #cd /app/public
        composer require drupal/devel:8.*
        #composer create-project drupal/drupal /app/public/ 8.0.x --no-interaction
        #cd /app/public
@@ -83,10 +83,10 @@ hooks:
       # Drupal 8 currently fails to create config directories
       # automatically during install.
       mkdir -p config/active config/staging
-      cd /app/public
-      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
-      drush -y updatedb
-      chmod -R 777 sites/default
+      #cd /app/public
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
+      #drush -y updatedb
+      #chmod -R 777 sites/default
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
       #drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
