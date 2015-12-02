@@ -3,7 +3,6 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-		"drupal/drupal": "7.*",
         "swiftmailer/swiftmailer": "5.2.*@stable",
         "html2text/html2text": "*",
         "instaclick/bounce-mail-handler": "~5.2",
