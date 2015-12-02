@@ -55,8 +55,6 @@ hooks:
        
 
 # We run deploy hook after your application has been deployed and started.
-
-
     build: |
        cd ./public
        curl -sS https://getcomposer.org/installer | php
@@ -65,6 +63,8 @@ hooks:
        export COMPOSER_PROCESS_TIMEOUT=2000
        mkdir /app/public/web
        composer create-project drupal-composer/drupal-project:8.x-dev /app/public/web --stability dev --no-interaction
+       cd /app/public/web
+       composer require drupal/devel:8.*
        #composer create-project drupal/drupal /app/public/ 8.0.x --no-interaction
        #cd /app/public
        #composer require drupal/devel:8.*
