@@ -46,6 +46,7 @@ disk: 2048
 mounts:
     "/public/sites/default/files": "shared:files/files"
     #"/app/public/sites/default": "shared:files/app/public/sites/default"
+    "/app/public": "shared:files/app/public"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
