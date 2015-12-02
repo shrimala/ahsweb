@@ -60,8 +60,9 @@ hooks:
        curl -sS https://getcomposer.org/installer | php
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
+       mkdir -p web
        export COMPOSER_PROCESS_TIMEOUT=2000
-       composer create-project drupal-composer/drupal-project:8.x-dev /app/public --stability dev --no-interaction
+       composer create-project drupal-composer/drupal-project:8.x-dev web --stability dev --no-interaction
        cd /app/public
        composer require drupal/devel:8.*
        #composer create-project drupal/drupal /app/public/ 8.0.x --no-interaction
