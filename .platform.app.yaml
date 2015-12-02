@@ -54,6 +54,7 @@ hooks:
 
     deploy: |
       cd web
+      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
       drush -y updatedb
 
 # The configuration of scheduled execution.
