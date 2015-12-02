@@ -57,7 +57,9 @@ hooks:
 # We run deploy hook after your application has been deployed and started.
 
 
-    build: | 
+    build: |
+       #cd ./public
+       cd /app
        curl -sS https://getcomposer.org/installer | php
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
