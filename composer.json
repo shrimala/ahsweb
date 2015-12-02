@@ -170,7 +170,7 @@
         },
         "files": [
             "core/lib/Drupal.php"
-        ],
+        ]
     },
     "config": {
         "preferred-install": "dist",
