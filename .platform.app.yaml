@@ -61,9 +61,8 @@ hooks:
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
        export COMPOSER_PROCESS_TIMEOUT=2000
-       mkdir /app/public/web
-       composer create-project drupal-composer/drupal-project:8.x-dev /app/public/web --stability dev --no-interaction
-       cd /app/public/web
+       composer create-project drupal-composer/drupal-project:8.x-dev /app/public --stability dev --no-interaction
+       cd /app/public
        composer require drupal/devel:8.*
        #composer create-project drupal/drupal /app/public/ 8.0.x --no-interaction
        #cd /app/public
@@ -71,7 +70,7 @@ hooks:
        #composer --version
        #php modules/composer_manager/scripts/init.php
        #composer drupal-update
-       composer update
+       #composer update
        #composer require drupal/drupal-extension='~3.0'
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
