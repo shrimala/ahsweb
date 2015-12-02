@@ -58,7 +58,6 @@ hooks:
 
 
     build: |
-       cd ./public
        curl -sS https://getcomposer.org/installer | php
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
