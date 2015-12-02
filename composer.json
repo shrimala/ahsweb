@@ -18,7 +18,7 @@
     "require": {
         "composer/installers": "^1.0.20",
         "drupal/core": "^8.0",
-        "drush/drush": "dev-master",
+        "drush/drush": "8.0.0",
         "drupal/console": "dev-master"
     },
     "require-dev": {
@@ -30,9 +30,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "scripts": {
-        "post-install-cmd": "scripts/composer/post-install.sh"
-    },
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"],
