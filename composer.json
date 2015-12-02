@@ -177,7 +177,7 @@
             "core/lib/Drupal/Core/Database/Database.php",
             "core/lib/Drupal/Core/DrupalKernel.php",
             "core/lib/Drupal/Core/DrupalKernelInterface.php",
-            "core/lib/Drupal/Core/Site/Settings.php"
+            "core/lib/Drupal/Core/Site/Settings.php"  
 */      ]
     },
     "config": {
