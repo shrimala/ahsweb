@@ -64,8 +64,8 @@ hooks:
        mv composer.phar "$COMPOSER_HOME"/bin/composer
        export COMPOSER_PROCESS_TIMEOUT=2000
        composer create-project drupal/drupal /app/public/ 8.0.x
-       cd /app/public
-       composer require drupal/devel:8.*
+       #cd /app/public
+       #composer require drupal/devel:8.*
        #composer --version
        #php modules/composer_manager/scripts/init.php
        #composer drupal-update
