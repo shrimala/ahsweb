@@ -14,7 +14,7 @@ runtime:
 
 # Configuration of the build of this application.
 build:
-    flavor: drupal
+    flavor: composer
 
 # The build-time dependencies of the app.
 # Note: Drush 7.0.0 (stable) is released, but it purposefully does not work
