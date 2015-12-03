@@ -54,8 +54,8 @@ hooks:
 
     deploy: |
       cd public/web
+      ../vendor/drush/drush/drush -y updatedb
       ../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
-      drush -y updatedb
 
 # The configuration of scheduled execution.
 crons:
