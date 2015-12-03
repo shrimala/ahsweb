@@ -49,7 +49,7 @@ hooks:
        curl -sS https://getcomposer.org/installer | php
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
-       composer create-project drupal-composer/drupal-project:8.x-dev public --stability dev --no-interaction -vvv
+       #composer create-project drupal-composer/drupal-project:8.x-dev public --stability dev --no-interaction -vvv
 
     deploy: |
       cd public/web
