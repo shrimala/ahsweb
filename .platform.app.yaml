@@ -14,7 +14,7 @@ build:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        "drush/drush": "dev-master"
+        "drush/drush": "8.0.0"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -50,12 +50,11 @@ hooks:
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
        composer create-project drupal-composer/drupal-project:8.x-dev public --stability dev --no-interaction
-       composer update
 
     deploy: |
       cd public/web
+      ../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
       ../vendor/drush/drush/drush -y updatedb
-      ../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
 
 # The configuration of scheduled execution.
 crons:
