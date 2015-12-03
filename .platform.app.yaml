@@ -53,7 +53,7 @@ hooks:
 
     deploy: |
       cd public/web
-      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      ../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
 
 # The configuration of scheduled execution.
