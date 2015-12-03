@@ -1,64 +1,46 @@
-# This file describes an application. You can have multiple applications
-# in the same project.
-
-# The name of this app. Must be unique within a project.
 name: php
 
-# The runtime the application uses.
-type: "php:5.6"
+type: php:5.6
 
-# Configuration of the build of this application.
 build:
-    flavor: drupal
+    flavor: composer
 
-# The build-time dependencies of the app.
-dependencies:
-    php:
-        "drush/drush": "8.0.0"
-
-# The relationships of the application with services or other applications.
-# The left-hand side is the name of the relationship as it will be exposed
-# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
-# side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: "mysql:mysql"
-    solr: "solr:solr"
-    redis: "redis:redis"
 
-# The configuration of app when it is exposed to the web.
 web:
-    # The public directory of the app, relative to its root.
-    document_root: "/web"
-    # The front-controller script to send non-static requests to.
+    document_root: "/drupal/web"
     passthru: "/index.php"
- 
-# The size of the persistent disk of the application (in MB).
+
 disk: 2048
 
-# The mounts that will be performed when the package is deployed.
 mounts:
-    "/web/sites/default/files": "shared:files/files"
+    "/drupal/web/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
 
-# The hooks executed at various points in the lifecycle of the application.
 hooks:
-    # We run deploy hook after your application has been deployed and started.
     build: |
-       curl -sS https://getcomposer.org/installer | php
-       mkdir -p "$COMPOSER_HOME"/bin
-       mv composer.phar "$COMPOSER_HOME"/bin/composer
-       composer create-project drupal-composer/drupal-project:8.x-dev web2 --stability dev --no-interaction -vvv
-       cp -a /web2/. /web/
+        # Install the latest Composer.
+        if [ ! -z "$COMPOSER_HOME" ]; then
+          curl -sS https://getcomposer.org/installer | php
+          mkdir -p "$COMPOSER_HOME"/bin
+          mv composer.phar "$COMPOSER_HOME"/bin/composer
+        fi
 
+        # Create Drupal in a temporary folder.
+        composer create-project drupal-composer/drupal-project:8.x-dev drupal-tmp --stability dev --no-interaction
+
+        # Move Drupal (via recursive rsync) into the 'drupal' folder.
+        rsync -a drupal-tmp/* drupal
+        rm -r drupal-tmp
     deploy: |
-      cd web
-      ../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
-      ../vendor/drush/drush/drush -y updatedb
+        cd $PLATFORM_DOCUMENT_ROOT
+        drush cr
+        drush -y updatedb
 
-# The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
-        cmd: "cd web ; drush core-cron"
+        cmd: "drush -r $PLATFORM_DOCUMENT_ROOT core-cron"
