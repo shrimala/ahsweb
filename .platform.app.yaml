@@ -31,7 +31,7 @@ web:
     document_root: "/public/web"
     # The front-controller script to send non-static requests to.
     passthru: "/index.php"
-
+ 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 
