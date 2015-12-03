@@ -50,7 +50,7 @@ hooks:
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
        composer create-project drupal-composer/drupal-project:8.x-dev public --stability dev --no-interaction
-       composer drupal-update
+       composer update
 
     deploy: |
       cd public/web
