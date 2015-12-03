@@ -30,14 +30,14 @@ web:
     # The public directory of the app, relative to its root.
     document_root: "/public/web"
     # The front-controller script to send non-static requests to.
-    passthru: "/index.php" 
+    passthru: "/index.php"
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/public/web/sites/default/files": "shared:files/files"
+    #"/public/web/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
