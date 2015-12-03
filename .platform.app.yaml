@@ -38,6 +38,7 @@ hooks:
     deploy: |
         cd $PLATFORM_DOCUMENT_ROOT
         drush cr
+        ../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
         drush -y updatedb
 
 crons:
