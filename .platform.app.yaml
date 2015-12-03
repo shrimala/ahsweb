@@ -28,7 +28,7 @@ relationships:
 # The configuration of app when it is exposed to the web.
 web:
     # The public directory of the app, relative to its root.
-    document_root: "/public/web"
+    document_root: "/web"
     # The front-controller script to send non-static requests to.
     passthru: "/index.php"
  
@@ -37,7 +37,7 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    #"/public/web/sites/default/files": "shared:files/files"
+    "/web/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
@@ -52,12 +52,12 @@ hooks:
        #composer create-project drupal-composer/drupal-project:8.x-dev web --stability dev --no-interaction -vvv
 
     deploy: |
-      cd public/web
-      ../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
-      ../vendor/drush/drush/drush -y updatedb
+      cd web
+      #../vendor/drush/drush/drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
+      #../vendor/drush/drush/drush -y updatedb
 
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
-        cmd: "cd public/web ; drush core-cron"
+        cmd: "cd web ; drush core-cron"
