@@ -169,14 +169,6 @@
         },
         "files": [
             "core/lib/Drupal.php"
-        ],
-        "classmap": [
-            "core/lib/Drupal/Component/Utility/Timer.php",
-            "core/lib/Drupal/Component/Utility/Unicode.php",
-            "core/lib/Drupal/Core/Database/Database.php",
-            "core/lib/Drupal/Core/DrupalKernel.php",
-            "core/lib/Drupal/Core/DrupalKernelInterface.php",
-            "core/lib/Drupal/Core/Site/Settings.php"
         ]
     },
     "config": {
