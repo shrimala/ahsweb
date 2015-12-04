@@ -90,10 +90,10 @@ hooks:
       #drush en -y jplayer
       #drush en -y image_title_caption
       #drush en -y media_player_module
-      drush en -y swiftmailer
-      drush en -y mailsystem
-      #drush en -y filefield_sources
-      #drush en -y filefield_sources_flysystem 
+      #drush en -y swiftmailer
+      #drush en -y mailsystem
+      drush en -y filefield_sources
+      drush en -y filefield_sources_flysystem 
       #drush en -y media_entity
       #drush pmu -y media_pinkeye
       #drush en -y media_entity_embeddable_video media_entity_image media_entity_slideshow
