@@ -64,7 +64,7 @@ hooks:
        mv composer.phar "$COMPOSER_HOME"/bin/composer
        composer --version
        #php modules/composer_manager/scripts/init.php
-       composer drupal-update
+       #composer drupal-update
        composer update
        composer require drupal/drupal-extension='~3.0'
        #vendor/bin/behat --init
@@ -86,12 +86,12 @@ hooks:
       #drush -y pmu civicrm_views
       #drush -y pmu civicrm
       #drush -y en composer_manager
-      drush en -y flysystem flysystem_dropbox flysystem_s3
+      #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       #drush en -y image_title_caption
       #drush en -y media_player_module
-      #drush en -y swiftmailer
-      #drush en -y mailsystem
+      drush en -y swiftmailer
+      drush en -y mailsystem
       #drush en -y filefield_sources
       #drush en -y filefield_sources_flysystem 
       #drush en -y media_entity
