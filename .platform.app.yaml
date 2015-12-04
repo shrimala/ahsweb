@@ -17,20 +17,20 @@ dependencies:
         "drush/drush": "dev-master"
 
 web:
-    document_root: "/public"
+    document_root: "/web"
     passthru: "/index.php"
 
 disk: 2048
 
 mounts:
-    "/public/sites/default/files": "shared:files/files"
+    "/web/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
 
 hooks:
     build: |
-        cd public
+        cd web
         # Install the latest Composer.
         if [ ! -z "$COMPOSER_HOME" ]; then
           curl -sS https://getcomposer.org/installer | php
