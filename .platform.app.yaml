@@ -67,7 +67,11 @@ hooks:
        #composer drupal-update
        composer update
        composer require drupal/drupal-extension='~3.0'
-       composer require thephpleague/flysystem-cached-adapter
+       composer require league/flysystem-aws-s3-v3='~1.0'
+       composer require league/flysystem-dropbox='~1.0'
+       composer require league/flysystem='^1.0.3'
+       composer require league/flysystem-cached-adapter='~1.0'
+       composer require league/flysystem-replicate-adapter='~1.0'       
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
        #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
