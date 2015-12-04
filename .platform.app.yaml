@@ -17,13 +17,13 @@ dependencies:
         "drush/drush": "dev-master"
 
 web:
-    document_root: "/web"
+    document_root: "/public"
     passthru: "/index.php"
 
 disk: 2048
 
 mounts:
-    "/web/sites/default/files": "shared:files/files"
+    "/public/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"

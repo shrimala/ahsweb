@@ -33,11 +33,11 @@
     },
     "extra": {
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "web/drush/commands/{$name}": ["type:drupal-drush"]
+            "public/core": ["type:drupal-core"],
+            "public/modules/contrib/{$name}": ["type:drupal-module"],
+            "public/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "public/themes/contrib/{$name}": ["type:drupal-theme"],
+            "public/drush/commands/{$name}": ["type:drupal-drush"]
         }
     }
 }
