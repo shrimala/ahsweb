@@ -10,7 +10,7 @@ relationships:
 
 dependencies:
     php:
-        "drush/drush": "dev-master"
+        "drush/drush": "8.0.0"
 
 web:
     document_root: "/web"
