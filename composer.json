@@ -18,8 +18,8 @@
     "require": {
         "drupal/core": "^8.0",
         "drush/drush": "dev-master",
-        "drupal/console": "dev-master"
-		"swiftmailer/swiftmailer": "5.2.*@stable",
+        "drupal/console": "dev-master",
+        "swiftmailer/swiftmailer": "5.2.*@stable",
         "html2text/html2text": "*",
         "instaclick/bounce-mail-handler": "~5.2",
         "cfortune/php-bounce-handler": "dev-master as 7.3",
@@ -57,7 +57,7 @@
         "egulias/email-validator": "1.2.*",
         "behat/mink": "~1.6",
         "behat/mink-goutte-driver": "dev-master#cc5ce119b5a8e06662f634b35967aff0b0c7dfdd",
-		"behat/mink-extension": "2.0.*@dev",
+	    "behat/mink-extension": "2.0.*@dev",
         "fabpot/goutte": "~3.1",
         "masterminds/html5": "~2.1",
         "symfony/psr-http-message-bridge": "v0.2",
