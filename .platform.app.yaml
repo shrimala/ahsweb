@@ -13,13 +13,13 @@ dependencies:
         "drush/drush": "dev-master"
 
 web:
-    document_root: "/drupal/web"
+    document_root: "/web"
     passthru: "/index.php"
 
 disk: 2048
 
 mounts:
-    "/drupal/web/sites/default/files": "shared:files/files"
+    "/web/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
     "/config": "shared:files/config"
     "/private": "shared:files/private"
@@ -34,14 +34,14 @@ hooks:
         fi
 
         # Create Drupal in a temporary folder.
-        composer create-project drupal-composer/drupal-project:8.x-dev drupal-tmp --stability dev --no-interaction
+        #composer create-project drupal-composer/drupal-project:8.x-dev drupal-tmp --stability dev --no-interaction
 
         # Move Drupal (via recursive rsync) into the 'drupal' folder.
-        rsync -a drupal-tmp/* drupal
-        rm -r drupal-tmp
+        #rsync -a drupal-tmp/* drupal
+        #rm -r drupal-tmp
 
         # Install the settings.php file.
-        mv settings.php drupal/web/sites/default/settings.php
+        #mv settings.php drupal/web/sites/default/settings.php
     deploy: |
         cd $PLATFORM_DOCUMENT_ROOT
         drush cr
