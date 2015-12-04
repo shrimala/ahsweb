@@ -46,7 +46,7 @@ hooks:
         #rm -r drupal-tmp
 
         # Install the settings.php file.
-        mv ../settings.php /sites/default/settings.php
+        #mv settings.php /sites/default/settings.php
     deploy: |
         cd $PLATFORM_DOCUMENT_ROOT
         drush cr
