@@ -84,9 +84,9 @@ if (getenv("PLATFORM_RELATIONSHIPS")) {
 
   $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 
-  $prefix_len = strlen('drupal:');
+  $prefix_len = strlen('web:');
   foreach ($variables as $name => $value) {
-    if (substr($name, 0, $prefix_len) == 'drupal:') {
+    if (substr($name, 0, $prefix_len) == 'web:') {
       $conf[substr($name, $prefix_len)] = $value;
     }
   }
