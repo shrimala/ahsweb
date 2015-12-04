@@ -30,7 +30,7 @@ mounts:
 
 hooks:
     build: |
-        cd web
+        cd public
         # Install the latest Composer.
         if [ ! -z "$COMPOSER_HOME" ]; then
           curl -sS https://getcomposer.org/installer | php
