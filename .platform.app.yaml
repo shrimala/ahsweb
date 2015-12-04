@@ -30,6 +30,7 @@ mounts:
 
 hooks:
     build: |
+        cd web
         # Install the latest Composer.
         if [ ! -z "$COMPOSER_HOME" ]; then
           curl -sS https://getcomposer.org/installer | php
@@ -45,7 +46,7 @@ hooks:
         #rm -r drupal-tmp
 
         # Install the settings.php file.
-        #mv settings.php drupal/web/sites/default/settings.php
+        mv settings.php drupal/web/sites/default/settings.php
     deploy: |
         cd $PLATFORM_DOCUMENT_ROOT
         drush cr
