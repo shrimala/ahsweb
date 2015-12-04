@@ -29,9 +29,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "scripts": {
-        "post-install-cmd": "scripts/composer/post-install.sh"
-    },
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"],
