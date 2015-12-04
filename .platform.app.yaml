@@ -30,6 +30,7 @@ mounts:
 
 hooks:
     build: |
+        mkdir public
         cd public
         # Install the latest Composer.
         if [ ! -z "$COMPOSER_HOME" ]; then
