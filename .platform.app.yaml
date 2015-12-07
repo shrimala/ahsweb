@@ -106,10 +106,11 @@ hooks:
       #drush en -y media_entity_twitter media_entity_instagram media_entity_audio
       #drush pmu -y media_entity
       #drush en -y media_entity_audio
-      drush en -y media_pinkeye
+      #drush en -y media_pinkeye
 
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd public ; drush core-cron"
+  
