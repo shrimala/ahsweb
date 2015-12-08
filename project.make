@@ -110,6 +110,7 @@ libraries[media_entity_slideshow][destination]=modules
 libraries[media_entity_slideshow][directory_name]=Media_entity_slideshow
 libraries[media_entity_slideshow][download][type]=git
 libraries[media_entity_slideshow][download][url]=https://github.com/drupal-media/media_entity_slideshow.git
+libraries[media_entity_slideshow][download][revision]=bc00e14df038137b7b63f5bb79a46b8183ec3b39
 libraries[media_entity_slideshow][overwrite]=True
 
 libraries[filefield_sources][destination]=modules
