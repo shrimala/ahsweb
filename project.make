@@ -90,6 +90,7 @@ libraries[media_entity_twitter][destination]=modules
 libraries[media_entity_twitter][directory_name]=Media_entity_twitter
 libraries[media_entity_twitter][download][type]=git
 libraries[media_entity_twitter][download][url]=https://github.com/drupal-media/media_entity_twitter.git
+libraries[media_entity_twitter][download][revision]=fe694730dd25065138865ca6320c5748313886fe
 libraries[media_entity_twitter][overwrite]=True
 
 libraries[drupal-swiftmailer][destination]=modules
