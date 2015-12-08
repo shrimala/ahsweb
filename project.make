@@ -8,7 +8,8 @@ projects[drupal][version] = 8.0.1
 ;******************************
 ;    Other Modules
 ;******************************
-projects[panels][version]=3.0-alpha12
+;projects[panels][version]=3.0-alpha12
+projects[panels][revision]=a5015828dc77720f6684a22178c9361ff0389f2e
 projects[layout_plugin][version]=1.0-alpha12
 projects[page_manager][version]=1.0-alpha12
 projects[eck][version]=1.x-dev
