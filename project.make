@@ -83,6 +83,7 @@ libraries[media_entity_image][destination]=modules
 libraries[media_entity_image][directory_name]=Media_entity_image
 libraries[media_entity_image][download][type]=git
 libraries[media_entity_image][download][url]=https://github.com/drupal-media/media_entity_image.git
+libraries[media_entity_image][download][revision]=0b06c2f6c62e6518d39fd71798f82f4ccd3b52d8
 libraries[media_entity_image][overwrite]=True
 
 libraries[media_entity_twitter][destination]=modules
