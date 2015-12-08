@@ -57,6 +57,7 @@ libraries[pathauto][directory_name]=pathauto
 libraries[pathauto][download][type]=git
 libraries[pathauto][download][url]=https://github.com/md-systems/pathauto.git
 libraries[pathauto][download][branch]=8.x-1.x
+libraries[pathauto][download][revision]=4514f994f45cec60e88af9cd8a18776004fbdce8
 libraries[pathauto][overwrite]=True
 
 
