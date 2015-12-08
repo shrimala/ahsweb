@@ -56,7 +56,6 @@ libraries[pathauto][destination]=modules
 libraries[pathauto][directory_name]=pathauto
 libraries[pathauto][download][type]=git
 libraries[pathauto][download][url]=https://github.com/md-systems/pathauto.git
-libraries[pathauto][download][branch]=8.x-1.x
 libraries[pathauto][download][revision]=4514f994f45cec60e88af9cd8a18776004fbdce8
 libraries[pathauto][overwrite]=True
 
@@ -65,6 +64,7 @@ libraries[media_entity_embeddable_video][destination]=modules
 libraries[media_entity_embeddable_video][directory_name]=Media_entity_embeddable_video
 libraries[media_entity_embeddable_video][download][type]=git
 libraries[media_entity_embeddable_video][download][url]=https://github.com/drupal-media/media_entity_embeddable_video.git
+libraries[media_entity_embeddable_video][download][revision]=e3730bb06f356b3ae63eae538753da047f950fcf
 libraries[media_entity_embeddable_video][overwrite]=True
 
 libraries[media_entity_audio][destination]=modules
