@@ -107,7 +107,7 @@ hooks:
       #drush pmu -y media_entity
       #drush en -y media_entity_audio
       #drush en -y media_pinkeye
-      drush pmu -y eck
+      drush pmu -y token
       
 # The configuration of scheduled execution.
 crons:
