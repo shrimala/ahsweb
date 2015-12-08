@@ -107,7 +107,8 @@ hooks:
       #drush pmu -y media_entity
       #drush en -y media_entity_audio
       #drush en -y media_pinkeye
-
+      drush -y pmu panels
+	
 # The configuration of scheduled execution.
 crons:
     drupal:
