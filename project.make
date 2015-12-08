@@ -9,19 +9,19 @@ projects[drupal][version] = 8.0.1
 ;    Other Modules
 ;******************************
 ;projects[panels][version]=3.0-alpha12
-projects[panels][revision]=a5015828dc77720f6684a22178c9361ff0389f2e
-projects[layout_plugin][revision]=a989e4dff1c17ccbca5ff9169edf3f7a7de856af
+;projects[panels][revision]=a5015828dc77720f6684a22178c9361ff0389f2e
+;projects[layout_plugin][revision]=a989e4dff1c17ccbca5ff9169edf3f7a7de856af
 ;projects[layout_plugin][version]=1.0-alpha12
 ;projects[page_manager][revision]=0d97106cb0b90ac0eb3dd491377b97bada9b4234
-projects[page_manager][version]=1.0-alpha12
+;projects[page_manager][version]=1.0-alpha12
 ;projects[eck][version]=1.x-dev
-projects[eck][revision]=acfdad4aa35834f473636e96328a95436c4ba46d
+;projects[eck][revision]=acfdad4aa35834f473636e96328a95436c4ba46d
 ;projects[paragraphs][version]=1.x-dev
 projects[paragraphs][revision]=740874bacb56a6a90683e7818c06ba77a638125c
 ;projects[token][version]=1.x-dev
-projects[token][revision]=5a36ca581d4c02d0afead767b48263e29af83824
+;projects[token][revision]=5a36ca581d4c02d0afead767b48263e29af83824
 ;projects[eform][version]=1.x-dev
-projects[eform][revision]=cece909ce4c8ee98f97f803591c0ad43b77f3c17
+;projects[eform][revision]=cece909ce4c8ee98f97f803591c0ad43b77f3c17
 ;projects[inmail][version]=1.x-dev
 projects[inmail][revision]=19bde15111d08cdc9b69c2474ef9e14e758891c8
 ;projects[mailmute][version]=1.x-dev
@@ -29,7 +29,7 @@ projects[mailmute][revision]=f340adaded7905999acd0eca6b31484b7ac5db51
 ;projects[media_entity][version]=1.x-dev
 projects[media_entity][revision]=27c402b0f5d26066e0f10c91e77ee8b0df6dd101
 ;projects[advanced_help][version]=1.x-dev
-projects[advanced_help][revision]=a7f30e17815a65032b83529fd21ea615022645b9
+;projects[advanced_help][revision]=a7f30e17815a65032b83529fd21ea615022645b9
 ;projects[entity_reference_revisions][version]=1.0-rc1
 projects[entity_reference_revisions][revision]=6a811cd957fa3cd0f22ac9a9f788fae1fd79d520
 ;projects[composer_manager][version]=1.0-rc1
@@ -43,7 +43,7 @@ projects[flysystem_s3][revision]=40570814e6ceefd0a500380ec642acdd1755d578
 ;projects[mailsystem][version]=4.x-dev
 projects[mailsystem][revision]=84ffe7f7aa13ce86c36e76a4539d2b985038ba50
 ;projects[views_field_view][version]=1.x-dev
-projects[views_field_view][revision]=454995e659e0f874966b4d76d2a7ec41e3856066
+;projects[views_field_view][revision]=454995e659e0f874966b4d76d2a7ec41e3856066
 
 libraries[simplenews][destination]=modules
 libraries[simplenews][directory_name]=simplenews
@@ -52,12 +52,12 @@ libraries[simplenews][download][url]=https://github.com/aritnath1990/simplenews.
 libraries[simplenews][overwrite]=True
 
 
-libraries[pathauto][destination]=modules
-libraries[pathauto][directory_name]=pathauto
-libraries[pathauto][download][type]=git
-libraries[pathauto][download][url]=https://github.com/md-systems/pathauto.git
-libraries[pathauto][download][revision]=4514f994f45cec60e88af9cd8a18776004fbdce8
-libraries[pathauto][overwrite]=True
+;libraries[pathauto][destination]=modules
+;libraries[pathauto][directory_name]=pathauto
+;libraries[pathauto][download][type]=git
+;libraries[pathauto][download][url]=https://github.com/md-systems/pathauto.git
+;libraries[pathauto][download][revision]=4514f994f45cec60e88af9cd8a18776004fbdce8
+;libraries[pathauto][overwrite]=True
 
 
 libraries[media_entity_embeddable_video][destination]=modules
