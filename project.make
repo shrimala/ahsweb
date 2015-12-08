@@ -38,7 +38,8 @@ projects[flysystem][version]=1.x-dev
 ;projects[flysystem][revision]=aa8b84c1c1656b9a8faea8ad1b344cf078674440
 ;projects[flysystem_dropbox][version]=1.x-dev
 projects[flysystem_dropbox][revision]=8b9b4b0b69aff47c8afd395de5226cfb4f640860
-projects[flysystem_s3][version]=1.x-dev
+;projects[flysystem_s3][version]=1.x-dev
+projects[flysystem_s3][revision]=40570814e6ceefd0a500380ec642acdd1755d578
 projects[mailsystem][version]=4.x-dev
 projects[views_field_view][version]=1.x-dev
 
