@@ -10,7 +10,8 @@ projects[drupal][version] = 8.0.1
 ;******************************
 ;projects[panels][version]=3.0-alpha12
 projects[panels][revision]=a5015828dc77720f6684a22178c9361ff0389f2e
-projects[layout_plugin][version]=1.0-alpha12
+projects[layout_plugin][revision]=a989e4dff1c17ccbca5ff9169edf3f7a7de856af
+;projects[layout_plugin][version]=1.0-alpha12
 projects[page_manager][version]=1.0-alpha12
 projects[eck][version]=1.x-dev
 projects[paragraphs][version]=1.x-dev
