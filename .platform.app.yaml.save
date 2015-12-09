@@ -21,7 +21,7 @@ build:
 # with Drupal 8.
 dependencies:
     php:
-        "drush/drush": "8.0.0"
+        "drush/drush": "8.0.0-rc1"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -59,20 +59,10 @@ hooks:
 
     build: |
        cd ./public
-       curl -sS https://getcomposer.org/installer | php
-       mkdir -p "$COMPOSER_HOME"/bin
-       mv composer.phar "$COMPOSER_HOME"/bin/composer
-       composer --version
        php modules/composer_manager/scripts/init.php
        composer drupal-update
        composer update
-       composer require drupal/drupal-extension='~3.0'
-       #composer require league/flysystem-aws-s3-v3='~1.0'
-       #composer require league/flysystem-dropbox='~1.0'
-       #composer require league/flysystem='^1.0.3'
-       #composer require league/flysystem-cached-adapter='~1.0'
-       #composer require league/flysystem-replicate-adapter='~1.0' 
-       #composer require twistor/flysystem-stream-wrapper='^1.0.5'
+       #composer require drupal/drupal-extension='~3.0'
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
        #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
@@ -82,10 +72,10 @@ hooks:
       # Drupal 8 currently fails to create config directories
       # automatically during install.
       mkdir -p config/active config/staging
-      cd /app/public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
+      cd public
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
-      chmod -R 777 sites/default
+      #chmod -R 777 sites/default
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
       #drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
@@ -96,7 +86,7 @@ hooks:
       #drush en -y jplayer
       #drush en -y image_title_caption
       #drush en -y media_player_module
-      drush en -y swiftmailer
+      #drush en -y swiftmailer
       #drush en -y mailsystem
       #drush en -y filefield_sources
       #drush en -y filefield_sources_flysystem 
@@ -106,12 +96,10 @@ hooks:
       #drush en -y media_entity_twitter media_entity_instagram media_entity_audio
       #drush pmu -y media_entity
       #drush en -y media_entity_audio
-      #drush en -y media_pinkeye
-      #drush pmu -y views_field_view
-      
+      drush en -y media_pinkeye
+
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd public ; drush core-cron"
-  
