@@ -41,11 +41,6 @@ if (isset($_ENV['PLATFORM_ROUTES'])) {
   $settings['trusted_host_patterns'] = array_unique($settings['trusted_host_patterns']);
 }
 
-// Local settings. These are required for Platform.sh.
-if (file_exists(__DIR__ . '/settings.dev.php')) {
-  include __DIR__ . '/settings.dev.php';
-}
-
 
 /*********** Our customisations ************/
 
@@ -62,3 +57,12 @@ $base_url = rtrim($base_url,'/');
 
 // Setting private url
 $settings['file_private_path']='sites/default/files/private';
+
+// Local settings. These are required for Platform.sh.
+#if (file_exists(__DIR__ . '/settings.local.php')) {
+#  include __DIR__ . '/settings.local.php';
+#}
+
+if (file_exists(__DIR__ . '/settings.local.php')) {
+  include __DIR__ . '/settings.local.php';
+}
