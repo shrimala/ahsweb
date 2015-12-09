@@ -42,8 +42,8 @@ if (isset($_ENV['PLATFORM_ROUTES'])) {
 }
 
 // Local settings. These are required for Platform.sh.
-if (file_exists(__DIR__ . '/settings.local.php')) {
-  include __DIR__ . '/settings.local.php';
+if (file_exists(__DIR__ . '/settings.dev.php')) {
+  include __DIR__ . '/settings.dev.php';
 }
 
 
