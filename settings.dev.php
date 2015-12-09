@@ -1,25 +1,29 @@
 <?php
 
-// Fetching the Platform Variables's data
-$variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
-
-// Fetching the dropbox details
-$dropbox_token = $variables['dropbox_token'];
-$dropbox_client_id = $variables['dropbox_client_id'];
-
-// Structuring the schemes
 $schemes = [
   'dropboxexample' => [
     'driver' => 'dropbox',
     'config' => [
-      'token' => $dropbox_token,
-      'client_id' => $dropbox_client_id,
+      'token' => 'fQJL4O-6G8AAAAAAAAAADlao81xX6fgVF7jqKIyxcH2ecliBeP6MLRScDlobQTgx',
+      'client_id' => 'arit.nath@dcplkolkata.com',
     ],
   ],
+ /* 's3example' => [
+    'type' => 's3',
+    'driver' => 's3',
+    'config' => [
+      'key'    => 'AKIAJ6TQOIFM4NO7J2WQ',
+      'secret' => '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',
+      'region' => 'eu-west-1',
+      'bucket' => 'drupal8test',
+      'prefix'=> 'drupal8',
+      'cname' => 'drupal8test.s3-website-eu-west-1.amazonaws.com',
+    ],
+  ], */
   'localexample' => [
     'driver' => 'local',
     'config' => [
-      'root' => '/app/public/sites/default/files',
+      'root' => '/var/www/html/drupal8arit/sites/default/files',
     ],
 
     'cache' => FALSE, 
@@ -29,6 +33,8 @@ $schemes = [
     'serve_css' => TRUE,
   ]
 ];
+
+
 
 // Assigning the Schemes to Flysystem
 $settings['flysystem'] = $schemes;
