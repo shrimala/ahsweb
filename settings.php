@@ -63,6 +63,6 @@ $settings['file_private_path']='sites/default/files/private';
 #  include __DIR__ . '/settings.local.php';
 #}
 
-if (file_exists(__DIR__ . '/settings.dev.php')) {
-  include __DIR__ . '/settings.dev.php';
+if (file_exists(__DIR__ . '/settings.local.php')) {
+  include __DIR__ . '/settings.local.php';
 }
