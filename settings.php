@@ -50,7 +50,10 @@ if (isset($_ENV['PLATFORM_ROUTES'])) {
   $settings['trusted_host_patterns'] = array_unique($settings['trusted_host_patterns']);
 }
 
-// Configure relationships.
+
+/*********** Our customisations ************/
+
+// Configure relationships. -- Needed it for database configuration 
 $relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);
 
 if (empty($databases['default']['default'])) {
@@ -68,7 +71,7 @@ if (empty($databases['default']['default'])) {
       $database['pdo'][PDO::MYSQL_ATTR_COMPRESS] = TRUE;
     }
 
-    if (!empty($endpoint['query']['is_master'])) {
+    ededif (!empty($endpoint['query']['is_master'])) {
       $databases['default']['default'] = $database;
     }
     else {
@@ -76,9 +79,6 @@ if (empty($databases['default']['default'])) {
     }
   }
 }
-
-
-/*********** Our customisations ************/
 
 // Set base url, needed by simplenews module
 $main_route_url = 'http://{default}/';
