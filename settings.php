@@ -24,8 +24,17 @@ $settings['update_free_access'] = FALSE;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 // Define a config sync directory outside the document root.
-if (isset($_ENV['PLATFORM_APP_DIR'])) {
+/*if (isset($_ENV['PLATFORM_APP_DIR'])) {
   $config_directories[CONFIG_SYNC_DIRECTORY] = $_ENV['PLATFORM_APP_DIR'] . '/config/sync';
+}
+*/ 
+
+// Override paths for config files in Platform.sh.
+if (isset($_ENV['PLATFORM_APP_DIR'])) {
+  $config_directories = array(
+    CONFIG_ACTIVE_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/active',
+    CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
+  );
 }
 
 // Set trusted hosts based on real Platform.sh routes.
