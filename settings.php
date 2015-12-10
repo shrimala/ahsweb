@@ -71,7 +71,7 @@ if (empty($databases['default']['default'])) {
       $database['pdo'][PDO::MYSQL_ATTR_COMPRESS] = TRUE;
     }
 
-    ededif (!empty($endpoint['query']['is_master'])) {
+    if (!empty($endpoint['query']['is_master'])) {
       $databases['default']['default'] = $database;
     }
     else {
