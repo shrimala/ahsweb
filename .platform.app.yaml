@@ -96,7 +96,7 @@ hooks:
       #drush en -y jplayer
       #drush en -y image_title_caption
       #drush en -y media_player_module
-      drush en -y swiftmailer
+      #drush en -y swiftmailer
       #drush en -y mailsystem
       #drush en -y filefield_sources
       #drush en -y filefield_sources_flysystem 
@@ -114,4 +114,5 @@ crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd public ; drush core-cron"
+  
   

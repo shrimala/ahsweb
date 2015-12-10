@@ -24,8 +24,17 @@ $settings['update_free_access'] = FALSE;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 // Define a config sync directory outside the document root.
-if (isset($_ENV['PLATFORM_APP_DIR'])) {
+/*if (isset($_ENV['PLATFORM_APP_DIR'])) {
   $config_directories[CONFIG_SYNC_DIRECTORY] = $_ENV['PLATFORM_APP_DIR'] . '/config/sync';
+}
+*/ 
+
+// Override paths for config files in Platform.sh.
+if (isset($_ENV['PLATFORM_APP_DIR'])) {
+  $config_directories = array(
+    CONFIG_ACTIVE_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/active',
+    CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
+  );
 }
 
 // Set trusted hosts based on real Platform.sh routes.
@@ -43,6 +52,33 @@ if (isset($_ENV['PLATFORM_ROUTES'])) {
 
 
 /*********** Our customisations ************/
+
+// Configure relationships. -- Needed it for database configuration 
+$relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);
+
+if (empty($databases['default']['default'])) {
+  foreach ($relationships['database'] as $endpoint) {
+    $database = array(
+      'driver' => $endpoint['scheme'],
+      'database' => $endpoint['path'],
+      'username' => $endpoint['username'],
+      'password' => $endpoint['password'],
+      'host' => $endpoint['host'],
+      'port' => $endpoint['port'],
+    );
+
+    if (!empty($endpoint['query']['compression'])) {
+      $database['pdo'][PDO::MYSQL_ATTR_COMPRESS] = TRUE;
+    }
+
+    if (!empty($endpoint['query']['is_master'])) {
+      $databases['default']['default'] = $database;
+    }
+    else {
+      $databases['default']['slave'][] = $database;
+    }
+  }
+}
 
 // Set base url, needed by simplenews module
 $main_route_url = 'http://{default}/';
@@ -63,6 +99,6 @@ $settings['file_private_path']='sites/default/files/private';
 #  include __DIR__ . '/settings.local.php';
 #}
 
-if (file_exists(__DIR__ . '/settings.local.php')) {
-  include __DIR__ . '/settings.local.php';
+if (file_exists(__DIR__ . '/settings.dev.php')) {
+  include __DIR__ . '/settings.dev.php';
 }
