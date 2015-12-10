@@ -10,6 +10,23 @@ $settings['install_profile'] = 'standard';
 // You should modify the hash_salt so that it is specific to your application.
 $settings['hash_salt'] = '4946c1912834b8477cc70af309a2c30dcec24c2103c724ff30bf13b4c10efd82';
 
+// Set base url, needed by simplenews module
+
+$main_route_url = 'http://{default}/';
+$routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
+foreach ($routes as $route_url => $route_info) {
+  if ($route_info["original_url"] == $main_route_url) {
+    $base_url = $route_url;
+    break;
+  }
+}
+
+$base_url = rtrim($base_url,'/');
+
+// Setting private url
+
+$settings['file_private_path']='sites/default/files/private';
+
 /**
  * Default Drupal 8 settings.
  *
@@ -22,12 +39,6 @@ $databases = array();
 $config_directories = array();
 $settings['update_free_access'] = FALSE;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
-
-// Define a config sync directory outside the document root.
-/*if (isset($_ENV['PLATFORM_APP_DIR'])) {
-  $config_directories[CONFIG_SYNC_DIRECTORY] = $_ENV['PLATFORM_APP_DIR'] . '/config/sync';
-}
-*/ 
 
 // Override paths for config files in Platform.sh.
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
@@ -50,22 +61,62 @@ if (isset($_ENV['PLATFORM_ROUTES'])) {
   $settings['trusted_host_patterns'] = array_unique($settings['trusted_host_patterns']);
 }
 
+// Configure relationships.
+$relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);
 
-/*********** Our customisations ************/
+if (empty($databases['default']['default'])) {
+  foreach ($relationships['database'] as $endpoint) {
+    $database = array(
+      'driver' => $endpoint['scheme'],
+      'database' => $endpoint['path'],
+      'username' => $endpoint['username'],
+      'password' => $endpoint['password'],
+      'host' => $endpoint['host'],
+      'port' => $endpoint['port'],
+    );
 
-// Set base url, needed by simplenews module
-$main_route_url = 'http://{default}/';
-$routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
-foreach ($routes as $route_url => $route_info) {
-  if ($route_info["original_url"] == $main_route_url) {
-    $base_url = $route_url;
-    break;
+    if (!empty($endpoint['query']['compression'])) {
+      $database['pdo'][PDO::MYSQL_ATTR_COMPRESS] = TRUE;
+    }
+
+    if (!empty($endpoint['query']['is_master'])) {
+      $databases['default']['default'] = $database;
+    }
+    else {
+      $databases['default']['slave'][] = $database;
+    }
   }
 }
-$base_url = rtrim($base_url,'/');
 
-// Setting private url
-$settings['file_private_path']='sites/default/files/private';
+$routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']), TRUE);
+
+if (!isset($conf['file_private_path'])) {
+  if(!$application_home = getenv('PLATFORM_APP_DIR')) {
+    $application_home = '/app';
+  }
+  $conf['file_private_path'] = $application_home . '/private';
+  $conf['file_temporary_path'] = $application_home . '/tmp';
+}
+
+$variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
+
+$prefix_len = strlen('drupal:');
+foreach ($variables as $name => $value) {
+  if (substr($name, 0, $prefix_len) == 'drupal:') {
+    $conf[substr($name, $prefix_len)] = $value;
+  }
+}
+
+// Default PHP settings.
+ini_set('session.gc_probability', 1);
+ini_set('session.gc_divisor', 100);
+ini_set('session.gc_maxlifetime', 200000);
+ini_set('session.cookie_lifetime', 2000000);
+ini_set('pcre.backtrack_limit', 200000);
+ini_set('pcre.recursion_limit', 200000);
+ini_set('upload_max_filesize', '128M');
+// Force Drupal not to check for HTTP connectivity until we fixed the self test.
+$conf['drupal_http_request_fails'] = FALSE;
 
 // Local settings. These are required for Platform.sh.
 #if (file_exists(__DIR__ . '/settings.local.php')) {
@@ -75,3 +126,4 @@ $settings['file_private_path']='sites/default/files/private';
 if (file_exists(__DIR__ . '/settings.dev.php')) {
   include __DIR__ . '/settings.dev.php';
 }
+
