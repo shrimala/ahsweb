@@ -62,6 +62,7 @@ if (isset($_ENV['PLATFORM_ROUTES'])) {
 }
 
 // Configure relationships.
+/*
 $relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);
 
 if (empty($databases['default']['default'])) {
@@ -87,6 +88,7 @@ if (empty($databases['default']['default'])) {
     }
   }
 }
+*/
 
 $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']), TRUE);
 
