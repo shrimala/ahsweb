@@ -21,7 +21,6 @@ $schemes = [
     'config' => [
       'root' => '/app/public/sites/default/files',
     ],
-
     'cache' => FALSE, 
     'replicate' => 'dropboxexample',
 
