@@ -9,6 +9,8 @@ projects[drupal][version] = 8.0.1
 ;    Other Modules
 ;******************************
 
+projects[ds][revision]=993c829961b5b304a0094d7cd33f014edccf859e
+projects[layout_plugin][revision]=3cb9f7c7e70154c2eced27cec99b87fe95cc4a24
 ;projects[paragraphs][version]=1.x-dev
 projects[paragraphs][revision]=740874bacb56a6a90683e7818c06ba77a638125c
 ;projects[inmail][version]=1.x-dev
