@@ -35,7 +35,7 @@ relationships:
 # The configuration of app when it is exposed to the web.
 web:
     # The public directory of the app, relative to its root.
-    document_root: "/public"
+    document_root: "/"
     # The front-controller script to send non-static requests to.
     passthru: "/index.php"
 
@@ -83,12 +83,13 @@ hooks:
       # automatically during install.
       mkdir -p config/active config/staging
       cd /app/public
-      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
       #drush -y en layout_plugin
       #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
+      drush -y en inmail mailmute
       #drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm_views
