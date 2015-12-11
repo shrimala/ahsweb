@@ -83,11 +83,11 @@ hooks:
       # automatically during install.
       mkdir -p config/active config/staging
       cd /app/public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
+      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password --db-url=mysql://user@database.internal/main
       drush -y updatedb
       chmod -R 777 sites/default
       #drush -y en layout_plugin
-      drush -y en ds
+      #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
       #drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
