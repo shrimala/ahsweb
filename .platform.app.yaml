@@ -35,7 +35,7 @@ relationships:
 # The configuration of app when it is exposed to the web.
 web:
     # The public directory of the app, relative to its root.
-    document_root: "/"
+    document_root: "/public"
     # The front-controller script to send non-static requests to.
     passthru: "/index.php"
 
