@@ -89,8 +89,8 @@ hooks:
       #drush -y en layout_plugin
       #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
-      drush -y en inmail mailmute
-      #drush -y en panels simplenews
+      #drush -y en inmail mailmute
+      drush -y en panels simplenews
       #drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm_views
       #drush -y pmu civicrm
