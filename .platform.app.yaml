@@ -83,7 +83,7 @@ hooks:
       # automatically during install.
       mkdir -p config/active config/staging
       cd /app/public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
       #drush -y en layout_plugin
@@ -104,7 +104,7 @@ hooks:
       #drush en -y filefield_sources
       #drush en -y filefield_sources_flysystem 
       #drush en -y media_entity
-      drush en -y media_pinkeye
+      #drush en -y media_pinkeye
       #drush en -y media_entity_embeddable_video media_entity_image media_entity_slideshow
       #drush en -y media_entity_twitter media_entity_instagram media_entity_audio
       #drush pmu -y media_entity
