@@ -86,7 +86,7 @@ hooks:
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
-      #drush -y en layout_plugin
+      drush -y pmu layout_plugin
       #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
       #drush -y en inmail mailmute
