@@ -9,6 +9,8 @@ projects[drupal][version] = 8.0.1
 ;    Other Modules
 ;******************************
 
+projects[ds][revision]=c813fbd2075588965fb5b6eb944b0bf3edb2641e
+projects[layout_plugin][revision]=993c829961b5b304a0094d7cd33f014edccf859e
 ;projects[paragraphs][version]=1.x-dev
 projects[paragraphs][revision]=740874bacb56a6a90683e7818c06ba77a638125c
 ;projects[inmail][version]=1.x-dev
@@ -21,8 +23,7 @@ projects[media_entity][revision]=522ba3184464c10a7e7ab077d86a789737af34e6
 ;projects[entity_reference_revisions][version]=1.0-rc1
 projects[entity_reference_revisions][revision]=6a811cd957fa3cd0f22ac9a9f788fae1fd79d520
 ;projects[composer_manager][version]=1.0-rc1
-;projects[composer_manager][revision]=247d558abf22803075c9c1043ef7b7d4194b3d04
-projects[composer_manager][revision]=522ba3184464c10a7e7ab077d86a789737af34e6
+projects[composer_manager][revision]=247d558abf22803075c9c1043ef7b7d4194b3d04
 projects[flysystem][version]=1.x-dev
 ;projects[flysystem][revision]=aa8b84c1c1656b9a8faea8ad1b344cf078674440
 ;projects[flysystem_dropbox][version]=1.x-dev
