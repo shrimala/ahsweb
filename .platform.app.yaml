@@ -90,12 +90,12 @@ hooks:
       #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
       #drush -y en inmail mailmute
-      #drush -y en simplenews
+      drush -y en simplenews
       drush -y en mailmute_simplenews
       #drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm_views
       #drush -y pmu civicrm
-      #drush -y en composer_manager
+      drush -y en composer_manager
       #drush en -y entity_reference
       #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
