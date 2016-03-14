@@ -114,4 +114,9 @@ libraries[behatyml][download][type]=git
 libraries[behatyml][download][url]=https://github.com/aritnath1990/behat.git
 libraries[behatyml][download][branch]=master
 libraries[behatyml][overwrite]=True
-  
+
+libraries[filefield_paths][destination]=modules
+libraries[filefield_paths][directory_name]=filefield_paths
+libraries[filefield_paths][download][type]=git
+libraries[filefield_paths][download][url]=https://github.com/shrimala/filefield_paths.git
+libraries[filefield_paths][overwrite]=True
