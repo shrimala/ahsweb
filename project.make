@@ -3,7 +3,7 @@ core = 8.0
 
 ; Drupal core.
 projects[drupal][type] = core
-projects[drupal][version] = 8.0.1
+projects[drupal][version] = 8.1.0-rc1
 
 ;******************************
 ;    Other Modules
@@ -23,15 +23,16 @@ projects[media_entity][revision]=522ba3184464c10a7e7ab077d86a789737af34e6
 ;projects[entity_reference_revisions][version]=1.0-rc1
 projects[entity_reference_revisions][revision]=6a811cd957fa3cd0f22ac9a9f788fae1fd79d520
 ;projects[composer_manager][version]=1.0-rc1
-projects[composer_manager][revision]=247d558abf22803075c9c1043ef7b7d4194b3d04
+projects[composer_manager][revision]=1.x-dev
 projects[flysystem][version]=1.x-dev
 ;projects[flysystem][revision]=aa8b84c1c1656b9a8faea8ad1b344cf078674440
-;projects[flysystem_dropbox][version]=1.x-dev
-projects[flysystem_dropbox][revision]=8b9b4b0b69aff47c8afd395de5226cfb4f640860
+projects[flysystem_dropbox][version]=1.x-dev
+;projects[flysystem_dropbox][revision]=8b9b4b0b69aff47c8afd395de5226cfb4f640860
 ;projects[flysystem_s3][version]=1.x-dev
 projects[flysystem_s3][revision]=40570814e6ceefd0a500380ec642acdd1755d578
 ;projects[mailsystem][version]=4.x-dev
 projects[mailsystem][revision]=84ffe7f7aa13ce86c36e76a4539d2b985038ba50
+projects[filefield_paths][version]=1.x-dev
 
 libraries[simplenews][destination]=modules
 libraries[simplenews][directory_name]=simplenews
@@ -114,9 +115,3 @@ libraries[behatyml][download][type]=git
 libraries[behatyml][download][url]=https://github.com/aritnath1990/behat.git
 libraries[behatyml][download][branch]=master
 libraries[behatyml][overwrite]=True
-
-libraries[filefield_paths][destination]=modules
-libraries[filefield_paths][directory_name]=filefield_paths
-libraries[filefield_paths][download][type]=git
-libraries[filefield_paths][download][url]=https://github.com/shrimala/filefield_paths.git
-libraries[filefield_paths][overwrite]=True
