@@ -63,15 +63,6 @@ mounts:
    "/private": "shared:files/private"
    "/drush-backups": "shared:files/drush-backups"
 
-# The hooks executed at various points in the lifecycle of the application.
-hooks:
-   # We run deploy hooks after your application has been deployed and started.
-   deploy: |
-      cd public
-      drush -y cache-rebuild
-      drush -y config-import
-      drush -y updatedb
-
 # The configuration of scheduled execution.
 crons:
     drupal:
@@ -107,6 +98,10 @@ hooks:
       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
 
    deploy:
+      cd public
+      drush -y cache-rebuild
+      drush -y config-import
+      drush -y updatedb
       #drush -y en layout_plugin
       #drush -y en ds
       #drush -y en advanced_help 
