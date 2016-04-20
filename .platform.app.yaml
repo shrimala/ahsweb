@@ -81,7 +81,7 @@ runtime:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-   build:
+   build: |
       #install composer & update dependencies
       cd ./public
       curl -sS https://getcomposer.org/installer | php
@@ -97,7 +97,7 @@ hooks:
       #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
 
-   deploy:
+   deploy: |
       cd public
       drush -y cache-rebuild
       drush -y config-import
