@@ -26,7 +26,7 @@ projects[entity_reference_revisions][revision]=6a811cd957fa3cd0f22ac9a9f788fae1f
 projects[composer_manager][revision]=1.x-dev
 projects[flysystem][version]=1.x-dev
 ;projects[flysystem][revision]=aa8b84c1c1656b9a8faea8ad1b344cf078674440
-;projects[flysystem_dropbox][version]=1.x-dev
+projects[flysystem_dropbox][version]=1.x-dev
 ;projects[flysystem_dropbox][revision]=8b9b4b0b69aff47c8afd395de5226cfb4f640860
 ;projects[flysystem_s3][version]=1.x-dev
 projects[flysystem_s3][revision]=40570814e6ceefd0a500380ec642acdd1755d578
@@ -34,12 +34,12 @@ projects[flysystem_s3][revision]=40570814e6ceefd0a500380ec642acdd1755d578
 projects[mailsystem][revision]=84ffe7f7aa13ce86c36e76a4539d2b985038ba50
 projects[filefield_paths][version]=1.x-dev
 
-libraries[flysystem_dropbox][destination]=modules
-libraries[flysystem_dropbox][directory_name]=flysystem_dropbox
-libraries[flysystem_dropbox][download][type]=git
-libraries[flysystem_dropbox][download][url]=https://github.com/shrimala/flysystem_dropbox.git
-libraries[flysystem_dropbox][download][branch]=master
-libraries[flysystem_dropbox][overwrite]=True
+;libraries[flysystem_dropbox][destination]=modules
+;libraries[flysystem_dropbox][directory_name]=flysystem_dropbox
+;libraries[flysystem_dropbox][download][type]=git
+;libraries[flysystem_dropbox][download][url]=https://github.com/shrimala/flysystem_dropbox.git
+;libraries[flysystem_dropbox][download][branch]=master
+;libraries[flysystem_dropbox][overwrite]=True
 
 libraries[simplenews][destination]=modules
 libraries[simplenews][directory_name]=simplenews
