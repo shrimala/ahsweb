@@ -1,5 +1,10 @@
-# This file describes an application. You can have multiple applications
-# in the same project.
+# This file sets up a platform.sh app.
+# The top part is standard, derived from the canonical example:
+#https://github.com/platformsh/platformsh-example-drupal/blob/8.x/.platform.app.yaml
+# The bottom part contains our customisations.
+
+#########################################################
+# THE PLATFORM.SH STANDRARD SETUP
 
 # The name of this app. Must be unique within a project.
 name: php
@@ -7,117 +12,113 @@ name: php
 # The runtime the application uses.
 type: "php:5.6"
 
-
-runtime:
-   extensions:
-      - imap
-
 # Configuration of the build of this application.
 build:
-    flavor: drupal
+   flavor: drupal
 
 # The build-time dependencies of the app.
 # Note: Drush 7.0.0 (stable) is released, but it purposefully does not work
 # with Drupal 8.
 dependencies:
-    php:
-        "drush/drush": "8.0.0"
+   php:
+      "drush/drush": "8.0.0"
+      "drupal/console": "^0.10"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-    database: "mysql:mysql"
-    solr: "solr:solr"
-    redis: "redis:redis"
+   database: "mysql:mysql"
+#    solr: "solr:solr"
+#    redis: "redis:redis"
 
 # The configuration of app when it is exposed to the web.
 web:
-    # The public directory of the app, relative to its root.
-    document_root: "/"
-    # The front-controller script to send non-static requests to.
-    passthru: "/index.php"
+    # Specific parameters for different URL prefixes.
+    locations:
+        "/":
+            # The folder to serve static assets for this location from.
+            # (Relative to the application root.)
+            root: "public"
+
+            # How long to allow static assets from this location to be cached.
+            # (Can be a time or -1 for no caching. Times can be suffixed with
+            # "ms" (milliseconds), "s" (seconds), "m" (minutes), "h" (hours),
+            # "d" (days), "w" (weeks), "M" (months, 30d) or "y" (years, 365d).)
+            expires: -1
+
+            # Whether to forward disallowed and missing resources from this
+            # location to the application.
+            # (Can be true, false or a URI path string.)
+            passthru: "/index.php"
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/public/sites/default/files": "shared:files/files"
-    #"/app/public/sites/default": "shared:files/app/public/sites/default"
-    "/tmp": "shared:files/tmp"
-    "/config": "shared:files/config"
-    "/private": "shared:files/private"
+   "/public/sites/default/files": "shared:files/files"
+   "/tmp": "shared:files/tmp"
+   "/private": "shared:files/private"
+   "/drush-backups": "shared:files/drush-backups"
 
-# The hooks executed at various points in the lifecycle of the application.
-hooks:
-       
-
-# We run deploy hook after your application has been deployed and started.
-
-
-    build: |
-       cd ./public
-       curl -sS https://getcomposer.org/installer | php
-       mkdir -p "$COMPOSER_HOME"/bin
-       mv composer.phar "$COMPOSER_HOME"/bin/composer
-       composer --version
-       php modules/composer_manager/scripts/init.php
-       composer drupal-update
-       #composer update
-       composer require drupal/drupal-extension='~3.0'
-       #composer require league/flysystem-aws-s3-v3='~1.0'
-       #composer require league/flysystem-dropbox='~1.0'
-       #composer require league/flysystem='^1.0.3'
-       #composer require league/flysystem-cached-adapter='~1.0'
-       #composer require league/flysystem-replicate-adapter='~1.0' 
-       #composer require twistor/flysystem-stream-wrapper='^1.0.5'
-       #vendor/bin/behat --init
-       #vendor/bin/behat -dl
-       #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
-       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
-
-    deploy: |
-      # Drupal 8 currently fails to create config directories
-      # automatically during install.
-      mkdir -p config/active config/staging
-      cd /app/public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
-      drush -y updatedb
-      chmod -R 777 sites/default
-      #drush -y en layout_plugin
-      #drush -y en ds
-      #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
-      #drush -y en inmail mailmute
-      drush -y en simplenews
-      drush -y en mailmute_simplenews
-      #drush -y en entity_reference_revisions paragraphs
-      #drush -y pmu civicrm_views
-      #drush -y pmu civicrm
-      drush -y en composer_manager
-      #drush en -y entity_reference
-      #drush en -y flysystem flysystem_dropbox flysystem_s3
-      #drush en -y jplayer
-      #drush en -y image_title_caption
-      #drush en -y media_player_module
-      #drush en -y swiftmailer
-      #drush en -y mailsystem
-      #drush en -y filefield_sources
-      #drush en -y filefield_sources_flysystem 
-      #drush en -y media_entity
-      drush en -y media_pinkeye
-      #drush en -y media_entity_embeddable_video media_entity_image media_entity_slideshow
-      #drush pmu -y media_entity
-      #drush en -y media_entity_audio
-      #drush pmu -y media_pinkeye
-      #drush pmu -y views_field_view
-      
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd public ; drush core-cron"
 
-  
-       
+
+#############################################
+#AHS CUSTOMISATIONS
+
+# Unknown pupose - probably related to simplenews & swiftmailer
+runtime:
+   extensions:
+      - imap
+
+
+# The hooks executed at various points in the lifecycle of the application.
+hooks:
+   build: |
+      #install composer & update dependencies
+      cd ./public
+      curl -sS https://getcomposer.org/installer | php
+      mkdir -p "$COMPOSER_HOME"/bin
+      mv composer.phar "$COMPOSER_HOME"/bin/composer
+      composer --version
+      php modules/composer_manager/scripts/init.php
+      composer drupal-update
+      #setup Behat
+      composer require drupal/drupal-extension='~3.0'
+      #vendor/bin/behat --init
+      #vendor/bin/behat -dl
+      #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
+      #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
+
+   deploy: |
+      cd public
+      drush -y cache-rebuild
+      drush -y config-import
+      drush -y updatedb
+      #drush -y en layout_plugin
+      #drush -y en ds
+      #drush -y en advanced_help 
+      #drush -y en page_manager 
+      #drush -y en token
+      #drush -y en inmail 
+      #drush -y en mailmute
+      #drush -y en simplenews
+      #drush -y en mailmute_simplenews
+      #drush en -y swiftmailer
+      #drush en -y mailsystem
+      #drush -y en entity_reference_revisions paragraphs
+      #drush -y en composer_manager
+      #drush en -y flysystem flysystem_dropbox
+      #drush en -y filefield_sources
+      #drush en -y filefield_sources_flysystem 
+      #drush en -y media_entity_image
+      #drush en -y media_entity
+      #drush en -y media_entity_audio
+      #drush en -y views_field_view
