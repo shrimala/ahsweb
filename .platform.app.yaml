@@ -90,7 +90,7 @@ runtime:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    build:
+   build:
       #install composer & update dependencies
       cd ./public
       curl -sS https://getcomposer.org/installer | php
@@ -99,7 +99,6 @@ hooks:
       composer --version
       php modules/composer_manager/scripts/init.php
       composer drupal-update
-      
       #setup Behat
       composer require drupal/drupal-extension='~3.0'
       #vendor/bin/behat --init
