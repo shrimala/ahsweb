@@ -59,6 +59,22 @@ foreach ($routes as $route_url => $route_info) {
 }
 $base_url = rtrim($base_url,'/');
 
+
+//Configure Flysystem to access Dropbox using credentials from Platform.sh environment variables
+$variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
+$dropbox_token = $variables['dropbox_token'];
+$dropbox_client_id = $variables['dropbox_client_id'];
+$schemes = [
+  'AHS Dropbox archive' => [
+    'driver' => 'dropbox',
+    'config' => [
+      'token' => $dropbox_token,
+      'client_id' => $dropbox_client_id,
+    ],
+  ]
+];
+$settings['flysystem'] = $schemes;
+
 // Local settings. Used to override settings in local development environment.
 if (file_exists(__DIR__ . '/settings.dev.php')) {
   include __DIR__ . '/settings.dev.php';
