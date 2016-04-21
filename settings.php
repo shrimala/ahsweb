@@ -77,6 +77,10 @@ $schemes = [
 ];
 $settings['flysystem'] = $schemes;
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Local settings. Used to override settings in local development environment.
 if (file_exists(__DIR__ . '/settings.dev.php')) {
   include __DIR__ . '/settings.dev.php';
