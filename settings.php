@@ -70,8 +70,10 @@ $schemes = [
     'config' => [
       'token' => $dropbox_token,
       'client_id' => $dropbox_client_id,
+      //'prefix' => 'a/sub/directory',
+      'public' => TRUE, 
     ],
-  ]
+  ],
 ];
 $settings['flysystem'] = $schemes;
 
