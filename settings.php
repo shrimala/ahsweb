@@ -4,6 +4,10 @@
  * Drupal 8 settings.php file.
  */
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 //#############################
 //STANDARD PLATFORM.SH SETTINGS
 
