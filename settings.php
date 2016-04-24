@@ -14,7 +14,7 @@ error_reporting(E_ALL);
 // Default Drupal 8 settings.
 $databases = [];
 $config_directories = [];
-$settings['update_free_access'] = FALSE;
+$settings['update_free_access'] = TRUE;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 $settings['install_profile'] = 'standard';
 
