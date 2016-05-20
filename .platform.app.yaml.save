@@ -7,21 +7,14 @@ name: php
 # The runtime the application uses.
 type: "php:5.6"
 
-
-runtime:
-   extensions:
-      - imap
-
 # Configuration of the build of this application.
 build:
-    flavor: drupal
+    flavor: composer
 
 # The build-time dependencies of the app.
-# Note: Drush 7.0.0 (stable) is released, but it purposefully does not work
-# with Drupal 8.
 dependencies:
     php:
-        "drush/drush": "8.0.0-rc1"
+        "drush/drush": "8.0.0"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -34,54 +27,63 @@ relationships:
 
 # The configuration of app when it is exposed to the web.
 web:
-    # The public directory of the app, relative to its root.
+    # Specific parameters for different URL prefixes.
     document_root: "/"
-    # The front-controller script to send non-static requests to.
-    passthru: "/index.php"
+            # The folder to serve static assets for this location from.
+            # (Relative to the application root.)
+            root: "drupal"
+
+            # How long to allow static assets from this location to be cached.
+            # (Can be a time or -1 for no caching. Times can be suffixed with
+            # "ms" (milliseconds), "s" (seconds), "m" (minutes), "h" (hours),
+            # "d" (days), "w" (weeks), "M" (months, 30d) or "y" (years, 365d).)
+            expires: -1
+
+            # Whether to forward disallowed and missing resources from this
+            # location to the application.
+            # (Can be true, false or a URI path string.)
+            passthru: "/index.php"
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/public/sites/default/files": "shared:files/files"
-    #"/app/public/sites/default": "shared:files/app/public/sites/default"
+    "/drupal/web/sites/default/files": "shared:files/files"
     "/tmp": "shared:files/tmp"
-    "/config": "shared:files/config"
     "/private": "shared:files/private"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-       
-
-# We run deploy hook after your application has been deployed and started.
-
-
     build: |
-       cd ./public
-       php modules/composer_manager/scripts/init.php
-       composer drupal-update
        composer update
-       #composer require drupal/drupal-extension='~3.0'
-       #vendor/bin/behat --init
-       #vendor/bin/behat -dl
-       #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
-       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
-
+       composer --version
+       rm -rf drupal
+       composer create-project drupal-composer/drupal-project:~8.0 drupal --stability dev --no-interaction
+       composer require drupal/inmail=8.1.x.dev
+       chmod -R 777 drupal
+       cd drupal
+       chmod -R 777 web/sites/default
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
       mkdir -p config/active config/staging
-      cd public
+      #cd /app/public
+      cd drupal/web
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       #chmod -R 777 sites/default
+      #drush -y en layout_plugin
+      #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
-      #drush -y en panels simplenews
+      #drush -y en inmail mailmute
+      #drush -y en simplenews
+      #drush -y en mailmute_simplenews
       #drush -y en entity_reference_revisions paragraphs
       #drush -y pmu civicrm_views
       #drush -y pmu civicrm
       #drush -y en composer_manager
+      #drush en -y entity_reference
       #drush en -y flysystem flysystem_dropbox flysystem_s3
       #drush en -y jplayer
       #drush en -y image_title_caption
@@ -91,13 +93,13 @@ hooks:
       #drush en -y filefield_sources
       #drush en -y filefield_sources_flysystem 
       #drush en -y media_entity
-      #drush pmu -y media_pinkeye
+      #drush en -y media_pinkeye
       #drush en -y media_entity_embeddable_video media_entity_image media_entity_slideshow
-      #drush en -y media_entity_twitter media_entity_instagram media_entity_audio
       #drush pmu -y media_entity
       #drush en -y media_entity_audio
-      drush en -y media_pinkeye
-
+      #drush pmu -y media_pinkeye
+      #drush pmu -y views_field_view
+      
 # The configuration of scheduled execution.
 crons:
     drupal:
