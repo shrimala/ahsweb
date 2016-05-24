@@ -86,8 +86,9 @@ hooks:
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
-      cd sites/default/files
+      cd sites/default
       mkdir arit
+      cd files
       mkdir config
       chmod -R 777 config
       cd config
