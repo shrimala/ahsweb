@@ -34,6 +34,7 @@ if (isset($_ENV['PLATFORM_APP_DIR'])) {
   $config_directories = array(
     CONFIG_ACTIVE_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/active',
     CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
+    staging => '/app/config/staging',
   );
 }
 
