@@ -47,7 +47,7 @@ mounts:
     "/public/sites/default/files": "shared:files/files"
     #"/app/public/sites/default": "shared:files/app/public/sites/default"
     "/tmp": "shared:files/tmp"
-    "/config": "shared:files/config"
+    #"/config": "shared:files/config"
     "/private": "shared:files/private"
 
 # The hooks executed at various points in the lifecycle of the application.
@@ -81,7 +81,7 @@ hooks:
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
-      mkdir -p config/active config/staging
+      #mkdir -p config/active config/staging
       cd /app/public
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
