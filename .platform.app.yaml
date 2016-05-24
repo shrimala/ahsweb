@@ -86,7 +86,14 @@ hooks:
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
-      mkdir  /app/public/sites/default/files/config/sync
+      cd sites/default/files
+      mkdir arit
+      mkdir config
+      chmod -R 777 config
+      cd config
+      mkdir sync
+      #drush config-export --push
+      #mkdir  /app/public/sites/default/files/config/sync
       #drush -y en layout_plugin
       #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
@@ -113,7 +120,7 @@ hooks:
       #drush en -y media_entity_audio
       #drush pmu -y media_pinkeye
       #drush pmu -y views_field_view
-      drush -y config-import
+      #drush -y config-import
 # The configuration of scheduled execution.
 crons:
     drupal:
