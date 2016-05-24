@@ -30,12 +30,12 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 */ 
 
 // Override paths for config files in Platform.sh.
-if (isset($_ENV['PLATFORM_APP_DIR'])) {
+/*if (isset($_ENV['PLATFORM_APP_DIR'])) {
   $config_directories = array(
     CONFIG_ACTIVE_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/active',
-    //CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
+    CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
   );
-}
+}*/
 $config_directories[CONFIG_SYNC_DIRECTORY] = __DIR__ . '/files/config/sync';
 // Set trusted hosts based on real Platform.sh routes.
 if (isset($_ENV['PLATFORM_ROUTES'])) {
