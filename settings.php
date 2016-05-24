@@ -36,7 +36,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
     CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
   );
 }*/
-$config_directories[CONFIG_SYNC_DIRECTORY] = __DIR__ . '/files/config/sync';
+$config_directories[CONFIG_SYNC_DIRECTORY] = __DIR__ . '/config/sync';
 // Set trusted hosts based on real Platform.sh routes.
 if (isset($_ENV['PLATFORM_ROUTES'])) {
   $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']), TRUE);
