@@ -82,6 +82,7 @@ hooks:
       # Drupal 8 currently fails to create config directories
       # automatically during install.
       #mkdir -p config/active config/staging
+      mkdir  /app/public/sites/default/files/config/sync
       cd /app/public
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
