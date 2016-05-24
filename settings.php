@@ -34,6 +34,7 @@ if (isset($_ENV['PLATFORM_APP_DIR'])) {
   $config_directories = array(
     CONFIG_ACTIVE_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/active',
     CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
+    staging => '/app/config/staging',
   );
 }
 
@@ -98,6 +99,7 @@ $settings['file_private_path']='sites/default/files/private';
 #if (file_exists(__DIR__ . '/settings.local.php')) {
 #  include __DIR__ . '/settings.local.php';
 #}
+
 
 if (file_exists(__DIR__ . '/settings.dev.php')) {
   include __DIR__ . '/settings.dev.php';
