@@ -1,5 +1,5 @@
 api = 2
-core = 8.x
+;core = 8.x
 
 ; Drupal core.
 projects[drupal][type] = core
