@@ -64,10 +64,15 @@ hooks:
       drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
-      #cd public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
-      #drush -y cache-rebuild
-      #drush -y config-import
+      drush -y config-export
+      cd files
+      git clone -b ConfigExport https://github.com/shrimala/ahsweb.git
+      chmod -R 777 ahsweb
+      cd ..
+      cp config/sync/. files/ahsweb/config/sync/
+      cd files/ahsweb
+      git commit -am "update message"
+      git push origin ConfigExport
       drush -y updatedb
 
 # The configuration of scheduled execution.
