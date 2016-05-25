@@ -84,6 +84,7 @@ hooks:
       #mkdir -p config/active config/staging
       cd /app/public
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      drush -y cache-rebuild
       drush -y updatedb
       chmod -R 777 sites/default
       cd sites/default
