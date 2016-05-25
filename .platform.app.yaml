@@ -62,8 +62,8 @@ hooks:
     deploy: |
       cd public
       drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
-      drush -y cache-rebuild
-      drush -y config-import
+      #drush -y cache-rebuild
+      #drush -y config-import
       drush -y updatedb
 
 # The configuration of scheduled execution.
