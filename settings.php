@@ -33,7 +33,7 @@ $settings['hash_salt'] = '4946c1912834b8477cc70af309a2c30dcec24c2103c724ff30bf13
 // This is defined inside the read-only "config" directory. This works well,
 // however it requires a patch from issue https://www.drupal.org/node/2607352
 // to fix the requirements check and the installer.
-$config_directories[CONFIG_SYNC_DIRECTORY] = __DIR__ . '/config/sync';
+$config_directories[CONFIG_SYNC_DIRECTORY] = __DIR__ . 'files/config/sync';
 
 // Automatic Platform.sh settings.
 if (file_exists(__DIR__ . '/settings.platformsh.php')) {
