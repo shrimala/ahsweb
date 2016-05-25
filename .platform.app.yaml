@@ -60,8 +60,12 @@ mounts:
 hooks:
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
-      cd public
+      cd /app/public
       drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      drush -y updatedb
+      chmod -R 777 sites/default
+      #cd public
+      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       #drush -y cache-rebuild
       #drush -y config-import
       drush -y updatedb
