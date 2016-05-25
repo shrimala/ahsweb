@@ -45,7 +45,6 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
     "/public/sites/default/files": "shared:files/files"
-    "/public/sites/default": "shared:files/default"
     #"/app/public/sites/default": "shared:files/app/public/sites/default"
     "/tmp": "shared:files/tmp"
     #"/config": "shared:files/config"
