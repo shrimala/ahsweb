@@ -68,9 +68,8 @@ hooks:
       cd files
       git clone -b ConfigExport https://github.com/shrimala/ahsweb.git
       chmod -R 777 ahsweb
-      cd ..
-      cp config/sync/. files/ahsweb/config/sync/
-      cd files/ahsweb
+      cp config/sync/. ahsweb/config/sync/
+      cd ahsweb
       git commit -am "update message"
       git push origin ConfigExport
       drush -y updatedb
