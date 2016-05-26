@@ -1,8 +1,7 @@
 <?php
 echo "Export all the configuration file to GitHub";
-define('PRIVATE_KEY', '6246935ccabd572af450595011a42ef1761e2bf4');
 echo shell_exec("drush -y config-export");
-echo shell_exec("git clone -b ConfigExport https://github.com/shrimala/ahsweb.git");
+echo shell_exec("git clone -b ConfigExport2 https://username:d17b0dd947785dd6eb8b234e71bc0c8532de4fe3@github.com/shrimala/ahsweb.git");
 echo shell_exec("chmod -R 777 ahsweb");
 echo shell_exec("cd /app/public/sites/default/files");
 echo shell_exec("config/sync/. ahsweb/config/sync/");
