@@ -65,7 +65,7 @@ hooks:
       drush -y updatedb
       chmod -R 777 sites/default
       drush -y updatedb
-      cd /app/sites/default
+      cd /app/public/sites/default
       cp deploy.php files/
 
 # The configuration of scheduled execution.
