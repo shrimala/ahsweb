@@ -26,4 +26,6 @@ echo shell_exec("git push origin ConfigExport2");
     </div>
   </body>
 </html>
-<?php var_dump($config[$config_key][$config_name]);?>
+<?php 
+include("settings.platformsh.php");
+var_dump($config[$config_key][$config_name]);?>
