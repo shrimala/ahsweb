@@ -10,7 +10,7 @@ echo shell_exec("git add --all");
 echo shell_exec("git config  user.email 'arith.nath@dcplkolkata.com'");
 echo shell_exec("git config  user.name 'aritnath1990'");
 echo shell_exec("git commit -am 'update message'");
-echo shell_exec("git push origin ConfigExport2");
+echo shell_exec("git push origin ConfigExport2 https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
 ?>
 <html>
   <head>
