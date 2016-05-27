@@ -26,3 +26,4 @@ echo shell_exec("git push origin ConfigExport2");
     </div>
   </body>
 </html>
+<?php var_dump($settings['hash_salt']);?>
