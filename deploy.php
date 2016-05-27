@@ -1,8 +1,9 @@
 <?php
 echo "Export all the configuration file to GitHub";
-echo shell_exec("drush -y config-export");
-//echo shell_exec("git clone -b ConfigExport2 https://username:11c66f8a49339e4ae97d732106579fb77cfd325b@github.com/shrimala/ahsweb.git");
-echo shell_exec("chmod -R 777 ahsweb");
+echo shell_exec("cd /app/public/sites/default/files");
+//echo shell_exec("drush -y config-export");
+echo shell_exec("git clone -b ConfigExport2  https://$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
+echo shell_exec("chmod -R 777 ahsweb config config/sync");
 echo shell_exec("cp /app/public/sites/default/files/config/sync/* /app/public/sites/default/files/ahsweb/config/sync/");
 echo shell_exec("cd /app/public/sites/default/files/ahsweb");
 echo shell_exec("git add --all");
