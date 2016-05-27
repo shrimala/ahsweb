@@ -1,13 +1,13 @@
 <?php
 echo "Export all the configuration file to GitHub";
 echo shell_exec("drush -y config-export");
-echo shell_exec("git clone -b ConfigExport2 https://username:asdfghjkl2222334555pppp1p2p1p212121njn23j232323@github.com/shrimala/ahsweb.git");
+//echo shell_exec("git clone -b ConfigExport2 https://username:11c66f8a49339e4ae97d732106579fb77cfd325b@github.com/shrimala/ahsweb.git");
 echo shell_exec("chmod -R 777 ahsweb");
 echo shell_exec("cp /app/public/sites/default/files/config/sync/* /app/public/sites/default/files/ahsweb/config/sync/");
-echo shell_exec("cd /app/public/sites/default/files/ahsweb/config/sync");
+echo shell_exec("cd /app/public/sites/default/files/ahsweb");
 echo shell_exec("git add --all");
-echo shell_exec("git config  user.email ' owner@ahs.org.uk'");
-echo shell_exec("git config  user.name 'AHSplatform'");
+echo shell_exec("git config  user.email 'arith.nath@dcplkolkata.com'");
+echo shell_exec("git config  user.name 'aritnath1990'");
 echo shell_exec("git commit -am 'update message'");
 echo shell_exec("git push origin ConfigExport2");
 ?>
