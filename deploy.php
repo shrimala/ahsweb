@@ -6,7 +6,7 @@ echo shell_exec("chmod -R 777 ahsweb");
 echo shell_exec("cp /app/public/sites/default/files/config/sync/\* /app/public/sites/default/files/ahsweb/config/sync/");
 echo shell_exec("cd /app/public/sites/default/files/ahsweb/config/sync");
 echo shell_exec("git add --all");
-echo shell_exec("git config  user.email 'arith.nath@dcplkolkata.com'");
+echo shell_exec("git config  user.email ' owner@ahs.org.uk'");
 echo shell_exec("git config  user.name 'AHSplatform'");
 echo shell_exec("git commit -am 'update message'");
 echo shell_exec("git push origin ConfigExport2");
