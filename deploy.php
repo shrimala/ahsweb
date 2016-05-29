@@ -9,7 +9,8 @@ function runcmd ($cmd){
 }
 
 echo "Export all the configuration file to GitHub<br>";
-$GITHUB_TOKEN = getenv("GITHUB_TOKEN");
+$platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
+$GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 echo "Github token is " . $GITHUB_TOKEN;
 runcmd("cd /app/public/sites/default/files");
 runcmd("git clone -b ConfigExport2  https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
