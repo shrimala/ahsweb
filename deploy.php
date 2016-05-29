@@ -1,11 +1,11 @@
 <?php
 
 function runcmd ($cmd){
-  echo "<pre>"<strong>"
+  echo "<pre><strong>"
   echo ">  ". $cmd
   echo "</strong><br>"
   echo shell_exec($cmd . " 2>&1")
-  echo "</pre>
+  echo "</pre>"
 }
 
 echo "Export all the configuration file to GitHub<br>";
