@@ -1,7 +1,10 @@
 <?php
+
+
+
 echo "Export all the configuration file to GitHub<br>";
-echo shell_exec("cd /app/public/sites/default/files");
-echo shell_exec("git clone -b ConfigExport2  https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
+echo shell_exec("cd /app/public/sites/default/files 2>&1");
+echo shell_exec("git clone -b ConfigExport2  https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git 2>&1");
 echo shell_exec("chmod -R 777 ahsweb");
 echo shell_exec("cd /app/public/sites/default/files/ahsweb");
 echo shell_exec("drush -y config-export");
