@@ -1,19 +1,25 @@
 <?php
 
-
+function runcmd ($cmd){
+  echo "<pre>"<strong>"
+  echo ">  ". $cmd
+  echo "</strong><br>"
+  echo shell_exec($cmd . " 2>&1")
+  echo "</pre>
+}
 
 echo "Export all the configuration file to GitHub<br>";
-echo shell_exec("cd /app/public/sites/default/files 2>&1");
-echo shell_exec("git clone -b ConfigExport2  https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git 2>&1");
-echo shell_exec("chmod -R 777 ahsweb");
-echo shell_exec("cd /app/public/sites/default/files/ahsweb");
-echo shell_exec("drush -y config-export");
-echo shell_exec("chmod -R 777 config/sync");
-echo shell_exec("git add --all");
-echo shell_exec("git config  user.email 'arith.nath@dcplkolkata.com'");
-echo shell_exec("git config  user.name 'aritnath1990'");
-echo shell_exec("git commit -am 'update message'");
-echo shell_exec("git push origin ConfigExport2 https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
+runcmd("cd /app/public/sites/default/files");
+runcmd("git clone -b ConfigExport2  https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
+runcmd("chmod -R 777 ahsweb");
+runcmd("cd /app/public/sites/default/files/ahsweb");
+runcmd("drush -y config-export");
+runcmd("chmod -R 777 config/sync");
+runcmd("git add --all");
+runcmd("git config  user.email 'arith.nath@dcplkolkata.com'");
+runcmd("git config  user.name 'aritnath1990'");
+runcmd("git commit -am 'update message'");
+runcmd("git push origin ConfigExport2 https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
 ?>
 <html>
   <head>
