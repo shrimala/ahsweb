@@ -1,16 +1,17 @@
 <?php
 
 function runcmd ($cmd){
-  echo "<pre><strong>"
-  echo ">  ". $cmd
-  echo "</strong><br>"
-  echo shell_exec($cmd . " 2>&1")
-  echo "</pre>"
+  echo "<pre><strong>";
+  echo ">  ". $cmd;
+  echo "</strong><br>";
+  echo shell_exec($cmd . " 2>&1");
+  echo "</pre>";
 }
 
 echo "Export all the configuration file to GitHub<br>";
+echo $GITHUB_TOKEN;
 runcmd("cd /app/public/sites/default/files");
-runcmd("git clone -b ConfigExport2  https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
+runcmd("git clone -b ConfigExport2  https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("drush -y config-export");
