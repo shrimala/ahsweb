@@ -9,7 +9,8 @@ function runcmd ($cmd){
 }
 
 echo "Export all the configuration file to GitHub<br>";
-echo $GITHUB_TOKEN;
+$GITHUB_TOKEN = getenv("GITHUB_TOKEN");
+echo "Github token is " . $GITHUB_TOKEN;
 runcmd("cd /app/public/sites/default/files");
 runcmd("git clone -b ConfigExport2  https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
