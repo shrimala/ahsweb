@@ -22,7 +22,7 @@ runcmd("git add --all");
 runcmd("git config  user.email 'arith.nath@dcplkolkata.com'");
 runcmd("git config  user.name 'aritnath1990'");
 runcmd("git commit -am 'update message'");
-runcmd("git push origin ConfigExport2 https://\$GITHUB_TOKEN@github.com/shrimala/ahsweb.git");
+runcmd("git push origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 ?>
 <html>
   <head>
@@ -38,4 +38,3 @@ runcmd("git push origin ConfigExport2 https://\$GITHUB_TOKEN@github.com/shrimala
     </div>
   </body>
 </html>
-<?php var_dump($settings['hash_salt']);?>
