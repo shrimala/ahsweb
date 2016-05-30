@@ -17,6 +17,7 @@ runcmd("rm -rf /app/public/sites/default/files/ahsweb");
 runcmd("cd /app/public/sites/default/files");
 runcmd("git name-rev --name-only HEAD");
 runcmd("git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
+runcmd("git checkout ConfigExport2");
 //runcmd("$ git pull origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
