@@ -13,7 +13,9 @@ $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TR
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 echo "Github token is " . $GITHUB_TOKEN;
 runcmd("cd /app/public/sites/default/files");
-runcmd("git clone -b ConfigExport2  https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
+//runcmd("git clone -b ConfigExport2  https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
+runcmd("git init");
+runcmd("git pull -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("drush -y config-export");
