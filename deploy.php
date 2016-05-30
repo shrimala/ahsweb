@@ -22,7 +22,7 @@ runcmd("chmod -R 777 /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("git add --all");
 runcmd("git config  user.email 'arith.nath@dcplkolkata.com'");
-runcmd("git config  user.name 'jonathan'");
+runcmd("git config  user.name 'jonathanjfshaw'");
 runcmd("git commit -am 'update message'");
 runcmd("git push origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 ?>
