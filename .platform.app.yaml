@@ -112,6 +112,9 @@ hooks:
       #drush en -y media_entity_audio
       #drush pmu -y media_pinkeye
       #drush pmu -y views_field_view
+      #drush config-export --push
+      
+      
       
 # The configuration of scheduled execution.
 crons:
