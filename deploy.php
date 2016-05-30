@@ -18,7 +18,7 @@ runcmd("mkdir ahsweb");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd ahsweb");
 runcmd("git init");
-runcmd("git pull origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
+runcmd("git pull remote ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("drush -y config-export");
