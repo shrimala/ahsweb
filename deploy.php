@@ -16,7 +16,7 @@ echo "git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahs
 runcmd("rm -rf /app/public/sites/default/files/ahsweb");
 runcmd("cd /app/public/sites/default/files");
 //runcmd("git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
-runcmd("git checkout ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
+runcmd("$ git pull origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("drush -y config-export");
