@@ -17,7 +17,7 @@ runcmd("cd /app/public/sites/default/files");
 runcmd("git clone -b ConfigExport2 https://8840b2ee35cdc66a22403b31adb0f5e76ab45347@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
-runcmd("drush -n config-export");
+runcmd("drush -y config-export");
 runcmd("chmod -R 777 /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("git add --all");
