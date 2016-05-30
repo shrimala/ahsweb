@@ -1,0 +1,24 @@
+uuid: be0cddf2-f55a-45b3-ad15-2106f256205d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.media.body
+    - node.type.media
+  module:
+    - text
+    - user
+id: node.media.default
+targetEntityType: node
+bundle: media
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
