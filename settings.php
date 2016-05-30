@@ -30,13 +30,13 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 */ 
 
 // Override paths for config files in Platform.sh.
-if (isset($_ENV['PLATFORM_APP_DIR'])) {
+/*if (isset($_ENV['PLATFORM_APP_DIR'])) {
   $config_directories = array(
     CONFIG_ACTIVE_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/active',
     CONFIG_SYNC_DIRECTORY => $_ENV['PLATFORM_APP_DIR'] . '/config/staging',
   );
-}
-
+}*/
+$config_directories[CONFIG_SYNC_DIRECTORY] = __DIR__ . '/config/sync';
 // Set trusted hosts based on real Platform.sh routes.
 if (isset($_ENV['PLATFORM_ROUTES'])) {
   $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']), TRUE);
@@ -98,6 +98,7 @@ $settings['file_private_path']='sites/default/files/private';
 #if (file_exists(__DIR__ . '/settings.local.php')) {
 #  include __DIR__ . '/settings.local.php';
 #}
+
 
 if (file_exists(__DIR__ . '/settings.dev.php')) {
   include __DIR__ . '/settings.dev.php';

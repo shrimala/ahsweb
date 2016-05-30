@@ -47,7 +47,7 @@ mounts:
     "/public/sites/default/files": "shared:files/files"
     #"/app/public/sites/default": "shared:files/app/public/sites/default"
     "/tmp": "shared:files/tmp"
-    "/config": "shared:files/config"
+    #"/config": "shared:files/config"
     "/private": "shared:files/private"
 
 # The hooks executed at various points in the lifecycle of the application.
@@ -81,11 +81,15 @@ hooks:
     deploy: |
       # Drupal 8 currently fails to create config directories
       # automatically during install.
-      mkdir -p config/active config/staging
+      #mkdir -p config/active config/staging
       cd /app/public
       #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      drush -y cache-rebuild
       drush -y updatedb
       chmod -R 777 sites/default
+      cd sites/default
+      cd files
+      #drush config-export --push
       #drush -y en layout_plugin
       #drush -y en ds
       #drush -y en advanced_help eck eform layout_plugin page_manager inmail mailmute token
@@ -112,7 +116,7 @@ hooks:
       #drush en -y media_entity_audio
       #drush pmu -y media_pinkeye
       #drush pmu -y views_field_view
-      
+      #drush -y config-import
 # The configuration of scheduled execution.
 crons:
     drupal:
