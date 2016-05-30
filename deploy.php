@@ -14,7 +14,7 @@ $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 echo "Github token is " . $GITHUB_TOKEN;
 runcmd("rm -rf /app/public/sites/default/files/ahsweb");
 runcmd("cd /app/public/sites/default/files");
-runcmd("git clone -b ConfigExport2 https://3252ac605972d074375f99a8e08f3aadbe1ccf56@github.com/shrimala/ahsweb.git");
+runcmd("git clone -b ConfigExport2 https://cb0ec16b51beeac91a7d6f3632601cd8437cf167@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("drush -y config-export");
