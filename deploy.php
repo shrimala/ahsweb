@@ -26,7 +26,7 @@ runcmd("git config  user.name 'aritnath1990'");
 runcmd("git commit -am 'update message'");
 //runcmd("git push origin ConfigExport2 https://8840b2ee35cdc66a22403b31adb0f5e76ab45347@github.com/shrimala/ahsweb.git");
 //runcmd("git push --repo ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
-runcmd("git push --set-upstream ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git master");
+runcmd("git push --set-upstream https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git master");
 ?>
 <html>
   <head>
