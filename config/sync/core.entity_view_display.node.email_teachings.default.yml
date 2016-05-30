@@ -1,0 +1,24 @@
+uuid: 0be7a58e-5c5b-424b-9060-96c21b9c7749
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.email_teachings.body
+    - node.type.email_teachings
+  module:
+    - text
+    - user
+id: node.email_teachings.default
+targetEntityType: node
+bundle: email_teachings
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
