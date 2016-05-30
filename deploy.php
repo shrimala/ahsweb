@@ -21,10 +21,11 @@ runcmd("git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/a
 //runcmd("$ git pull origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
+runcmd("ls config/sync")
 runcmd("drush -y config-export");
+runcmd("ls config/sync")
 runcmd("chmod -R 777 /app/public/sites/default/files/ahsweb/config/sync");
-runcmd("cd /app/public/sites/default/files/ahsweb/config/sync");
-runcmd("git add --all");
+runcmd("git add config/sync");
 runcmd("git status");
 runcmd("git config  user.email 'arith.nath@dcplkolkata.com'");
 runcmd("git config  user.name 'aritnath1990'");
