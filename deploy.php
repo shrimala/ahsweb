@@ -14,7 +14,7 @@ $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 echo "Github token is " . $GITHUB_TOKEN;
 runcmd("rm -rf /app/public/sites/default/files/ahsweb");
 runcmd("cd /app/public/sites/default/files");
-runcmd("git clone -b ConfigExport2 https://8840b2ee35cdc66a22403b31adb0f5e76ab45347@github.com/shrimala/ahsweb.git");
+runcmd("git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("drush -y config-export");
@@ -25,7 +25,8 @@ runcmd("git config  user.email 'arith.nath@dcplkolkata.com'");
 runcmd("git config  user.name 'aritnath1990'");
 runcmd("git commit -am 'update message'");
 //runcmd("git push origin ConfigExport2 https://8840b2ee35cdc66a22403b31adb0f5e76ab45347@github.com/shrimala/ahsweb.git");
-runcmd("git push -u origin master:ConfigExport2 https://8840b2ee35cdc66a22403b31adb0f5e76ab45347@github.com/shrimala/ahsweb.git");
+runcmd("git push --repo ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
+
 ?>
 <html>
   <head>
