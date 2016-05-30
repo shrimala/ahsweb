@@ -1,0 +1,18 @@
+uuid: c78f7727-f071-4843-be00-ce0dc291e2e6
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'simple 2'
+type: simple_2
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true
