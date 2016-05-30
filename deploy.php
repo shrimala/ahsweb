@@ -17,7 +17,7 @@ runcmd("git clone -b ConfigExport2  https://{$GITHUB_TOKEN}@github.com/shrimala/
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("drush -y config-export");
-runcmd("chmod -R 777 config/sync");
+runcmd("chmod -R 777 /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("git add --all");
 runcmd("git config  user.email 'arith.nath@dcplkolkata.com'");
 runcmd("git config  user.name 'aritnath1990'");
