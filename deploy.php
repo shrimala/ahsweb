@@ -17,12 +17,12 @@ runcmd("rm -rf /app/public/sites/default/files/ahsweb");
 runcmd("git clone -b ConfigExport2  https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
-runcmd("drush config-export");
+runcmd("drush -y config-export");
 runcmd("chmod -R 777 /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("cd /app/public/sites/default/files/ahsweb");
 runcmd("git add --all");
 runcmd("git config  user.email 'arith.nath@dcplkolkata.com'");
-runcmd("git config  user.name 'aritnath1990'");
+runcmd("git config  user.name 'jonathan'");
 runcmd("git commit -am 'update message'");
 runcmd("git push origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 ?>
