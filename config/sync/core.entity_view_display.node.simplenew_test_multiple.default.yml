@@ -1,0 +1,24 @@
+uuid: f3a092a6-b9ec-4957-a342-660a391d742a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.simplenew_test_multiple.body
+    - node.type.simplenew_test_multiple
+  module:
+    - text
+    - user
+id: node.simplenew_test_multiple.default
+targetEntityType: node
+bundle: simplenew_test_multiple
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
