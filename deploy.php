@@ -29,10 +29,11 @@ $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TR
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 runcmd("rm -rf /app/public/sites/default/files/ahsweb;
 cd /app/public/sites/default/files;
+rm -rf foo;
 mkdir foo;
 cd foo;
 git init;
-git pull https://<token>@github.com/username/bar.git;
+git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git;
 cd ..;
 git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git;
 cd ahsweb;
