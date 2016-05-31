@@ -1,0 +1,26 @@
+uuid: c366fb61-5084-4efa-ac0a-10fec767713f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.pull_check.body
+    - node.type.pull_check
+  module:
+    - text
+    - user
+id: node.pull_check.teaser
+targetEntityType: node
+bundle: pull_check
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

@@ -1,0 +1,24 @@
+uuid: 2164f45a-349e-4f8e-8a25-37e13987faa8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.pull_check.body
+    - node.type.pull_check
+  module:
+    - text
+    - user
+id: node.pull_check.default
+targetEntityType: node
+bundle: pull_check
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
