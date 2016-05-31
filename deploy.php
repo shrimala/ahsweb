@@ -37,7 +37,7 @@ git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m '{$_POST['t1']}';
 git push origin ConfigExport2");
-}}
+}
 ?>
 </body>
 </html>
