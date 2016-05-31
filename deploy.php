@@ -11,7 +11,6 @@ function runcmd ($cmd){
 echo "Export all the configuration file to GitHub<br>";
 $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
-echo "Github token is " . $GITHUB_TOKEN;
 runcmd("rm -rf /app/public/sites/default/files/ahsweb;
 cd /app/public/sites/default/files;
 git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git;
@@ -20,8 +19,8 @@ cd ahsweb;
 drush -y config-export;
 chmod -R 777 config/sync;
 git add --all;
-git config  user.email 'arith.nath@dcplkolkata.com';
-git config  user.name 'aritnath1990';
+git config  user.email 'owner@ahs.org.uk';
+git config  user.name 'AHSowner';
 git commit -m 'update message';
 git push origin ConfigExport2");
 
