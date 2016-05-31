@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.pull_check.body
+    - field.field.node.pull_check.field_dateonly
     - node.type.pull_check
   module:
+    - datetime
     - text
     - user
 id: node.pull_check.default
@@ -19,6 +21,14 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+  field_dateonly:
+    weight: 102
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
   links:
     weight: 100
 hidden: {  }

@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.pull_check.body
+    - field.field.node.pull_check.field_dateonly
     - node.type.pull_check
   module:
+    - datetime
     - path
     - text
 id: node.pull_check.default
@@ -26,6 +28,11 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_dateonly:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
   path:
     type: path
     weight: 30
