@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
+    - field.field.node.event.field_sessions
     - node.type.event
   module:
     - path
@@ -26,6 +27,14 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_sessions:
+    weight: 32
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   path:
     type: path
     weight: 30

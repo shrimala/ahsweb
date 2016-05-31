@@ -1,0 +1,30 @@
+uuid: 2e6dd14d-bd16-4867-ba22-3440fb93a781
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sessions
+    - node.type.event
+    - node.type.session
+    - node.type.simple_2
+    - node.type.simplenew_test_multiple
+id: node.event.field_sessions
+field_name: field_sessions
+entity_type: node
+bundle: event
+label: Sessions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      session: session
+      simplenew_test_multiple: simplenew_test_multiple
+      simple_2: simple_2
+    sort:
+      field: _none
+field_type: entity_reference
