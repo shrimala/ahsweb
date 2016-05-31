@@ -15,6 +15,7 @@
       </div>
     </div>
 <?php
+if (isset($_POST)) {
 if ($_POST['t1']!="") {
 function runcmd ($cmd){
   echo "<pre><strong>";
@@ -37,7 +38,7 @@ git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m '{$_POST['t1']}';
 git push origin ConfigExport2");
-}
+}}
 ?>
 </body>
 </html>
