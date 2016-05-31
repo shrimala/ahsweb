@@ -20,7 +20,7 @@ function runcmd ($cmd){
   echo "<pre><strong>";
   echo ">  ". $cmd;
   echo "</strong><br>";
-  echo shell_exec($cmd . " 2>&1");
+  echo exec($cmd . " 2>&1");
   echo "</pre>";
 }
 echo "<br><br><br><br><br><br>";
