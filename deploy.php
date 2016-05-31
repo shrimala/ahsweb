@@ -21,8 +21,8 @@ runcmd("git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/a
 //runcmd("$ git pull origin ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git");
 runcmd("chmod -R 777 ahsweb");
 runcmd("cd /app/public/sites/default/files/ahsweb");
-runcmd("ls /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("drush -y config-export");
+runcmd("ls /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("ls /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("chmod -R 777 /app/public/sites/default/files/ahsweb/config/sync");
 runcmd("git add /app/public/sites/default/files/ahsweb/config/sync");
