@@ -32,7 +32,7 @@ rm -rf ahsweb;
 mkdir ahsweb;
 cd ahsweb;
 git init;
-git pull -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git;
+git pull origin https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git ConfigExport2;
 drush -y config-export;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
