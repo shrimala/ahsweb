@@ -16,7 +16,7 @@ cd /app/public/sites/default/files;
 git clone -b ConfigExport2 https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git;
 cd ahsweb;
 drush -y config-export;
-git add --all;
+git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m 'update message';
