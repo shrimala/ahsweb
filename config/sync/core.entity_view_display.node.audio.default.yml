@@ -1,0 +1,24 @@
+uuid: dd48e516-78cc-45ff-a600-d94a712fae76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.audio.body
+    - node.type.audio
+  module:
+    - text
+    - user
+id: node.audio.default
+targetEntityType: node
+bundle: audio
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

@@ -1,0 +1,22 @@
+uuid: cdeabeda-ae08-4e74-9709-9af4d9ae370b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.email_teachings
+  module:
+    - text
+id: node.email_teachings.body
+field_name: body
+entity_type: node
+bundle: email_teachings
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

@@ -1,0 +1,26 @@
+uuid: 5286b8bd-74e0-40ff-a13d-616d40ef7f82
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.teachings_tags.body
+    - node.type.teachings_tags
+  module:
+    - text
+    - user
+id: node.teachings_tags.teaser
+targetEntityType: node
+bundle: teachings_tags
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
