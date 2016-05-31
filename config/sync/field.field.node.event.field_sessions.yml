@@ -5,9 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_sessions
     - node.type.event
-    - node.type.session
-    - node.type.simple_2
-    - node.type.simplenew_test_multiple
 id: node.event.field_sessions
 field_name: field_sessions
 entity_type: node
@@ -21,10 +18,7 @@ default_value_callback: ''
 settings:
   handler: 'default:node'
   handler_settings:
-    target_bundles:
-      session: session
-      simplenew_test_multiple: simplenew_test_multiple
-      simple_2: simple_2
+    target_bundles: {  }
     sort:
       field: _none
 field_type: entity_reference
