@@ -38,7 +38,7 @@ $json = json_decode($ip, true);
 echo $json['head']['ref'];
 $branch = $json['head']['ref'] . "<br>";
 echo "Branch name: " . $branch;
-$path="/app/public/sites/default/files"
+$path="/app/public/sites/default/files";
 runcmd("chmod -R 777 ahsweb/config/sync", $path);
 runcmd("rm -rf ahsweb", $path);
 runcmd("mkdir ahsweb", $path);
