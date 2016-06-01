@@ -61,7 +61,7 @@ hooks:
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       cd /app/public
-      #drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
+      drush -y site-install --site-name=drupal8 --account-name=admin --account-pass=password
       drush -y updatedb
       chmod -R 777 sites/default
       drush -y updatedb
