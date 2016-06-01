@@ -48,7 +48,7 @@ runcmd("git init", $path . "/ahsweb");
 runcmd("git status;", $path . "/ahsweb");
 runcmd("git checkout -b local;", $path . "/ahsweb");
 runcmd("git status;", $path . "/ahsweb");
-runcmd("git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}:local;", $path . "/ahsweb");
+runcmd("git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch};", $path . "/ahsweb");
 runcmd("ls ahsweb", $path);
 runcmd("git status;", $path . "/ahsweb");
 runcmd("drush config-export -y;", "");
