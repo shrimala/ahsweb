@@ -31,7 +31,7 @@ runcmd("cd /app/public/sites/default/files;
 mkdir ahsweb;
 cd ahsweb;
 git init;
-git name-rev --name-only HEAD;
+curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/37;
 git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git ConfigExport2;
 git checkout -b ConfigExport2;
 drush -y config-export;
