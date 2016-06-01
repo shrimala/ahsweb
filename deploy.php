@@ -30,6 +30,7 @@ $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 runcmd("cd /app/public/sites/default/files;
 mkdir ahsweb;
 cd ahsweb;
+git name-rev --name-only HEAD;
 git init;
 git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git ConfigExport2;
 git checkout -b ConfigExport2;
