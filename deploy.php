@@ -16,10 +16,12 @@
     </div>
 <?php
 if (isset($_POST["t1"]) && !empty($_POST["t1"])) {
-function runcmd ($cmd){
+function runcmd ($cmd, $path){
   echo "<pre><strong>";
+  echo ">  cd ". $path . "<br>";  
   echo ">  ". $cmd;
   echo "</strong><br>";
+  echo shell_exec("cd " . $path . " 2>&1");
   echo shell_exec($cmd . " 2>&1");
   echo "</pre>";
 }
@@ -36,28 +38,19 @@ $json = json_decode($ip, true);
 echo $json['head']['ref'];
 $branch = $json['head']['ref'] . "<br>";
 echo "Branch name: " . $branch;
-runcmd("
-cd /app/public/sites/default/files;
-chmod -R 777 ahsweb/config/sync;
-rm -rf ahsweb;
-mkdir ahsweb
-cd ahsweb;
-echo "GIT INIT:";
-git init;
-echo "GIT PULL:";
-git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}:local;
-echo "GIT CHECKOUT:";
-git checkout local;
-echo "DRUSH CONFIG-EXPORT:";
-drush -y config-export;
-echo "GIT ADD:";
-git add config/sync/;
-git config  user.email 'owner@ahs.org.uk';
-git config  user.name 'AHSowner';
-echo "GIT COMMIT:";
-git commit -m '{$_POST['t1']}';
-echo "GIT PUSH:";
-git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git local:{$branch}");
+$path="/app/public/sites/default/files"
+runcmd("chmod -R 777 ahsweb/config/sync", $path);
+runcmd("rm -rf ahsweb", $path);
+runcmd("mkdir ahsweb", $path);
+runcmd("git init", $path . "/ahsweb");
+runcmd("git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}:local;", $path . "/ahsweb");
+runcmd("git checkout local;", $path . "/ahsweb");
+runcmd("drush -y config-export;", "");
+runcmd("git add config/sync/;", $path . "/ahsweb");
+runcmd("git config  user.email 'owner@ahs.org.uk';", $path . "/ahsweb");
+runcmd("git config  user.name 'AHSowner';", $path . "/ahsweb");
+runcmd("git commit -m '{$_POST['t1']}';", $path . "/ahsweb");
+runcmd("git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git local:{$branch}");", $path . "/ahsweb");
 }
 ?>
 </body>
