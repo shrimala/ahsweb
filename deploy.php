@@ -27,7 +27,6 @@ echo "<br><br><br><br><br><br>";
 echo "Export all the configuration file to GitHub<br>";
 $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
-$ip=json_decode(base64_decode('curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/37'));
 $ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/37");
 $json = json_decode($ip, true); 
 echo $json['title'];
