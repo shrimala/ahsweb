@@ -39,11 +39,12 @@ echo "Branch name: " . $branch;
 runcmd("
 cd /app/public/sites/default/files;
 chmod -R 777 ahsweb/config/sync;
+rm -rf ahsweb;
+mkdir ahsweb
 cd ahsweb;
-rm -rf .git;
 git init;
-git checkout -b local;
-git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch};
+git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}:local;
+git checkout local;
 drush -y config-export;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
