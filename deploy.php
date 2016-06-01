@@ -42,14 +42,21 @@ chmod -R 777 ahsweb/config/sync;
 rm -rf ahsweb;
 mkdir ahsweb
 cd ahsweb;
+echo "GIT INIT:";
 git init;
+echo "GIT PULL:";
 git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}:local;
+echo "GIT CHECKOUT:";
 git checkout local;
+echo "DRUSH CONFIG-EXPORT:";
 drush -y config-export;
+echo "GIT ADD:";
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
+echo "GIT COMMIT:";
 git commit -m '{$_POST['t1']}';
+echo "GIT PUSH:";
 git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git local:{$branch}");
 }
 ?>
