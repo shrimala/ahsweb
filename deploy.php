@@ -29,8 +29,8 @@ $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TR
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 $ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/37");
 $json = json_decode($ip, true); 
-echo $json['title'];
-$dynBatch = $json['title'];
+echo $json['head']['ref'];
+$dynBatch = $json['head']['ref'];
 runcmd("cd /app/public/sites/default/files;
 mkdir ahsweb;
 cd ahsweb;
