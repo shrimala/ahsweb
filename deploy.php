@@ -28,27 +28,28 @@ echo "Export all the configuration file to GitHub<br>";
 $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 $environment = $_ENV["PLATFORM_ENVIRONMENT"];
-echo "Environment name: " . $environment;
+echo "Environment name: " . $environment . "<br>";
 $pr = substr($environment, 3);
-echo "PR number: ". $pr;
+echo "PR number: ". $pr . "<br>";
 $ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/" . $pr);
 $json = json_decode($ip, true); 
 echo $json['head']['ref'];
-$branch = $json['head']['ref'];
+$branch = $json['head']['ref'] . "<br>";
 echo "Branch name: " . $branch;
-runcmd("cd /app/public/sites/default/files;
-mkdir ahsweb;
+runcmd("
+cd /app/public/sites/default/files;
 chmod -R 777 ahsweb/config/sync;
 cd ahsweb;
+rm -rf .git;
 git init;
+git checkout -b local;
 git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch};
-git checkout -b {$branch};
 drush -y config-export;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m '{$_POST['t1']}';
-git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}");
+git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git local:{$branch}");
 }
 ?>
 </body>
