@@ -50,7 +50,7 @@ runcmd("git add config/sync/;", $path . "/ahsweb");
 runcmd("git config  user.email 'owner@ahs.org.uk';", $path . "/ahsweb");
 runcmd("git config  user.name 'AHSowner';", $path . "/ahsweb");
 runcmd("git commit -m '{$_POST['t1']}';", $path . "/ahsweb");
-runcmd("git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git local:{$branch}");", $path . "/ahsweb");
+runcmd("git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git local:{$branch};"), $path . "/ahsweb");
 }
 ?>
 </body>
