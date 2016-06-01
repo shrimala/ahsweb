@@ -1,0 +1,24 @@
+uuid: ccaa7dd2-c63d-402e-ad23-e0c0a07d5d90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - node.type.event
+  module:
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

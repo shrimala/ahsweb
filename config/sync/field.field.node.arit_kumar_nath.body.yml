@@ -1,0 +1,22 @@
+uuid: 71933615-8b99-4400-bc05-4518aef4b1a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.arit_kumar_nath
+  module:
+    - text
+id: node.arit_kumar_nath.body
+field_name: body
+entity_type: node
+bundle: arit_kumar_nath
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

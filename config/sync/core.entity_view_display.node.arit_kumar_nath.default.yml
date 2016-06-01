@@ -1,0 +1,24 @@
+uuid: 68f946c7-9942-4387-8d3d-022a0fb33d01
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.arit_kumar_nath.body
+    - node.type.arit_kumar_nath
+  module:
+    - text
+    - user
+id: node.arit_kumar_nath.default
+targetEntityType: node
+bundle: arit_kumar_nath
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
