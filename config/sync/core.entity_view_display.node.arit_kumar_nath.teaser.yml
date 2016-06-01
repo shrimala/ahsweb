@@ -1,0 +1,26 @@
+uuid: ce8d1201-6088-4ece-af58-115a64731337
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.arit_kumar_nath.body
+    - node.type.arit_kumar_nath
+  module:
+    - text
+    - user
+id: node.arit_kumar_nath.teaser
+targetEntityType: node
+bundle: arit_kumar_nath
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
