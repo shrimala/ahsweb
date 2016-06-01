@@ -28,19 +28,22 @@ echo "Export all the configuration file to GitHub<br>";
 $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 $ip=json_decode(base64_decode('curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/37'));
+$ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/37");
+$json = json_decode($ip, true); 
+echo $json['title'];
+$dynBatch = $json['title'];
 runcmd("cd /app/public/sites/default/files;
 mkdir ahsweb;
 cd ahsweb;
 git init;
-{$ip};
-git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git ConfigExport2;
-git checkout -b ConfigExport2;
+git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$dynBatch};
+git checkout -b {$dynBatch};
 drush -y config-export;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m '{$_POST['t1']}';
-git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git ConfigExport2");
+git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$dynBatch}");
 }
 ?>
 </body>
