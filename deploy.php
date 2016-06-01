@@ -42,6 +42,8 @@ runcmd("chmod -R 777 ahsweb/config/sync", $path);
 runcmd("ls ahsweb", $path);
 runcmd("rm -rf ahsweb", $path);
 runcmd("ls ahsweb", $path);
+runcmd("mkdir ahsweb", $path);
+runcmd("mkdir ahsweb/config", $path);
 runcmd("mkdir ahsweb/config/sync", $path);
 runcmd("chmod -R 777 ahsweb/config/sync", $path);
 runcmd("ls ahsweb", $path);
