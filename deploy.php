@@ -31,14 +31,14 @@ runcmd("cd /app/public/sites/default/files;
 mkdir ahsweb;
 cd ahsweb;
 git init;
-git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git ConfigExport2;
-git checkout -b ConfigExport2;
+git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git Drupal-8.1.1;
+git checkout -b Drupal-8.1.1;
 drush -y config-export;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m '{$_POST['t1']}';
-git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git ConfigExport2");
+git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git Drupal-8.1.1");
 }
 ?>
 </body>
