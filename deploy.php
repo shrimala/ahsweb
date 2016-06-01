@@ -29,7 +29,7 @@ $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TR
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
 $environment = $platform_variables["PLATFORM_ENVIRONMENT"];
 echo "Environment name: " . $environment;
-$pr = substr($environment, 4, strpos($environment,":");
+$pr = substr($environment, 4, strpos($environment,":"));
 echo "PR number: ". $pr;
 $ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/" . $pr);
 $json = json_decode($ip, true); 
