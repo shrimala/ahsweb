@@ -46,6 +46,7 @@ runcmd("mkdir ahsweb", $path);
 runcmd("mkdir ahsweb/config", $path);
 runcmd("mkdir ahsweb/config/sync", $path);
 runcmd("chmod -R 777 ahsweb/config/sync", $path);
+runcmd("chmod -R 777 ahsweb", $path);
 runcmd("ls ahsweb", $path);
 runcmd("git init", $path . "/ahsweb");
 runcmd("git status;", $path . "/ahsweb");
