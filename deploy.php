@@ -35,14 +35,14 @@ runcmd("cd /app/public/sites/default/files;
 mkdir ahsweb;
 cd ahsweb;
 git init;
-git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$dynBatch};
-git checkout -b {$dynBatch};
+git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git DynamicPR;
+git checkout -b DynamicPR;
 drush -y config-export;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m '{$_POST['t1']}';
-git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$dynBatch}");
+git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git DynamicPR");
 }
 ?>
 </body>
