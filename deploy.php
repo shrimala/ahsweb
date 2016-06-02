@@ -46,7 +46,6 @@ git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch};
 git name-rev --name-only HEAD;
 git checkout -b {$branch};
 git name-rev --name-only HEAD;
-chmod -R 777 config/sync;
 ls -l config/;
 drush -y config-export;
 git add config/sync/;
