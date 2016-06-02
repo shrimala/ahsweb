@@ -27,7 +27,10 @@ echo "<br><br><br><br><br><br>";
 echo "Export all the configuration file to GitHub<br>";
 $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
-$ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/41");
+echo "Environment name: " . $environment . "<br>";
+$pr = substr($environment, 3);
+echo "PR number: ". $pr . "<br>";
+$ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/" . $pr);
 $json = json_decode($ip, true); 
 echo $json['head']['ref'];
 $branch = $json['head']['ref'];
@@ -48,7 +51,7 @@ drush -y config-export;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
-git commit -m '{$_POST['t1']}'
+git commit -m '{$_POST['t1']}'");
 }
 ?>
 </body>
