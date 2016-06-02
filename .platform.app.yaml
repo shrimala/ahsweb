@@ -67,6 +67,7 @@ hooks:
       drush -y updatedb
       cd /app/public/sites/default
       cp deploy.php files/
+      chmod -R 777 files/ahsweb/config/sync/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
 

