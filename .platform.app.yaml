@@ -55,6 +55,7 @@ mounts:
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
     "/drush-backups": "shared:files/drush-backups"
+    
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -67,7 +68,7 @@ hooks:
       drush -y updatedb
       cd /app/public/sites/default
       cp deploy.php files/
-      drush config-import
+      cp -r config/sync/. files/ahsweb/config/sync/
 
 # The configuration of scheduled execution.
 crons:
