@@ -49,6 +49,7 @@ git name-rev --name-only HEAD;
 chmod -R 777 config/sync;
 ls -l config/;
 drush -y config-export;
+git config core.filemode false;
 git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
