@@ -17,9 +17,7 @@
 <?php
 if (isset($_POST["t1"]) && !empty($_POST["t1"])) {
 function runcmd ($cmd){
-  echo "<pre><strong>";
-  echo ">  ". $cmd;
-  echo "</strong><br>";
+  echo "<pre>;
   echo shell_exec($cmd . " 2>&1");
   echo "</pre>";
 }
@@ -33,7 +31,6 @@ $pr = substr($environment, 3);
 echo "PR number: ". $pr . "<br>";
 $ip=shell_exec("curl -s https://api.github.com/repos/shrimala/ahsweb/pulls/" . $pr);
 $json = json_decode($ip, true); 
-echo $json['head']['ref'];
 $branch = $json['head']['ref'];
 echo "<br>Branch name: " . $branch;
 runcmd("cd /app/public/sites/default/files;
