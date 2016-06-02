@@ -67,7 +67,8 @@ hooks:
       drush -y updatedb
       cd /app/public/sites/default
       cp deploy.php files/
-      drush config-import
+      cp -r config/sync/. files/ahsweb/config/sync/
+      drush -y config-import
 
 # The configuration of scheduled execution.
 crons:
