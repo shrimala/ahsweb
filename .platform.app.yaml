@@ -25,7 +25,6 @@ relationships:
     database: "mysql:mysql"
 #    solr: "solr:solr"
 #    redis: "redis:redis"
-
 # The configuration of app when it is exposed to the web.
 web:
     # Specific parameters for different URL prefixes.
