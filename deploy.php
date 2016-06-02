@@ -27,6 +27,7 @@ echo "<br><br><br><br><br><br>";
 echo "Export all the configuration file to GitHub<br>";
 $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 $GITHUB_TOKEN = $platform_variables["GITHUB_TOKEN"];
+$environment = $_ENV["PLATFORM_ENVIRONMENT"];
 echo "Environment name: " . $environment . "<br>";
 $pr = substr($environment, 3);
 echo "PR number: ". $pr . "<br>";
