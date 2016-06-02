@@ -53,7 +53,7 @@ git add config/sync/;
 git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
 git commit -m '{$_POST['t1']}';
-git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}");")
+git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}");
 }
 ?>
 </body>
