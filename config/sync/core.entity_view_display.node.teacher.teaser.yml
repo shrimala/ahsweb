@@ -1,0 +1,26 @@
+uuid: f2a001c8-df1c-43b5-a712-78899dce42f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.teacher.body
+    - node.type.teacher
+  module:
+    - text
+    - user
+id: node.teacher.teaser
+targetEntityType: node
+bundle: teacher
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

@@ -1,0 +1,22 @@
+uuid: dad1d944-bf1c-4c8c-9684-0a3b565380f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.email_teaching
+  module:
+    - text
+id: node.email_teaching.body
+field_name: body
+entity_type: node
+bundle: email_teaching
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary
