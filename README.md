@@ -32,3 +32,4 @@ needs, right?
 We also give you some nice empty (and totally not required) directories, so you would know where you are supposed to put 
 your custom themes modules and libraries. "Normal", unforked contributed modules, themes and libraries should be put in 
 the `project.make` file  (which contains our base Drupal version)
+
