@@ -1,0 +1,26 @@
+uuid: be77957b-f7c8-40ee-bf50-c2a5c9145a20
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.email_teaching.body
+    - node.type.email_teaching
+  module:
+    - text
+    - user
+id: node.email_teaching.teaser
+targetEntityType: node
+bundle: email_teaching
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
