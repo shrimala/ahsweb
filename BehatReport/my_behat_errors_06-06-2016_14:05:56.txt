@@ -1,0 +1,33 @@
+........................................................F............. 70
+...................................................................... 140
+...................................................................... 210
+...................................................................... 280
+...................................................................... 350
+...................................................................... 420
+...................................................................... 490
+...................................................................... 560
+...................................................................... 630
+...................................................................... 700
+...................................................................... 770
+............................................
+
+--- Failed steps:
+
+    And the output should contain: # features/catch_throwable.feature:50
+      Failed asserting that 'PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /tmp/behat/0eb3a0e79acb3437da203967c5ae6b7f/features/bootstrap/FeatureContext.php on line 15
+      
+      Parse error: syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /tmp/behat/0eb3a0e79acb3437da203967c5ae6b7f/features/bootstrap/FeatureContext.php on line 15' contains "  Scenario: Handling of a fatal error        # features/fatal_errors.feature:6
+          When I have some code with a fatal error # FeatureContext::iHaveSomeCodeWithFatalError()
+            Fatal error: Call to a member function method() on string (Behat\Testwork\Call\Exception\FatalThrowableError)
+          Then I should be skipped                 # FeatureContext::iShouldBeSkipped()
+      
+      --- Failed scenarios:
+      
+          features/fatal_errors.feature:6
+      
+      1 scenario (1 failed)
+      2 steps (1 failed, 1 skipped)".
+
+158 scenarios (157 passed, 1 failed)
+814 steps (813 passed, 1 failed)
+0m43.48s (26.21Mb)
