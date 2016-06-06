@@ -64,9 +64,6 @@ hooks:
        mkdir -p "$COMPOSER_HOME"/bin
        mv composer.phar "$COMPOSER_HOME"/bin/composer
        composer --version
-       php modules/composer_manager/scripts/init.php
-       composer drupal-update
-       #composer update
        composer require drupal/drupal-extension='~3.0'
        #composer require guzzlehttp/guzzle = '^6.0@dev'
        #composer config bin-dir= 'bin/'
