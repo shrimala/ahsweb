@@ -71,6 +71,10 @@ hooks:
        #composer require guzzlehttp/guzzle = '^6.0@dev'
        #composer config bin-dir= 'bin/'
        #php composer.phar install
+       vendor/bin/behat --init
+       vendor/bin/behat -dl
+       mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
+       mv vendor/behatfiles/*.feature vendor/behat/behat/features/
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
