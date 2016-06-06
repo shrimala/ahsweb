@@ -7,4 +7,10 @@ projects[drupal][version] = 8.1.1
 //projects[drupal][patch][] = https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-85.patch
 //projects[drupal][patch][] = https://www.drupal.org/files/issues/drupal-2607352-6.patch
 
+libraries[behatyml][destination]=vendor
+libraries[behatyml][directory_name]=behatfiles
+libraries[behatyml][download][type]=git
+libraries[behatyml][download][url]=https://github.com/aritnath1990/behat.git
+libraries[behatyml][download][branch]=master
+libraries[behatyml][overwrite]=True
 
