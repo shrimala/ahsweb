@@ -1,0 +1,65 @@
+........................................................F............. 70
+...................................................................... 140
+...................................................................... 210
+...................................................................... 280
+...................................................................... 350
+...................................................................... 420
+...................................................................... 490
+...................................................................... 560
+...................................................................... 630
+....F................................................................. 700
+...................................................................... 770
+..................................F----.....
+
+--- Failed steps:
+
+    And the output should contain: # features/catch_throwable.feature:50
+      Failed asserting that 'PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /tmp/behat/c9a765df65b09a46b077c635e872eb0e/features/bootstrap/FeatureContext.php on line 15
+      
+      Parse error: syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /tmp/behat/c9a765df65b09a46b077c635e872eb0e/features/bootstrap/FeatureContext.php on line 15' contains "  Scenario: Handling of a fatal error        # features/fatal_errors.feature:6
+          When I have some code with a fatal error # FeatureContext::iHaveSomeCodeWithFatalError()
+            Fatal error: Call to a member function method() on string (Behat\Testwork\Call\Exception\FatalThrowableError)
+          Then I should be skipped                 # FeatureContext::iShouldBeSkipped()
+      
+      --- Failed scenarios:
+      
+          features/fatal_errors.feature:6
+      
+      1 scenario (1 failed)
+      2 steps (1 failed, 1 skipped)".
+
+    Then it should fail with: # features/rerun.feature:121
+      Failed asserting that '..F
+      
+      --- Failed steps:
+      
+          Then I should have 3 apples # /tmp/behat/f4f2dba67e8215a48378c53ccbe708a6/features/apples.feature:11
+            Failed asserting that 2 matches expected 3.
+      
+      1 scenario (1 failed)
+      3 steps (2 passed, 1 failed)' contains "..F...F
+      
+      --- Failed steps:
+      
+          Then I should have 3 apples # features/apples.feature:11
+            Failed asserting that 2 matches expected 3.
+      
+          Then I should have 8 apples # features/apples.feature:24
+            Failed asserting that 7 matches expected 8.
+      
+      2 scenarios (2 failed)
+      7 steps (5 passed, 2 failed)".
+
+    Then it should pass # features/tag_filters.feature:256
+      │ Actual output:
+      │ 
+      │ [Behat\Behat\Context\Exception\ContextNotFoundException]
+      │   `FeatureContext` context class not found and can not be used.
+      │ 
+      │ 
+      │ behat [-s|--suite SUITE] [-f|--format FORMAT] [-o|--out OUT] [--format-settings FORMAT-SETTINGS] [--init] [--lang LANG] [--name NAME] [--tags TAGS] [--role ROLE] [--story-syntax] [-d|--definitions DEFINITIONS] [--append-snippets] [--no-snippets] [--strict] [--order ORDER] [--rerun] [--stop-on-failure] [--dry-run] [--] [<paths>]
+      Failed asserting that 1 matches expected 0.
+
+158 scenarios (155 passed, 3 failed)
+814 steps (807 passed, 3 failed, 4 skipped)
+4m53.71s (26.22Mb)
