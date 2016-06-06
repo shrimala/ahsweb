@@ -52,7 +52,6 @@ chmod -R 777 config/sync;
 ls -l config/;
 drush -y config-export;
 cd /app/public/vendor/behat/behat;
-bin/behat;
 mkdir /app/public/sites/default/files/ahsweb/BehatReport;
 chmod -R 777 /app/public/sites/default/files/ahsweb/BehatReport;
 bin/behat --format progress --out /app/public/sites/default/files/ahsweb/BehatReport/my_behat_errors_". $t .".txt;
