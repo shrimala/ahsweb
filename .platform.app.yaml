@@ -84,10 +84,12 @@ hooks:
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
       cd files/
-      curl -sS https://getcomposer.org/installer | php
-      mv /app/public/vendor/behatfiles/composer.json /app/public/sites/default/files
-      php composer.phar install
-      mv /app/public/vendor/behatfiles/behat.yml /app/public/sites/default/files
+      rm -rf composer.json composer.lock composer.phar
+      #curl -sS https://getcomposer.org/installer | php
+      cp /app/public/vendor/behatfiles/composer.json /app/public/sites/default/files
+      cp /app/public/vendor/behatfiles/composer.lock /app/public/sites/default/files
+      cp /app/public/vendor/behatfiles/composer.phar /app/public/sites/default/files
+      cp /app/public/vendor/behatfiles/behat.yml /app/public/sites/default/files
       bin/behat --init
       bin/behat -dl
 
