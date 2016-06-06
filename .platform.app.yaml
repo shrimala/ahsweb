@@ -68,9 +68,9 @@ hooks:
        composer drupal-update
        #composer update
        composer require drupal/drupal-extension='~3.0'
-       composer require guzzlehttp/guzzle = '^6.0@dev'
-       composer config bin-dir= 'bin/'
-       php composer.phar install
+       #composer require guzzlehttp/guzzle = '^6.0@dev'
+       #composer config bin-dir= 'bin/'
+       #php composer.phar install
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
