@@ -57,6 +57,7 @@ mkdir /app/public/sites/default/files/ahsweb/BehatReport;
 chmod -R 777 /app/public/sites/default/files/ahsweb/BehatReport;
 bin/behat --format progress --out /app/public/sites/default/files/ahsweb/BehatReport/my_behat_errors_". $t .".txt;
 cp -r /app/public/sites/default/BehatReport/. sites/default/files/ahsweb/BehatReport/;
+cd /app/public/sites/default/files/ahsweb;
 git config core.filemode false;
 git add config/sync/;
 git add BehatReport/;
