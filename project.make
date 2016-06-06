@@ -10,7 +10,7 @@ projects[drupal][version] = 8.1.1
 libraries[behatyml][destination]=vendor
 libraries[behatyml][directory_name]=behatfiles
 libraries[behatyml][download][type]=git
-libraries[behatyml][download][url]=https://github.com/aritnath1990/behat.git
+libraries[behatyml][download][url]=https://github.com/aritnath1990/BehatTest.git
 libraries[behatyml][download][branch]=master
 libraries[behatyml][overwrite]=True
 
