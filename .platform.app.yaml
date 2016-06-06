@@ -59,14 +59,14 @@ mounts:
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
-       cd ./public
-       curl -sS https://getcomposer.org/installer | php
-       composer require drupal/drupal-extension='~3.0'
-       composer require guzzlehttp/guzzle = '^6.0@dev'
-       composer config bin-dir= 'bin/'
-       php composer.phar install
-       vendor/bin/behat --init
-       vendor/bin/behat -dl
+       #cd ./public
+       #curl -sS https://getcomposer.org/installer | php
+       #composer require drupal/drupal-extension='~3.0'
+       #composer require guzzlehttp/guzzle = '^6.0@dev'
+       #composer config bin-dir= 'bin/'
+       #php composer.phar install
+       #vendor/bin/behat --init
+       #vendor/bin/behat -dl
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
        #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
@@ -83,6 +83,13 @@ hooks:
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
+      cd files/
+      curl -sS https://getcomposer.org/installer | php
+      mv /app/public/vendor/behatfiles/composer.json /app/public/sites/default/files
+      php composer.phar install
+      mv /app/public/vendor/behatfiles/behat.yml /app/public/sites/default/files
+      bin/behat --init
+      bin/behat -dl
 
 # The configuration of scheduled execution.
 crons:
