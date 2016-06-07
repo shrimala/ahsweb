@@ -1,3 +1,4 @@
+$path="http://pr-55-zj4rrk32qwbk6.eu.platform.sh"
 default:
   suites:
     default:
@@ -11,7 +12,7 @@ default:
     Behat\MinkExtension:
       goutte: ~
       selenium2: ~
-      base_url: http://pr-55-zj4rrk32qwbk6.eu.platform.sh
+      base_url: {$path}
     Drupal\DrupalExtension:
       api_driver: "drupal"
       drupal:
