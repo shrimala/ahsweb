@@ -60,17 +60,17 @@ mounts:
 hooks:
     build: |
        #cd ./public
-       #curl -sS https://getcomposer.org/installer | php
-       #composer require drupal/drupal-extension='~3.0'
-       #composer require guzzlehttp/guzzle = '^6.0@dev'
-       #composer config bin-dir= 'bin/'
-       #php composer.phar install
+       curl -sS https://getcomposer.org/installer | php
+       composer require drupal/drupal-extension='~3.0'
+       composer require guzzlehttp/guzzle = '^6.0@dev'
+       composer config bin-dir= 'vendor/bin/'
+       php composer.phar update
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
-       #vendor/bin/behat --init
+       vendor/bin/behat --init
        #vendor/bin/behat -dl
-       #mv vendor/behatfiles/behat.yml vendor/behat/behat/behat.yml
-       #mv vendor/behatfiles/*.feature vendor/behat/behat/features/
+       mv vendor/behatfiles/behat.yml vendor/bin/behat.yml
+       mv vendor/behatfiles/*.feature vendor/features/
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
@@ -83,15 +83,15 @@ hooks:
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
-      cd files/
-      rm -rf composer.json composer.lock composer.phar
+      #cd files/
+      #rm -rf composer.json composer.lock composer.phar
       #curl -sS https://getcomposer.org/installer | php
-      cp /app/public/vendor/behatfiles/composer.json /app/public/sites/default/files
-      cp /app/public/vendor/behatfiles/composer.lock /app/public/sites/default/files
-      cp /app/public/vendor/behatfiles/composer.phar /app/public/sites/default/files
-      cp /app/public/vendor/behatfiles/behat.yml /app/public/sites/default/files
-      bin/behat --init
-      bin/behat -dl
+      #cp /app/public/vendor/behatfiles/composer.json /app/public/sites/default/files
+      #cp /app/public/vendor/behatfiles/composer.lock /app/public/sites/default/files
+      #cp /app/public/vendor/behatfiles/composer.phar /app/public/sites/default/files
+      #cp /app/public/vendor/behatfiles/behat.yml /app/public/sites/default/files
+      #bin/behat --init
+      #bin/behat -dl
 
 # The configuration of scheduled execution.
 crons:
