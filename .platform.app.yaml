@@ -82,6 +82,7 @@ hooks:
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
+      cd files
       rm -rf Arit/
       mkdir Arit
       chmod -R 777 Arit/
