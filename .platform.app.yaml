@@ -82,6 +82,15 @@ hooks:
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
+      rm -rf Arit/
+      mkdir Arit
+      chmod -R 777 Arit/
+      cp -r /app/public/vendor/behatfiles/. Arit/
+      cd Arit/
+      php composer.phar update
+      bin/behat --init
+      cp installaion.feature vendor/behat/behat/features/
+      
 
 # The configuration of scheduled execution.
 crons:
