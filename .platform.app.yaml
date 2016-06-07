@@ -94,7 +94,7 @@ hooks:
       cp installaion.feature vendor/behat/behat/features/
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
-      
+      #ls
       
 # The configuration of scheduled execution.
 crons:
