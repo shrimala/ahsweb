@@ -39,6 +39,7 @@ echo "<br>Branch name: " . $branch;
 $t=date("d-m-Y");
 $t=$t."_".date("H:i:s");
 runcmd("cd /app/public/sites/default/files/Arit;
+ls;
 cd vendor/behat/behat;
 bin/behat features/installaion.feature;
 cd /app/public/sites/default/files;
