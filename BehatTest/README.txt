@@ -1,1 +1,1 @@
-This Folder Has Behat test related files only.
+This Folder Has Behat test files(features) only.
