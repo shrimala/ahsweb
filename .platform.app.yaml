@@ -83,12 +83,12 @@ hooks:
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
       cd files
-      rm -rf Arit/
-      mkdir Arit
-      chmod -R 777 Arit/
-      cp -r /app/public/sites/default/BehatTest/. Arit/
-      cp -r /app/public/sites/default/BehatFiles/. Arit/
-      cd Arit/
+      rm -rf Behat_Testing/
+      mkdir Behat_Testing
+      chmod -R 777 Behat_Testing/
+      cp -r /app/public/sites/default/BehatTest/. Behat_Testing/
+      cp -r /app/public/sites/default/BehatFiles/. Behat_Testing/
+      cd Behat_Testing/
       php composer.phar update
       bin/behat --init
       cp installaion.feature vendor/behat/behat/features/
