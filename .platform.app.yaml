@@ -62,7 +62,7 @@ hooks:
        #cd ./public
        curl -sS https://getcomposer.org/installer | php
        composer require drupal/drupal-extension='~3.0'
-       composer require guzzlehttp/guzzle = '^6.0@dev'
+       composer require guzzlehttp/guzzle ='^6.0@dev'
        composer config bin-dir= 'vendor/bin/'
        php composer.phar update
        #vendor/bin/behat --init
