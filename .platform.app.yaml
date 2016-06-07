@@ -69,8 +69,7 @@ hooks:
        #vendor/bin/behat -dl
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
-       mv vendor/behatfiles/behat.yml vendor/bin/behat.yml
-       mv vendor/behatfiles/*.feature vendor/features/
+       
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
@@ -83,6 +82,8 @@ hooks:
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
+      mv vendor/behatfiles/behat.yml vendor/bin/behat.yml
+      mv vendor/behatfiles/*.feature vendor/features/
       #cd files/
       #rm -rf composer.json composer.lock composer.phar
       #curl -sS https://getcomposer.org/installer | php
