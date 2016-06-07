@@ -82,17 +82,6 @@ hooks:
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
-      mv vendor/behatfiles/behat.yml vendor/bin/behat.yml
-      mv vendor/behatfiles/*.feature vendor/features/
-      #cd files/
-      #rm -rf composer.json composer.lock composer.phar
-      #curl -sS https://getcomposer.org/installer | php
-      #cp /app/public/vendor/behatfiles/composer.json /app/public/sites/default/files
-      #cp /app/public/vendor/behatfiles/composer.lock /app/public/sites/default/files
-      #cp /app/public/vendor/behatfiles/composer.phar /app/public/sites/default/files
-      #cp /app/public/vendor/behatfiles/behat.yml /app/public/sites/default/files
-      #bin/behat --init
-      #bin/behat -dl
 
 # The configuration of scheduled execution.
 crons:
