@@ -38,7 +38,7 @@ $branch = $json['head']['ref'];
 echo "<br>Branch name: " . $branch;
 $t=date("d-m-Y");
 $t=$t."_".date("H:i:s");
-runcmd("cd /app/public/sites/default/files;
+runcmd("cd /app/public/sites/default/files/Arit;
 cd vendor/behat/behat;
 bin/behat features/installaion.feature;
 cd /app/public/sites/default/files;
