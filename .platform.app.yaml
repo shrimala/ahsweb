@@ -95,7 +95,6 @@ hooks:
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
       
-
 # The configuration of scheduled execution.
 crons:
     drupal:
