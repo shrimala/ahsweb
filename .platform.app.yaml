@@ -86,6 +86,7 @@ hooks:
       mkdir Arit
       chmod -R 777 Arit/
       cp -r /app/public/sites/default/BehatTest. Arit/
+      ls
       cd Arit/
       php composer.phar update
       bin/behat --init
