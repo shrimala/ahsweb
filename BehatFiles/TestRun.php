@@ -27,8 +27,7 @@ git name-rev --name-only HEAD;
 git config core.filemode false;
 git add test_report". $t .".txt;
 git config  user.email 'owner@ahs.org.uk';
-git add test_report". $t .".txt;
-git config  user.email 'owner@ahs.org.uk';
 git config  user.name 'AHSowner';
+git commit -m '".$at."';
 git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}");
 ?>
