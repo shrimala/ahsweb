@@ -98,8 +98,7 @@ hooks:
       cd vendor/behat/behat;
       #bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt
       $testResult=bin/behat features/installaion.feature
-      git commit -m {$testResult}
-      git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git Behat-setup
+      POST /repos/:owner/:repo/issues/:number/$testResult
       #ls
       
 # The configuration of scheduled execution.
