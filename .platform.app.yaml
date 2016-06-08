@@ -70,7 +70,7 @@ hooks:
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
        echo "*******Arit*******"
-       testResult= "Arit"
+       $testResult= "Arit"
        echo testResult
        echo {testResult}
       
