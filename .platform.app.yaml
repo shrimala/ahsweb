@@ -69,10 +69,6 @@ hooks:
        #vendor/bin/behat -dl
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
-       echo "*******Arit*******"
-       "$testResult"= "Arit"
-       echo "$testResult"
-      
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
@@ -101,9 +97,6 @@ hooks:
       cd vendor/behat/behat;
       #bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt
       $testResult=bin/behat features/installaion.feature
-      echo "Arit"
-      echo $testResult
-      echo {$testResult}
       
 # The configuration of scheduled execution.
 crons:
