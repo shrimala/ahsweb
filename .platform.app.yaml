@@ -80,7 +80,6 @@ hooks:
       chmod -R 777 sites/default
       drush -y updatedb
       cd /app/public/sites/default
-      rm -rf BehatTest BehatFiles
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
@@ -94,6 +93,7 @@ hooks:
       php composer.phar update
       bin/behat --init
       cp installaion.feature vendor/behat/behat/features/
+      rm -rf vendor/behat/behat/TestRun.php
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
       cp TestRun.php vendor/behat/behat/
