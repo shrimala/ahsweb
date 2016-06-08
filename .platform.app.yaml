@@ -69,8 +69,8 @@ hooks:
        #vendor/bin/behat -dl
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
-       $YZ="ARIT"
-       echo {{$YZ}}
+       YZ="ARIT"
+       echo "$YZ"
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
