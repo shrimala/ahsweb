@@ -98,6 +98,9 @@ hooks:
       cd vendor/behat/behat;
       #bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt
       $testResult=bin/behat features/installaion.feature
+      echo "Arit"
+      echo $testResult
+      echo {$testResult}
       
 # The configuration of scheduled execution.
 crons:
