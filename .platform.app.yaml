@@ -94,6 +94,9 @@ hooks:
       cp installaion.feature vendor/behat/behat/features/
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
+      cd /app/public/sites/default/files/Behat_Testing;
+      cd vendor/behat/behat;
+      bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt;
       #ls
       
 # The configuration of scheduled execution.
