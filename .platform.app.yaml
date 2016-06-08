@@ -99,6 +99,8 @@ hooks:
       $testResult=bin/behat features/installaion.feature
       #POST https://github.com/shrimala/ahsweb/tree/Behat-setup/new_file.md
       #POST https://github.com/shrimala/ahsweb/tree/Behat-setup/"$testResult"
+      git request-pull https://github.com/shrimala/ahsweb.git Behat-setup
+      
 # The configuration of scheduled execution.
 crons:
     drupal:
