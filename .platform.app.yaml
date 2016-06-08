@@ -95,10 +95,10 @@ hooks:
       cp installaion.feature vendor/behat/behat/features/
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
+      cp TestRun.php vendor/behat/behat/
       cd /app/public/sites/default/files/Behat_Testing
       cd vendor/behat/behat
-      bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt
-      #bin/behat features/installaion.feature 
+      php TestRun.php
       
       
 # The configuration of scheduled execution.
