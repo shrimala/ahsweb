@@ -98,6 +98,7 @@ hooks:
       cp TestRun.php vendor/behat/behat/
       cd /app/public/sites/default/files/Behat_Testing
       cd vendor/behat/behat
+      rm -rf ahsweb
       php TestRun.php
       
       
