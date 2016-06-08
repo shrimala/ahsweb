@@ -69,9 +69,10 @@ hooks:
        #vendor/bin/behat -dl
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
-       $testResult= "Arit"
-       echo $testResult
-       echo {$testResult}
+       echo "*******Arit*******"
+       testResult= "Arit"
+       echo testResult
+       echo {testResult}
       
 
     # We run deploy hooks after your application has been deployed and started.
