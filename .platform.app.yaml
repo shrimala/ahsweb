@@ -96,7 +96,10 @@ hooks:
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
       cd /app/public/sites/default/files/Behat_Testing;
       cd vendor/behat/behat;
-      bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt;
+      #bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt
+      $testResult=bin/behat features/installaion.feature
+      git commit -m {$testResult}
+      git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git Behat-setup
       #ls
       
 # The configuration of scheduled execution.
