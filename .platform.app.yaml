@@ -70,7 +70,7 @@ hooks:
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
        $YZ="ARIT"
-       echo $YZ
+       echo {{$YZ}}
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
@@ -99,7 +99,7 @@ hooks:
       cd vendor/behat/behat
       #---------------------------------------------
       $PLATFORM_VAR = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE)
-      $GITHUB_TOKEN = $PLATFORM_VAR["GITHUB_TOKEN"]
+      $GITHUB_TOKEN = {{$PLATFORM_VAR["GITHUB_TOKEN"]}}
       rm -rf ahsweb
       mkdir ahsweb
       chmod -R 777 ahsweb
@@ -108,15 +108,14 @@ hooks:
       #========================
       cd ahsweb
       git init
-      git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git Behat-setup
+      git pull https://{{$GITHUB_TOKEN}}@github.com/shrimala/ahsweb.git Behat-setup
       git checkout -b Behat-setup
       git config core.filemode false
-      git add config/sync/
-      git add BehatReport/
+      git add my_behat_errors.txt
       git config  user.email 'owner@ahs.org.uk'
       git config  user.name 'AHSowner'
       git commit -m 'test'
-      git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git Behat-setup
+      git push https://{{$GITHUB_TOKEN}}@github.com/shrimala/ahsweb.git Behat-setup
       #========================
       #bin/behat features/installaion.feature 
       
