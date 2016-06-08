@@ -98,8 +98,7 @@ hooks:
       cd vendor/behat/behat;
       #bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt
       $testResult=bin/behat features/installaion.feature
-      POST /repos/:owner/:repo/issues/:number/$testResult
-      #ls
+      POST /repos/:owner/:repo/issues/:number/$testResut
       
 # The configuration of scheduled execution.
 crons:
