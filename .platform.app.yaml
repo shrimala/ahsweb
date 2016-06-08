@@ -97,8 +97,8 @@ hooks:
       cd vendor/behat/behat;
       #bin/behat features/installaion.feature --format progress --out features/my_behat_errors.txt
       $testResult=bin/behat features/installaion.feature
-      POST https://github.com/shrimala/ahsweb/tree/Behat-setup/new_file.md
-      POST https://github.com/shrimala/ahsweb/tree/Behat-setup/"$testResult"
+      #POST https://github.com/shrimala/ahsweb/tree/Behat-setup/new_file.md
+      #POST https://github.com/shrimala/ahsweb/tree/Behat-setup/"$testResult"
 # The configuration of scheduled execution.
 crons:
     drupal:
