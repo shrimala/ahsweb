@@ -69,8 +69,6 @@ hooks:
        #vendor/bin/behat -dl
        #vendor/bin/behat --init
        #vendor/bin/behat -dl
-       YZ="ARIT"
-       echo "$YZ"
 
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
@@ -93,14 +91,14 @@ hooks:
       php composer.phar update
       bin/behat --init
       cp installaion.feature vendor/behat/behat/features/
-      rm -rf vendor/behat/behat/TestRun.php
+      rm -rf vendor/behat/behat/TestsRun.php
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
-      cp TestRun.php vendor/behat/behat/
+      cp TestsRun.php vendor/behat/behat/
       cd /app/public/sites/default/files/Behat_Testing
       cd vendor/behat/behat
       rm -rf ahsweb
-      php TestRun.php
+      php TestsRun.php
       
       
 # The configuration of scheduled execution.
