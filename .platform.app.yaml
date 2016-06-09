@@ -99,7 +99,7 @@ hooks:
       cd /app/public/sites/default/files/Behat_Testing
       cd vendor/behat/behat
       rm -rf ahsweb
-      php TestsRun.php
+      #php TestsRun.php
       
       
 # The configuration of scheduled execution.
