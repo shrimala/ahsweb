@@ -90,6 +90,7 @@ hooks:
       cd Behat_Testing/
       php composer.phar update
       bin/behat --init
+      rm -rf vendor/behat/behat/features/*.feature
       cp installaion.feature vendor/behat/behat/features/
       rm -rf vendor/behat/behat/TestsRun.php
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
