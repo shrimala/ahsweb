@@ -58,6 +58,18 @@ mounts:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
+    build: |
+       #cd ./public
+       curl -sS https://getcomposer.org/installer | php
+       composer require drupal/drupal-extension='~3.0'
+       #composer require guzzlehttp/guzzle ='6.0.1'
+       #composer config bin-dir= 'vendor/bin/'
+       php composer.phar update
+       #vendor/bin/behat --init
+       #vendor/bin/behat -dl
+       #vendor/bin/behat --init
+       #vendor/bin/behat -dl
+
     # We run deploy hooks after your application has been deployed and started.
     deploy: |
       cd /app/public
@@ -69,10 +81,29 @@ hooks:
       cp deploy.php files/
       cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
-
+      cd files
+      rm -rf Behat_Testing/
+      mkdir Behat_Testing
+      chmod -R 777 Behat_Testing/
+      cp -r /app/public/sites/default/BehatTest/. Behat_Testing/
+      cp -r /app/public/sites/default/BehatFiles/. Behat_Testing/
+      cd Behat_Testing/
+      php composer.phar update
+      bin/behat --init
+      rm -rf vendor/behat/behat/features/*.feature
+      cp installaion.feature vendor/behat/behat/features/
+      rm -rf vendor/behat/behat/TestComments.php
+      rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
+      cp FeatureContext.php vendor/behat/behat/features/bootstrap/
+      cp TestComments.php vendor/behat/behat/
+      cd /app/public/sites/default/files/Behat_Testing
+      cd vendor/behat/behat
+      rm -rf ahsweb
+      php TestComments.php
+      
+      
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd public ; drush core-cron"
-        

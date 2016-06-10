@@ -1,0 +1,5 @@
+..
+
+1 scenario (1 passed)
+2 steps (2 passed)
+0m0.05s (10.26Mb)
