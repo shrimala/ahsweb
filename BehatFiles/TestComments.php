@@ -7,7 +7,7 @@ shell_exec("bin/behat features/installaion.feature --format progress --out test_
 $myfile = fopen("test_report.txt", "r") or die("Unable to open file!");
 $at1= fread($myfile,filesize("test_report.txt"));
 //$at1=str_replace(".","",$at1);
-$at1=preg_replace( "/\r|\n/", "", $at1);
+$at1=preg_replace( "/\r|\n/", " ", $at1);
 fclose($myfile);
 $at=shell_exec("bin/behat");
 $tx="curl -u 'aritnath1990:{$GITHUB_TOKEN}' -X POST --data '{";
