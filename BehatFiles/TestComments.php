@@ -6,7 +6,7 @@ $pr = substr($environment, 3);
 shell_exec("bin/behat features/installaion.feature --format progress --out test_report.txt;");
 $myfile = fopen("test_report.txt", "r") or die("Unable to open file!");
 $at1= fread($myfile,filesize("test_report.txt"));
-$at1=str_replace(".","",$at1);
+//$at1=str_replace(".","",$at1);
 $at1=preg_replace( "/\r|\n/", "", $at1);
 fclose($myfile);
 $at=shell_exec("bin/behat");
