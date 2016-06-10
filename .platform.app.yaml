@@ -92,14 +92,14 @@ hooks:
       bin/behat --init
       rm -rf vendor/behat/behat/features/*.feature
       cp installaion.feature vendor/behat/behat/features/
-      rm -rf vendor/behat/behat/TestsRun.php
+      rm -rf vendor/behat/behat/TestComments.php
       rm -rf vendor/behat/behat/features/bootstrap/FeatureContext.php
       cp FeatureContext.php vendor/behat/behat/features/bootstrap/
-      cp TestsRun.php vendor/behat/behat/
+      cp TestComments.php vendor/behat/behat/
       cd /app/public/sites/default/files/Behat_Testing
       cd vendor/behat/behat
       rm -rf ahsweb
-      #php TestsRun.php
+      php TestComments.php
       
       
 # The configuration of scheduled execution.
