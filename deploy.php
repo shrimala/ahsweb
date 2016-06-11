@@ -36,7 +36,7 @@ $json = json_decode($ip, true);
 echo $json['head']['ref'];
 $branch = $json['head']['ref'];
 echo "<br>Branch name: " . $branch;
-runcmd("cd /app/public/sites/default/files;
+runcmd("cd /app/web/sites/default/files;
 rm -rf ahsweb;
 mkdir ahsweb;
 chmod -R 777 ahsweb;
