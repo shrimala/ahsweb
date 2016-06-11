@@ -53,7 +53,7 @@ runcmd("git name-rev --name-only HEAD", $repo_path);
 runcmd("chmod -R 777 config/sync", $repo_path);
 runcmd("git config core.filemode false", $repo_path);
 runcmd("drush -y config-export;", $repo_path);
-runcmd("ls -tr config/sync", $repo_path);
+runcmd("ls -l -tr config/sync", $repo_path);
 runcmd("git add config/sync/", $repo_path);
 runcmd("git status;", $repo_path);
 runcmd("git config  user.email 'owner@ahs.org.uk'", $repo_path);
