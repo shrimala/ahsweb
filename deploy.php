@@ -51,6 +51,7 @@ runcmd("git name-rev --name-only HEAD", $repo_path);
 runcmd("git checkout -b {$branch}", $repo_path);
 runcmd("git name-rev --name-only HEAD", $repo_path);
 runcmd("chmod -R 777 config/sync", $repo_path);
+runcmd("rm config/sync/*", $repo_path);
 runcmd("ls -l config", $repo_path);
 runcmd("cat config/sync/system.site.yml", $repo_path);
 runcmd("cat config/sync/", $repo_path);
