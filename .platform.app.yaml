@@ -59,7 +59,7 @@ mounts:
 hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
-      cp ~/scripts/ahs/ahs_config_push.php ~/web/
+      cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
       cd web
       drush -y cache-rebuild
       drush -y config-import
