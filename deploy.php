@@ -21,7 +21,7 @@ function runcmd ($cmd, $path){
   echo "<pre><strong>";
   echo $path . "<br> >  ". $cmd;
   echo "</strong><br>";
-  echo shell_exec($cmd . " 2>&1");
+  echo shell_exec("cd $path; $cmd 2>&1");
   echo "</pre>";
 }
 
