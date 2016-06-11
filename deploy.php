@@ -16,13 +16,15 @@
     </div>
 <?php
 if (isset($_POST["t1"]) && !empty($_POST["t1"])) {
-function runcmd ($cmd){
+	
+function runcmd ($cmd, $path){
   echo "<pre><strong>";
-  echo ">  ". $cmd;
+  echo $path . "<br> >  ". $cmd;
   echo "</strong><br>";
   echo shell_exec($cmd . " 2>&1");
   echo "</pre>";
 }
+
 echo "<br><br><br><br><br><br>";
 echo "Export all the configuration file to GitHub<br>";
 $platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
@@ -36,25 +38,28 @@ $json = json_decode($ip, true);
 echo $json['head']['ref'];
 $branch = $json['head']['ref'];
 echo "<br>Branch name: " . $branch;
-runcmd("cd /app/web/sites/default/files;
-rm -rf ahsweb;
-mkdir ahsweb;
-chmod -R 777 ahsweb;
-cd ahsweb;
-git init;
-git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch};
-git name-rev --name-only HEAD;
-git checkout -b {$branch};
-git name-rev --name-only HEAD;
-chmod -R 777 config/sync;
-ls -l config/;
-drush -y config-export;
-git config core.filemode false;
-git add config/sync/;
-git config  user.email 'owner@ahs.org.uk';
-git config  user.name 'AHSowner';
-git commit -m '{$_POST['t1']}';
-git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}");
+$base_path = "~/web/sites/default/files";
+$repo_path = $base_path . "/ahsweb";
+
+runcmd("rm -rf ahsweb", $default_path);
+runcmd("mkdir ahsweb", $default_path);
+runcmd("chmod -R 777 ahsweb", $default_path);
+runcmd("chmod -R 777 ahsweb", $default_path .);
+runcmd("git init", $repo_path);
+runcmd("git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}", $repo_path);
+runcmd("git name-rev --name-only HEAD", $repo_path);
+runcmd("git checkout -b {$branch}", $repo_path);
+runcmd("git name-rev --name-only HEAD", $repo_path);
+runcmd("chmod -R 777 config/sync", $repo_path);
+runcmd("ls -l config/", $repo_path);
+runcmd("git config core.filemode false", $repo_path);
+runcmd("drush -y config-export;", $repo_path);
+runcmd("git add config/sync/", $repo_path);
+runcmd("git config  user.email 'owner@ahs.org.uk'", $repo_path);
+runcmd("git config  user.name 'AHSowner'", $repo_path);
+runcmd("git commit -m '{$_POST['t1']}'", $repo_path);
+runcmd("git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}")", $repo_path);
+
 }
 ?>
 </body>
