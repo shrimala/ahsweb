@@ -44,7 +44,7 @@ $repo_path = $base_path . "/ahsweb";
 runcmd("rm -rf ahsweb", $default_path);
 runcmd("mkdir ahsweb", $default_path);
 runcmd("chmod -R 777 ahsweb", $default_path);
-runcmd("chmod -R 777 ahsweb", $default_path .);
+runcmd("chmod -R 777 ahsweb", $default_path);
 runcmd("git init", $repo_path);
 runcmd("git pull https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}", $repo_path);
 runcmd("git name-rev --name-only HEAD", $repo_path);
