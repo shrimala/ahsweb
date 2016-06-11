@@ -60,7 +60,10 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
       cd web
-      drush -y cache-rebuild
+      chmod -R 777 sites/default
+      cd /web/sites/default
+      cp deploy.php files/
+      cp -r config/sync/. files/ahsweb/config/sync/
       drush -y config-import
       drush -y updatedb
 
