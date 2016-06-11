@@ -58,7 +58,7 @@ runcmd("git add config/sync/", $repo_path);
 runcmd("git config  user.email 'owner@ahs.org.uk'", $repo_path);
 runcmd("git config  user.name 'AHSowner'", $repo_path);
 runcmd("git commit -m '{$_POST['t1']}'", $repo_path);
-runcmd("git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}")", $repo_path);
+runcmd("git push https://{$GITHUB_TOKEN}@github.com/shrimala/ahsweb.git {$branch}", $repo_path);
 
 }
 ?>
