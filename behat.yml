@@ -2,8 +2,8 @@ default:
   suites:
     default:
       paths:
-        features: tests
-        bootstrap: tests/contexts
+        features: features
+        bootstrap: features/bootstrap
       contexts:
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
