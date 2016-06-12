@@ -64,6 +64,8 @@ hooks:
       drush -y cache-rebuild
       drush -y config-import
       drush -y updatedb
+      drush -y en flysystem
+      drush -y en flysystem_dropbox
 
 # The configuration of scheduled execution.
 crons:

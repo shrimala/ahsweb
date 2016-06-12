@@ -29,3 +29,5 @@ before_script:
 script:
   - cd $TRAVIS_BUILD_DIR
   - vendor/bin/behat  
+notifications:
+  email: false
