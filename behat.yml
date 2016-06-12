@@ -3,7 +3,7 @@ default:
     default:
       paths:
         features: features
-        bootstrap: %behat.paths.features%/bootstrap
+        bootstrap: features/bootstrap
       contexts:
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
