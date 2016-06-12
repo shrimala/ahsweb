@@ -1,6 +1,8 @@
 default:
   suites:
     default:
+      paths:
+        bootstrap: %behat.paths.features%/bootstrap
       contexts:
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
