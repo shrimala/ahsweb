@@ -28,6 +28,7 @@ script:
   - sleep 3
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer
-  - ./../vendor/bin/behat  
+  - cd $TRAVIS_BUILD_DIR 
+  - vendor/bin/behat  
 #  - ./../vendor/bin/drush
 #  - ./../vendor/bin/drupal
