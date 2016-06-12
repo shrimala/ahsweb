@@ -16,6 +16,7 @@ before_install:
 
 install:
   - composer --verbose install
+  - composer require drupal/drupal-extension='~3.0'
 
 script:
   - cd $TRAVIS_BUILD_DIR/web
@@ -27,5 +28,6 @@ script:
   - sleep 3
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer
+  - ./../vendor/bin/behat  
 #  - ./../vendor/bin/drush
 #  - ./../vendor/bin/drupal
