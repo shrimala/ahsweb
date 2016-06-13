@@ -62,7 +62,6 @@ hooks:
       cd web
       drush -y cache-rebuild
       drush -y config-import
-      drush enable `cat common.modules` --yes
       for module in `cat ~/common.modules`; do drush pm-enable $module --yes; done
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
         for module in `cat ~/dev.modules`; do drush pm-uninstall $module --yes; done
