@@ -11,20 +11,29 @@ module:
   contextual: 0
   datetime: 0
   dblog: 0
+  devel: 0
   dynamic_page_cache: 0
   editor: 0
+  entity: 0
+  entity_reference_revisions: 0
   field: 0
   field_ui: 0
   file: 0
+  filefield_paths: 0
   filter: 0
+  flysystem: 0
+  flysystem_dropbox: 0
   help: 0
   history: 0
   image: 0
   link: 0
+  media_entity: 0
+  media_entity_audio: 0
   menu_ui: 0
   node: 0
   options: 0
   page_cache: 0
+  paragraphs: 0
   path: 0
   quickedit: 0
   rdf: 0
@@ -37,7 +46,9 @@ module:
   tour: 0
   update: 0
   user: 0
+  video_embed_field: 0
   views_ui: 0
+  filefield_sources: 1
   menu_link_content: 1
   views: 10
   standard: 1000
