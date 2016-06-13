@@ -61,6 +61,8 @@ hooks:
     deploy: |
       cd web
       drush -y cache-rebuild
+      #enable modules both before and after config import, as import disables new modules
+      for module in `cat ~/common.modules`; do drush pm-enable $module --yes; done      
       drush -y config-import
       for module in `cat ~/common.modules`; do drush pm-enable $module --yes; done
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
