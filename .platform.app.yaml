@@ -59,13 +59,19 @@ mounts:
 hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
-      cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
       cd web
+      drush -y en flysystem
+      drush -y en flysystem_dropbox
+      if [ $PLATFORM_ENVIRONMENT = "master" ]; then
+        drush dis devel -y
+      else
+        cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
+        drush en devel -y
+      fi
       drush -y cache-rebuild
       drush -y config-import
       drush -y updatedb
-      drush -y en flysystem
-      drush -y en flysystem_dropbox
+
 
 # The configuration of scheduled execution.
 crons:
