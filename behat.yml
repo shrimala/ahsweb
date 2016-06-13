@@ -22,5 +22,3 @@ default:
         alias: 'local'
       drupal: 
         drupal_root: './web'
-    Bex\Behat\ScreenshotExtension:
-      active_image_drivers: upload_pie
