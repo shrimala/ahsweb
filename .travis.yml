@@ -18,7 +18,7 @@ install:
   - composer --verbose install
   - composer require drupal/drupal-extension='~3.0'
   - composer require --dev bex/behat-screenshot
-  - composer require --dev bex/behat-screenshot-image-driver-unsee
+  - composer require --dev bex/behat-screenshot-image-driver-uploadpiee
 
 before_script:
   - cd $TRAVIS_BUILD_DIR/web
