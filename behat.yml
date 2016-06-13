@@ -22,3 +22,8 @@ default:
         alias: 'local'
       drupal: 
         drupal_root: './web'
+    Bex\Behat\ScreenshotExtension:
+      active_image_drivers: unsee
+      image_drivers:
+        unsee:
+          expire: '1h' # possible values: '10m', '30m', '1h'
