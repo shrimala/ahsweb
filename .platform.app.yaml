@@ -63,10 +63,10 @@ hooks:
       drush enable `cat common.modules` --yes
       for module in `cat ~/common.modules`; do drush pm-enable $module --yes; done
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
-        for module in `cat ~/dev.modules`; do drush disable $module --yes; done
+        for module in `cat ~/dev.modules`; do drush pm-disable $module --yes; done
       else
         cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
-        for module in `cat ~/dev.modules`; do drush disable $module --yes; done
+        for module in `cat ~/dev.modules`; do drush pm-disable $module --yes; done
       fi
       drush -y cache-rebuild
       drush -y config-import
