@@ -26,6 +26,9 @@ before_script:
   - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
   - sleep 3
 script:
+  - cd $TRAVIS_BUILD_DIR/web
+  - ./../vendor/bin/drush pm-list --type=Module --no core -- status=enabled
+  - ./../vendor/bin/drush pm-list --type=Module --no core
   - cd $TRAVIS_BUILD_DIR
   - vendor/bin/behat  
 notifications:
