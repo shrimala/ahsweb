@@ -9,4 +9,4 @@ Feature: Site Installation
 
   Scenario: Flysystem is installed
     Given I am on "/admin/config/media/file-system/flysystem"
-    #implicitly checks for http 200 response code
+    Then the response status code should be 200 
