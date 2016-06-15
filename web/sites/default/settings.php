@@ -44,7 +44,12 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
 
 // Dev environment settings on platform.sh.
 if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
-  if ($_ENV["PLATFORM_ENVIRONMENT"]!="master") {
+  //We're on platform.sh
+  if ($_ENV["PLATFORM_ENVIRONMENT"]=="master") {
+    //We're on platform.sh master
+    $settings['config_readonly'] = TRUE;
+  } else {
+    //We're on a platform.sh dev environment
     if (file_exists(__DIR__ . '/settings.platformdev.php')) {
       include __DIR__ . '/settings.platformdev.php';
     }
