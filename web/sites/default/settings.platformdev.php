@@ -105,6 +105,3 @@ $settings['rebuild_access'] = TRUE;
  * directory.
  */
 $settings['skip_permissions_hardening'] = TRUE;
-
-//AHS customisations
-$config['environment_indicator.indicator']['name'] = "Development";
