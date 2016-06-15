@@ -42,6 +42,15 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
 }
 
+// Dev environment settings on platform.sh.
+if (isset($_ENV["PLATFORM_ENVIRONMENT"]) {
+  if ($_ENV["PLATFORM_ENVIRONMENT"]!="master") {
+    if (file_exists(__DIR__ . '/settings.platformdev.php')) {
+      include __DIR__ . '/settings.platformdev.php';
+    }
+  }
+}
+
 // Local settings. These come last so that they can override anything.
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
