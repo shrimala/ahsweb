@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eeea9883104ae2e3b3c26d652517866f",
-    "content-hash": "163442d5233c69d25bae5e4ad542afc3",
+    "hash": "2e4c03643208cffcba78309157867d0c",
+    "content-hash": "e178454c88f10bbc631fdb58869540ab",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1310,48 +1310,6 @@
             "support": {
                 "source": "https://www.drupal.org/project/entity_reference_revisions"
             }
-        },
-        {
-            "name": "drupal/environment_indicator",
-            "version": "dev-3.0.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/environment_indicator",
-                "reference": "23e2dfe724c399e4fb6adc42d289c5be1a7e5255"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-3.0.x": "3.0.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-3.x-dev",
-                    "datestamp": "1459762718"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "e0ipso",
-                    "homepage": "https://www.drupal.org/user/550110"
-                },
-                {
-                    "name": "mrfelton",
-                    "homepage": "https://www.drupal.org/user/305669"
-                }
-            ],
-            "description": "Adds a color indicator for the different environments.",
-            "homepage": "https://www.drupal.org/project/environment_indicator",
-            "support": {
-                "source": "https://www.drupal.org/project/environment_indicator"
-            },
-            "time": "2016-04-04 09:20:47"
         },
         {
             "name": "drupal/filefield_paths",
@@ -6532,8 +6490,7 @@
         "drupal/paragraphs": 20,
         "drupal/devel": 20,
         "drupal/config_inspector": 20,
-        "drupal/config_readonly": 20,
-        "drupal/environment_indicator": 20
+        "drupal/config_readonly": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
