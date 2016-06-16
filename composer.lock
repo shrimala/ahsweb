@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a6d7afec10d3825dc9c92b5a8e076ed1",
-    "content-hash": "c432e40c554864caebb02eaf06b0283c",
+    "hash": "2e4c03643208cffcba78309157867d0c",
+    "content-hash": "e178454c88f10bbc631fdb58869540ab",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -785,6 +785,114 @@
             ],
             "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core",
             "time": "2016-05-25 21:59:48"
+        },
+        {
+            "name": "drupal/config_inspector",
+            "version": "dev-1.0.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/config_inspector",
+                "reference": "9c2ee529375e15b648ad25c0b58cc658842cb45e"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.0.x": "1.0.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha2+10-dev",
+                    "datestamp": "1448356444"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Gábor Hojtsy",
+                    "homepage": "https://www.drupal.org/user/4166"
+                },
+                {
+                    "name": "Jose Reyero",
+                    "homepage": "https://www.drupal.org/user/4299"
+                },
+                {
+                    "name": "aspilicious",
+                    "homepage": "https://www.drupal.org/user/172527"
+                },
+                {
+                    "name": "vijaycs85",
+                    "homepage": "https://www.drupal.org/user/93488"
+                }
+            ],
+            "description": "Provides a configuration data and structure inspector tool.",
+            "homepage": "https://www.drupal.org/project/config_inspector",
+            "support": {
+                "source": "https://www.drupal.org/project/config_inspector"
+            },
+            "time": "2015-11-24 09:16:46"
+        },
+        {
+            "name": "drupal/config_readonly",
+            "version": "dev-1.0.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/config_readonly",
+                "reference": "3c655ad36bef03ab0a98637a77ef5b17730f1d7d"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.0.x": "1.0.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta1+7-dev",
+                    "datestamp": "1453940039"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "beejeebus",
+                    "homepage": "https://www.drupal.org/user/38580"
+                },
+                {
+                    "name": "effulgentsia",
+                    "homepage": "https://www.drupal.org/user/78040"
+                },
+                {
+                    "name": "moshe weitzman",
+                    "homepage": "https://www.drupal.org/user/23"
+                },
+                {
+                    "name": "pwolanin",
+                    "homepage": "https://www.drupal.org/user/49851"
+                },
+                {
+                    "name": "scor",
+                    "homepage": "https://www.drupal.org/user/52142"
+                },
+                {
+                    "name": "wheatpenny",
+                    "homepage": "https://www.drupal.org/user/1128182"
+                }
+            ],
+            "description": "Enables making the active configuration store read-only to prevent configuration changes on a Drupal site.",
+            "homepage": "https://www.drupal.org/project/config_readonly",
+            "support": {
+                "source": "https://www.drupal.org/project/config_readonly"
+            },
+            "time": "2016-01-28 00:13:10"
         },
         {
             "name": "drupal/console",
@@ -6380,7 +6488,9 @@
         "drupal/filefield_paths": 20,
         "drupal/filefield_sources": 20,
         "drupal/paragraphs": 20,
-        "drupal/devel": 20
+        "drupal/devel": 20,
+        "drupal/config_inspector": 20,
+        "drupal/config_readonly": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

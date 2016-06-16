@@ -42,6 +42,33 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
 }
 
+
+// Set base url, needed by simplenews module
+$main_route_url = 'http://{default}/';
+$routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
+foreach ($routes as $route_url => $route_info) {
+  if ($route_info["original_url"] == $main_route_url) {
+    $base_url = $route_url;
+    break;
+  }
+}
+$base_url = rtrim($base_url,'/');
+
+
+// Dev environment settings on platform.sh.
+if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
+  //We're on platform.sh
+  if ($_ENV["PLATFORM_ENVIRONMENT"]=="master") {
+    //We're on platform.sh master
+    $settings['config_readonly'] = TRUE;
+  } else {
+    //We're on a platform.sh dev environment
+    if (file_exists(__DIR__ . '/settings.platformdev.php')) {
+      include __DIR__ . '/settings.platformdev.php';
+    }
+  }
+}
+
 // Local settings. These come last so that they can override anything.
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
