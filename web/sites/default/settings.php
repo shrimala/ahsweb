@@ -58,7 +58,7 @@ $base_url = rtrim($base_url,'/');
 // Dev environment settings on platform.sh.
 if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   //We're on platform.sh
-  if ($_ENV["PLATFORM_ENVIRONMENT"]=="master") {
+  if ($_ENV["PLATFORM_ENVIRONMENT"]=="Master") {
     //We're on platform.sh master
     $settings['config_readonly'] = TRUE;
   } else {
