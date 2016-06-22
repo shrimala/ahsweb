@@ -61,6 +61,7 @@ hooks:
     deploy: |
       cd web
       drush -y cache-rebuild
+      drush -y updatedb
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
         drush config-import --skip-modules="$(echo $(cat dev.modules) | tr " " "," )"
         for module in `cat ~/common.modules`; do drush pm-enable $module --yes; done
@@ -74,7 +75,6 @@ hooks:
         for module in `cat ~/master.modules`; do drush pm-uninstall $module --yes; done
         drush sql-sanitize --sanitize-email="no"
       fi
-      drush -y updatedb
 
 
 # The configuration of scheduled execution.
