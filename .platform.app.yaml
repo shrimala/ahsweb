@@ -63,13 +63,13 @@ hooks:
       drush -y cache-rebuild
       drush -y updatedb
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
-        drush config-import --skip-modules="$(echo $(cat modules.dev) | tr " " "," )"
+        drush config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
         for module in `cat ~/modules.common`; do drush pm-enable $module --yes; done
         for module in `cat ~/modules.dev`; do drush pm-uninstall $module --yes; done
         for module in `cat ~/modules.master`; do drush pm-enable $module --yes; done
       else
         cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
-        drush config-import --skip-modules="$(echo $(cat modules.dev) | tr " " "," )"
+        drush config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
         for module in `cat ~/modules.common`; do drush pm-enable $module --yes; done
         for module in `cat ~/modules.dev`; do drush pm-enable $module --yes; done
         for module in `cat ~/modules.master`; do drush pm-uninstall $module --yes; done
