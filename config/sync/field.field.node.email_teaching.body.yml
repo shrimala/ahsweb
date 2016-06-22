@@ -1,0 +1,22 @@
+uuid: b0377107-e047-4013-a23c-887b982c8b8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.email_teaching
+  module:
+    - text
+id: node.email_teaching.body
+field_name: body
+entity_type: node
+bundle: email_teaching
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

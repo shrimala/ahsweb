@@ -1,0 +1,9 @@
+uuid: 666b47e7-52e4-48aa-8228-450ae6a1e24f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Teaching tags'
+vid: teaching_tags
+description: 'Classifying teachings by subject matter'
+hierarchy: 0
+weight: 0

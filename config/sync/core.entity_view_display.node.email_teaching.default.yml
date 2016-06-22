@@ -1,0 +1,39 @@
+uuid: 4a7d2d6b-5bf2-4950-9b34-47af45f2fec1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.email_teaching.body
+    - field.field.node.email_teaching.field_original
+    - field.field.node.email_teaching.field_teaching_tags
+    - node.type.email_teaching
+  module:
+    - text
+    - user
+id: node.email_teaching.default
+targetEntityType: node
+bundle: email_teaching
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_original:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_teaching_tags:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 100
+hidden: {  }

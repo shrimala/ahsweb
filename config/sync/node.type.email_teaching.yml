@@ -1,0 +1,17 @@
+uuid: 0d58a662-de91-42b9-8a71-4c8da3ee8e06
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Email teaching'
+type: email_teaching
+description: 'Buddhism Connect email teachings'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

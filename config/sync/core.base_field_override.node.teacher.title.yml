@@ -1,0 +1,18 @@
+uuid: 160d1425-c750-4e05-a146-d686f2786876
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.teacher
+id: node.teacher.title
+field_name: title
+entity_type: node
+bundle: teacher
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

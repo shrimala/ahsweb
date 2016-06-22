@@ -1,0 +1,24 @@
+uuid: bba7a8db-b33a-4739-b65d-7eb7d5cb39e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.teacher.body
+    - node.type.teacher
+  module:
+    - text
+    - user
+id: node.teacher.default
+targetEntityType: node
+bundle: teacher
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }
