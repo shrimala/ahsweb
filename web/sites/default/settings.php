@@ -72,7 +72,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   }
   // Build the Flysystem scheme
   $schemes = [
-    'AHS Dropbox Web Archive' => [
+    'ahs_dropbox_web_archive' => [
       'driver' => 'dropbox',
       'config' => [
         'token' => $platformVariables['DROPBOX_TOKEN'],
@@ -86,7 +86,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   if ($_ENV['TRAVIS']==TRUE) {$webRoot = $_ENV['TRAVIS_BUILD_DIR'];}
   // Build the Flysystem scheme
   $schemes = [
-    'AHS Dropbox Web Archive' => [
+    'ahs_dropbox_web_archive' => [
       'driver' => 'local',
       'config' => [
         'root' => $webRoot . '/web/sites/default/files/testfiles',
