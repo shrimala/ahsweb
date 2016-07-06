@@ -1,18 +1,16 @@
-uuid: 49b2b49b-f960-494e-af00-acedfb25778f
+uuid: 3ef8d15c-a98c-4053-b668-fe7314f35e7d
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.article
+    - node.type.venue
   module:
     - text
-_core:
-  default_config_hash: Ay3b2hq42cpQTFB_lNu8S2ZxuVIY6-dlBsc7vLeJ-YY
-id: node.article.body
+id: node.venue.body
 field_name: body
 entity_type: node
-bundle: article
+bundle: venue
 label: Body
 description: ''
 required: false

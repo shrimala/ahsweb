@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.audio.field_admin_tags
     - field.field.media.audio.field_dropbox
     - media_entity.bundle.audio
   module:
@@ -17,6 +18,14 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_admin_tags:
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_dropbox:
     weight: 11
     settings:

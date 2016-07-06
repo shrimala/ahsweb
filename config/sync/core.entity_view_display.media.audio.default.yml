@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.audio.field_admin_tags
     - field.field.media.audio.field_dropbox
     - image.style.thumbnail
     - media_entity.bundle.audio
@@ -24,6 +25,13 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+  field_admin_tags:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_dropbox:
     weight: 2
     label: above

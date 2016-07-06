@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.youtube.field_admin_tags
     - field.field.media.youtube.field_media_video_embed_field
     - image.style.thumbnail
     - media_entity.bundle.youtube
@@ -24,6 +25,13 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+  field_admin_tags:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_media_video_embed_field:
     type: video_embed_field_video
     weight: 2

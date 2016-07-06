@@ -5,7 +5,10 @@ dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_datetime
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_leader
     - field.field.node.event.field_sessions
+    - field.field.node.event.field_venue
     - node.type.event
   module:
     - datetime
@@ -34,8 +37,32 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_event_type:
+    weight: 37
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_leader:
+    weight: 38
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_sessions:
     weight: 33
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_venue:
+    weight: 34
     settings:
       match_operator: CONTAINS
       size: 60

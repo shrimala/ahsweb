@@ -1,0 +1,17 @@
+uuid: c2deddef-5076-4788-b689-28fe0de0453d
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Venue
+type: venue
+description: 'Locations where events are held'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

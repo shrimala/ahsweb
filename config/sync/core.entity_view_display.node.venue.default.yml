@@ -1,0 +1,24 @@
+uuid: bc3fd5bc-2699-4209-aed6-0762dfe65c7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.venue.body
+    - node.type.venue
+  module:
+    - text
+    - user
+id: node.venue.default
+targetEntityType: node
+bundle: venue
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

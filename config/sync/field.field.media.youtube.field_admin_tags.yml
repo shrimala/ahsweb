@@ -1,0 +1,28 @@
+uuid: cde98359-d126-4880-8e91-eb65bfe96eed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_admin_tags
+    - media_entity.bundle.youtube
+    - taxonomy.vocabulary.admin_tags
+id: media.youtube.field_admin_tags
+field_name: field_admin_tags
+entity_type: media
+bundle: youtube
+label: 'Admin tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      admin_tags: admin_tags
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

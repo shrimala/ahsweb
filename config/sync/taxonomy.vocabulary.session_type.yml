@@ -1,0 +1,9 @@
+uuid: e4d51b7e-2c5f-4053-9bf9-d2f2768e084c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Session type'
+vid: session_type
+description: 'Types of event & recording sessions'
+hierarchy: 0
+weight: 0

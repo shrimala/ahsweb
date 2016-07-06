@@ -1,0 +1,21 @@
+uuid: c0405efa-e8e8-40f0-b653-b8e44943f1d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media
+    - node.type.session
+id: node.session.field_media
+field_name: field_media
+entity_type: node
+bundle: session
+label: Recordings
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference
