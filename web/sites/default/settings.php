@@ -42,7 +42,6 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
 }
 
-
 // Set base url, needed by simplenews module
 $main_route_url = 'http://{default}/';
 $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
@@ -54,20 +53,51 @@ foreach ($routes as $route_url => $route_info) {
 }
 $base_url = rtrim($base_url,'/');
 
+// Fetching the Platform.sh environment variables
+$platformVariables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 
-// Dev environment settings on platform.sh.
+// Settings for different Platform.sh environments
 if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   //We're on platform.sh
   if ($_ENV['PLATFORM_ENVIRONMENT']==='master') {
     //We're on platform.sh master
     $settings['config_readonly'] = TRUE;
+    $dropboxPath = "Website archive/Live";
   } else {
     //We're on a platform.sh dev environment
+    $dropboxPath = "Website archive/Dev";
     if (file_exists(__DIR__ . '/settings.platformdev.php')) {
       include __DIR__ . '/settings.platformdev.php';
     }
   }
+  // Build the Flysystem scheme
+  $schemes = [
+    'AHS Dropbox Web Archive' => [
+      'driver' => 'dropbox',
+      'config' => [
+        'token' => $platformVariables['DROPBOX_TOKEN'],
+        'client_id' => $platformVariables['DROPBOX_CLIENT'],
+        'prefix' => $dropboxPath,
+      ],
+    ]
+  ];
+} else {
+  //We're not on platform.sh; maybe on Travis, maybe local
+  if ($_ENV['TRAVIS']==TRUE) {$webRoot = $_ENV['TRAVIS_BUILD_DIR'];}
+  // Build the Flysystem scheme
+  $schemes = [
+    'AHS Dropbox Web Archive' => [
+      'driver' => 'local',
+      'config' => [
+        'root' => $webRoot . '/web/sites/default/files/test',
+      ],
+    ]
+  ];
+  }
 }
+
+// Passing the Flysystem schemes to Drupal
+$settings['flysystem'] = $schemes;
 
 // Local settings. These come last so that they can override anything.
 if (file_exists(__DIR__ . '/settings.local.php')) {
