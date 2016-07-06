@@ -89,7 +89,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
     'AHS Dropbox Web Archive' => [
       'driver' => 'local',
       'config' => [
-        'root' => $webRoot . '/web/sites/default/files/test',
+        'root' => $webRoot . '/web/sites/default/files/testfiles',
       ],
     ]
   ];
