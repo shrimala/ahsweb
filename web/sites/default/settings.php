@@ -82,7 +82,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
     ]
   ];
 } else {
-  //We're not on platform.sh; maybe on Travis, maybe local
+  // We're not on platform.sh; maybe on Travis, maybe local
   if ($_ENV['TRAVIS']==TRUE) {$webRoot = $_ENV['TRAVIS_BUILD_DIR'];}
   // Build the Flysystem scheme
   $schemes = [
@@ -93,7 +93,6 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
       ],
     ]
   ];
-  }
 }
 
 // Passing the Flysystem schemes to Drupal
