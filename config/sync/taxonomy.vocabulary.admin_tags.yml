@@ -1,0 +1,9 @@
+uuid: 8849be98-cf14-47eb-93eb-9f8032d96ac8
+langcode: en
+status: true
+dependencies: {  }
+name: 'Admin tags'
+vid: admin_tags
+description: 'Tags used in the administration of the teachings archive '
+hierarchy: 0
+weight: 0

@@ -1,0 +1,17 @@
+uuid: 8071a4a9-c053-45e3-9edd-deeb8aea9d4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Session
+type: session
+description: 'A session within an event'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

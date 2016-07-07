@@ -19,6 +19,8 @@ install:
   - composer require drupal/drupal-extension='~3.0'
 
 before_script:
+  - mkdir $TRAVIS_BUILD_DIR/web/sites/default/testfiles
+  - cp $TRAVIS_BUILD_DIR/features/testfiles/*.* $TRAVIS_BUILD_DIR/web/sites/default/testfiles
   - cd $TRAVIS_BUILD_DIR/web
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   - ./../vendor/bin/drush config-set "system.site" uuid "2748a6a9-0c67-43c6-aa47-71df4737a69f" --yes

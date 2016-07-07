@@ -1,0 +1,19 @@
+uuid: 2b2ea34c-998a-478e-aa7e-75b454e4756c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_original
+    - node.type.email_teaching
+id: node.email_teaching.field_original
+field_name: field_original
+entity_type: node
+bundle: email_teaching
+label: Original
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

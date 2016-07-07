@@ -1,0 +1,17 @@
+uuid: c9758164-56ba-4db4-b3dd-bac8cf46b2af
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Teacher
+type: teacher
+description: 'Teachers & other session leaders'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

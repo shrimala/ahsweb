@@ -1,0 +1,28 @@
+uuid: feff640a-ea39-4264-a99d-2d1fde4482eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaching_tags
+    - node.type.email_teaching
+    - taxonomy.vocabulary.teaching_tags
+id: node.email_teaching.field_teaching_tags
+field_name: field_teaching_tags
+entity_type: node
+bundle: email_teaching
+label: 'Teaching tags'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      teaching_tags: teaching_tags
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

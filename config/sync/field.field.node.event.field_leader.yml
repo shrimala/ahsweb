@@ -1,0 +1,28 @@
+uuid: 7cf5a536-10cb-48f4-a4ed-b070fc6ab9b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_leader
+    - node.type.event
+    - node.type.teacher
+id: node.event.field_leader
+field_name: field_leader
+entity_type: node
+bundle: event
+label: Leader
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      teacher: teacher
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

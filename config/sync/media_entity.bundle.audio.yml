@@ -1,0 +1,14 @@
+uuid: 9835bd30-4a5f-4aa7-8dff-61c8eaa053bc
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity_audio
+id: audio
+label: Audio
+description: 'MP3 audio recordings'
+type: audio
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration: {  }
+field_map: {  }

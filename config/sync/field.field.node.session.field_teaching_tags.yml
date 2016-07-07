@@ -1,0 +1,28 @@
+uuid: f9ae24d0-9008-44da-a80f-3d9248310eb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaching_tags
+    - node.type.session
+    - taxonomy.vocabulary.teaching_tags
+id: node.session.field_teaching_tags
+field_name: field_teaching_tags
+entity_type: node
+bundle: session
+label: 'Teaching tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      teaching_tags: teaching_tags
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

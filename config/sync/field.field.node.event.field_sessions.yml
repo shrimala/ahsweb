@@ -1,0 +1,28 @@
+uuid: 69da39f8-cce9-41e0-aa1d-99b92595c55b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sessions
+    - node.type.event
+    - node.type.session
+id: node.event.field_sessions
+field_name: field_sessions
+entity_type: node
+bundle: event
+label: Sessions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      session: session
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

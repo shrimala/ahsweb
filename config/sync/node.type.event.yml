@@ -1,0 +1,17 @@
+uuid: 345db31b-ae66-41f7-bf0c-322573802ad7
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Event
+type: event
+description: 'Sangha events, either in person or online, with their start and end date.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

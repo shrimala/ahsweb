@@ -1,0 +1,23 @@
+uuid: 0de46962-d61e-43d1-869e-784e0289dbae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_restricted
+    - node.type.session
+id: node.session.field_restricted
+field_name: field_restricted
+entity_type: node
+bundle: session
+label: Restricted
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -1,0 +1,9 @@
+uuid: 7662bea6-dfcf-42d8-8235-3eac7e0f3322
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event tags'
+vid: event_tags
+description: 'Tags to categorise events'
+hierarchy: 0
+weight: 0
