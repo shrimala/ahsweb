@@ -77,7 +77,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
       'config' => [
         'token' => $platformVariables['DROPBOX_TOKEN'],
         'client_id' => $platformVariables['DROPBOX_CLIENT'],
-        'prefix' => $dropboxPath,
+        //'prefix' => $dropboxPath,
       ],
     ]
   ];
