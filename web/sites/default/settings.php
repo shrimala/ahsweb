@@ -58,13 +58,13 @@ $platformVariables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRU
 
 // Settings for different Platform.sh environments
 if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
-  //We're on platform.sh
+  // We're on platform.sh
   if ($_ENV['PLATFORM_ENVIRONMENT']==='master') {
     //We're on platform.sh master
     $settings['config_readonly'] = TRUE;
     $dropboxPath = "Live";
   } else {
-    //We're on a platform.sh dev environment
+    // We're on a platform.sh dev environment
     $dropboxPath = "Dev";
     if (file_exists(__DIR__ . '/settings.platformdev.php')) {
       include __DIR__ . '/settings.platformdev.php';
