@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.youtube.field_admin_tags
     - field.field.media.youtube.field_media_video_embed_field
     - media_entity.bundle.youtube
   module:
@@ -18,14 +17,6 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
-  field_admin_tags:
-    weight: 12
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
   field_media_video_embed_field:
     type: video_embed_field_textfield
     weight: 11
