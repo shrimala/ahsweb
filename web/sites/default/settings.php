@@ -62,10 +62,10 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   if ($_ENV['PLATFORM_ENVIRONMENT']==='master') {
     //We're on platform.sh master
     $settings['config_readonly'] = TRUE;
-    $dropboxPath = "Website archive/Live";
+    $dropboxPath = "Live";
   } else {
     //We're on a platform.sh dev environment
-    $dropboxPath = "Website archive/Dev";
+    $dropboxPath = "Dev";
     if (file_exists(__DIR__ . '/settings.platformdev.php')) {
       include __DIR__ . '/settings.platformdev.php';
     }
