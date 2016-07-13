@@ -76,7 +76,6 @@ hooks:
         drush sql-sanitize --sanitize-email="no"
       fi
 
-
 # The configuration of scheduled execution.
 crons:
     drupal:
