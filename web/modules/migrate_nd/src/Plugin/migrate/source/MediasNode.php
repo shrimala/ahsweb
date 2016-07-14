@@ -87,11 +87,13 @@ class MediasNode extends SqlBase {
      * the media_term migration).
      */      
      //$fields = array('bbid', 'style');
-    $obj = db_query('SELECT title,old_id FROM migrate_nd_mdstemp_node WHERE sbid='.$row->getSourceProperty('sbid'));
+    $obj = db_query('SELECT title, old_id, field_restricted, field_clip FROM migrate_nd_mdstemp_node WHERE sbid='.$row->getSourceProperty('sbid'));
     $i=0;
     $i1=0;
     $j=0;
     $j1=0;
+    $restriction=0;
+    $fieldclip=0;
     foreach($obj as $obj1)
       {
 	    $q1 = db_query("SELECT recordings FROM migrate_nd_sestemp_node WHERE title='".$obj1->title."'");
@@ -106,6 +108,13 @@ class MediasNode extends SqlBase {
 		   $teachername=$r10->field_leader;
 		   
 		 }
+		if ($obj1->field_restricted==1) {
+			$restriction=$obj1->field_restricted;
+		}
+		
+		if ($obj1->field_clip==1) {
+			$fieldclip=$obj1->field_clip;
+		}
 	  }
 	  
 	  $data1count=count($data1);
@@ -152,6 +161,8 @@ class MediasNode extends SqlBase {
     $row->setSourceProperty('meytbid', $meytbidref);
     $row->setSourceProperty('mebid',$mebidref);
     $row->setSourceProperty('terms', $terms);
+    $row->setSourceProperty('field_restricted', $restriction);
+    $row->setSourceProperty('field_clip', $fieldclip);
     return parent::prepareRow($row);
   }
 
