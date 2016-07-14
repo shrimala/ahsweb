@@ -1,5 +1,5 @@
 INTRODUCTION
-------------
+-------------
 The migrate_nd module demonstrates how to implement custom migrations
 for Drupal 8. It includes a group of "dyn" migrations demonstrating a complete
 simple migration scenario.
