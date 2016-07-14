@@ -1156,10 +1156,10 @@ function migrate_nd_mdf_data_node() {
 
     $i=0;
     foreach ( $obj12 as $obj123 ) {
-      $data[$i][0]=str_replace("/","",$obj123->filename);
-      $data[$i][1]='dropboxexample://testfolder2016/'.str_replace("/","",$obj123->filename);
-      //$data[$i][0]=$obj123->filename;
-      //$data[$i][1]='dropboxexample://'.$obj123->filename;
+      //$data[$i][0]=str_replace("/","",$obj123->filename);
+      //$data[$i][1]='dropboxexample://testfolder2016/'.str_replace("/","",$obj123->filename);
+      $data[$i][0]=$obj123->filename;
+      $data[$i][1]='dropboxexample://'.$obj123->filename;
       $data[$i][2]='audio/mpeg';
       $data[$i][3]='1';
       $data[$i][4]='1458563370';
