@@ -12,20 +12,17 @@ process:
     plugin: default_value
     default_value: session
   title: title
-  field_clip: 
-    plugin: default_value
-    default_value: 0
+  field_clip: field_clip
   field_datetime: dt_session
   'body/value': descrip
+  'body/summary': body_summery
   field_leader:
     plugin: migration
     migration: media_node
     source: mbid
   field_original: field_old_catalog
   field_media: meytbid
-  field_restricted: 
-    plugin: default_value
-    default_value: 0
+  field_restricted: field_restricted
   field_teaching_tags:
     plugin: migration
     migration: dyn_term
