@@ -36,14 +36,14 @@ CREATE TABLE IF NOT EXISTS `audio` (
 --
 
 INSERT INTO `audio` (`title`, `id`) VALUES
-('Audio1', '2016-04/behagra-t-192.mp3'),
-('Audio2', 'testfolder20/bhatiyar_ausschnitt3.mp3'),
+('Audio1', 'testfolder2016/behagra-t-192.mp3'),
+('Audio2', 'testfolder2016/bhatiyar_ausschnitt3.mp3'),
 ('Audio3', 'testfolder2016/do_you_sing_my_song.mp3'),
-('Audio4', 'testfolder20/pictures-promenade.mp3'),
-('Audio5', 'testfolder20/Mozart-minuet-k2.mp3'),
+('Audio4', 'testfolder2016/pictures-promenade.mp3'),
+('Audio5', 'testfolder2016/Mozart-minuet-k2.mp3'),
 ('Audio6', 'testfolder2016/Satie-Gymnopedie1-cello-piano.mp3'),
-('Audio7', '2016-04/soulsearcher-clip-2-192.mp3'),
-('Audio8', '2016-04/Tumi asbe boleNachiketa.mp3');
+('Audio7', 'testfolder2016/soulsearcher-clip-2-192.mp3'),
+('Audio8', 'testfolder2016/Tumi asbe boleNachiketa.mp3');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
