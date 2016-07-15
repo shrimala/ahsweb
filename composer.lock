@@ -1081,6 +1081,7 @@
                 "drupal/locale": "self.version",
                 "drupal/menu_link_content": "self.version",
                 "drupal/menu_ui": "self.version",
+                "drupal/migrate": "self.version",
                 "drupal/migrate_drupal": "self.version",
                 "drupal/migrate_drupal_ui": "self.version",
                 "drupal/minimal": "self.version",
