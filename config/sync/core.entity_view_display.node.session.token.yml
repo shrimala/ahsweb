@@ -17,35 +17,12 @@ dependencies:
     - node.type.session
   module:
     - datetime
-    - text
     - user
 id: node.session.token
 targetEntityType: node
 bundle: session
 mode: token
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
-    settings: {  }
-    third_party_settings: {  }
-  field_admin_tags:
-    weight: 105
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_clip:
-    weight: 108
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
   field_datetime:
     weight: 102
     label: above
@@ -54,51 +31,14 @@ content:
       date_format: Y/m/d/Hi
     third_party_settings: {  }
     type: datetime_custom
-  field_leader:
-    weight: 103
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_media:
-    weight: 109
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_original:
-    weight: 110
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-  field_restricted:
-    weight: 107
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-  field_session_type:
-    weight: 106
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_teaching_tags:
-    weight: 104
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  body: true
+  field_admin_tags: true
+  field_clip: true
+  field_leader: true
+  field_media: true
+  field_original: true
+  field_restricted: true
+  field_session_type: true
+  field_teaching_tags: true
+  links: true

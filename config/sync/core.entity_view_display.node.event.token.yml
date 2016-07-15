@@ -13,19 +13,12 @@ dependencies:
     - node.type.event
   module:
     - datetime
-    - text
     - user
 id: node.event.token
 targetEntityType: node
 bundle: event
 mode: token
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
-    settings: {  }
-    third_party_settings: {  }
   field_datetime:
     weight: 102
     label: above
@@ -34,36 +27,10 @@ content:
       date_format: Y/m/d
     third_party_settings: {  }
     type: datetime_custom
-  field_event_type:
-    weight: 107
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_leader:
-    weight: 108
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_sessions:
-    weight: 103
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_venue:
-    weight: 104
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  body: true
+  field_event_type: true
+  field_leader: true
+  field_sessions: true
+  field_venue: true
+  links: true
