@@ -62,6 +62,7 @@ hooks:
       cd web
       drush -yes cache-rebuild
       drush -yes updatedb
+      drush --yes entity-updates
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
         for module in `cat ~/modules.common`; do drush --yes pm-enable $module; done
         for module in `cat ~/modules.dev`; do drush --yes pm-uninstall $module; done
