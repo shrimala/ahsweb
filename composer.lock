@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "44941248a18cfa0a45f6abe533a97970",
-    "content-hash": "fc499aa5a568f45dfdf877eafaf1b084",
+    "hash": "7c7b2f4d3cd7b11b0402efa59c6a37e3",
+    "content-hash": "4bb4e4ef498316b6f7938eb9bc66c9cb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -981,16 +981,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.1.2",
+            "version": "8.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-core.git",
-                "reference": "a5d3f14db87ef953d227fb411489bada1afbb0a8"
+                "reference": "5e4ee1266c741ace5df7c9b8ac3ba1b0d592ee9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/a5d3f14db87ef953d227fb411489bada1afbb0a8",
-                "reference": "a5d3f14db87ef953d227fb411489bada1afbb0a8",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/5e4ee1266c741ace5df7c9b8ac3ba1b0d592ee9d",
+                "reference": "5e4ee1266c741ace5df7c9b8ac3ba1b0d592ee9d",
                 "shasum": ""
             },
             "require": {
@@ -1045,8 +1045,10 @@
                 "drupal/content_translation": "self.version",
                 "drupal/contextual": "self.version",
                 "drupal/core-annotation": "self.version",
+                "drupal/core-assertion": "self.version",
                 "drupal/core-bridge": "self.version",
                 "drupal/core-datetime": "self.version",
+                "drupal/core-dependency-injection": "self.version",
                 "drupal/core-diff": "self.version",
                 "drupal/core-discovery": "self.version",
                 "drupal/core-event-dispatcher": "self.version",
@@ -1151,7 +1153,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2016-06-01 23:31:24"
+            "time": "2016-07-07 09:38:59"
         },
         {
             "name": "drupal/ctools",
