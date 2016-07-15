@@ -25,7 +25,7 @@
         "drupal/flysystem": "1.0.x-dev",
         "drupal/flysystem_dropbox": "1.0.x-dev",
         "drupal/media_entity": "1.0.x-dev",
-        "drupal/media_entity_audio": "1.0.x-dev",
+        "drupal/media_entity_audio": "1.x-dev",
         "drupal/video_embed_field": "~1.0",
         "drupal/filefield_paths": "1.0.x-dev",
         "drupal/filefield_sources": "1.0.x-dev",
