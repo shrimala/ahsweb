@@ -60,8 +60,8 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
       cd web
-      drush -yes cache-rebuild
-      drush -yes updatedb
+      drush --yes cache-rebuild
+      drush --yes updatedb
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
         for module in `cat ~/modules.common`; do drush --yes pm-enable $module; done
         for module in `cat ~/modules.dev`; do drush --yes pm-uninstall $module; done
@@ -73,7 +73,7 @@ hooks:
         for module in `cat ~/modules.dev`; do drush --yes pm-enable $module; done
         for module in `cat ~/modules.master`; do drush --yes pm-uninstall $module; done
         drush --yes config-import --skip-modules="$(echo $(cat ~/modules.master) | tr " " "," )"        
-        drush sql-sanitize --sanitize-email="no"
+        drush --yes sql-sanitize --sanitize-email="no"
       fi
 
 
