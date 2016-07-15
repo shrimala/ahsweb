@@ -60,19 +60,19 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
       cd web
-      drush -y cache-rebuild
-      drush -y updatedb
+      drush -yes cache-rebuild
+      drush -yes updatedb
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
-        drush config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
-        for module in `cat ~/modules.common`; do drush pm-enable $module --yes; done
-        for module in `cat ~/modules.dev`; do drush pm-uninstall $module --yes; done
-        for module in `cat ~/modules.master`; do drush pm-enable $module --yes; done
+        for module in `cat ~/modules.common`; do drush --yes pm-enable $module; done
+        for module in `cat ~/modules.dev`; do drush --yes pm-uninstall $module; done
+        for module in `cat ~/modules.master`; do drush --yes pm-enable $module; done
+        drush --yes config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
       else
         cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
-        drush config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
-        for module in `cat ~/modules.common`; do drush pm-enable $module --yes; done
-        for module in `cat ~/modules.dev`; do drush pm-enable $module --yes; done
-        for module in `cat ~/modules.master`; do drush pm-uninstall $module --yes; done
+        for module in `cat ~/modules.common`; do drush --yes pm-enable $module; done
+        for module in `cat ~/modules.dev`; do drush --yes pm-enable $module; done
+        for module in `cat ~/modules.master`; do drush --yes pm-uninstall $module; done
+        drush --yes config-import --skip-modules="$(echo $(cat ~/modules.master) | tr " " "," )"        
         drush sql-sanitize --sanitize-email="no"
       fi
 
