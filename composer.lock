@@ -1557,7 +1557,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/media_entity_audio",
-                "reference": "d64d5aff8e42b8987a0deed7dc5deb3740771add"
+                "reference": "1f263eb75b696f8a3a4aa947c330ddff7004989a"
             },
             "require": {
                 "drupal/core": "~8.0",
