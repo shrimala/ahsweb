@@ -1,9 +1,9 @@
-uuid: dad4ffc5-f0b9-4cb3-9095-2a23629ebc96
+uuid: 1aa9e297-5979-44d2-8fe3-84fbe317bd5a
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.token
     - field.field.node.session.body
     - field.field.node.session.field_admin_tags
     - field.field.node.session.field_clip
@@ -16,29 +16,29 @@ dependencies:
     - field.field.node.session.field_teaching_tags
     - node.type.session
   module:
-    - text
+    - datetime
     - user
-id: node.session.teaser
+id: node.session.token
 targetEntityType: node
 bundle: session
-mode: teaser
+mode: token
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+  field_datetime:
+    weight: 102
+    label: above
     settings:
-      trim_length: 600
+      timezone_override: ''
+      date_format: Y/m/d/Hi
     third_party_settings: {  }
-  links:
-    weight: 100
+    type: datetime_custom
 hidden:
+  body: true
   field_admin_tags: true
   field_clip: true
-  field_datetime: true
   field_leader: true
   field_media: true
   field_original: true
   field_restricted: true
   field_session_type: true
   field_teaching_tags: true
+  links: true

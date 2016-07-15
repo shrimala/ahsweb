@@ -1,9 +1,9 @@
-uuid: 75d675be-7d9d-49a1-b756-d6204a18dfe6
+uuid: 9f359098-a103-4c02-b274-9b9adfdd5ee5
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.token
     - field.field.node.event.body
     - field.field.node.event.field_datetime
     - field.field.node.event.field_event_type
@@ -12,25 +12,25 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - text
+    - datetime
     - user
-id: node.event.teaser
+id: node.event.token
 targetEntityType: node
 bundle: event
-mode: teaser
+mode: token
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+  field_datetime:
+    weight: 102
+    label: above
     settings:
-      trim_length: 600
+      timezone_override: ''
+      date_format: Y/m/d
     third_party_settings: {  }
-  links:
-    weight: 100
+    type: datetime_custom
 hidden:
-  field_datetime: true
+  body: true
   field_event_type: true
   field_leader: true
   field_sessions: true
   field_venue: true
+  links: true
