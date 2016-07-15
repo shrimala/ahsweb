@@ -62,7 +62,6 @@ hooks:
       cd web
       drush -y cache-rebuild
       drush -y updatedb
-      composer update
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
         drush config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
         for module in `cat ~/modules.common`; do drush pm-enable $module --yes; done
