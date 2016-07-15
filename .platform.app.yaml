@@ -60,6 +60,8 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
       cd web
+      drush -y pmu media_entity_audio
+      rm -rf modules/contrib/media_entity_audio
       drush -y cache-rebuild
       drush -y updatedb
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
