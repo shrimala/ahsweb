@@ -10,5 +10,6 @@ description: 'MP3 audio recordings'
 type: audio
 queue_thumbnail_downloads: false
 new_revision: false
-type_configuration: {  }
+type_configuration:
+  source_field: field_dropbox
 field_map: {  }
