@@ -67,12 +67,14 @@ hooks:
         for module in `cat ~/modules.dev`; do drush pm-uninstall $module --yes; done
         for module in `cat ~/modules.master`; do drush pm-enable $module --yes; done
         drush config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
+        drush config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"        
       else
         cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
         for module in `cat ~/modules.common`; do drush pm-enable $module --yes; done
         for module in `cat ~/modules.dev`; do drush pm-enable $module --yes; done
         for module in `cat ~/modules.master`; do drush pm-uninstall $module --yes; done
         drush config-import --skip-modules="$(echo $(cat ~/modules.master) | tr " " "," )"
+        drush config-import --skip-modules="$(echo $(cat ~/modules.master) | tr " " "," )"        
         drush sql-sanitize --sanitize-email="no"
       fi
 
