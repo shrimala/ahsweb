@@ -1,8 +1,9 @@
-uuid: 026434d6-fea1-4505-8717-66f85aa69ab0
+uuid: 9f359098-a103-4c02-b274-9b9adfdd5ee5
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.token
     - field.field.node.event.body
     - field.field.node.event.field_datetime
     - field.field.node.event.field_event_type
@@ -14,10 +15,10 @@ dependencies:
     - datetime
     - text
     - user
-id: node.event.default
+id: node.event.token
 targetEntityType: node
 bundle: event
-mode: default
+mode: token
 content:
   body:
     label: hidden
@@ -29,10 +30,10 @@ content:
     weight: 102
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      date_format: Y/m/d
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
   field_event_type:
     weight: 107
     label: above

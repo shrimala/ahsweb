@@ -1,8 +1,9 @@
-uuid: 794bf739-c5c8-4058-8c0f-020ee33b54ae
+uuid: 1aa9e297-5979-44d2-8fe3-84fbe317bd5a
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.token
     - field.field.node.session.body
     - field.field.node.session.field_admin_tags
     - field.field.node.session.field_clip
@@ -18,10 +19,10 @@ dependencies:
     - datetime
     - text
     - user
-id: node.session.default
+id: node.session.token
 targetEntityType: node
 bundle: session
-mode: default
+mode: token
 content:
   body:
     label: hidden
@@ -49,10 +50,10 @@ content:
     weight: 102
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      date_format: Y/m/d/Hi
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
   field_leader:
     weight: 103
     label: above

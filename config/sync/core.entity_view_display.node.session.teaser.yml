@@ -5,6 +5,15 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.session.body
+    - field.field.node.session.field_admin_tags
+    - field.field.node.session.field_clip
+    - field.field.node.session.field_datetime
+    - field.field.node.session.field_leader
+    - field.field.node.session.field_media
+    - field.field.node.session.field_original
+    - field.field.node.session.field_restricted
+    - field.field.node.session.field_session_type
+    - field.field.node.session.field_teaching_tags
     - node.type.session
   module:
     - text
@@ -23,4 +32,13 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_admin_tags: true
+  field_clip: true
+  field_datetime: true
+  field_leader: true
+  field_media: true
+  field_original: true
+  field_restricted: true
+  field_session_type: true
+  field_teaching_tags: true
