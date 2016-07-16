@@ -18,7 +18,9 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
         'host' => $endpoint['host'],
         'port' => $endpoint['port'],
       ];
+      
       $databases['migrate']['default'] = $database;
+      
       if (!empty($endpoint['query']['compression'])) {
         $database['pdo'][PDO::MYSQL_ATTR_COMPRESS] = TRUE;
       }
