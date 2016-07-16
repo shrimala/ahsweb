@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1045106728853058ea24fe9f1ee09e33",
-    "content-hash": "b07a69e4b2c5a8d1ee57146c2b102fce",
+    "hash": "aad4e24272f3fd1c38e9fbd3743165f3",
+    "content-hash": "7fe1e6ef42f8a6500c0e53d62dfbb76e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1131,7 +1131,8 @@
             "extra": {
                 "patches_applied": {
                     "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch",
-                    "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch"
+                    "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch",
+                    "Migrate rollback does not rollback failed items": "https://www.drupal.org/files/issues/migrate-rollback_failed_items-2579343-12.patch"
                 }
             },
             "autoload": {
@@ -1734,7 +1735,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "115037d0e2bd12fce73560354ac6ff058661cbbd"
+                "reference": "14187618cdb19d8907a80bec53b98024763efb70"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -1753,8 +1754,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc5+15-dev",
-                    "datestamp": "1468410539"
+                    "version": "8.x-1.0-rc5+17-dev",
+                    "datestamp": "1468623539"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1780,7 +1781,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2016-07-13 11:55:58"
+            "time": "2016-07-15 22:58:40"
         },
         {
             "name": "drupal/pathauto",

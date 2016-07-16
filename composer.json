@@ -81,7 +81,8 @@
         "patches": {
             "drupal/core": {
                 "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch",
-                "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch"
+                "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch",
+                "Migrate rollback does not rollback failed items": "https://www.drupal.org/files/issues/migrate-rollback_failed_items-2579343-12.patch"
             }
         }
     },
