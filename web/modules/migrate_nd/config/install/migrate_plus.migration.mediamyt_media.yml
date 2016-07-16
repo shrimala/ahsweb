@@ -1,0 +1,18 @@
+# Migration configuration for dyn content.
+id: mediamyt_media
+label: Migrate Recipes photos from api into Drupal 8 file entities
+migration_group: dyn
+source:
+  plugin: mediamyt_media
+destination:
+  plugin: entity:media
+process:
+  bundle:
+    plugin: default_value
+    default_value: youtube
+  name: title
+  uid: aid
+  status:
+    plugin: default_value
+    default_value: 0
+  field_media_video_embed_field: uril
