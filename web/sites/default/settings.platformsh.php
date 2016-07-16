@@ -18,7 +18,7 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
         'host' => $endpoint['host'],
         'port' => $endpoint['port'],
       ];
-
+      $databases['migrate']['default'] = $database;
       if (!empty($endpoint['query']['compression'])) {
         $database['pdo'][PDO::MYSQL_ATTR_COMPRESS] = TRUE;
       }
@@ -32,7 +32,7 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
     }
   }
 }
-$databases['migrate']['default'] = $database;
+
 // Configure private and temporary file paths.
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
   if (!isset($settings['file_private_path'])) {
