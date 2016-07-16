@@ -25,9 +25,11 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
 
       if (!empty($endpoint['query']['is_master'])) {
         $databases['default']['default'] = $database;
+        $databases['migrate']['default'] = $database;
       }
       else {
         $databases['default']['slave'][] = $database;
+        $databases['migrate']['slave'][] = $database;
       }
     }
   }
