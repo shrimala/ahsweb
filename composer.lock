@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6b742cbc5dbc5ad9cfdbd9e0dce9c957",
-    "content-hash": "1ed086da888c8b7967019a6f7bcdf954",
+    "hash": "aad4e24272f3fd1c38e9fbd3743165f3",
+    "content-hash": "7fe1e6ef42f8a6500c0e53d62dfbb76e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -983,16 +983,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.1.5",
+            "version": "8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-core.git",
-                "reference": "5e4ee1266c741ace5df7c9b8ac3ba1b0d592ee9d"
+                "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/5e4ee1266c741ace5df7c9b8ac3ba1b0d592ee9d",
-                "reference": "5e4ee1266c741ace5df7c9b8ac3ba1b0d592ee9d",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
+                "reference": "a6555edbe58e0a6a1d107cbf8c6568dd5e4531a2",
                 "shasum": ""
             },
             "require": {
@@ -1131,7 +1131,8 @@
             "extra": {
                 "patches_applied": {
                     "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch",
-                    "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch"
+                    "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch",
+                    "Migrate rollback does not rollback failed items": "https://www.drupal.org/files/issues/migrate-rollback_failed_items-2579343-12.patch"
                 }
             },
             "autoload": {
@@ -1155,7 +1156,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2016-07-07 09:38:59"
+            "time": "2016-07-11 13:07:34"
         },
         {
             "name": "drupal/ctools",
@@ -1734,7 +1735,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "115037d0e2bd12fce73560354ac6ff058661cbbd"
+                "reference": "14187618cdb19d8907a80bec53b98024763efb70"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -1753,8 +1754,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc5+15-dev",
-                    "datestamp": "1468410539"
+                    "version": "8.x-1.0-rc5+17-dev",
+                    "datestamp": "1468623539"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1780,7 +1781,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2016-07-13 11:55:58"
+            "time": "2016-07-15 22:58:40"
         },
         {
             "name": "drupal/pathauto",
@@ -1909,7 +1910,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/video_embed_field-8.x-1.1.zip",
-                "reference": null,
+                "reference": "8.x-1.1",
                 "shasum": "7256e95acb33f17b130104706c91266f86c0d47b"
             },
             "require": {
