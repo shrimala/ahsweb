@@ -24,17 +24,15 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
       }
 
       if (!empty($endpoint['query']['is_master'])) {
-        $databases['default']['migrate'] = $database;
         $databases['default']['default'] = $database;
       }
       else {
-		$databases['default']['migrate'] = $database;
         $databases['default']['slave'][] = $database;
       }
     }
   }
 }
-
+$databases['migrate']['default'] = $database;
 // Configure private and temporary file paths.
 if (isset($_ENV['PLATFORM_APP_DIR'])) {
   if (!isset($settings['file_private_path'])) {
