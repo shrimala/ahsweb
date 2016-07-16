@@ -81,7 +81,9 @@
             "drupal/core": {
                 "array_flip(): Can only flip STRING and INTEGER values! EntityStorageBase.php:227": "https://www.drupal.org/files/issues/2760983.patch",
                 "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch",
-                "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch"
+                "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch",
+                "Trying to create sub-tabs on panels in Organic Groups": "https://www.drupal.org/files/issues/empty-2717483-12.patch"
+                
             },
             "drupal-module": {
                 "Fatal error: Call to undefined method Drupal\file\\Plugin\\Field\\FieldType\\FileFieldItemList::getThirdPartySettings() in filefield_paths/filefield_paths.module on line 353": "https://www.drupal.org/files/issues/filefield_paths-ignore_base_fields-2662420-5.patch",
