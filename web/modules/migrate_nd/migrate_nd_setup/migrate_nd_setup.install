@@ -1,0 +1,1663 @@
+<?php
+
+/**
+ * @file
+ * Set up source data and destination configuration for the migration example
+ * module. We do this in a separate module so migrate_nd itself is a pure
+ * migration module.
+ */
+
+
+function migrate_nd_setup_schema() {
+  $schema['migrate_nd_sestemp_node'] = migrate_nd_sestemp_schema_node();
+  $schema['migrate_nd_temp_node'] = migrate_nd_temp_schema_node();
+  $schema['migrate_nd_mdm_node'] = migrate_nd_mdm_schema_node();
+  $schema['migrate_nd_mdmyt_node'] = migrate_nd_mdmyt_schema_node();
+  $schema['migrate_nd_dyn_account'] = migrate_nd_dyn_schema_account();
+  $schema['migrate_nd_dyn_node'] = migrate_nd_dyn_schema_node();
+  $schema['migrate_nd_dyn_topic'] = migrate_nd_dyn_schema_topic();
+  $schema['migrate_nd_dyn_topic_node'] = migrate_nd_dyn_schema_topic_node();
+  $schema['migrate_nd_event_topic'] = migrate_nd_event_schema_topic();
+  $schema['migrate_nd_event_topic_node'] = migrate_nd_event_schema_topic_node();
+  $schema['migrate_nd_mdf_node'] = migrate_nd_mdf_schema_node();
+  $schema['migrate_nd_md_node'] = migrate_nd_md_schema_node();                             //Teacher.
+  $schema['migrate_nd_mds_node'] = migrate_nd_mds_schema_node();
+  $schema['migrate_nd_mdsadmin_node'] = migrate_nd_mdsadmin_schema_node();
+  $schema['migrate_nd_mdstemp_node'] = migrate_nd_mdstemp_schema_node();
+  $schema['migrate_nd_mde_node'] = migrate_nd_mde_schema_node();
+  $schema['migrate_nd_mdv_node'] = migrate_nd_mdv_schema_node();                             //Venue.
+  $schema['migrate_nd_admin_topic'] = migrate_nd_admin_schema_topic();
+  $schema['migrate_nd_admin_topic_node'] = migrate_nd_admin_schema_topic_node();
+  
+  return $schema;
+}
+
+function migrate_nd_setup_install() {
+  // Populate our tables.
+  migrate_nd_sestemp_data_node();
+  migrate_nd_temp_data_node();
+  migrate_nd_mdmyt_data_node();
+  migrate_nd_dyn_data_account();
+  migrate_nd_dyn_data_node();
+  migrate_nd_dyn_data_topic();
+  migrate_nd_dyn_data_topic_node();
+  migrate_nd_event_data_topic();
+  migrate_nd_event_data_topic_node();
+  migrate_nd_md_data_node();                                                                 //Teacher.
+  migrate_nd_mds_data_node();
+  migrate_nd_mdstemp_data_node();
+  migrate_nd_mde_data_node();
+  migrate_nd_mdm_data_node();
+  migrate_nd_mdf_data_node();
+  migrate_nd_mdv_data_node();                                                               //Venue.
+  migrate_nd_mdsadmin_data_node();                                                // breakup admin tag field for relationship with admin tag texonamy.
+  migrate_nd_admin_data_topic();
+  migrate_nd_admin_data_topic_node();
+  
+}
+function migrate_nd_md_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'mbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Beer ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+    ),
+    'primary key' => array('mbid'),
+  );
+}
+function migrate_nd_mdv_schema_node() {
+  return array(
+    'description' => 'Venue of Teaching.',
+    'fields' => array(
+      'vbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Venue ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+    ),
+    'primary key' => array('vbid'),
+  );
+}
+function migrate_nd_mds_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'sbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Beer ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+       'dt_session' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        //'mysql_type' => 'timestamp',
+        'not null' => FALSE,
+        'description' => 'Full description.',
+      ),
+    'descrip' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+    'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+    'mbid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Teacer Id of the id.',
+      ),
+    'meytbid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Media Id of the id.',
+      ),
+      'eventid' => array(
+        //'type' => 'int',
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Media Id of the id.',
+      ),
+      'old_id'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'type'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'body_summery'  => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+      'field_clip'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'field_old_catalog'  => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+      'field_restricted'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'field_admin_tags'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+    ),
+    'primary key' => array('sbid'),
+  );
+}
+function migrate_nd_mdsadmin_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'sbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Beer ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'field_admin_tags'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+    ),
+  );
+}
+function migrate_nd_mdstemp_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'sbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Beer ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+       'dt_session' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Full description.',
+      ),
+    'descrip' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+    'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+    'mbid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Teacer Id of the id.',
+      ),
+    'meytbid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Media Id of the id.',
+      ),
+      'eventid' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Media Id of the id.',
+      ),
+       'originalsbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Beer ID.',
+      ),
+      'old_id'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'type'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'body_summery'  => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+      'field_clip'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'field_old_catalog'  => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+      'field_restricted'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'field_admin_tags'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+    ),
+    'primary key' => array('sbid'),
+  );
+}
+
+function migrate_nd_mde_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'ebid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Event ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'dt_event' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Full description.',
+      ),
+    'eventbody' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Event Body',
+      ),
+     'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+     'sbid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Session Id of the author.',
+      ),
+    'field_leader' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Full description.',
+      ),
+     'field_venue' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Full description.',
+      ),
+     'field_event_tags' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Full description.',
+      ),
+    ),
+    'primary key' => array('ebid'),
+  );
+}
+
+
+function migrate_nd_mdm_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'mebid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Media ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      
+     'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+    'uril'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    'filename'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('mebid'),
+  );
+}
+
+function migrate_nd_mdmyt_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'meytbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Media ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      
+     'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+    'uril'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    'filename'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('meytbid'),
+  );
+}
+function migrate_nd_temp_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'meytbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Media ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      
+     'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+    'uril'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    'filename'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('meytbid'),
+  );
+}
+function migrate_nd_sestemp_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'dt_session'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      
+     'descrip' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    'Recordings'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    'Event'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+     'teachername'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'old_id'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'type'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'body_summery'  => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+      'field_clip'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'field_old_catalog'  => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+      'field_restricted'  => array(
+        'type' => 'varchar', 
+        'length' => 20,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+      'field_admin_tags'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+    ),
+    
+  );
+}
+
+function migrate_nd_mdf_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'fid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Media ID.',
+      ),
+      'uid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      
+     'filename' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    'filepath'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    'filemime'  => array(
+       'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'status'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'timestamp'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'uri'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('fid'),
+  );
+}
+
+function migrate_nd_dyn_schema_node() {
+   return array(
+    'description' => 'Migrate Example SSD Styles.',
+    'fields' => array(
+      'bbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Ssd ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'dt_created' => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Full description.',
+      ),
+      'abstract' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'p',
+      ),
+      'article' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'a',
+      ),
+      'aid' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Account Id of the author.',
+      ),
+      'bodyformat'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'Original' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Raw data of non drupal',
+      ),
+    ),
+    'primary key' => array('bbid'),
+  );
+}
+
+function migrate_nd_dyn_schema_topic() {
+  return array(
+    'description' => 'Categories',
+    'fields' => array(
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'details' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'style_parent' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Parent topic, if any',
+      ),
+      'region' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Region first associated with this style',
+      ),
+      'hoppiness' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Relative hoppiness of the dyn',
+      ),
+    ),
+    'primary key' => array('style'),
+  );
+}
+
+function migrate_nd_dyn_schema_topic_node() {
+  return array(
+    'description' => 'Dyns topic pairs.',
+    'fields' => array(
+      'bbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Dyn ID.',
+      ),
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Topic name',
+      ),
+    ),
+    'primary key' => array('style', 'bbid'),
+  );
+}
+//++++++++++++++Stat event tag+++++++++++++++++++++
+function migrate_nd_event_schema_topic() {
+  return array(
+    'description' => 'Categories',
+    'fields' => array(
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'details' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'style_parent' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Parent topic, if any',
+      ),
+      'region' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Region first associated with this style',
+      ),
+      'hoppiness' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Relative hoppiness of the dyn',
+      ),
+    ),
+    'primary key' => array('style'),
+  );
+}
+
+function migrate_nd_event_schema_topic_node() {
+  return array(
+    'description' => 'Dyns topic pairs.',
+    'fields' => array(
+      'eventbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'event tag ID.',
+      ),
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Topic name',
+      ),
+    ),
+    'primary key' => array('style', 'eventbid'),
+  );
+}
+//+++++++++++++++End++++++++++++++++++++++
+//++++++++++++++Stat admin tag+++++++++++++++++++++
+function migrate_nd_admin_schema_topic() {
+  return array(
+    'description' => 'Categories',
+    'fields' => array(
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'details' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'style_parent' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Parent topic, if any',
+      ),
+      'region' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Region first associated with this style',
+      ),
+      'hoppiness' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Relative hoppiness of the dyn',
+      ),
+    ),
+    'primary key' => array('style'),
+  );
+}
+
+function migrate_nd_admin_schema_topic_node() {
+  return array(
+    'description' => 'Dyns topic pairs.',
+    'fields' => array(
+      'adminbid'  => array(
+        'type' => 'int',
+        'not null' => false,
+        'description' => 'event tag ID.',
+      ),
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => false,
+        'description' => 'Topic name',
+      ),
+    ),
+    //'primary key' => array('style', 'adminbid'),
+  );
+}
+//+++++++++++++++End++++++++++++++++++++++
+
+function migrate_nd_dyn_schema_account() {
+  return array(
+    'description' => 'Dyns accounts.',
+    'fields' => array(
+      'aid'  => array(
+        'type' => 'serial',
+        //'not null' => TRUE,
+        'description' => 'Account ID',
+      ),
+      'status'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Blocked_Allowed',
+      ),
+      'registered' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Registration date',
+      ),
+      'username' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Account name (for login)',
+      ),
+      'nickname' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Account name (for display)',
+      ),
+      'password' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Account password (raw)',
+      ),
+      'email' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Account email',
+      ),
+      'sex' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Gender (0 for male, 1 for female)',
+      ),
+      'dyns' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Favorite Dyns',
+      ),
+    ),
+    'primary key' => array('aid'),
+  );
+}
+
+function migrate_nd_md_data_node() {
+	
+  $q1 = db_select('Teacher', 't');
+  $obj=$q1->fields('t',array('Teacher'))
+        ->execute()->fetchAll();
+
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->Teacher;
+    $data[$i][2]=1;
+    $i=$i+1;
+  }
+  //------------------------------------------------------------
+  $fields = array('mbid', 'title','aid');
+  $query = db_insert('migrate_nd_md_node')
+           ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_mdv_data_node() {
+	
+  $q1 = db_select('Venue', 'V');
+  $obj=$q1->fields('V',array('title'))
+        ->execute()->fetchAll();
+
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->title;
+    $data[$i][2]=1;
+    $i=$i+1;
+  }
+  //------------------------------------------------------------
+  $fields = array('vbid', 'title','aid');
+  $query = db_insert('migrate_nd_mdv_node')
+           ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_sestemp_data_node() {
+  
+  //------------------------------------------------------------
+  $q1 = db_select('sessiondata', 'sd');
+  $obj=$q1->fields('sd',array('title','field_datetime','body','Recordings','Event',' field_leader','old_id','type','body_summary','field_clip','field_old_catalog','field_restricted','field_admin_tags'))//SELECT 
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	  
+	$xyz=explode(",",$obj1->Recordings);
+	$xyz_length=sizeof($xyz);
+	if($xyz_length>0)
+	{
+		for($rr=0;$rr<$xyz_length;$rr++)
+		{
+			$data[$i][0]=$obj1->title;
+			$data[$i][1]=$obj1->field_datetime;
+			$data[$i][2]=$obj1->body;
+			$data[$i][3]=$xyz[$rr];
+			$data[$i][4]=$obj1->Event;
+			$data[$i][5]=$obj1->field_leader;
+			$data[$i][6]=$obj1->old_id;
+			$data[$i][7]=$obj1->type;
+		    $data[$i][8]=$obj1->body_summary;
+		    $data[$i][9]=$obj1->field_clip;
+		    $data[$i][10]=$obj1->field_old_catalog;
+		    $data[$i][11]=$obj1->field_restricted;
+		    $data[$i][12]=$obj1->field_admin_tags;
+			$i=$i+1;
+		}
+	}
+	else
+	{
+		$data[$i][0]=$obj1->title;
+		$data[$i][1]=$obj1->field_datetime;
+		$data[$i][2]=$obj1->body;
+		$data[$i][3]=$obj1->Recordings;
+		$data[$i][4]=$obj1->Event;
+		$data[$i][5]=$obj1->field_leader;
+		$data[$i][6]=$obj1->old_id;
+		$data[$i][7]=$obj1->type;
+		$data[$i][8]=$obj1->body_summery;
+		$data[$i][9]=$obj1->field_clip;
+		$data[$i][10]=$obj1->field_old_catalog;
+		$data[$i][11]=$obj1->field_restricted;
+		$data[$i][12]=$obj1->field_admin_tags;
+		$i=$i+1;
+	}
+}
+ $fields = array('title', 'dt_session','descrip','Recordings','Event','teachername','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags');
+  $query = db_insert('migrate_nd_sestemp_node')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+
+}
+
+
+function migrate_nd_mds_data_node() {
+  
+  //------------------------------------------------------------
+  $q1 = db_select('migrate_nd_sestemp_node', 'sd');
+  $obj=$q1->fields('sd',array('title','dt_session','descrip','Recordings','Event',' teachername','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags'))//SELECT 
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->title;
+    $data[$i][2]=$obj1->dt_session;
+    $data[$i][3]=$obj1->descrip;
+    $data[$i][4]=1;
+    //=============================Geting Teacher ID=======================================
+    
+    $obj12 = db_query("SELECT mbid FROM migrate_nd_md_node WHERE title ='".$obj1->teachername."'");//.$obj1->Teacher);
+
+    $teacherID=1;
+    foreach ( $obj12 as $obj123 ) {
+		if ($obj123->mbid>0 && $obj123->mbid!=null)
+		{
+		    $teacherID=$obj123->mbid;
+		}
+    }
+    $data[$i][5]=$teacherID;
+    //====================================================================   
+    $xyz = db_query("SELECT meytbid FROM migrate_nd_temp_node WHERE filename ='".$obj1->Recordings."'");
+    $recordingID=1;
+    foreach ( $xyz as $xyz1 ) {
+		if ($xyz1->meytbid>0 && $xyz1->meytbid!=null)
+		{
+		    $recordingID=$xyz1->meytbid;
+		}
+    }
+    $data[$i][6]=$recordingID;
+    $data[$i][7]=$obj1->Event;
+    $data[$i][8]=$obj1->old_id;
+    $data[$i][9]=$obj1->type;
+	$data[$i][10]=$obj1->body_summery;
+	$data[$i][11]=$obj1->field_clip;
+	$data[$i][12]=$obj1->field_old_catalog;
+	$data[$i][13]=$obj1->field_restricted;
+	$data[$i][14]=$obj1->field_admin_tags;
+    $i=$i+1;
+  }
+  //------------------------------------------------------------
+  $fields = array('sbid', 'title','dt_session','descrip','aid','mbid','meytbid','eventid','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags');
+  $query = db_insert('migrate_nd_mds_node')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+
+}
+function migrate_nd_mdstemp_data_node() {
+	
+  $query = db_select('migrate_nd_mds_node', 'bt')
+  ->fields('bt', array('title'))->distinct();
+  $results = $query->execute();
+  $i=0;
+  foreach ($results as $obj123 ) {
+  $query1 = db_select('migrate_nd_mds_node', 'b')
+  ->fields('b', array('sbid', 'title','dt_session','descrip','aid','mbid','meytbid','eventid','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags'))
+  ->condition('b.title', $obj123->title)
+  ->orderBy('sbid');
+  $results1 = $query1->execute();
+    foreach ( $results1 as $obj1 ) {
+		$data[$i][0]=$i+1;
+		$data[$i][1]=$obj1->title;
+		$data[$i][2]=$obj1->dt_session;
+		$data[$i][3]=$obj1->descrip;
+		$data[$i][4]=$obj1->aid;
+		$data[$i][5]=$obj1->mbid;
+		$data[$i][6]=$obj1->meytbid;
+		$data[$i][7]=$obj1->eventid;
+		$data[$i][8]=$obj1->sbid;
+		$data[$i][9]=$obj1->old_id;
+		$data[$i][10]=$obj1->type;
+		$data[$i][11]=$obj1->body_summery;
+		$data[$i][12]=$obj1->field_clip;
+		$data[$i][13]=$obj1->field_old_catalog;
+		$data[$i][14]=$obj1->field_restricted;
+		$data[$i][15]=$obj1->field_admin_tags;
+		$i=$i+1;
+		break;
+	} 
+  } 
+  
+  
+  //------------------------------------------------------------
+  $fields = array('sbid', 'title','dt_session','descrip','aid','mbid','meytbid','eventid','originalsbid','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags');
+  $query = db_insert('migrate_nd_mdstemp_node')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+
+}
+
+function migrate_nd_mde_data_node() {
+	
+	//------------------------------------------------------------
+  $q1 = db_select('event', 'e');
+  $obj=$q1->fields('e',array('Id','title','field_datetime','body','field_leader','field_venue','field_event_tags'))//SELECT 
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$obj1->Id;
+    $data[$i][1]=$obj1->title;
+    $data[$i][2]=$obj1->field_datetime;
+    $data[$i][3]=$obj1->body;
+    $data[$i][4]=1;
+    //=============================Geting Session ID=======================================
+    
+    $obj12 = db_query("SELECT sbid FROM migrate_nd_mds_node WHERE eventid ='".$obj1->Id."'");
+
+    $sessionID=1;
+    foreach ( $obj12 as $obj123 ) {
+		if ($obj123->sbid>0 && $obj123->sbid!=null)
+		{
+		    $sessionID=$obj123->sbid;
+		}
+    }
+    $data[$i][5]=$sessionID;
+    //====================================================================   
+    
+    $data[$i][6]=$obj1->field_leader;
+    $data[$i][7]=$obj1->field_venue;
+    $data[$i][8]=$obj1->field_event_tags;
+    $i=$i+1;
+  }
+  //------------------------------------------------------------
+	
+	
+	
+  $fields = array('ebid', 'title','dt_event','eventbody','aid','sbid','field_leader','field_venue','field_event_tags');
+  $query = db_insert('migrate_nd_mde_node')
+           ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_mdm_data_node() {
+	//------------------------------------------------------------
+  $q1 = db_select('audio', 'a');
+  $obj=$q1->fields('a',array('title','Id'))//SELECT 
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->title;
+    $data[$i][2]=1;
+    $data[$i][3]='public://'.$obj1->Id;
+    $data[$i][4]=$obj1->Id;
+    $i=$i+1;
+  }
+  //------------------------------------------------------------
+  $fields = array('mebid', 'title','aid','uril','filename');
+  $query = db_insert('migrate_nd_mdm_node')
+           ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+  
+}
+
+function migrate_nd_mdmyt_data_node() {
+	$obj12 = db_query("SELECT count(mebid) as mebid FROM migrate_nd_mdm_node");
+
+    $sessionID=0;
+    foreach ( $obj12 as $obj123 ) {
+	  $sessionID=$obj123->mebid;
+    }
+    
+	//------------------------------------------------------------
+  $q1 = db_select('youtube', 'y');
+  $obj=$q1->fields('y',array('title','length','Id'))//SELECT 
+        ->execute()->fetchAll();
+  $i=$sessionID;
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->title;
+    $data[$i][2]=1;
+    $data[$i][3]=$obj1->Id;
+    $data[$i][4]=$obj1->Id;
+    
+    $i=$i+1;
+  }
+  
+  //-----------------------------------------------------------
+  $fields = array('meytbid', 'title','aid','uril','filename');
+  $query = db_insert('migrate_nd_mdmyt_node')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_temp_data_node() {
+	 //------------------------------------------------------------
+  $q1 = db_select('audio', 'a');
+  $obj=$q1->fields('a',array('title','Id'))//SELECT 
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->title;
+    $data[$i][2]=1;
+    $data[$i][3]=$obj1->Id;
+    $data[$i][4]=$obj1->Id;
+    
+    $i=$i+1;
+  }
+ //------------------------------------------------------------
+  $q1 = db_select('youtube', 'y');
+  $obj=$q1->fields('y',array('title','length','Id'))//SELECT 
+        ->execute()->fetchAll();
+  
+  foreach ( $obj as $obj1 ) {
+	$data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->title;
+    $data[$i][2]=1;
+    $data[$i][3]=$obj1->Id;
+    $data[$i][4]=$obj1->Id;
+    
+    $i=$i+1;
+  }
+  //-----------------------------------------------------------
+	
+	
+  $fields = array('meytbid', 'title','aid','uril','filename');
+  $query = db_insert('migrate_nd_temp_node')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_mdf_data_node() {
+	$obj12 = db_query("SELECT mebid,aid,uril,filename FROM migrate_nd_mdm_node");
+
+    $i=0;
+    foreach ( $obj12 as $obj123 ) {
+      //$data[$i][0]=str_replace("/","",$obj123->filename);
+      //$data[$i][1]='dropboxexample://testfolder2016/'.str_replace("/","",$obj123->filename);
+      $data[$i][0]=$obj123->filename;
+      $data[$i][1]='dropboxexample://'.$obj123->filename;
+      $data[$i][2]='audio/mpeg';
+      $data[$i][3]='1';
+      $data[$i][4]='1458563370';
+      $data[$i][5]='1458563370';
+      $data[$i][6]=$i+3;
+      $data[$i][7]='en';
+      $i=$i+1;
+		/**
+      $data[$i][0]=$obj123->mebid;
+      $data[$i][1]=$obj123->aid;
+      $data[$i][2]=$obj123->filename;
+      $data[$i][3]='https://www.dropbox.com/home?preview=';//$obj123->uril;
+      $data[$i][4]='text/plain';
+      $data[$i][5]='1';
+      $data[$i][6]='1458563370';
+      $data[$i][7]=$obj123->uril;
+      $i=$i+1;*/
+    }
+    //-----------------------------------------------------------
+
+ /**$fields = array('fid', 'uid','filename','filepath','filemime','status','timestamp','uri');
+  $query = db_insert('migrate_nd_mdf_node')
+           ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+  //'audio/mpeg'*/
+  
+   $fields = array('filename','uri','filemime','status','created','changed','uuid','langcode');
+  $query = db_insert('file_managed')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+  //'audio/mpeg'
+  
+}
+
+
+
+function migrate_nd_dyn_data_node() {
+
+  $q1 = db_select('res_manager', 'r');
+  $obj=$q1->fields('r',array('id','title','dt_created','abstract','article'))//SELECT 
+        ->condition('category_id', '20')
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+    $data[$i][0]=$obj1->id;
+    if (substr_count($obj1->title, 'â€™') > 0) {
+    $obj1->title=str_replace("â€™","'",$obj1->title);
+    }
+    if (substr_count($obj1->title, 'â€') > 0) {
+    $obj1->title=str_replace("â€","'",$obj1->title);
+    }
+    $data[$i][1]=$obj1->title;
+    //---------------------------------------------------------------
+    $data[$i][2]=$obj1->dt_created;
+    //---------------------------------------------------------------
+    if (substr_count($obj1->abstract, 'â€™') > 0) {
+    $obj1->abstract=str_replace("â€™","'",$obj1->abstract);
+    }
+    $x_abstract="";
+    if (substr_count($obj1->abstract, 'Â') > 0) {
+    $t1=explode("Â",$obj1->abstract);
+    foreach ($t1 as $key=> $value) {
+      if ($key < 1) continue;
+      $ad=$t1[$key];
+      if(strlen($ad)>1){
+      $t1[$key]= htmlentities($ad);
+      $t1[$key]=str_replace("&nbsp;","",$t1[$key]);
+    }
+    }
+    $obj1->abstract=implode("Â",$t1);
+    }
+    $obj1->abstract=str_replace("Â"," ",$obj1->abstract);
+    $x_abstract=$obj1->abstract; //store the date of abstract before format to delete from body.
+    $obj1->abstract = ucfirst($obj1->abstract); 
+    $obj1->abstract=str_replace("Summary: ","",$obj1->abstract);
+    $obj1->abstract=str_replace("Summary:","",$obj1->abstract);
+    $a=substr($obj1->abstract, -1);
+    if($a!="." && $a!="?") {
+    $obj1->abstract =$obj1->abstract ."."; 
+    }
+    $data[$i][3]=$obj1->abstract;
+    //--------------------------------------------------------------
+    $r=$obj1->article;
+    //--------------------------------------------------------------
+    $r=str_replace('Summary: ',"",$r);
+    $r=str_replace('Summary:',"",$r);
+
+    $r=preg_replace('/<strong(.*?)>/i','', $r);
+    $r=str_replace("</strong>","",$r);
+
+    $r=preg_replace('/<em(.*?)>/i','',$r);
+    $r=str_replace("</em>","",$r);
+
+    $r=preg_replace('/<span(.*?)>/i','',$r);
+    $r=str_replace("</span>","",$r);
+
+    if (preg_match("/[a-zA-Z]&nbsp;[a-zA-Z]/",$r)) {
+      $r=str_replace("&nbsp;"," ",$r);
+    }
+    else
+    {
+      $r=str_replace("&nbsp;","",$r);
+    }
+    $r=preg_replace('/<h(.*?)>/i','',$r);
+    //--------------------------------------------------------------
+    $r=str_replace("  "," ",$r);
+    $r=str_replace("â€™","'",$r);
+    $r=str_replace("â€tm","'",$r);
+    //--------------------------------------------------------------
+    $ar=explode("<P class=EmailQuestion>",$r);
+    foreach ($ar as $key=> $value) {
+      if ($key < 1) continue;
+      $count=1;
+      $ar[$key]=preg_replace('/<\/P>/', "</blockquote>", $value, $count );
+    }
+    $r=implode("<P class=EmailQuestion>",$ar);
+    $r=str_replace("<P class=EmailQuestion>","<blockquote>",$r);
+    //--------------------------------------------------------------
+    $ar=explode("<p class='emailquestion'>",$r);
+    foreach ($ar as $key=> $value) {
+      if ($key < 1) continue;
+      $count=1;
+      $ar[$key]=preg_replace('/<\/p>/', "</blockquote>", $value, $count );
+    }
+    $r=implode("<p class='emailquestion'>",$ar);
+    $r=str_replace("<p class='emailquestion'>","<blockquote>",$r);
+    //--------------------------------------------------------------
+    $ar=explode("<p class=EmailQuestion>",$r);
+    foreach ($ar as $key=> $value) {
+      if ($key < 1) continue;
+      $count=1;
+      $ar[$key]=preg_replace('/<\/p>/', "</blockquote>", $value, $count );
+    }
+    $r=implode("<p class=EmailQuestion>",$ar);
+    $r=str_replace("<p class=EmailQuestion>","<blockquote>",$r);
+     //--------------------------------------------------------------
+    $ar=explode('<p class="EmailQuestion">',$r);
+    foreach ($ar as $key=> $value) {
+      if ($key < 1) continue;
+      $count=1;
+      $ar[$key]=preg_replace('/<\/p>/', "</blockquote>", $value, $count );
+    }
+    $r=implode('<p class="EmailQuestion">',$ar);
+    $r=str_replace('<p class="EmailQuestion">',"<blockquote>",$r);
+    //--------------------------------------------------------------
+    $ar1=explode('<p class="emailquestion">',$r);
+    foreach ($ar1 as $key=> $value) {
+      if ($key < 1) continue;
+      $count=1; //only for first occurance.
+      $ar1[$key]=preg_replace('/<\/p>/', "</blockquote>", $value, $count );
+    }
+    $r=implode('<p class="emailquestion">',$ar1);
+    $r=str_replace('<p class="emailquestion">',"<blockquote>",$r);
+    //--------------------------------------------------------------
+    $r=str_replace("a student had this reaction:","<blockquote>",$r);
+    $r=str_replace("A student writes:","<blockquote>",$r);
+    $r=str_replace("A practitioner writes:","<blockquote>",$r);
+    $r=str_ireplace("A student asks:","<blockquote>",$r);
+    $r=str_replace("The student asks:","<blockquote>",$r);
+    $r=str_replace("Student:","<blockquote>",$r);
+    $r=str_replace("A student says:","<blockquote>",$r);
+    $r=str_replace("The student writes:","<blockquote>",$r);
+    $r=str_replace("The student continues:","<blockquote>",$r);
+    $r=str_replace("reader asks:","<blockquote>",$r);
+    //--------------------------------------------------------------
+    $r=str_replace("Lama Shenpen replies:","</blockquote>",$r);
+    $r=str_replace("Lama Shenpen responds:","</blockquote>",$r);
+    $r=str_replace("Lama Shenpen:","</blockquote>",$r);
+    $r=str_replace("Shenpen replies:","</blockquote>",$r);
+    $r=str_replace("Shenpen:","</blockquote>",$r);
+    $r=str_replace("Lama:","</blockquote>",$r);
+    //--------------------------------------------------------------
+    $r=str_replace($x_abstract,"",$r);
+    $r=trim($r);
+    $r=str_replace('Summary: ',"",$r);
+    $r=str_replace('Summary:',"",$r);
+    //--------------------------------------------------------------
+    $r=str_ireplace("<p><br /></p>","<br />",$r);
+    //--------------------------------------------------------------
+    $r=preg_replace('/<p(.*?)><blockquote><\/p>/i','<blockquote>',$r);
+    $r=str_ireplace("<p><blockquote></p>","<blockquote>",$r);
+    $r=str_replace(" <blockquote>","<blockquote>",$r);
+    $r=str_replace("<br /><br /><blockquote>","<blockquote>",$r);
+    $r=str_replace("<br /><blockquote>","<blockquote>",$r);
+    $r=str_replace("<blockquote><br /><br />","<blockquote>",$r);
+    $r=str_replace("<blockquote> ","<blockquote>",$r);
+    $r=str_replace("<blockquote><blockquote>","<blockquote>",$r);
+    $r=str_ireplace("<P><blockquote></P><blockquote>","<blockquote>",$r);
+    $r=str_replace("<blockquote><br />","<blockquote>",$r);
+    $r=str_replace(" </blockquote>","</blockquote>",$r);
+    $r=str_replace("<br /><br /></blockquote>","</blockquote>",$r);
+    $r=str_replace("<br /></blockquote>","</blockquote>",$r);
+    $r=str_replace("</blockquote><br /><br />","</blockquote>",$r);
+    $r=str_replace("</blockquote> <br /><br />","</blockquote>",$r);
+    $r=str_replace("</blockquote><br />","</blockquote>",$r);
+    $r=preg_replace('/<p(.*?)><\/blockquote><\/p>/i','</blockquote>',$r);
+    $r=str_ireplace("<P></blockquote></P>","</blockquote>",$r);
+    $r=str_replace("</blockquote></blockquote>","</blockquote>",$r);
+    //--------------------------------------------------------------
+    $r = str_replace('"','',$r);
+    $r = preg_replace('/^<br \/><br \/>/', '', $r);  //This symbol (^) is for begining of the string.
+    $r = preg_replace('/<br \/><br \/>$/', '', $r);  //This symbol ($) is for end of the string
+    $r = preg_replace('/^<br \/>/', '', $r);  //This symbol (^) is for begining of the string.
+    $r = preg_replace('/<br \/>$/', '', $r);  //This symbol ($) is for end of the string
+    $r = preg_replace('/<br \/> <br \/>/', "ARITNATH", $r); 
+    $r = preg_replace('/<br \/>/', "", $r); 
+    //------------------------------------------------ --------------
+    $r = preg_replace('/^<p><\/p>/i', "", $r);  //This symbol (^) is for begining of the string.
+    $r = preg_replace('/<p><\/p>$/i', "", $r); 
+    $r = preg_replace('/\r?\n|\r$/',"", $r);
+    $r = preg_replace('/^\r?\n|\r/',"", $r);
+    $r = preg_replace('/<br \/>/', "", $r); 
+    //----------------------Goopi case--------------------------------
+    $r=str_ireplace("<p><blockquote></p>","<blockquote>",$r);
+    $r=str_ireplace("<p><blockquote>","<blockquote>",$r);
+    $r=str_ireplace("<blockquote></p>","<blockquote>",$r);
+    $r=str_replace("<blockquote><blockquote>","<blockquote>",$r);
+    $r=str_replace("</blockquote></blockquote>","</blockquote>",$r);
+    $r=str_replace("</blockquote><blockquote>","<br /><br />",$r);
+    $r = str_replace('ARITNATH', "<br /><br />", $r); 
+    //----------------------------------------------------------------
+    $data[$i][4]=$r;//$obj1->article;
+    $data[$i][5]=1;
+    $data[$i][6]="basic_html";
+    $data[$i][7]=$obj1->article;;
+    $i+=1;
+  }
+
+  $fields = array('bbid', 'title', 'dt_created','abstract','article','aid','bodyformat','Original');
+  $query = db_insert('migrate_nd_dyn_node')
+           ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+// Note that alice has duplicate username. Exercises dedupe_entity plugin.
+// @TODO duplicate email also.
+function migrate_nd_dyn_data_account() {
+  $fields = array('status', 'registered', 'username', 'nickname', 'password', 'email', 'sex', 'dyns');
+  $query = db_insert('migrate_nd_dyn_account')
+    ->fields($fields);
+  $data = array(
+    array(1, '2010-03-30 10:31:05', 'Jonathan', 'Jonathan in Irnland', 'alicepass', 'alice@example.com', '1', '1|2|3'),
+    array(2, '2011-03-22 10:31:05', 'Arit Nath', 'Arit Nath in India', 'aritnath', 'arithnath@example.com', '1', '1|2|3'),
+    );
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+
+function migrate_nd_dyn_data_topic() {
+  $fields = array('style', 'details', 'style_parent', 'region', 'hoppiness');
+  $obj = db_query('SELECT distinct(class_name) FROM res_classifications order by class_name');
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+    $data[$i][0]=$obj1->class_name;
+    $data[$i][1]=NULL;
+    $data[$i][2]=NULL;
+    $data[$i][3]=NULL;
+    $data[$i][4]=NULL;
+    $i+=1;
+  }
+  $query = db_insert('migrate_nd_dyn_topic')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_dyn_data_topic_node() {
+  $fields = array('bbid', 'style');
+
+
+  $obj = db_query('SELECT lrc.res_id, rc.class_name FROM lnk_res_class lrc, res_classifications rc, res_manager rm WHERE lrc.class_id = rc.id AND rm.id = lrc.res_id AND rm.category_id =20');
+
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+    $data[$i][0]=$obj1->res_id;
+    $data[$i][1]=$obj1->class_name;
+    $i+=1;
+  }
+
+
+  $query = db_insert('migrate_nd_dyn_topic_node')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+//-----------------------------
+function migrate_nd_event_data_topic() {
+  $fields = array('style', 'details', 'style_parent', 'region', 'hoppiness');
+  $obj = db_query('SELECT distinct(title) FROM event_tags order by title');
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+    $data[$i][0]=$obj1->title;
+    $data[$i][1]=NULL;
+    $data[$i][2]=NULL;
+    $data[$i][3]=NULL;
+    $data[$i][4]=NULL;
+    $i+=1;
+  }
+  $query = db_insert('migrate_nd_event_topic')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+function migrate_nd_event_data_topic_node() {
+  $fields = array('eventbid', 'style');
+
+
+  $obj = db_query('SELECT style FROM migrate_nd_event_topic');
+
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+    $data[$i][0]=$i+1;
+    $data[$i][1]=$obj1->style;
+    $i+=1;
+  }
+
+
+  $query = db_insert('migrate_nd_event_topic_node')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+//-------------------admin tags----------
+function migrate_nd_mdsadmin_data_node() {
+  $q1 = db_select('migrate_nd_mdstemp_node', 'sd');
+  $q1 = db_select('migrate_nd_mdstemp_node', 'sd');
+  $obj=$q1->fields('sd',array('sbid','title', 'field_admin_tags'))//SELECT 
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	  $admin_tag=explode(',',$obj1->field_admin_tags);
+	  $arraycount=count($admin_tag);
+	  if ($arraycount>=1 && !empty($obj1->field_admin_tags)) {
+		  for($ac=0;$ac<$arraycount;$ac++) {
+			  $data[$i][0]=$obj1->sbid;
+			  $data[$i][1]=$obj1->title;
+			  $data[$i][2]=$admin_tag[$ac];
+			  $i=$i+1;
+		  }
+	  }
+  }
+  //------------------------------------------------------------
+  $fields = array('sbid', 'title', 'field_admin_tags');
+  $query = db_insert('migrate_nd_mdsadmin_node')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_admin_data_topic() {
+  $fields = array('style', 'details', 'style_parent', 'region', 'hoppiness');
+  $obj = db_query('SELECT distinct(title) FROM admin_tags order by title');
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+    $data[$i][0]=$obj1->title;
+    $data[$i][1]=NULL;
+    $data[$i][2]=NULL;
+    $data[$i][3]=NULL;
+    $data[$i][4]=NULL;
+    $i+=1;
+  }
+  $query = db_insert('migrate_nd_admin_topic')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+function migrate_nd_admin_data_topic_node() {
+  $fields = array('adminbid', 'style');
+
+
+  $objq = db_query('SELECT msadm.sbid as sbid, at.style as style FROM migrate_nd_mdsadmin_node msadm,migrate_nd_admin_topic at, sessiondata sd where  msadm.title=sd.title and msadm.field_admin_tags=at.style');
+  $i=0;
+  foreach ($objq as $objq1 ) {
+    $data[$i][0]=$objq1->sbid;
+    $data[$i][1]=$objq1->style;
+    $i+=1;
+  }
+
+
+  $query = db_insert('migrate_nd_admin_topic_node')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
