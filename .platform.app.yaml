@@ -15,7 +15,6 @@ build:
 dependencies:
     php:
         "drush/drush": "^8.0"
-        "drupal/console": "@stable"
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -67,11 +66,13 @@ hooks:
       for module in `cat ~/modules.dev`; do drush --yes pm-enable $module; done
       for module in `cat ~/modules.master`; do drush --yes pm-enable $module; done
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
-        drush --yes config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"
+        #don't uninstall master modules when importing config
+        drush --yes config-import --skip-modules="$(echo $(cat ~/modules.master) | tr " " "," )"
         for module in `cat ~/modules.dev`; do drush --yes pm-uninstall $module; done
       else
         cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
-        drush --yes config-import --skip-modules="$(echo $(cat ~/modules.master) | tr " " "," )"        
+        #don't uninstall dev modules when importing config
+        drush --yes config-import --skip-modules="$(echo $(cat ~/modules.dev) | tr " " "," )"        
         drush --yes sql-sanitize --sanitize-email="no"
         for module in `cat ~/modules.master`; do drush --yes pm-uninstall $module; done
       fi
