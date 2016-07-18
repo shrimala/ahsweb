@@ -82,7 +82,7 @@ class MediamMedia extends SqlBase {
     
     
    $filename=$row->getSourceProperty('filename');
-   $filename=str_replace("/","",$filename);
+   //$filename=str_replace("/","",$filename);
    
    
     $j=0;
