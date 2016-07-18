@@ -60,6 +60,7 @@ class MediasNode extends SqlBase {
       'field_restricted' => $this->t('Restricted'),
       'field_admin_tags' => $this->t('Admin tags reference id'),
       'terms' => $this->t('Applicable styles'),
+      'adminbid' => $this->t('Admin tags Applicable styles'),
     ];
 
     return $fields;

@@ -1,0 +1,98 @@
+{
+    "name": "drupal-composer/drupal-project",
+    "description": "Project template for Drupal 8 projects with composer",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.0.20",
+        "drupal-composer/drupal-scaffold": "^2.0.1",
+        "cweagans/composer-patches": "~1.0",
+        "drupal/core": "~8.0",
+        "drush/drush": "~8.0",
+        "drupal/console": "~0.10",
+        "drupal/flysystem": "1.0.x-dev",
+        "drupal/flysystem_dropbox": "1.0.x-dev",
+        "drupal/media_entity": "1.0.x-dev",
+        "drupal/media_entity_audio": "1.0.x-dev",
+        "drupal/video_embed_field": "~1.0",
+        "drupal/filefield_paths": "1.0.x-dev",
+        "drupal/filefield_sources": "1.0.x-dev",
+        "drupal/paragraphs": "1.0.x-dev",
+        "drupal/devel": "1.0.x-dev",
+        "drupal/config_inspector": "1.0.x-dev",
+        "drupal/config_readonly": "1.0.x-dev"
+    },
+    "require-dev": {
+        "behat/mink": "~1.7",
+        "behat/mink-goutte-driver": "~1.2",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "~2.8"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        },
+        "patches": {
+            "drupal/core": {
+                "array_flip(): Can only flip STRING and INTEGER values! EntityStorageBase.php:227": "https://www.drupal.org/files/issues/2760983.patch",
+                "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch",
+                "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch"
+                
+            },
+            "drupal-module": {
+                "Fatal error: Call to undefined method Drupal\file\\Plugin\\Field\\FieldType\\FileFieldItemList::getThirdPartySettings() in filefield_paths/filefield_paths.module on line 353": "https://www.drupal.org/files/issues/filefield_paths-ignore_base_fields-2662420-5.patch",
+                "Type provider configuration not available": "https://www.drupal.org/files/issues/2761291-1_0.patch",
+                "Trying to create sub-tabs on panels in Organic Groups": "https://www.drupal.org/files/issues/empty-2717483-12.patch"
+            }
+        }
+    },
+    "replace": {
+        "drupal/drupal": "*"
+    }
+}
+

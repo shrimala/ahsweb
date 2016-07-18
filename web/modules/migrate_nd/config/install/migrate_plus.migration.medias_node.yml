@@ -12,6 +12,10 @@ process:
     plugin: default_value
     default_value: session
   title: title
+  field_admin_tags: 
+    plugin: migration
+    migration: admin_term
+    source: adminbid 
   field_clip: field_clip
   field_datetime: dt_session
   'body/value': descrip

@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `audio` (
   `title` varchar(6) DEFAULT NULL,
-  `id` varchar(16) DEFAULT NULL
+  `id` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -36,14 +36,14 @@ CREATE TABLE IF NOT EXISTS `audio` (
 --
 
 INSERT INTO `audio` (`title`, `id`) VALUES
-('Audio1', 'aaa/2637890.txt'),
-('Audio2', 'aaa/2637891.txt'),
-('Audio3', 'bbb/2637892.txt'),
-('Audio4', 'bbb/2637893.txt'),
-('Audio5', 'ccc/2637894.txt'),
-('Audio6', 'ddd/4847475.txt'),
-('Audio7', 'eee/38378374.txt'),
-('Audio8', 'fff/5848737.txt');
+('Audio1', 'testfolder2016/behagra-t-192.mp3'),
+('Audio2', 'testfolder2016/bhatiyar_ausschnitt3.mp3'),
+('Audio3', 'testfolder2016/do_you_sing_my_song.mp3'),
+('Audio4', 'testfolder2016/pictures-promenade.mp3'),
+('Audio5', 'testfolder2016/Mozart-minuet-k2.mp3'),
+('Audio6', 'testfolder2016/Satie-Gymnopedie1-cello-piano.mp3'),
+('Audio7', 'testfolder2016/soulsearcher-clip-2-192.mp3'),
+('Audio8', 'testfolder2016/Tumi asbe boleNachiketa.mp3');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

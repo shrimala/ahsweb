@@ -22,9 +22,13 @@ function migrate_nd_setup_schema() {
   $schema['migrate_nd_mdf_node'] = migrate_nd_mdf_schema_node();
   $schema['migrate_nd_md_node'] = migrate_nd_md_schema_node();                             //Teacher.
   $schema['migrate_nd_mds_node'] = migrate_nd_mds_schema_node();
+  $schema['migrate_nd_mdsadmin_node'] = migrate_nd_mdsadmin_schema_node();
   $schema['migrate_nd_mdstemp_node'] = migrate_nd_mdstemp_schema_node();
   $schema['migrate_nd_mde_node'] = migrate_nd_mde_schema_node();
   $schema['migrate_nd_mdv_node'] = migrate_nd_mdv_schema_node();                             //Venue.
+  $schema['migrate_nd_admin_topic'] = migrate_nd_admin_schema_topic();
+  $schema['migrate_nd_admin_topic_node'] = migrate_nd_admin_schema_topic_node();
+  
   return $schema;
 }
 
@@ -46,6 +50,10 @@ function migrate_nd_setup_install() {
   migrate_nd_mdm_data_node();
   migrate_nd_mdf_data_node();
   migrate_nd_mdv_data_node();                                                               //Venue.
+  migrate_nd_mdsadmin_data_node();                                                // breakup admin tag field for relationship with admin tag texonamy.
+  migrate_nd_admin_data_topic();
+  migrate_nd_admin_data_topic_node();
+  
 }
 function migrate_nd_md_schema_node() {
   return array(
@@ -183,6 +191,29 @@ function migrate_nd_mds_schema_node() {
       ),
     ),
     'primary key' => array('sbid'),
+  );
+}
+function migrate_nd_mdsadmin_schema_node() {
+  return array(
+    'description' => 'Beers of the world.',
+    'fields' => array(
+      'sbid'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Beer ID.',
+      ),
+      'title'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'field_admin_tags'  => array(
+        'type' => 'varchar', 
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Beer ID.',
+      ),
+    ),
   );
 }
 function migrate_nd_mdstemp_schema_node() {
@@ -676,7 +707,7 @@ function migrate_nd_dyn_schema_topic_node() {
     'primary key' => array('style', 'bbid'),
   );
 }
-//+++++++++++++++++++++++++++++++++++
+//++++++++++++++Stat event tag+++++++++++++++++++++
 function migrate_nd_event_schema_topic() {
   return array(
     'description' => 'Categories',
@@ -733,7 +764,65 @@ function migrate_nd_event_schema_topic_node() {
     'primary key' => array('style', 'eventbid'),
   );
 }
-//+++++++++++++++++++++++++++++++++++++
+//+++++++++++++++End++++++++++++++++++++++
+//++++++++++++++Stat admin tag+++++++++++++++++++++
+function migrate_nd_admin_schema_topic() {
+  return array(
+    'description' => 'Categories',
+    'fields' => array(
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'details' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'style_parent' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Parent topic, if any',
+      ),
+      'region' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Region first associated with this style',
+      ),
+      'hoppiness' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Relative hoppiness of the dyn',
+      ),
+    ),
+    'primary key' => array('style'),
+  );
+}
+
+function migrate_nd_admin_schema_topic_node() {
+  return array(
+    'description' => 'Dyns topic pairs.',
+    'fields' => array(
+      'adminbid'  => array(
+        'type' => 'int',
+        'not null' => false,
+        'description' => 'event tag ID.',
+      ),
+      'style'  => array(
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => false,
+        'description' => 'Topic name',
+      ),
+    ),
+    //'primary key' => array('style', 'adminbid'),
+  );
+}
+//+++++++++++++++End++++++++++++++++++++++
 
 function migrate_nd_dyn_schema_account() {
   return array(
@@ -1497,6 +1586,75 @@ function migrate_nd_event_data_topic_node() {
 
 
   $query = db_insert('migrate_nd_event_topic_node')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+//-------------------admin tags----------
+function migrate_nd_mdsadmin_data_node() {
+  $q1 = db_select('migrate_nd_mdstemp_node', 'sd');
+  $q1 = db_select('migrate_nd_mdstemp_node', 'sd');
+  $obj=$q1->fields('sd',array('sbid','title', 'field_admin_tags'))//SELECT 
+        ->execute()->fetchAll();
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+	  $admin_tag=explode(',',$obj1->field_admin_tags);
+	  $arraycount=count($admin_tag);
+	  if ($arraycount>=1 && !empty($obj1->field_admin_tags)) {
+		  for($ac=0;$ac<$arraycount;$ac++) {
+			  $data[$i][0]=$obj1->sbid;
+			  $data[$i][1]=$obj1->title;
+			  $data[$i][2]=$admin_tag[$ac];
+			  $i=$i+1;
+		  }
+	  }
+  }
+  //------------------------------------------------------------
+  $fields = array('sbid', 'title', 'field_admin_tags');
+  $query = db_insert('migrate_nd_mdsadmin_node')
+           ->fields($fields);
+  
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+
+function migrate_nd_admin_data_topic() {
+  $fields = array('style', 'details', 'style_parent', 'region', 'hoppiness');
+  $obj = db_query('SELECT distinct(title) FROM admin_tags order by title');
+  $i=0;
+  foreach ( $obj as $obj1 ) {
+    $data[$i][0]=$obj1->title;
+    $data[$i][1]=NULL;
+    $data[$i][2]=NULL;
+    $data[$i][3]=NULL;
+    $data[$i][4]=NULL;
+    $i+=1;
+  }
+  $query = db_insert('migrate_nd_admin_topic')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}
+function migrate_nd_admin_data_topic_node() {
+  $fields = array('adminbid', 'style');
+
+
+  $objq = db_query('SELECT msadm.sbid as sbid, at.style as style FROM migrate_nd_mdsadmin_node msadm,migrate_nd_admin_topic at, sessiondata sd where  msadm.title=sd.title and msadm.field_admin_tags=at.style');
+  $i=0;
+  foreach ($objq as $objq1 ) {
+    $data[$i][0]=$objq1->sbid;
+    $data[$i][1]=$objq1->style;
+    $i+=1;
+  }
+
+
+  $query = db_insert('migrate_nd_admin_topic_node')
     ->fields($fields);
   foreach ($data as $row) {
     $query->values(array_combine($fields, $row));
