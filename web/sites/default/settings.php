@@ -61,7 +61,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   // We're on platform.sh
   if ($_ENV['PLATFORM_ENVIRONMENT']==='master') {
     //We're on platform.sh master
-    $settings['config_readonly'] = TRUE;
+    //$settings['config_readonly'] = TRUE;
     $dropboxPath = "Live";
   } else {
     // We're on a platform.sh dev environment
