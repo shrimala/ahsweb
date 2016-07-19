@@ -64,11 +64,11 @@ hooks:
       drush --yes updatedb
       for module in `cat ~/modules.common`; do drush --yes pm-enable $module; done
       for module in `cat ~/modules.dev`; do drush --yes pm-enable $module; done
-      for module in `cat ~/modules.master`; do drush --yes pm-enable $module; done
       if [ $PLATFORM_ENVIRONMENT = "master" ]; then
         #don't uninstall master modules when importing config
         drush --yes config-import --skip-modules="$(echo $(cat ~/modules.master) | tr " " "," )"
         for module in `cat ~/modules.dev`; do drush --yes pm-uninstall $module; done
+        for module in `cat ~/modules.master`; do drush --yes pm-enable $module; done
       else
         cp ~/scripts/ahs/ahs_config_push.php ~/web/sites/default/files/
         #don't uninstall dev modules when importing config
