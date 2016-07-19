@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.audio.field_dropbox
+    - field.field.media.audio.field_session
     - image.style.thumbnail
     - media_entity.bundle.audio
   module:
@@ -30,6 +31,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: file_default
+  field_session:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   name:
     label: hidden
     type: string

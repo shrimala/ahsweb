@@ -1,0 +1,28 @@
+uuid: 9fb76d21-0994-4300-92c0-79b4e28f89a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_session
+    - media_entity.bundle.youtube
+    - node.type.session
+id: media.youtube.field_session
+field_name: field_session
+entity_type: media
+bundle: youtube
+label: Session
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      session: session
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

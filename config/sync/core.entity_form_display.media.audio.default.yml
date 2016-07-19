@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.audio.field_dropbox
+    - field.field.media.audio.field_session
     - media_entity.bundle.audio
   module:
     - file
@@ -23,6 +24,14 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+  field_session:
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   name:
     type: string_textfield
     weight: -5

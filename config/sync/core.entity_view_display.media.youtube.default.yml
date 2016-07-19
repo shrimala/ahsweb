@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.youtube.field_media_video_embed_field
+    - field.field.media.youtube.field_session
     - image.style.thumbnail
     - media_entity.bundle.youtube
   module:
@@ -34,6 +35,13 @@ content:
       height: 480
       autoplay: true
     third_party_settings: {  }
+  field_session:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   name:
     label: hidden
     type: string

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.session.field_admin_tags
     - field.field.node.session.field_clip
     - field.field.node.session.field_datetime
+    - field.field.node.session.field_event
     - field.field.node.session.field_leader
     - field.field.node.session.field_media
     - field.field.node.session.field_original
@@ -55,6 +56,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_event:
+    weight: 41
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_leader:
     weight: 33
     settings:
