@@ -59,7 +59,6 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
       cd web
-      drush --yes pm-uninstall config_readonly
       drush --yes cache-rebuild
       drush --yes updatedb
       for module in `cat ~/modules.common`; do drush --yes pm-enable $module; done
