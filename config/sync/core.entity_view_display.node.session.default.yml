@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.session.field_admin_tags
     - field.field.node.session.field_clip
     - field.field.node.session.field_datetime
+    - field.field.node.session.field_event
     - field.field.node.session.field_leader
     - field.field.node.session.field_media
     - field.field.node.session.field_original
@@ -53,6 +54,13 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+  field_event:
+    weight: 111
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_leader:
     weight: 103
     label: above
