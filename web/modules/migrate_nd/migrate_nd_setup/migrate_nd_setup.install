@@ -1032,13 +1032,32 @@ function migrate_nd_sestemp_data_node() {
 		{
 			$data[$i][0]=$obj1->title;
 			$data[$i][1]=$obj1->field_datetime;
-			$data[$i][2]=$obj1->body;
+			//============Upper case check====
+			$x=$obj1->body;
+            if (strtoupper($x)!=$x && strtolower($x)!=$x) {
+	          $data[$i][2]=$obj1->body;
+            }
+            else if (strtoupper($x)==$x) {
+	          $data[$i][2]=strtolower($obj1->body);
+            }
+            //================================
+			//$data[$i][2]=$obj1->body;
 			$data[$i][3]=$xyz[$rr];
 			$data[$i][4]=$obj1->Event;
 			$data[$i][5]=$obj1->field_leader;
 			$data[$i][6]=$obj1->old_id;
 			$data[$i][7]=$obj1->type;
-		    $data[$i][8]=$obj1->body_summary;
+			//============Upper case check====
+			$x=$obj1->body_summary;
+            if (strtoupper($x)!=$x && strtolower($x)!=$x) {
+	          $data[$i][8]=$obj1->body_summary;
+            }
+            else if (strtoupper($x)==$x) {
+	          $data[$i][8]=strtolower($obj1->body_summary);
+            }
+            //================================
+		    //$data[$i][8]=$obj1->body_summary;
+		    
 		    $data[$i][9]=$obj1->field_clip;
 		    $data[$i][10]=$obj1->field_old_catalog;
 		    $data[$i][11]=$obj1->field_restricted;
@@ -1050,13 +1069,31 @@ function migrate_nd_sestemp_data_node() {
 	{
 		$data[$i][0]=$obj1->title;
 		$data[$i][1]=$obj1->field_datetime;
-		$data[$i][2]=$obj1->body;
+		//============Upper case check====
+			$x=$obj1->body;
+            if (strtoupper($x)!=$x && strtolower($x)!=$x) {
+	          $data[$i][2]=$obj1->body;
+            }
+            else if (strtoupper($x)==$x) {
+	          $data[$i][2]=strtolower($obj1->body);
+            }
+        //================================
+        //$data[$i][2]=$obj1->body;
 		$data[$i][3]=$obj1->Recordings;
 		$data[$i][4]=$obj1->Event;
 		$data[$i][5]=$obj1->field_leader;
 		$data[$i][6]=$obj1->old_id;
 		$data[$i][7]=$obj1->type;
-		$data[$i][8]=$obj1->body_summery;
+		//============Upper case check====
+			$x=$obj1->body_summary;
+            if (strtoupper($x)!=$x && strtolower($x)!=$x) {
+	          $data[$i][8]=$obj1->body_summary;
+            }
+            else if (strtoupper($x)==$x) {
+	          $data[$i][8]=strtolower($obj1->body_summary);
+            }
+        //================================
+		//$data[$i][8]=$obj1->body_summery;
 		$data[$i][9]=$obj1->field_clip;
 		$data[$i][10]=$obj1->field_old_catalog;
 		$data[$i][11]=$obj1->field_restricted;
