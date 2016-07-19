@@ -61,6 +61,7 @@ class MediasNode extends SqlBase {
       'field_admin_tags' => $this->t('Admin tags reference id'),
       'terms' => $this->t('Applicable styles'),
       'adminbid' => $this->t('Admin tags Applicable styles'),
+      'sessionbid' => $this->t('session type tags Applicable styles'),
     ];
 
     return $fields;
@@ -169,13 +170,19 @@ class MediasNode extends SqlBase {
       ->condition('adminbid', $row->getSourceProperty('sbid'))
       ->execute()
       ->fetchCol();
-	
+	//-----------------------------
+	$sessiontags1 = $this->select('migrate_nd_session_topic_node', 'bt')
+                 ->fields('bt', ['style'])
+      ->condition('sessionbid', $row->getSourceProperty('sbid'))
+      ->execute()
+      ->fetchCol();
     //-------------------------------
     $row->setSourceProperty('mbid',$data);  
     $row->setSourceProperty('meytbid', $meytbidref);
     $row->setSourceProperty('mebid',$mebidref);
     $row->setSourceProperty('terms', $terms);
     $row->setSourceProperty('adminbid', $admintags1);
+    $row->setSourceProperty('sessionbid', $sessiontags1);
     $row->setSourceProperty('field_restricted', $restriction);
     $row->setSourceProperty('field_clip', $fieldclip);
     return parent::prepareRow($row);

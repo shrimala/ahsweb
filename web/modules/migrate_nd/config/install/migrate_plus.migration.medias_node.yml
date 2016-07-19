@@ -31,6 +31,10 @@ process:
     plugin: migration
     migration: dyn_term
     source: terms
+  field_session_type: 
+    plugin: migration
+    migration: session_term
+    source: sessionbid 
   uid:
     plugin: migration
     migration: dyn_user
