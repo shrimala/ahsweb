@@ -50,6 +50,7 @@ class MediamMedia extends SqlBase {
       'uril' => $this->t('url of file'),
       'filename' => $this->t('file name'),
       'fid' => $this->t('file id'),
+      'sbid' => $this->t('session id'),
     ];
 
     return $fields;
@@ -93,8 +94,13 @@ class MediamMedia extends SqlBase {
 			  $fileid[$j]=$r3->fid;
 			  $j=$j+1;
 		  }
+   $session_id = $this->select('migrate_nd_mdstemp_node', 'bt')
+                 ->fields('bt', ['sbid'])
+      ->condition('meytbid', $row->getSourceProperty('mebid'))
+      ->execute()
+      ->fetchCol();
    
-   
+   $row->setSourceProperty('sbid',$session_id);
    $row->setSourceProperty('filename',$filename);
    $row->setSourceProperty('fid',$fileid);
     return parent::prepareRow($row);

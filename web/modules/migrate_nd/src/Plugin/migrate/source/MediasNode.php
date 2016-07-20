@@ -35,7 +35,7 @@ class MediasNode extends SqlBase {
      * below.
      */
     $query = $this->select('migrate_nd_mdstemp_node', 'b')
-                 ->fields('b', ['sbid', 'title','dt_session','descrip','aid','mbid','meytbid','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags']);
+                 ->fields('b', ['sbid', 'title','dt_session','descrip','aid','mbid','meytbid','eventid','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags']);
     return $query;
   }
 
@@ -62,6 +62,7 @@ class MediasNode extends SqlBase {
       'terms' => $this->t('Applicable styles'),
       'adminbid' => $this->t('Admin tags Applicable styles'),
       'sessionbid' => $this->t('session type tags Applicable styles'),
+      'ebid' => $this->t('Event ID'),
     ];
 
     return $fields;
@@ -89,7 +90,7 @@ class MediasNode extends SqlBase {
      * the media_term migration).
      */      
      //$fields = array('bbid', 'style');
-    $obj = db_query('SELECT title, old_id, field_restricted, field_clip FROM migrate_nd_mdstemp_node WHERE sbid='.$row->getSourceProperty('sbid'));
+    $obj = db_query('SELECT title, old_id, field_restricted, field_clip,eventid FROM migrate_nd_mdstemp_node WHERE sbid='.$row->getSourceProperty('sbid'));
     $i=0;
     $i1=0;
     $j=0;
@@ -117,6 +118,11 @@ class MediasNode extends SqlBase {
 		if ($obj1->field_clip==1) {
 			$fieldclip=$obj1->field_clip;
 		}
+		$eventdata = $this->select('migrate_nd_mde_node', 'bt')
+                 ->fields('bt', ['ebid'])
+      ->condition('ebid', $obj1->eventid)
+      ->execute()
+      ->fetchCol();
 	  }
 	  
 	  $data1count=count($data1);
@@ -177,7 +183,8 @@ class MediasNode extends SqlBase {
       ->execute()
       ->fetchCol();
     //-------------------------------
-    $row->setSourceProperty('mbid',$data);  
+    $row->setSourceProperty('mbid',$data);
+    $row->setSourceProperty('ebid',$eventdata);  
     $row->setSourceProperty('meytbid', $meytbidref);
     $row->setSourceProperty('mebid',$mebidref);
     $row->setSourceProperty('terms', $terms);

@@ -49,7 +49,7 @@ class MediamytMedia extends SqlBase {
       'aid' => $this->t('Auther id'),
       'uril' => $this->t('url of file'),
       'filename' => $this->t('file name'),
-
+      'sbid' => $this->t('session id'),
     ];
 
     return $fields;
@@ -78,6 +78,20 @@ class MediamytMedia extends SqlBase {
     // Retrieve the filename as our process plugin require it.
     $file_name = $row->getSourceProperty('filename');
     // Set the row property "file name".
+    
+    $session_id = $this->select('migrate_nd_mdstemp_node', 'bt')
+                 ->fields('bt', ['sbid'])
+      ->condition('meytbid', $row->getSourceProperty('meytbid'))
+      ->execute()
+      ->fetchCol();
+      /**$q1 = db_query("select sbid from migrate_nd_mdstemp_node where title =(select s.title from sessiondata s, migrate_nd_mdmyt_node yt where yt.meytbid=". $row->getSourceProperty('meytbid') ." and s.Recordings IN (yt.filename));");
+        foreach($q1 as $r)
+         {
+		   $session_id[$i]=$r->sbid;
+		   $i=$i+1;
+		 }*/     
+      
+    $row->setSourceProperty('sbid',$session_id);
     $row->setSourceProperty('filename', $file_name);
     return parent::prepareRow($row);
   }

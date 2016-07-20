@@ -41,7 +41,9 @@ INSERT INTO `admin_tags` (`title`) VALUES
 ('Needs digitisation'),
 ('Possibly needs digitisation'),
 ('Needs remastering'),
-('Needs merging');
+('Needs merging'),
+('Crude WMA conversion'),
+('WMA conversion failed');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -24,6 +24,10 @@ process:
     plugin: migration
     migration: media_node
     source: mbid
+  field_event:
+    plugin: migration
+    migration: mediae_node
+    source: ebid
   field_original: field_old_catalog
   field_media: meytbid
   field_restricted: field_restricted
