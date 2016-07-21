@@ -12,10 +12,10 @@ process:
     default_value: audio
   name: title
   uid: aid
-#  field_session:
-#    plugin: migration
-#    migration: medias_node
-#    source: sbid
+  field_session:
+    plugin: migration
+    migration: medias_node
+    source: sbid
   status:
     plugin: default_value
     default_value: 1

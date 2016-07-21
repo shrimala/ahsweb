@@ -79,19 +79,13 @@ class MediamytMedia extends SqlBase {
     $file_name = $row->getSourceProperty('filename');
     // Set the row property "file name".
     
-    /**$session_id = $this->select('migrate_nd_mdstemp_node', 'bt')
-                 ->fields('bt', ['sbid'])
-      ->condition('meytbid', $row->getSourceProperty('meytbid'))
-      ->execute()
-      ->fetchCol();
-      /*$q1 = db_query("select a.sbid from migrate_nd_mdstemp_node a, migrate_nd_sestemp_node b, migrate_nd_mdmyt_node c where c.filename=b.Recordings and b.title=a.title and c.meytbid=".$row->getSourceProperty('meytbid') );
-        foreach($q1 as $r)
-         {
-		   $session_id[$i]=$r->sbid;
-		   $i=$i+1;
-		 }   
-      */
-    //$row->setSourceProperty('sbid',$session_id);
+    $q1 = db_query("select a.sbid from migrate_nd_mdstemp_node a, migrate_nd_sestemp_node b, migrate_nd_mdmyt_node c where c.filename=b.Recordings and b.title=a.title and c.meytbid=".$row->getSourceProperty('meytbid') );
+    foreach($q1 as $r)
+      {
+		$session_id=$r->sbid;
+	  }   
+      
+    $row->setSourceProperty('sbid',$session_id);
     $row->setSourceProperty('filename', $file_name);
     return parent::prepareRow($row);
   }
