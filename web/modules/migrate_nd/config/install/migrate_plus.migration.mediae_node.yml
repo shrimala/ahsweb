@@ -1,0 +1,46 @@
+# Migration configuration for dyn content.
+id: mediae_node
+label: Media Non drupal Migration
+migration_group: dyn
+source:
+  plugin: mediae_node
+destination:
+  plugin: entity:node
+process:
+  # Hardcode the destination node type (bundle) as 'event'.
+  type:
+    plugin: default_value
+    default_value: event
+  title: title
+  field_sessions:
+    plugin: migration
+    migration: medias_node
+    source: sbid
+  field_venue: 
+    plugin: migration
+    migration: mediav_node
+    source: vbid
+  field_leader:
+    plugin: migration
+    migration: media_node
+    source: mbid
+  field_datetime: dt_event
+  'body/value': eventbody
+  'body/summary': eventbody
+  field_event_type: 
+    plugin: migration
+    migration: event_term
+    source: eventag
+  uid:
+    plugin: migration
+    migration: dyn_user
+    source: aid
+  sticky:
+    plugin: default_value
+    default_value: 0
+  promote:
+    plugin: default_value
+    default_value: 0
+migration_dependencies:
+  required:
+    - dyn_user
