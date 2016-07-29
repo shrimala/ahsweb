@@ -1034,6 +1034,7 @@ function migrate_nd_sestemp_data_node() {
 			$data[$i][0]=$title;
 			$data[$i][1]=$obj1->field_datetime;
 			//============Upper case check====
+			$data[$i][2]=$obj1->body
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
 	          $data[$i][2]=str_replace(";",",",$obj1->body);
@@ -1049,6 +1050,7 @@ function migrate_nd_sestemp_data_node() {
 			$data[$i][6]=$obj1->old_id;
 			$data[$i][7]=$obj1->type;
 			//============Upper case check====
+			$data[$i][8]=$obj1->body_summary;
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
 	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
@@ -1073,6 +1075,7 @@ function migrate_nd_sestemp_data_node() {
 	    $data[$i][0]=$title;
 		$data[$i][1]=$obj1->field_datetime;
 		//============Upper case check====
+		$data[$i][2]=$obj1->body;
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
 	          $data[$i][2]=str_replace(";",",",$obj1->body);
@@ -1088,6 +1091,7 @@ function migrate_nd_sestemp_data_node() {
 		$data[$i][6]=$obj1->old_id;
 		$data[$i][7]=$obj1->type;
 		//============Upper case check====
+		$data[$i][8]=$obj1->body_summery;
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
 	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
