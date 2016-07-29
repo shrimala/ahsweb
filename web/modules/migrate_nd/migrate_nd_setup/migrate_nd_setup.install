@@ -1064,7 +1064,6 @@ function migrate_nd_sestemp_data_node() {
 			}
             //================================
 		    //$data[$i][8]=$obj1->body_summary;
-		    
 		    $data[$i][9]=$obj1->field_clip;
 		    $field_old_catalog2=str_replace(";","/",$obj1->field_old_catalog);
 		    $data[$i][10]=$field_old_catalog2;
