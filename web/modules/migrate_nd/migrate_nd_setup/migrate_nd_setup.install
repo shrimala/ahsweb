@@ -1034,7 +1034,7 @@ function migrate_nd_sestemp_data_node() {
 			$data[$i][0]=$title;
 			$data[$i][1]=$obj1->field_datetime;
 			//============Upper case check====
-			$data[$i][2]=$obj1->body
+			$data[$i][2]=$obj1->body;
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
 	          $data[$i][2]=str_replace(";",",",$obj1->body);
