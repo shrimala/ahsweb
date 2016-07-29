@@ -88,14 +88,14 @@ class MediamMedia extends SqlBase {
    
     $j=0;
      //$q3 = db_query("SELECT destid1 FROM migrate_map_mediam_file  WHERE sourceid1 ='". $filename ."'");
-      $q3 = db_query("SELECT fid FROM file_managed  WHERE filename ='". $filename ."'");
+      $q3 = db_query("SELECT fid FROM file_managed  WHERE filename ='". addslashes($filename) ."'");
           foreach($q3 as $r3)
           {
 			  $fileid[$j]=$r3->fid;
 			  $j=$j+1;
 		  }
    
-   $q1 = db_query("select a.sbid from migrate_nd_mdstemp_node a, migrate_nd_sestemp_node b, migrate_nd_mdm_node c where  c.filename=b.Recordings  and b.title=a.title  and  c.mebid=".$row->getSourceProperty('mebid') );
+   $q1 = db_query("select a.sbid from migrate_nd_mdstemp_node a, migrate_nd_sestemp_node b, migrate_nd_mdm_node c where  c.filename=b.Recordings  and b.title=a.title  and  c.mebid=".addslashes($row->getSourceProperty('mebid')) );
    foreach($q1 as $r)
    {
 	 $session_id=$r->sbid;

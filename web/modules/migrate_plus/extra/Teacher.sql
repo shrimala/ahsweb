@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2016 at 01:56 PM
+-- Generation Time: Jul 29, 2016 at 08:02 AM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- PHP Version: 5.5.9-1ubuntu4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `xyz`
+-- Database: `update_migration`
 --
 
 -- --------------------------------------------------------
@@ -35,11 +35,17 @@ CREATE TABLE IF NOT EXISTS `Teacher` (
 --
 
 INSERT INTO `Teacher` (`teacher`) VALUES
+('Aled Jones-Williams'),
+('Corrado Pensa'),
+('Dashu'),
+('Dzogchen Ponlop Rinpoche'),
 ('Five Cram'),
 ('Gabriele Reifenberg'),
 ('Heinz Roger'),
 ('Iegor Reznikoff'),
 ('Jane Powell'),
+('Jonathan Shaw'),
+('Katie'),
 ('Katie Morrow'),
 ('Khenpo Namgyal'),
 ('Khenpo Tsultrim Gyamtso Rinpoche'),
@@ -47,18 +53,21 @@ INSERT INTO `Teacher` (`teacher`) VALUES
 ('Lama Lodro Palmo'),
 ('Lama Phuntsok'),
 ('Lama Rigdzin Shikpo'),
+('Lama Sahle O'),
 ('Lama Shenpen'),
-('Jane Powell'),
+('Lama Shenpen Hookham'),
 ('Patrycja Bielak'),
-('Pema Oser'),
+('Pema Ozer'),
 ('Ponlop Rinpoche'),
-('Katie Morrow'),
-('Aled Jones-Williams'),
-('Katie'),
+('Rigdzin Shikpo Rinpoche'),
+('Sherab Dorje'),
 ('Stephanie Hair'),
+('Suddhaka'),
+('Tara Dew'),
 ('Tashi Mannox'),
 ('Vajrapriya'),
-('Tara Dew');
+('Yeshe Reifenberg'),
+('Yonten Hair');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

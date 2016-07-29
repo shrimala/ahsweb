@@ -79,7 +79,7 @@ class MediamytMedia extends SqlBase {
     $file_name = $row->getSourceProperty('filename');
     // Set the row property "file name".
     
-    $q1 = db_query("select a.sbid from migrate_nd_mdstemp_node a, migrate_nd_sestemp_node b, migrate_nd_mdmyt_node c where c.filename=b.Recordings and b.title=a.title and c.meytbid=".$row->getSourceProperty('meytbid') );
+    $q1 = db_query("select a.sbid from migrate_nd_mdstemp_node a, migrate_nd_sestemp_node b, migrate_nd_mdmyt_node c where c.filename=b.Recordings and b.title=a.title and c.meytbid=".addslashes($row->getSourceProperty('meytbid')) );
     foreach($q1 as $r)
       {
 		$session_id=$r->sbid;

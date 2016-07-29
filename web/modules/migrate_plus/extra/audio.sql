@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 26, 2016 at 07:30 PM
+-- Generation Time: Jul 29, 2016 at 07:06 AM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- PHP Version: 5.5.9-1ubuntu4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -142,7 +142,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (102, '2003-09-20 1800 Unknown #2', 'recordings/audio/2003/2003-09-20 1800 Unknown #2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2003.09 Confusion/2003-09-20-confusion-55-noID_3.2.mp3'),
 (103, '2003-09-21 0900 Unknown', 'recordings/audio/2003/2003-09-21 0900 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2003.09 Confusion/2003-09-21-confusion-55-noID_4.1.mp3'),
 (104, '2003-09-21 0900 Unknown #2', 'recordings/audio/2003/2003-09-21 0900 Unknown #2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2003.09 Confusion/2003-09-21-confusion-55-noID_4.2.mp3'),
-(105, '2003-09-21 0900 Unknown', 'recordings/audio/2003/2003-09-21 0900 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/612.mp3'),
+(105, '2003-09-21 0900 Unknown', 'recordings/audio/2003/2003-09-21 0900123 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/612.mp3'),
 (106, '2003-09-21 1100 Unknown', 'recordings/audio/2003/2003-09-21 1100 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2003.09 Confusion/2003-09-21-confusion-55-noID_5.1.mp3'),
 (107, '2003-09-21 1500 Unknown', 'recordings/audio/2003/2003-09-21 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2003.09 Confusion/2003-09-21-confusion-55-noID_6.1.mp3'),
 (108, '2003-09-21 1500 Unknown #2', 'recordings/audio/2003/2003-09-21 1500 Unknown #2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2003.09 Confusion/2003-09-21-confusion-55-noID_6.2.mp3'),
@@ -260,9 +260,9 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (220, '2004-06-07 0900 Songs 4', 'recordings/audio/2004/2004-06-07 0900 Songs 4.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/883.mp3'),
 (221, '2004-06-09 0000 Unknown', 'recordings/audio/2004/2004-06-09 0000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2006 RS 2004/2004-06-9-RS.mp3'),
 (222, '2004-06-10 0000 Unknown', 'recordings/audio/2004/2004-06-10 0000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2006 RS 2004/2004-06-10-RS_questions_and_answers.mp3'),
-(223, '2004-06-26 0900 Missing title', 'recordings/audio/2004/2004-06-26 0900 Missing title.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/394.mp3'),
-(224, '2004-06-26 1521 Confidence & fears', 'recordings/audio/2004/2004-06-26 1521 Confidence & fears.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/965.mp3');
+(223, '2004-06-26 0900 Missing title', 'recordings/audio/2004/2004-06-26 0900 Missing title.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/394.mp3');
 INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
+(224, '2004-06-26 1521 Confidence & fears', 'recordings/audio/2004/2004-06-26 1521 Confidence & fears.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/965.mp3'),
 (225, '2004-08-08 1500 Missing title', 'recordings/audio/2004/2004-08-08 1500 Missing title.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/517.mp3'),
 (226, '2004-08-08 2100 Missing title', 'recordings/audio/2004/2004-08-08 2100 Missing title.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/499.mp3'),
 (227, '2004-08-10 0900 Missing title', 'recordings/audio/2004/2004-08-10 0900 Missing title.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/503.mp3'),
@@ -331,7 +331,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (290, '2005-04-30 2152 Introduction to Heart Sutra retreat', 'recordings/audio/2005/2005-04-30 2152 Introduction to Heart Sutra retreat.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/812.mp3'),
 (291, '2005-05-01 1121 Meditation instruction #1', 'recordings/audio/2005/2005-05-01 1121 Meditation instruction #1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/813.mp3'),
 (292, '2005-05-01 1500 Prajanparamita in the Buddhist tradition', 'recordings/audio/2005/2005-05-01 1500 Prajanparamita in the Buddhist tradition.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/814.mp3'),
-(293, '2005-05-01 2219 Stories of Vultures Peak', 'recordings/audio/2005/2005-05-01 2219 Stories of Vultures Peak.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/815.mp3'),
+(293, '2005-05-01 2219 Stories of Vultures Peak', 'recordings/audio/2005/2005-05-01 2219 Stories of Vulture''s Peak.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/815.mp3'),
 (294, '2005-05-02 0900 Meditation instruction #2', 'recordings/audio/2005/2005-05-02 0900 Meditation instruction #2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/817.mp3'),
 (295, '2005-05-02 1500 Fives skandhas & emptiness', 'recordings/audio/2005/2005-05-02 1500 Fives skandhas & emptiness.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/816.mp3'),
 (296, '2005-05-02 2232 Shariputra', 'recordings/audio/2005/2005-05-02 2232 Shariputra.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/818.mp3'),
@@ -363,7 +363,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (322, '2005-06-23 1433 Middle Way Verses', 'recordings/audio/2005/2005-06-23 1433 Middle Way Verses.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/907.mp3'),
 (323, '2005-06-24 0900 The terma tradition', 'recordings/audio/2005/2005-06-24 0900 The terma tradition.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/908.mp3'),
 (324, '2005-06-24 1500 The terma tradition', 'recordings/audio/2005/2005-06-24 1500 The terma tradition.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/909.mp3'),
-(325, '2005-06-26 1500 Place & non-human beings', 'recordings/audio/2005/2005-06-26 1500 Place & non-human beings.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/dashu/26 June Rigdzin Shikpo mind is rubbish.mp3'),
+(325, '2005-06-26 1500 Place & non-human beings', 'recordings/audio/2005/2005-06-26 1500 Place & non-human beings.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/dashu/26 June Rigdzin Shikpo ''mind is rubbish''.mp3'),
 (326, '2005-07-07 0000 KTGR practices & Heart Sutra', 'recordings/audio/2005/2005-07-07 0000 KTGR practices & Heart Sutra.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/7 July Shenpen on KTGR practices verses heart sutra.mp3'),
 (327, '2005-07-20 0000 No eye', 'recordings/audio/2005/2005-07-20 0000 No eye.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/10 July SH new training 1 no eye.mp3'),
 (328, '2005-08-20 1500 Sensations & daily life practice', 'recordings/audio/2005/2005-08-20 1500 Sensations & daily life practice.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/910.mp3'),
@@ -380,7 +380,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (339, '2005-09-19 1500 Working with a dharma teacher', 'recordings/audio/2005/2005-09-19 1500 Working with a dharma teacher.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/932.mp3'),
 (340, '2005-09-19 1800 Pranidhanas adhistana & dharma teachers', 'recordings/audio/2005/2005-09-19 1800 Pranidhanas adhistana & dharma teachers.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/933.mp3'),
 (341, '2005-09-20 0900 Words and the process of realisation', 'recordings/audio/2005/2005-09-20 0900 Words and the process of realisation.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/934.mp3'),
-(342, '2005-09-20 1500 Following a teachers direction', 'recordings/audio/2005/2005-09-20 1500 Following a teachers direction.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/935.mp3'),
+(342, '2005-09-20 1500 Following a teachers direction', 'recordings/audio/2005/2005-09-20 1500 Following a teacher''s direction.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/935.mp3'),
 (343, '2005-09-20 2001 Jayoshmayatara', 'recordings/audio/2005/2005-09-20 2001 Jayoshmayatara.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/937.mp3'),
 (344, '2005-09-21 0900 Guided meditation', 'recordings/audio/2005/2005-09-21 0900 Guided meditation.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/936.mp3'),
 (345, '2005-09-21 1500 Friendship', 'recordings/audio/2005/2005-09-21 1500 Friendship.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/940.mp3'),
@@ -514,12 +514,12 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (473, '2007-04-22 0000 Mandala of the Awakened Heart Sangha', 'recordings/audio/2007/2007-04-22 0000 Mandala of the Awakened Heart Sangha.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1097.mp3'),
 (474, '2007-04-22 0000 Shravaka view', 'recordings/audio/2007/2007-04-22 0000 Shravaka view.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1076.mp3'),
 (475, '2007-04-23 0000 Cittamatra view', 'recordings/audio/2007/2007-04-23 0000 Cittamatra view.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1077.mp3'),
-(476, '2007-04-23 0000 Mahayanagana', 'recordings/audio/2007/2007-04-23 0000 Mahayanagana.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1078.mp3'),
+(476, '2007-04-23 0000 Mahayanagana', 'recordings/audio/2007/2007-04-23 0000 Mahayanagana#1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1078.mp3'),
 (477, '2007-04-23 0000 Mahayanagana', 'recordings/audio/2007/2007-04-23 0000 Mahayanagana.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1101.mp3'),
 (478, '2007-04-23 0000 Offerings of money', 'recordings/audio/2007/2007-04-23 0000 Offerings of money.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1079.mp3'),
-(479, '2007-04-23 0000 Trimandala', 'recordings/audio/2007/2007-04-23 0000 Trimandala.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1081.mp3'),
-(480, '2007-04-24 0000 Contact person training 1', 'recordings/audio/2007/2007-04-24 0000 Contact person training 1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1094.mp3');
+(479, '2007-04-23 0000 Trimandala', 'recordings/audio/2007/2007-04-23 0000 Trimandala.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1081.mp3');
 INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
+(480, '2007-04-24 0000 Contact person training 1', 'recordings/audio/2007/2007-04-24 0000 Contact person training 1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1094.mp3'),
 (481, '2007-04-24 0000 Contact person training 2', 'recordings/audio/2007/2007-04-24 0000 Contact person training 2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1093.mp3'),
 (482, '2007-04-24 0000 Kalu Rinpoche', 'recordings/audio/2007/2007-04-24 0000 Kalu Rinpoche.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1085.mp3'),
 (483, '2007-04-25 0000 Introduction to DHB transmission', 'recordings/audio/2007/2007-04-25 0000 Introduction to DHB transmission.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1089.mp3'),
@@ -636,7 +636,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (594, '2008-03-16 1000 Unknown', 'recordings/audio/2008/2008-03-16 1000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2008 03 Anything you do can be Dharma/Anything_You_Do3.mp3'),
 (595, '2008-03-22 0124 Mandala samaya dana and rejoicing', 'recordings/audio/2008/2008-03-22 0124 Mandala samaya dana and rejoicing.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/1168.mp3'),
 (596, '2008-04-19 1900 Introduction to retreat values and guardianship', 'recordings/audio/2008/2008-04-19 1900 Introduction to retreat values and guardianship.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2008.04 April Retreat/1introduction.mp3'),
-(597, '2008-04-20 0900 Milarepas and Gampopas life styles and sets of values', 'recordings/audio/2008/2008-04-20 0900 Milarepas and Gampopas life styles and sets of values.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2008.04 April Retreat/2MilarepaGompopa.mp3'),
+(597, '2008-04-20 0900 Milarepa''s and Gampopas life styles and sets of values', 'recordings/audio/2008/2008-04-20 0900 Milarepa''s and Gampopas life styles and sets of values.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2008.04 April Retreat/2MilarepaGompopa.mp3'),
 (598, '2008-04-20 0900 Summing up of pre-retreat values discussion', 'recordings/audio/2008/2008-04-20 0900 Summing up of pre-retreat values discussion.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2008.04 April Retreat/3summingup.mp3'),
 (599, '2008-04-21 0900 Different levels and types of commitment', 'recordings/audio/2008/2008-04-21 0900 Different levels and types of commitment.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2008.04 April Retreat/5different levels.mp3'),
 (600, '2008-04-21 0900 What is the sangha what does it need', 'recordings/audio/2008/2008-04-21 0900 What is the sangha what does it need.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2008.04 April Retreat/4sangha.mp3'),
@@ -709,13 +709,13 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (667, '2008-11-30 1500 The meaning of a stupa', 'recordings/audio/2008/2008-11-30 1500 The meaning of a stupa.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/081130a_rs_stupa.mp3'),
 (668, '2008-11-30 1500 The meaning of a stupa #2', 'recordings/audio/2008/2008-11-30 1500 The meaning of a stupa #2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/081130b_rs_stupaq_a.mp3'),
 (669, '2009-01-10 1100 Missing title', 'recordings/audio/2009/2009-01-10 1100 Missing title.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/Feast 10-01-09 LSH.mp3'),
-(670, '2009-01-24 1000 Unknown', 'recordings/audio/2009/2009-01-24 1000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddhas Portrait of Samsara/Samsara 01.mp3'),
-(671, '2009-01-24 1100 Unknown', 'recordings/audio/2009/2009-01-24 1100 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddhas Portrait of Samsara/Samsara 02.mp3'),
-(672, '2009-01-24 1200 Unknown', 'recordings/audio/2009/2009-01-24 1200 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddhas Portrait of Samsara/Samsara 03.mp3'),
-(673, '2009-01-24 1500 Unknown', 'recordings/audio/2009/2009-01-24 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddhas Portrait of Samsara/Samsara 04.mp3'),
-(674, '2009-01-25 1000 Unknown', 'recordings/audio/2009/2009-01-25 1000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddhas Portrait of Samsara/Samsara 05.mp3'),
-(675, '2009-01-25 1200 Unknown', 'recordings/audio/2009/2009-01-25 1200 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddhas Portrait of Samsara/Samsara 06.mp3'),
-(676, '2009-01-25 1500 Unknown', 'recordings/audio/2009/2009-01-25 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddhas Portrait of Samsara/Samsara 07.mp3'),
+(670, '2009-01-24 1000 Unknown', 'recordings/audio/2009/2009-01-24 1000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddha''s Portrait of Samsara/Samsara 01.mp3'),
+(671, '2009-01-24 1100 Unknown', 'recordings/audio/2009/2009-01-24 1100 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddha''s Portrait of Samsara/Samsara 02.mp3'),
+(672, '2009-01-24 1200 Unknown', 'recordings/audio/2009/2009-01-24 1200 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddha''s Portrait of Samsara/Samsara 03.mp3'),
+(673, '2009-01-24 1500 Unknown', 'recordings/audio/2009/2009-01-24 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddha''s Portrait of Samsara/Samsara 04.mp3'),
+(674, '2009-01-25 1000 Unknown', 'recordings/audio/2009/2009-01-25 1000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddha''s Portrait of Samsara/Samsara 05.mp3'),
+(675, '2009-01-25 1200 Unknown', 'recordings/audio/2009/2009-01-25 1200 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddha''s Portrait of Samsara/Samsara 06.mp3'),
+(676, '2009-01-25 1500 Unknown', 'recordings/audio/2009/2009-01-25 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/2009 01 The Buddha''s Portrait of Samsara/Samsara 07.mp3'),
 (677, '2009-02-07 1100 Jewel Ornament', 'recordings/audio/2009/2009-02-07 1100 Jewel Ornament.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/Feast 7-2-09 Jewel Ornament.mp3'),
 (678, '2009-02-11 1100 Unknown talk in France', 'recordings/audio/2009/2009-02-11 1100 Unknown talk in France.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/WS_10196.mp3'),
 (679, '2009-02-24 1100 Unknown', 'recordings/audio/2009/2009-02-24 1100 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/LSH 24-02-09.mp3'),
@@ -759,9 +759,9 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (717, '2009-05-23 1200 Unknown 2', 'recordings/audio/2009/2009-05-23 1200 Unknown 2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/May 09/MZ000003.mp3'),
 (718, '2009-05-23 1700 Taking meditation into daily life', 'recordings/audio/2009/2009-05-23 1700 Taking meditation into daily life.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/May 09/MZ000004.mp3'),
 (719, '2009-06-13 0900 authority in Buddhism', 'recordings/audio/2009/2009-06-13 0900 authority in Buddhism.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/wma/1180.mp3'),
-(720, '2009-06-20 1800 Lam Rim teachings', 'recordings/audio/2009/2009-06-20 1800 Lam Rim teachings.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.03 JOL/01 Lam Rim Teachings.mp3'),
-(721, '2009-06-20 1900 The Jewel Ornament of Liberation', 'recordings/audio/2009/2009-06-20 1900 The Jewel Ornament of Liberation.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.03 JOL/02 Jewel Ornament of Liberation.mp3');
+(720, '2009-06-20 1800 Lam Rim teachings', 'recordings/audio/2009/2009-06-20 1800 Lam Rim teachings.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.03 JOL/01 Lam Rim Teachings.mp3');
 INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
+(721, '2009-06-20 1900 The Jewel Ornament of Liberation', 'recordings/audio/2009/2009-06-20 1900 The Jewel Ornament of Liberation.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.03 JOL/02 Jewel Ornament of Liberation.mp3'),
 (722, '2009-06-20 1930 Introduction to the Retreat and the Jewel Ornament of Liberation', 'recordings/audio/2009/2009-06-20 1930 Introduction to the Retreat and the Jewel Ornament of Liberation.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/JOL/MZ000005.mp3'),
 (723, '2009-06-20 2000 How to study the Jewel Ornament', 'recordings/audio/2009/2009-06-20 2000 How to study the Jewel Ornament.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.03 JOL/03 How to Study JOL.mp3'),
 (724, '2009-06-21 0900 Primary Cause 1 Buddha Nature', 'recordings/audio/2009/2009-06-21 0900 Primary Cause 1 Buddha Nature.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.03 JOL/04 Primary cause1 Buddha Nature.mp3'),
@@ -828,7 +828,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (785, '2009-12-20 1500 Unknown', 'recordings/audio/2009/2009-12-20 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.05 Mahamudra  Triratna FWBO/WBO-6Dec 20mp3.mp3'),
 (786, '2009-12-21 0900 Unknown', 'recordings/audio/2009/2009-12-21 0900 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.05 Mahamudra  Triratna FWBO/WBO-7 Dec 21.mp3'),
 (787, '2009-12-22 0900 Unknown', 'recordings/audio/2009/2009-12-22 0900 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2009.05 Mahamudra  Triratna FWBO/WBO-8 22 Dec on KTGR.mp3'),
-(788, '2010-01-16 1000 Unknown', 'recordings/audio/2010/2010-01-16 1000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/loving kindness jan 10/VOICE045.mp3'),
+(788, '2010-01-16 1000 Unknown', 'recordings/audio/2010/2010-01-16 1000 Unknown#1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/loving kindness jan 10/VOICE045.mp3'),
 (789, '2010-01-16 1000 Unknown', 'recordings/audio/2010/2010-01-16 1000 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/loving kindness jan 10/100131 lovingkindness Tara.mp3'),
 (790, '2010-01-16 1200 Unknown', 'recordings/audio/2010/2010-01-16 1200 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/loving kindness jan 10/VOICE046.mp3'),
 (791, '2010-01-16 1500 Unknown', 'recordings/audio/2010/2010-01-16 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/Keepers/jane/loving kindness jan 10/VOICE047.mp3'),
@@ -963,7 +963,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (920, '2011-10-09 2100 Filling the vase', 'recordings/audio/2011/2011-10-09 2100 Filling the vase.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/Talk 7 filling the vase.mp3'),
 (921, '2011-10-11 1100 Buddha Nature', 'recordings/audio/2011/2011-10-11 1100 Buddha Nature.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/Lama Phuntsok teaching on Buddha Nature.mp3'),
 (922, '2011-10-12 1000 Introduction to the consecration', 'recordings/audio/2011/2011-10-12 1000 Introduction to the consecration.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/stupa consecration day Oct 12 2011/LS intro to conecration day.mp3'),
-(923, '2011-10-12 1100 Unknown 1', 'recordings/audio/2011/2011-10-12 1100 Unknown 1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/stupa consecration day Oct 12 2011/Lama Phuntsoks talk on consecration day.mp3'),
+(923, '2011-10-12 1100 Unknown 1', 'recordings/audio/2011/2011-10-12 1100 Unknown 1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/stupa consecration day Oct 12 2011/Lama Phuntsok''s talk on consecration day.mp3'),
 (924, '2011-10-12 1100 Unknown 2', 'recordings/audio/2011/2011-10-12 1100 Unknown 2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/stupa consecration day Oct 12 2011/LP talk 2.mp3'),
 (925, '2011-10-12 1400 Contemplating the stupa', 'recordings/audio/2011/2011-10-12 1400 Contemplating the stupa.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/stupa consecration day Oct 12 2011/LS and RS talk on contemplating the stupa.mp3'),
 (926, '2011-10-12 1500 Unknown', 'recordings/audio/2011/2011-10-12 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2011.10 stupa event/stupa consecration day Oct 12 2011/LP talk 3.mp3'),
@@ -1004,9 +1004,9 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (961, '2012-03-20 0000 Tradition', 'recordings/audio/2012/2012-03-20 0000 Tradition.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/040312k_med_tradition.mp3.mp3'),
 (962, '2012-04-14 1100 Love', 'recordings/audio/2012/2012-04-14 1100 Love.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Khenpo Namgyal/Khenpo Namgyal on love April 2012.mp3'),
 (963, '2012-04-14 1500 Compassion', 'recordings/audio/2012/2012-04-14 1500 Compassion.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Khenpo Namgyal/Khenpo Namgyal on compassion.mp3'),
-(964, '2012-04-14 1600 Q&A', 'recordings/audio/2012/2012-04-14 1600 Q&A.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Khenpo Namgyal/Khenpo Namgyal question.mp3'),
-(965, '2012-04-21 1800 Establishing Dharma', 'recordings/audio/2012/2012-04-21 1800 Establishing Dharma.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2012.04 SMG/SMG retreat 2012/edited SMG 12/210412_SMG_Establishing_Dharma.mp3');
+(964, '2012-04-14 1600 Q&A', 'recordings/audio/2012/2012-04-14 1600 Q&A.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Khenpo Namgyal/Khenpo Namgyal question.mp3');
 INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
+(965, '2012-04-21 1800 Establishing Dharma', 'recordings/audio/2012/2012-04-21 1800 Establishing Dharma.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2012.04 SMG/SMG retreat 2012/edited SMG 12/210412_SMG_Establishing_Dharma.mp3'),
 (966, '2012-04-22 1600 Hopes for future', 'recordings/audio/2012/2012-04-22 1600 Hopes for future.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2012.04 SMG/SMG retreat 2012/edited SMG 12/220412_SMG_Hopes_for_future.mp3'),
 (967, '2012-04-22 1800 Guru Rinpoche Story', 'recordings/audio/2012/2012-04-22 1800 Guru Rinpoche Story.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2012.04 SMG/SMG retreat 2012/edited SMG 12/220412_SMG_Guru_Rinpoche_Story1.mp3'),
 (968, '2012-04-23 0000 Guru Rinpoche Talk and Transmission', 'recordings/audio/2012/2012-04-23 0000 Guru Rinpoche Talk and Transmission.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2012.04 SMG/SMG retreat 2012/edited SMG 12/230412_SMG_Guru_Rinpoche_Transmission.mp3'),
@@ -1208,7 +1208,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (1164, '2014-01-01 0000 PSME REC 11 Svatantrika view talk', 'recordings/audio/2014/2014-01-01 0000 PSME REC 11 Svatantrika view talk.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/PSME/PSME ON LINE PACKAGE/Svatantrika View/Svatantrika View Talk 2007.mp3'),
 (1165, '2014-01-01 0000 PSME REC 12 Shentong (was missing)', 'recordings/audio/2014/2014-01-01 0000 PSME REC 12 Shentong (was missing).mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used/From site/mp3/2014_01_10_shentong_talk_april_07.mp3'),
 (1166, '2014-01-26 1700 Unknown', 'recordings/audio/2014/2014-01-26 1700 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.02 Iegor Reznikoff/MZ000044.mp3'),
-(1167, '2014-01-26 1900 Unknown', 'recordings/audio/2014/2014-01-26 1900 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.02 Iegor Reznikoff/MZ000045.mp3'),
+(1167, '2014-01-26 1900 Unknown', 'recordings/audio/2014/2014-01-26 1900 Unknown#1.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.02 Iegor Reznikoff/MZ000045.mp3'),
 (1168, '2014-01-26 1900 Unknown', 'recordings/audio/2014/2014-01-26 1900 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.02 Iegor Reznikoff/MZ000046.mp3'),
 (1169, '2014-01-26 2200 Unknown', 'recordings/audio/2014/2014-01-26 2200 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.02 Iegor Reznikoff/MZ000047.mp3'),
 (1170, '2014-01-27 1200 Unknown', 'recordings/audio/2014/2014-01-27 1200 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.02 Iegor Reznikoff/MZ000048.mp3'),
@@ -1227,9 +1227,9 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (1183, '2014-03-26 1800 Unknown', 'recordings/audio/2014/2014-03-26 1800 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.03 Sadhana of Mahamudra/2014.03.26 Mahamudra 4.mp3'),
 (1184, '2014-03-28 1900 Unknown', 'recordings/audio/2014/2014-03-28 1900 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.03 Sadhana of Mahamudra/2014.03.28 Mahamudra 5.mp3'),
 (1185, '2014-03-31 1700 Unknown', 'recordings/audio/2014/2014-03-31 1700 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.03 Sadhana of Mahamudra/2014.03.31 Mahamudra 4.2 .mp3'),
-(1186, '2014-04-02 1700 Unknown', 'recordings/audio/2014/2014-04-02 1700 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.03 Sadhana of Mahamudra/2014.04.02 Mahamudra 5.mp3'),
-(1187, '2014-04-04 2100 Dharma & therapy', 'recordings/audio/2014/2014-04-04 2100 Dharma & therapy.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Misc Labelled/2014.04.04 Dharma and Therapy with Heinz Roger.mp3');
+(1186, '2014-04-02 1700 Unknown', 'recordings/audio/2014/2014-04-02 1700 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.03 Sadhana of Mahamudra/2014.04.02 Mahamudra 5.mp3');
 INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
+(1187, '2014-04-04 2100 Dharma & therapy', 'recordings/audio/2014/2014-04-04 2100 Dharma & therapy.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Misc Labelled/2014.04.04 Dharma and Therapy with Heinz Roger.mp3'),
 (1188, '2014-04-11 2000 DHB public talk', 'recordings/audio/2014/2014-04-11 2000 DHB public talk.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.05 Cambridge public talk/2014.04.11 DHB talk public in Cambridge.mp3'),
 (1189, '2014-04-12 1000 Q&A public talk', 'recordings/audio/2014/2014-04-12 1000 Q&A public talk.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.05 Cambridge public talk/2014.04.12 Questions and Answers Public talk.mp3'),
 (1190, '2014-04-19 1500 Precepts and the power of the word', 'recordings/audio/2014/2014-04-19 1500 Precepts and the power of the word.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2014.09 Pranidhana/2014.04.19 Precepts and the power of the word.mp3'),
@@ -1329,17 +1329,17 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (1284, '2015-03-30 2100 16', 'recordings/audio/2015/2015-03-30 2100 16.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/16_Shepherd_song_SH.mp3'),
 (1285, '2015-03-30 2100 17', 'recordings/audio/2015/2015-03-30 2100 17.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/17_Shepherd_song_SH.mp3'),
 (1286, '2015-03-30 2100 19', 'recordings/audio/2015/2015-03-30 2100 19.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/19 Sh_SoS_Q8 alaya-vijnana and _I am_.mp3'),
-(1287, '2015-03-30 2100 20', 'recordings/audio/2015/2015-03-30 2100 20.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/20 Sh_SoS_Q9 alaya-vijnana is in t body, mind cant be find_.mp3'),
+(1287, '2015-03-30 2100 20', 'recordings/audio/2015/2015-03-30 2100 20.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/20 Sh_SoS_Q9 alaya-vijnana is in t body, mind can''t be find_.mp3'),
 (1288, '2015-03-30 2100 12 Q&A1 Buddha Nature & Ultimate nature', 'recordings/audio/2015/2015-03-30 2100 12 Q&A1 Buddha Nature & Ultimate nature.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/12 SH_SoS_Q1 Buddha Nature and Ultimate nature.mp3'),
-(1289, '2015-03-30 2100 13 Q&A2 Mind doesnt die', 'recordings/audio/2015/2015-03-30 2100 13 Q&A2 Mind doesnot die.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/13 SH_SoS_Q2 Mind doesnt die.mp3'),
+(1289, '2015-03-30 2100 13 Q&A2 Mind doesnt die', 'recordings/audio/2015/2015-03-30 2100 13 Q&A2 Mind doesnot die.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/13 SH_SoS_Q2 Mind doesn''t die.mp3'),
 (1290, '2015-03-30 2100 14 Q&A3 Relating to European culture', 'recordings/audio/2015/2015-03-30 2100 14 Q&A3 Relating to European culture.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/14 SH_SoS_Q3 Relating to European culture.mp3'),
 (1291, '2015-03-30 2100 15 Q&A4 Do I really rest in nature of mind', 'recordings/audio/2015/2015-03-30 2100 15 Q&A4 Do I really rest in nature of mind.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/15 SH_SoS_Q4 Do I really rest in t nature of M.mp3'),
 (1292, '2015-03-30 2100 16 Q&A5 Feeling of certainty', 'recordings/audio/2015/2015-03-30 2100 16 Q&A5 Feeling of certainty.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/16 SH_SoS_Q5 Feeling of certainty.mp3'),
 (1293, '2015-03-30 2100 17 Q&A6 Passing over seer and seen', 'recordings/audio/2015/2015-03-30 2100 17 Q&A6 Passing over seer and seen.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/17 SH_SoS_Q6Passing over seer and seen.mp3'),
 (1294, '2015-03-30 2100 18 Q&A7 From investigation to faith', 'recordings/audio/2015/2015-03-30 2100 18 Q&A7 From investigation to faith.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/18 Sh_SoS_Q7 from investigation to faith.mp3'),
 (1295, '2015-03-30 2100 19 Q&A8 Alayavijnana & I am', 'recordings/audio/2015/2015-03-30 2100 19 Q&A8 Alayavijnana & I am.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/19 Sh_SoS_Q8 alaya-vijnana and _I am_ (1).mp3'),
-(1296, '2015-03-30 2100 20 Q&A9 Alayavijnana is in the body', 'recordings/audio/2015/2015-03-30 2100 20 Q&A9 Alayavijnana is in the body.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/20 Sh_SoS_Q9 alaya-vijnana is in t body, mind cant be find_ (1).mp3'),
-(1297, '2015-04-18 1600 Shepherds search for mind 2', 'recordings/audio/2015/2015-04-18 1600 Shepherds search for mind 2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 Shepherds search for mind/2015.04.18 Shepherds search for mind part 2.mp3'),
+(1296, '2015-03-30 2100 20 Q&A9 Alayavijnana is in the body', 'recordings/audio/2015/2015-03-30 2100 20 Q&A9 Alayavijnana is in the body.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 shepherds search for mind/shepherd song - nepal/20 Sh_SoS_Q9 alaya-vijnana is in t body, mind can''t be find_ (1).mp3'),
+(1297, '2015-04-18 1600 Shepherds search for mind 2', 'recordings/audio/2015/2015-04-18 1600 Shepherds search for mind 2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.03.14 Shepherds search for mind/2015.04.18 Shepherd''s search for mind part 2.mp3'),
 (1298, '2015-04-25 1100 Unknown', 'recordings/audio/2015/2015-04-25 1100 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.04 - NVC weekend/2015.04.25 NVC 1.mp3'),
 (1299, '2015-04-25 1500 Unknown', 'recordings/audio/2015/2015-04-25 1500 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.04 - NVC weekend/2015.04.25 NVC 2.mp3'),
 (1300, '2015-04-25 1700 Unknown', 'recordings/audio/2015/2015-04-25 1700 Unknown.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.04 - NVC weekend/2015.04.25 NVC 3.mp3'),
@@ -1377,10 +1377,10 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (1332, '2015-06-04 0930 How do we know when we are getting it right', 'recordings/audio/2015/2015-06-04 0930 How do we know when we are getting it right.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - f. how do we know when we are getting it right_.mp3'),
 (1333, '2015-06-04 0935 What is the ground of samsara & nirvana', 'recordings/audio/2015/2015-06-04 0935 What is the ground of samsara & nirvana.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - g. what is the nature of the ground from which samsara and nirvana both come_.mp3'),
 (1334, '2015-06-04 0940 How to balance reflection & meditation', 'recordings/audio/2015/2015-06-04 0940 How to balance reflection & meditation.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - h. how do I balance reflection and meditation_ .mp3'),
-(1335, '2015-06-04 0945 How soon to stop trying', 'recordings/audio/2015/2015-06-04 0945 How soon to stop trying.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - i. how soon do you stop trying_ Making sure youre on the right train_.mp3'),
+(1335, '2015-06-04 0945 How soon to stop trying', 'recordings/audio/2015/2015-06-04 0945 How soon to stop trying.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - i. how soon do you stop trying_ Making sure you''re on the right train_.mp3'),
 (1336, '2015-06-04 0950 Do we open to whatever arises', 'recordings/audio/2015/2015-06-04 0950 Do we open to whatever arises.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - j. do we open to whatever arises_.mp3'),
 (1337, '2015-06-04 0955 What happens when you get scattered', 'recordings/audio/2015/2015-06-04 0955 What happens when you get scattered.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - k.what happens when you get scattered_.mp3'),
-(1338, '2015-06-04 1000 Simplicity of practice & confidence', 'recordings/audio/2015/2015-06-04 1000 Simplicity of practice & confidence.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - l. simplicity of practice and confidence (Richards reflection).mp3'),
+(1338, '2015-06-04 1000 Simplicity of practice & confidence', 'recordings/audio/2015/2015-06-04 1000 Simplicity of practice & confidence.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - l. simplicity of practice and confidence (Richard''s reflection).mp3'),
 (1339, '2015-06-04 1005 Where is the space between technique & no technique', 'recordings/audio/2015/2015-06-04 1005 Where is the space between technique & no technique.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - m. where is the space between technique and no technique- antidotes (seven Branch Prayer).mp3'),
 (1340, '2015-06-04 1010 How to let go', 'recordings/audio/2015/2015-06-04 1010 How to let go.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - n. can you talk more about how to let go_ .mp3'),
 (1341, '2015-06-04 1015 Timelessness & body as an anchor', 'recordings/audio/2015/2015-06-04 1015 Timelessness & body as an anchor.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06 Formless Meditation/2015.06.04 - o. questions on timelessness and body as an anchor.mp3'),
@@ -1395,7 +1395,7 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (1350, '2015-06-28 0900 Q&A', 'recordings/audio/2015/2015-06-28 0900 Q&A.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06.26 - Worcester public talk/2015.06.27 Q and A pm 1.1 mp3.mp3'),
 (1351, '2015-06-28 0900 Q&A #2', 'recordings/audio/2015/2015-06-28 0900 Q&A #2.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06.26 - Worcester public talk/2015.06.27 Q and A pm 1.2.mp3'),
 (1352, '2015-06-28 0900 Q&A cont', 'recordings/audio/2015/2015-06-28 0900 Q&A cont.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.06.26 - Worcester public talk/2015.06.27 Q and A pm 1.3.mp3'),
-(1353, '2015-07-07 2000 Introduction to the THB study retreat', 'recordings/audio/2015/2015-07-07 2000 Introduction to the THB study retreat.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.07.07 - THB - Introduction to the study retreat (Scott Youngs conflicted copy 2015-07-08).mp3'),
+(1353, '2015-07-07 2000 Introduction to the THB study retreat', 'recordings/audio/2015/2015-07-07 2000 Introduction to the THB study retreat.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.07.07 - THB - Introduction to the study retreat (Scott Young''s conflicted copy 2015-07-08).mp3'),
 (1354, '2015-07-09 2000 Truth is alive', 'recordings/audio/2015/2015-07-09 2000 Truth is alive.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.07.09 - THB 2 - Truth is alive.mp3'),
 (1355, '2015-07-14 2000 Four aspects of Truth', 'recordings/audio/2015/2015-07-14 2000 Four aspects of Truth.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.07.14 - THB3 - 4 aspects of truth.mp3'),
 (1356, '2015-07-15 1400 Introduction to Foundation mentoring', 'recordings/audio/2015/2015-07-15 1400 Introduction to Foundation mentoring.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.08 - Foundation Mentor/2015.09 - introduction with shenpen - foundation mentoring.mp3'),
@@ -1435,9 +1435,9 @@ INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
 (1390, '2015-08-04 0900 Preface', 'recordings/audio/2015/2015-08-04 0900 Preface.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Death and Dying/yeshe edit 4 - Preface.mp3'),
 (1391, '2015-08-04 0900 The importance of death in Buddhism', 'recordings/audio/2015/2015-08-04 0900 The importance of death in Buddhism.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Death and Dying/yeshe edit 8 - the importance of death in Buddhism.mp3'),
 (1392, '2015-08-04 0900 Title & front matter', 'recordings/audio/2015/2015-08-04 0900 Title & front matter.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/Death and Dying/yeshe edit 1 - Intro.mp3'),
-(1393, '2015-08-08 2000 Introduction to the retreat', 'recordings/audio/2015/2015-08-08 2000 Introduction to the retreat.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.08.08 - THB retreat - 1. Intro.mp3'),
-(1394, '2015-08-09 2000 Avatamsaka story', 'recordings/audio/2015/2015-08-09 2000 Avatamsaka story.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.08.09 - THB retreat 2 - Avatamsaka story 1.mp3');
+(1393, '2015-08-08 2000 Introduction to the retreat', 'recordings/audio/2015/2015-08-08 2000 Introduction to the retreat.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.08.08 - THB retreat - 1. Intro.mp3');
 INSERT INTO `audio` (`sl`, `title`, `id`, `stage2AbsPath`) VALUES
+(1394, '2015-08-09 2000 Avatamsaka story', 'recordings/audio/2015/2015-08-09 2000 Avatamsaka story.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.08.09 - THB retreat 2 - Avatamsaka story 1.mp3'),
 (1395, '2015-08-10 0900 Q&A', 'recordings/audio/2015/2015-08-10 0900 Q&A.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.08.10 - THB retreat 2 - Q and A.mp3'),
 (1396, '2015-08-10 2000 Avatamsaka story', 'recordings/audio/2015/2015-08-10 2000 Avatamsaka story.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.08.10 - THB retreat 3 - Avatamsaka story 2.mp3'),
 (1397, '2015-08-11 0900 Q&A', 'recordings/audio/2015/2015-08-11 0900 Q&A.mp3', 'C:/Users/Jonathan/Documents/AHS Recordings/used//dropbox/2015.07 THB/2015.08.11 - THB retreat 4 - Q and A 2.mp3'),

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2016 at 12:37 PM
+-- Generation Time: Jul 29, 2016 at 08:01 AM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- PHP Version: 5.5.9-1ubuntu4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `event_tags` (
-  `title` varchar(14) DEFAULT NULL
+  `title` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -35,21 +35,24 @@ CREATE TABLE IF NOT EXISTS `event_tags` (
 --
 
 INSERT INTO `event_tags` (`title`) VALUES
-('Single session'),
+('Collection'),
 ('Day'),
-('Weekend'),
 ('Five days'),
-('Weekend'),
+('Gathering'),
+('Informal'),
+('Month'),
+('Online course'),
+('Retreat'),
+('Series'),
+('Single session'),
+('Talk'),
+('Teaching'),
 ('Ten days'),
 ('Two weeks'),
-('Month'),
-('Retreat'),
-('Gathering'),
-('Teachings'),
-('Workshop'),
-('Online Course'),
-('Series'),
-('Collection');
+('Week'),
+('Weekend'),
+('Weekend retreat'),
+('Workshop');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

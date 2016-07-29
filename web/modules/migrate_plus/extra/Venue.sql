@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2016 at 03:21 PM
+-- Generation Time: Jul 29, 2016 at 08:02 AM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- PHP Version: 5.5.9-1ubuntu4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Venue` (
-  `title` varchar(7) DEFAULT NULL
+  `title` varchar(44) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -35,9 +35,46 @@ CREATE TABLE IF NOT EXISTS `Venue` (
 --
 
 INSERT INTO `Venue` (`title`) VALUES
-('Venue 1'),
-('Venue 2'),
-('Venue 3');
+('Atlow Mill Centre, Derbyshire'),
+('Bardsey Island, North Wales'),
+('Berlin, Germany'),
+('Bilberry Hill Centre, Birmingham'),
+('Bodhi Tree, Hampshire'),
+('Bodhicharya Buddhist group, Hampshire'),
+('Bremen, Germany'),
+('Brighton'),
+('Cambridge'),
+('Chichester, Sussex'),
+('Friends Meeting House, Worcester'),
+('Hermitage of the Awakened Heart, North Wales'),
+('Ladywell Centre, Surrey'),
+('St James Boarding School, Worcestershire'),
+('Morlan Centre, Aberystwyth, Wales'),
+('Kathmandu, Nepal'),
+('Online'),
+('Othona Community, Essex'),
+('Park Place, Hampshire'),
+('Prinknash Abbey, Gloucestershire'),
+('Quaker Meeting House, Leigh on Sea, Essex'),
+('Ranjung Yeshe Institute, Nepal'),
+('Rigpa, London'),
+('Roots and Wings, Birmingham'),
+('Shambhala, London'),
+('St Columba''s Centre, Woking, Surrey'),
+('St Marys Convent, London'),
+('The Way of Loving Kindness'),
+('Instructions for Aspiring Bodhisattvas'),
+('Body'),
+('Speech'),
+('The Abbey, Sutton Courtenay, Oxfordshire'),
+('The Beeches, Birmingham'),
+('Carmelite Priory, Oxford'),
+('Cherwell Centre, Oxford'),
+('The Priory, Sayers Common, Sussex'),
+('Trigonos, North Wales'),
+('Twymyn Valley, Wales'),
+('Tyn y Gors, North Wales'),
+('Unknown');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

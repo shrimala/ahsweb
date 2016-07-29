@@ -87,7 +87,7 @@ class MediaeNode extends SqlBase {
 				 ->fetchCol();
     
     
-    $q10 = db_query("SELECT field_leader FROM event WHERE id='".$row->getSourceProperty('ebid')."'");
+    $q10 = db_query("SELECT field_leader FROM event WHERE id='".addslashes($row->getSourceProperty('ebid'))."'");
     foreach($q10 as $r10)
          {
 		   $teachername=$r10->field_leader;
@@ -99,7 +99,7 @@ class MediaeNode extends SqlBase {
 	$i1=0;
 	for ($xyz1=0;$xyz1<$t1;$xyz1++)
 	  {
-	  $q101 = db_query("SELECT mbid FROM migrate_nd_md_node WHERE title ='".$teachername1[$xyz1]."'");
+	  $q101 = db_query("SELECT mbid FROM migrate_nd_md_node WHERE title ='".addslashes($teachername1[$xyz1])."'");
         foreach($q101 as $r101)
          {
 		   $data[$i1]=$r101->mbid;
@@ -109,7 +109,7 @@ class MediaeNode extends SqlBase {
 	  }
      
      
-    $q1 = db_query("SELECT field_venue FROM event WHERE id='".$row->getSourceProperty('ebid')."'");
+    $q1 = db_query("SELECT field_venue FROM event WHERE id='".addslashes($row->getSourceProperty('ebid'))."'");
     foreach($q1 as $r1)
          {
 		   $venue=$r1->field_venue;
@@ -122,7 +122,7 @@ class MediaeNode extends SqlBase {
 	for ($xyz=0;$xyz<$t1;$xyz++)
 	  {
 		  
-	  $q102 = db_query("SELECT vbid FROM migrate_nd_mdv_node WHERE title ='".$venue1[$xyz]."'");
+	  $q102 = db_query("SELECT vbid FROM migrate_nd_mdv_node WHERE title ='".addslashes($venue1[$xyz])."'");
         foreach($q102 as $r102)
          {
 		   $d1[$i1]=$r102->vbid;
@@ -131,7 +131,7 @@ class MediaeNode extends SqlBase {
 		 }
 	  }
 	//-------------------------  
-	$q1 = db_query("SELECT field_event_tags FROM migrate_nd_mde_node WHERE ebid='".$row->getSourceProperty('ebid')."'");
+	$q1 = db_query("SELECT field_event_tags FROM migrate_nd_mde_node WHERE ebid='".addslashes($row->getSourceProperty('ebid'))."'");
     foreach($q1 as $r1) {
 	  $eventtags=$r1->field_event_tags;   
 	}

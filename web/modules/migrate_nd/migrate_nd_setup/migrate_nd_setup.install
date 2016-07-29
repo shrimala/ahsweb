@@ -65,13 +65,13 @@ function migrate_nd_md_schema_node() {
     'fields' => array(
       'mbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Beer ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'aid' => array(
         'type' => 'int',
@@ -88,13 +88,13 @@ function migrate_nd_mdv_schema_node() {
     'fields' => array(
       'vbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Venue ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'aid' => array(
         'type' => 'int',
@@ -111,13 +111,13 @@ function migrate_nd_mds_schema_node() {
     'fields' => array(
       'sbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Beer ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
        'dt_session' => array(
         'type' => 'varchar', 
@@ -203,13 +203,13 @@ function migrate_nd_mdsadmin_schema_node() {
     'fields' => array(
       'sbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Beer ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'field_admin_tags'  => array(
         'type' => 'varchar', 
@@ -226,13 +226,13 @@ function migrate_nd_mdssession_schema_node() {
     'fields' => array(
       'sbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Beer ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'type'  => array(
         'type' => 'varchar', 
@@ -249,13 +249,13 @@ function migrate_nd_mdstemp_schema_node() {
     'fields' => array(
       'sbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Beer ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
        'dt_session' => array(
         'type' => 'varchar', 
@@ -291,7 +291,7 @@ function migrate_nd_mdstemp_schema_node() {
       ),
        'originalsbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Beer ID.',
       ),
       'old_id'  => array(
@@ -345,13 +345,13 @@ function migrate_nd_mde_schema_node() {
     'fields' => array(
       'ebid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Event ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'dt_event' => array(
         'type' => 'varchar', 
@@ -404,13 +404,13 @@ function migrate_nd_mdm_schema_node() {
     'fields' => array(
       'mebid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Media ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       
      'aid' => array(
@@ -421,12 +421,12 @@ function migrate_nd_mdm_schema_node() {
     'uril'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     'filename'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     ),
     'primary key' => array('mebid'),
@@ -439,13 +439,13 @@ function migrate_nd_mdmyt_schema_node() {
     'fields' => array(
       'meytbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Media ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       
      'aid' => array(
@@ -456,12 +456,12 @@ function migrate_nd_mdmyt_schema_node() {
     'uril'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     'filename'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     ),
     'primary key' => array('meytbid'),
@@ -473,13 +473,13 @@ function migrate_nd_temp_schema_node() {
     'fields' => array(
       'meytbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Media ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       
      'aid' => array(
@@ -490,12 +490,12 @@ function migrate_nd_temp_schema_node() {
     'uril'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     'filename'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     ),
     'primary key' => array('meytbid'),
@@ -508,12 +508,12 @@ function migrate_nd_sestemp_schema_node() {
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'dt_session'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       
      'descrip' => array(
@@ -524,17 +524,17 @@ function migrate_nd_sestemp_schema_node() {
     'Recordings'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     'Event'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
      'teachername'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'old_id'  => array(
         'type' => 'varchar', 
@@ -587,41 +587,41 @@ function migrate_nd_mdf_schema_node() {
     'fields' => array(
       'fid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Media ID.',
       ),
       'uid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       
      'filename' => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     'filepath'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     'filemime'  => array(
        'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'status'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'timestamp'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'uri'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
     ),
     'primary key' => array('fid'),
@@ -634,13 +634,13 @@ function migrate_nd_dyn_schema_node() {
     'fields' => array(
       'bbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Ssd ID.',
       ),
       'title'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'dt_created' => array(
         'type' => 'varchar', 
@@ -666,7 +666,7 @@ function migrate_nd_dyn_schema_node() {
       'bodyformat'  => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'Original' => array(
         'type' => 'text',
@@ -685,7 +685,7 @@ function migrate_nd_dyn_schema_topic() {
       'style'  => array(
         'type' => 'varchar_ascii',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'details' => array(
         'type' => 'varchar',
@@ -721,13 +721,13 @@ function migrate_nd_dyn_schema_topic_node() {
     'fields' => array(
       'bbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Dyn ID.',
       ),
       'style'  => array(
         'type' => 'varchar_ascii',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Topic name',
       ),
     ),
@@ -742,7 +742,7 @@ function migrate_nd_event_schema_topic() {
       'style'  => array(
         'type' => 'varchar_ascii',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'details' => array(
         'type' => 'varchar',
@@ -778,13 +778,13 @@ function migrate_nd_event_schema_topic_node() {
     'fields' => array(
       'eventbid'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'event tag ID.',
       ),
       'style'  => array(
         'type' => 'varchar_ascii',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Topic name',
       ),
     ),
@@ -800,7 +800,7 @@ function migrate_nd_admin_schema_topic() {
       'style'  => array(
         'type' => 'varchar_ascii',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'details' => array(
         'type' => 'varchar',
@@ -858,7 +858,7 @@ function migrate_nd_session_schema_topic() {
       'style'  => array(
         'type' => 'varchar_ascii',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'details' => array(
         'type' => 'varchar',
@@ -915,18 +915,18 @@ function migrate_nd_dyn_schema_account() {
     'fields' => array(
       'aid'  => array(
         'type' => 'serial',
-        //'not null' => TRUE,
+        //'not null' => FALSE,
         'description' => 'Account ID',
       ),
       'status'  => array(
         'type' => 'int',
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Blocked_Allowed',
       ),
       'registered' => array(
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
         'description' => 'Registration date',
       ),
       'username' => array(
@@ -1030,15 +1030,16 @@ function migrate_nd_sestemp_data_node() {
 	{
 		for($rr=0;$rr<$xyz_length;$rr++)
 		{
-			$data[$i][0]=$obj1->title;
+			$title=str_replace(";",",",$obj1->title);
+			$data[$i][0]=$title;
 			$data[$i][1]=$obj1->field_datetime;
 			//============Upper case check====
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][2]=$obj1->body;
+	          $data[$i][2]=str_replace(";",",",$obj1->body);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][2]=strtolower($obj1->body);
+	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
             }
             //================================
 			//$data[$i][2]=$obj1->body;
@@ -1050,16 +1051,17 @@ function migrate_nd_sestemp_data_node() {
 			//============Upper case check====
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][8]=$obj1->body_summary;
+	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][8]=strtolower($obj1->body_summary);
+	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
             //================================
 		    //$data[$i][8]=$obj1->body_summary;
 		    
 		    $data[$i][9]=$obj1->field_clip;
-		    $data[$i][10]=$obj1->field_old_catalog;
+		    $field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
+		    $data[$i][10]=$field_old_catalog;
 		    $data[$i][11]=$obj1->field_restricted;
 		    $data[$i][12]=$obj1->field_admin_tags;
 			$i=$i+1;
@@ -1067,15 +1069,16 @@ function migrate_nd_sestemp_data_node() {
 	}
 	else
 	{
-		$data[$i][0]=$obj1->title;
+		$title=str_replace(";",",",$obj1->title);
+	    $data[$i][0]=$title;
 		$data[$i][1]=$obj1->field_datetime;
 		//============Upper case check====
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][2]=$obj1->body;
+	          $data[$i][2]=str_replace(";",",",$obj1->body);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][2]=strtolower($obj1->body);
+	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
             }
         //================================
         //$data[$i][2]=$obj1->body;
@@ -1087,15 +1090,16 @@ function migrate_nd_sestemp_data_node() {
 		//============Upper case check====
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][8]=$obj1->body_summary;
+	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][8]=strtolower($obj1->body_summary);
+	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
         //================================
 		//$data[$i][8]=$obj1->body_summery;
 		$data[$i][9]=$obj1->field_clip;
-		$data[$i][10]=$obj1->field_old_catalog;
+		$field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
+		$data[$i][10]=$field_old_catalog;
 		$data[$i][11]=$obj1->field_restricted;
 		$data[$i][12]=$obj1->field_admin_tags;
 		$i=$i+1;
@@ -1128,7 +1132,7 @@ function migrate_nd_mds_data_node() {
     $data[$i][4]=1;
     //=============================Geting Teacher ID=======================================
     
-    $obj12 = db_query("SELECT mbid FROM migrate_nd_md_node WHERE title ='".$obj1->teachername."'");//.$obj1->Teacher);
+    $obj12 = db_query("SELECT mbid FROM migrate_nd_md_node WHERE title ='".addslashes($obj1->teachername)."'");//.$obj1->Teacher);
 
     $teacherID=1;
     foreach ( $obj12 as $obj123 ) {
@@ -1139,7 +1143,7 @@ function migrate_nd_mds_data_node() {
     }
     $data[$i][5]=$teacherID;
     //====================================================================   
-    $xyz = db_query("SELECT meytbid FROM migrate_nd_temp_node WHERE filename ='".$obj1->Recordings."'");
+    $xyz = db_query("SELECT meytbid FROM migrate_nd_temp_node WHERE filename ='".addslashes( $obj1->Recordings)."'");
     $recordingID=1;
     foreach ( $xyz as $xyz1 ) {
 		if ($xyz1->meytbid>0 && $xyz1->meytbid!=null)
