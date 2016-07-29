@@ -59,6 +59,22 @@ hooks:
     # We run deploy hook after your application has been deployed and started.
     deploy: |
       cd web
+      drush -y pmu migrate_tools
+      drush -y en migrate_tools
+      drush -y en migrate_nd
+      drush mi dyn_term
+      drush mi admin_term
+      drush mi event_term
+      drush mi session_term
+      drush mi dyn_user
+      drush mi dyn_node
+      drush mi mediam_file
+      drush mi mediam_media
+      drush mi mediamyt_media
+      drush mi mediav_node
+      drush mi media_node
+      drush mi medias_node
+      drush mi mediae_node
       drush --yes cache-rebuild
       drush --yes updatedb
       for module in `cat ~/modules.common`; do drush --yes pm-enable $module; done
