@@ -1042,7 +1042,7 @@ function migrate_nd_sestemp_data_node() {
 	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
             }
             else {
-				$data[$i][2]=" ";
+				$data[$i][2]="AArit";
 			}
             //================================
 			//$data[$i][2]=$obj1->body;
@@ -1060,14 +1060,14 @@ function migrate_nd_sestemp_data_node() {
 	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
             else {
-				$data[$i][8]=" ";
+				$data[$i][8]="BArit";
 			}
             //================================
 		    //$data[$i][8]=$obj1->body_summary;
 		    
 		    $data[$i][9]=$obj1->field_clip;
-		    $field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
-		    $data[$i][10]=$field_old_catalog;
+		    $field_old_catalog2=str_replace(";","/",$obj1->field_old_catalog);
+		    $data[$i][10]=$field_old_catalog2;
 		    $data[$i][11]=$obj1->field_restricted;
 		    $data[$i][12]=$obj1->field_admin_tags;
 			$i=$i+1;
@@ -1087,7 +1087,7 @@ function migrate_nd_sestemp_data_node() {
 	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
             }
             else {
-				$data[$i][2]=" ";
+				$data[$i][2]="CArit";
 			}
         //================================
         //$data[$i][2]=$obj1->body;
@@ -1105,13 +1105,13 @@ function migrate_nd_sestemp_data_node() {
 	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
             else {
-				$data[$i][8]=" ";
+				$data[$i][8]="DArit";
 			}
         //================================
 		//$data[$i][8]=$obj1->body_summery;
 		$data[$i][9]=$obj1->field_clip;
-		$field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
-		$data[$i][10]=$field_old_catalog;
+		$field_old_catalog1=str_replace(";","/",$obj1->field_old_catalog);
+		$data[$i][10]=$field_old_catalog1;
 		$data[$i][11]=$obj1->field_restricted;
 		$data[$i][12]=$obj1->field_admin_tags;
 		$i=$i+1;
