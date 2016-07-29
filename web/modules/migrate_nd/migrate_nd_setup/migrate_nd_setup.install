@@ -1022,7 +1022,6 @@ function migrate_nd_sestemp_data_node() {
   $obj=$q1->fields('sd',array('title','field_datetime','body','Recordings','Event',' field_leader','old_id','type','body_summary','field_clip','field_old_catalog','field_restricted','field_admin_tags'))//SELECT 
         ->execute()->fetchAll();
   $i=0;
-  $j=$i;
   foreach ( $obj as $obj1 ) {
 	  
 	$xyz=explode(",",$obj1->Recordings);
@@ -1031,21 +1030,18 @@ function migrate_nd_sestemp_data_node() {
 	{
 		for($rr=0;$rr<$xyz_length;$rr++)
 		{
-			$j=$i;
 			$title=str_replace(";",",",$obj1->title);
 			$data[$i][0]=$title;
 			$data[$i][1]=$obj1->field_datetime;
 			//============Upper case check====
+			$data[$i][2]=$obj1->body
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$j][2]=str_replace(";",",",$obj1->body);
+	          $data[$i][2]=str_replace(";",",",$obj1->body);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$j][2]=strtolower(str_replace(";",",",$obj1->body));
+	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
             }
-            else {
-				$data[$j][2]="AArit";
-			}
             //================================
 			//$data[$i][2]=$obj1->body;
 			$data[$i][3]=$xyz[$rr];
@@ -1054,21 +1050,20 @@ function migrate_nd_sestemp_data_node() {
 			$data[$i][6]=$obj1->old_id;
 			$data[$i][7]=$obj1->type;
 			//============Upper case check====
+			$data[$i][8]=$obj1->body_summary;
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$j][8]=str_replace(";",",",$obj1->body_summary);
+	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$j][8]=strtolower(str_replace(";",",",$obj1->body_summary));
+	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
-            else {
-				$data[$j][8]="BArit";
-			}
             //================================
 		    //$data[$i][8]=$obj1->body_summary;
+		    
 		    $data[$i][9]=$obj1->field_clip;
-		    $field_old_catalog2=str_replace(";","/",$obj1->field_old_catalog);
-		    $data[$i][10]=$field_old_catalog2;
+		    $field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
+		    $data[$i][10]=$field_old_catalog;
 		    $data[$i][11]=$obj1->field_restricted;
 		    $data[$i][12]=$obj1->field_admin_tags;
 			$i=$i+1;
@@ -1076,21 +1071,18 @@ function migrate_nd_sestemp_data_node() {
 	}
 	else
 	{
-		$j=$i;
 		$title=str_replace(";",",",$obj1->title);
 	    $data[$i][0]=$title;
 		$data[$i][1]=$obj1->field_datetime;
 		//============Upper case check====
+		$data[$i][2]=$obj1->body;
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$j][2]=str_replace(";",",",$obj1->body);
+	          $data[$i][2]=str_replace(";",",",$obj1->body);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$j][2]=strtolower(str_replace(";",",",$obj1->body));
+	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
             }
-            else {
-				$data[$j][2]="CArit";
-			}
         //================================
         //$data[$i][2]=$obj1->body;
 		$data[$i][3]=$obj1->Recordings;
@@ -1099,21 +1091,19 @@ function migrate_nd_sestemp_data_node() {
 		$data[$i][6]=$obj1->old_id;
 		$data[$i][7]=$obj1->type;
 		//============Upper case check====
+		$data[$i][8]=$obj1->body_summery;
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$j][8]=str_replace(";",",",$obj1->body_summary);
+	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$j][8]=strtolower(str_replace(";",",",$obj1->body_summary));
+	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
-            else {
-				$data[$j][8]="DArit";
-			}
         //================================
 		//$data[$i][8]=$obj1->body_summery;
 		$data[$i][9]=$obj1->field_clip;
-		$field_old_catalog1=str_replace(";","/",$obj1->field_old_catalog);
-		$data[$i][10]=$field_old_catalog1;
+		$field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
+		$data[$i][10]=$field_old_catalog;
 		$data[$i][11]=$obj1->field_restricted;
 		$data[$i][12]=$obj1->field_admin_tags;
 		$i=$i+1;
@@ -1138,10 +1128,7 @@ function migrate_nd_mds_data_node() {
   $obj=$q1->fields('sd',array('title','dt_session','descrip','Recordings','Event',' teachername','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags'))//SELECT 
         ->execute()->fetchAll();
   $i=0;
-  
-  
   foreach ( $obj as $obj1 ) {
-	
 	$data[$i][0]=$i+1;
     $data[$i][1]=$obj1->title;
     $data[$i][2]=$obj1->dt_session;
