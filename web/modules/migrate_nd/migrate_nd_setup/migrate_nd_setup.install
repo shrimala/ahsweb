@@ -1034,7 +1034,7 @@ function migrate_nd_sestemp_data_node() {
 			$data[$i][0]=$title;
 			$data[$i][1]=$obj1->field_datetime;
 			//============Upper case check====
-			$data[$i][2]=$obj1->body
+			$data[$i][2]=$obj1->body;
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
 	          $data[$i][2]=str_replace(";",",",$obj1->body);
@@ -1062,8 +1062,8 @@ function migrate_nd_sestemp_data_node() {
 		    //$data[$i][8]=$obj1->body_summary;
 		    
 		    $data[$i][9]=$obj1->field_clip;
-		    $field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
-		    $data[$i][10]=$field_old_catalog;
+		    $field_old_catalog1=str_replace(";","/",$obj1->field_old_catalog);
+		    $data[$i][10]=$field_old_catalog1;
 		    $data[$i][11]=$obj1->field_restricted;
 		    $data[$i][12]=$obj1->field_admin_tags;
 			$i=$i+1;
@@ -1102,8 +1102,8 @@ function migrate_nd_sestemp_data_node() {
         //================================
 		//$data[$i][8]=$obj1->body_summery;
 		$data[$i][9]=$obj1->field_clip;
-		$field_old_catalog=str_replace(";","/",$obj1->field_old_catalog);
-		$data[$i][10]=$field_old_catalog;
+		$field_old_catalog2=str_replace(";","/",$obj1->field_old_catalog);
+		$data[$i][10]=$field_old_catalog2;
 		$data[$i][11]=$obj1->field_restricted;
 		$data[$i][12]=$obj1->field_admin_tags;
 		$i=$i+1;
