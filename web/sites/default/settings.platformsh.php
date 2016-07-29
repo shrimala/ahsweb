@@ -21,10 +21,12 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
 
       if (!empty($endpoint['query']['compression'])) {
         $database['pdo'][PDO::MYSQL_ATTR_COMPRESS] = TRUE;
+        $databases['migrate']['default'] = $database;
       }
 
       if (!empty($endpoint['query']['is_master'])) {
         $databases['default']['default'] = $database;
+        $databases['migrate']['default'] = $database;
       }
       else {
         $databases['default']['slave'][] = $database;
