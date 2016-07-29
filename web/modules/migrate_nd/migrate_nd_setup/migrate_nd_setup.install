@@ -1022,6 +1022,7 @@ function migrate_nd_sestemp_data_node() {
   $obj=$q1->fields('sd',array('title','field_datetime','body','Recordings','Event',' field_leader','old_id','type','body_summary','field_clip','field_old_catalog','field_restricted','field_admin_tags'))//SELECT 
         ->execute()->fetchAll();
   $i=0;
+  $j=$i;
   foreach ( $obj as $obj1 ) {
 	  
 	$xyz=explode(",",$obj1->Recordings);
@@ -1030,19 +1031,20 @@ function migrate_nd_sestemp_data_node() {
 	{
 		for($rr=0;$rr<$xyz_length;$rr++)
 		{
+			$j=$i;
 			$title=str_replace(";",",",$obj1->title);
 			$data[$i][0]=$title;
 			$data[$i][1]=$obj1->field_datetime;
 			//============Upper case check====
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][2]=str_replace(";",",",$obj1->body);
+	          $data[$j][2]=str_replace(";",",",$obj1->body);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
+	          $data[$j][2]=strtolower(str_replace(";",",",$obj1->body));
             }
             else {
-				$data[$i][2]="AArit";
+				$data[$j][2]="AArit";
 			}
             //================================
 			//$data[$i][2]=$obj1->body;
@@ -1054,13 +1056,13 @@ function migrate_nd_sestemp_data_node() {
 			//============Upper case check====
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
+	          $data[$j][8]=str_replace(";",",",$obj1->body_summary);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
+	          $data[$j][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
             else {
-				$data[$i][8]="BArit";
+				$data[$j][8]="BArit";
 			}
             //================================
 		    //$data[$i][8]=$obj1->body_summary;
@@ -1074,19 +1076,20 @@ function migrate_nd_sestemp_data_node() {
 	}
 	else
 	{
+		$j=$i;
 		$title=str_replace(";",",",$obj1->title);
 	    $data[$i][0]=$title;
 		$data[$i][1]=$obj1->field_datetime;
 		//============Upper case check====
 			$x=$obj1->body;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][2]=str_replace(";",",",$obj1->body);
+	          $data[$j][2]=str_replace(";",",",$obj1->body);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][2]=strtolower(str_replace(";",",",$obj1->body));
+	          $data[$j][2]=strtolower(str_replace(";",",",$obj1->body));
             }
             else {
-				$data[$i][2]="CArit";
+				$data[$j][2]="CArit";
 			}
         //================================
         //$data[$i][2]=$obj1->body;
@@ -1098,13 +1101,13 @@ function migrate_nd_sestemp_data_node() {
 		//============Upper case check====
 			$x=$obj1->body_summary;
             if (strtoupper($x)!=$x && strtolower($x)!=$x) {
-	          $data[$i][8]=str_replace(";",",",$obj1->body_summary);
+	          $data[$j][8]=str_replace(";",",",$obj1->body_summary);
             }
             else if (strtoupper($x)==$x) {
-	          $data[$i][8]=strtolower(str_replace(";",",",$obj1->body_summary));
+	          $data[$j][8]=strtolower(str_replace(";",",",$obj1->body_summary));
             }
             else {
-				$data[$i][8]="DArit";
+				$data[$j][8]="DArit";
 			}
         //================================
 		//$data[$i][8]=$obj1->body_summery;
@@ -1135,7 +1138,10 @@ function migrate_nd_mds_data_node() {
   $obj=$q1->fields('sd',array('title','dt_session','descrip','Recordings','Event',' teachername','old_id','type','body_summery','field_clip','field_old_catalog','field_restricted','field_admin_tags'))//SELECT 
         ->execute()->fetchAll();
   $i=0;
+  
+  
   foreach ( $obj as $obj1 ) {
+	
 	$data[$i][0]=$i+1;
     $data[$i][1]=$obj1->title;
     $data[$i][2]=$obj1->dt_session;
