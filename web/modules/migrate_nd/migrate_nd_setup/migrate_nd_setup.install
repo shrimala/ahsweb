@@ -1743,7 +1743,6 @@ function migrate_nd_event_data_topic_node() {
 //-------------------admin tags----------
 function migrate_nd_mdsadmin_data_node() {
   $q1 = db_select('migrate_nd_mdstemp_node', 'sd');
-  $q1 = db_select('migrate_nd_mdstemp_node', 'sd');
   $obj=$q1->fields('sd',array('sbid','title', 'field_admin_tags'))//SELECT 
         ->execute()->fetchAll();
   $i=0;

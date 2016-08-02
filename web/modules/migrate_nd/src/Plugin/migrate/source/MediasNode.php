@@ -172,7 +172,7 @@ class MediasNode extends SqlBase {
 	
 	
 	$admintags1 = $this->select('migrate_nd_admin_topic_node', 'bt')
-                 ->fields('bt', ['style'])
+                 ->fields('bt', ['style'])->distinct()
       ->condition('adminbid', $row->getSourceProperty('sbid'))
       ->execute()
       ->fetchCol();
