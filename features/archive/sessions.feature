@@ -13,6 +13,6 @@ Feature: Sessions archive
   Scenario: Sessions have URL archives/year/month/day/hourminute/title
     Given session content:
       | title    | field_datetime   |
-      | session1 | 2005-12-30 13:00 |
+      | session1 | 2005-12-30 13:00:00 |
     When I visit "archive/sessions/2005/12/30/1300/session1"
     Then the response status code should be 200 
