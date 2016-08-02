@@ -15,11 +15,10 @@ Feature: Events listings
       | title           | field_datetime      |
       | event1        | 2005-12-30 00:00:00 |
       | event2        | 2005-10-01 11:05:23 |
-      | Event 4       | 2005-10-01 13:00:00 |
-      | Event, and 5  | 2005-10-01 13:00:00 |
+      | Event 3       | 2005-10-01 13:00:00 |
+      | Event, and 4  | 2005-10-01 13:00:00 |
     When I visit "events/2005/12/30/event1"
     When I visit "events/2005/10/01/event2"
-    When I visit "events/2005/10/01/event3"
-    When I visit "events/2005/10/01/event-4"
-    When I visit "events/2005/10/01/event-and-5"
+    When I visit "events/2005/10/01/event-3"
+    When I visit "events/2005/10/01/event-and-4"
     Then the response status code should be 200 
