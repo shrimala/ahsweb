@@ -27,6 +27,7 @@ process:
   field_datetime: dt_event
   'body/value': eventbody
   'body/summary': eventsummary
+  'body/format': bodyformat
   field_event_type: 
     plugin: migration
     migration: event_term

@@ -64,8 +64,6 @@ INSERT INTO `Venue` (`title`) VALUES
 ('St Marys Convent, London'),
 ('The Way of Loving Kindness'),
 ('Instructions for Aspiring Bodhisattvas'),
-('Body'),
-('Speech'),
 ('The Abbey, Sutton Courtenay, Oxfordshire'),
 ('The Beeches, Birmingham'),
 ('Carmelite Priory, Oxford'),

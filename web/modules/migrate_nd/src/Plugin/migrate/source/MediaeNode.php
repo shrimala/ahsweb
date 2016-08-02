@@ -54,6 +54,7 @@ class MediaeNode extends SqlBase {
       'mbid' => $this->t('Teacher id'),
       'eventag' => $this->t('Event tags'),
       'eventsumary' => $this->t('summary of Event'),
+      'bodyformat' => $this->t('Text format i.e html or full html'),
     ];
 
     return $fields;
@@ -137,11 +138,13 @@ class MediaeNode extends SqlBase {
 	  $eventtags=$r1->field_event_tags;   
 	}
 	$eventtags1=explode(',',$eventtags);
+    $bodyformat="basic_html";
     
     $row->setSourceProperty('mbid',$data);  
     $row->setSourceProperty('sbid', $sbidr);
     $row->setSourceProperty('vbid',$d1);    
     $row->setSourceProperty('eventag',$eventtags1);
+    $row->setSourceProperty('bodyformat',$bodyformat);
     return parent::prepareRow($row);
   }
 
