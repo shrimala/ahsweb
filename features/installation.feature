@@ -3,7 +3,7 @@ Feature: Site Installation
   In order to do anything
     Drupal and key modules needs to be installed 
   
-  Background;
+  Background:
     Given I am logged in as a user with the "administrator" role
     
   Scenario: Drupal is installed
