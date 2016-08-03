@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2016 at 07:13 PM
+-- Generation Time: Aug 03, 2016 at 03:43 PM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -62,8 +62,6 @@ INSERT INTO `Venue` (`title`) VALUES
 ('Shambhala, London'),
 ('St Columba''s Centre, Woking, Surrey'),
 ('St Marys Convent, London'),
-('The Way of Loving Kindness'),
-('Instructions for Aspiring Bodhisattvas'),
 ('The Abbey, Sutton Courtenay, Oxfordshire'),
 ('The Beeches, Birmingham'),
 ('Carmelite Priory, Oxford'),
