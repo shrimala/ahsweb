@@ -90,7 +90,7 @@ class MediasNode extends SqlBase {
      * the media_term migration).
      */      
      //$fields = array('bbid', 'style');
-    $obj = db_query('SELECT title, old_id, field_restricted, field_clip,eventid,sbid FROM migrate_nd_mdstemp_node WHERE sbid='.addslashes($row->getSourceProperty('sbid')));
+    $obj = db_query('SELECT distinct title, old_id, field_restricted, field_clip,eventid,sbid FROM migrate_nd_mdstemp_node WHERE sbid='.addslashes($row->getSourceProperty('sbid')));
     $i=0;
     $i1=0;
     $j=0;
