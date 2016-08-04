@@ -1,0 +1,31 @@
+diff --git a/filefield_paths.module b/filefield_paths.module
+index 65a6a8e..31180a5 100644
+--- a/filefield_paths.module
++++ b/filefield_paths.module
+@@ -349,15 +349,18 @@ function filefield_paths_entity_update(EntityInterface $entity) {
+   if ($entity instanceof ContentEntityInterface) {
+     foreach ($entity->getFields() as $field) {
+       if ($field instanceof FileFieldItemList) {
+-        /** @var FieldConfig $definition */
+         $definition = $field->getFieldDefinition();
+-        $settings = $definition->getThirdPartySettings('filefield_paths');
+-        if (isset($settings['enabled']) && $settings['enabled']) {
+-          // Invoke hook_filefield_paths_process_file().
+-          foreach (\Drupal::moduleHandler()
+-                     ->getImplementations('filefield_paths_process_file') as $module) {
+-            if (function_exists($function = "{$module}_filefield_paths_process_file")) {
+-              $function($entity, $field, $settings);
++        // Ignore base fields.
++        if ($definition instanceof Drupal\Core\Config\Entity\ThirdPartySettingsInterface) {
++          /** @var Drupal\field\Entity\FieldConfig $definition */
++          $settings = $definition->getThirdPartySettings('filefield_paths');
++          if (isset($settings['enabled']) && $settings['enabled']) {
++            // Invoke hook_filefield_paths_process_file().
++            foreach (\Drupal::moduleHandler()
++                       ->getImplementations('filefield_paths_process_file') as $module) {
++              if (function_exists($function = "{$module}_filefield_paths_process_file")) {
++                $function($entity, $field, $settings);
++              }
+             }
+           }
+         }
