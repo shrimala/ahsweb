@@ -18,9 +18,9 @@ Feature: Email teachings archive
       | email3          | 2005-10-01 00:00:00 |
       | email 4         | 2005-10-01 13:00:00 |
       | email, and 5    | 2005-10-01 13:00:00 |
-    When I visit "archive/email/2005/12/30/email1"
-    When I visit "archive/email/2005/10/01/email2"
-    When I visit "archive/email/2005/10/01/email3"
-    When I visit "archive/email/2005/10/01/email-4"
-    When I visit "archive/email/2005/10/01/email-and-5"
+    When I visit "archive/emails/2005/12/30/email1"
+    When I visit "archive/emails/2005/10/01/email2"
+    When I visit "archive/emails/2005/10/01/email3"
+    When I visit "archive/emails/2005/10/01/email-4"
+    When I visit "archive/emails/2005/10/01/email-and-5"
     Then the response status code should be 200 
