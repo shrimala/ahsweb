@@ -11,7 +11,7 @@ Feature: Email teachings archive
     Then I should see the response status code should be 200 
 
   Scenario: Email teachings have URL archive/emails/year/month/day/titleword1-titleword2-etc
-    Given "email teaching" content:
+    Given email_teaching content:
       | title           | created      |
       | email1          | 2005-12-30 13:12:01 |
       | email2          | 2005-10-01 11:05:00 |
