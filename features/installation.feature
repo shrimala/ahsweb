@@ -24,5 +24,6 @@ Feature: Site Installation
     
   Scenario: Media entity audio & Video embed field are installed
     Given I am on "admin/structure/media/add"
-    Then the "select[name='type'] option[value='audio']" element contains "Audio"
-    Then the "select[name='type'] option[value='video_embed_field']" element contains "Video embed field"
+    Then the "select[name='type'] option[value='audio']" element should not contain "Nonexistent media type"
+    Then the "select[name='type'] option[value='audio']" element should contain "Audio"
+    Then the "select[name='type'] option[value='video_embed_field']" element should contain "Video embed field"
