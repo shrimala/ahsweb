@@ -128,7 +128,8 @@ class MediasNode extends SqlBase {
 	  $data1count=count($data1);
       for ($xyz=0;$xyz<$data1count;$xyz++)
 	  {
-		  $q2 = db_query("SELECT distinct  mid FROM media_field_data WHERE name =(SELECT distinct title FROM migrate_nd_mdmyt_node WHERE filename='".addslashes($data1[$xyz])."')");
+		  /**$q2 = db_query("SELECT distinct  mid FROM media_field_data WHERE name =(SELECT distinct title FROM migrate_nd_mdmyt_node WHERE filename='".addslashes($data1[$xyz])."')");*/
+		  $q2=db_query("SELECT distinct  mid FROM media_field_data WHERE mid =(select destid1 from migrate_map_mediamyt_media where sourceid1=(SELECT  meytbid FROM migrate_nd_mdmyt_node WHERE filename='" . addslashes($data1[$xyz]) . "'))");
 		  
           foreach($q2 as $r2)
           {
