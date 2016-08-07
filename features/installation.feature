@@ -27,3 +27,15 @@ Feature: Site Installation
     Then the "select[name='type'] option[value='audio']" element should not contain "Nonexistent media type"
     Then the "select[name='type'] option[value='audio']" element should contain "Audio"
     Then the "select[name='type'] option[value='video_embed_field']" element should contain "Video embed field"
+
+  Scenario: Paragraphs is installed
+    When I visit "admin/structure/paragraphs_type"
+    Then the response status code should be 200 
+
+  Scenario: Pathauto is installed
+    When I visit "admin/config/search/path/patterns"
+    Then the response status code should be 200    
+
+  Scenario: Token is installed
+    When I visit "admin/structure/display-modes/view/manage/node.token"
+    Then the response status code should be 200
