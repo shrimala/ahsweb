@@ -4,6 +4,8 @@ default:
       paths:
         features: features
         bootstrap: features/bootstrap
+      filters:
+        tags: "@skip"
       contexts:
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
