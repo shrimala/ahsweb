@@ -5,7 +5,7 @@ default:
         features: features
         bootstrap: features/bootstrap
       filters:
-        tags: "@skip"
+        tags: "~@skip"
       contexts:
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
