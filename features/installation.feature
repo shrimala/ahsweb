@@ -10,6 +10,7 @@ Feature: Site Installation
     Given I am on "/core/install.php"
     Then I should see "Drupal already installed"
   
+  @skip
   Scenario: Config has synchronised 
     When I visit "admin/config/development/configuration"
     Then I should not see "The following items in your active configuration have changes since the last import that may be lost on the next import"
@@ -19,6 +20,7 @@ Feature: Site Installation
     When I visit "admin/reports/status"
     Then I should see "Up to date" in the "Database updates" row
 
+  @skip
   Scenario: Schema is up to date
     When I visit "admin/reports/status"
     Then I should see "Up to date" in the "Entity/field definitions" row
