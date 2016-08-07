@@ -1,7 +1,7 @@
 @api
 Feature: Site Installation
   In order to do anything
-    Drupal and key modules needs to be installed 
+  Drupal and key modules needs to be installed, and no errors should be present 
   
   Background:
     Given I am logged in as a user with the "administrator" role
@@ -9,6 +9,18 @@ Feature: Site Installation
   Scenario: Drupal is installed
     Given I am on "/core/install.php"
     Then I should see "Drupal already installed"
+  
+  Scenario: Config has synchronised 
+    When I visit "admin/config/development/configuration"
+    Then I should not see "The following items in your active configuration have changes since the last import that may be lost on the next import"
+
+  Scenario: Database updates have run
+    When I visit "admin/reports/status"
+    Then I should see "Up to date" in the "Database updates" row
+
+  Scenario: Schema is up to date
+    When I visit "admin/reports/status"
+    Then I should see "Up to date" in the "Entity/field definitions" row
 
   Scenario: Flysystem is installed
     When I visit "admin/config/media/file-system/flysystem"
