@@ -13,7 +13,8 @@ Feature: Site Installation
   Scenario: Config has synchronised 
     When I visit "admin/config/development/configuration"
     Then I should not see "The following items in your active configuration have changes since the last import that may be lost on the next import"
-
+    And I should see "There are no configuration changes to import."
+    
   Scenario: Database updates have run
     When I visit "admin/reports/status"
     Then I should see "Up to date" in the "Database updates" row
