@@ -38,9 +38,9 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 */
 public function submitForm(array &$form, FormStateInterface $form_state) {
   // Display result.
-  $q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
+  /**$q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
   
-        /**foreach($q1 as $r)
+        foreach($q1 as $r)
          {
 			 if(!file_exists($r->uri)) {
 				 drupal_set_message("Fid = ".$r->fid." -------- File Name = ".$r->filename . "-------- Not Exist");
@@ -48,12 +48,17 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 			 }
 			 
 		 }*/
+		 
+		 $query = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
+		   $result = $query->fetchAssoc();
+        
+        
 	$batch = array(
       'title' => t('Checking File Entity Exist...'),
       'operations' => array(
         array(
           '\Drupal\file_entity_check\EntityCheck::entityCheck',
-          $q1
+          array($result)
         ),
       ),
       'finished' => '\Drupal\file_entity_check\EntityCheck::entityCheckFinishedCallback',
