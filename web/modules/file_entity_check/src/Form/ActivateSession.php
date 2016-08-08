@@ -38,7 +38,6 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 */
 public function submitForm(array &$form, FormStateInterface $form_state) {
   // Display result.
-  max_execution_time = 360;
   $q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
   
         foreach($q1 as $r)
