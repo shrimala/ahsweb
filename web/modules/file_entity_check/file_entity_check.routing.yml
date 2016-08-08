@@ -1,0 +1,7 @@
+file_entity_check_activatesession:
+  path: 'file_entity_check/activatesession'
+  defaults:
+    _form: '\Drupal\file_entity_check\Form\ActivateSession'
+    _title: 'Activate Session'
+  requirements:
+    _permission: 'access content'
