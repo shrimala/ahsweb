@@ -49,12 +49,16 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 			 
 		 }*/
 		 
-		 /**$q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
+		 $q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
          $result=array();
+         $i=0;
         foreach($q1 as $r)
          {
 			 $result[$r->uri]=$r->uri;
-			 
+			 if ($i>10) {
+				 break;
+			 }
+			 $i=$i+1;
 		 }
         
         
@@ -68,8 +72,8 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
       ),
       'finished' => '\Drupal\file_entity_check\EntityCheck::entityCheckFinishedCallback',
     );
-    batch_set($batch);*/
-    $q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
+    batch_set($batch);
+    /**$q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
 		  
 		   $i=0;
 		   foreach($q1 as $r)
@@ -83,7 +87,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 			 }
 			 $i=$i+1;
 			
-		 }
+		 }*/
   }
 }
 ?>
