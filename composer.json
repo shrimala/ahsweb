@@ -41,9 +41,7 @@
         "drupal/devel": "1.x-dev",
         "drupal/config_inspector": "1.x-dev",
         "drupal/config_readonly": "1.x-dev",
-        "drupal/pathauto": "1.x-dev",
-        "shrimala/DrupalDriver": "dev-EntityContext",
-        "shrimala/drupalextension": "dev-EntityContext"
+        "drupal/pathauto": "1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
