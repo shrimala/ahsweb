@@ -1,0 +1,32 @@
+<?php
+namespace Drupal\file_entity_check;
+class FileEntity {
+  public static function entityCheck($q1, &$context){
+    $message = 'Checking File Entity Exist...';
+    $results = array();
+    foreach($q1 as $r)
+         {
+			 if(!file_exists($r->uri)) {
+				 drupal_set_message("Fid = ".$r->fid." -------- File Name = ".$r->filename . "-------- Not Exist");
+				 $i=$i+1;
+			 }
+			 
+		 }
+    $context['message'] = $message;
+    $context['results'] = $results;
+  }
+  function entityCheckFinishedCallback($success, $results, $operations) {
+    // The 'success' parameter means no fatal PHP errors were detected. All
+    // other error management should be handled using 'results'.
+    if ($success) {
+      $message = \Drupal::translation()->formatPlural(
+        count($results),
+        'One post processed.', '@count posts processed.'
+      );
+    }
+    else {
+      $message = t('Finished with an error.');
+    }
+    drupal_set_message($message);
+  }
+}
