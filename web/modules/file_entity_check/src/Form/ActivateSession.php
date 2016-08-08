@@ -53,7 +53,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
       'operations' => array(
         array(
           '\Drupal\file_entity_check\EntityCheck::entityCheck',
-          array($q1)
+          $q1
         ),
       ),
       'finished' => '\Drupal\file_entity_check\EntityCheck::entityCheckFinishedCallback',
