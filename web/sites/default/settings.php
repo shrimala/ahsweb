@@ -102,3 +102,4 @@ $settings['flysystem'] = $schemes;
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
+ini_set('max_execution_time', 6000);
