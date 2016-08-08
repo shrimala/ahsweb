@@ -49,7 +49,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 			 if ($i>10) {
 				 break ;
 			 }
-			 $i=$1+1;
+			 $i=$i+1;
 		 }
   }
 }
