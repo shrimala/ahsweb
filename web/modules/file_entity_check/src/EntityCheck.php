@@ -7,7 +7,7 @@ class FileEntity {
     foreach($q1 as $r)
          {
 			 if(!file_exists($r->uri)) {
-				 $context['message'] ="Fid = ".$r->fid." -------- File Name = ".$r->filename . "-------- Not Exist";
+				 $context['message'] =$r->uri. "-------- Not Exist";
 			 }
 			 
 		 }
