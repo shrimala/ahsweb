@@ -38,12 +38,12 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 */
 public function submitForm(array &$form, FormStateInterface $form_state) {
   // Display result.
-  drupal_set_message("Audio File not exist");
+  set_time_limit(360);
   $q1 = db_query("SELECT fid,filename,uri  FROM file_managed WHERE filemime='audio/mpeg'");
-  $i=0;
+  
         foreach($q1 as $r)
          {
-			 if(file_exists($r->uri) && $i<=100) {
+			 if(file_exists($r->uri)) {
 				 drupal_set_message("Fid = ".$r->fid." -------- File Name = ".$r->filename . "-------- Not Exist");
 				 $i=$i+1;
 			 }
