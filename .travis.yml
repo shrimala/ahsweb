@@ -16,8 +16,6 @@ before_install:
 
 install:
   - composer --verbose install
-  - composer require drupal/drupal-driver:dev-EntityContext
-  - composer require drupal/drupal-extension:dev-EntityContext
 
 before_script:
   - mkdir $TRAVIS_BUILD_DIR/web/sites/default/testfiles
