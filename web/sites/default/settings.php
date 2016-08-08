@@ -1,4 +1,5 @@
 <?php
+ini_set('max_execution_time', 0);
 /**
  * @file
  * Platform.sh example settings.php file for Drupal 8.
@@ -102,4 +103,4 @@ $settings['flysystem'] = $schemes;
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
-ini_set('max_execution_time', 6000);
+
