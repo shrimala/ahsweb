@@ -41,7 +41,9 @@
         "drupal/devel": "1.x-dev",
         "drupal/config_inspector": "1.x-dev",
         "drupal/config_readonly": "1.x-dev",
-        "drupal/pathauto": "1.x-dev"
+        "drupal/pathauto": "1.x-dev",
+		"drupal/drupal-driver": "dev-EntityContext as dev-master",
+		"drupal/drupal-extension": "dev-EntityContext"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -96,5 +98,8 @@
     },
     "replace": {
         "drupal/drupal": "*"
+    },
+	"config": {
+        "process-timeout": 1200
     }
 }
