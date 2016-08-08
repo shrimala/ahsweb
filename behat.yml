@@ -8,11 +8,11 @@ default:
         tags: "~@skip"
       contexts:
         - FeatureContext
-        - EntityContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\EntityContext
   extensions:
     Behat\MinkExtension:
       goutte: ~
