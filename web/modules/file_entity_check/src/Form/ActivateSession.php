@@ -76,7 +76,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
          {
 			 if(!file_exists($r->uri)) {
 				  drupal_set_message("Fid = ".$r->fid." -------- File Name = ".$r->filename . "-------- Not Exist");
-				  if ($i>10)
+				  if ($i>3)
 				  {
 					  break;
 				  }
