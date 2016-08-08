@@ -7,12 +7,10 @@ class FileEntity {
     foreach($q1 as $r)
          {
 			 if(!file_exists($r->uri)) {
-				 drupal_set_message("Fid = ".$r->fid." -------- File Name = ".$r->filename . "-------- Not Exist");
-				 $i=$i+1;
+				 $context['message'] ="Fid = ".$r->fid." -------- File Name = ".$r->filename . "-------- Not Exist";
 			 }
 			 
 		 }
-    $context['message'] = $message;
     $context['results'] = $results;
   }
   function entityCheckFinishedCallback($success, $results, $operations) {
