@@ -2,14 +2,14 @@
 namespace Drupal\file_entity_check;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
-	$message = 'Checking File Entity Exist...';
+    $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
          {
 			 //if(!file_exists($r)) {
-			 if(file_get_contents($r)) {
 				 $results[] =$r. "-------- Not Exist";
-			 }
+			 //}
+			
 		 }
 	$context['message'] = $message;
     $context['results'] = $results;
