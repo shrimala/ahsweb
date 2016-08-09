@@ -27,9 +27,7 @@ class EntityCheck {
       $message = t('Finished with an error.');
     }
     drupal_set_message($message);
-    foreach($results as $r) {
-		dsm($r);
-	}
+    dsm ($results);
     
   }
 }
