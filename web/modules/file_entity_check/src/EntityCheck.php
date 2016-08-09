@@ -12,6 +12,7 @@ class FileEntity {
 			 
 		 }
     $context['results'] = $results;
+    drupal_set_message("Arit Kumar Nath fro entityCheck Function");
   }
   function entityCheckFinishedCallback($success, $results, $operations) {
     // The 'success' parameter means no fatal PHP errors were detected. All
@@ -27,5 +28,6 @@ class FileEntity {
       $message = t('Finished with an error.');
     }
     drupal_set_message($message);
+    drupal_set_message("Arit Kumar Nath fro entityCheckFinishedCallback Function");
   }
 }
