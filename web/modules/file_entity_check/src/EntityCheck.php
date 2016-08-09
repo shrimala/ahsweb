@@ -1,22 +1,15 @@
 <?php
 namespace Drupal\file_entity_check;
-require_once 'vendor/autoload.php';
-
 use League\Flysystem\Filesystem;
-use League\Flysystem\Adapter\Local;
-
-
 class EntityCheck {
   public static function entityCheck($q1, &$context){
-	  $adapter = new Local(__DIR__ . '/uploads');
-$filesystem = new Filesystem($adapter);
-
     $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
          {
-			 if(!$filesystem->has($r)) {
-				 $results[] =$r. "-------- Not Exist";
+			 //if(!file_exists($r)) {
+			 if(!$this->FileExistsException($r)) {
+				 $results[] =$r;
 			 }
 			
 		 }
