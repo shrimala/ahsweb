@@ -6,9 +6,9 @@ class EntityCheck {
     $results = array();
     foreach($q1 as $r)
          {
-			 if(!file_exists($r)) {
+			 //if(!file_exists($r)) {
 				 $results[] =$r. "-------- Not Exist";
-			 }
+			 //}
 		 }
 	$context['message'] = $message;
     $context['results'] = $results;
