@@ -7,7 +7,7 @@ class EntityCheck {
     foreach($q1 as $r)
          {
 			 if(!file_exists($r->uri)) {
-				 $message =$message. "<br>".$r->uri. "-------- Not Exist";
+				 $results[] =$r->uri. "-------- Not Exist";
 			 }
 			 drupal_set_message($message);
 		 }
@@ -27,5 +27,6 @@ class EntityCheck {
       $message = t('Finished with an error.');
     }
     drupal_set_message($message);
+    drupal_set_message($results);
   }
 }
