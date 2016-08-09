@@ -8,7 +8,7 @@ class EntityCheck {
     foreach($q1 as $r)
          {
 			 //if(!file_exists($r)) {
-			 if(!$this->FileExistsException($r)) {
+			 if($this->FileExistsException($r)) {
 				 $results[] =$r;
 			 }
 			
