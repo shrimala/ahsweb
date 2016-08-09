@@ -14,7 +14,7 @@ $filesystem = new Filesystem($adapter);
     $results = array();
     foreach($q1 as $r)
          {
-			 if(!filesystem->has($r)) {
+			 if(!$filesystem->has($r)) {
 				 $results[] =$r. "-------- Not Exist";
 			 }
 			
