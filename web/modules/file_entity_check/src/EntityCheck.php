@@ -2,12 +2,13 @@
 namespace Drupal\file_entity_check;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
+	  dsm($q1);
     $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
          {
-			 if(!file_exists($r->uri)) {
-				 $results[] =$r->uri. "-------- Not Exist";
+			 if(!file_exists($r['uri'])) {
+				 $results[] =$r['uri']. "-------- Not Exist";
 			 }
 			 drupal_set_message($message);
 		 }
