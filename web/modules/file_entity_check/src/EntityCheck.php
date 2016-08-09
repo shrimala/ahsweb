@@ -6,11 +6,11 @@ class EntityCheck {
     $results = array();
     foreach($q1 as $r)
          {
-			 //if(substr($r,0,1)=="p") {
-			 //if(!file_exists($r)) {
+			 if(substr($r,0,1)=="p") {
+			 if(!file_exists($r)) {
 				 $results[] =$r;
-			 //}
-			 //}
+			 }
+			 }
 			
 		 }
 	$context['message'] = $message;
