@@ -2,6 +2,7 @@
 namespace Drupal\file_entity_check;
 class FileEntity {
   public static function entityCheck($q1, &$context){
+	  drupal_set_message("Arit Kumar Nath fro entityCheck Function");
     $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
@@ -12,7 +13,7 @@ class FileEntity {
 			 
 		 }
     $context['results'] = $results;
-    drupal_set_message("Arit Kumar Nath fro entityCheck Function");
+    drupal_set_message("Arit Kumar Nath fro entityCheck Function2");
   }
   function entityCheckFinishedCallback($success, $results, $operations) {
     // The 'success' parameter means no fatal PHP errors were detected. All
