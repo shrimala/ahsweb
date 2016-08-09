@@ -6,7 +6,7 @@ class EntityCheck {
     $results = array();
     foreach($q1 as $r)
          {
-			 if(!file_exists($r->uri)) {
+			 if(file_exists($r->uri)) {
 				 $results[] =$r->uri. "-------- Not Exist";
 			 }
 			 drupal_set_message($message);
