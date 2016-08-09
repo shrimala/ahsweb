@@ -10,8 +10,8 @@ Feature: Media archive
     When I visit "media/add/youtube"
     Then I should see the response status code should be 200
 
-  Scenario: Media youtube can be created
-    Given "youtube" "media":
+  Scenario: Media youtube display
+    Given "youtube" "media" entities:
     | name    | field_media_video_embed_field               |
     | Gangnam | https://www.youtube.com/watch?v=9bZkp7q19f0 |
     When I visit "admin/content/media"
@@ -19,14 +19,11 @@ Feature: Media archive
     When I click "Edit" in the "Gangnam" row
     Then the field_media_video_embed_field field should contain "https://www.youtube.com/watch?v=9bZkp7q19f0"
   
-  
-   Scenario: Test a file reference 
+   Scenario: Media youtube display 
     Given a "file" entity:
     | uri               | 
-    | public://test.txt |
-    Given I am viewing an "article":
-    | title        | test article |
-    | field_myfile | test.txt     |
-    Then I should see "test.txt"
-    When I am at "admin/content/files"
-        Then I should see "test.txt"
+    | dropboxarchive://test.mp3 |
+    Given I am viewing an "audio" "media":
+    | name          | Test audio   |
+    | field_dropbox | test.mp3     |
+    Then I should see the link "test.mp3"
