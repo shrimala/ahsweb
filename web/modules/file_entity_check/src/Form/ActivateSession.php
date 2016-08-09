@@ -55,7 +55,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
         foreach($q1 as $r)
          {
 			 $result[$r->uri]=$r->uri;
-			 if ($i>10) {
+			 if ($i>100) {
 				 break;
 			 }
 			 $i=$i+1;
