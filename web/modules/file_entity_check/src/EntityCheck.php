@@ -13,13 +13,12 @@ class EntityCheck {
 		 }
 	$context['message'] = $message;
     $context['results'] = $results;
-    die("wait");
   }
   function entityCheckFinishedCallback($success, $results, $operations) {
     // The 'success' parameter means no fatal PHP errors were detected. All
     // other error management should be handled using 'results'.
     if ($success) {
-      $message =$message. \Drupal::translation()->formatPlural(
+      $message =\Drupal::translation()->formatPlural(
         count($results),
         'One post processed.', '@count posts processed.'
       );
