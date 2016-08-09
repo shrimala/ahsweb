@@ -1,6 +1,6 @@
 <?php
 namespace Drupal\file_entity_check;
-class FileEntity {
+class EntityCheck {
   public static function entityCheck($q1, &$context){
     $message = 'Checking File Entity Exist...';
     $results = array();
