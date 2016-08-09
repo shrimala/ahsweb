@@ -1,16 +1,15 @@
 <?php
 namespace Drupal\file_entity_check;
-use League\Flysystem\Filesystem;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
     $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
          {
-			 //if(!file_exists($r)) {
-			 if($this->FileExistsException($r)) {
+			 if(substr($r,0,1)=="p") {
+			 if(!file_exists($r)) {
 				 $results[] =$r;
-			 }
+			 }}
 			
 		 }
 	$context['message'] = $message;
