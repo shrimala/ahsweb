@@ -21,6 +21,7 @@ class FileEntity {
         count($results),
         'One post processed.', '@count posts processed.'
       );
+      $message=$message . "Message fire successfully.";
     }
     else {
       $message = t('Finished with an error.');
