@@ -1,9 +1,4 @@
 <?php
-require_once 'vendor/autoload.php';
-
-use League\Flysystem\Filesystem as $filesystem;
-use League\Flysystem\Adapter\Local;
-
 namespace Drupal\file_entity_check;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
@@ -11,10 +6,7 @@ class EntityCheck {
     $results = array();
     foreach($q1 as $r)
          {
-			/** if(!file_exists($r)) {
-				 $results[] =$r. "-------- Not Exist";
-			 }*/
-			 if(!$filesystem->has($r)){
+			 if(drush -ev !file_exists($r)) {
 				 $results[] =$r. "-------- Not Exist";
 			 }
 			
