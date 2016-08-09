@@ -28,7 +28,7 @@ class EntityCheck {
     }
     drupal_set_message($message);
     foreach($results as $r) {
-		drupal_set_message($r);
+		dsm($r);
 	}
     
   }
