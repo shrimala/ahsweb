@@ -1,4 +1,4 @@
-@api @skip
+@api
 Feature: Media archive
   In order to catalogue and make available teachings
     we need to track the recordings we have 
