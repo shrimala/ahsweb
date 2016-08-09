@@ -9,10 +9,11 @@ class EntityCheck {
 			 if(!file_exists($r->uri)) {
 				 $message =$message. "<br>".$r->uri. "-------- Not Exist";
 			 }
-			 
+			 drupal_set_message($message);
 		 }
 	$context['message'] = $message;
     $context['results'] = $results;
+    die("wait");
   }
   function entityCheckFinishedCallback($success, $results, $operations) {
     // The 'success' parameter means no fatal PHP errors were detected. All
