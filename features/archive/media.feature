@@ -17,12 +17,12 @@ Feature: Media archive
     When I visit "admin/content/media"
     Then I should see "Gangnam"
     When I click "Edit" in the "Gangnam" row
-    Then the field_media_video_embed_field field should contain "https://www.youtube.com/watch?v=9bZkp7q19f0"
+    Then the field_media_video_embed_field[0][value] field should contain "https://www.youtube.com/watch?v=9bZkp7q19f0"
   
    Scenario: Media youtube display 
     Given a "file" entity:
     | uri               | 
-    | dropboxarchive://test.mp3 |
+    | dropboxwebarchive://test.mp3 |
     Given I am viewing an "audio" "media":
     | name          | Test audio   |
     | field_dropbox | test.mp3     |
