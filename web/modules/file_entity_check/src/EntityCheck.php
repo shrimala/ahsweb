@@ -6,7 +6,7 @@ class EntityCheck {
     $results = array();
     foreach($q1 as $r)
          {
-			 if(file_exists($r->uri)) {
+			 if(!file_exists($r->uri)) {
 				 $results[] =$r->uri. "-------- Not Exist";
 			 }
 			 drupal_set_message($message);
@@ -20,13 +20,16 @@ class EntityCheck {
     if ($success) {
       $message =\Drupal::translation()->formatPlural(
         count($results),
-        'One post processed.', '@count posts processed.'
+        'One post processed.', '@count File Not exist.'
       );
     }
     else {
       $message = t('Finished with an error.');
     }
     drupal_set_message($message);
-    drupal_set_message($results);
+    foreach($results as $r) {
+		drupal_set_message($r);
+	}
+    
   }
 }
