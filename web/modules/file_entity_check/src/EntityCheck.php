@@ -6,8 +6,8 @@ class EntityCheck {
     $results = array();
     foreach($q1 as $r)
          {
-			 if(file_exists($r)) {
-				 $results[] =$r. "--------  Exist";
+			 if(drush -ev !file_exists($r)) {
+				 $results[] =$r. "-------- Not Exist";
 			 }
 			
 		 }
