@@ -1,13 +1,8 @@
 <?php
 namespace Drupal\file_entity_check;
-use Drupal\flysystem\FlysystemFactory;
-use Drupal\flysystem\Flysystem\Local;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
-	  $flysystem = new FlysystemFactory();
-	//$platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
-    //$DROPBOX_TOKEN = $platform_variables["DROPBOX_CLIENT"] .":".$platform_variables["DROPBOX_TOKEN"];	  
-    $message = 'Checking File Entity Exist...';
+	$message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
          {
@@ -18,7 +13,7 @@ class EntityCheck {
 			 
 			 }
 			 else {
-				 if(!file_exists($flysystem->has($r))) {
+				 if(!file_exists($r)) {
 					 $results[] =$r ."-----Not Exists";
 				 }
 			 }
