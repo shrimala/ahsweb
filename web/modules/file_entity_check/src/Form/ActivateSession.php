@@ -53,7 +53,8 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
          $result=array();
         foreach($q1 as $r)
          {
-			 $result[$r->uri]=$r->uri;
+			 //$result[$r->uri]=$r->uri;
+			 $result[$r->filename]=$r->filename;
 		 }
         
         
