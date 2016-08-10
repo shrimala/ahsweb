@@ -49,7 +49,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 			 
 		 }*/
 		 
-		 $q1 = db_query("SELECT fid,filename,uri  FROM file_managed where fid=1");// WHERE filemime='audio/mpeg' order by fid");
+		 $q1 = db_query("SELECT fid,filename,uri  FROM file_managed where fid<10");// WHERE filemime='audio/mpeg' order by fid");
          $result=array();
         foreach($q1 as $r)
          {
