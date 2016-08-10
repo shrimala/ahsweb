@@ -15,7 +15,7 @@ class EntityCheck {
 			 
 			 }
 			 else {
-				 if(!file_exists(League\Flysystem\Filesystem::has($r)))) {
+				 if(!file_exists(League\Flysystem\Filesystem::has($r))) {
 					 $results[] =$r ."-----Not Exists";
 				 }
 			 }
