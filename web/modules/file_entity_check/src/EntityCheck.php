@@ -8,11 +8,17 @@ class EntityCheck {
     $results = array();
     foreach($q1 as $r)
          {
-			 //if(substr($r,0,1)=="p") {
-			 if(!file_exists("https://{$GITHUB_TOKEN}@dropbox.com/".$r)) {
-				 $results[] =$r ."-----Not Exists";
+			 if(substr($r,0,1)=="p") {
+				 if(!file_exists($r)) {
+					 $results[] =$r ."-----Not Exists";
+				 }
+			 
 			 }
-			 //}
+			 else {
+				 if(!file_exists("https://{$DROPBOX_TOKEN}@dropbox.com/".$r)) {
+					 $results[] ="https://{$DROPBOX_TOKEN}@dropbox.com/".$r ."-----Not Exists";
+				 }
+			 }
 			
 		 }
 	$context['message'] = $message;
