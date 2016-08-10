@@ -48,8 +48,14 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
 			 }
 			 
 		 }*/
-		 
-		 $q1 = db_query("SELECT fid,filename,uri  FROM file_managed where fid<150");// WHERE filemime='audio/mpeg' order by fid");
+		 $q = db_query("SELECT count(uri) as uri  FROM file_managed");
+		  $r1 = $q->fetchAssoc();
+		  $uri_count=$r1['uri'];
+		  $first=0;
+		  $last=100;
+		 while($uri_count>$first)
+		 {
+		 $q1 = db_query("SELECT fid,filename,uri  FROM file_managed where fid between ".$first ." and ".$last);// WHERE filemime='audio/mpeg' order by fid");
          $result=array();
         foreach($q1 as $r)
          {
@@ -69,6 +75,9 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
       'finished' => '\Drupal\file_entity_check\EntityCheck::entityCheckFinishedCallback',
     );
     batch_set($batch);
+    $first=$last+1;
+    $last=$last+100;
+    }
     //dsm ($settings['flysystem']);
   }
 }
