@@ -3,22 +3,22 @@ namespace Drupal\file_entity_check;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
 	$platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
-    $GITHUB_TOKEN = $platform_variables["DROPBOX_TOKEN"];	  
+    $DROPBOX_TOKEN = $platform_variables["DROPBOX_TOKEN"];	  
     $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
          {
-			 if(substr($r,0,1)=="p") {
+			 /**if(substr($r,0,1)=="p") {
 				 if(!file_exists($r)) {
 					 $results[] =$r ."-----Not Exists";
 				 }
 			 
 			 }
-			 else {
+			 else {*/
 				 if(!file_exists("https://{$DROPBOX_TOKEN}@dropbox.com/".$r)) {
 					 $results[] ="https://{$DROPBOX_TOKEN}@dropbox.com/".$r ."-----Not Exists";
 				 }
-			 }
+			 //}
 			
 		 }
 	$context['message'] = $message;
