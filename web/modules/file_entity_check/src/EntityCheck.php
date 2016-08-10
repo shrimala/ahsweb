@@ -13,7 +13,7 @@ class EntityCheck {
 			 
 			 }
 			 else {
-				 if(file_exists($r)) {
+				 if(!file_exists($r)) {
 					 $results[] =$r ."-----Not Exists";
 				 }
 			 }
