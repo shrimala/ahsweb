@@ -19,7 +19,6 @@ class EntityCheck {
 					 $results[] ="https://{$DROPBOX_TOKEN}@dropbox.com/".$r ."-----Not Exists";
 				 }
 			 //}
-			
 		 }
 	$context['message'] = $message;
     $context['results'] = $results;
