@@ -36,7 +36,7 @@ class EntityCheck {
       $message = t('Finished with an error.');
     }
     drupal_set_message($message);
-    dsm ($settings['flysystem']);
+    dsm ($results);
     
   }
 }

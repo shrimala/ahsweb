@@ -69,6 +69,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
       'finished' => '\Drupal\file_entity_check\EntityCheck::entityCheckFinishedCallback',
     );
     batch_set($batch);
+    dsm ($settings['flysystem']);
   }
 }
 ?>
