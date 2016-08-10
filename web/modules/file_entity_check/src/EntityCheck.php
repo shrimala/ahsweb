@@ -3,7 +3,7 @@ namespace Drupal\file_entity_check;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
 	$platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
-    $DROPBOX_TOKEN = $platform_variables["DROPBOX_TOKEN"];	  
+    $DROPBOX_TOKEN = $platform_variables["DROPBOX_CLIENT"];	  
     $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
