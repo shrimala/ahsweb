@@ -15,8 +15,8 @@ class EntityCheck {
 			 
 			 }
 			 else {
-				 if(!file_exists("https://{$DROPBOX_TOKEN}@dropbox.com/".substr($r,21))) {
-					 $results[] ="https://{$DROPBOX_TOKEN}@dropbox.com/".substr($r,21) ."-----Not Exists";
+				 if(!file_exists("https://{$DROPBOX_TOKEN}@dropbox.com/".substr($r,20))) {
+					 $results[] ="https://{$DROPBOX_TOKEN}@dropbox.com/".substr($r,20) ."-----Not Exists";
 				 }
 			 }
 		 }
