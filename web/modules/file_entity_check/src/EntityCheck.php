@@ -2,8 +2,8 @@
 namespace Drupal\file_entity_check;
 class EntityCheck {
   public static function entityCheck($q1, &$context){
-	$platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
-    $DROPBOX_TOKEN = $platform_variables["DROPBOX_CLIENT"] .":".$platform_variables["DROPBOX_TOKEN"];	  
+	//$platform_variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
+    //$DROPBOX_TOKEN = $platform_variables["DROPBOX_CLIENT"] .":".$platform_variables["DROPBOX_TOKEN"];	  
     $message = 'Checking File Entity Exist...';
     $results = array();
     foreach($q1 as $r)
@@ -15,8 +15,8 @@ class EntityCheck {
 			 
 			 }
 			 else {
-				 if(!file_exists("https://{$DROPBOX_TOKEN}@dropbox.com/".substr($r,20))) {
-					 $results[] ="https://{$DROPBOX_TOKEN}@dropbox.com/".substr($r,20) ."-----Not Exists";
+				 if(!file_exists(League\Flysystem\Filesystem::has($r)))) {
+					 $results[] =$r ."-----Not Exists";
 				 }
 			 }
 		 }
