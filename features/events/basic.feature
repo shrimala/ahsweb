@@ -8,7 +8,7 @@ Feature: Events listings
     
   Scenario: Events content type exists
     When I visit "node/add/event"
-    Then I should see the response status code should be 200 
+    Then the response status code should be 200 
 
   Scenario: Events have URL events/year/month/day/titleword1-titleword2-etc
     Given event content:
