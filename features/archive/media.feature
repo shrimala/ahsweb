@@ -8,7 +8,7 @@ Feature: Media archive
     
   Scenario: Media youtube type exists
     When I visit "media/add/youtube"
-    Then I should see the response status code should be 200
+    Then the response status code should be 200
 
   Scenario: Media youtube display
     Given "youtube" "media" entities:
@@ -18,8 +18,12 @@ Feature: Media archive
     Then I should see "Gangnam"
     When I click "Edit" in the "Gangnam" row
     Then the "field_media_video_embed_field[0][value]" field should contain "https://www.youtube.com/watch?v=9bZkp7q19f0"
+
+  Scenario: Media audio type exists
+    When I visit "media/add/audio"
+    Then the response status code should be 200
   
-   Scenario: Media youtube display 
+   Scenario: Media audio display 
     Given a "file" entity:
     | uri               | 
     | dropboxwebarchive://test.mp3 |
