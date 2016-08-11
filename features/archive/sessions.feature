@@ -8,7 +8,7 @@ Feature: Sessions archive
     
   Scenario: Sessions content type exists
     When I visit "node/add/session"
-    Then I should see the response status code should be 200 
+    Then the response status code should be 200 
 
   Scenario: Sessions have URL archive/sessions/year/month/day/hourminute/titleword1-titleword2-etc
     Given session content:
