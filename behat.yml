@@ -4,12 +4,15 @@ default:
       paths:
         features: features
         bootstrap: features/bootstrap
+      filters:
+        tags: "~@skip"
       contexts:
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\EntityContext
   extensions:
     Behat\MinkExtension:
       goutte: ~

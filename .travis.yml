@@ -16,7 +16,6 @@ before_install:
 
 install:
   - composer --verbose install
-  - composer require drupal/drupal-extension='~3.0'
 
 before_script:
   - mkdir $TRAVIS_BUILD_DIR/web/sites/default/testfiles
