@@ -1,0 +1,5 @@
+type: module
+name: File Entity Existenz Check
+description: 'File entity existinz check Drupal 8.'
+package: custom
+core: '8.x'
