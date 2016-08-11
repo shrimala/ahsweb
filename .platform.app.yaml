@@ -75,6 +75,7 @@ hooks:
         drush --yes sql-sanitize --sanitize-email="no"
         for module in `cat ~/modules.master`; do drush --yes pm-uninstall $module; done
       fi
+      drush -y en file_checker
       
 
 # The configuration of scheduled execution.
