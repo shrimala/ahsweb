@@ -8,7 +8,7 @@ Feature: Email teachings archive
     
   Scenario: Email teachings content type exists
     When I visit "node/add/email_teaching"
-    Then I should see the response status code should be 200 
+    Then the response status code should be 200 
 
   Scenario: Email teachings have URL archive/emails/year/month/day/titleword1-titleword2-etc
     Given email_teaching content:
