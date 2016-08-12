@@ -93,14 +93,18 @@ class ActivateSession extends FormBase {
     $form['status'] = array(
       '#markup' => $status,
     );
+    $form['run_by_cron'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Run by cron'),
+    );
     $form['corn_time'] = array(
       '#type' => 'select',
-      '#title' => t('Check files every'),
+      '#title' => t('Do not run more often than'),
       '#options' => array(
-        '0' => 'Never',
+        '0' => 'No limit',
         '1' => '1 hour',
-        '2' => '1 week',
-        '3' => '1 Month',
+        '2' => '1 day',
+        '3' => '1 week',
       ),
     ); 
     $form['save_config'] = array(
