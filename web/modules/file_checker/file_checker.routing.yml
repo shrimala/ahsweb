@@ -1,0 +1,7 @@
+file_entity_check_activatesession:
+  path: 'admin/config/media/file-system/file-checker'
+  defaults:
+    _form: '\Drupal\file_checker\Form\ActivateSession'
+    _title: 'File Checker'
+  requirements:
+    _permission: 'access content'
