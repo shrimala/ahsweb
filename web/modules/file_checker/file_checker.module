@@ -31,6 +31,7 @@ function file_checker_cron() {
     db_update('file_check_config')
     ->fields(array(
       'last_run' => REQUEST_TIME,
+      'run_by' => "cron",
     ))
     ->execute();
 

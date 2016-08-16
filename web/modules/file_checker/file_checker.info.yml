@@ -1,5 +1,5 @@
 type: module
-name: File Entity Existenz Check
-description: 'File entity existinz check Drupal 8.'
+name: File checker
+description: 'Verifies that files managed by Drupal actually exist at the location where Drupal believes they are.'
 package: custom
 core: '8.x'

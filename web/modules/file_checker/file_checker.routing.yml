@@ -2,6 +2,6 @@ file_entity_check_activatesession:
   path: 'admin/config/media/file-system/file-checker'
   defaults:
     _form: '\Drupal\file_checker\Form\ActivateSession'
-    _title: 'File Checker'
+    _title: 'Verifies that files managed by Drupal actually exist at the location where Drupal believes they are.'
   requirements:
     _permission: 'access content'

@@ -91,22 +91,22 @@ class ActivateSession extends FormBase {
     );
     $result=db_query("SELECT last_run FROM file_check_config")->fetchField();
     //$status = '<p>' . $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($this->state->get('system.cron_last')))) . '</p>';
-    $status = '<p>' . ($result>0 ? $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($result))) : 'Last run: Never Check') . '</p>';
+    $status = '<p>' . ($result>0 ? $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($result))) : 'Last run: Never.') . '</p>';
     $form['status'] = array(
       '#markup' => $status,
     );
     $form['run_by_cron'] = array(
       '#type' => 'checkbox',
-      '#title' => $this->t('Run by cron'),
+      '#title' => $this->t('Check files when cron runs'),
     );
     $form['corn_time'] = array(
       '#type' => 'select',
-      '#title' => t('Do not run more often than'),
+      '#title' => t('Do not check files from cron more often than'),
       '#options' => array(
         'No limit' => 'No limit',
-        '1 hour' => '1 hour',
-        '1 day' => '1 day',
-        '1 week' => '1 week',
+        '1 hour' => 'Once per  hour',
+        '1 day' => 'Once per  day',
+        '1 week' => 'Once per  week',
       ),
     ); 
     $form['save_config'] = array(
@@ -132,6 +132,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
   db_update('file_check_config')
     ->fields(array(
       'last_run' => REQUEST_TIME,
+      'run_by' => "manually",
     ))
   ->execute();
 

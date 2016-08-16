@@ -35,6 +35,12 @@ function file_check_config_schema() {
         'not null' => FALSE,
         'description' => 'File checker will work with cron or not 0 means no and 1 means yes',
       ),
+       'run_by'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Run by cron or manually, use full message log display',
+      ),
     ),
   );
 }
@@ -44,6 +50,7 @@ function file_check_config_data() {
   $data[$i][0]='None';
   $data[$i][1]=0;
   $data[$i][2]=0;
+  $data[$i][3]='None';
   $query = db_insert('file_check_config')
     ->fields($fields);
   foreach ($data as $row) {

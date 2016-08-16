@@ -33,10 +33,12 @@ class EntityCheck {
     else {
       $message = t('Finished with an error.');
     }
-    //drupal_set_message($message);
+    
     if( sizeof($results)>0) {
+		$run_by = db_query("SELECT run_by FROM file_check_config")->fetchField();
+		drupal_set_message($message);
 		$results_string="<pre>".implode(",\n", $results)."</pre>";
-		\Drupal::logger('file_checker')->notice('@variable: '.$results_string, array('@variable' => 'Media Missing ', ));
+		\Drupal::logger('file_checker_'.$run_by)->notice('@variable: '.$results_string, array('@variable' => 'Media Missing ', ));
 	}
     
   }
