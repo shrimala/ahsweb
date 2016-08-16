@@ -1,6 +1,0 @@
-file_checker.admin_menu:
-  title: File Checker
-  description: 'Verifies that files managed by Drupal actually exist at the location where Drupal believes they are.'
-  route_name: file_entity_check_activatesession
-  parent: system.admin
-  weight: -10
