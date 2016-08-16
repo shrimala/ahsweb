@@ -89,7 +89,9 @@ class ActivateSession extends FormBase {
       '#type' => 'submit',
       '#value' => t('Check files'),
     );
-    $status = '<p>' . $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($this->state->get('system.cron_last')))) . '</p>';
+    $result=db_query("SELECT last_run FROM file_check_config")->fetchField();
+    //$status = '<p>' . $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($this->state->get('system.cron_last')))) . '</p>';
+    $status = '<p>' . ($result>0 ? $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($result))) : 'Last run: Never Check') . '</p>';
     $form['status'] = array(
       '#markup' => $status,
     );
@@ -101,15 +103,16 @@ class ActivateSession extends FormBase {
       '#type' => 'select',
       '#title' => t('Do not run more often than'),
       '#options' => array(
-        '0' => 'No limit',
-        '1' => '1 hour',
-        '2' => '1 day',
-        '3' => '1 week',
+        'No limit' => 'No limit',
+        '1 hour' => '1 hour',
+        '1 day' => '1 day',
+        '1 week' => '1 week',
       ),
     ); 
     $form['save_config'] = array(
       '#type' => 'submit',
       '#value' => t('Save configuration'),
+      '#submit' => array('::configuration_submit_function'),
     );
     return $form;
   }
@@ -126,6 +129,12 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 */
 public function submitForm(array &$form, FormStateInterface $form_state) {
   // Display result.
+  db_update('file_check_config')
+    ->fields(array(
+      'last_run' => REQUEST_TIME,
+    ))
+  ->execute();
+
 		 $q = db_query("SELECT count(uri) as uri  FROM file_managed");
 		  $r1 = $q->fetchAssoc();
 		  $uri_count=$r1['uri'];
@@ -155,6 +164,30 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
     batch_set($batch);
     $first=$last+1;
     $last=$last+100;
+    }
+  }
+  function configuration_submit_function(&$form, &$form_state) {
+	//drupal_set_message($this->dateFormatter->formatTimeDiffSince(REQUEST_TIME -(7*24*3600)));
+    
+  // This would be executed.
+    if ($form_state->getValue('run_by_cron')==1) {
+      db_update('file_check_config')
+      ->fields(array(
+        'time_duration' => $form_state->getValue('corn_time'),
+        'run_by_cron' => $form_state->getValue('run_by_cron'),
+    ))
+    ->execute();
+    drupal_set_message('Configuration saved with File Checker run with cron but Do not run more often than ' . $form_state->getValue('corn_time'));
+    }
+    else
+    {
+      db_update('file_check_config')
+      ->fields(array(
+        'time_duration' => 'None',
+        'run_by_cron' => $form_state->getValue('run_by_cron'),
+    ))
+    ->execute();
+    drupal_set_message('Configuration saved with File Checker not Run with cron');
     }
   }
 }

@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Set up source data and destination configuration for the file_checker module.
+ */
+
+
+function file_checker_schema() {
+  $schema['file_check_config'] = file_check_config_schema();
+  return $schema;
+}
+
+function file_checker_install() {
+  // Populate our tables.
+  file_check_config_data();
+}
+function file_check_config_schema() {
+  return array(
+    'description' => 'File configuration details.',
+    'fields' => array(
+      'time_duration'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'When file checker check the file',
+      ),
+      'last_run' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Last file checked',
+      ),
+      'run_by_cron' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'File checker will work with cron or not 0 means no and 1 means yes',
+      ),
+    ),
+  );
+}
+function file_check_config_data() {
+  $fields = array('time_duration', 'last_run','run_by_cron');
+  $i=0;
+  $data[$i][0]='None';
+  $data[$i][1]=0;
+  $data[$i][2]=0;
+  $query = db_insert('file_check_config')
+    ->fields($fields);
+  foreach ($data as $row) {
+    $query->values(array_combine($fields, $row));
+  }
+  $query->execute();
+}

@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function file_checker_cron() {
+  /**$result=db_query("SELECT run_by_cron FROM file_check_config")->fetchField();
+  $time_duration = db_query("SELECT time_duration FROM file_check_config")->fetchField();
+  $last_run = db_query("SELECT last_run FROM file_check_config")->fetchField();
+  */
+  
+  $query = db_select('file_check_config');
+  $query->fields('file_check_config', array('run_by_cron', 'time_duration', 'last_run'));
+  $sql = $query->execute()->fetch();
+  $result = $sql->run_by_cron;
+  $time_duration = $sql->time_duration;
+  $last_run = $sql->last_run;
+  $next_run = $last_run;
+  if ($time_duration <> "None" && $time_duration <> "No limit") {
+	  if ($time_duration == "1 hour") {
+		  $next_run=$last_run + 3600;
+	  }
+	  elseif ($time_duration == "1 day") {
+		  $next_run=$last_run + (24*3600);
+	  }
+	  elseif ($time_duration == "1 week")  {
+		  $next_run=$last_run + (7*24*3600);
+	  }
+  }
+  if ($result==1 && REQUEST_TIME > $next_run) {
+    db_update('file_check_config')
+    ->fields(array(
+      'last_run' => REQUEST_TIME,
+    ))
+    ->execute();
+
+
+		 $q = db_query("SELECT count(uri) as uri  FROM file_managed");
+		  $r1 = $q->fetchAssoc();
+		  $uri_count=$r1['uri'];
+		  $first=0;
+		  $last=100;
+		 while($uri_count>$first)
+		 {
+		 $q1 = db_query("SELECT fid,filename,uri  FROM file_managed where fid between ".$first ." and ".$last);
+         $result=array();
+        foreach($q1 as $r)
+         {
+			 $result[$r->uri]=$r->uri;
+			 //$result[$r->filename]=$r->filename;
+		 }
+        
+        
+	$batch = array(
+      'title' => t('Checking File Entity Exist...'),
+      'operations' => array(
+        array(
+          '\Drupal\file_checker\EntityCheck::entityCheck',
+          array($result)
+        ),
+      ),
+      'finished' => '\Drupal\file_checker\EntityCheck::entityCheckFinishedCallback',
+    );
+    batch_set($batch);
+    $first=$last+1;
+    $last=$last+100;
+    }
+  }
+}
+function file_checker_uninstall() {
+	drupal_uninstall_schema('file_check_config');
+}
