@@ -4,17 +4,11 @@
  * Implements hook_cron().
  */
 function file_checker_cron() {
-  /**$result=db_query("SELECT run_by_cron FROM file_check_config")->fetchField();
-  $time_duration = db_query("SELECT time_duration FROM file_check_config")->fetchField();
-  $last_run = db_query("SELECT last_run FROM file_check_config")->fetchField();
-  */
-  
-  $query = db_select('file_check_config');
-  $query->fields('file_check_config', array('run_by_cron', 'time_duration', 'last_run'));
-  $sql = $query->execute()->fetch();
-  $result = $sql->run_by_cron;
-  $time_duration = $sql->time_duration;
-  $last_run = $sql->last_run;
+
+  \Drupal::state()->set('file_checker.count',0);
+  $result =  \Drupal::state()->get('file_checker.run_by_cron');
+  $time_duration = \Drupal::state()->get('file_checker.time_duration');
+  $last_run= \Drupal::state()->get('file_checker.last_run');
   $next_run = $last_run;
   if ($time_duration <> "None" && $time_duration <> "No limit") {
 	  if ($time_duration == "1 hour") {
@@ -28,14 +22,9 @@ function file_checker_cron() {
 	  }
   }
   if ($result==1 && REQUEST_TIME > $next_run) {
-    db_update('file_check_config')
-    ->fields(array(
-      'last_run' => REQUEST_TIME,
-      'run_by' => "cron",
-    ))
-    ->execute();
-
-
+    
+         \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
+         \Drupal::state()->set('file_checker.run_by','cron');
 		 $q = db_query("SELECT count(uri) as uri  FROM file_managed");
 		  $r1 = $q->fetchAssoc();
 		  $uri_count=$r1['uri'];
@@ -48,7 +37,6 @@ function file_checker_cron() {
         foreach($q1 as $r)
          {
 			 $result[$r->uri]=$r->uri;
-			 //$result[$r->filename]=$r->filename;
 		 }
         
         
@@ -66,8 +54,6 @@ function file_checker_cron() {
     $first=$last+1;
     $last=$last+100;
     }
+    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->notice('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
   }
-}
-function file_checker_uninstall() {
-	drupal_uninstall_schema('file_check_config');
 }

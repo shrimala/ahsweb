@@ -7,30 +7,13 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\UrlHelper;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\CronInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\Core\Extension\ModuleHandlerInterface;
-use Drupal\Core\State\StateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Contribute form
  */
 class ActivateSession extends FormBase {
-	 /**
-   * Stores the state storage service.
-   *
-   * @var \Drupal\Core\State\StateInterface
-   */
-  protected $state;
-
-  /**
-   * The cron service.
-   *
-   * @var \Drupal\Core\CronInterface
-   */
-  protected $cron;
 
   /**
    * The date formatter service.
@@ -40,31 +23,13 @@ class ActivateSession extends FormBase {
   protected $dateFormatter;
 
   /**
-   * The module handler service.
-   *
-   * @var \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
-   */
-  protected $moduleHandler;
-
-  /**
    * Constructs a CronForm object.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The factory for configuration objects.
-   * @param \Drupal\Core\State\StateInterface $state
-   *   The state key value store.
-   * @param \Drupal\Core\CronInterface $cron
-   *   The cron service.
    * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter service.
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
-   *   The module handler service.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, StateInterface $state, CronInterface $cron, DateFormatterInterface $date_formatter, ModuleHandlerInterface $module_handler) {
-    $this->state = $state;
-    $this->cron = $cron;
+  public function __construct(DateFormatterInterface $date_formatter) {
     $this->dateFormatter = $date_formatter;
-    $this->moduleHandler = $module_handler;
   }
 
   /**
@@ -72,11 +37,7 @@ class ActivateSession extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('config.factory'),
-      $container->get('state'),
-      $container->get('cron'),
-      $container->get('date.formatter'),
-      $container->get('module_handler')
+      $container->get('date.formatter')
     );
   }
 
@@ -89,15 +50,17 @@ class ActivateSession extends FormBase {
       '#type' => 'submit',
       '#value' => t('Check files'),
     );
-    $result=db_query("SELECT last_run FROM file_check_config")->fetchField();
-    //$status = '<p>' . $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($this->state->get('system.cron_last')))) . '</p>';
-    $status = '<p>' . ($result>0 ? $this->t('Last run: %time ago.', array('%time' => $this->dateFormatter->formatTimeDiffSince($result))) : 'Last run: Never.') . '</p>';
+    $results_count=\Drupal::state()->get('file_checker.count');
+    $results_status =  ($results_count>0 ? '<a href="">'.$results_count.' file(s) Not exist.</a>':'');
+    $result=\Drupal::state()->get('file_checker.last_run');
+    $status = '<p>' . ($result>0 ? $this->t('Last run: %time ago. &emsp;&emsp;&emsp;<strong>'.$results_status.'</strong>', array('%time' => $this->dateFormatter->formatTimeDiffSince($result))) : 'Last run: Never.') . '</p>';
     $form['status'] = array(
       '#markup' => $status,
     );
     $form['run_by_cron'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Check files when cron runs'),
+      //'#value' => (\Drupal::state()->get('file_checker.run_by_cron')==1?1:0),
     );
     $form['corn_time'] = array(
       '#type' => 'select',
@@ -129,29 +92,20 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 */
 public function submitForm(array &$form, FormStateInterface $form_state) {
   // Display result.
-  db_update('file_check_config')
-    ->fields(array(
-      'last_run' => REQUEST_TIME,
-      'run_by' => "manually",
-    ))
-  ->execute();
-
-		 $q = db_query("SELECT count(uri) as uri  FROM file_managed");
-		  $r1 = $q->fetchAssoc();
-		  $uri_count=$r1['uri'];
-		  $first=0;
-		  $last=100;
-		 while($uri_count>$first)
-		 {
-		 $q1 = db_query("SELECT fid,filename,uri  FROM file_managed where fid between ".$first ." and ".$last);
-         $result=array();
-        foreach($q1 as $r)
-         {
-			 $result[$r->uri]=$r->uri;
-			 //$result[$r->filename]=$r->filename;
-		 }
-        
-        
+  \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
+  \Drupal::state()->set('file_checker.run_by','manually');
+  \Drupal::state()->set('file_checker.count',0);
+  $q = db_query("SELECT count(uri) as uri  FROM file_managed");
+  $r1 = $q->fetchAssoc();
+  $uri_count=$r1['uri'];
+  $first=0;
+  $last=100;
+  while($uri_count>$first) {
+	$q1 = db_query("SELECT fid,filename,uri  FROM file_managed where fid between ".$first ." and ".$last);
+    $result=array();
+    foreach($q1 as $r) {
+      $result[$r->uri]=$r->uri;
+    }
 	$batch = array(
       'title' => t('Checking File Entity Exist...'),
       'operations' => array(
@@ -166,30 +120,20 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
     $first=$last+1;
     $last=$last+100;
     }
+    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->notice('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
   }
   function configuration_submit_function(&$form, &$form_state) {
-	//drupal_set_message($this->dateFormatter->formatTimeDiffSince(REQUEST_TIME -(7*24*3600)));
-    
-  // This would be executed.
+    // This would be executed.
     if ($form_state->getValue('run_by_cron')==1) {
-      db_update('file_check_config')
-      ->fields(array(
-        'time_duration' => $form_state->getValue('corn_time'),
-        'run_by_cron' => $form_state->getValue('run_by_cron'),
-    ))
-    ->execute();
-    drupal_set_message('Configuration saved with File Checker run with cron but Do not run more often than ' . $form_state->getValue('corn_time'));
+      \Drupal::state()->set('file_checker.time_duration',$form_state->getValue('corn_time'));
+      \Drupal::state()->set('file_checker.run_by_cron',$form_state->getValue('run_by_cron'));
+      drupal_set_message('Configuration saved with File Checker run with cron but Do not run more often than ' . $form_state->getValue('corn_time'));
     }
-    else
-    {
-      db_update('file_check_config')
-      ->fields(array(
-        'time_duration' => 'None',
-        'run_by_cron' => $form_state->getValue('run_by_cron'),
-    ))
-    ->execute();
-    drupal_set_message('Configuration saved with File Checker not Run with cron');
-    }
+    else {
+      \Drupal::state()->set('file_checker.time_duration','None');
+      \Drupal::state()->set('file_checker.run_by_cron',$form_state->getValue('run_by_cron'));
+      drupal_set_message('Configuration saved with File Checker not Check files when cron runs');
+    }    
   }
 }
 ?>
