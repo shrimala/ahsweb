@@ -50,8 +50,10 @@ class ActivateSession extends FormBase {
       '#type' => 'submit',
       '#value' => t('Check files'),
     );
+    global $base_url;
     $results_count=\Drupal::state()->get('file_checker.count');
-    $results_status =  ($results_count>0 ? '<a href="">'.$results_count.' file(s) Not exist.</a>':'');
+    $wid = db_query("SELECT wid FROM watchdog where timestamp='".\Drupal::state()->get('file_checker.last_run')."' and type='file_checker_".\Drupal::state()->get('file_checker.run_by')."'")->fetchField();
+    $results_status =  ($results_count>0 ? '<a href="'.$base_url.'/admin/reports/dblog/event/'.$wid.'">'.$results_count.' file(s) Not exist.</a>':'');
     $result=\Drupal::state()->get('file_checker.last_run');
     $status = '<p>' . ($result>0 ? $this->t('Last run: %time ago. &emsp;&emsp;&emsp;<strong>'.$results_status.'</strong>', array('%time' => $this->dateFormatter->formatTimeDiffSince($result))) : 'Last run: Never.') . '</p>';
     $form['status'] = array(
