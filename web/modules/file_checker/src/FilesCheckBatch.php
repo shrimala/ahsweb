@@ -25,10 +25,8 @@ class FilesCheckBatch {
     // The 'success' parameter means no fatal PHP errors were detected. All
     // other error management should be handled using 'results'.
     if ($success) {
-      $message =\Drupal::translation()->formatPlural(
-        count($results),
-        '1 post processed.', '@count File Not exist.'
-      );
+      $batch_pass=\Drupal::state()->get('file_checker.batch_pass') + 1;
+      \Drupal::state()->set('file_checker.batch_pass',$batch_pass);
     }
     else {
       $message = t('Finished with an error.');
