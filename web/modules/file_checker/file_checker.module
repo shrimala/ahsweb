@@ -44,11 +44,11 @@ function file_checker_cron() {
       'title' => t('Checking File Entity Exist...'),
       'operations' => array(
         array(
-          '\Drupal\file_checker\EntityCheck::entityCheck',
+          '\Drupal\file_checker\FilesCheckBatch::check',
           array($result)
         ),
       ),
-      'finished' => '\Drupal\file_checker\EntityCheck::entityCheckFinishedCallback',
+      'finished' => '\Drupal\file_checker\FilesCheckBatch::entityCheckFinishedCallback',
     );
     batch_set($batch);
     $first=$last+1;

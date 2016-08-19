@@ -1,8 +1,8 @@
 <?php
 namespace Drupal\file_checker;
-class EntityCheck {
-  public static function entityCheck($q1, &$context){
-	$message = 'Checking File Entity Exist...';
+class FilesCheckBatch {
+  public static function check($q1, &$context){
+	$message = t('Checking files exist...');
     $results = array();
     foreach($q1 as $r)
          {
@@ -27,7 +27,7 @@ class EntityCheck {
     if ($success) {
       $message =\Drupal::translation()->formatPlural(
         count($results),
-        'One post processed.', '@count File Not exist.'
+        '1 post processed.', '@count File Not exist.'
       );
     }
     else {

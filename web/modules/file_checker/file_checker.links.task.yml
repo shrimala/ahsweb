@@ -1,4 +1,4 @@
 file_checker.file_checker_tab:
-  route_name: file_entity_check_activatesession
+  route_name: filechecker.settings
   base_route: system.file_system_settings
   title: File Checker

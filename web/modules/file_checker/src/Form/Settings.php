@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains \Drupal\file_checker\Form\ActivateSession.
+ * Contains \Drupal\file_checker\Form\Settings.
  */
 namespace Drupal\file_checker\Form;
 use Drupal\Core\Form\FormBase;
@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Contribute form
  */
-class ActivateSession extends FormBase {
+class Settings extends FormBase {
 
   /**
    * The date formatter service.
@@ -42,7 +42,7 @@ class ActivateSession extends FormBase {
   }
 
   public function getFormId() {
-    return 'file_checker_activatesession_form';
+    return 'file_checker_settings_form';
   }
   
   public function buildForm(array $form, FormStateInterface $form_state) {
@@ -63,7 +63,7 @@ class ActivateSession extends FormBase {
       '#type' => 'checkbox',
       '#title' => $this->t('Check files when cron runs'),
     );
-    $form['corn_time'] = array(
+    $form['cron_time'] = array(
       '#type' => 'select',
       '#title' => t('Do not check files from cron more often than'),
       '#options' => array(
@@ -111,30 +111,30 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
       'title' => t('Checking File Entity Exist...'),
       'operations' => array(
         array(
-          '\Drupal\file_checker\EntityCheck::entityCheck',
+          '\Drupal\file_checker\FilesCheckBatch::check',
           array($result)
         ),
       ),
-      'finished' => '\Drupal\file_checker\EntityCheck::entityCheckFinishedCallback',
+      'finished' => '\Drupal\file_checker\FilesCheckBatch::entityCheckFinishedCallback',
     );
     batch_set($batch);
     $first=$last+1;
     $last=$last+100;
     }
-    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->notice('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
+    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
     \Drupal::state()->set('file_checker.result','');
   }
   function configuration_submit_function(&$form, &$form_state) {
     // This would be executed.
     if ($form_state->getValue('run_by_cron')==1) {
-      \Drupal::state()->set('file_checker.time_duration',$form_state->getValue('corn_time'));
+      \Drupal::state()->set('file_checker.time_duration',$form_state->getValue('cron_time'));
       \Drupal::state()->set('file_checker.run_by_cron',$form_state->getValue('run_by_cron'));
-      drupal_set_message('Configuration saved with File Checker run with cron but Do not run more often than ' . $form_state->getValue('corn_time'));
+      drupal_set_message('Configuration options saved. Check files when cron runs, but do not run more often than: ' . $form_state->getValue('cron_time'));
     }
     else {
       \Drupal::state()->set('file_checker.time_duration','None');
-      \Drupal::state()->set('file_checker.run_by_cron',$form_state->getValue('run_by_cron'));
-      drupal_set_message('Configuration saved with File Checker not Check files when cron runs');
+      \Drupal::state()->set('file_checker.run_by_cron',0);
+      drupal_set_message('Configuration options saved. Do not check files when cron runs.');
     }    
   }
 }
