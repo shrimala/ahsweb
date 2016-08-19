@@ -62,7 +62,6 @@ class ActivateSession extends FormBase {
     $form['run_by_cron'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Check files when cron runs'),
-      //'#value' => (\Drupal::state()->get('file_checker.run_by_cron')==1?1:0),
     );
     $form['corn_time'] = array(
       '#type' => 'select',
@@ -123,6 +122,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
     $last=$last+100;
     }
     \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->notice('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
+    \Drupal::state()->set('file_checker.result','');
   }
   function configuration_submit_function(&$form, &$form_state) {
     // This would be executed.
