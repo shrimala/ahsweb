@@ -9,11 +9,11 @@ use Drupal\Component\Utility\UrlHelper;
 
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use Drupal\Core\Form\ConfigFormBase;
 /**
  * Contribute form
  */
-class Settings extends FormBase {
+class Settings extends ConfigFormBase {
 
   /**
    * The date formatter service.
@@ -44,8 +44,17 @@ class Settings extends FormBase {
   public function getFormId() {
     return 'file_checker_settings_form';
   }
-  
+  /** 
+   * {@inheritdoc}
+   */
+  protected function getEditableConfigNames() {
+    return [
+      'file_checker.settings',
+    ];
+  }
+
   public function buildForm(array $form, FormStateInterface $form_state) {
+	$config = $this->config('file_checker.settings');
     $form['ok_btn'] = array(
       '#type' => 'submit',
       '#value' => t('Check files'),
@@ -68,10 +77,10 @@ class Settings extends FormBase {
       '#type' => 'select',
       '#title' => t('Do not check files from cron more often than'),
       '#options' => array(
-        'No limit' => 'No limit',
-        '1 hour' => 'Once per  hour',
-        '1 day' => 'Once per  day',
-        '1 week' => 'Once per  week',
+        '0' => 'No limit',
+        '3600' => 'Once per  hour',
+        '86400' => 'Once per  day',
+        '604800' => 'Once per  week',
       ),
     ); 
     $form['save_config'] = array(
@@ -97,49 +106,19 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
   \Drupal::state()->set('file_checker.run_by','manually');
   \Drupal::state()->set('file_checker.count',0);  
   \Drupal::state()->set('file_checker.batch_pass',0);
-  $q = \Drupal::entityQuery('file');
-  $r1 = $q->count()->execute();
-  $uri_count=$r1;
-  \Drupal::state()->set('file_checker.batch_total',ceil($uri_count/100));
-  $first=0;
-  $last=100;
-  while($uri_count>$first) {
-	/**$q1 = db_query("SELECT uri  FROM file_managed where fid between ".$first ." and ".$last);
-    $result=array();
-    foreach($q1 as $r) {
-      $result[$r->uri]=$r->uri;
-    }*/
-    $result=array();
-    $x=$first;
-    while ($x<=$last) {
-		$file=\Drupal::entityTypeManager()->getStorage('file')->load($x);
-		$result[$file->uri->value]=$file->uri->value;
-		$x=$x+1;
-	}
-	$batch = array(
-      'title' => t('Checking File Entity Exist...'),
-      'operations' => array(
-        array(
-          '\Drupal\file_checker\FilesCheckBatch::check',
-          array($result)
-        ),
-      ),
-      'finished' => '\Drupal\file_checker\FilesCheckBatch::entityCheckFinishedCallback',
-    );
-    batch_set($batch);
-    $first=$last+1;
-    $last=$last+100;
-    }
-    \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
-    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
-    \Drupal::state()->set('file_checker.result','');
+  
+  $p=\Drupal::service('file_checker.files_checker_manager');
+
+  \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
+  \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
+  \Drupal::state()->set('file_checker.result','');
   }
   function configuration_submit_function(&$form, &$form_state) {
     // This would be executed.
     if ($form_state->getValue('run_by_cron')==1) {
       \Drupal::service('config.factory')->getEditable('file_checker.frequency_limit')->set('frequency_limit', $form_state->getValue('cron_time'))->save();
       \Drupal::state()->set('file_checker.run_by_cron',$form_state->getValue('run_by_cron'));
-      drupal_set_message('Configuration options saved. Check files when cron runs, but do not run more often than: ' . $form_state->getValue('cron_time'));
+      drupal_set_message(($form_state->getValue('cron_time')>0?'Configuration options saved. Check files when cron runs, but do not run more often than: ' . $form_state->getValue('cron_time'). ' seconds.':'Configuration options saved. Check files any time.'));
     }
     else {
       \Drupal::state()->set('file_checker.frequency_limit','None');
