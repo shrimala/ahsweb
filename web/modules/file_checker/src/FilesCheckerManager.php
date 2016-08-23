@@ -6,7 +6,7 @@
  */
  
 namespace Drupal\file_checker;
- 
+
 class FilesCheckerManager {
   public function getFilesCheckerManagerValue() {
 	$q = \Drupal::entityQuery('file');
@@ -19,6 +19,9 @@ class FilesCheckerManager {
 	  $result=array();
       $x=$first;
       while ($x<=$last) {
+		if ($x> $uri_count) {
+			break;
+		}
 		$file=\Drupal::entityTypeManager()->getStorage('file')->load($x);
 		$result[$file->uri->value]=$file->uri->value;
 		$x=$x+1;

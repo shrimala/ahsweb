@@ -61,11 +61,13 @@ class Settings extends ConfigFormBase {
     );
     global $base_url;
     $results_count=\Drupal::state()->get('file_checker.count');
-    $wid = db_query("SELECT wid FROM watchdog where timestamp='".\Drupal::state()->get('file_checker.last_run')."' and type='file_checker_".\Drupal::state()->get('file_checker.run_by')."'")->fetchField();
-    $results_status =  ($results_count>0 ? '<strong>Batch '.\Drupal::state()->get('file_checker.batch_pass').' of '.\Drupal::state()->get('file_checker.batch_total').' successful processed</strong> &emsp;&emsp;<a href="'.$base_url.'/admin/reports/dblog/event/'.$wid.'">'.$results_count.' file(s) Not exist.</a>':'');
-    
-    $result=\Drupal::state()->get('file_checker.last_run');
-    $status = '<p>' . ($result>0 ? $this->t('Last run: %time ago. &emsp;&emsp;&emsp;<strong>'.$results_status.'</strong>', array('%time' => $this->dateFormatter->formatTimeDiffSince($result))) : 'Last run: Never.') . '</p>';
+    // Query to get log id based on last run and run type( cron or manually).
+    $wid = db_query("SELECT wid FROM watchdog where type='file_checker_".\Drupal::state()->get('file_checker.run_by')."' order by wid desc limit 1")->fetchField();
+    // Store data in variable tfor display total missing in $result_count, whole status in $result _status and last run timming in $last_run.
+    $results_status =  ($results_count>0 ? '<strong>Batch '.\Drupal::state()->get('file_checker.batch_pass').' of '.\Drupal::state()->get('file_checker.batch_total').' successful processed</strong> &emsp;&emsp;'.($wid>0?'<a href="'.$base_url.'/admin/reports/dblog/event/'.$wid.'">'.$results_count.' file(s) Not exist.</a>':$results_count.' file(s) Not exist.'):'');
+    $last_run=\Drupal::state()->get('file_checker.last_run');
+    $status = '<p>' . ($last_run>0 ? $this->t('Last run: %time ago. &emsp;&emsp;&emsp;<strong>'.$results_status.'</strong>', array('%time' => $this->dateFormatter->formatTimeDiffSince($last_run))) : 'Last run: Never.') . '</p>';
+    // Display the time, when last file checker run's and display no. of batch process run , total batch process and total no. of file missing.
     $form['status'] = array(
       '#markup' => $status,
     );
@@ -108,23 +110,22 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
   \Drupal::state()->set('file_checker.batch_pass',0);
   
   \Drupal::service('file_checker.files_checker_manager')->getFilesCheckerManagerValue();
-
-  \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
+  $time=REQUEST_TIME;
+  \Drupal::state()->set('file_checker.last_run',$time);
   \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
   \Drupal::state()->set('file_checker.result','');
   }
   function configuration_submit_function(&$form, &$form_state) {
-    // This would be executed.
+    // Save the cron configuration settings for file checker.
     if ($form_state->getValue('run_by_cron')==1) {
       \Drupal::service('config.factory')->getEditable('file_checker.frequency_limit')->set('frequency_limit', $form_state->getValue('cron_time'))->save();
       \Drupal::state()->set('file_checker.run_by_cron',$form_state->getValue('run_by_cron'));
-      drupal_set_message(($form_state->getValue('cron_time')>0?'Configuration options saved. Check files when cron runs, but do not run more often than: ' . $form_state->getValue('cron_time'). ' seconds.':'Configuration options saved. Check files any time.'));
     }
     else {
       \Drupal::state()->set('file_checker.frequency_limit','None');
       \Drupal::state()->set('file_checker.run_by_cron',0);
-      drupal_set_message('Configuration options saved. Do not check files when cron runs.');
-    }    
+    }
+    drupal_set_message('The configuration options have been saved.');
   }
 }
 ?>
