@@ -59,18 +59,23 @@ class Settings extends ConfigFormBase {
       '#type' => 'submit',
       '#value' => t('Check files'),
     );
-    global $base_url;
-    $results_count=\Drupal::state()->get('file_checker.count');
-    // Query to get log id based on last run and run type( cron or manually).
-    $wid = db_query("SELECT wid FROM watchdog where type='file_checker_".\Drupal::state()->get('file_checker.run_by')."' order by wid desc limit 1")->fetchField();
-    // Store data in variable tfor display total missing in $result_count, whole status in $result _status and last run timming in $last_run.
-    $results_status =  ($results_count>0 ? '<strong>Batch '.\Drupal::state()->get('file_checker.batch_pass').' of '.\Drupal::state()->get('file_checker.batch_total').' successful processed</strong> &emsp;&emsp;'.($wid>0?'<a href="'.$base_url.'/admin/reports/dblog/event/'.$wid.'">'.$results_count.' file(s) Not exist.</a>':$results_count.' file(s) Not exist.'):'');
-    $last_run=\Drupal::state()->get('file_checker.last_run');
-    $status = '<p>' . ($last_run>0 ? $this->t('Last run: %time ago. &emsp;&emsp;&emsp;<strong>'.$results_status.'</strong>', array('%time' => $this->dateFormatter->formatTimeDiffSince($last_run))) : 'Last run: Never.') . '</p>';
-    // Display the time, when last file checker run's and display no. of batch process run , total batch process and total no. of file missing.
-    $form['status'] = array(
-      '#markup' => $status,
-    );
+    if (\Drupal::moduleHandler()->moduleExists('dblog')==TRUE) {
+      global $base_url;
+      $results_count=\Drupal::state()->get('file_checker.count');
+      
+      // Query to get log id based on last run and run type( cron or manually).
+      $wid = db_query("SELECT wid FROM watchdog where type='file_checker_".\Drupal::state()->get('file_checker.run_by')."' order by wid desc limit 1")->fetchField();
+      
+      // Store data in variable tfor display total missing in $result_count, whole status in $result _status and last run timming in $last_run.
+      $results_status =  ($results_count>0 ? '<strong>Batch '.\Drupal::state()->get('file_checker.batch_pass').' of '.\Drupal::state()->get('file_checker.batch_total').' successful processed</strong> &emsp;&emsp;'.($wid>0?'<a href="'.$base_url.'/admin/reports/dblog/event/'.$wid.'">'.$results_count.' file(s) Not exist.</a>':$results_count.' file(s) Not exist.'):'');
+      $last_run=\Drupal::state()->get('file_checker.last_run');
+      $status = '<p>' . ($last_run>0 ? $this->t('Last run: %time ago. &emsp;&emsp;&emsp;<strong>'.$results_status.'</strong>', array('%time' => $this->dateFormatter->formatTimeDiffSince($last_run))) : 'Last run: Never.') . '</p>';
+      
+      // Display the time, when last file checker run's and display no. of batch process run , total batch process and total no. of file missing.
+      $form['status'] = array(
+        '#markup' => $status,
+      );
+    }
     $form['run_by_cron'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Check files when cron runs'),
@@ -87,7 +92,7 @@ class Settings extends ConfigFormBase {
     ); 
     $form['save_config'] = array(
       '#type' => 'submit',
-      '#value' => t('Save configuration'),
+      '#value' => $this->t('Save configuration'),
       '#submit' => array('::configuration_submit_function'),
     );
     return $form;

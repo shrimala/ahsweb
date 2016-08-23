@@ -4,4 +4,4 @@ filechecker.settings:
     _form: '\Drupal\file_checker\Form\Settings'
     _title: 'Verifies that files managed by Drupal actually exist at the location where Drupal believes they are.'
   requirements:
-    _permission: 'access content'
+    _permission: 'access administration pages'
