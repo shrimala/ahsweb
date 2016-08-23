@@ -8,26 +8,12 @@
 namespace Drupal\file_checker;
  
 class FilesCheckerManager {
- 
-  protected $service_example_value;
- 
-  /**
-   * When the service is created, set a value for the example variable.
-   */
-  public function __construct() {
-    $this->service_example_value = $this->getFilesCheckerManagerValue();
-  }
- 
-  /**
-   * Return the value of the example variable.
-   */
   public function getFilesCheckerManagerValue() {
-   \Drupal::state()->set('file_checker.run_by','cron');
 	$q = \Drupal::entityQuery('file');
     $r1 = $q->count()->execute();
     $uri_count=$r1;
     \Drupal::state()->set('file_checker.batch_total',ceil($uri_count/100));
-	$first=0;
+	$first=1;
 	$last=100;
 	while($uri_count>$first) {
 	  $result=array();
@@ -51,7 +37,6 @@ class FilesCheckerManager {
     $first=$last+1;
     $last=$last+100;
     }
-      return $this->service_example_value;
   }
  
 }

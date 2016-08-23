@@ -107,7 +107,7 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
   \Drupal::state()->set('file_checker.count',0);  
   \Drupal::state()->set('file_checker.batch_pass',0);
   
-  $p=\Drupal::service('file_checker.files_checker_manager');
+  \Drupal::service('file_checker.files_checker_manager')->getFilesCheckerManagerValue();
 
   \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
   \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
