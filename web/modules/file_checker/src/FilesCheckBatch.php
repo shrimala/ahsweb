@@ -6,16 +6,9 @@ class FilesCheckBatch {
     $results = array();
     foreach($q1 as $r)
          {
-			 if(substr($r,0,1)=="p") {
-				 if(!file_exists($r)) {
-					 $results[] =$r;
-				 }
-			 
-			 }
-			 else {
-				 if(!file_exists($r)) {
-					 $results[] =$r;
-				 }
+				 if(!file_exists($r->uri->value)) {
+					 $results[] =$r->uri->value;
+				 
 			 }
 		 }
 	$context['message'] = $message;
@@ -33,15 +26,14 @@ class FilesCheckBatch {
     }
     
     if( sizeof($results)>0) {
-		//$run_by = db_query("SELECT run_by FROM file_check_config")->fetchField();
-		$run_by = \Drupal::state()->get('file_checker.run_by');
-		$count=\Drupal::state()->get('file_checker.count');
-		$count=$count + sizeof($results);
-		\Drupal::state()->set('file_checker.count',$count);
-		$results_string="";
-		$results_string=\Drupal::state()->get('file_checker.result');
-		$results_string = $results_string."<pre>".implode(",\n", $results)."</pre>";
-		\Drupal::state()->set('file_checker.result',$results_string);
+	  $run_by = \Drupal::state()->get('file_checker.run_by');
+	  $count=\Drupal::state()->get('file_checker.count');
+	  $count=$count + sizeof($results);
+	  \Drupal::state()->set('file_checker.count',$count);
+	  $results_string="";
+	  $results_string=\Drupal::state()->get('file_checker.result');
+      $results_string = $results_string."<pre>".implode(",\n", $results)."</pre>";
+	  \Drupal::state()->set('file_checker.result',$results_string);
 	}
     
   }

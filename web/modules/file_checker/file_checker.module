@@ -5,8 +5,6 @@
  */
 function file_checker_cron() {
 
-  \Drupal::state()->set('file_checker.count',0);
-  \Drupal::state()->set('file_checker.batch_pass',0);
   $result =  \Drupal::state()->get('file_checker.run_by_cron');
   $frequency_limit =\Drupal::service('config.factory')->getEditable('file_checker.frequency_limit')->get('frequency_limit');
   $last_run= \Drupal::state()->get('file_checker.last_run');
@@ -15,6 +13,8 @@ function file_checker_cron() {
 	  $next_run=$last_run + $frequency_limit;
   }
   if ($result==1 && REQUEST_TIME > $next_run) {
+	\Drupal::state()->set('file_checker.count',0);
+    \Drupal::state()->set('file_checker.batch_pass',0);
     \Drupal::state()->set('file_checker.run_by','cron');
 	\Drupal::service('file_checker.files_checker_manager')->getFilesCheckerManagerValue();
     \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);

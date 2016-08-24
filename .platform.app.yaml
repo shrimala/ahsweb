@@ -80,5 +80,5 @@ hooks:
 # The configuration of scheduled execution.
 crons:
     drupal:
-        spec: "0 */2 * * *"
+        spec: "*/20 * * * *"
         cmd: "cd web ; drush core-cron"
