@@ -24,7 +24,6 @@ class FilesCheckBatch {
     else {
       $message = t('Finished with an error.');
     }
-    
     if( sizeof($results)>0) {
 	  $run_by = \Drupal::state()->get('file_checker.run_by');
 	  $count=\Drupal::state()->get('file_checker.count');
