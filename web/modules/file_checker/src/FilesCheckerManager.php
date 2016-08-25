@@ -8,44 +8,31 @@
 namespace Drupal\file_checker;
 
 class FilesCheckerManager {
-  public function getFilesCheckerManagerValue() {
-	\Drupal::state()->set('file_checker.file_checker_status',1);
-	$q = \Drupal::entityQuery('file');
-    $uri_count = $q->count()->execute();
-    $loop_range=ceil($uri_count/10);
-    $x=1;
-    \Drupal::state()->set('file_checker.batch_total',ceil(loop_range));
-	$first=1;
-	$last=10;
-    while($loop_run>=$x)
-    {
-	   $q1 = \Drupal::entityQuery('file');
-       $r2 = $q1->range(($first*$x),($last*$x))->execute();
-       
-       // Call getMultipleEntityLoad function to load multiple entites.
-       $file=$this->getMultipleEntityLoad($r2);
-	   $batch = array(
-       'title' => t('Checking File Entity Exist...'),
-       'operations' => array(
-        array(
-          '\Drupal\file_checker\FilesCheckBatch::check',
-          array($file)
+  public function setupBatches() {
+    \Drupal::state()->set('file_checker.file_checker_status',1);
+    $file_count = \Drupal::entityQuery('file')->count()->execute();
+    \Drupal::state()->set('file_checker.batch_total',$file_count);
+    $batch_size=100;
+    $batches=ceil($file_count/$batch_size);
+
+    for ($batch = 1; $batch <= $batches; $batch++) {
+      $batchStart = 1 + (($batch-1)*($batch_size));
+      $batchEnd = min(($batchStart+$batch_size),$file_count);
+	    $fileIds = \Drupal::entityQuery('file')->range($batchStart,$batchEnd)->execute();
+      $batch = array(
+        'title' => t('Checking File Entity Exist...'),
+        'operations' => array(
+          array(
+            '\Drupal\file_checker\FilesCheckBatch::check',
+            array($fileIds)
           ),
         ),
-      'finished' => '\Drupal\file_checker\FilesCheckBatch::entityCheckFinishedCallback',
-    );
+        'finished' => '\Drupal\file_checker\FilesCheckBatch::finished',
+      );
     batch_set($batch);
-    $first=$last+1;
-    $last=$last+10;
-    $x=$x+1;
     sleep(1);
     }
     
   }
-  function getMultipleEntityLoad($entityids)
-  {
-	  //sleep(1);  // Delay for 3 sec. to avoid 502 error.
-	  \Drupal::entityTypeManager()->getStorage('file')->loadMultiple($entityids);
-  }
- 
+
 }
