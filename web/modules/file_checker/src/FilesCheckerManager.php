@@ -12,9 +12,9 @@ class FilesCheckerManager {
 	\Drupal::state()->set('file_checker.file_checker_status',1);
 	$q = \Drupal::entityQuery('file');
     $uri_count = $q->count()->execute();
-    $loop_run=ceil($uri_count/100);
+    $loop_run=ceil($uri_count/50);
     $x=1;
-    \Drupal::state()->set('file_checker.batch_total',ceil($uri_count/100));
+    \Drupal::state()->set('file_checker.batch_total',ceil($uri_count/50));
 	$first=1;
 	$last=100;
     while($loop_run>=$x)
