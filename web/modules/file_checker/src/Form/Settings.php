@@ -114,7 +114,6 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
     \Drupal::state()->set('file_checker.batch_pass',0);
   
     \Drupal::service('file_checker.files_checker_manager')->getFilesCheckerManagerValue();
-    drupal_set_message(\Drupal::state()->get('file_checker.result'));
     $time=REQUEST_TIME;
     \Drupal::state()->set('file_checker.last_run',$time);
     \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
