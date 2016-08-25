@@ -6,7 +6,7 @@ class FilesCheckBatch {
     $results = array();
     foreach($q1 as $r)
          {
-				 if(!file_exists($r->uri->value)) {
+				 //if(!file_exists($r->uri->value)) {
 					 $results[] =$r->uri->value;
 				 
 			 }
