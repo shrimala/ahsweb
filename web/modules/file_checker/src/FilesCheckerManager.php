@@ -36,7 +36,6 @@ class FilesCheckerManager {
     $first=$last+1;
     $last=$last+100;
     $x=$x+1;
-    sleep(4);
     }
     
   }

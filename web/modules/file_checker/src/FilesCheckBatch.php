@@ -6,13 +6,14 @@ class FilesCheckBatch {
     $results = array();
     foreach($q1 as $r)
          {
-				 //if(!file_exists($r->uri->value)) {
+				 if(!file_exists($r->uri->value)) {
 					 $results[] =$r->uri->value;
 				 
-			 //}
+			 }
 		 }
 	$context['message'] = $message;
     $context['results'] = $results;
+    sleep(4);
   }
   public static function entityCheckFinishedCallback($success, $results, $operations) {
     // The 'success' parameter means no fatal PHP errors were detected. All
