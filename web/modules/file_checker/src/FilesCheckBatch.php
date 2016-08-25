@@ -9,7 +9,7 @@ class FilesCheckBatch {
 				 //if(!file_exists($r->uri->value)) {
 					 $results[] =$r->uri->value;
 				 
-			 }
+			 //}
 		 }
 	$context['message'] = $message;
     $context['results'] = $results;
