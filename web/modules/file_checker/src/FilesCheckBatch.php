@@ -1,19 +1,20 @@
 <?php
 namespace Drupal\file_checker;
 class FilesCheckBatch {
-  public static function check($q1, &$context){
-	$message = t('Checking files exist...');
+  public static function check($fileIds, &$context){
+	  $message = t('Checking files exist...');
     $results = array();
-    foreach($q1 as $r) {
-	  if(!file_exists($r->uri->value)) {
-	    $results[] =$r->uri->value;
+    $files = \Drupal::entityTypeManager()->getStorage('file')->loadMultiple($fileIds);
+    foreach($files as $file) {
+	    if(!file_exists($file->uri->value)) {
+	      $results[] =$file->uri->value;
+	    }
 	  }
-	}
-	$context['message'] = $message;
+	  $context['message'] = $message;
     $context['results'] = $results;
     sleep(1);
   }
-  public static function entityCheckFinishedCallback($success, $results, $operations) {
+  public static function finished($success, $results, $operations) {
     // The 'success' parameter means no fatal PHP errors were detected. All
     // other error management should be handled using 'results'.
     if ($success) {
