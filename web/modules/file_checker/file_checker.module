@@ -12,7 +12,6 @@ function file_checker_cron() {
 	  $next_run=$last_run + $frequency_limit;
   }
   if ($result==1 && REQUEST_TIME > $next_run) {
-    \Drupal::service('file_checker.files_checker_manager')->reset();
     \Drupal::state()->set('file_checker.run_by','cron');
 	\Drupal::service('file_checker.files_checker_manager')->setupBatches();
     \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);

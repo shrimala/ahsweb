@@ -9,6 +9,7 @@ namespace Drupal\file_checker;
 
 class FilesCheckerManager {
   public function setupBatches() {
+	$this->reset();
     $file_count = \Drupal::entityQuery('file')->count()->execute();
     $batch_size=100;
     $batches=ceil($file_count/$batch_size);
@@ -29,7 +30,9 @@ class FilesCheckerManager {
         'finished' => '\Drupal\file_checker\FilesCheckBatch::finished',
       );
     batch_set($batch_set);    
-    }    
+    }
+    \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
+    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
   }
   
   public function reset() {

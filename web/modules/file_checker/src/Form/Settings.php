@@ -108,11 +108,8 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 * {@inheritdoc}
 */
 public function submitForm(array &$form, FormStateInterface $form_state) {
-	\Drupal::service('file_checker.files_checker_manager')->reset();
-    \Drupal::state()->set('file_checker.run_by','manually');
-    \Drupal::service('file_checker.files_checker_manager')->setupBatches();
-    \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
-    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));    
+	\Drupal::state()->set('file_checker.run_by','manually');
+    \Drupal::service('file_checker.files_checker_manager')->setupBatches();    
   }
   
   function configuration_submit_function(&$form, &$form_state) {
