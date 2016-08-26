@@ -17,9 +17,9 @@ class FilesCheckerManager {
 
     for ($batch = 1; $batch <= $batches; $batch++) {
       $batchStart = 1 + (($batch-1)*($batch_size));
-      $batchEnd = min(($batchStart+$batch_size),$file_count);
-	    $fileIds = \Drupal::entityQuery('file')->range($batchStart,$batchEnd)->execute();
-      $batch = array(
+      $batchEnd = min(($batchStart+($batch_size-1)),$file_count);
+	  $fileIds = \Drupal::entityQuery('file')->range($batchStart,$batchEnd)->execute();
+      $batch_set = array(
         'title' => t('Checking File Entity Exist...'),
         'operations' => array(
           array(
@@ -29,7 +29,7 @@ class FilesCheckerManager {
         ),
         'finished' => '\Drupal\file_checker\FilesCheckBatch::finished',
       );
-    batch_set($batch);
+    batch_set($batch_set);
     sleep(1);
     }
     
