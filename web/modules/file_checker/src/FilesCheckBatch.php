@@ -14,6 +14,7 @@ class FilesCheckBatch {
     $context['results'] = $results;
     sleep(1);
   }
+  
   public static function finished($success, $results, $operations) {
     // The 'success' parameter means no fatal PHP errors were detected. All
     // other error management should be handled using 'results'.
@@ -33,7 +34,6 @@ class FilesCheckBatch {
 	  $results_string=\Drupal::state()->get('file_checker.result');
       $results_string = $results_string."<pre>".implode(",\n", $results)."</pre>";
 	  \Drupal::state()->set('file_checker.result',$results_string);
-	}
-    
+	}    
   }
 }

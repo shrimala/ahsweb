@@ -108,18 +108,13 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 * {@inheritdoc}
 */
 public function submitForm(array &$form, FormStateInterface $form_state) {
-
+	\Drupal::service('file_checker.files_checker_manager')->reset();
     \Drupal::state()->set('file_checker.run_by','manually');
-    \Drupal::state()->set('file_checker.count',0);  
-    \Drupal::state()->set('file_checker.batch_pass',0);
-  
     \Drupal::service('file_checker.files_checker_manager')->setupBatches();
-    $time=REQUEST_TIME;
-    \Drupal::state()->set('file_checker.last_run',$time);
-    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
-    \Drupal::state()->set('file_checker.result','');
-    
+    \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
+    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));    
   }
+  
   function configuration_submit_function(&$form, &$form_state) {
     // Save the cron configuration settings for file checker.
     if ($form_state->getValue('run_by_cron')==1) {
@@ -133,4 +128,3 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
     drupal_set_message('The configuration options have been saved.');
   }
 }
-?>
