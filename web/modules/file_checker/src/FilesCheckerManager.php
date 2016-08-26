@@ -37,7 +37,7 @@ class FilesCheckerManager {
   
   public function reset() {
     \Drupal::state()->set('file_checker.batch_total',0);
-	\Drupal::state()->set('file_checker.run_by','');
+	//\Drupal::state()->set('file_checker.run_by','');
     \Drupal::state()->set('file_checker.count',0);  
     \Drupal::state()->set('file_checker.batch_pass',0);
     \Drupal::state()->set('file_checker.last_run',0);

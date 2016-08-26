@@ -110,6 +110,7 @@ public function validateForm(array &$form, FormStateInterface $form_state) {
 public function submitForm(array &$form, FormStateInterface $form_state) {
 	\Drupal::state()->set('file_checker.run_by','manually');
     \Drupal::service('file_checker.files_checker_manager')->setupBatches();    
+    \Drupal::state()->set('file_checker.run_by','');
   }
   
   function configuration_submit_function(&$form, &$form_state) {
