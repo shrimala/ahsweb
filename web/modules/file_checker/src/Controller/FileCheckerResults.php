@@ -83,7 +83,7 @@ class FileCheckerResults extends ControllerBase {
     }
 
     $build['files'] = [
-      '#markup' => $this->listMissingFiles($this->state->get('file_checker.last_run_files_missing')),
+      '#markup' => $this->listMissingFiles($this->state->get('file_checker.files_missing')),
     ];
     return $build;
   }
@@ -94,14 +94,16 @@ class FileCheckerResults extends ControllerBase {
    * @return string
    *   A markup string with the File Checker results.
    */
-  protected function listMissingFiles(array $files) {
+  protected function listMissingFiles($files) {
     $markup = '';
-    if (count($files) > 0) {
-      $markup = t("Missing files:") . "<br>";
-    }
-    foreach ($files as $file) {
-      $markup = $markup . $file . "<br>";
-    }
+	if(!empty($files) {
+		if (count($files) > 0) {
+		  $markup = t("Missing files:") . "<br>";
+		}
+		foreach ($files as $file) {
+		  $markup = $markup . $file . "<br>";
+		}
+	}
     return $markup;
   }
 
