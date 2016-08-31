@@ -96,7 +96,7 @@ class FileCheckerResults extends ControllerBase {
    */
   protected function listMissingFiles($files) {
     $markup = '';
-	if(!empty($files) {
+	if(!empty($files)) {
 		if (count($files) > 0) {
 		  $markup = t("Missing files:") . "<br>";
 		}
