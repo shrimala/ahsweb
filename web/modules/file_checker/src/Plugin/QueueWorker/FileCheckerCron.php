@@ -8,7 +8,7 @@ namespace Drupal\file_checker\Plugin\QueueWorker;
  * @QueueWorker(
  *   id = "file_checker",
  *   title = @Translation("File Checker Cron"),
- *   cron = {"time" = 20}
+ *   cron = {"time" = 3600}
  * )
  */
 class FileCheckerCron extends FileCheckerQueueWorkerBase {}
