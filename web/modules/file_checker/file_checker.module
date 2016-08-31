@@ -1,21 +1,20 @@
 <?php
 
 /**
+ * @file
+ * Contains miscellaneous File Checker code.
+ */
+
+/**
  * Implements hook_cron().
  */
 function file_checker_cron() {
-  $result =  \Drupal::state()->get('file_checker.run_by_cron');
-  $frequency_limit =\Drupal::service('config.factory')->getEditable('file_checker.frequency_limit')->get('frequency_limit');
-  $last_run= \Drupal::state()->get('file_checker.last_run');
-  $next_run = $last_run;
-  if ($frequency_limit <> "None") {
-	  $next_run=$last_run + $frequency_limit;
-  }
-  if ($result==1 && REQUEST_TIME > $next_run) {
-    \Drupal::state()->set('file_checker.run_by','cron');
-	\Drupal::service('file_checker.files_checker_manager')->setupBatches();
-    \Drupal::state()->set('file_checker.last_run',REQUEST_TIME);
-    \Drupal::logger('file_checker_'.\Drupal::state()->get('file_checker.run_by'))->warning('@variable: '.\Drupal::state()->get('file_checker.result'), array('@variable' => 'Media Missing ', ));
-    \Drupal::state()->set('file_checker.run_by','');
+  if (\Drupal::config('file_checker.settings')->get('run_by_cron')) {
+    $frequency_limit = \Drupal::config('file_checker.settings')->get('frequency_limit');
+    $last_run_start = \Drupal::state()->get('file_checker.last_run_start');
+    $next_run = $last_run_start + $frequency_limit;
+    if (REQUEST_TIME > $next_run) {
+      \Drupal::service('file_checker.file_checker')->queueFiles();
+    }
   }
 }

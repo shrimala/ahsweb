@@ -1,3 +1,4 @@
 services:
-  file_checker.files_checker_manager:
-    class: Drupal\file_checker\FilesCheckerManager
+  file_checker.file_checker:
+    class: Drupal\file_checker\FileChecker
+    arguments: ['@queue', '@state', '@logger.factory', '@entity.query', '@date.formatter']

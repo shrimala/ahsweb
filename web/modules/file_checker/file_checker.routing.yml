@@ -1,7 +1,23 @@
-filechecker.settings:
+file_checker.settings:
   path: 'admin/config/media/file-system/file-checker'
   defaults:
-    _form: '\Drupal\file_checker\Form\Settings'
-    _title: 'Verifies that files managed by Drupal actually exist at the location where Drupal believes they are.'
+    _form: '\Drupal\file_checker\Form\SettingsForm'
+    _title: 'File Checker'
+  requirements:
+    _permission: 'administer site configuration'
+
+file_checker.last_results:
+  path: '/admin/config/media/file-system/file-checker/last-results'
+  defaults:
+    _title: 'File Checker results'
+    _controller: '\Drupal\file_checker\Controller\FileCheckerResults::displayLastResults'
+  requirements:
+    _permission: 'access administration pages'
+
+file_checker.current_results:
+  path: '/admin/config/media/file-system/file-checker/current-results'
+  defaults:
+    _title: 'File Checker results'
+    _controller: '\Drupal\file_checker\Controller\FileCheckerResults::displayCurrentResults'
   requirements:
     _permission: 'access administration pages'
