@@ -1,0 +1,7 @@
+file_checker.settings:
+  path: 'admin/config/media/file-system/file-checker'
+  defaults:
+    _form: '\Drupal\file_checker\Form\SettingsForm'
+    _title: 'File Checker'
+  requirements:
+    _permission: 'administer site configuration'

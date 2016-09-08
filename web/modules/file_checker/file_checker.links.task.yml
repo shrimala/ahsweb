@@ -1,0 +1,4 @@
+file_checker.settings:
+  route_name: file_checker.settings
+  base_route: system.file_system_settings
+  title: File Checker

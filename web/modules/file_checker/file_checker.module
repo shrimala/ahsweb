@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * File Checker hooks and callbacks.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\file\FileInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_entity_base_field_info().
+ *
+ * Adds a 'missing' basefield to the core file entity.
+ */
+function file_checker_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'file') {
+    $fields = array();
+    $fields['missing'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Missing'))
+      ->setDescription(t('Whether the file can be found at the uri.'));
+    // ->setRevisionable(TRUE);
+    return $fields;
+  }
+}
+
+/**
+ * The callback function for an Ultimate Cron job that starts file checking.
+ */
+function file_checker_start($job) {
+  \Drupal::service('file_checker.bulk_file_checking')->start();
+}
+
+/**
+ * The callback for an Ultimate Cron job that checks fies for up to 50 seconds.
+ */
+function file_checker_execute50($job) {
+  \Drupal::service('file_checker.bulk_file_checking')->executeInBackground(50);
+}
+
+/**
+ * The callback for the batch API launch from UI.
+ */
+function file_checker_execute_in_ui(&$context) {
+  \Drupal::service('file_checker.bulk_file_checking')->executeInUI(10, $context);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for file.
+ *
+ * Check files when recorded location changes, if configured to do so.
+ * We use update/insert not presave out of concern that the file might not have
+ * been moved into its uri location at the time of presave.
+ */
+function file_checker_file_insert(FileInterface $file) {
+  \Drupal::service('file_checker.single_file_checking')->checkIfChanged($file);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for file.
+ *
+ * Check files when recorded location changes, if configured to do so.
+ * We use update/insert not presave out of concern that the file might not
+ * have been moved into its uri location at the time of presave.
+ */
+function file_checker_file_update(FileInterface $file) {
+  \Drupal::service('file_checker.single_file_checking')->checkIfChanged($file);
+}
