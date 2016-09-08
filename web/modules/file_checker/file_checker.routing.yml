@@ -5,19 +5,3 @@ file_checker.settings:
     _title: 'File Checker'
   requirements:
     _permission: 'administer site configuration'
-
-file_checker.last_results:
-  path: '/admin/config/media/file-system/file-checker/last-results'
-  defaults:
-    _title: 'File Checker results'
-    _controller: '\Drupal\file_checker\Controller\FileCheckerResults::displayLastResults'
-  requirements:
-    _permission: 'access administration pages'
-
-file_checker.current_results:
-  path: '/admin/config/media/file-system/file-checker/current-results'
-  defaults:
-    _title: 'File Checker results'
-    _controller: '\Drupal\file_checker\Controller\FileCheckerResults::displayCurrentResults'
-  requirements:
-    _permission: 'access administration pages'

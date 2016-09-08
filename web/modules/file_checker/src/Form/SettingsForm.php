@@ -5,7 +5,7 @@ namespace Drupal\file_checker\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\file_checker\FileChecker;
+use Drupal\file_checker\BulkFileChecking;
 
 /**
  * File Checker settings form.
@@ -13,18 +13,18 @@ use Drupal\file_checker\FileChecker;
 class SettingsForm extends ConfigFormBase {
 
   /**
-   * The File Checker service.
+   * The bulk file checking service.
    */
-  protected $fileChecker;
+  protected $bulkFileChecking;
 
   /**
    * Constructs a File Checker settings form object.
    *
-   * @param $file_checker
-   *   The File Checker service.
+   * @param $bulk_file_checking
+   *   The bulk file checking service.
    */
-  public function __construct($file_checker) {
-    $this->fileChecker = $file_checker;
+  public function __construct($bulk_file_checking) {
+    $this->bulkFileChecking = $bulk_file_checking;
   }
 
   /**
@@ -32,7 +32,7 @@ class SettingsForm extends ConfigFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('file_checker.file_checker')
+      $container->get('file_checker.bulk_file_checking')
     );
   }
 
@@ -63,25 +63,34 @@ class SettingsForm extends ConfigFormBase {
       '#markup' => '<p>' . $description . '</p>',
     );
 
-    $form['last_status'] = array(
-      '#markup' => "<p>" . $this->fileChecker->lastStatus() . "</p>",
+    $form['status'] = array(
+      '#type' => 'container',
+    );
+
+    $form['status']['missing'] = $this->bulkFileChecking->missingStatus();
+    $form['status']['missing']['#prefix'] = '<p>';
+
+    $form['status']['last_status'] = array(
+      '#markup' => $this->bulkFileChecking->lastStatus(),
+      '#prefix' => "&nbsp;",
+      '#suffix' => "</p>",
     );
 
     $form['current_status'] = array(
-      '#markup' => "<p>" . $this->fileChecker->currentStatus() . "</p>",
+      '#markup' => "<p>" . $this->bulkFileChecking->backgroundStatus() . "</p>",
     );
 
-    if ($this->fileChecker->isQueueEmpty()) {
-      $form['check_once'] = array(
+    if (!$this->bulkFileChecking->hasBeenRequested()) {
+      $form['check_now'] = array(
         '#type' => 'submit',
-        '#value' => t('Check files once'),
-        '#submit' => array('::checkFiles'),
+        '#value' => t('Check files now'),
+        '#submit' => array('::checkNow'),
       );
     }
     else {
       $form['cancel'] = array(
         '#type' => 'submit',
-        '#value' => t('Cancel queued files'),
+        '#value' => t('Cancel file checking'),
         '#submit' => array('::cancel'),
       );
     }
@@ -92,22 +101,15 @@ class SettingsForm extends ConfigFormBase {
       '#open' => TRUE,
     ];
 
-    $form['settings']['run_by_cron'] = array(
-      '#type' => 'checkbox',
-      '#title' => $this->t('Initiate file checking whenever cron runs'),
-      '#default_value' => $config->get('run_by_cron'),
-    );
-
-    $form['settings']['frequency_limit'] = array(
+    $form['settings']['check_on_change'] = array(
       '#type' => 'select',
-      '#title' => t('Do not initiate file checking more often than'),
+      '#title' => t('Check file when stored location changes?'),
       '#options' => array(
-        '0' => 'No limit',
-        '3600' => 'Once per  hour',
-        '86400' => 'Once per  day',
-        '604800' => 'Once per  week',
+        'no' => 'No',
+        'immediately' => 'Immediately',
+        'later' => 'Later',
       ),
-      '#default_value' => $config->get('frequency_limit'),
+      '#default_value' => $config->get('check_on_change'),
     );
 
     return parent::buildForm($form, $form_state);
@@ -126,8 +128,16 @@ class SettingsForm extends ConfigFormBase {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
-  public function checkFiles(array &$form, FormStateInterface $form_state) {
-    $this->fileChecker->queueFiles();
+  public function checkNow(array &$form, FormStateInterface $form_state) {
+    $batch = array(
+      'title' => t('Checking files'),
+      'init_message' => t('File checking is under way.'),
+      'progress_message' => t('Checking files: batch @current.'),
+      'operations' => array(
+        array('file_checker_execute_in_ui', array()),
+      ),
+    );
+    batch_set($batch);
   }
 
   /**
@@ -139,7 +149,7 @@ class SettingsForm extends ConfigFormBase {
    *   The current state of the form.
    */
   public function cancel(array &$form, FormStateInterface $form_state) {
-    $this->fileChecker->cancel();
+    $this->bulkFileChecking->cancel();
   }
 
   /**
@@ -147,8 +157,7 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = \Drupal::service('config.factory')->getEditable('file_checker.settings');
-    $config->set('frequency_limit', $form_state->getValue('frequency_limit'))->save();
-    $config->set('run_by_cron', $form_state->getValue('run_by_cron'))->save();
+    $config->set('check_on_change', $form_state->getValue('check_on_change'))->save();
     parent::submitForm($form, $form_state);
   }
 

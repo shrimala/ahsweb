@@ -1,4 +1,8 @@
 services:
-  file_checker.file_checker:
-    class: Drupal\file_checker\FileChecker
-    arguments: ['@queue', '@state', '@logger.factory', '@entity.query', '@date.formatter']
+  file_checker.single_file_checking:
+    class: Drupal\file_checker\SingleFileChecking
+    arguments: ['@entity_type.manager', '@logger.factory', '@queue', '@config.factory']
+
+  file_checker.bulk_file_checking:
+    class: Drupal\file_checker\BulkFileChecking
+    arguments: ['@state', '@logger.factory', '@entity.query', '@date.formatter', '@file_checker.single_file_checking']

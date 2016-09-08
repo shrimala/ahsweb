@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - file_checker
+title: 'File checking start'
+id: file_checker_start
+module: file_checker
+callback: file_checker_start
+scheduler:
+  id: crontab
+  configuration:
+    rules:
+      - '0 2 * * *'
+launcher:
+  id: serial
+logger:
+  id: database

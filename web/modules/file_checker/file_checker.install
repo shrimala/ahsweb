@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * File Checker hooks for install and uninstall.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function file_checker_install() {
+  // Create field storage for the 'missing' base field.
+  $entity_manager = \Drupal::entityManager();
+  $definition = $entity_manager->getFieldStorageDefinitions('file')['missing'];
+  $entity_manager->onFieldStorageDefinitionCreate($definition);
+
+  // Start with 1 file per second as the checking speed on a new installation.
+  $this->state->set('file_checker.speed', 1);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function file_checker_uninstall() {
+  // @todo There is currently no way to uninstall an added basefield with data.
+  \Drupal::state()->delete('file_checker.background_last_checked_file');
+  \Drupal::state()->delete('file_checker.background_files_checked_count');
+  \Drupal::state()->delete('file_checker.background_files_missing_count');
+  \Drupal::state()->delete('file_checker.background_requested');
+  \Drupal::state()->delete('file_checker.background_run_start');
+  \Drupal::state()->delete('file_checker.last_run_start');
+  \Drupal::state()->delete('file_checker.last_run_end');
+  \Drupal::state()->delete('file_checker.speed');
+}
+
+/**
+ * Report missing files on status page.
+ */
+function file_checker_requirements($phase) {
+  if ($phase == 'runtime') {
+    $requirements['file_checker']['title'] = t('Missing files');
+    $requirements['file_checker']['value'] = \Drupal::service('file_checker.bulk_file_checking')->missingStatus();
+    $requirements['file_checker']['description'] = \Drupal::service('file_checker.bulk_file_checking')->lastStatus();
+    if (\Drupal::service('file_checker.bulk_file_checking')->missingCount() > 0) {
+      $requirements['file_checker']['severity'] = REQUIREMENT_ERROR;
+    }
+    return $requirements;
+  }
+}
