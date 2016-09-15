@@ -82,3 +82,9 @@ crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd web ; drush core-cron"
+    file-checking-start:
+        spec: "0 2 * * *"
+        cmd: "cd web ; drush file-checking-start"
+    file-checking-execute:
+        spec: "* * * * *"
+        cmd: "cd web ; drush file-checking-execute 50"
