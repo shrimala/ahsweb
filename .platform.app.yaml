@@ -87,4 +87,4 @@ crons:
         cmd: "cd web ; drush file-checking-start"
     file-checking-execute:
         spec: "* * * * *"
-        cmd: "cd web ; drush file-checking-execute 50"
+        cmd: "cd web ; drush file-checking-execute --log"
