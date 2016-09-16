@@ -705,12 +705,12 @@
             "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/consolidation-org/annotated-command.git",
+                "url": "https://github.com/consolidation/annotated-command.git",
                 "reference": "ed279df30b9386fd8e523003dc679421a87c52e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation-org/annotated-command/zipball/ed279df30b9386fd8e523003dc679421a87c52e0",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/ed279df30b9386fd8e523003dc679421a87c52e0",
                 "reference": "ed279df30b9386fd8e523003dc679421a87c52e0",
                 "shasum": ""
             },
@@ -756,12 +756,12 @@
             "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/consolidation-org/output-formatters.git",
+                "url": "https://github.com/consolidation/output-formatters.git",
                 "reference": "6428d8fb30c9ed3b96314580808b3e4415b46dd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation-org/output-formatters/zipball/6428d8fb30c9ed3b96314580808b3e4415b46dd9",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/6428d8fb30c9ed3b96314580808b3e4415b46dd9",
                 "reference": "6428d8fb30c9ed3b96314580808b3e4415b46dd9",
                 "shasum": ""
             },
@@ -2128,12 +2128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shrimala/file_checker.git",
-                "reference": "cccdaf8b1f5aed079e99c976fdc68fdeeadd2ef8"
+                "reference": "05acd9bc609a2add986ef1034692a644130db4ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shrimala/file_checker/zipball/cccdaf8b1f5aed079e99c976fdc68fdeeadd2ef8",
-                "reference": "cccdaf8b1f5aed079e99c976fdc68fdeeadd2ef8",
+                "url": "https://api.github.com/repos/shrimala/file_checker/zipball/05acd9bc609a2add986ef1034692a644130db4ac",
+                "reference": "05acd9bc609a2add986ef1034692a644130db4ac",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -2145,7 +2145,7 @@
                 "source": "https://github.com/shrimala/file_checker/tree/8.x-1.x",
                 "issues": "https://github.com/shrimala/file_checker/issues"
             },
-            "time": "2016-09-08 19:00:39"
+            "time": "2016-09-16 17:00:49"
         },
         {
             "name": "drupal/filefield_paths",
