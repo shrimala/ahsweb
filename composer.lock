@@ -2128,12 +2128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shrimala/file_checker.git",
-                "reference": "cccdaf8b1f5aed079e99c976fdc68fdeeadd2ef8"
+                "reference": "05acd9bc609a2add986ef1034692a644130db4ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shrimala/file_checker/zipball/cccdaf8b1f5aed079e99c976fdc68fdeeadd2ef8",
-                "reference": "cccdaf8b1f5aed079e99c976fdc68fdeeadd2ef8",
+                "url": "https://api.github.com/repos/shrimala/file_checker/zipball/05acd9bc609a2add986ef1034692a644130db4ac",
+                "reference": "05acd9bc609a2add986ef1034692a644130db4ac",
                 "shasum": ""
             },
             "type": "drupal-module",
