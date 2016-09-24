@@ -42,23 +42,24 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
 }
 
-// Set base url, needed by simplenews module
-$main_route_url = 'http://{default}/';
-$routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
-foreach ($routes as $route_url => $route_info) {
-  if ($route_info["original_url"] == $main_route_url) {
-    $base_url = $route_url;
-    break;
+if (isset($_ENV["PLATFORM_ROUTES"])) {
+  // Set base url, needed by simplenews module
+  $main_route_url = 'http://{default}/';
+  $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
+  foreach ($routes as $route_url => $route_info) {
+    if ($route_info["original_url"] == $main_route_url) {
+      $base_url = $route_url;
+      break;
+    }
   }
+  $base_url = rtrim($base_url,'/');
 }
-$base_url = rtrim($base_url,'/');
-
-// Fetching the Platform.sh environment variables
-$platformVariables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 
 // Settings for different Platform.sh environments
 if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   // We're on platform.sh
+  // Fetch the Platform.sh environment variables.
+  $platformVariables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
   if ($_ENV['PLATFORM_ENVIRONMENT']==='master') {
     //We're on platform.sh master
     //$settings['config_readonly'] = TRUE;
@@ -70,7 +71,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
       include __DIR__ . '/settings.platformdev.php';
     }
   }
-  // Build the Flysystem scheme
+  // Build the Flysystem scheme using credentials configure on Platform.sh.
   $schemes = [
     'dropboxwebarchive' => [
       'driver' => 'dropbox',
@@ -81,20 +82,29 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
       ],
     ]
   ];
+  
 } else {
-  // We're not on platform.sh; maybe on Travis, maybe local
-  if ($_ENV['TRAVIS']==TRUE) {$webRoot = $_ENV['TRAVIS_BUILD_DIR'];}
-  // Build the Flysystem scheme
+	
+  // We're not on Platform.sh; maybe Travis, maybe local.
+  if (isset($_ENV['TRAVIS'])) {
+    //We're on Travis
+    $webRoot = $_ENV['TRAVIS_BUILD_DIR'];
+  } else {
+    //We're on local
+    $webRoot= $_SERVER['DOCUMENT_ROOT'];
+  }
+  
+  // Build the Flysystem scheme, using local storage instead of dropbox.
   $schemes = [
     'dropboxwebarchive' => [
       'driver' => 'local',
       'config' => [
         'root' => $webRoot . '/web/sites/default/files/testfiles',
       ],
-    ]
+	]
   ];
-}
 
+}
 // Passing the Flysystem schemes to Drupal
 $settings['flysystem'] = $schemes;
 
