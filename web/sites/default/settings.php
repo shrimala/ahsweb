@@ -20,7 +20,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 // As the settings.php file is not writable during install on Platform.sh (for
 // good reasons), Drupal will refuse to install a profile that is not defined
 // here.
-$settings['install_profile'] = 'standard';
+$settings['install_profile'] = 'minimal';
 
 // The hash_salt should be a unique random value for each application.
 // If left unset, the settings.platformsh.php file will attempt to provide one.
@@ -42,23 +42,24 @@ if (file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
 }
 
-// Set base url, needed by simplenews module
-$main_route_url = 'http://{default}/';
-$routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
-foreach ($routes as $route_url => $route_info) {
-  if ($route_info["original_url"] == $main_route_url) {
-    $base_url = $route_url;
-    break;
+if (isset($_ENV["PLATFORM_ROUTES"])) {
+  // Set base url, needed by simplenews module
+  $main_route_url = 'http://{default}/';
+  $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']),true);
+  foreach ($routes as $route_url => $route_info) {
+    if ($route_info["original_url"] == $main_route_url) {
+      $base_url = $route_url;
+      break;
+    }
   }
+  $base_url = rtrim($base_url,'/');
 }
-$base_url = rtrim($base_url,'/');
-
-// Fetching the Platform.sh environment variables
-$platformVariables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
 
 // Settings for different Platform.sh environments
 if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
   // We're on platform.sh
+  // Fetch the Platform.sh environment variables.
+  $platformVariables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), TRUE);
   if ($_ENV['PLATFORM_ENVIRONMENT']==='master') {
     //We're on platform.sh master
     //$settings['config_readonly'] = TRUE;
@@ -70,7 +71,7 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
       include __DIR__ . '/settings.platformdev.php';
     }
   }
-  // Build the Flysystem scheme
+  // Build the Flysystem scheme using credentials configure on Platform.sh.
   $schemes = [
     'dropboxwebarchive' => [
       'driver' => 'dropbox',
@@ -81,20 +82,29 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
       ],
     ]
   ];
+  
 } else {
-  // We're not on platform.sh; maybe on Travis, maybe local
-  if ($_ENV['TRAVIS']==TRUE) {$webRoot = $_ENV['TRAVIS_BUILD_DIR'];}
-  // Build the Flysystem scheme
+	
+  // We're not on Platform.sh; maybe Travis, maybe local.
+  if (isset($_ENV['TRAVIS'])) {
+    //We're on Travis
+    $webRoot = $_ENV['TRAVIS_BUILD_DIR'];
+  } else {
+    //We're on local
+    $webRoot= $_SERVER['DOCUMENT_ROOT'];
+  }
+  
+  // Build the Flysystem scheme, using local storage instead of dropbox.
   $schemes = [
     'dropboxwebarchive' => [
       'driver' => 'local',
       'config' => [
         'root' => $webRoot . '/web/sites/default/files/testfiles',
       ],
-    ]
+	]
   ];
-}
 
+}
 // Passing the Flysystem schemes to Drupal
 $settings['flysystem'] = $schemes;
 
