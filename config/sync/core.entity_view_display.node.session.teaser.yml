@@ -36,6 +36,7 @@ hidden:
   field_admin_tags: true
   field_clip: true
   field_datetime: true
+  field_event: true
   field_leader: true
   field_media: true
   field_original: true
