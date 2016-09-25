@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "17e09395b50cd94c73aa293b08b46fd5",
-    "content-hash": "44317f91bb4c1939bf9cd8cf26f59697",
+    "hash": "119f599e39b355224cabebfc29621ce5",
+    "content-hash": "61f6c7a30be3f7469a409e528d648336",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -705,12 +705,12 @@
             "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/consolidation-org/annotated-command.git",
+                "url": "https://github.com/consolidation/annotated-command.git",
                 "reference": "ed279df30b9386fd8e523003dc679421a87c52e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation-org/annotated-command/zipball/ed279df30b9386fd8e523003dc679421a87c52e0",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/ed279df30b9386fd8e523003dc679421a87c52e0",
                 "reference": "ed279df30b9386fd8e523003dc679421a87c52e0",
                 "shasum": ""
             },
@@ -756,12 +756,12 @@
             "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/consolidation-org/output-formatters.git",
+                "url": "https://github.com/consolidation/output-formatters.git",
                 "reference": "6428d8fb30c9ed3b96314580808b3e4415b46dd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation-org/output-formatters/zipball/6428d8fb30c9ed3b96314580808b3e4415b46dd9",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/6428d8fb30c9ed3b96314580808b3e4415b46dd9",
                 "reference": "6428d8fb30c9ed3b96314580808b3e4415b46dd9",
                 "shasum": ""
             },
@@ -2079,7 +2079,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.0.zip",
-                "reference": null,
+                "reference": "8.x-1.0",
                 "shasum": "85d5c182208beb4358fe3943a624182f590d1e0d"
             },
             "require": {
@@ -2121,6 +2121,31 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
             }
+        },
+        {
+            "name": "drupal/file_checker",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shrimala/file_checker.git",
+                "reference": "05acd9bc609a2add986ef1034692a644130db4ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shrimala/file_checker/zipball/05acd9bc609a2add986ef1034692a644130db4ac",
+                "reference": "05acd9bc609a2add986ef1034692a644130db4ac",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Verifies that files managed by Drupal actually exist at the location where Drupal believes they are.",
+            "support": {
+                "source": "https://github.com/shrimala/file_checker/tree/8.x-1.x",
+                "issues": "https://github.com/shrimala/file_checker/issues"
+            },
+            "time": "2016-09-16 17:00:49"
         },
         {
             "name": "drupal/filefield_paths",
@@ -2538,7 +2563,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0-beta1.zip",
-                "reference": null,
+                "reference": "8.x-1.0-beta1",
                 "shasum": "342ecedce41275a3f605a36b5729b054415e8dda"
             },
             "require": {
@@ -2602,7 +2627,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/video_embed_field-8.x-1.2.zip",
-                "reference": null,
+                "reference": "8.x-1.2",
                 "shasum": "3d4112591dcc1f7c2c5b169928803e87c66a4bf8"
             },
             "require": {
@@ -7184,7 +7209,8 @@
         "drupal/config_readonly": 20,
         "drupal/pathauto": 20,
         "drupal/drupal-driver": 20,
-        "drupal/drupal-extension": 20
+        "drupal/drupal-extension": 20,
+        "drupal/file_checker": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -75,10 +75,17 @@ hooks:
         drush --yes sql-sanitize --sanitize-email="no"
         for module in `cat ~/modules.master`; do drush --yes pm-uninstall $module; done
       fi
+      drush cc drush
 
 
-# The configuration of scheduled execution.
+# The configuration of scheduled execution. Minimum interval on platform.sh is 5 mins.
 crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd web ; drush core-cron"
+    file-checking-start:
+        spec: "0 2 * * *"
+        cmd: "cd web ; drush file-checking-start"
+    file-checking-execute:
+        spec: "*/5 * * * *"
+        cmd: "cd web ; drush file-checking-execute 290 --log"

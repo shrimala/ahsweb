@@ -21,6 +21,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/shrimala/drupalextension"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/shrimala/file_checker"
         }
     ],
     "require": {
@@ -43,7 +47,8 @@
         "drupal/config_readonly": "1.x-dev",
         "drupal/pathauto": "1.x-dev",
 		"drupal/drupal-driver": "dev-EntityContext as dev-master",
-		"drupal/drupal-extension": "dev-EntityContext"
+		"drupal/drupal-extension": "dev-EntityContext",
+        "drupal/file_checker": "dev-8.x-1.x"
     },
     "require-dev": {
         "behat/mink": "~1.7",
