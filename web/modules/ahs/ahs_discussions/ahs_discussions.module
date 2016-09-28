@@ -1,0 +1,131 @@
+<?php
+
+/**
+ * @file
+ * Contains ahs_discussions hooks.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_node_update().
+ * 
+ * Update the parents reference on child discussions,
+ * and childrens reference on parent discussions.
+ */
+function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) {
+  if ($node->bundle() == 'discussion'){
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
+    \Drupal::service('ahs_discussions.ancestry')->updateChildrensAncestry($node);
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Create a parents reference on child discussions,
+ * and childrens reference on parent discussions.
+ */
+function ahs_discussions_node_insert(\Drupal\Core\Entity\EntityInterface $node) {
+  if ($node->bundle() == 'discussion'){
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
+    \Drupal::service('ahs_discussions.ancestry')->updateChildrensAncestry($node);
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Update the ancestry when the first parent is changed.
+ * No need to save or return modified entity.
+ */
+function ahs_discussions_node_presave(\Drupal\Core\Entity\EntityInterface $node) {
+  if ($node->bundle() == 'discussion'){
+    \Drupal::service('ahs_discussions.ancestry')->updateOwnAncestry($node);
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ *
+ * Registers operation class for ahs_discuss form mode.
+ */
+function ahs_discussions_entity_type_build(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  // Add a form for a custom node form without overriding the default
+  // node form. To override the default node form, use hook_entity_type_alter().
+  $entity_types['node']->setFormClass('ahs_discuss', 'Drupal\ahs_discussions\DiscussionForm');
+}
+
+/**
+ * Implements hook_editor_js_settings_alter
+ * 
+ * Allows the CKEditor on the body field to grow longer than the page length
+ */
+function ahs_discussions_editor_js_settings_alter(array &$settings) {
+  foreach ($settings['editor']['formats'] as $name => $value) {
+    $settings['editor']['formats'][$name]['editorSettings']['autoGrow_maxHeight'] = '10000';
+  }
+}
+
+/**
+ * Implements hook_form_alter_alter
+ * 
+ * Remove parts of the discussion form that are added by other modules
+ */
+function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$form_state) {
+  // Remove the menu settings
+  $form['menu'] = array('#type'=>'value');
+  // Remove the delete button
+  $form['actions']['delete'] = array();
+
+  // If there is no referenced parent, fake a 'Discuss' pseudo-breadcrumb
+  // This is necessary because usually this root pseudo-breadcrumb comes
+  // from the node--discuss--ahs-ancestry template used for the ahs_ancestry
+  // view mode of the referenced parent entity.
+  if ($form['field_parents']['widget']['#max_delta'] === 0) {
+    $discussPath = Url::fromRoute('view.discussions.page_1')->toString();
+    $preview= [
+      '#markup' => '<ol class="breadcrumb"><li><a href="' . $discussPath . '">' . t('Discuss') . '</a></li>',
+    ];
+    $form['field_parents']['widget']['0']['preview_container'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['er-enhanced-preview'],
+      ],
+      'preview' => $preview,
+    ];
+    $form['field_parents']['widget']['0']['#prefix'] = '<div class="er-enhanced-new er-enhanced-previewing ahs-newonly">';
+  }
+
+}
+
+/**
+ * Implements hook_module_implements_alter
+ * 
+ * Moves our hook ahs_discussions_form_node_discussion_ahs_discuss_form_alter
+ * so that it fires last and can undo the work of other modules.
+ */
+function ahs_discussions_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'form_alter') {
+    // Move our form alter to the end, to give it priority over menu module's.
+    if (isset($implementations['ahs_discussions'])) {
+      $group = $implementations['ahs_discussions'];
+      unset($implementations['ahs_discussions']);
+      $implementations['ahs_discussions'] = $group;
+    }
+  }
+}
+
+// display widget for comments
+// autocomplete ancestry
+// new local environment, better synced to platform
+// theme
+// templates for display modes:
+//  - child preview: title
+// - child autocomplete: ancestry, title
+//  - parents preview: ancestry, title
+// - parents autocomplete: ancestry, title

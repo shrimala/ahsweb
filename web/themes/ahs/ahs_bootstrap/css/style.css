@@ -1,0 +1,24 @@
+/**
+ * Place your custom styles here.
+ */
+
+
+/**
+ * If an er enhanced widget has no existing items, then display the preview in the new item form row,
+ * and hide the autocomplete box, except if it's in edit mode in which case do the reverse.
+ * Used for discussion content type, field_parents, where we show a fake "Discuss" preview
+ * to act as a breadcrumb, which should still be there for top level discussions that have no parent.
+ */
+.er-enhanced-hideui .er-enhanced-new.ahs-newonly {
+    display:block;
+}
+.er-enhanced-new.er-enhanced-previewing .er-enhanced-preview {
+    display:none;
+}
+.er-enhanced-hideui .er-enhanced-new.er-enhanced-previewing .er-enhanced-preview {
+    display:block;
+}
+.er-enhanced-hideui .er-enhanced-new.er-enhanced-previewing .form-item {
+    display:none;
+}
+

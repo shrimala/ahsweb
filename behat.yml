@@ -8,6 +8,7 @@ default:
         tags: "~@skip"
       contexts:
         - FeatureContext
+        - FormElementVisibilityContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
@@ -16,8 +17,7 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      selenium2: ~
-      base_url: http://localhost:8080
+      base_url: http://localhost:80
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
@@ -25,3 +25,6 @@ default:
         alias: 'local'
       drupal: 
         drupal_root: './web'
+    Lakion\Behat\MinkDebugExtension:
+      directory: %paths.base%/features/logs
+      screenshot: true

@@ -1,0 +1,517 @@
+Current page: 403 http://localhost:80/discuss/306
+Response headers:
+Array
+(
+    [Date] => Array
+        (
+            [0] => Wed, 28 Sep 2016 10:59:00 GMT
+        )
+
+    [Server] => Array
+        (
+            [0] => Apache/2.4.7 (Ubuntu)
+        )
+
+    [X-Powered-By] => Array
+        (
+            [0] => PHP/5.5.9-1ubuntu4.19
+        )
+
+    [Cache-Control] => Array
+        (
+            [0] => must-revalidate, no-cache, private
+        )
+
+    [X-Drupal-Dynamic-Cache] => Array
+        (
+            [0] => MISS
+        )
+
+    [X-UA-Compatible] => Array
+        (
+            [0] => IE=edge
+        )
+
+    [Content-language] => Array
+        (
+            [0] => en
+        )
+
+    [X-Content-Type-Options] => Array
+        (
+            [0] => nosniff
+        )
+
+    [X-Frame-Options] => Array
+        (
+            [0] => SAMEORIGIN
+        )
+
+    [Expires] => Array
+        (
+            [0] => Sun, 19 Nov 1978 05:00:00 GMT
+        )
+
+    [X-Generator] => Array
+        (
+            [0] => Drupal 8 (https://www.drupal.org)
+        )
+
+    [Transfer-Encoding] => Array
+        (
+            [0] => chunked
+        )
+
+    [Content-Type] => Array
+        (
+            [0] => text/html; charset=UTF-8
+        )
+
+)
+
+Response content:
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'html' -->
+<!-- FILE NAME SUGGESTIONS:
+   * html--discuss--306.html.twig
+   * html--discuss--%.html.twig
+   * html--discuss.html.twig
+   x html.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/html.html.twig' -->
+<!DOCTYPE html>
+<html  lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/themes/ahs/ahs_bootstrap/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <title>Access denied | Awakened Heart Sangha</title>
+    <link rel="stylesheet" href="/core/modules/system/css/components/align.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/fieldgroup.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/container-inline.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/clearfix.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/details.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/hidden.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/item-list.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/js.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/nowrap.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/position-container.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/progress.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/reset-appearance.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/resize.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/sticky-header.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/tablesort.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/core/modules/system/css/components/tree-child.module.css?oe5uav" media="all" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.3.5/css/bootstrap.css" media="all" />
+<link rel="stylesheet" href="/themes/contrib/bootstrap/css/3.3.5/overrides.min.css?oe5uav" media="all" />
+<link rel="stylesheet" href="/themes/ahs/ahs_bootstrap/css/style.css?oe5uav" media="all" />
+
+    
+<!--[if lte IE 8]>
+<script src="/core/assets/vendor/html5shiv/html5shiv.min.js?v=3.7.3"></script>
+<![endif]-->
+
+  </head>
+  <body class="user-logged-in path-discuss has-glyphicons">
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'page' -->
+<!-- FILE NAME SUGGESTIONS:
+   * page--system--403.html.twig
+   * page--system--%.html.twig
+   * page--system.html.twig
+   x page.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/page.html.twig' -->
+          <header class="navbar navbar-default container" id="navbar" role="banner">
+      <div class="navbar-header">
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--navigation.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+  <div class="region region-navigation">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-breadcrumbs.html.twig
+   * block--system-breadcrumb-block.html.twig
+   x block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'breadcrumb' -->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/breadcrumb.html.twig' -->
+  <ol class="breadcrumb">
+          <li >
+                  <a href="/discuss">Discussions</a>
+              </li>
+          <li  class="active">
+                  Access denied
+              </li>
+      </ol>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/breadcrumb.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-account-menu.html.twig
+   x block--system-menu-block--account.html.twig
+   * block--system-menu-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system-menu-block--account.html.twig' -->
+<nav role="navigation" aria-labelledby="block-ahs-bootstrap-account-menu-menu" id="block-ahs-bootstrap-account-menu">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'menu__account' -->
+<!-- FILE NAME SUGGESTIONS:
+   x menu--account.html.twig
+   x menu--account.html.twig
+   * menu.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/menu/menu--account.html.twig' -->
+
+              <ul class="menu nav navbar-nav navbar-right">
+                            <li class="expanded dropdown">
+        <a href="/user" data-drupal-link-system-path="user">My account</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/user/logout" data-drupal-link-system-path="user/logout">Log out</a>
+                  </li>
+        </ul>
+  
+
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/menu/menu--account.html.twig' -->
+
+
+  </nav>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system-menu-block--account.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-powered.html.twig
+   * block--system-powered-by-block.html.twig
+   x block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system.html.twig' -->
+  <span>Powered by <a href="https://www.drupal.org">Drupal</a></span>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+
+
+                      </div>
+
+                </header>
+  
+  <div role="main" class="main-container container js-quickedit-main-content">
+    <div class="row">
+
+                              <div class="col-sm-12" role="heading">
+            
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--header.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+  <div class="region region-header">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-branding.html.twig
+   x block--system-branding-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system-branding-block.html.twig' -->
+      <a class="logo navbar-btn pull-left" href="/" title="Home" rel="home">
+      <img src="/themes/ahs/ahs_bootstrap/logo.svg" alt="Home" />
+    </a>
+        <a class="name navbar-brand" href="/" title="Home" rel="home">Awakened Heart Sangha</a>
+    
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system-branding-block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+
+
+          </div>
+              
+                              <aside class="col-sm-3" role="complementary">
+            
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--sidebar-first.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+  <div class="region region-sidebar-first">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-search.html.twig
+   * block--search-form-block.html.twig
+   x block--search.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/block/block--search.html.twig' -->
+<div class="search-block-form block block-search block-search-form-block" data-drupal-selector="search-block-form" id="block-ahs-bootstrap-search" role="search">
+  
+      <h2 class="visually-hidden">Search</h2>
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'form' -->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/form.html.twig' -->
+<form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'form_element' -->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/input/form-element.html.twig' -->
+<div class="form-item js-form-item form-type-search js-form-type-search form-item-keys js-form-item-keys form-no-label form-group">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'form_element_label' -->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/input/form-element-label.html.twig' -->
+<label for="edit-keys" class="control-label sr-only">Search</label>
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/input/form-element-label.html.twig' -->
+
+
+  
+  
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'input__search' -->
+<!-- FILE NAME SUGGESTIONS:
+   * input--search.html.twig
+   x input--form-control.html.twig
+   * input.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/input/input--form-control.html.twig' -->
+<div class="input-group"><input title="Enter the terms you wish to search for." data-drupal-selector="edit-keys" class="form-search form-control" placeholder="Search" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" data-toggle="tooltip" /><span class="input-group-btn"><!-- THEME DEBUG --><!-- THEME HOOK: 'input__submit' --><!-- FILE NAME SUGGESTIONS:
+   * input--submit.html.twig
+   x input--button.html.twig
+   * input.html.twig
+--><!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/input/input--button.html.twig' --><button type="submit" value="Search" class="button js-form-submit form-submit btn-primary btn icon-only" name=""><span class="sr-only">Search</span><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button><!-- END OUTPUT from 'themes/contrib/bootstrap/templates/input/input--button.html.twig' --></span></div>
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/input/input--form-control.html.twig' -->
+
+
+
+  
+  </div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/input/form-element.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'container' -->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/container.html.twig' -->
+<div class="form-actions form-group js-form-wrapper form-wrapper" data-drupal-selector="edit-actions" id="edit-actions"></div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/container.html.twig' -->
+
+
+</form>
+
+<!-- END OUTPUT from 'core/modules/system/templates/form.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/block/block--search.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+
+
+          </aside>
+              
+                  <section class="col-sm-9">
+
+                                      <div class="highlighted">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--highlighted.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+  <div class="region region-highlighted">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-messages.html.twig
+   x block--system-messages-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/block--system-messages-block.html.twig' -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'status_messages' -->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/status-messages.html.twig' -->
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/status-messages.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'core/modules/system/templates/block--system-messages-block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+
+</div>
+                  
+                
+                
+                
+                          <a id="main-content"></a>
+          
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--content.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+  <div class="region region-content">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-page-title.html.twig
+   x block--page-title-block.html.twig
+   * block--core.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/block/block--page-title-block.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'page_title' -->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/system/page-title.html.twig' -->
+  <h1 class="js-quickedit-page-title page-header">Access denied</h1>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/page-title.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/block/block--page-title-block.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--ahs-bootstrap-content.html.twig
+   * block--system-main-block.html.twig
+   x block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system.html.twig' -->
+  You are not authorized to access this page.
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/block/block--system.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/region.html.twig' -->
+
+
+              </section>
+
+                </div>
+  </div>
+
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/page.html.twig' -->
+
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"discuss\/306","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","bootstrap":{"forms_has_error_value_toggle":1,"modal_animation":1,"modal_backdrop":"true","modal_keyboard":1,"modal_show":1,"modal_size":"","popover_enabled":1,"popover_animation":1,"popover_container":"body","popover_content":"","popover_delay":"0","popover_html":0,"popover_placement":"right","popover_selector":"","popover_title":"","popover_trigger":"click","popover_trigger_autoclose":1,"tooltip_enabled":1,"tooltip_animation":1,"tooltip_container":"body","tooltip_delay":"0","tooltip_html":0,"tooltip_placement":"auto left","tooltip_selector":"","tooltip_trigger":"hover"},"ajaxTrustedUrl":{"\/search\/node":true},"user":{"uid":"416","permissionsHash":"2a4b09adf15eda6b9fcd41ff902a19d045ab6876fb34a0320f2f6ec7d552600c"}}</script>
+<script src="/core/assets/vendor/domready/ready.min.js?v=1.0.8"></script>
+
+<!--[if lte IE 9]>
+<script src="/core/assets/vendor/classList/classList.min.js?v=2014-12-13"></script>
+<![endif]-->
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=2.2.3"></script>
+<script src="/core/assets/vendor/underscore/underscore-min.js?v=1.8.3"></script>
+<script src="//cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=8.2.0-rc2"></script>
+<script src="/core/misc/drupal.js?v=8.2.0-rc2"></script>
+<script src="/themes/contrib/bootstrap/js/drupal.bootstrap.js?oe5uav"></script>
+<script src="/themes/contrib/bootstrap/js/attributes.js?oe5uav"></script>
+<script src="/themes/contrib/bootstrap/js/theme.js?v=3.3.5"></script>
+<script src="/core/misc/active-link.js?v=8.2.0-rc2"></script>
+<script src="/themes/contrib/bootstrap/js/popover.js?oe5uav"></script>
+<script src="/themes/contrib/bootstrap/js/tooltip.js?oe5uav"></script>
+
+  </body>
+</html>
+
+<!-- END OUTPUT from 'themes/contrib/bootstrap/templates/system/html.html.twig' -->

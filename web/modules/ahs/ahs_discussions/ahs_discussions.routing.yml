@@ -1,0 +1,7 @@
+entity.node.ahs_discuss:
+  path: '/discuss/{node}'
+  defaults:
+    _entity_form: node.ahs_discuss
+    _title: 'Discuss'
+  requirements:
+    _permission: 'edit any discussion content'
