@@ -27,6 +27,8 @@ default:
         drupal_root: './web'
       text:
         username_field: "E-mail"
+logs:
+  extensions:
     Lakion\Behat\MinkDebugExtension:
       directory: %paths.base%/features/logs
       screenshot: true
