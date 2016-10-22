@@ -57,6 +57,7 @@ function ahs_user_management_email_registration_name(UserInterface $account) {
   $firstName = Unicode::ucfirst(Unicode::strtolower($firstName));
   $lastName = Unicode::ucfirst(Unicode::strtolower($lastName));
   $userName = email_registration_cleanup_username($firstName . ' ' . $lastName);
+  $userName = str_replace("_", " ", $userName);
   return $userName;
 }
 
