@@ -25,6 +25,8 @@ default:
         alias: 'local'
       drupal: 
         drupal_root: './web'
+      text:
+        username_field: "E-mail"
     Lakion\Behat\MinkDebugExtension:
       directory: %paths.base%/features/logs
       screenshot: true
