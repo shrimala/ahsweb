@@ -17,7 +17,7 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      base_url: http://localhost:80
+      base_url: http://localhost:8080
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
@@ -27,10 +27,6 @@ default:
         drupal_root: './web'
       text:
         username_field: "E-mail"
-travis:
-  extensions:
-    Behat\MinkExtension:
-      base_url: http://localhost:8080
 logs:
   extensions:
     Lakion\Behat\MinkDebugExtension:
