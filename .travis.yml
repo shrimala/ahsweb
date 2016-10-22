@@ -28,10 +28,10 @@ before_script:
   - ./../vendor/bin/drush --yes config-import --skip-modules="$(echo $(cat ../modules.master) | tr " " "," )"
   - for module in `cat ../modules.dev`; do ./../vendor/bin/drush --yes pm-uninstall $module; done
   - for module in `cat ../modules.master`; do ./../vendor/bin/drush --yes pm-enable $module; done
-  - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
+  - ./../vendor/bin/drush runserver http://127.0.0.1:80 &
   - sleep 3
 script:
   - cd $TRAVIS_BUILD_DIR
-  - vendor/bin/behat  
+  - vendor/bin/behat
 notifications:
   email: false
