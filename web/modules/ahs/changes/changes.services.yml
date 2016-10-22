@@ -1,0 +1,4 @@
+services:
+  changes.comment_with_changes:
+    class: Drupal\changes\CommentWithChanges
+    arguments: []
