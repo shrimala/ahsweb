@@ -1,0 +1,25 @@
+uuid: e9ceee31-74df-4b16-88a5-00547670f981
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ahs_bootstrap
+_core:
+  default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
+id: ahs_bootstrap_branding
+theme: ahs_bootstrap
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

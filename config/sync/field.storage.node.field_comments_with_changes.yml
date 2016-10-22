@@ -1,0 +1,20 @@
+uuid: 6a88b354-7539-4a87-86b6-6f2f1f2db889
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - node
+id: node.field_comments_with_changes
+field_name: field_comments_with_changes
+entity_type: node
+type: comment
+settings:
+  comment_type: comments_with_changes
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

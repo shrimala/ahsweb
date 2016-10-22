@@ -1,0 +1,67 @@
+uuid: e2f365b0-4492-4def-94dc-7706edd77b0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.discussion.body
+    - field.field.node.discussion.field_ancestry
+    - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_children
+    - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_parents
+    - node.type.discussion
+  module:
+    - comment
+    - text
+    - user
+id: node.discussion.default
+targetEntityType: node
+bundle: discussion
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_ancestry:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_ancestry_plain:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_children:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_comments_with_changes:
+    weight: 106
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+  field_parents:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

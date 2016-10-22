@@ -1,0 +1,69 @@
+<?php
+
+use \Drupal\Component\Utility\Unicode;
+use \Drupal\User\UserInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function ahs_user_management_user_format_name_alter(&$name, $account) {
+    //$name = t('@displayName', [
+    //  '@displayName' => ahs_user_management_display_name($account),
+    //]);
+}
+
+function ahs_user_management_display_name($account) {
+  $user = \Drupal\user\Entity\User::load($account->id());
+  // Make sure that this user has all elements set.
+  $displayName = $user->field_display_name;
+  $firstName = $user->field_first_name->value;
+  $lastName = $user->field_last_name->value;
+  if (!empty($displayName)) {
+    $displayName = Unicode::ucfirst($displayName);
+  }
+  else {
+    if (
+      !empty($firstName) ||
+      !empty($lastName)
+    ) {
+      // We don't have display name, but have a first or last name.
+      if (is_null($firstName)) {
+        $firstName = '';
+      }
+      if (is_null($lastName)) {
+        $lastName = '';
+      }
+      // Make sure that we are using the correct casing for first/last names.
+      $firstName = Unicode::ucfirst(Unicode::strtolower($firstName));
+      $lastName = Unicode::ucfirst(Unicode::strtolower($lastName));
+      $displayName = trim($firstName . ' ' . $lastName);
+    }
+    else {
+      // We have neither display name, first name or last name.
+      $displayName = $account->getEmail();
+    }
+  }
+  return $displayName;
+}
+
+function ahs_user_management_email_registration_name(UserInterface $account) {
+  // Your hook implementation should ensure that the resulting string
+  // works as a username. You can use email_registration_cleanup_username($name)
+  // to clean up the name.
+  $user = \Drupal\user\Entity\User::load($account->id());
+  $firstName = $user->field_first_name->value;
+  $lastName = $user->field_last_name->value;
+  $firstName = Unicode::ucfirst(Unicode::strtolower($firstName));
+  $lastName = Unicode::ucfirst(Unicode::strtolower($lastName));
+  $userName = email_registration_cleanup_username($firstName . ' ' . $lastName);
+  return $userName;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ahs_user_management_form_user_form_alter(&$form, FormStateInterface $form_state) {
+  $form['account']['name']['#title'] = t('Sangha name');
+  $form['account']['name']['#description'] = "The name by which you are known in the Sangha, and throughout this website. Typically this will be your first name and last name, e.g. 'Fred Bloggs'. If you have a Buddhist name or nickname you are commonly known by in the Sangha, you can combine this with your last name, e.g. 'Yeshe Bloggs'.";
+}

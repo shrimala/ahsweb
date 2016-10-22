@@ -1,0 +1,27 @@
+uuid: f7cb653c-8694-4890-bd75-086a02db4254
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_children
+    - node.type.discussion
+id: node.discussion.field_children
+field_name: field_children
+entity_type: node
+bundle: discussion
+label: 'This discussion includes: '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: er_enhanced_views
+  handler_settings:
+    view:
+      view_name: discussions_autocomplete
+      display_name: entity_reference_1
+      arguments: {  }
+    auto_create: true
+    auto_create_bundle: discussion
+field_type: entity_reference

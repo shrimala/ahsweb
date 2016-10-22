@@ -1,0 +1,17 @@
+uuid: 44375e07-ecd7-4c3e-b1a9-433159bc491c
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Discussion
+type: discussion
+description: 'Discussions, plans, notes and tasks.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

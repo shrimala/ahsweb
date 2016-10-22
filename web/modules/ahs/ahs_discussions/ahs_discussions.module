@@ -5,8 +5,39 @@
  * Contains ahs_discussions hooks.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use \Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_install().
+ *
+ * Create a root discussion node, that is the ultimate ancestor.
+ */
+function ahs_discussions_install() {
+  // See if the root discussion already exists
+  $query = \Drupal::entityQuery('node')
+    ->condition('title', 'Discuss')
+    ->condition('type', 'discussion');
+  $nids = $query->execute();
+  if (empty($nids)) {
+    // It does not, so create it
+    $node = Node::create([
+      'type' => 'discussion',
+      'title' => 'Discuss',
+      'uid' => 1,
+      'status' => 1,
+      'body' => ['The root discussion. This is a placeholder that acts as a parent for top-level discussions, and should never be viewed by end users. If you read this, please file a bug report and explain what steps you followed that brought you here.'],
+      // Disable pathauto 'Generate automatic URL alias'
+      // and use an alternative alias, so that we can use
+      // the URL '/discuss' for something else.
+      'path' => ['pathauto' => FALSE, 'alias' => '/discuss/root'],
+    ]);
+    $node->save();
+  }
+}
+
 
 /**
  * Implements hook_node_update().
@@ -78,14 +109,15 @@ function ahs_discussions_editor_js_settings_alter(array &$settings) {
  */
 function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$form_state) {
   // Remove the menu settings
-  $form['menu'] = array('#type'=>'value');
+  //$form['menu']['#access']=FALSE;
   // Remove the delete button
-  $form['actions']['delete'] = array();
+  $form['actions']['delete']['#access'] = FALSE;
 
   // If there is no referenced parent, fake a 'Discuss' pseudo-breadcrumb
   // This is necessary because usually this root pseudo-breadcrumb comes
   // from the node--discuss--ahs-ancestry template used for the ahs_ancestry
   // view mode of the referenced parent entity.
+  /*
   if ($form['field_parents']['widget']['#max_delta'] === 0) {
     $discussPath = Url::fromRoute('view.discussions.page_1')->toString();
     $preview= [
@@ -100,7 +132,10 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
     ];
     $form['field_parents']['widget']['0']['#prefix'] = '<div class="er-enhanced-new er-enhanced-previewing ahs-newonly">';
   }
+  */
 
+  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
+  $form['field_parents']['widget']['0']['target_id']['#required_error'] = t('Please choose a discussion that this is part of.');
 }
 
 /**
@@ -119,13 +154,3 @@ function ahs_discussions_module_implements_alter(&$implementations, $hook) {
     }
   }
 }
-
-// display widget for comments
-// autocomplete ancestry
-// new local environment, better synced to platform
-// theme
-// templates for display modes:
-//  - child preview: title
-// - child autocomplete: ancestry, title
-//  - parents preview: ancestry, title
-// - parents autocomplete: ancestry, title

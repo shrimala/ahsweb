@@ -18,7 +18,6 @@ Feature: Sessions archive
       | session3        | 2005-10-01 13:00:23 |
       | session 4       | 2005-10-01 13:00:00 |
       | session, and 5  | 2005-10-01 13:00:00 |
-    Then I break
     When I visit "archive/sessions/2005/12/30/1300/session1"
     When I visit "archive/sessions/2005/10/01/1105/session2"
     When I visit "archive/sessions/2005/10/01/1300/session3"

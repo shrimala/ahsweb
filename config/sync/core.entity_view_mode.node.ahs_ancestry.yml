@@ -1,0 +1,10 @@
+uuid: 9deb1b67-be30-497b-a086-eabfd6b35f5a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.ahs_ancestry
+label: Ancestry
+targetEntityType: node
+cache: true

@@ -1,0 +1,33 @@
+uuid: 07bc0648-eef0-4d3e-b8ea-13f15c831270
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comments_with_changes
+    - field.field.comment.comments_with_changes.comment_body
+    - field.field.comment.comments_with_changes.field_changes
+  module:
+    - changes
+    - text
+id: comment.comments_with_changes.default
+targetEntityType: comment
+bundle: comments_with_changes
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_changes:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: changes
+  links:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

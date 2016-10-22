@@ -18,8 +18,8 @@ class NodeRedirectController extends NodeViewController {
     // Redirect to the edit path on the discussion type
     if ($node->getType() == 'discussion') {
       $url = Url::fromRoute('entity.node.ahs_discuss', ['node' => $node->id()]);
-      //return parent::view($node, $view_mode, $langcode);
-      return new RedirectResponse($url->toString());
+      return \Drupal::service('entity.form_builder')->getForm($node, 'ahs_discuss');
+      //return new RedirectResponse($url->toString());
     }
     // Otherwise, fall back to the parent route controller.
     else {

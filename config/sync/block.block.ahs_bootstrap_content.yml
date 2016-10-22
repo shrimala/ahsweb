@@ -1,0 +1,22 @@
+uuid: a972c7bd-9a00-4b6a-9d56-1bc458767144
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ahs_bootstrap
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: ahs_bootstrap_content
+theme: ahs_bootstrap
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

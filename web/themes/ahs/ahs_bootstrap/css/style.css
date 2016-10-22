@@ -22,3 +22,115 @@
     display:none;
 }
 
+.field--name-field-parents ol.breadcrumb {
+    margin: 0px;
+    background:inherit;
+    padding: 0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents button.tabledrag-toggle-weight,
+form.node-discussion-ahs-discuss-form .field--name-field-children button.tabledrag-toggle-weight {
+    display:none;
+}
+
+.field--name-field-parents .er-enhanced-preview.form-group,
+.field--name-field-children .er-enhanced-preview.form-group,
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table {
+    margin-bottom: 0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table td,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table td{
+    padding: 5px;
+    border:none;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table th,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table th{
+    padding: 0px;
+    border:none;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table article p{
+    margin: 0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table tr,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table tr{
+    background:inherit;
+}
+
+/*
+form.node-discussion-ahs-discuss-form button.field-add-more-submit {
+    color:transparent;
+    width:2.5em;
+    background-color: lightgrey;
+    border-color: lightgrey;
+}
+
+form.node-discussion-ahs-discuss-form button.field-add-more-submit:before {
+    content: "\271A";
+    color:dimgrey;
+    width:1em;
+    float:left;
+    text-align:center;
+}
+*/
+
+.field--name-field-changes .panel {
+    border:none;
+}
+.field--name-field-changes .panel-heading {
+    background-color:inherit;
+    border:none;
+}
+.field--name-field-changes .panel-heading a{
+    font-size:inherit;
+}
+
+.field--name-field-changes table.diff td{
+    border:none;
+}
+.field--name-field-changes table.diff tr {
+    background:inherit;
+}
+.field--name-field-changes table.diff td.field-name{
+    width:1%;
+    white-space:nowrap;
+}
+.field--name-field-changes table.diff td.field-name:after{
+    content:":";
+}
+
+form.node-discussion-ahs-discuss-form article.js-comment {
+    margin-bottom:20px;
+    padding-bottom:10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+form.node-discussion-ahs-discuss-form button.form-submit.button--primary {
+    margin-top:20px;
+}
+
+form.node-discussion-ahs-discuss-form {
+    max-width:700px;
+    margin:auto;
+}
+
+form.node-discussion-ahs-discuss-form .field-label,
+form.node-discussion-ahs-discuss-form .control-label{
+    fonts-size:80%;
+    font-weight:normal;
+}
+/*
+.er-enhanced-hideui a.er-enhanced-edit {
+    display:none;
+}
+.er-enhanced-hideui:hover a.er-enhanced-edit {
+    display:block;
+}
+.er-enhanced-hideui:hover table.field-multiple-table tr{
+    background-color:#FBFBFB;
+}
+*/

@@ -13,42 +13,42 @@ Feature: Discussions ER enhanced widgets for parents & children
       | title       | field_children          |
       | child1     | grandchild1, grandchild2 |
     Given "discussion" content:
-      | title       | field_children |
-      | parent1     | child1, child2  |
+      | title       | field_children | field_parents |
+      | parent1     | child1, child2 | Discuss       |
     Given "discussion" content:
-      | title       | field_children |
-      | parent2     | child1         |
+      | title       | field_children | field_parents |
+      | parent2     | child1         | Discuss       |
 
   Scenario: Navigate between parents, children and grandchildren
-    When I visit "discuss/parent1/child1"
+    When I visit "/discuss/parent1/child1"
     Then I should see "Discuss" displayed from the "field_parents" field
     And I should see "parent1" displayed from the "field_parents" field
     And I should see "parent2" displayed from the "field_parents" field
     And I should see "grandchild1" displayed from the "field_children" field
     And I should see "grandchild2" displayed from the "field_children" field
     When I click "parent1"
-    Then I am on "discuss/parent1"
+    Then I am visiting "/discuss/parent1"
     And I should see "child1" displayed from the "field_children" field
     And I should see "child2" displayed from the "field_children" field
     And I should see "Discuss" displayed from the "field_parents" field
     When I click "child1"
-    Then I am on "discuss/child1"
+    Then I am visiting "/discuss/parent1/child1"
     When I click "grandchild1"
-    Then I am on "discuss/parent1/child1/grandchild1"
+    Then I am visiting "/discuss/parent1/child1/grandchild1"
     And I should see "Discuss" displayed from the "field_parents" field
     And I should see "parent1" displayed from the "field_parents" field
     And I should see "child1" displayed from the "field_parents" field
     When I click "child1"
-    Then I am on "discuss/child1"
+    Then I am visiting "/discuss/parent1/child1"
     When I click "grandchild1"
-    Then I am on "discuss/parent1/child1/grandchild1"
+    Then I am visiting "/discuss/parent1/child1/grandchild1"
     When I click "parent1"
-    Then I am on "discuss/parent1"
+    Then I am visiting "/discuss/parent1"
     When I click "child1"
-    Then I am on "discuss/child1"
+    Then I am visiting "/discuss/parent1/child1"
     When I click "parent2"
-    Then I am on "discuss/parent2"
+    Then I am visiting "/discuss/parent2"
     When I click "child1"
-    Then I am on "discuss/child1"
+    Then I am visiting "/discuss/parent1/child1"
     When I click "grandchild2"
-    Then I am on "discuss/parent1/child1/grandchild2"
+    Then I am visiting "/discuss/parent1/child1/grandchild2"

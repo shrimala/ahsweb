@@ -1,13 +1,11 @@
-.er-enhanced-hideui .field-label {
-    display:none;
-}
 .er-enhanced-hideui .field-multiple-drag {
     display:none;
 }
 .er-enhanced-hideui .field-add-more-submit {
     display:none;
 }
-.er-enhanced-hideui .tabledrag-toggle-weight-wrapper {
+.er-enhanced-hideui .tabledrag-toggle-weight-wrapper,
+.er-enhanced-hideui .tabledrag-toggle-weight {
     display:none;
 }
 .er-enhanced-hideui .er-enhanced-new {
@@ -15,4 +13,10 @@
 }
 .er-enhanced-hideui a.er-enhanced-remove {
     display:none;
+}
+span.er-enhanced-edit {
+    display:none;
+}
+span.er-enhanced-edit.er-enhanced-hideui {
+    display:inline;
 }

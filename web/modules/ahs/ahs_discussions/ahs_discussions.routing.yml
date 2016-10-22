@@ -1,7 +1,7 @@
 entity.node.ahs_discuss:
-  path: '/discuss/{node}'
+  path: '/discuss/add'
   defaults:
-    _entity_form: node.ahs_discuss
-    _title: 'Discuss'
+    _controller: '\Drupal\ahs_discussions\Controller\DiscussionAddController::Add'
+    _title: 'Start a new discussion'
   requirements:
-    _permission: 'edit any discussion content'
+    _node_add_access: 'node:discussion'

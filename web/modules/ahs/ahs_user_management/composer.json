@@ -1,7 +1,7 @@
 {
-  "name": "drupal/ahs_coments_block",
+  "name": "drupal/ahs_user_management",
   "type": "drupal-module",
-  "description": "Make node comments available as a block.",
+  "description": "Modify user registration, login, profile or display.",
   "keywords": ["Drupal"],
   "license": "GPL-2.0+",
   "minimum-stability": "dev",

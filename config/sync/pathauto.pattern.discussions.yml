@@ -1,0 +1,22 @@
+uuid: f3a849ba-6401-49b9-83ba-223f27a05b83
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: discussions
+label: Discussions
+type: 'canonical_entities:node'
+pattern: '[node:field_ancestry_plain]/[node:title]'
+selection_criteria:
+  5957709b-9882-438f-825b-f7b022e33c02:
+    id: node_type
+    bundles:
+      discussion: discussion
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 5957709b-9882-438f-825b-f7b022e33c02
+selection_logic: and
+weight: -5
+relationships: {  }

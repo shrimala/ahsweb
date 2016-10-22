@@ -1,0 +1,31 @@
+uuid: 26655794-bba3-474c-84a5-6e06fe60eb4b
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+  theme:
+    - ahs_bootstrap
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: ahs_bootstrap_local_tasks
+theme: ahs_bootstrap
+region: content
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      discussion: discussion
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'

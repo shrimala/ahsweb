@@ -148,24 +148,23 @@ class EntityReferenceAutocompleteEnhancedWidget extends EntityReferenceAutocompl
    * {@inheritdoc}
    */
   public function form(FieldItemListInterface $items, array &$form, FormStateInterface $form_state, $get_delta = NULL) {
-    //kint($form);
     $elements = parent::form($items, $form, $form_state);
-//kint($elements);
     // Add class to indicate preview is active.
     if ($this->getSetting('preview')) {
       $elements['#attributes']['class'][] = 'er-enhanced-previewing';
 
       // Add an Edit link if UI is hidden.
       if ($this->getSetting('preview_hide_ui')) {
+        /*
         $elements['er-enhanced-edit'] = [
           '#markup' => '<a class="er-enhanced-edit" style="border:1px solid red;display:none;" href="">' . t('Edit') . '</a>',
           '#visible' => FALSE,
         ];
+        */
         $elements['#attributes']['class'][] = 'er-enhanced-hideui-requested';
         $elements['#attached']['library'][] = 'ahs_er_enhanced/hideui';
       }
     }
-    //kint($elements);
     return $elements;
   }
 

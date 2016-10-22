@@ -1,0 +1,73 @@
+uuid: 70b17a70-5ed9-47dd-a643-855d94d5df2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.ahs_discuss
+    - field.field.node.discussion.body
+    - field.field.node.discussion.field_ancestry
+    - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_children
+    - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_parents
+    - node.type.discussion
+  module:
+    - ahs_display_widget
+    - ahs_er_enhanced
+    - text
+id: node.discussion.ahs_discuss
+targetEntityType: node
+bundle: discussion
+mode: ahs_discuss
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_children:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: 'Pick or create a narrower discussion that is part of this one.'
+      preview: '1'
+      preview_view_mode: teaser
+      preview_hide_ui: '1'
+    third_party_settings: {  }
+    type: ahs_entity_reference_autocomplete_enhanced
+  field_comments_with_changes:
+    type: ahs_display
+    weight: 4
+    settings:
+      view_mode: Default
+    third_party_settings: {  }
+  field_parents:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: '150'
+      placeholder: 'Pick a broader discussion that includes this one.'
+      preview: '1'
+      preview_view_mode: ahs_ancestry
+      preview_hide_ui: '1'
+    third_party_settings: {  }
+    type: ahs_entity_reference_autocomplete_enhanced
+  title:
+    type: string_textfield
+    weight: 1
+    settings:
+      size: 150
+      placeholder: 'The subject of this discussion'
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_ancestry: true
+  field_ancestry_plain: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

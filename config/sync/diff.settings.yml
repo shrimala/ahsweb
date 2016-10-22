@@ -1,0 +1,21 @@
+general_settings:
+  radio_behavior: simple
+  context_lines_leading: 1
+  context_lines_trailing: 1
+  revision_pager_limit: 50
+  layout_plugins:
+    visual_inline:
+      enabled: true
+      weight: 0
+    split_fields:
+      enabled: true
+      weight: 1
+    unified_fields:
+      enabled: true
+      weight: 2
+    inline_fields:
+      enabled: true
+      weight: 5
+  visual_inline_theme: standard
+_core:
+  default_config_hash: 7Ao0KqKOcfOHpV0oTEH-mnS_318lwvX-QVbjh2OfX34

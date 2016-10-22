@@ -50,13 +50,46 @@ class Ancestry {
         $newAncestry = $newFirstParent->field_ancestry->getValue();
         // Append parent to parent's ancestry
         $newAncestry[] = ["target_id" => $newFirstParent->id()];
-        $discussion->field_ancestry = $newAncestry;
+        if (!$this->withinAncestry($discussion, $newAncestry)) {
+          $discussion->field_ancestry = $newAncestry;
+        }
       }
     // Update the ancestry_plain field as well.
     $discussion->field_ancestry_plain = $this->makePlain($discussion->field_ancestry);
     }
 
     return $discussion;
+  }
+
+  /**
+   * Update ancestry field of any child that has this as its first parent.
+   *
+   * @var \Drupal\Core\Entity\EntityInterface $discussion
+   *    A discussion node that may have had its ancestry updating.
+   */
+  public function updateChildrensAncestry(ContentEntityInterface $discussion) {
+    // If own ancestry has changed, update children's ancestry.
+    $newAncestry = $discussion->field_ancestry->getValue();
+    $oldAncestry = empty($discussion->original) ? NULL : $discussion->original->field_ancestry->getValue();
+    if ($newAncestry !== $oldAncestry) {
+      $children = $discussion->field_children->referencedEntities();
+      $childAncestry = $newAncestry;
+      $childAncestry[] = ["target_id" => $discussion->id()];
+      foreach ($children as $child) {
+        // Only update children's ancestry if they are a discussion.
+        if ($child->bundle() == 'discussion') {
+          // Only update children's ancestry if this is their first parent.
+          if ($child->field_parents->entity->id() === $discussion->id()) {
+            // Only update children's ancestry if child is not already included.
+            if (!$this->withinAncestry($child, $childAncestry)) {
+              $child->field_ancestry = $childAncestry;
+              $child->field_ancestry_plain = $this->makePlain($child->field_ancestry);
+              $child->save();
+            }
+          }
+        }
+      }
+    }
   }
 
   /**
@@ -77,32 +110,23 @@ class Ancestry {
     }
     return $plainEntities;
   }
-  
+
   /**
-   * Update ancestry field of any child that has this as its first parent.
+   * Detect whether an entity is already reference within an ancestry ER array.
    *
-   * @var \Drupal\Core\Entity\EntityInterface $discussion
-   *    A discussion node that may have had its ancestry updating.
+   * @var \Drupal\Core\Entity\ContentEntityInterface $discussion
+   *    A discussion node entity.
+   * @var array $ancestry
+   *    A discussion node entity, coming from field_ancestry->getValue().
    */
-  public function updateChildrensAncestry(ContentEntityInterface $discussion) {
-    // If own ancestry has changed, update children's ancestry.
-    $newAncestry = $discussion->field_ancestry->getValue();
-    $oldAncestry = empty($discussion->original) ? NULL : $discussion->original->field_ancestry->getValue();
-    if ($newAncestry !== $oldAncestry) {
-      $children = $discussion->field_children->referencedEntities();
-      $childAncestry = $newAncestry;
-      $childAncestry[] = ["target_id" => $discussion->id()];
-      foreach ($children as $child) {
-        // Only update children's ancestry if they are a discussion.
-        if ($child->bundle() == 'discussion') {
-          // Only update children's ancestry if this is their first parent.
-          if ($child->field_parents->entity->id() === $discussion->id()) {
-            $child->field_ancestry = $childAncestry;
-            $child->save();
-          }
-        }
+  protected function withinAncestry(ContentEntityInterface $entity, $ancestry) {
+    $detected = FALSE;
+    foreach ($ancestry as $ancestor) {
+      if ($entity->id() == $ancestor['target_id']) {
+        $detected = TRUE;
       }
     }
+    return $detected;
   }
-  
+
 }

@@ -102,6 +102,8 @@ class DisplayWidget extends WidgetBase {
   public function form(FieldItemListInterface $items, array &$form, FormStateInterface $form_state, $get_delta = NULL) {
     $viewMode = $this->getSetting('view_mode');
     $display = $items->view($viewMode);
+
+    //return array('test' => ['#markup'=>'<p>test</p>', ]);
     return $display;
   }
 

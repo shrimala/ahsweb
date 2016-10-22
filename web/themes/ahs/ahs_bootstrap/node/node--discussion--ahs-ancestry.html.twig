@@ -66,16 +66,34 @@
  */
 #}
 
+{# Create an breadcrumb trail of the discussion ancestry for a particular parent
+using an HTML list, combining
+(1) a special link to the discussions overview page;
+(2) a link for all the ancestor discussions except the first, the root placeholder;
+(3) a link to the current parent discussion.
+#}
+
 <ol class="breadcrumb">
+  {# A list item that has a link built from a Drupal route,
+  to the view that is the discussions overview. #}
   <li>
     <a href="{{ path('view.discussions.page_1') }}">{{ 'Discuss'|t }}</a>
   </li>
 
+  {# For each field_ancestry value except the first, a list item showing that ancestor. #}
+  {% set isRoot = TRUE %}
   {% for key, item in content.field_ancestry if key|first != '#' %}
-    <li class="item-{{ key + 1 }}">{{ item }}</li>
+      {# If there are ancestors, this current parent is not the root, remember this. #}
+      {% set isRoot = FALSE %}
+      {% if not loop.first %}
+        <li class="item-{{ key }}">{{ item }}</li>
+      {% endif %}
   {% endfor %}
 
-  <li{{ title_attributes }}>
-    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-  </li>
+  {# A list item that has a link to this parent discussion, unless this parent is the root. #}
+  {% if not isRoot %}
+    <li{{ title_attributes }}>
+      <a href="{{ url }}">{{ label }}</a>
+    </li>
+  {% endif %}
 </ol>
