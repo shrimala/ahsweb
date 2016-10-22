@@ -47,7 +47,7 @@ class CommentWithChanges {
     }
 
     // Get last comment; can be null if no previous comments exist
-    $lastCommentValues = $entity->$comment['field_name']->getValue()[0];
+    $lastCommentValues = $entity->{$comment['field_name']}->getValue()[0];
     $lastComment = Comment::load($lastCommentValues['cid']);
     $lastSubject = NULL;
     if (!empty($lastComment)) {

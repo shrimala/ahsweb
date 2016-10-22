@@ -27,6 +27,10 @@ default:
         drupal_root: './web'
       text:
         username_field: "E-mail"
+travis:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://localhost:8080
 logs:
   extensions:
     Lakion\Behat\MinkDebugExtension:
