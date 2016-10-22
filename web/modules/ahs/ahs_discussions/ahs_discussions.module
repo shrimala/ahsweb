@@ -60,7 +60,11 @@ function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) 
  * and childrens reference on parent discussions.
  */
 function ahs_discussions_node_insert(\Drupal\Core\Entity\EntityInterface $node) {
-  if ($node->bundle() == 'discussion'){
+  if (
+    $node->bundle() == 'discussion' &&
+    $node->hasField('field_parents') &&
+    $node->hasField('field_children')
+  ) {
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
     \Drupal::service('ahs_discussions.ancestry')->updateChildrensAncestry($node);
