@@ -9,7 +9,7 @@ field_name: field_last_name
 entity_type: user
 type: string
 settings:
-  max_length: 15
+  max_length: 35
   is_ascii: false
   case_sensitive: false
 module: core
