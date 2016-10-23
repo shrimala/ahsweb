@@ -59,6 +59,15 @@ class DiscussionForm extends ContentEntityForm {
     //$form['#attached']['library'][] = 'ahs_discussions/revision_log';
     //$form['comment'] = $node->field_kbk->view(array('type' => 'some_formatter'));
 
+    // Access is denied to the comments field
+    // for user who are not administrators. This is because
+    // this is technically the node edit form where comments are
+    // normally administered not displayed, and so the 'administer comments'
+    // permission is being used not the 'access comments' permission.
+    $user = \Drupal::currentUser();
+    if ($user->hasPermission('access comments')) {
+      $form['field_comments_with_changes']['#access'] = TRUE;
+    }
     return $form;
   }
 
