@@ -19,3 +19,4 @@ web/sites/simpletest
 web/web
 web/sites/default/settings.local.php
 web/web.config
+web/sites/development.services.yml
