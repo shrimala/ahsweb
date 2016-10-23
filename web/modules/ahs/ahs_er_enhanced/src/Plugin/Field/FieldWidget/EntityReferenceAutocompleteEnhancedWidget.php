@@ -32,6 +32,7 @@ class EntityReferenceAutocompleteEnhancedWidget extends EntityReferenceAutocompl
       'preview' => FALSE,
       'preview_view_mode' => 'Default',
       'preview_hide_ui' => FALSE,
+      'preview_empty_message' => t('No items have been referenced.'),
     ) + parent::defaultSettings();
   }
 
@@ -66,12 +67,24 @@ class EntityReferenceAutocompleteEnhancedWidget extends EntityReferenceAutocompl
 
     $element['preview_hide_ui'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Hide UI?'),
+      '#title' => t('Hide UI'),
       '#default_value' => $this->getSetting('preview_hide_ui'),
       '#description' => t('Hide controls for adding new items and reordering or removing existing items.'),
       '#states' => [
         'visible' => [
           ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][preview]"]' => ['checked' => TRUE],
+        ],
+      ],
+    );
+
+    $element['preview_empty_message'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Text if empty'),
+      '#default_value' => $this->getSetting('preview_empty_message'),
+      '#description' => t('A message that will be displayed if the field has no data. Leave empty to show no message.'),
+      '#states' => [
+        'visible' => [
+          ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][preview_hide_ui]"]' => ['checked' => TRUE],
         ],
       ],
     );
@@ -161,8 +174,16 @@ class EntityReferenceAutocompleteEnhancedWidget extends EntityReferenceAutocompl
           '#visible' => FALSE,
         ];
         */
+        if ((count($items) < 2) && !empty($this->getSetting('preview_empty_message'))) {
+          $elements['er-enhanced-empty-message'] = [
+            '#markup' => '<p class="er-enhanced-empty-message">' . $this->getSetting('preview_empty_message') . '</p>',
+            //'#visible' => FALSE,
+          ];
+        }
+
         $elements['#attributes']['class'][] = 'er-enhanced-hideui-requested';
         $elements['#attached']['library'][] = 'ahs_er_enhanced/hideui';
+        //$elements['#attached']['drupalSettings']['ahs_er_enhanced']['hideui']['preview_empty_message'] = $this->getSetting('preview_empty_message');
       }
     }
     return $elements;

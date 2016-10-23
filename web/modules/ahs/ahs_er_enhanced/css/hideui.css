@@ -20,3 +20,9 @@ span.er-enhanced-edit {
 span.er-enhanced-edit.er-enhanced-hideui {
     display:inline;
 }
+.er-enhanced-empty-message {
+    display:none;
+}
+.er-enhanced-hideui .er-enhanced-empty-message {
+    display:block;
+}

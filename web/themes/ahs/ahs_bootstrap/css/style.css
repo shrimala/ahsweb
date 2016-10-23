@@ -46,12 +46,13 @@ form.node-discussion-ahs-discuss-form .field--name-field-children table.field-mu
     border:none;
 }
 
+/*
 form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table th,
 form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table th{
     padding: 0px;
     border:none;
 }
-
+*/
 form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table article p{
     margin: 0px;
 }
