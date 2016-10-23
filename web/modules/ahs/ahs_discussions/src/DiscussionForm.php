@@ -135,10 +135,7 @@ class DiscussionForm extends ContentEntityForm {
       $this->logger('content')->notice('Updated @type "%title".', $context);
       drupal_set_message(t('Your changes to the discussion have been saved.'));
     }
-
-
-
-
+    
     // Redirect to discussion
     if ($node->id()) {
       $form_state->setValue('nid', $node->id());

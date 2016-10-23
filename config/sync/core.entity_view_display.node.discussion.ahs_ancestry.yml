@@ -28,5 +28,6 @@ hidden:
   body: true
   field_ancestry_plain: true
   field_children: true
+  field_comments_with_changes: true
   field_parents: true
   links: true
