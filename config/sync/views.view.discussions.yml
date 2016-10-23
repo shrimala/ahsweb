@@ -5,8 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - node.type.discussion
-    - node.type.email_teaching
-    - node.type.event
   module:
     - node
     - user
@@ -145,8 +143,6 @@ display:
           operator: in
           value:
             discussion: discussion
-            email_teaching: email_teaching
-            event: event
           group: 1
           exposed: false
           expose:
