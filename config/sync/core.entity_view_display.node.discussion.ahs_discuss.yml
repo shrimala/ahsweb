@@ -1,9 +1,10 @@
-uuid: e2f365b0-4492-4def-94dc-7706edd77b0c
+uuid: 40278d98-4508-4f1e-a08f-526c3cd13887
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_display.comment.comments_with_changes.default
+    - core.entity_view_mode.node.ahs_discuss
     - field.field.node.discussion.body
     - field.field.node.discussion.field_ancestry
     - field.field.node.discussion.field_ancestry_plain
@@ -15,10 +16,10 @@ dependencies:
     - comment
     - text
     - user
-id: node.discussion.default
+id: node.discussion.ahs_discuss
 targetEntityType: node
 bundle: discussion
-mode: default
+mode: ahs_discuss
 content:
   body:
     label: hidden
@@ -43,9 +44,10 @@ content:
     weight: 103
     label: above
     settings:
-      link: true
+      view_mode: ahs_child
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
   field_comments_with_changes:
     weight: 106
     label: above
@@ -58,9 +60,10 @@ content:
     weight: 102
     label: above
     settings:
-      link: true
+      view_mode: ahs_ancestry
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
   links:
     weight: 100
     settings: {  }

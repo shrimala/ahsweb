@@ -92,7 +92,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '{{ field_ancestry_plain|replace({''/'': " / "}) }} / '
+            text: '{{ field_ancestry_plain|replace({''/'': " / "}) }}'
             make_link: false
             path: ''
             absolute: false

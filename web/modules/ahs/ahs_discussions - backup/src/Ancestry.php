@@ -114,14 +114,10 @@ class Ancestry {
     $plainEntities = '';
 
     foreach ($referencedEntities as $referencedEntity) {
-      //if ($plainEntities !== '') {
-       // $plainEntities .= '/';
-      //}
-      // It's important to add the slash even for single references,
-      // otherwise an ER views exact match is triggered for typed in entries,
-      // since a parentless entity's title field would be the same as its
-      // children's ancestry_plain field.
-      $plainEntities .= $referencedEntity->label() . '/';
+      if ($plainEntities !== '') {
+        $plainEntities .= '/';
+      }
+      $plainEntities .= $referencedEntity->label();
     }
     return $plainEntities;
   }

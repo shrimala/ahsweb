@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.discussion.field_ancestry
     - field.field.node.discussion.field_ancestry_plain
     - field.field.node.discussion.field_children
+    - field.field.node.discussion.field_comments_with_changes
     - field.field.node.discussion.field_parents
     - node.type.discussion
   module:

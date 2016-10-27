@@ -1,0 +1,14 @@
+{
+  "name": "drupal/ahs_discussions",
+  "type": "drupal-module",
+  "description": "Discussion features for AHS discussions",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/ahs_discussions",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/ahs_discussions",
+    "source": "http://cgit.drupalcode.org/ahs_discussions"
+  },
+  "require": { }
+}

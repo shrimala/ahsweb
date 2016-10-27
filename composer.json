@@ -31,7 +31,7 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.2.x@dev",
+        "drupal/core": "8.2.1",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "drupal/flysystem": "1.x-dev",
@@ -100,7 +100,7 @@
         "patches": {
             "drupal/core": {
                 "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch",
-                "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-7.patch"
+                "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-16.patch"
             }
         }
     },

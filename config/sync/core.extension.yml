@@ -1,8 +1,6 @@
 module:
   ahs_cer: 0
   ahs_discussions: 0
-  ahs_display_widget: 0
-  ahs_er_enhanced: 0
   ahs_user_management: 0
   automated_cron: 0
   block: 0

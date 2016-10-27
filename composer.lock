@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fa59a458e10fbe7702a924e43a92597a",
-    "content-hash": "7d7df637ce9b074eedb8af65efc8cfe5",
+    "hash": "8dabb7bfa3442cd079298f59964d2258",
+    "content-hash": "84e68725d949402a0b97775049a65580",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2148,7 +2148,7 @@
             "extra": {
                 "patches_applied": {
                     "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch",
-                    "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-7.patch"
+                    "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-16.patch"
                 }
             },
             "autoload": {
@@ -8007,7 +8007,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/core": 20,
         "drupal/flysystem": 20,
         "drupal/flysystem_dropbox": 20,
         "drupal/media_entity": 20,

@@ -1,0 +1,74 @@
+
+
+/* Hide field item editing controls*/
+.ahs-preview-hide-edit.form-group .ahs-preview-hide-edit div.form-item {
+    display:none;
+}
+.ahs-preview-hide-edit.form-group .ahs-preview-hide-edit-if-hideui div.form-item {
+    display:block;
+}
+/**/
+.ahs-preview-hide-edit.form-group .ahs-preview-hide-edit-if-hideui .ahs-preview-preview,
+.ahs-preview-hideui.ahs-preview-hide-edit.form-group .ahs-preview-hide-edit-if-hideui > div > div {
+    display:none;
+}
+.ahs-preview-hideui.ahs-preview-hide-edit.form-group .ahs-preview-hide-edit-if-hideui .ahs-preview-preview {
+    display:block;
+}
+
+/* Show/hide new field item controls*/
+.ahs-preview-hide-new-requested table.field-multiple-table > tbody > tr:last-child > td .ahs-preview-hide-edit div.form-item {
+    display:block;
+}
+.ahs-preview-hide-new table.field-multiple-table > tbody > tr:last-child td .ahs-preview-hide-edit div.form-item {
+    display:none;
+}
+.ahs-preview-hide-new .field-add-more-submit {
+    display:none;
+}
+table.field-multiple-table > tbody > tr:last-child > td a.ahs-preview-remove {
+    display:none;
+}
+
+
+/* Show the empty message only when new items are hidden */
+.ahs-preview-empty-message {
+    display:none;
+}
+.ahs-preview-hide-new .ahs-preview-empty-message {
+    display:block;
+}
+
+/* Hide controls for reordering field items*/
+.ahs-preview-hide-move .field-multiple-drag {
+    display:none;
+}
+.ahs-preview-hide-move .tabledrag-toggle-weight-wrapper,
+.ahs-preview-hide-move .tabledrag-toggle-weight {
+    display:none;
+}
+
+
+/* Hide controls for removing field items */
+.ahs-preview-hide-remove a.ahs-preview-remove {
+    display:none;
+}
+
+/* Style the Edit link that unhides UI elements */
+.ahs-preview-hideui-requested {
+    position:relative;
+}
+.btn.ahs-preview-edit {
+    display:none;
+    position:absolute;
+    left:-45px;
+    top:0px;
+}
+.ahs-preview-hideui .btn.ahs-preview-edit {
+    display:inline;
+}
+
+.ahs-preview-hide-edit-if-hideui .ahs-preview-preview {
+    float:none;
+}
+

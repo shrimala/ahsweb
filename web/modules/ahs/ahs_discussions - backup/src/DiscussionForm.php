@@ -68,35 +68,6 @@ class DiscussionForm extends ContentEntityForm {
     if ($user->hasPermission('access comments')) {
       $form['field_comments_with_changes']['#access'] = TRUE;
     }
-
-    // Adjust the UI for parents and children fields.
-    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-edit';
-    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-edit';
-    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
-    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
-    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
-    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
-    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-remove-requested';
-    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-remove-requested';
-    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
-    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
-    $form['field_parents']['#attached']['library'][] = 'ahs_discussions/hideui';
-    $form['field_children']['#attached']['library'][] = 'ahs_discussions/hideui';
-
-    $form['body']['#attributes']['class'][] = 'ahs-preview-hide-edit';
-    $form['body']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
-    $form['body']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
-    $form['body']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
-    $form['body']['#attached']['library'][] = 'ahs_discussions/hideui';
-
-    //if ($this->getEntity()->field_top_level_category == FALSE) {}
-  //  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
-   // $form['field_parents']['widget']['0']['target_id']['#required_error'] = t('Please choose a discussion that this is part of.');
-/*
-    $form['field_children']['ahs_preview_empty_message'] = [
-      '#markup' => '<p class="ahs-preview-empty-message">No discussions have been included yet.</p>',
-    ];
-*/
     return $form;
   }
 
@@ -157,24 +128,10 @@ class DiscussionForm extends ContentEntityForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
     $node = $this->entity;
-
-    // Add a comment if the user entered one on the form
-    $hasComment = !empty($form_state->getValue('comment')['value']);
-    if ($hasComment) {
-      $comment = [
-        'comment_type' => 'comments_with_changes',
-        'field_name' => 'field_comments_with_changes',
-        'comment_body' => $form_state->getValue('comment'),
-      ];
-      \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $node);
-      drupal_set_message(t('Your comment has been shared.'));
-    }
-    //$this->addComment($form, $form_state, $insert, $update);
-
     $insert = $node->isNew();
     $update = $node->isNewRevision();
     $node->save();
+    $this->addComment($form, $form_state, $insert, $update);
 
     // Produce messages and logs
     $node_link = $node->link($this->t('View'));
@@ -187,7 +144,7 @@ class DiscussionForm extends ContentEntityForm {
       $this->logger('content')->notice('Updated @type "%title".', $context);
       drupal_set_message(t('Your changes to the discussion have been saved.'));
     }
-
+    
     // Redirect to discussion
     if ($node->id()) {
       $form_state->setValue('nid', $node->id());
@@ -240,11 +197,9 @@ class DiscussionForm extends ContentEntityForm {
       \Drupal::service('changes.comment_with_changes')
         ->add($comment, $this->entity, NULL, $this->entity->getRevisionId(), 'field_changes');
     }
-    elseif ($hasComment) {
-      //\Drupal::service('changes.comment_with_changes')
-      //  ->add($comment, $this->entity, $this->entity->oldRevisionId, $newRevisionId, 'field_changes');
+    elseif ($hasComment || $update) {
       \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $this->entity, NULL, NULL, NULL);
+        ->add($comment, $this->entity, $this->entity->oldRevisionId, $newRevisionId, 'field_changes');
     }
 
     if ($hasComment) {

@@ -1,0 +1,5 @@
+name: Discussions
+type: module
+description: Discussion features for AHS discussions
+core: 8.x
+package: AHS

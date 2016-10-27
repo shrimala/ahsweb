@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * @file
+ * Contains ahs_discussions hooks.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use \Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_install().
+ *
+ * Create a root discussion node, that is the ultimate ancestor.
+ */
+function ahs_discussions_install() {
+  // See if the root discussion already exists
+  $query = \Drupal::entityQuery('node')
+    ->condition('title', 'Discuss')
+    ->condition('type', 'discussion');
+  $nids = $query->execute();
+  if (empty($nids)) {
+    // It does not, so create it
+    $node = Node::create([
+      'type' => 'discussion',
+      'title' => 'Discuss',
+      'uid' => 1,
+      'status' => 1,
+      'body' => ['The root discussion. This is a placeholder that acts as a parent for top-level discussions, and should never be viewed by end users. If you read this, please file a bug report and explain what steps you followed that brought you here.'],
+      // Disable pathauto 'Generate automatic URL alias'
+      // and use an alternative alias, so that we can use
+      // the URL '/discuss' for something else.
+      'path' => ['pathauto' => FALSE, 'alias' => '/discuss/root'],
+    ]);
+    $node->save();
+  }
+}
+
+
+/**
+ * Implements hook_node_update().
+ * 
+ * Update the parents reference on child discussions,
+ * and childrens reference on parent discussions.
+ */
+function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) {
+  if ($node->bundle() == 'discussion'){
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
+    \Drupal::service('ahs_discussions.ancestry')->updateChildrensAncestry($node);
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Create a parents reference on child discussions,
+ * and childrens reference on parent discussions.
+ */
+function ahs_discussions_node_insert(\Drupal\Core\Entity\EntityInterface $node) {
+  if (
+    $node->bundle() == 'discussion' &&
+    $node->hasField('field_parents') &&
+    $node->hasField('field_children')
+  ) {
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
+    \Drupal::service('ahs_discussions.ancestry')->updateChildrensAncestry($node);
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Update the ancestry when the first parent is changed.
+ * No need to save or return modified entity.
+ */
+function ahs_discussions_node_presave(\Drupal\Core\Entity\EntityInterface $node) {
+  if ($node->bundle() == 'discussion'){
+    \Drupal::service('ahs_discussions.ancestry')->updateOwnAncestry($node);
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ *
+ * Registers operation class for ahs_discuss form mode.
+ */
+function ahs_discussions_entity_type_build(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  // Add a form for a custom node form without overriding the default
+  // node form. To override the default node form, use hook_entity_type_alter().
+  $entity_types['node']->setFormClass('ahs_discuss', 'Drupal\ahs_discussions\DiscussionForm');
+}
+
+/**
+ * Implements hook_editor_js_settings_alter
+ * 
+ * Allows the CKEditor on the body field to grow longer than the page length
+ */
+function ahs_discussions_editor_js_settings_alter(array &$settings) {
+  foreach ($settings['editor']['formats'] as $name => $value) {
+    $settings['editor']['formats'][$name]['editorSettings']['autoGrow_maxHeight'] = '10000';
+  }
+}
+
+/**
+ * Implements hook_form_alter_alter
+ * 
+ * Remove parts of the discussion form that are added by other modules
+ */
+function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$form_state) {
+  // Remove the menu settings
+  //$form['menu']['#access']=FALSE;
+  // Remove the delete button
+  $form['actions']['delete']['#access'] = FALSE;
+
+  // If there is no referenced parent, fake a 'Discuss' pseudo-breadcrumb
+  // This is necessary because usually this root pseudo-breadcrumb comes
+  // from the node--discuss--ahs-ancestry template used for the ahs_ancestry
+  // view mode of the referenced parent entity.
+  /*
+  if ($form['field_parents']['widget']['#max_delta'] === 0) {
+    $discussPath = Url::fromRoute('view.discussions.page_1')->toString();
+    $preview= [
+      '#markup' => '<ol class="breadcrumb"><li><a href="' . $discussPath . '">' . t('Discuss') . '</a></li>',
+    ];
+    $form['field_parents']['widget']['0']['preview_container'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['er-enhanced-preview'],
+      ],
+      'preview' => $preview,
+    ];
+    $form['field_parents']['widget']['0']['#prefix'] = '<div class="er-enhanced-new er-enhanced-previewing ahs-newonly">';
+  }
+  */
+
+  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
+  $form['field_parents']['widget']['0']['target_id']['#required_error'] = t('Please choose a discussion that this is part of.');
+}
+
+/**
+ * Implements hook_module_implements_alter
+ * 
+ * Moves our hook ahs_discussions_form_node_discussion_ahs_discuss_form_alter
+ * so that it fires last and can undo the work of other modules.
+ */
+function ahs_discussions_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'form_alter') {
+    // Move our form alter to the end, to give it priority over menu module's.
+    if (isset($implementations['ahs_discussions'])) {
+      $group = $implementations['ahs_discussions'];
+      unset($implementations['ahs_discussions']);
+      $implementations['ahs_discussions'] = $group;
+    }
+  }
+}

@@ -12,8 +12,8 @@ dependencies:
     - field.field.node.discussion.field_parents
     - node.type.discussion
   module:
-    - ahs_display_widget
-    - ahs_er_enhanced
+    - ahs_discussions
+    - comment
     - text
 id: node.discussion.ahs_discuss
 targetEntityType: node
@@ -32,30 +32,23 @@ content:
     weight: 2
     settings:
       match_operator: CONTAINS
-      size: '60'
+      size: 60
       placeholder: 'Pick or create a narrower discussion that is part of this one.'
-      preview: '1'
-      preview_view_mode: teaser
-      preview_hide_ui: '1'
     third_party_settings: {  }
-    type: ahs_entity_reference_autocomplete_enhanced
+    type: ahs_entity_reference_with_views_autocreate
   field_comments_with_changes:
-    type: ahs_display
+    type: comment_default
     weight: 4
-    settings:
-      view_mode: Default
+    settings: {  }
     third_party_settings: {  }
   field_parents:
     weight: 0
     settings:
       match_operator: CONTAINS
-      size: '150'
+      size: 150
       placeholder: 'Pick a broader discussion that includes this one.'
-      preview: '1'
-      preview_view_mode: ahs_ancestry
-      preview_hide_ui: '1'
     third_party_settings: {  }
-    type: ahs_entity_reference_autocomplete_enhanced
+    type: entity_reference_autocomplete
   title:
     type: string_textfield
     weight: 1

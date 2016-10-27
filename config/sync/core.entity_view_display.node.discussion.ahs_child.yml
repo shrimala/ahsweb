@@ -1,9 +1,10 @@
-uuid: e2f365b0-4492-4def-94dc-7706edd77b0c
+uuid: fd85aa91-4696-4e69-9e35-7918ad7aab99
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_display.comment.comments_with_changes.default
+    - core.entity_view_mode.node.ahs_child
     - field.field.node.discussion.body
     - field.field.node.discussion.field_ancestry
     - field.field.node.discussion.field_ancestry_plain
@@ -15,10 +16,10 @@ dependencies:
     - comment
     - text
     - user
-id: node.discussion.default
+id: node.discussion.ahs_child
 targetEntityType: node
 bundle: discussion
-mode: default
+mode: ahs_child
 content:
   body:
     label: hidden
