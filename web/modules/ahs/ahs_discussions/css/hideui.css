@@ -30,12 +30,20 @@ table.field-multiple-table > tbody > tr:last-child > td a.ahs-preview-remove {
     display:none;
 }
 
-
-/* Show the empty message only when new items are hidden */
-.ahs-preview-empty-message {
+/* Show/hide whole new item row if not showing empty message*/
+.ahs-preview-hide-new table.field-multiple-table > tbody > tr:last-child {
     display:none;
 }
-.ahs-preview-hide-new .ahs-preview-empty-message {
+.ahs-preview-hide-new.ahs-preview-empty table.field-multiple-table > tbody > tr:last-child {
+    display:block;
+}
+
+
+/* Show the empty message only when new items are hidden */
+.ahs-preview-empty .ahs-preview-preview {
+    display:none;
+}
+.ahs-preview-hide-new.ahs-preview-empty .ahs-preview-preview {
     display:block;
 }
 

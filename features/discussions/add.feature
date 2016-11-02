@@ -10,15 +10,14 @@ Feature: Ancestry that shows a hierarchy based on first parents
   Scenario: Discussion is created
     When I visit "/discuss/add"
     And I fill in "title[0][value]" with "testtitle"
-    And I fill in "field_parents[0][target_id]" with "Discuss"
     And I press the "Save" button
     Then I am visiting "/discuss/testtitle"
     And the "title[0][value]" field should contain "testtitle"
 
   Scenario: Discussion is created, existing parents & children can be referenced
     Given "discussion" content:
-      | title      | field_parents |
-      | parent     | Discuss       |
+      | title      |
+      | parent     |
     Given a discussion content with the title "grandchild"
     When I visit "/discuss/add"
     When I fill in "title[0][value]" with "child"
@@ -37,7 +36,6 @@ Feature: Ancestry that shows a hierarchy based on first parents
   Scenario: Discussion is created, child is autocreated
     When I visit "/discuss/add"
     When I fill in "title[0][value]" with "testtitle"
-    And I fill in "field_parents[0][target_id]" with "Discuss"
     When I fill in "field_children[0][target_id]" with "addchildnotcleanedup"
     And I press the "Save" button
     Then I am visiting "/discuss/testtitle"

@@ -7,14 +7,14 @@ Feature: Ancestry that shows a hierarchy based on first parents
   Background:
     Given I am logged in as an "authenticated user"
     Given "discussion" content:
-      | title        | field_parents |
-      | grandparent1 | Discuss       |
+      | title        |
+      | grandparent1 |
     Given "discussion" content:
-      | title        | field_parents |
-      | grandparent2 | Discuss       |
+      | title        |
+      | grandparent2 |
     Given "discussion" content:
-      | title        | field_parents |
-      | grandparent3 | Discuss       |
+      | title        |
+      | grandparent3 |
     Given "discussion" content:
       | title       | field_parents |
       | parent1     | grandparent1  |
@@ -36,7 +36,7 @@ Feature: Ancestry that shows a hierarchy based on first parents
 
   Scenario: Ancestry is created
     When I visit "/discuss/grandparent1/parent1/child1/grandchild1"
-    Then I should see "Discuss" displayed from the "field_parents" field
+    Then I should see "Home" displayed from the "field_parents" field
     And I should see "grandparent1" displayed from the "field_parents" field
     And I should see "parent1" displayed from the "field_parents" field
     And I should see "child1" displayed from the "field_parents" field
@@ -46,7 +46,7 @@ Feature: Ancestry that shows a hierarchy based on first parents
     And I fill in "field_parents[0][target_id]" with "parent2"
     And I press the "Save" button
     When I visit "/discuss/grandparent2/parent2/child1/grandchild1"
-    Then I should see "Discuss" displayed from the "field_parents" field
+    Then I should see "Home" displayed from the "field_parents" field
     And I should see "grandparent2" displayed from the "field_parents" field
     And I should see "parent2" displayed from the "field_parents" field
     And I should see "child1" displayed from the "field_parents" field
@@ -59,7 +59,7 @@ Feature: Ancestry that shows a hierarchy based on first parents
     And I fill in "field_parents[1][target_id]" with "grandparent3"
     And I press the "Save" button
     When I visit "/discuss/grandparent1/parent1/child1/grandchild1"
-    Then I should see "Discuss" displayed from the "field_parents" field
+    Then I should see "Home" displayed from the "field_parents" field
     And I should see "grandparent1" displayed from the "field_parents" field
     And I should see "parent1" displayed from the "field_parents" field
     And I should see "child1" displayed from the "field_parents" field
@@ -71,7 +71,7 @@ Feature: Ancestry that shows a hierarchy based on first parents
     And I press the "Save" button
     And I fill in "field_parents[1][target_id]" with "parent2"
     When I visit "/discuss/grandparent1/parent1/child1/grandchild1"
-    Then I should see "Discuss" displayed from the "field_parents" field
+    Then I should see "Home" displayed from the "field_parents" field
     And I should see "grandparent1" displayed from the "field_parents" field
     And I should see "parent1" displayed from the "field_parents" field
     And I should see "child1" displayed from the "field_parents" field

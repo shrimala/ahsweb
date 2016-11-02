@@ -9,8 +9,8 @@ Feature: Ancestry that shows a hierarchy based on first parents
 
   Scenario: Autocomplete typed in exact matches work
     Given "discussion" content:
-      | title   | field_parents |
-      | parent  | Discuss       |
+      | title   |
+      | parent  |
     Given "discussion" content:
       | title   | field_parents |
       | dog     | parent        |

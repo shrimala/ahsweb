@@ -44,6 +44,13 @@ form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-mul
 form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table td{
     padding: 5px;
     border:none;
+    padding-left:0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table th,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table th {
+    border:none;
+    display:none;
 }
 
 /*
@@ -63,14 +70,14 @@ form.node-discussion-ahs-discuss-form .field--name-field-children table.field-mu
 }
 
 /*
-form.node-discussion-ahs-discuss-form button.field-add-more-submit {
+form.node-discussion-ahs-discuss-form .field-add-more-submit {
     color:transparent;
     width:2.5em;
     background-color: lightgrey;
     border-color: lightgrey;
 }
 
-form.node-discussion-ahs-discuss-form button.field-add-more-submit:before {
+form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
     content: "\271A";
     color:dimgrey;
     width:1em;
@@ -81,13 +88,16 @@ form.node-discussion-ahs-discuss-form button.field-add-more-submit:before {
 
 .field--name-field-changes .panel {
     border:none;
+    box-shadow:none;
 }
 .field--name-field-changes .panel-heading {
     background-color:inherit;
     border:none;
 }
-.field--name-field-changes .panel-heading a{
+.field--name-field-changes .panel-heading a.panel-title{
     font-size:inherit;
+    color: #23527c;
+    padding-left:0px;
 }
 
 .field--name-field-changes table.diff td{
@@ -105,9 +115,9 @@ form.node-discussion-ahs-discuss-form button.field-add-more-submit:before {
 }
 
 form.node-discussion-ahs-discuss-form article.js-comment {
-    margin-bottom:20px;
-    padding-bottom:10px;
-    border-bottom: 1px solid lightgrey;
+    margin-top:20px;
+    padding-top:10px;
+    border-top: 1px solid lightgrey;
 }
 
 form.node-discussion-ahs-discuss-form button.form-submit.button--primary {
@@ -119,11 +129,40 @@ form.node-discussion-ahs-discuss-form {
     margin:auto;
 }
 
+
 form.node-discussion-ahs-discuss-form .field-label,
 form.node-discussion-ahs-discuss-form .control-label{
-    fonts-size:80%;
     font-weight:normal;
 }
+
+form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes {
+    overflow:auto;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-title label {
+    display:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-title input {
+    border:none;
+    box-shadow:none;
+    font-size:150%;
+    padding-left:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-title input:hover,
+form.node-discussion-ahs-discuss-form .field--name-title input:focus{
+    border:1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    padding-left:5px;
+}
+
+form.node-discussion-ahs-discuss-form .ahs-preview-preview.form-group {
+    margin-bottom:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-children .table-responsive,
+form.node-discussion-ahs-discuss-form .field--name-field-parents .table-responsive{
+    overflow-x:visible;
+}
+
 /*
 .er-enhanced-hideui a.er-enhanced-edit {
     display:none;

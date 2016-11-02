@@ -16,8 +16,8 @@ Feature: Discussions Corresponding Entity References
   Scenario: Creating a parent with a child reference sets the parent reference on the child
     Given a discussion content with the title "child1"
     Given "discussion" content:
-      | title       | field_children | field_parents |
-      | parent1     | child1         | Discuss       |
+      | title       | field_children |
+      | parent1     | child1         |
     When I am at "/admin/content"
     And I click "parent1"
     Then I should see "child1" displayed from the "field_children" field
@@ -28,8 +28,8 @@ Feature: Discussions Corresponding Entity References
     Given a discussion content with the title "child1"
     Given a discussion content with the title "child2"
     Given "discussion" content:
-      | title       | field_children | field_parents |
-      | parent1     | child1, child2 | Discuss       |
+      | title       | field_children |
+      | parent1     | child1, child2 |
     When I am at "/admin/content"
     When I click "parent1"
     Then I should see "child1" displayed from the "field_children" field
@@ -44,9 +44,9 @@ Feature: Discussions Corresponding Entity References
   Scenario: Creating a parent with a child reference sets the parent reference on the child even if it already has a parent
     Given a "discussion" content with the title "child1"
     Given "discussion" content:
-      | title       | field_children | field_parents |
-      | parent1     | child1         | Discuss       |
-      | parent2     | child1         | Discuss       |
+      | title       | field_children |
+      | parent1     | child1         |
+      | parent2     | child1         |
     When I am at "/admin/content"
     When I click "parent1"
     Then I should see "child1" displayed from the "field_children" field
@@ -61,22 +61,29 @@ Feature: Discussions Corresponding Entity References
   Scenario: Deleting a parent reference on the child deletes the child reference on the parent
     Given a discussion content with the title "child1"
     Given "discussion" content:
-      | title       | field_children | field_parents |
-      | parent1     | child1         | Discuss       |
+      | title       | field_children |
+      | parent1     | child1         |
+    Given "discussion" content:
+      | title       | field_children |
+      | parent2     | child1         |
     When I am at "/admin/content"
     When I click "child1"
-    And I fill in "field_parents[0][target_id]" with "Discuss"
+    And I empty the field "field_parents[0][target_id]"
     And I press the "Save" button
     Then I should not see "parent1" displayed from the "field_parents" field
+    Then I should see "parent2" displayed from the "field_parents" field
     When I am at "/admin/content"
     And I click "parent1"
     Then I should not see "child1" displayed from the "field_children" field
+    When I am at "/admin/content"
+    And I click "parent2"
+    Then I should see "child1" displayed from the "field_children" field
 
   Scenario: Deleting a child reference on the parent deletes the parent reference on the child
     Given a discussion content with the title "child1"
     Given "discussion" content:
-      | title       | field_children | field_parents |
-      | parent1     | child1         | Discuss       |
+      | title       | field_children |
+      | parent1     | child1         |
     When I am at "/admin/content"
     When I click "parent1"
     And I empty the field "field_children[0][target_id]"
@@ -90,8 +97,8 @@ Feature: Discussions Corresponding Entity References
     Given a discussion content with the title "child1"
     Given a discussion content with the title "child2"
     Given "discussion" content:
-      | title       | field_children | field_parents |
-      | parent1     | child1         | Discuss       |
+      | title       | field_children |
+      | parent1     | child1         |
     When I am at "/admin/content"
     When I click "parent1"
     When I fill in "field_children[0][target_id]" with "child2"
@@ -114,9 +121,9 @@ Feature: Discussions Corresponding Entity References
 
   Scenario: Updating a child with a new parent reference sets the child reference on the parent
     Given "discussion" content:
-      | title       | field_parents |
-      | parent1     | Discuss       |
-      | parent2     | Discuss       |
+      | title       |
+      | parent1     |
+      | parent2     |
     Given "discussion" content:
       | title      | field_parents   |
       | child1     | parent1         |
@@ -137,8 +144,8 @@ Feature: Discussions Corresponding Entity References
 
   Scenario: Can add a parent reference when there aren't any
     Given "discussion" content:
-      | title       | field_parents |
-      | parent1     | Discuss       |
+      | title       |
+      | parent1     |
     Given a discussion content with the title "child1"
     When I am at "/admin/content"
     When I click "child1"

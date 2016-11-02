@@ -99,25 +99,28 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
      if (!empty($item->right_rid)) {
        $storage = \Drupal::entityManager()->getStorage($entityType);
        $right_revision = $storage->loadRevision($item->right_rid);
+       $entity = $storage->load($right_revision->id());
        if (!empty($item->left_rid)) {
          // We have a pair of revisions
          $left_revision = $storage->loadRevision($item->left_rid);
-         $entity = $storage->load($right_revision->id());
          $plugin = $this->diffLayoutManager->createInstance('changes');
          $elements[$delta] = $plugin->build($left_revision, $right_revision, $entity);
        }
        else {
-         // We have just a single revision
-         // Trigger exclusion of interactive items like on preview.
-         $right_revision->in_preview = TRUE;
-         $view_builder = \Drupal::entityTypeManager()
-           ->getViewBuilder($entityType);
-         $original = $view_builder->view($right_revision);
-         $elements[$delta] = [
-           '#type' => 'details',
-           '#title' => 'Show original version',
-         ];
-         $elements[$delta]['original'] = $original;
+         // We have just a single revision, the original of this entity.
+         // Only link to it if it is not the current revision.
+         if ($item->right_rid !== $entity->getRevisionId()) {
+           // Trigger exclusion of interactive items like on preview.
+           $right_revision->in_preview = TRUE;
+           $view_builder = \Drupal::entityTypeManager()
+             ->getViewBuilder($entityType);
+           $original = $view_builder->view($right_revision);
+           $elements[$delta] = [
+             '#type' => 'details',
+             '#title' => 'Original version',
+           ];
+           $elements[$delta]['original'] = $original;
+         }
        }
      }
     }

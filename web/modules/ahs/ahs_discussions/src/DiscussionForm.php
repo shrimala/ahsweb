@@ -39,6 +39,7 @@ class DiscussionForm extends ContentEntityForm {
       '#allowed_formats' => ['basic_html',],
       '#rows' => 4, // doesn't work with WYSIWYG
       '#weight' => '100',
+      '#attributes' => ['placeholder' => t('Make a comment'),], // doesn't work with WYSIWYG
     );
 
     //$form['menu']['#access']=FALSE;
@@ -88,6 +89,18 @@ class DiscussionForm extends ContentEntityForm {
     $form['body']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
     $form['body']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
     $form['body']['#attached']['library'][] = 'ahs_discussions/hideui';
+
+    if ($form['field_children']['widget']['#max_delta'] === 0) {
+      $form['field_children']['widget'][0]['preview_container']['preview'] = ['#markup' => "<p>No other discussions have been included yet as part of this one.</p>",];
+      $form['field_children']['#attributes']['class'][] = 'ahs-preview-empty';
+    }
+    if ($form['field_parents']['widget']['#max_delta'] === 0) {
+      $form['field_parents']['widget'][0]['preview_container']['preview'] = ['#markup' => '<ol class="breadcrumb"><li><a href="/">Home</a></li></ol>',];
+      $form['field_parents']['#attributes']['class'][] = 'ahs-preview-empty';
+    }
+    if ($form['body']['widget'][0]['preview_container']['preview'] == array()) {
+      $form['body']['widget'][0]['preview_container']['preview'] = ['#markup' => '<p>No discussion summary has been created yet.</p>',];
+    }
 
     //if ($this->getEntity()->field_top_level_category == FALSE) {}
   //  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
