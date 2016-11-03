@@ -27,19 +27,6 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
-  field_ancestry:
-    weight: 104
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_ancestry_plain:
-    weight: 105
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
   field_children:
     weight: 103
     label: above
@@ -68,4 +55,6 @@ content:
     weight: 100
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_ancestry: true
+  field_ancestry_plain: true

@@ -9,7 +9,7 @@ id: node.discussion.field_parents
 field_name: field_parents
 entity_type: node
 bundle: discussion
-label: 'This discussion is part of:'
+label: 'This discussion is part of'
 description: ''
 required: false
 translatable: false

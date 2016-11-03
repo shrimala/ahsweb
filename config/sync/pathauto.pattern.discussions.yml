@@ -7,16 +7,16 @@ dependencies:
 id: discussions
 label: Discussions
 type: 'canonical_entities:node'
-pattern: '[node:field_ancestry_plain][node:title]'
+pattern: 'discuss/[node:field_ancestry_plain][node:title]'
 selection_criteria:
-  10ecc5b8-2117-4564-99a3-170fd1dc77d2:
+  6b2b0aed-4f9b-4ec4-8f65-17e9662d6663:
     id: node_type
     bundles:
       discussion: discussion
     negate: false
     context_mapping:
       node: node
-    uuid: 10ecc5b8-2117-4564-99a3-170fd1dc77d2
+    uuid: 6b2b0aed-4f9b-4ec4-8f65-17e9662d6663
 selection_logic: and
 weight: -5
 relationships: {  }
