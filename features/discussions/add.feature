@@ -36,10 +36,10 @@ Feature: Ancestry that shows a hierarchy based on first parents
   Scenario: Discussion is created, child is autocreated
     When I visit "/discuss/add"
     When I fill in "title[0][value]" with "testtitle"
-    When I fill in "field_children[0][target_id]" with "addchildnotcleanedup"
+    When I fill in "field_children[0][target_id]" with "child"
     And I press the "Save" button
     Then I am visiting "/discuss/testtitle"
-    And I should see "addchildnotcleanedup" displayed from the "field_children" field
-    When I click "addchildnotcleanedup"
-    Then I am visiting "/discuss/testtitle/addchildnotcleanedup"
+    And I should see "child" displayed from the "field_children" field
+    When I click "child"
+    Then I am visiting "/discuss/testtitle/child"
 

@@ -1,0 +1,11 @@
+.view-id-discussions .field--name-title {
+    display:block;
+    font-size:120%;
+}
+.view-id-discussions .field--name-field-ancestry-plain {
+    color:#333;
+    text-decoration:none;
+}
+.view-id-discussions article {
+    margin-bottom:0.75em;
+}

@@ -52,7 +52,16 @@
         "drupal/bootstrap": "3.x-dev",
         "lakion/mink-debug-extension": "^1.2",
         "drupal/diff": "1.x-dev",
-        "drupal/email_registration": "1.x-dev"
+        "drupal/email_registration": "1.x-dev",
+        "drupal/block_visibility_groups": "^1.1",
+        "drupal/flag": "4.x-dev",
+        "drupal/imce": "^1.4",
+        "drupal/elfinder": "2.x-dev",
+        "drupal/editor_file": "^1.2",
+        "drupal/entity_embed": "1.x-dev",
+        "drupal/linkit": "5.0-beta3",
+        "drupal/page_manager": "1.x-dev",
+        "drupal/panels": "3.0-beta5"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -101,6 +110,9 @@
             "drupal/core": {
                 "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch",
                 "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-16.patch"
+            },
+            "drupal/panels": {
+                "Incorrect logic inside of StandardDisplayBuilder could lead to fatal error": "https://www.drupal.org/files/issues/panels-fatal_error_standard_dysplay_builder-2819235-19.patch"
             }
         }
     },

@@ -160,7 +160,7 @@ class changesDiffLayout extends DiffLayoutBase {
           $this->htmlDiff->setNewHtml($html_2);
           $this->htmlDiff->build();
           $final_diff[] = [
-            '#markup' => '<p>' . $this->htmlDiff->getDifference() . '</p>',
+            '#markup' => $this->htmlDiff->getDifference(),
           ];
         }
       }

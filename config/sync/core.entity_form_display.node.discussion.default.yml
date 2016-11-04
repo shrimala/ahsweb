@@ -6,9 +6,14 @@ dependencies:
     - field.field.node.discussion.body
     - field.field.node.discussion.field_ancestry
     - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_assigned
     - field.field.node.discussion.field_children
     - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_help_wanted
     - field.field.node.discussion.field_parents
+    - field.field.node.discussion.field_participants
+    - field.field.node.discussion.field_private
+    - field.field.node.discussion.field_top_level_category
     - node.type.discussion
   module:
     - comment
@@ -47,6 +52,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+  field_assigned:
+    weight: 40
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_children:
     weight: 36
     settings:
@@ -60,6 +73,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: comment_default
+  field_help_wanted:
+    weight: 41
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   field_parents:
     weight: 32
     settings:
@@ -68,6 +87,28 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_participants:
+    weight: 43
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_private:
+    weight: 42
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_top_level_category:
+    weight: 39
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  flag:
+    weight: 10
   path:
     type: path
     weight: 30

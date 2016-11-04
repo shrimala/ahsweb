@@ -1,4 +1,6 @@
 global-styling:
   css:
     theme:
-      css/style.css: {}
+      css/discussionForm.css: {}
+      css/students.css: {}
+      css/global.css: {}

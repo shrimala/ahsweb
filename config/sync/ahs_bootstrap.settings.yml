@@ -1,17 +1,19 @@
 favicon:
   mimetype: image/vnd.microsoft.icon
   path: ''
-  url: 'http://localhost/themes/contrib/bootstrap/favicon.ico'
+  url: 'http://localhost/themes/ahs/ahs_bootstrap/favicon.ico'
   use_default: true
+schemas:
+  bootstrap: 8000
+  ahs_bootstrap: 8000
 features:
   comment_user_picture: true
   comment_user_verification: true
   favicon: true
   node_user_picture: true
 logo:
-  path: ''
+  path: themes/ahs/ahs_bootstrap/logo.png
   url: ''
-  use_default: true
-schemas:
-  bootstrap: 8000
-  ahs_bootstrap: 8000
+  use_default: false
+table_responsive: '-1'
+table: ''

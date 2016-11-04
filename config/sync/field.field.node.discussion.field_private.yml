@@ -1,0 +1,23 @@
+uuid: 86d53cbc-779e-4650-92cd-2751861b0841
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_private
+    - node.type.discussion
+id: node.discussion.field_private
+field_name: field_private
+entity_type: node
+bundle: discussion
+label: Private
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

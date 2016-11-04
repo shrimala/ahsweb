@@ -57,6 +57,14 @@ class DiscussionForm extends ContentEntityForm {
         ];
     */
 
+    $form['promote']['#states'] = [
+      'visible' => [
+        'input[name="field_help_wanted[value]"]' => [
+          'checked' => TRUE,
+        ],
+      ],
+    ];
+
     //$form['#attached']['library'][] = 'ahs_discussions/revision_log';
     //$form['comment'] = $node->field_kbk->view(array('type' => 'some_formatter'));
 
@@ -134,15 +142,21 @@ class DiscussionForm extends ContentEntityForm {
     // Build the node object from the submitted values.
     parent::submitForm($form, $form_state);
 
+    // If not a new entity, get the original
+    $original = NULL;
+    if ($this->entity->id()) {
+      $storage = \Drupal::entityManager()->getStorage('node');
+      $original = $storage->loadUnchanged($this->entity->id());
+    }
+    $this->addUserAsParticipant($original);
+
     // Set new revision if needed
     if ($this->entity->id()) {
-      $this->setNewRevision($form_state);
+      $this->setNewRevision($form_state, $original);
     }
   }
 
-  protected function setNewRevision(FormStateInterface $form_state) {
-    $storage = \Drupal::entityManager()->getStorage('node');
-    $original = $storage->loadUnchanged($this->entity->id());
+  protected function setNewRevision(FormStateInterface $form_state, $original) {
 
     // Get a list of fields to evaluate for changes
     $entityManager = \Drupal::service('entity.manager');
@@ -185,6 +199,7 @@ class DiscussionForm extends ContentEntityForm {
     }
     //$this->addComment($form, $form_state, $insert, $update);
 
+
     $insert = $node->isNew();
     $update = $node->isNewRevision();
     $node->save();
@@ -225,6 +240,30 @@ class DiscussionForm extends ContentEntityForm {
 
   }
 
+  protected function addUserAsParticipant($original) {
+    $currentUser = \Drupal::currentUser()->id();
+    if (!is_null($original)) {
+      foreach ($original->field_participants->getValue() as $originalParticipants) {
+        // If the current user was originally listed, then he is either
+        // still there, or was deliberately removed.
+        if ($originalParticipants['target_id'] === $currentUser) {
+          return;
+        }
+      }
+    }
+    foreach ($this->entity->field_participants->getValue() as $participant) {
+      // If the current user is listed, then no need to do anything.
+      if ($participant['target_id'] === $currentUser) {
+        return;
+      }
+    }
+    // If not originally or currently listed, add the current user.
+    $values = $this->entity->field_participants->getValue();
+    $values[]= ['target_id' => $currentUser];
+    $this->entity->field_participants->setValue($values);
+  }
+
+  // deprecated, remove
   protected function addComment (array $form, FormStateInterface $form_state, $insert, $update) {
     $hasComment = !empty($form_state->getValue('comment')['value']);
     $newRevisionId = NULL;

@@ -1,0 +1,30 @@
+uuid: 664d0707-f399-46cf-92a5-7246460376a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.discussions
+  module:
+    - block_visibility_groups
+    - views
+  theme:
+    - ahs_bootstrap
+id: views_block__discussions_block_2
+theme: ahs_bootstrap
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:discussions-block_2'
+settings:
+  id: 'views_block:discussions-block_2'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }

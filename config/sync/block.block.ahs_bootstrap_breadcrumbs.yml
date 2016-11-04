@@ -12,7 +12,7 @@ _core:
 id: ahs_bootstrap_breadcrumbs
 theme: ahs_bootstrap
 region: navigation
-weight: -6
+weight: -4
 provider: null
 plugin: system_breadcrumb_block
 settings:

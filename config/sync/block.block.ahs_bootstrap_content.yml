@@ -11,7 +11,7 @@ _core:
 id: ahs_bootstrap_content
 theme: ahs_bootstrap
 region: content
-weight: -1
+weight: -4
 provider: null
 plugin: system_main_block
 settings:
