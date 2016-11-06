@@ -25,6 +25,21 @@
         {
             "type": "vcs",
             "url": "https://github.com/shrimala/file_checker"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drmonty/chosen",
+                "version": "1.6.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/harvesthq/chosen/releases/download/v1.6.1/chosen_v1.6.1.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                }
+            }
         }
     ],
     "require": {
@@ -54,14 +69,13 @@
         "drupal/diff": "1.x-dev",
         "drupal/email_registration": "1.x-dev",
         "drupal/block_visibility_groups": "^1.1",
-        "drupal/flag": "4.x-dev",
         "drupal/imce": "^1.4",
         "drupal/elfinder": "2.x-dev",
         "drupal/editor_file": "^1.2",
         "drupal/entity_embed": "1.x-dev",
         "drupal/linkit": "5.0-beta3",
-        "drupal/page_manager": "1.x-dev",
-        "drupal/panels": "3.0-beta5"
+        "drupal/chosen": "dev-2.x@dev",
+        "drupal/field_group": "1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -98,6 +112,9 @@
             ],
             "web/profiles/contrib/{$name}": [
                 "type:drupal-profile"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
             ],
             "web/themes/contrib/{$name}": [
                 "type:drupal-theme"

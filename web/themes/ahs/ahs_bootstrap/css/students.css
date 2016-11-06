@@ -1,11 +1,25 @@
 .view-id-discussions .field--name-title {
-    display:block;
-    font-size:120%;
+    line-height:1;
 }
 .view-id-discussions .field--name-field-ancestry-plain {
     color:#333;
+    line-height:1;
     text-decoration:none;
+    display:block;
 }
 .view-id-discussions article {
     margin-bottom:0.75em;
+}
+
+.view-id-discussions .views-row .glyphicon {
+    color:#aaaaaa;
+    top:2px;
+}
+
+section.block-views-blockdiscussions-help .views-row .glyphicon-bullhorn,
+section.block-views-blockdiscussions-help .views-row .glyphicon-bell {
+    display:none;
+}
+section.block-views-blockdiscussions-tasks .views-row .glyphicon-pushpin {
+    display:none;
 }

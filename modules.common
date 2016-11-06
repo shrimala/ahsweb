@@ -15,7 +15,10 @@ email_registration
 ahs_bootstrap
 ahs_cer
 ahs_discussions
-ahs_display_widget
-ahs_er_enhanced
 ahs_user_management
 changes
+field_group
+chosen_field
+diff
+block_visibility_groups
+

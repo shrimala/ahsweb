@@ -78,7 +78,9 @@ form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
 .field--name-field-changes .panel-heading a.panel-title{
     font-size:inherit;
     color: #23527c;
-    padding-left:0px;
+    padding:0;
+    display:inline-block;
+    border-bottom:1px dashed;
 }
 
 .field--name-field-changes table.diff td{
@@ -157,3 +159,26 @@ form.node-discussion-ahs-discuss-form .field--name-field-parents .table-responsi
     background-color:#FBFBFB;
 }
 */
+
+form.node-discussion-ahs-discuss-form .field-group-details.panel,
+form.node-discussion-ahs-discuss-form .field-group-details.panel .panel-heading {
+    border:none;
+    box-shadow:none;
+    background:inherit;
+}
+form.node-discussion-ahs-discuss-form .field-group-details .panel-title {
+    font-size:inherit;
+    color: #23527c;
+    padding:0px;
+    border-bottom: 1px dashed;
+    display:inline-block;
+}
+
+form.node-discussion-ahs-discuss-form.ahs-assigned .field-group-details a.panel-title:after {
+    content:' (Assigned)';
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-children .glyphicon{
+    color:#aaaaaa;
+    top:3px;
+}

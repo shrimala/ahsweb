@@ -110,6 +110,22 @@ class DiscussionForm extends ContentEntityForm {
       $form['body']['widget'][0]['preview_container']['preview'] = ['#markup' => '<p>No discussion summary has been created yet.</p>',];
     }
 
+    $form['field_participants']['widget']['#attributes']['data-placeholder'] = "Invite other people to this discussion";
+    $form['field_assigned']['widget']['#attributes']['data-placeholder'] = "Assign as a task to someone";
+
+    if ($this->entity->field_assigned->getValue()) {
+      $form['#attributes']['class'][] = "ahs-assigned";
+    }
+    if ($this->entity->field_private->value) {
+      $form['#attributes']['class'][] = "ahs-private";
+    }
+    if ($this->entity->field_help_wanted->value) {
+      $form['#attributes']['class'][] = "ahs-help-wanted";
+    }
+    if ($this->entity->promote->value) {
+      $form['#attributes']['class'][] = "ahs-promote";
+    }
+
     //if ($this->getEntity()->field_top_level_category == FALSE) {}
   //  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
    // $form['field_parents']['widget']['0']['target_id']['#required_error'] = t('Please choose a discussion that this is part of.');
