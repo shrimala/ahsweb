@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
+    - block_visibility_groups
     - ctools
+    - system
   theme:
     - ahs_bootstrap
 _core:
@@ -11,7 +13,7 @@ _core:
 id: ahs_bootstrap_local_tasks
 theme: ahs_bootstrap
 region: content
-weight: -5
+weight: -4
 provider: null
 plugin: local_tasks_block
 settings:
@@ -29,3 +31,13 @@ visibility:
     negate: true
     context_mapping:
       node: '@node.node_route_context:node'
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

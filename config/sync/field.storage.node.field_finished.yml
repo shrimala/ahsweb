@@ -1,0 +1,18 @@
+uuid: 260cfb10-1f7d-4703-b43c-d7c28ab8e12f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_finished
+field_name: field_finished
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

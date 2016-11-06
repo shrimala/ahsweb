@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - block_visibility_groups
     - system
   theme:
     - ahs_bootstrap
@@ -11,7 +12,7 @@ _core:
 id: ahs_bootstrap_page_title
 theme: ahs_bootstrap
 region: content
-weight: -7
+weight: -6
 provider: null
 plugin: page_title_block
 settings:
@@ -22,6 +23,11 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '/discuss/*'
+    pages: "/discuss/*\r\n<front>"
     negate: true
+    context_mapping: {  }
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
     context_mapping: {  }

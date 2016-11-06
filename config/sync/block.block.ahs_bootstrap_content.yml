@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - block_visibility_groups
     - system
   theme:
     - ahs_bootstrap
@@ -11,7 +12,7 @@ _core:
 id: ahs_bootstrap_content
 theme: ahs_bootstrap
 region: content
-weight: -4
+weight: -3
 provider: null
 plugin: system_main_block
 settings:
@@ -19,4 +20,14 @@ settings:
   label: 'Main page content'
   provider: system
   label_display: '0'
-visibility: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

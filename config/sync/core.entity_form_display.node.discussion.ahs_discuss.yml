@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.discussion.field_assigned
     - field.field.node.discussion.field_children
     - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_finished
     - field.field.node.discussion.field_help_wanted
     - field.field.node.discussion.field_parents
     - field.field.node.discussion.field_participants
@@ -18,8 +19,29 @@ dependencies:
     - node.type.discussion
   module:
     - ahs_discussions
+    - chosen_field
     - comment
+    - field_group
     - text
+third_party_settings:
+  field_group:
+    group_participation:
+      children:
+        - field_assigned
+        - field_participants
+        - field_private
+        - field_help_wanted
+        - promote
+        - field_finished
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Participation
 id: node.discussion.ahs_discuss
 targetEntityType: node
 bundle: discussion
@@ -27,19 +49,16 @@ mode: ahs_discuss
 content:
   body:
     type: text_textarea_with_summary
-    weight: 8
+    weight: 9
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
   field_assigned:
-    type: entity_reference_autocomplete
-    weight: 3
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: 'Assign to someone as a task'
+    type: chosen_select
+    weight: 4
+    settings: {  }
     third_party_settings: {  }
   field_children:
     weight: 2
@@ -51,12 +70,18 @@ content:
     type: ahs_entity_reference_with_views_autocreate
   field_comments_with_changes:
     type: comment_default
-    weight: 9
+    weight: 10
     settings: {  }
+    third_party_settings: {  }
+  field_finished:
+    type: boolean_checkbox
+    weight: 9
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_help_wanted:
     type: boolean_checkbox
-    weight: 6
+    weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
@@ -69,16 +94,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_participants:
-    type: entity_reference_autocomplete
-    weight: 4
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: 'Encourage someone to look at this'
+    type: chosen_select
+    weight: 5
+    settings: {  }
     third_party_settings: {  }
   field_private:
     type: boolean_checkbox
-    weight: 5
+    weight: 6
     settings:
       display_label: true
     third_party_settings: {  }
@@ -88,7 +110,7 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 7
+    weight: 8
     settings:
       display_label: true
     third_party_settings: {  }

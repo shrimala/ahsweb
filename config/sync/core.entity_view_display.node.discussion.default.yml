@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.discussion.field_assigned
     - field.field.node.discussion.field_children
     - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_finished
     - field.field.node.discussion.field_help_wanted
     - field.field.node.discussion.field_parents
     - field.field.node.discussion.field_participants
@@ -53,6 +54,15 @@ content:
       pager_id: 0
     third_party_settings: {  }
     type: comment_default
+  field_finished:
+    weight: 16
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
   field_help_wanted:
     weight: 13
     label: above

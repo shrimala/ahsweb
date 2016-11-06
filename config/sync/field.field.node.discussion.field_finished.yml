@@ -1,0 +1,23 @@
+uuid: 0897f7ea-f433-419e-98ee-89b6ba87b82c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_finished
+    - node.type.discussion
+id: node.discussion.field_finished
+field_name: field_finished
+entity_type: node
+bundle: discussion
+label: Finished
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

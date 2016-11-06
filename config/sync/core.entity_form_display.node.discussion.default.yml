@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.discussion.field_assigned
     - field.field.node.discussion.field_children
     - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_finished
     - field.field.node.discussion.field_help_wanted
     - field.field.node.discussion.field_parents
     - field.field.node.discussion.field_participants
@@ -73,6 +74,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: comment_default
+  field_finished:
+    weight: 44
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   field_help_wanted:
     weight: 41
     settings:

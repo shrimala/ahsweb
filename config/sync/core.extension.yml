@@ -8,6 +8,9 @@ module:
   block_visibility_groups: 0
   breakpoint: 0
   changes: 0
+  chosen: 0
+  chosen_field: 0
+  chosen_lib: 0
   ckeditor: 0
   color: 0
   comment: 0
@@ -26,18 +29,17 @@ module:
   entity: 0
   entity_reference_revisions: 0
   field: 0
+  field_group: 0
   field_ui: 0
   file: 0
   filefield_paths: 0
   filter: 0
-  flag: 0
   flysystem: 0
   flysystem_dropbox: 0
   help: 0
   history: 0
   image: 0
   kint: 0
-  layout_plugin: 0
   link: 0
   media_entity: 0
   media_entity_audio: 0
@@ -45,9 +47,6 @@ module:
   node: 0
   options: 0
   page_cache: 0
-  page_manager: 0
-  page_manager_ui: 0
-  panels: 0
   paragraphs: 0
   path: 0
   quickedit: 0
