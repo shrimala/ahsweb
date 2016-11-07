@@ -125,6 +125,9 @@ class DiscussionForm extends ContentEntityForm {
     if ($this->entity->promote->value) {
       $form['#attributes']['class'][] = "ahs-promote";
     }
+    if ($this->entity->field_finished->value) {
+      $form['#attributes']['class'][] = "ahs-finished";
+    }
 
     //if ($this->getEntity()->field_top_level_category == FALSE) {}
   //  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
