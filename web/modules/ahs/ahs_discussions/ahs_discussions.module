@@ -8,6 +8,9 @@
 use Drupal\Core\Url;
 use \Drupal\node\Entity\Node;
 use Drupal\comment\Entity\Comment;
+use \Drupal\node\NodeInterface;
+use \Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Implements hook_install().
@@ -318,3 +321,18 @@ function ahs_discussions_theme_suggestions_alter(array &$suggestions, array $var
 
 }
 */
+
+/**
+ * Implements hook_node_access
+ * Only allow users listed as participants to access a private discussion.
+ */
+function ahs_discussions_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  if( $node->bundle() === 'discussion' && $node->field_private->value){
+    $user = $account->id();
+    $participants = $ids = array_column($node->field_participants->getValue(), 'target_id');
+    return AccessResult::forbiddenIf(!in_array($user, $participants))->cachePerUser()->addCacheableDependency($node);
+  }
+  else {
+    return AccessResult::neutral();
+  }
+}
