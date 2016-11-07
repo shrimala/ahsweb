@@ -10,7 +10,7 @@ field_name: field_finished
 entity_type: node
 bundle: discussion
 label: Finished
-description: ''
+description: 'No more discussion here is needed.'
 required: false
 translatable: false
 default_value:

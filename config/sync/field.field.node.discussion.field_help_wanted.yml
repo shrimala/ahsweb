@@ -10,7 +10,7 @@ field_name: field_help_wanted
 entity_type: node
 bundle: discussion
 label: 'Help wanted'
-description: ''
+description: 'People are invited to help in this discussion. If it is also ''Promoted'' it will appear on the home page in the ''Help wanted'' section.'
 required: false
 translatable: false
 default_value:

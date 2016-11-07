@@ -10,7 +10,7 @@ field_name: field_private
 entity_type: node
 bundle: discussion
 label: Private
-description: ''
+description: 'Hide this discussion from everyone except the participants.'
 required: false
 translatable: false
 default_value:

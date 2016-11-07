@@ -10,7 +10,7 @@ field_name: field_participants
 entity_type: node
 bundle: discussion
 label: Participants
-description: ''
+description: 'This discussion will appear in the ''My discussions'' section on the home page, for anyone listed here. Add a specific person here to call this discussion to their attention. If you edit or comment on this discussion you are added here automatically.'
 required: false
 translatable: false
 default_value: {  }

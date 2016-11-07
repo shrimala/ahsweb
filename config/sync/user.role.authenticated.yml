@@ -25,3 +25,4 @@ permissions:
   14: 'access kint'
   15: 'change own username'
   16: 'access user profiles'
+  17: 'view own unpublished content'

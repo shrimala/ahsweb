@@ -75,7 +75,8 @@
         "drupal/entity_embed": "1.x-dev",
         "drupal/linkit": "5.0-beta3",
         "drupal/chosen": "dev-2.x@dev",
-        "drupal/field_group": "1.x-dev"
+        "drupal/field_group": "1.x-dev",
+        "drupal/r4032login": "1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",

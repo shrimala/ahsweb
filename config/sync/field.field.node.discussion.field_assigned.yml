@@ -9,8 +9,8 @@ id: node.discussion.field_assigned
 field_name: field_assigned
 entity_type: node
 bundle: discussion
-label: 'Assigned as a task to'
-description: ''
+label: Assigned
+description: 'Assigning this discussion as a task to someone indicates that they need to do something about it. It will show up on their home page under ''My tasks''. Once they have done what they need, they can unassign themselves.'
 required: false
 translatable: false
 default_value: {  }
