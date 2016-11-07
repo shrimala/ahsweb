@@ -28,7 +28,13 @@ content:
 hidden:
   body: true
   field_ancestry_plain: true
+  field_assigned: true
   field_children: true
   field_comments_with_changes: true
+  field_finished: true
+  field_help_wanted: true
   field_parents: true
+  field_participants: true
+  field_private: true
+  field_top_level_category: true
   links: true

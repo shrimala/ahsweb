@@ -58,3 +58,9 @@ content:
 hidden:
   field_ancestry: true
   field_ancestry_plain: true
+  field_assigned: true
+  field_finished: true
+  field_help_wanted: true
+  field_participants: true
+  field_private: true
+  field_top_level_category: true

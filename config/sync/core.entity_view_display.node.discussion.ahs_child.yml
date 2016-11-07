@@ -66,4 +66,10 @@ content:
     weight: 100
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_assigned: true
+  field_finished: true
+  field_help_wanted: true
+  field_participants: true
+  field_private: true
+  field_top_level_category: true
