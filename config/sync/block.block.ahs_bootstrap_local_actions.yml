@@ -12,7 +12,7 @@ _core:
 id: ahs_bootstrap_local_actions
 theme: ahs_bootstrap
 region: content
-weight: -5
+weight: -6
 provider: null
 plugin: local_actions_block
 settings:

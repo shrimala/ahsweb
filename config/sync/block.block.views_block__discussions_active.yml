@@ -1,4 +1,4 @@
-uuid: 69792d84-a166-4acd-a839-a4ff04790719
+uuid: 1866e41c-fcfa-4ffb-852b-73923b894978
 langcode: en
 status: true
 dependencies:
@@ -10,19 +10,19 @@ dependencies:
     - views
   theme:
     - ahs_bootstrap
-id: views_block__discussions_my_discussions
+id: views_block__discussions_active
 theme: ahs_bootstrap
 region: content
-weight: -1
+weight: 0
 provider: null
-plugin: 'views_block:discussions-my_discussions'
+plugin: 'views_block:discussions-active'
 settings:
-  id: 'views_block:discussions-my_discussions'
+  id: 'views_block:discussions-active'
   label: ''
   provider: views
   label_display: visible
   views_label: ''
-  items_per_page: '40'
+  items_per_page: none
 visibility:
   condition_group:
     id: condition_group

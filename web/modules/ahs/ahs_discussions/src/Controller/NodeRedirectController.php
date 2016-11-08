@@ -15,17 +15,26 @@ use Drupal\Core\Url;
 class NodeRedirectController extends NodeViewController {
 
   public function view(EntityInterface $node, $view_mode = 'full', $langcode = NULL) {
-    // Redirect to the edit path on the discussion type
+    // Redirect the discussion type
     if ($node->getType() == 'discussion') {
-      $url = Url::fromRoute('entity.node.ahs_discuss', ['node' => $node->id()]);
-      return \Drupal::service('entity.form_builder')->getForm($node, 'ahs_discuss');
-      //return new RedirectResponse($url->toString());
+      $user = $this->currentUser->id();
+      $participants = array_column($node->field_participants->getValue(), 'target_id');
+
+      // If it is a private discussion & the user is not a participant, block access.
+      if ($node->field_private->value && !in_array($user, $participants)) {
+        //$url = Url::fromRoute('entity.node.ahs_discuss', ['node' => $node->id()]);
+        //return new RedirectResponse($url->toString());
+        drupal_set_message(t('Sorry, this discussion is private and you are not listed as a participant.'), 'warning');
+        return array();
+      }
+      else {
+        return \Drupal::service('entity.form_builder')->getForm($node, 'ahs_discuss');
+      }
     }
     // Otherwise, fall back to the parent route controller.
     else {
       return parent::view($node, $view_mode, $langcode);
     }
   }
-
 
 }

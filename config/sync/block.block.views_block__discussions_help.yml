@@ -13,7 +13,7 @@ dependencies:
 id: views_block__discussions_help
 theme: ahs_bootstrap
 region: content
-weight: -2
+weight: -3
 provider: null
 plugin: 'views_block:discussions-help'
 settings:
