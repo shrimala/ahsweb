@@ -36,7 +36,7 @@ class CommentWithChanges {
     //expect array with keys mandatory keys
     // 'comment_type', 'field_name'
     // and optional keys 
-    // 'subject', 'comment_body' and 'uid'. 
+    // 'subject', 'comment_body' and 'uid'.
 
     // We omit to test comment_type is same current and last
     // also will blow up if new fields added
@@ -46,19 +46,33 @@ class CommentWithChanges {
       $comment['uid'] = \Drupal::currentUser()->id();
     }
 
-    // Get last comment; can be null if no previous comments exist
-    $lastCommentValues = $entity->{$comment['field_name']}->getValue()[0];
-    $lastComment = Comment::load($lastCommentValues['cid']);
+    // Get last comment; can be null if no previous comments exist.
+    // We cannot use the values of the last comment stored on the entity,
+    // as these are only updated when the entity is loaded.
     $lastSubject = NULL;
-    if (!empty($lastComment)) {
-      $lastSubject = $lastComment->getSubject();
+    $lastAuthor = NULL;
+    $lastTime = NULL;
+    $lastComment = NULL;
+    $lastCid = \Drupal::entityQuery('comment')
+      ->condition('entity_id', $entity->id())
+      ->condition('entity_type', $entity->getEntityTypeId())
+      ->sort('cid', 'DESC')
+      ->range(0,1)
+      ->execute();
+    $lastCid = reset($lastCid); // value of first element, or false if none.
+    if ($lastCid) {
+      $lastComment = Comment::load($lastCid);
+      if (!empty($lastComment)) {
+        $lastSubject = $lastComment->getSubject();
+        $lastAuthor = $lastComment->getOwnerId();
+        $lastTime = $lastComment->getChangedTime();
+      }
     }
-
     $this->setDefaultSubjectIfNeeded($comment);
 
     // Evaluate whether to update last comment or create new one
-    $hasLastSameAuthor = ($lastCommentValues['last_comment_uid'] === $comment['uid']);
-    $isLastWithinPeriod = ((REQUEST_TIME - $lastCommentValues['last_comment_timestamp']) < 30);
+    $hasLastSameAuthor = ($lastAuthor === $comment['uid']);
+    $isLastWithinPeriod = ((REQUEST_TIME - $lastTime) < 30);
     $isLastChangeRecord = ($lastSubject === 'Change record');
     $isNewChangeRecord = ($comment['subject'] === 'Change record');
     if ($lastComment && $hasLastSameAuthor && $isLastWithinPeriod && ($isLastChangeRecord || $isNewChangeRecord)) {
@@ -70,12 +84,10 @@ class CommentWithChanges {
   }
 
   protected function updateLast($comment, $oldRevisionId, $newRevisionId, $diffFieldName, $entity, CommentInterface $lastComment) {
-    $entityType = $entity->getEntityTypeId();
-
     // If there is a new revision of the host entity, update it on the comment
     if (!empty($newRevisionId)) {
       // If the last comment did not store changes, store the current revisions pair
-      if (empty($lastComment->$diffFieldName->entity_type)) {
+      if (empty($lastComment->$diffFieldName->right_rid)) {
         $lastComment->$diffFieldName->setValue([
           [
             'left_rid' => $oldRevisionId,
@@ -84,7 +96,7 @@ class CommentWithChanges {
         ]);
       }
       // If changes have already been stored, don't overwrite the older revision (left_rid)
-      elseif ($lastComment->$diffFieldName->entity_type === $entityType) {
+      else {
         $changes = $lastComment->$diffFieldName->getValue();
         $changes[0]['right_rid'] = $newRevisionId;
         $lastComment->$diffFieldName->setValue($changes);
@@ -109,7 +121,7 @@ class CommentWithChanges {
       }
     }
 
-      $lastComment->setCreatedTime(REQUEST_TIME);
+      $lastComment->setChangedTime(REQUEST_TIME);
       $lastComment->save();
   }
 
@@ -136,6 +148,7 @@ class CommentWithChanges {
 
     $comment = Comment::create($comment);
     $comment->setCreatedTime(REQUEST_TIME);
+    $comment->setChangedTime(REQUEST_TIME);
     $comment->save();
   }
 

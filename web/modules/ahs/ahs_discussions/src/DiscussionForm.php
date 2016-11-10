@@ -171,11 +171,11 @@ class DiscussionForm extends ContentEntityForm {
 
     // Set new revision if needed
     if ($this->entity->id()) {
-      $this->setNewRevision($form_state, $original);
+      $this->considerNewRevision($form_state, $original);
     }
   }
 
-  protected function setNewRevision(FormStateInterface $form_state, $original) {
+  protected function considerNewRevision(FormStateInterface $form_state, $original) {
 
     // Get a list of fields to evaluate for changes
     $entityManager = \Drupal::service('entity.manager');
@@ -183,6 +183,7 @@ class DiscussionForm extends ContentEntityForm {
     // Ignore the 'changed' property that has
     // already been updated in the parent ContentEntityForm
     unset($fields['changed']);
+    unset($fields['field_comments_with_changes']);
 
     // If any field has changed, create a new revision.
     foreach ($fields as $fieldName => $field) {

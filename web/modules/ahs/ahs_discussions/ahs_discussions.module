@@ -103,7 +103,7 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
       $comment = [
         'comment_type' => 'comments_with_changes',
         'field_name' => 'field_comments_with_changes',
-        'subject' => 'Change record',
+        'subject' => 'Discussion started',
         'comment_body' => [
           'value' => "<p>Started this discussion.</p>",
           'format' => "full_html",
@@ -149,11 +149,13 @@ function ahs_discussions_entity_type_build(array &$entity_types) {
  *
  * Allows the CKEditor on the body field to grow longer than the page length
  */
+/*
 function ahs_discussions_editor_js_settings_alter(array &$settings) {
   foreach ($settings['editor']['formats'] as $name => $value) {
     $settings['editor']['formats'][$name]['editorSettings']['autoGrow_maxHeight'] = '10000';
   }
 }
+*/
 
 /**
  * Implements hook_form_alter_alter
@@ -198,8 +200,8 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
  */
 function ahs_discussions_module_implements_alter(&$implementations, $hook) {
   if ($hook === 'entity_insert') {
-    // Move our entity insert hook to the end, so that comment can prepare the
-    // statistics table before we create a comment. See  D#2604518.
+    // Move our entity insert hook to the end, so that comment module can prepare
+    // the statistics table before we create a comment. See  D#2604518.
     // @todo switch back to hook_node_insert when Drupal issue is fixed.
     if (isset($implementations['ahs_discussions'])) {
       $group = $implementations['ahs_discussions'];
