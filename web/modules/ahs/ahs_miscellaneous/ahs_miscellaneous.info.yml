@@ -1,0 +1,5 @@
+name: Miscellaneous
+type: module
+description: Miscellaneous functionality for the Awakened Heart Sangha.
+core: 8.x
+package: AHS

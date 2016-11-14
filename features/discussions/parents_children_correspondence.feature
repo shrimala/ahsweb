@@ -17,149 +17,149 @@ Feature: Discussions Corresponding Entity References
     Given a discussion content with the title "child1"
     Given "discussion" content:
       | title       | field_children |
-      | parent1     | child1         |
+      | Parent1     | Child1         |
     When I am at "/admin/content"
-    And I click "parent1"
-    Then I should see "child1" displayed from the "field_children" field
-    When I click "child1"
-    Then I should see "parent1" displayed from the "field_parents" field
+    And I click "Parent1"
+    Then I should see "Child1" displayed from the "field_children" field
+    When I click "Child1"
+    Then I should see "Parent1" displayed from the "field_parents" field
 
   Scenario: Creating a parent with 2 child references sets the parent reference on both children
     Given a discussion content with the title "child1"
     Given a discussion content with the title "child2"
     Given "discussion" content:
       | title       | field_children |
-      | parent1     | child1, child2 |
+      | Parent1     | Child1, Child2 |
     When I am at "/admin/content"
-    When I click "parent1"
-    Then I should see "child1" displayed from the "field_children" field
-    When I click "child1"
-    Then I should see "parent1" displayed from the "field_parents" field
+    When I click "Parent1"
+    Then I should see "Child1" displayed from the "field_children" field
+    When I click "Child1"
+    Then I should see "Parent1" displayed from the "field_parents" field
     When I am at "/admin/content"
-    When I click "parent1"
-    Then I should see "child2" displayed from the "field_children" field
-    When I click "child2"
-    Then I should see "parent1" displayed from the "field_parents" field
+    When I click "Parent1"
+    Then I should see "Child2" displayed from the "field_children" field
+    When I click "Child2"
+    Then I should see "Parent1" displayed from the "field_parents" field
 
   Scenario: Creating a parent with a child reference sets the parent reference on the child even if it already has a parent
     Given a "discussion" content with the title "child1"
     Given "discussion" content:
       | title       | field_children |
-      | parent1     | child1         |
-      | parent2     | child1         |
+      | Parent1     | Child1         |
+      | Parent2     | Child1         |
     When I am at "/admin/content"
-    When I click "parent1"
-    Then I should see "child1" displayed from the "field_children" field
-    When I click "child1"
-    Then I should see "parent1" displayed from the "field_parents" field
+    When I click "Parent1"
+    Then I should see "Child1" displayed from the "field_children" field
+    When I click "Child1"
+    Then I should see "Parent1" displayed from the "field_parents" field
     When I am at "/admin/content"
-    When I click "parent2"
-    Then I should see "child1" displayed from the "field_children" field
-    When I click "child1"
-    Then I should see "parent2" displayed from the "field_parents" field
+    When I click "Parent2"
+    Then I should see "Child1" displayed from the "field_children" field
+    When I click "Child1"
+    Then I should see "Parent2" displayed from the "field_parents" field
 
   Scenario: Deleting a parent reference on the child deletes the child reference on the parent
     Given a discussion content with the title "child1"
     Given "discussion" content:
       | title       | field_children |
-      | parent1     | child1         |
+      | Parent1     | Child1         |
     Given "discussion" content:
       | title       | field_children |
-      | parent2     | child1         |
+      | Parent2     | Child1         |
     When I am at "/admin/content"
-    When I click "child1"
+    When I click "Child1"
     And I empty the field "field_parents[0][target_id]"
     And I press the "Save" button
-    Then I should not see "parent1" displayed from the "field_parents" field
-    Then I should see "parent2" displayed from the "field_parents" field
+    Then I should not see "Parent1" displayed from the "field_parents" field
+    Then I should see "Parent2" displayed from the "field_parents" field
     When I am at "/admin/content"
-    And I click "parent1"
-    Then I should not see "child1" displayed from the "field_children" field
+    And I click "Parent1"
+    Then I should not see "Child1" displayed from the "field_children" field
     When I am at "/admin/content"
-    And I click "parent2"
-    Then I should see "child1" displayed from the "field_children" field
+    And I click "Parent2"
+    Then I should see "Child1" displayed from the "field_children" field
 
   Scenario: Deleting a child reference on the parent deletes the parent reference on the child
     Given a discussion content with the title "child1"
     Given "discussion" content:
       | title       | field_children |
-      | parent1     | child1         |
+      | Parent1     | Child1         |
     When I am at "/admin/content"
-    When I click "parent1"
+    When I click "Parent1"
     And I empty the field "field_children[0][target_id]"
     And I press the "Save" button
-    Then I should not see "child1" displayed from the "field_children" field
+    Then I should not see "Child1" displayed from the "field_children" field
     When I am at "/admin/content"
-    And I click "child1"
-    Then I should not see "parent1" displayed from the "field_parents" field
+    And I click "Child1"
+    Then I should not see "Parent1" displayed from the "field_parents" field
 
   Scenario: Updating a parent with a new child reference sets the parent reference on the child, also if autocreated
     Given a discussion content with the title "child1"
     Given a discussion content with the title "child2"
     Given "discussion" content:
       | title       | field_children |
-      | parent1     | child1         |
+      | Parent1     | Child1         |
     When I am at "/admin/content"
-    When I click "parent1"
-    When I fill in "field_children[0][target_id]" with "child2"
-    And I fill in "field_children[1][target_id]" with "cer_autocreate_notcleanedup"
+    When I click "Parent1"
+    When I fill in "field_children[0][target_id]" with "Child2"
+    And I fill in "field_children[1][target_id]" with "Cer_autocreate_notcleanedup"
     And I press the "Save" button
     When I am at "/admin/content"
-    And I click "parent1"
-    Then I should not see "child1" displayed from the "field_children" field
-    And I should see "child2" displayed from the "field_children" field
-    And I should see "cer_autocreate_notcleanedup" displayed from the "field_children" field
+    And I click "Parent1"
+    Then I should not see "Child1" displayed from the "field_children" field
+    And I should see "Child2" displayed from the "field_children" field
+    And I should see "Cer_autocreate_notcleanedup" displayed from the "field_children" field
     When I am at "/admin/content"
-    And I click "child1"
-    Then I should not see "parent1" displayed from the "field_parents" field
+    And I click "Child1"
+    Then I should not see "Parent1" displayed from the "field_parents" field
     When I am at "/admin/content"
-    And I click "child2"
-    Then I should see "parent1" displayed from the "field_parents" field
+    And I click "Child2"
+    Then I should see "Parent1" displayed from the "field_parents" field
     When I am at "/admin/content"
-    And I click "cer_autocreate_notcleanedup"
-    Then I should see "parent1" displayed from the "field_parents" field
+    And I click "Cer_autocreate_notcleanedup"
+    Then I should see "Parent1" displayed from the "field_parents" field
 
   Scenario: Updating a child with a new parent reference sets the child reference on the parent
     Given "discussion" content:
       | title       |
-      | parent1     |
-      | parent2     |
+      | Parent1     |
+      | Parent2     |
     Given "discussion" content:
       | title      | field_parents   |
-      | child1     | parent1         |
+      | Child1     | Parent1         |
     When I am at "/admin/content"
-    When I click "child1"
-    When I fill in "field_parents[0][target_id]" with "parent2"
+    When I click "Child1"
+    When I fill in "field_parents[0][target_id]" with "Parent2"
     And I press the "Save" button
     When I am at "/admin/content"
-    And I click "child1"
-    Then I should not see "parent1" displayed from the "field_parents" field
-    And I should see "parent2" displayed from the "field_parents" field
+    And I click "Child1"
+    Then I should not see "Parent1" displayed from the "field_parents" field
+    And I should see "Parent2" displayed from the "field_parents" field
     When I am at "/admin/content"
-    And I click "parent1"
+    And I click "Parent1"
     Then I should not see "child1" displayed from the "field_children" field
     When I am at "/admin/content"
-    And I click "parent2"
-    Then I should see "child1" displayed from the "field_children" field
+    And I click "Parent2"
+    Then I should see "Child1" displayed from the "field_children" field
 
   Scenario: Can add a parent reference when there aren't any
     Given "discussion" content:
       | title       |
-      | parent1     |
+      | Parent1     |
     Given a discussion content with the title "child1"
     When I am at "/admin/content"
-    When I click "child1"
-    When I fill in "field_parents[0][target_id]" with "parent1"
+    When I click "Child1"
+    When I fill in "field_parents[0][target_id]" with "Parent1"
     And I press the "Save" button
     When I am at "/admin/content"
-    And I click "parent1"
-    Then I should see "child1" displayed from the "field_children" field
+    And I click "Parent1"
+    Then I should see "Child1" displayed from the "field_children" field
 
   Scenario: Cannot autocreate a parent reference
     Given a discussion content with the title "child1"
     When I am at "/admin/content"
-    And I click "child1"
-    And I fill in "field_parents[0][target_id]" with "autocreated_should_not_exist"
+    And I click "Child1"
+    And I fill in "field_parents[0][target_id]" with "Autocreated_should_not_exist"
     And I press the "Save" button
     When I am at "/admin/content"
-    Then I should not see "autocreated_should_not_exist"
+    Then I should not see "Autocreated_should_not_exist"

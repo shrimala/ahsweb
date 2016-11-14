@@ -144,4 +144,21 @@ class Ancestry {
     return $detected;
   }
 
+  protected function sanitiseFileName($name) {
+      // Punctuation characters that are allowed, but not as first/last character.
+      $punctuation = '-_. ';
+
+      $map = array(
+          // Replace (groups of) whitespace characters.
+          '!\s+!' => ' ',
+          // Replace multiple dots.
+          '!\.+!' => '.',
+          // Remove characters that are not alphanumeric or the allowed punctuation.
+          "![^0-9A-Za-z$punctuation]!" => '',
+        );
+
+      // Apply the regex replacements. Remove any leading or hanging punctuation.
+      return trim(preg_replace(array_keys($map), array_values($map), $name), $punctuation);
+  }
+
 }

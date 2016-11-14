@@ -1,0 +1,13 @@
+<?php
+
+use Drupal\Component\Utility\Unicode;
+
+/**
+ * Implementation of hook_node_presave().
+ *
+ */
+function ahs_miscellaneous_node_presave($node) {
+  $node->title->value = Unicode::ucfirst(strtolower($node->title->value));
+  $node->title->value = str_replace('/', '', $node->title->value);
+}
+

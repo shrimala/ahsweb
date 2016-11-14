@@ -167,6 +167,7 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
   //$form['menu']['#access']=FALSE;
   // Remove the delete button
   $form['actions']['delete']['#access'] = FALSE;
+  $form['actions']['submit']['#attributes']['data-spy'] = 'affix';
 
   // If there is no referenced parent, fake a 'Discuss' pseudo-breadcrumb
   // This is necessary because usually this root pseudo-breadcrumb comes
@@ -226,7 +227,7 @@ function ahs_discussions_module_implements_alter(&$implementations, $hook) {
     $items = $context['items'];
     $fieldName = $items->getFieldDefinition()->getName();
     if ($fieldName === 'field_parents') {
-      ahs_discussion_addPreview($element, $items,  $context['delta'], 'ahs_discuss');
+      ahs_discussion_addPreview($element, $items,  $context['delta'], 'ahs_discuss', FALSE);
       ahs_discussion_addRemove($element);
     }
   }
@@ -238,7 +239,7 @@ function ahs_discussions_field_widget_ahs_entity_reference_with_views_autocreate
   $items = $context['items'];
   $fieldName = $items->getFieldDefinition()->getName();
   if ($fieldName === 'field_children') {
-    ahs_discussion_addPreview($element, $items,  $context['delta'], 'ahs_discuss');
+    ahs_discussion_addPreview($element, $items,  $context['delta'], 'ahs_discuss', FALSE);
     //ahs_discussion_addRemove($element);
   }
 }
@@ -265,6 +266,17 @@ function ahs_discussions_field_widget_text_textarea_with_summary_form_alter(&$el
     ahs_discussion_addPreview($element, $items,  $context['delta'], 'default', FALSE);
     //$element['#prefix'] = '<div class="ahs-preview-hide-edit-requested">';
     //$element['#suffix'] = '</div>';
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function ahs_discussions_field_widget_file_generic_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  $items = $context['items'];
+  $fieldName = $items->getFieldDefinition()->getName();
+  if ($fieldName === 'field_files') {
+    //ahs_discussion_addPreview($element, $items,  $context['delta'], 'default', FALSE);
   }
 }
 

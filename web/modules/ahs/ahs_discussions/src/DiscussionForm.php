@@ -79,8 +79,8 @@ class DiscussionForm extends ContentEntityForm {
     }
 
     // Adjust the UI for parents and children fields.
-    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-edit';
-    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-edit';
+    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-edit-if-hideui';
+    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-edit-if-hideui';
     $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
     $form['field_children']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
     $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
@@ -98,8 +98,15 @@ class DiscussionForm extends ContentEntityForm {
     $form['body']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
     $form['body']['#attached']['library'][] = 'ahs_discussions/hideui';
 
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-edit';
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-remove-requested';
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
+    $form['field_files']['#attached']['library'][] = 'ahs_discussions/hideui';
+
     if ($form['field_children']['widget']['#max_delta'] === 0) {
-      $form['field_children']['widget'][0]['preview_container']['preview'] = ['#markup' => "<p>No other discussions have been included yet as part of this one.</p>",];
+      $form['field_children']['widget'][0]['preview_container']['preview'] = ['#markup' => '<p class="ahs-preview-empty">No other discussions have been included yet as part of this one.</p>',];
       $form['field_children']['#attributes']['class'][] = 'ahs-preview-empty';
     }
     if ($form['field_parents']['widget']['#max_delta'] === 0) {
@@ -107,7 +114,10 @@ class DiscussionForm extends ContentEntityForm {
       $form['field_parents']['#attributes']['class'][] = 'ahs-preview-empty';
     }
     if ($form['body']['widget'][0]['preview_container']['preview'] == array()) {
-      $form['body']['widget'][0]['preview_container']['preview'] = ['#markup' => '<p>No discussion summary has been created yet.</p>',];
+      $form['body']['widget'][0]['preview_container']['preview'] = ['#markup' => '<p class="ahs-preview-empty">No discussion summary has been created yet.</p>',];
+    }
+    if ($form['field_files']['widget']['#file_upload_delta'] == 0) {
+      $form['field_files']['empty_message'] = ['#markup' => '<p class="ahs-preview-empty">No files have been uploaded yet.</p>',];
     }
 
     $form['field_participants']['widget']['#attributes']['data-placeholder'] = "Invite other people to this discussion";
@@ -128,7 +138,7 @@ class DiscussionForm extends ContentEntityForm {
     if ($this->entity->field_finished->value) {
       $form['#attributes']['class'][] = "ahs-finished";
     }
-
+    
     //if ($this->getEntity()->field_top_level_category == FALSE) {}
   //  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
    // $form['field_parents']['widget']['0']['target_id']['#required_error'] = t('Please choose a discussion that this is part of.');

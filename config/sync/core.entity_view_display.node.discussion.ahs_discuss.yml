@@ -8,12 +8,20 @@ dependencies:
     - field.field.node.discussion.body
     - field.field.node.discussion.field_ancestry
     - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_assigned
     - field.field.node.discussion.field_children
     - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_files
+    - field.field.node.discussion.field_finished
+    - field.field.node.discussion.field_help_wanted
     - field.field.node.discussion.field_parents
+    - field.field.node.discussion.field_participants
+    - field.field.node.discussion.field_private
+    - field.field.node.discussion.field_top_level_category
     - node.type.discussion
   module:
     - comment
+    - file
     - text
     - user
 id: node.discussion.ahs_discuss
@@ -24,11 +32,11 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
   field_children:
-    weight: 103
+    weight: 3
     label: above
     settings:
       view_mode: ahs_child
@@ -36,15 +44,21 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   field_comments_with_changes:
-    weight: 106
+    weight: 4
     label: above
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
     type: comment_default
+  field_files:
+    type: file_default
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_parents:
-    weight: 102
+    weight: 2
     label: above
     settings:
       view_mode: ahs_ancestry
@@ -52,7 +66,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   links:
-    weight: 100
+    weight: 0
     settings: {  }
     third_party_settings: {  }
 hidden:

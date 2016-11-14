@@ -28,6 +28,11 @@ form.node-discussion-ahs-discuss-form .field--name-field-children table.field-mu
     padding-left:0px;
 }
 
+form.node-discussion-ahs-discuss-form .field--name-field-parents.ahs-preview-hideui table.field-multiple-table td,
+form.node-discussion-ahs-discuss-form .field--name-field-children.ahs-preview-hideui table.field-multiple-table td{
+    padding-top: 0px;
+}
+
 form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table th,
 form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table th {
     border:none;
@@ -48,6 +53,11 @@ form.node-discussion-ahs-discuss-form .field--name-field-children table.field-mu
 form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table tr,
 form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table tr{
     background:inherit;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-children .glyphicon {
+    color:#888888;
+    font-size:80%;
 }
 
 /*
@@ -113,6 +123,8 @@ form.node-discussion-ahs-discuss-form article.js-comment {
 
 form.node-discussion-ahs-discuss-form button.form-submit.button--primary {
     margin-top:20px;
+    bottom:10%;
+    right:20px;
 }
 
 form.node-discussion-ahs-discuss-form .field-label,
@@ -170,15 +182,87 @@ form.node-discussion-ahs-discuss-form .field-group-details .panel-title {
     font-size:inherit;
     color: #23527c;
     padding:0px;
+    /*
     border-bottom: 1px dashed;
     display:inline-block;
+    */
+}
+form.node-discussion-ahs-discuss-form .field-group-details .panel-title:hover {
+    text-decoration:underline;
+}
+form.node-discussion-ahs-discuss-form .field-group-details a.panel-title:after {
+    content: "\e080";
+    font-family: "Glyphicons Halflings";
+    display:inline-block;
+    position: relative;
+    top:2px;
 }
 
 form.node-discussion-ahs-discuss-form.ahs-assigned .field-group-details a.panel-title:after {
     content:' (Assigned)';
 }
 
-form.node-discussion-ahs-discuss-form .field--name-field-children .glyphicon{
-    color:#aaaaaa;
-    top:3px;
+form.node-discussion-ahs-discuss-form .ahs-preview-edit .glyphicon{
+    color:#555555;
+
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-files td.checkbox {
+    display:table-cell;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui td.checkbox {
+    display:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files th.checkbox {
+    margin-bottom:0px;
+    border-bottom:inherit;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .checkbox input[type="checkbox"] {
+    margin-left:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .form-managed-file{
+    margin-left:30px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui table.table-striped tr{
+    background:inherit;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel {
+    border:none;
+    box-shadow:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel-heading {
+    background-color:inherit;
+    border:none;
+    padding-top:0px;
+    display:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel-heading a.panel-title {
+    font-size:inherit;
+    padding:0px;
+    display:inline-block;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel-body {
+    padding:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui .form-managed-file {
+    margin-left:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui td {
+    border-top:none;
+    padding:0px;
+    width:1%;
+}
+/*
+form.node-discussion-ahs-discuss-form .field--name-field-parents,
+form.node-discussion-ahs-discuss-form .field--name-field-children,
+form.node-discussion-ahs-discuss-form .field--name-body,
+form.node-discussion-ahs-discuss-form .field--name-field-files {
+    min-height:30px;
+}
+*/
+form.node-discussion-ahs-discuss-form .ahs-preview-hideui {
+    min-height:30px;
+}
+form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
+    color: #999999;
 }

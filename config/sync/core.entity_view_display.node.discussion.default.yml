@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.discussion.field_assigned
     - field.field.node.discussion.field_children
     - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_files
     - field.field.node.discussion.field_finished
     - field.field.node.discussion.field_help_wanted
     - field.field.node.discussion.field_parents
@@ -19,6 +20,7 @@ dependencies:
     - node.type.discussion
   module:
     - comment
+    - file
     - text
     - user
 id: node.discussion.default
@@ -54,6 +56,12 @@ content:
       pager_id: 0
     third_party_settings: {  }
     type: comment_default
+  field_files:
+    weight: 17
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
   field_finished:
     weight: 16
     label: above

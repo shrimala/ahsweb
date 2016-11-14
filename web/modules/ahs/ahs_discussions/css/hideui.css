@@ -1,12 +1,23 @@
-
-
+/* Change mind at last moment, as new items not previewing */
+.ahs-preview-hideui.form-group .ahs-preview-hide-edit-if-hideui div.form-item {
+    display:none;
+}
+.ahs-preview-hide-edit-if-hideui .ahs-preview-preview {
+    display:none;
+}
+.ahs-preview-hideui.form-group .ahs-preview-hide-edit-if-hideui .ahs-preview-preview {
+    display:block;
+}
 /* Hide field item editing controls*/
+
 .ahs-preview-hide-edit.form-group .ahs-preview-hide-edit div.form-item {
     display:none;
 }
+
 .ahs-preview-hide-edit.form-group .ahs-preview-hide-edit-if-hideui div.form-item {
     display:block;
 }
+
 /**/
 .ahs-preview-hide-edit.form-group .ahs-preview-hide-edit-if-hideui .ahs-preview-preview,
 .ahs-preview-hideui.ahs-preview-hide-edit.form-group .ahs-preview-hide-edit-if-hideui > div > div {
@@ -80,3 +91,44 @@ table.field-multiple-table > tbody > tr:last-child > td a.ahs-preview-remove {
     float:none;
 }
 
+/* File widgets */
+/*
+.ahs-preview-hide-edit.field--widget-file-generic div.form-managed-file > * {
+    display: none;
+}
+*/
+.ahs-preview-hide-edit.field--widget-file-generic div.form-managed-file > input,
+.ahs-preview-hide-edit.field--widget-file-generic div.form-managed-file > button {
+    display: block;
+}
+.ahs-preview-hide-edit.field--widget-file-generic div.form-managed-file .ahs-preview-preview {
+    display: block;
+    float:none;
+}
+.ahs-preview-hideui.field--widget-file-generic div.form-type-textfield {
+    display:none;
+}
+.ahs-preview-hide-ui.field--widget-file-generic td.checkbox {
+    display:none;
+}
+.ahs-preview-hide-edit.field--widget-file-generic thead{
+    display:none;
+}
+.ahs-preview-hide-remove.field--widget-file-generic td button.form-submit {
+    display:none;
+}
+.ahs-preview-hide-move.field--widget-file-generic a.tabledrag-handle {
+    display:none;
+}
+.ahs-preview-hide-new.field--widget-file-generic div.form-type-managed-file label.control-label {
+    display:none;
+}
+.ahs-preview-hide-new.field--widget-file-generic div.form-type-managed-file {
+    display:none;
+}
+.field--widget-file-generic p.ahs-preview-empty {
+    display:none;
+}
+.ahs-preview-hideui.field--widget-file-generic p.ahs-preview-empty {
+    display:block;
+}

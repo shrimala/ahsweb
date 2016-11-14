@@ -6,51 +6,51 @@ Feature: Discussions ER enhanced widgets for parents & children
 
   Background:
     Given I am logged in as an "authenticated user"
-    Given a discussion content with the title "child2"
-    Given a discussion content with the title "grandchild1"
-    Given a discussion content with the title "grandchild2"
+    Given a discussion content with the title "Child2"
+    Given a discussion content with the title "Grandchild1"
+    Given a discussion content with the title "Grandchild2"
     Given "discussion" content:
       | title       | field_children          |
-      | child1     | grandchild1, grandchild2 |
+      | Child1     | Grandchild1, Grandchild2 |
     Given "discussion" content:
       | title       | field_children |
-      | parent1     | child1, child2 |
+      | Parent1     | Child1, Child2 |
     Given "discussion" content:
       | title       | field_children |
-      | parent2     | child1         |
+      | Parent2     | Child1         |
 
   Scenario: Navigate between parents, children and grandchildren
     When I visit "/discuss/parent1/child1"
     Then I should see "Home" displayed from the "field_parents" field
-    And I should see "parent1" displayed from the "field_parents" field
-    And I should see "parent2" displayed from the "field_parents" field
-    And I should see "grandchild1" displayed from the "field_children" field
-    And I should see "grandchild2" displayed from the "field_children" field
-    When I click "parent1"
+    And I should see "Parent1" displayed from the "field_parents" field
+    And I should see "Parent2" displayed from the "field_parents" field
+    And I should see "Grandchild1" displayed from the "field_children" field
+    And I should see "Grandchild2" displayed from the "field_children" field
+    When I click "Parent1"
     Then I am visiting "/discuss/parent1"
-    And I should see "child1" displayed from the "field_children" field
-    And I should see "child2" displayed from the "field_children" field
+    And I should see "Child1" displayed from the "field_children" field
+    And I should see "Child2" displayed from the "field_children" field
     And I should see "Home" displayed from the "field_parents" field
-    When I click "child1"
+    When I click "Child1"
     Then I am visiting "/discuss/parent1/child1"
-    When I click "grandchild1"
+    When I click "Grandchild1"
     Then I am visiting "/discuss/parent1/child1/grandchild1"
     And I should see "Home" displayed from the "field_parents" field
-    And I should see "parent1" displayed from the "field_parents" field
-    And I should see "child1" displayed from the "field_parents" field
-    When I click "child1"
+    And I should see "Parent1" displayed from the "field_parents" field
+    And I should see "Child1" displayed from the "field_parents" field
+    When I click "Child1"
     Then I am visiting "/discuss/parent1/child1"
-    When I click "grandchild1"
+    When I click "Grandchild1"
     Then I am visiting "/discuss/parent1/child1/grandchild1"
-    When I click "parent1"
+    When I click "Parent1"
     Then I am visiting "/discuss/parent1"
-    When I click "child1"
+    When I click "Child1"
     Then I am visiting "/discuss/parent1/child1"
-    When I click "parent2"
+    When I click "Parent2"
     Then I am visiting "/discuss/parent2"
-    When I click "child1"
+    When I click "Child1"
     Then I am visiting "/discuss/parent1/child1"
-    When I click "grandchild2"
+    When I click "Grandchild2"
     Then I am visiting "/discuss/parent1/child1/grandchild2"
 
   Scenario: Links to home page work
