@@ -72,7 +72,7 @@ class CommentWithChanges {
 
     // Evaluate whether to update last comment or create new one
     $hasLastSameAuthor = ($lastAuthor === $comment['uid']);
-    $isLastWithinPeriod = ((REQUEST_TIME - $lastTime) < 30);
+    $isLastWithinPeriod = TRUE; //((REQUEST_TIME - $lastTime) < 30);
     $isLastChangeRecord = ($lastSubject === 'Change record');
     $isNewChangeRecord = ($comment['subject'] === 'Change record');
     if ($lastComment && $hasLastSameAuthor && $isLastWithinPeriod && ($isLastChangeRecord || $isNewChangeRecord)) {
