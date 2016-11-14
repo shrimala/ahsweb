@@ -69,10 +69,6 @@
         "drupal/diff": "1.x-dev",
         "drupal/email_registration": "1.x-dev",
         "drupal/block_visibility_groups": "^1.1",
-        "drupal/imce": "^1.4",
-        "drupal/elfinder": "2.x-dev",
-        "drupal/editor_file": "^1.2",
-        "drupal/entity_embed": "1.x-dev",
         "drupal/linkit": "5.0-beta3",
         "drupal/chosen": "dev-2.x@dev",
         "drupal/field_group": "1.x-dev",
@@ -129,8 +125,8 @@
                 "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch",
                 "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-16.patch"
             },
-            "drupal/panels": {
-                "Incorrect logic inside of StandardDisplayBuilder could lead to fatal error": "https://www.drupal.org/files/issues/panels-fatal_error_standard_dysplay_builder-2819235-19.patch"
+            "drupal/linkit": {
+                "Stop rendering field token as plain text if field if empty": "https://www.drupal.org/files/issues/linkit-2827154-2.patch"
             }
         }
     },

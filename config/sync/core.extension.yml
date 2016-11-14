@@ -42,6 +42,7 @@ module:
   image: 0
   kint: 0
   link: 0
+  linkit: 0
   media_entity: 0
   media_entity_audio: 0
   menu_ui: 0

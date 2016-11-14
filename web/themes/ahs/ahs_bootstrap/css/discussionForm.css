@@ -266,3 +266,7 @@ form.node-discussion-ahs-discuss-form .ahs-preview-hideui {
 form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
     color: #999999;
 }
+
+.linkit-ui-autocomplete.ui-widget {
+    z-index:2000;
+}
