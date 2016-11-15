@@ -14,7 +14,7 @@ Feature: Discussions Corresponding Entity References
     Given I am logged in as an administrator
 
   Scenario: Creating a parent with a child reference sets the parent reference on the child
-    Given a discussion content with the title "child1"
+    Given a discussion content with the title "Child1"
     Given "discussion" content:
       | title       | field_children |
       | Parent1     | Child1         |
@@ -25,8 +25,8 @@ Feature: Discussions Corresponding Entity References
     Then I should see "Parent1" displayed from the "field_parents" field
 
   Scenario: Creating a parent with 2 child references sets the parent reference on both children
-    Given a discussion content with the title "child1"
-    Given a discussion content with the title "child2"
+    Given a discussion content with the title "Child1"
+    Given a discussion content with the title "Child2"
     Given "discussion" content:
       | title       | field_children |
       | Parent1     | Child1, Child2 |
@@ -42,7 +42,7 @@ Feature: Discussions Corresponding Entity References
     Then I should see "Parent1" displayed from the "field_parents" field
 
   Scenario: Creating a parent with a child reference sets the parent reference on the child even if it already has a parent
-    Given a "discussion" content with the title "child1"
+    Given a "discussion" content with the title "Child1"
     Given "discussion" content:
       | title       | field_children |
       | Parent1     | Child1         |
@@ -59,7 +59,7 @@ Feature: Discussions Corresponding Entity References
     Then I should see "Parent2" displayed from the "field_parents" field
 
   Scenario: Deleting a parent reference on the child deletes the child reference on the parent
-    Given a discussion content with the title "child1"
+    Given a discussion content with the title "Child1"
     Given "discussion" content:
       | title       | field_children |
       | Parent1     | Child1         |
@@ -80,7 +80,7 @@ Feature: Discussions Corresponding Entity References
     Then I should see "Child1" displayed from the "field_children" field
 
   Scenario: Deleting a child reference on the parent deletes the parent reference on the child
-    Given a discussion content with the title "child1"
+    Given a discussion content with the title "Child1"
     Given "discussion" content:
       | title       | field_children |
       | Parent1     | Child1         |
@@ -94,8 +94,8 @@ Feature: Discussions Corresponding Entity References
     Then I should not see "Parent1" displayed from the "field_parents" field
 
   Scenario: Updating a parent with a new child reference sets the parent reference on the child, also if autocreated
-    Given a discussion content with the title "child1"
-    Given a discussion content with the title "child2"
+    Given a discussion content with the title "Child1"
+    Given a discussion content with the title "Child2"
     Given "discussion" content:
       | title       | field_children |
       | Parent1     | Child1         |
@@ -137,7 +137,7 @@ Feature: Discussions Corresponding Entity References
     And I should see "Parent2" displayed from the "field_parents" field
     When I am at "/admin/content"
     And I click "Parent1"
-    Then I should not see "child1" displayed from the "field_children" field
+    Then I should not see "Child1" displayed from the "field_children" field
     When I am at "/admin/content"
     And I click "Parent2"
     Then I should see "Child1" displayed from the "field_children" field
@@ -146,7 +146,7 @@ Feature: Discussions Corresponding Entity References
     Given "discussion" content:
       | title       |
       | Parent1     |
-    Given a discussion content with the title "child1"
+    Given a discussion content with the title "Child1"
     When I am at "/admin/content"
     When I click "Child1"
     When I fill in "field_parents[0][target_id]" with "Parent1"
@@ -156,7 +156,7 @@ Feature: Discussions Corresponding Entity References
     Then I should see "Child1" displayed from the "field_children" field
 
   Scenario: Cannot autocreate a parent reference
-    Given a discussion content with the title "child1"
+    Given a discussion content with the title "Child1"
     When I am at "/admin/content"
     And I click "Child1"
     And I fill in "field_parents[0][target_id]" with "Autocreated_should_not_exist"

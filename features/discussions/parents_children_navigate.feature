@@ -10,7 +10,7 @@ Feature: Discussions ER enhanced widgets for parents & children
     Given a discussion content with the title "Grandchild1"
     Given a discussion content with the title "Grandchild2"
     Given "discussion" content:
-      | title       | field_children          |
+      | title      | field_children           |
       | Child1     | Grandchild1, Grandchild2 |
     Given "discussion" content:
       | title       | field_children |

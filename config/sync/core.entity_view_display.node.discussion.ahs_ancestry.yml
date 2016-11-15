@@ -31,6 +31,7 @@ hidden:
   field_assigned: true
   field_children: true
   field_comments_with_changes: true
+  field_files: true
   field_finished: true
   field_help_wanted: true
   field_parents: true

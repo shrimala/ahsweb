@@ -1,13 +1,10 @@
-uuid: 8eb8e081-9428-4c74-8918-2480e8a56d43
+uuid: cb917068-fa83-4f88-8994-f22b34983710
 langcode: en
 status: true
 dependencies:
   module:
-    - ahs_discussions
     - editor
     - linkit
-_core:
-  default_config_hash: P8ddpAIKtawJDi5SzOwCzVnnNYqONewSTJ6Xn0dW_aQ
 name: 'Basic HTML'
 format: basic_html
 weight: 0
@@ -45,13 +42,6 @@ filters:
     status: true
     weight: 11
     settings: {  }
-  linkit_embed:
-    id: linkit_embed
-    provider: ahs_discussions
-    status: false
-    weight: -20
-    settings:
-      title: '1'
   linkit:
     id: linkit
     provider: linkit
