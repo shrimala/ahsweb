@@ -3172,7 +3172,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/linkit-8.x-5.0-beta3.zip",
-                "reference": null,
+                "reference": "8.x-5.0-beta3",
                 "shasum": "18fa681ae652fae30b51397ef2aaaeb8ecc3b288"
             },
             "require": {

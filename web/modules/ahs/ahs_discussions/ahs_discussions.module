@@ -6,52 +6,11 @@
  */
 
 use Drupal\Core\Url;
-use \Drupal\node\Entity\Node;
+
 use Drupal\comment\Entity\Comment;
 use \Drupal\node\NodeInterface;
 use \Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
-
-/**
- * Implements hook_install().
- *
- * Create a root discussion node, that is the ultimate ancestor.
- */
-function ahs_discussions_install() {
-  // See if the root discussion already exists
-  $query = \Drupal::entityQuery('node')
-    ->condition('title', 'Home')
-    ->condition('type', 'information');
-  $nids = $query->execute();
-  if (empty($nids)) {
-    // It does not, so create it
-    $node = Node::create([
-      'type' => 'information',
-      'title' => 'Home',
-      'uid' => 1,
-      'status' => 1,
-      // Disable pathauto 'Generate automatic URL alias'
-      // and use an alternative alias, so that we can use
-      // the URL '/discuss' for something else.
-      'path' => ['pathauto' => FALSE, 'alias' => '/home'],
-    ]);
-    $node->save();
-
-    $node = Node::create([
-      'type' => 'discussion',
-      'title' => 'Uncategorised',
-      'uid' => 1,
-      'status' => 1,
-      'body' => ['These discussions have not been included in any broader discussion. Normally this is a mistake and they need to be included somewhere.'],
-      // Disable pathauto 'Generate automatic URL alias'
-      // and use an alternative alias, so that we can use
-      // the URL '/discuss' for something else.
-      'path' => ['pathauto' => FALSE, 'alias' => '/discuss/root'],
-    ]);
-    $node->save();
-  }
-}
-
 
 /**
  * Implements hook_node_update().

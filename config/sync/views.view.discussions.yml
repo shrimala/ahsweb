@@ -529,6 +529,7 @@ display:
           break_phrase: false
           not: true
           plugin_id: numeric
+      block_hide_empty: true
     cache_metadata:
       max-age: 0
       contexts:

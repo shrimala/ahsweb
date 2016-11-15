@@ -23,3 +23,7 @@ section.block-views-blockdiscussions-help .views-row .glyphicon-bell {
 section.block-views-blockdiscussions-tasks .views-row .glyphicon-pushpin {
     display:none;
 }
+
+.view-frontpage {
+    display:none;
+}
