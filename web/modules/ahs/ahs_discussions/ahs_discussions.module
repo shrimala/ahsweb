@@ -22,7 +22,7 @@ function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) 
   if ($node->bundle() == 'discussion'){
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node, TRUE);
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node, TRUE);
-    \Drupal::service('ahs_discussions.ancestry')->updateChildrensAncestry($node);
+    \Drupal::service('ahs_discussions.ancestry')->updateChildren($node);
     
     // This comparison must not be strict (!==). For some strange reason,
     // one is an integer and the other a string.
@@ -75,7 +75,7 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
 
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node, TRUE);
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node, TRUE);
-    \Drupal::service('ahs_discussions.ancestry')->updateChildrensAncestry($node);
+    \Drupal::service('ahs_discussions.ancestry')->updateChildren($node);
   }
 }
 
