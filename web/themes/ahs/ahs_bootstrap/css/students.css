@@ -6,9 +6,14 @@
     line-height:1;
     text-decoration:none;
     display:block;
+    font-size:70%;
 }
 .view-id-discussions article {
-    margin-bottom:0.75em;
+    margin-bottom:0.5em;
+}
+
+. block-views-blockdiscussions-browse .view-id-discussions article {
+    margin-bottom:0em;
 }
 
 .view-id-discussions .views-row .glyphicon {
