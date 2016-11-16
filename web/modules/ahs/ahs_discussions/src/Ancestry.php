@@ -61,7 +61,6 @@ class Ancestry {
         }
         // Update the ancestry_plain field as well.
         $discussion->field_ancestry_plain = $this->makePlain($discussion->field_ancestry);
-        dpm("set ancestry plain on " . $discussion->label() . " as " . $discussion->field_ancestry_plain->value);
         // No $discussion->save(); is needed as this is always called form a hook.
         // Having one possibly creates an infinite loop.
       }
