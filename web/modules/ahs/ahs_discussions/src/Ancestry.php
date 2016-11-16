@@ -105,7 +105,6 @@ class Ancestry {
               }
               $child->field_ancestry_plain = $this->makePlain($child->field_ancestry);
               $child->save();
-              dpm("saved ancestry plain on " . $child->label() . " as " . $child->field_ancestry_plain->value);
             }
           }
         }
@@ -142,7 +141,6 @@ class Ancestry {
                 $child->field_ancestry = $childAncestry;
                 $child->field_ancestry_plain = $this->makePlain($child->field_ancestry);
                 $child->save();
-                kint("saved ancestry plain on " . $child->label() . " as " . $child->field_ancestry_plain->value);
               }
             }
           }
