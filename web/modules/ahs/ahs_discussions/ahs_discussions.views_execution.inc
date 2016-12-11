@@ -15,6 +15,15 @@ function ahs_discussions_views_query_alter(Drupal\views\ViewExecutable $view, Dr
       // assigned to me and therefore listed  instead under 'My tasks'
       ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_assigned', 'field_assigned_target_id', TRUE);
     }
+    if ($view->getDisplay()->display['id'] == 'active') {
+      // Only show discussions in 'Active' if they are not private,
+      // and the current user is not a participant
+      // (as in that case they would already be in My Tasks or My Discussions.
+      ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_participants', 'field_participants_target_id', TRUE);
+      ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_assigned', 'field_assigned_target_id', TRUE);
+      $query->addTable('node__field_private');
+      $query->addWhere(0, 'node__field_private.field_private_value', 0, '=');
+    }
     if ($view->getDisplay()->display['id'] == 'search') {
       // Only show discussions in search results if they are either not private,
       // or the current user is a participant.
