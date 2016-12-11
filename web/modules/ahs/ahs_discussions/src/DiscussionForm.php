@@ -91,12 +91,25 @@ class DiscussionForm extends ContentEntityForm {
     $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
     $form['field_parents']['#attached']['library'][] = 'ahs_discussions/hideui';
     $form['field_children']['#attached']['library'][] = 'ahs_discussions/hideui';
+    // abandon progressive enhancement
+    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hideui';
+    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-move';
+    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-remove';
+    $form['field_parents']['#attributes']['class'][] = 'ahs-preview-hide-new';
+    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hideui';
+    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-move';
+    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-remove';
+    $form['field_children']['#attributes']['class'][] = 'ahs-preview-hide-new';
 
     $form['body']['#attributes']['class'][] = 'ahs-preview-hide-edit';
     $form['body']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
     $form['body']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
     $form['body']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
     $form['body']['#attached']['library'][] = 'ahs_discussions/hideui';
+    // abandon progressive enhancement
+    $form['body']['#attributes']['class'][] = 'ahs-preview-hideui';
+    $form['body']['#attributes']['class'][] = 'ahs-preview-hide-move';
+    $form['body']['#attributes']['class'][] = 'ahs-preview-hide-new';
 
     $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-edit';
     $form['field_files']['#attributes']['class'][] = 'ahs-preview-hideui-requested';
@@ -104,6 +117,11 @@ class DiscussionForm extends ContentEntityForm {
     $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-move-requested';
     $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-new-requested';
     $form['field_files']['#attached']['library'][] = 'ahs_discussions/hideui';
+    // abandon progressive enhancement
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hideui';
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-remove';
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-move';
+    $form['field_files']['#attributes']['class'][] = 'ahs-preview-hide-new';
 
     if ($form['field_children']['widget']['#max_delta'] === 0) {
       $form['field_children']['widget'][0]['preview_container']['preview'] = ['#markup' => '<p class="ahs-preview-empty">No other discussions have been included yet as part of this one.</p>',];
