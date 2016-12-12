@@ -1,0 +1,120 @@
+uuid: e2f365b0-4492-4def-94dc-7706edd77b0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comments_with_changes.default
+    - field.field.node.discussion.body
+    - field.field.node.discussion.field_ancestry
+    - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_assigned
+    - field.field.node.discussion.field_children
+    - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_files
+    - field.field.node.discussion.field_finished
+    - field.field.node.discussion.field_help_wanted
+    - field.field.node.discussion.field_parents
+    - field.field.node.discussion.field_participants
+    - field.field.node.discussion.field_private
+    - field.field.node.discussion.field_top_level_category
+    - node.type.discussion
+  module:
+    - comment
+    - file
+    - text
+    - user
+id: node.discussion.default
+targetEntityType: node
+bundle: discussion
+mode: default
+content:
+  body:
+    label: inline
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_assigned:
+    weight: 12
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_children:
+    weight: 1
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_comments_with_changes:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+  field_files:
+    weight: 17
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
+  field_finished:
+    weight: 16
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_help_wanted:
+    weight: 13
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_parents:
+    weight: 0
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_participants:
+    weight: 15
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_private:
+    weight: 14
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_top_level_category:
+    weight: 11
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  flag_help_wanted:
+    weight: 10
+hidden:
+  field_ancestry: true
+  field_ancestry_plain: true
+  links: true

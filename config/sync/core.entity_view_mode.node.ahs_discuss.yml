@@ -1,0 +1,10 @@
+uuid: 280d5571-d5c2-4991-b6c2-614b40756134
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.ahs_discuss
+label: Discuss
+targetEntityType: node
+cache: true

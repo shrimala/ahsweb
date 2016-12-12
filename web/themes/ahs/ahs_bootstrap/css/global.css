@@ -1,0 +1,12 @@
+div.main-container {
+    max-width:900px;
+    margin:auto;
+}
+
+.ahs-finished .field--name-title {
+    text-decoration:line-through;
+}
+.ahs-finished .field--name-title:hover,
+.ahs-finished .field--name-title:focus{
+    text-decoration:none;
+}

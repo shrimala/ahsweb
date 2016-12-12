@@ -1,0 +1,7 @@
+entity.node.ahs_discuss:
+  path: '/discuss/add'
+  defaults:
+    _controller: '\Drupal\ahs_discussions\Controller\DiscussionAddController::Add'
+    _title: 'Start a new discussion'
+  requirements:
+    _node_add_access: 'node:discussion'

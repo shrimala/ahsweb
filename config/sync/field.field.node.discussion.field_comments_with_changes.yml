@@ -1,0 +1,33 @@
+uuid: 629f922c-43a3-40b5-b9a3-99c99ff9b32d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_comments_with_changes
+    - node.type.discussion
+  module:
+    - comment
+id: node.discussion.field_comments_with_changes
+field_name: field_comments_with_changes
+entity_type: node
+bundle: discussion
+label: Comments
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    status: 1
+    cid: 0
+    last_comment_timestamp: 0
+    last_comment_name: null
+    last_comment_uid: 0
+    comment_count: 0
+default_value_callback: ''
+settings:
+  default_mode: 0
+  per_page: 50
+  anonymous: 0
+  form_location: false
+  preview: 0
+field_type: comment

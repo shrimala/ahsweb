@@ -1,0 +1,9 @@
+{
+  "name": "drupal/changes",
+  "type": "drupal-module",
+  "description": "Track changes to an entity in comments.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": { }
+}

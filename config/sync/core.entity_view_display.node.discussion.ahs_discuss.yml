@@ -1,0 +1,80 @@
+uuid: 40278d98-4508-4f1e-a08f-526c3cd13887
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comments_with_changes.default
+    - core.entity_view_mode.node.ahs_discuss
+    - field.field.node.discussion.body
+    - field.field.node.discussion.field_ancestry
+    - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_assigned
+    - field.field.node.discussion.field_children
+    - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_files
+    - field.field.node.discussion.field_finished
+    - field.field.node.discussion.field_help_wanted
+    - field.field.node.discussion.field_parents
+    - field.field.node.discussion.field_participants
+    - field.field.node.discussion.field_private
+    - field.field.node.discussion.field_top_level_category
+    - node.type.discussion
+  module:
+    - comment
+    - file
+    - text
+    - user
+id: node.discussion.ahs_discuss
+targetEntityType: node
+bundle: discussion
+mode: ahs_discuss
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_children:
+    weight: 3
+    label: above
+    settings:
+      view_mode: ahs_child
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_comments_with_changes:
+    weight: 4
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+  field_files:
+    type: file_default
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_parents:
+    weight: 2
+    label: above
+    settings:
+      view_mode: ahs_ancestry
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_ancestry: true
+  field_ancestry_plain: true
+  field_assigned: true
+  field_finished: true
+  field_help_wanted: true
+  field_participants: true
+  field_private: true
+  field_top_level_category: true

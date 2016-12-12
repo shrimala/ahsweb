@@ -25,15 +25,30 @@
         {
             "type": "vcs",
             "url": "https://github.com/shrimala/file_checker"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drmonty/chosen",
+                "version": "1.6.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/harvesthq/chosen/releases/download/v1.6.1/chosen_v1.6.1.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                }
+            }
         }
     ],
     "require": {
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "~8.1",
+        "drupal/core": "8.2.2",
         "drush/drush": "~8.0",
-        "drupal/console": "~0.10",
+        "drupal/console": "~1.0",
         "drupal/flysystem": "1.x-dev",
         "drupal/flysystem_dropbox": "1.x-dev",
         "drupal/media_entity": "1.x-dev",
@@ -48,7 +63,16 @@
         "drupal/pathauto": "1.x-dev",
 		"drupal/drupal-driver": "dev-EntityContext as dev-master",
 		"drupal/drupal-extension": "dev-EntityContext",
-        "drupal/file_checker": "dev-8.x-1.x"
+        "drupal/file_checker": "dev-8.x-1.x",
+        "drupal/bootstrap": "3.x-dev",
+        "lakion/mink-debug-extension": "^1.2",
+        "drupal/diff": "1.x-dev",
+        "drupal/email_registration": "1.x-dev",
+        "drupal/block_visibility_groups": "^1.1",
+        "drupal/linkit": "5.0-beta3",
+        "drupal/chosen": "dev-2.x@dev",
+        "drupal/field_group": "1.x-dev",
+        "drupal/r4032login": "1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -86,6 +110,9 @@
             "web/profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
             "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
@@ -95,9 +122,11 @@
         },
         "patches": {
             "drupal/core": {
-                "Redirect to install.php on empty DB": "https://www.drupal.org/files/issues/drupal-redirect_to_install-728702-92.patch",
-                "Staging directory should not have to be writeable": "https://www.drupal.org/files/issues/2466197-59.patch",
-                "Migrate rollback does not rollback failed items": "https://www.drupal.org/files/issues/migrate-rollback_failed_items-2579343-12.patch"
+                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch",
+                "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-16.patch"
+            },
+            "drupal/linkit": {
+                "Stop rendering field token as plain text if field if empty": "https://www.drupal.org/files/issues/linkit-2827154-2.patch"
             }
         }
     },

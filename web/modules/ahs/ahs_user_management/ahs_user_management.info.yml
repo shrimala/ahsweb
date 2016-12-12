@@ -1,0 +1,5 @@
+name: User management
+type: module
+description: Modify user registration, login, profile or display.
+core: 8.x
+package: AHS

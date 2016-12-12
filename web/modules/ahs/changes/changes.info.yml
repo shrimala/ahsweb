@@ -1,0 +1,4 @@
+name: Changes
+type: module
+description: 'Reference and compare a pair of revisions.'
+core: 8.x

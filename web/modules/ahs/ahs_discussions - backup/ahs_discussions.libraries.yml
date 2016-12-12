@@ -1,0 +1,10 @@
+revision_log:
+  version: 1.x
+  css:
+    theme:
+      css/revision_log.css: {}
+  js:
+    js/revision_log.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

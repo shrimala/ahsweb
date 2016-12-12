@@ -1,0 +1,23 @@
+uuid: 66d63d6f-4d0f-4dd8-ba39-513ff1adc15c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_help_wanted
+    - node.type.discussion
+id: node.discussion.field_help_wanted
+field_name: field_help_wanted
+entity_type: node
+bundle: discussion
+label: 'Help wanted'
+description: 'People are invited to help in this discussion. If it is also ''Promoted'' it will appear on the home page in the ''Help wanted'' section.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

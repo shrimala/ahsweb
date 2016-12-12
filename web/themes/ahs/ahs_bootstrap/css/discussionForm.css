@@ -1,0 +1,274 @@
+/**
+ * Place your custom styles here.
+ */
+
+
+.field--name-field-parents ol.breadcrumb {
+    margin: 0px;
+    background:inherit;
+    padding: 0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents button.tabledrag-toggle-weight,
+form.node-discussion-ahs-discuss-form .field--name-field-children button.tabledrag-toggle-weight,
+form.node-discussion-ahs-discuss-form .field--name-field-parents td.delta-order .form-type-select,
+form.node-discussion-ahs-discuss-form .field--name-field-children td.delta-order .form-type-select {
+    display:none;
+}
+
+.field--name-field-parents .er-enhanced-preview.form-group,
+.field--name-field-children .er-enhanced-preview.form-group,
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table {
+    margin-bottom: 0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table td,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table td{
+    padding: 5px;
+    border:none;
+    padding-left:0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents.ahs-preview-hideui table.field-multiple-table td,
+form.node-discussion-ahs-discuss-form .field--name-field-children.ahs-preview-hideui table.field-multiple-table td{
+    padding-top: 0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table th,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table th {
+    border:none;
+    display:none;
+}
+
+/*
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table th,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table th{
+    padding: 0px;
+    border:none;
+}
+*/
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table article p{
+    margin: 0px;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table tr,
+form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table tr{
+    background:inherit;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-children .glyphicon {
+    color:#888888;
+    font-size:80%;
+}
+
+/*
+form.node-discussion-ahs-discuss-form .field-add-more-submit {
+    color:transparent;
+    width:2.5em;
+    background-color: lightgrey;
+    border-color: lightgrey;
+}
+
+form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
+    content: "\271A";
+    color:dimgrey;
+    width:1em;
+    float:left;
+    text-align:center;
+}
+*/
+
+.field--name-field-changes .panel {
+    border:none;
+    box-shadow:none;
+}
+.field--name-field-changes .panel-heading {
+    background-color:inherit;
+    border:none;
+}
+.field--name-field-changes .panel-heading a.panel-title{
+    font-size:inherit;
+    color: #23527c;
+    padding:0;
+    display:inline-block;
+    border-bottom:1px dashed;
+}
+
+.field--name-field-changes table.diff td{
+    border:none;
+    padding:2px;
+    background-color: #f8f8f8;
+}
+.field--name-field-changes table.diff ins{
+    color:darkblue;
+    text-decoration:none;
+    border-bottom: 1px solid grey;
+}
+.field--name-field-changes table.diff tr {
+    background:inherit;
+}
+.field--name-field-changes table.diff td.field-name{
+    width:1%;
+    white-space:nowrap;
+    padding-right:1em;
+}
+.field--name-field-changes table.diff td.field-name:after{
+    content:":";
+}
+
+form.node-discussion-ahs-discuss-form article.js-comment {
+    margin-top:20px;
+    padding-top:10px;
+    border-top: 1px solid lightgrey;
+}
+
+form.node-discussion-ahs-discuss-form button.form-submit.button--primary {
+    margin-top:20px;
+    bottom:10%;
+    right:20px;
+}
+
+form.node-discussion-ahs-discuss-form .field-label,
+form.node-discussion-ahs-discuss-form .control-label{
+    font-weight:normal;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes {
+    overflow:auto;
+}
+
+form.node-discussion-ahs-discuss-form .field--name-title label {
+    display:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-title input {
+    border:none;
+    box-shadow:none;
+    font-size:150%;
+    padding-left:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-title input:hover,
+form.node-discussion-ahs-discuss-form .field--name-title input:focus{
+    border:1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    padding-left:5px;
+}
+
+form.node-discussion-ahs-discuss-form .ahs-preview-preview.form-group {
+    margin-bottom:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-children .table-responsive,
+form.node-discussion-ahs-discuss-form .field--name-field-parents .table-responsive{
+    overflow-x:visible;
+}
+
+/*
+.er-enhanced-hideui a.er-enhanced-edit {
+    display:none;
+}
+.er-enhanced-hideui:hover a.er-enhanced-edit {
+    display:block;
+}
+.er-enhanced-hideui:hover table.field-multiple-table tr{
+    background-color:#FBFBFB;
+}
+*/
+
+form.node-discussion-ahs-discuss-form .field-group-details.panel,
+form.node-discussion-ahs-discuss-form .field-group-details.panel .panel-heading {
+    border:none;
+    box-shadow:none;
+    background:inherit;
+}
+form.node-discussion-ahs-discuss-form .field-group-details .panel-title {
+    font-size:inherit;
+    color: #23527c;
+    padding:0px;
+    /*
+    border-bottom: 1px dashed;
+    display:inline-block;
+    */
+}
+form.node-discussion-ahs-discuss-form .field-group-details .panel-title:hover {
+    text-decoration:underline;
+}
+form.node-discussion-ahs-discuss-form .field-group-details a.panel-title:after {
+    content: "\e080";
+    font-family: "Glyphicons Halflings";
+    display:inline-block;
+    position: relative;
+    top:2px;
+}
+
+form.node-discussion-ahs-discuss-form.ahs-assigned .field-group-details a.panel-title:after {
+    content:' (Assigned)';
+}
+
+form.node-discussion-ahs-discuss-form .ahs-preview-edit .glyphicon{
+    color:#555555;
+
+}
+
+form.node-discussion-ahs-discuss-form .field--name-field-files td.checkbox {
+    display:table-cell;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui td.checkbox {
+    display:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files th.checkbox {
+    margin-bottom:0px;
+    border-bottom:inherit;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .checkbox input[type="checkbox"] {
+    margin-left:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .form-managed-file{
+    margin-left:30px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui table.table-striped tr{
+    background:inherit;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel {
+    border:none;
+    box-shadow:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel-heading {
+    background-color:inherit;
+    border:none;
+    padding-top:0px;
+    display:none;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel-heading a.panel-title {
+    font-size:inherit;
+    padding:0px;
+    display:inline-block;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files .panel-body {
+    padding:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui .form-managed-file {
+    margin-left:0px;
+}
+form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideui td {
+    border-top:none;
+    padding:0px;
+    width:1%;
+}
+/*
+form.node-discussion-ahs-discuss-form .field--name-field-parents,
+form.node-discussion-ahs-discuss-form .field--name-field-children,
+form.node-discussion-ahs-discuss-form .field--name-body,
+form.node-discussion-ahs-discuss-form .field--name-field-files {
+    min-height:30px;
+}
+*/
+form.node-discussion-ahs-discuss-form .ahs-preview-hideui {
+    min-height:30px;
+}
+form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
+    color: #999999;
+}
+
+.linkit-ui-autocomplete.ui-widget {
+    z-index:2000;
+}

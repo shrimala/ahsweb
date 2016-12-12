@@ -1,0 +1,22 @@
+uuid: e371984f-bc2b-4789-9989-0f8ce944e38e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.discussion
+  module:
+    - text
+id: node.discussion.body
+field_name: body
+entity_type: node
+bundle: discussion
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

@@ -1,0 +1,5 @@
+services:
+  ahs_cer.simple_cer:
+    class: Drupal\ahs_cer\simple_cer
+    arguments: ["@entity_type.manager"]
+

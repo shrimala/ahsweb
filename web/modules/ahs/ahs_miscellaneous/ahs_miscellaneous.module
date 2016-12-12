@@ -1,0 +1,43 @@
+<?php
+
+use \Drupal\node\Entity\Node;
+use Drupal\Component\Utility\Unicode;
+
+/**
+ * Implements hook_install().
+ *
+ * Create the home page.
+ */
+/*
+function ahs_miscellaneous_install() {
+  // See if the home page already exists
+  $query = \Drupal::entityQuery('node')
+    ->condition('title', 'Home')
+    ->condition('type', 'information');
+  $nids = $query->execute();
+  if (empty($nids)) {
+    // It does not, so create it
+    $node = Node::create([
+      'type' => 'information',
+      'title' => 'Home',
+      'uid' => 1,
+      'status' => 1,
+      // Disable pathauto 'Generate automatic URL alias'
+      // and use an alternative alias, so that we can use
+      // the URL '/discuss' for something else.
+      'path' => ['pathauto' => FALSE, 'alias' => '/home'],
+    ]);
+    $node->save();
+  }
+}
+*/
+
+/**
+ * Implementation of hook_node_presave().
+ *
+ */
+function ahs_miscellaneous_node_presave($node) {
+  $node->title->value = Unicode::ucfirst(strtolower($node->title->value));
+  $node->title->value = str_replace('/', '', $node->title->value);
+}
+

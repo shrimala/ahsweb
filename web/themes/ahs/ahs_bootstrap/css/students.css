@@ -1,0 +1,34 @@
+.view-id-discussions .field--name-title {
+    line-height:1;
+}
+.view-id-discussions .field--name-field-ancestry-plain {
+    color:#333;
+    line-height:1;
+    text-decoration:none;
+    display:block;
+    font-size:70%;
+}
+.view-id-discussions article {
+    margin-bottom:0.5em;
+}
+
+.block-views-blockdiscussions-browse .view-id-discussions article {
+    margin-bottom:0em;
+}
+
+.view-id-discussions .views-row .glyphicon {
+    color:#888888;
+    top:2px;
+}
+
+section.block-views-blockdiscussions-help .views-row .glyphicon-bullhorn,
+section.block-views-blockdiscussions-help .views-row .glyphicon-bell {
+    display:none;
+}
+section.block-views-blockdiscussions-tasks .views-row .glyphicon-pushpin {
+    display:none;
+}
+
+.view-frontpage {
+    display:none;
+}

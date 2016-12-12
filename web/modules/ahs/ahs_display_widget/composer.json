@@ -1,0 +1,14 @@
+{
+  "name": "drupal/ahs_er_enhanced",
+  "type": "drupal-module",
+  "description": "Enhanced Entity Reference Widget",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/ahs_er_enhanced",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/ahs_er_enhanced",
+    "source": "http://cgit.drupalcode.org/ahs_er_enhanced"
+  },
+  "require": { }
+}

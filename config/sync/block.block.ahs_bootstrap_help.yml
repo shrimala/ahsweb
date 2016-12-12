@@ -1,0 +1,22 @@
+uuid: deea794c-d8c0-4997-a02a-45bfd64b4408
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - ahs_bootstrap
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: ahs_bootstrap_help
+theme: ahs_bootstrap
+region: content
+weight: -8
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

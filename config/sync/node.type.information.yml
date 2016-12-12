@@ -1,0 +1,18 @@
+uuid: ba349d8f-c990-4c4e-a1c4-d987082bca81
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Information
+type: information
+description: 'Pages of static information, for example about the Sangha and the training.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

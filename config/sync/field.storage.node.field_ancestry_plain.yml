@@ -1,0 +1,19 @@
+uuid: 575926a0-d54c-4b80-8aa2-0d8db83b0cec
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ancestry_plain
+field_name: field_ancestry_plain
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

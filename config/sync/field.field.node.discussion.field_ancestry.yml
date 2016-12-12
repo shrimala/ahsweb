@@ -1,0 +1,27 @@
+uuid: 125d416a-be3a-4a1b-a804-004dbd547178
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ancestry
+    - node.type.discussion
+id: node.discussion.field_ancestry
+field_name: field_ancestry
+entity_type: node
+bundle: discussion
+label: Ancestry
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      discussion: discussion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

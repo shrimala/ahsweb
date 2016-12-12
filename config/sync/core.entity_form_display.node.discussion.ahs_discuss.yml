@@ -1,0 +1,155 @@
+uuid: 70b17a70-5ed9-47dd-a643-855d94d5df2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.ahs_discuss
+    - field.field.node.discussion.body
+    - field.field.node.discussion.field_ancestry
+    - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_assigned
+    - field.field.node.discussion.field_children
+    - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_files
+    - field.field.node.discussion.field_finished
+    - field.field.node.discussion.field_help_wanted
+    - field.field.node.discussion.field_parents
+    - field.field.node.discussion.field_participants
+    - field.field.node.discussion.field_private
+    - field.field.node.discussion.field_top_level_category
+    - node.type.discussion
+  module:
+    - ahs_discussions
+    - chosen_field
+    - comment
+    - field_group
+    - file
+    - filefield_sources
+    - text
+third_party_settings:
+  field_group:
+    group_participation:
+      children:
+        - field_assigned
+        - field_participants
+        - field_private
+        - field_help_wanted
+        - promote
+        - field_finished
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Participation
+id: node.discussion.ahs_discuss
+targetEntityType: node
+bundle: discussion
+mode: ahs_discuss
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 4
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_assigned:
+    type: chosen_select
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+  field_children:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: 'Pick or create a narrower discussion that is part of this one.'
+    third_party_settings: {  }
+    type: ahs_entity_reference_with_views_autocreate
+  field_comments_with_changes:
+    type: comment_default
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+  field_files:
+    type: file_generic
+    weight: 5
+    settings:
+      progress_indicator: throbber
+    third_party_settings:
+      filefield_sources:
+        filefield_sources:
+          sources:
+            upload: true
+            remote: false
+            clipboard: false
+            reference: false
+            attach: false
+          source_reference:
+            autocomplete: '0'
+            search_all_fields: '0'
+          source_attach:
+            path: file_attach
+            absolute: 0
+            attach_mode: move
+  field_finished:
+    type: boolean_checkbox
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_help_wanted:
+    type: boolean_checkbox
+    weight: 7
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_parents:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 150
+      placeholder: 'Pick a broader discussion that includes this one.'
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_participants:
+    type: chosen_select
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  field_private:
+    type: boolean_checkbox
+    weight: 6
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  flag:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 8
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    settings:
+      size: 150
+      placeholder: 'The subject of this discussion'
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_ancestry: true
+  field_ancestry_plain: true
+  field_top_level_category: true
+  path: true
+  sticky: true
+  uid: true

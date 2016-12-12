@@ -1,0 +1,35 @@
+revision_log:
+  version: 1.x
+  css:
+    theme:
+      css/revision_log.css: {}
+  js:
+    js/revision_log.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+preview:
+  version: 1.x
+  css:
+    theme:
+      css/preview.css: {}
+remove:
+  version: 1.x
+  css:
+    theme:
+      css/remove.css: {}
+  js:
+    js/remove.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+hideui:
+  version: 1.x
+  css:
+    theme:
+      css/hideui.css: {}
+  js:
+    js/hideui.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

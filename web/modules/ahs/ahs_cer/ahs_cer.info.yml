@@ -1,0 +1,5 @@
+name: Corresponding Entity References
+type: module
+description: Simple Corresponding Entity References for AHS.
+core: 8.x
+package: AHS

@@ -1,0 +1,31 @@
+uuid: a5d8c1f5-569b-43c9-8509-96fa4ac47d0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.students_home
+    - views.view.discussions
+  module:
+    - block_visibility_groups
+    - views
+  theme:
+    - ahs_bootstrap
+id: views_block__discussions_tasks
+theme: ahs_bootstrap
+region: content
+weight: -2
+provider: null
+plugin: 'views_block:discussions-tasks'
+settings:
+  id: 'views_block:discussions-tasks'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: '20'
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: students_home
+    context_mapping: {  }

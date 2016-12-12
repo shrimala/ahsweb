@@ -1,0 +1,39 @@
+uuid: 9400b56e-3f08-4865-beb3-2c8dc6e6fe0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: Tt8DtxZ3Nooo0PoWPpJvszA3R_5d8MmpUW7LM_R-BzY
+id: default
+label: Default
+description: 'A default Linkit profile'
+matchers:
+  556010a3-e317-48b3-b4ed-854c10f4b950:
+    uuid: 556010a3-e317-48b3-b4ed-854c10f4b950
+    id: 'entity:node'
+    weight: 0
+    settings:
+      metadata: '[node:content-type]'
+      bundles:
+        email_teaching: email_teaching
+        event: event
+        information: information
+        session: session
+        teacher: teacher
+        venue: venue
+      group_by_bundle: false
+      include_unpublished: true
+      substitution_type: canonical
+  9fac37c7-3eaa-408a-aec3-082bb69fe8fd:
+    uuid: 9fac37c7-3eaa-408a-aec3-082bb69fe8fd
+    id: 'entity:node'
+    weight: 0
+    settings:
+      include_unpublished: false
+      metadata: '[node:field_ancestry_plain]'
+      bundles:
+        discussion: discussion
+      group_by_bundle: false
+      substitution_type: canonical

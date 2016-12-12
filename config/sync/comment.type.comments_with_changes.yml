@@ -1,0 +1,8 @@
+uuid: 335e7ce9-a20a-4e4d-8e3f-575a02d50b0c
+langcode: en
+status: true
+dependencies: {  }
+id: comments_with_changes
+label: 'Comments with changes'
+target_entity_type_id: node
+description: ''

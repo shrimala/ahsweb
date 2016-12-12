@@ -1,0 +1,7 @@
+global-styling:
+  css:
+    theme:
+      css/discussionForm.css: {}
+      css/students.css: {}
+      css/bootstrap-chosen.css: {}
+      css/global.css: {}

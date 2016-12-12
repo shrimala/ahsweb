@@ -8,16 +8,16 @@ default:
         tags: "~@skip"
       contexts:
         - FeatureContext
+        - ExtendedMinkContext
+        - FormElementVisibilityContext
         - Drupal\DrupalExtension\Context\DrupalContext
-        - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\EntityContext
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      selenium2: ~
-      base_url: http://localhost:8080
+      base_url: http://localhost:80
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
@@ -25,3 +25,14 @@ default:
         alias: 'local'
       drupal: 
         drupal_root: './web'
+      text:
+        username_field: "E-mail"
+travis:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://localhost:8080
+logs:
+  extensions:
+    Lakion\Behat\MinkDebugExtension:
+      directory: %paths.base%/features/logs
+      screenshot: true

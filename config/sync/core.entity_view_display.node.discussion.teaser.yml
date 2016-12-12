@@ -1,0 +1,51 @@
+uuid: d84ff35d-b449-45cd-ae34-c4b0386ccb7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.discussion.body
+    - field.field.node.discussion.field_ancestry
+    - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_assigned
+    - field.field.node.discussion.field_children
+    - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_help_wanted
+    - field.field.node.discussion.field_parents
+    - field.field.node.discussion.field_participants
+    - field.field.node.discussion.field_private
+    - field.field.node.discussion.field_top_level_category
+    - node.type.discussion
+  module:
+    - text
+    - user
+id: node.discussion.teaser
+targetEntityType: node
+bundle: discussion
+mode: teaser
+content:
+  body:
+    type: text_default
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_ancestry_plain:
+    type: basic_string
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_ancestry: true
+  field_assigned: true
+  field_children: true
+  field_comments_with_changes: true
+  field_files: true
+  field_finished: true
+  field_help_wanted: true
+  field_parents: true
+  field_participants: true
+  field_private: true
+  field_top_level_category: true
+  links: true

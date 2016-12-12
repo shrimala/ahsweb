@@ -1,0 +1,19 @@
+uuid: 9ef2235d-8919-463d-a30a-37f07e189db6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ancestry_plain
+    - node.type.discussion
+id: node.discussion.field_ancestry_plain
+field_name: field_ancestry_plain
+entity_type: node
+bundle: discussion
+label: 'Ancestry (plain)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

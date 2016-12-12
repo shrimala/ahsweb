@@ -1,0 +1,23 @@
+uuid: d7941df3-5f4c-4c44-bf13-6ff7ba1841f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comments_with_changes
+    - field.storage.comment.field_changes
+  module:
+    - changes
+id: comment.comments_with_changes.field_changes
+field_name: field_changes
+entity_type: comment
+bundle: comments_with_changes
+label: Changes
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    left_rid: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changes

@@ -1,0 +1,8 @@
+services:
+  ahs_discussions.ancestry:
+    class: Drupal\ahs_discussions\Ancestry
+    arguments: ["@entity_type.manager"]
+  ahs_discussions.route_subscriber:
+    class: Drupal\ahs_discussions\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

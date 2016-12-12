@@ -1,0 +1,9 @@
+.er-enhanced-previewing .er-enhanced-existing .form-type-entity-autocomplete {
+    display:none;
+}
+.er-enhanced-preview {
+    float:left;
+}
+.er-enhanced-remove {
+    float:right;
+}

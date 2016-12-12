@@ -1,0 +1,50 @@
+<?php
+
+/*
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\RevisionableInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+
+function changes_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
+
+  // Skip if this is not a new revision
+  if ($entity instanceof RevisionableInterface) {
+    $oldRevisionId = $entity->original->getRevisionId();
+    $newRevisionId = $entity->getRevisionId();
+    if ($oldRevisionId != $newRevisionId) {
+      
+      // Find comment fields
+      $entityFieldDefinitions = $entity->getFieldDefinitions();
+      foreach ($entityFieldDefinitions as $entityFieldDefinition) {
+        
+        // Check every comment field
+        if ($entityFieldDefinition->getType() === 'comment') {
+          $commentFieldName = $entityFieldDefinition->getName();
+          $commentFieldStorage = FieldStorageConfig::loadByName($entity->getEntityType()
+            ->id(), $commentFieldName);
+          $commentType = $commentFieldStorage->getSetting('comment_type');
+          $commentFieldDefinitions = \Drupal::entityManager()
+            ->getFieldDefinitions('comment', $commentType);
+          
+          // See if the comment field has a diff field on its chosen comment type
+          foreach ($commentFieldDefinitions as $commentFieldDefinition) {
+            if ($commentFieldDefinition->getType() === 'changes') {
+              
+              // Make a comment about the changes
+              $diffFieldName = $commentFieldDefinition->getName();
+              $comment = [
+                'comment_type' => $commentType,
+                'field_name' => $commentFieldName,
+                'subject' => 'Change record',
+              ];
+              \Drupal::service('changes.comment_with_changes')
+                ->add($comment, $entity, $oldRevisionId, $newRevisionId, $diffFieldName);
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+*/

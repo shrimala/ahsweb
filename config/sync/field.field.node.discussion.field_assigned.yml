@@ -1,0 +1,28 @@
+uuid: 51ed1c04-4a5b-4aea-bd61-45e317c071ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assigned
+    - node.type.discussion
+id: node.discussion.field_assigned
+field_name: field_assigned
+entity_type: node
+bundle: discussion
+label: Assigned
+description: 'Assigning this discussion as a task to someone indicates that they need to do something about it. It will show up on their home page under ''My tasks''. Once they have done what they need, they can unassign themselves.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: false
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference
