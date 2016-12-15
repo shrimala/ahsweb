@@ -20,7 +20,7 @@ settings:
   handler_settings:
     view:
       view_name: discussions_autocomplete
-      display_name: entity_reference_1
+      display_name: entity_reference_enhanced_1
       arguments: {  }
     auto_create: true
     auto_create_bundle: discussion

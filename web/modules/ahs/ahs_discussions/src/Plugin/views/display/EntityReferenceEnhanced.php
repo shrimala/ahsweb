@@ -82,15 +82,17 @@ class EntityReferenceEnhanced extends EntityReference {
       // A nasty hack!
       $block_match = FALSE;
       $concatenate_search_fields = $style_options['options']['concatenate_search_fields'];
-      if ($operator === '=' && $style_options['options']['block_typed_in_matches']) {
-        $block_match = TRUE;
-        if (substr($value, 0, 1) === '[' && substr($value, -1) === ']') {
-          // This must be Behat input not real user input
-          // So prepare to allow an exact match to reference existing item
-          // instead of autocreating.
-          $block_match = FALSE;
-          $concatenate_search_fields = FALSE;
-          $value = substr($value, 1, -1);
+      if ($operator === '=') {
+        $concatenate_search_fields = FALSE;
+        if ($style_options['options']['block_typed_in_matches']) {
+          $block_match = TRUE;
+          if (substr($value, 0, 1) === '[' && substr($value, -1) === ']') {
+            // This must be Behat input not real user input
+            // So prepare to allow an exact match to reference existing item
+            // instead of autocreating.
+            $block_match = FALSE;
+            $value = substr($value, 1, -1);
+          }
         }
       }
 

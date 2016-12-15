@@ -20,6 +20,6 @@ settings:
   handler_settings:
     view:
       view_name: discussions_autocomplete
-      display_name: entity_reference_1
+      display_name: entity_reference_enhanced_2
       arguments: {  }
 field_type: entity_reference
