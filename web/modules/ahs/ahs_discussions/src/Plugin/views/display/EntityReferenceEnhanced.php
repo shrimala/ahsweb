@@ -78,21 +78,22 @@ class EntityReferenceEnhanced extends EntityReference {
       // but sometimes we don't want this behaviour outside of behat because we
       // want autocreation of a new item to happen instead.
       // Therefore we use square brackets around values to trigger this
-      // for Behat.
-      // A nasty hack!
+      // for Behat. To make test syntax more consistent, we always strip
+      // the brackets whether or not the field is configured to block matches.
+      // All this is a nasty hack!
       $block_match = FALSE;
       $concatenate_search_fields = $style_options['options']['concatenate_search_fields'];
       if ($operator === '=') {
         $concatenate_search_fields = FALSE;
         if ($style_options['options']['block_typed_in_matches']) {
           $block_match = TRUE;
-          if (substr($value, 0, 1) === '[' && substr($value, -1) === ']') {
-            // This must be Behat input not real user input
-            // So prepare to allow an exact match to reference existing item
-            // instead of autocreating.
-            $block_match = FALSE;
-            $value = substr($value, 1, -1);
-          }
+        }
+        if (substr($value, 0, 1) === '[' && substr($value, -1) === ']') {
+          // This must be Behat input not real user input
+          // So override option and allow an exact match to reference existing
+          // item instead of autocreating.
+          $block_match = FALSE;
+          $value = substr($value, 1, -1);
         }
       }
 
@@ -116,28 +117,26 @@ class EntityReferenceEnhanced extends EntityReference {
          }
       }
 
-      // Combine search fields
-      if ($concatenate_search_fields) {
-        // By concatenation
-        if ($block_match) {
-          $where_field = "''";
-        }
-        else {
-          $fields_string = implode(", ", $search_fields);
-          $where_field = "CONCAT($fields_string)";
-        }
-        $this->view->query->addWhereExpression(0, "$where_field $operator '$value'");
+      if ($block_match) {
+        // Add a where expression that is always false, therefore returning zero matches.
+        $this->view->query->addWhereExpression(0, "0");
       }
       else {
-        // By OR
-        $conditions = db_or();
-        foreach ($search_fields as $where_field) {
-          if ($block_match) {
-            $where_field = "''";
-          }
-          $conditions->condition($where_field, $value, $operator);
+        // Combine search fields
+        if ($concatenate_search_fields) {
+          // By concatenation
+          $fields_string = implode(", ", $search_fields);
+          $where_field = "CONCAT($fields_string)";
+          $this->view->query->addWhereExpression(0, "$where_field $operator '$value'");
         }
-        $this->view->query->addWhere(0, $conditions);
+        else {
+          // By OR
+          $conditions = db_or();
+          foreach ($search_fields as $where_field) {
+            $conditions->condition($where_field, $value, $operator);
+          }
+          $this->view->query->addWhere(0, $conditions);
+        }
       }
       
     }

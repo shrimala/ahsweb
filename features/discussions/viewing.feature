@@ -18,7 +18,7 @@ Feature: Ancestry that shows a hierarchy based on first parents
     When I visit "/discuss/add"
     And I fill in "title[0][value]" with "Testtitle"
     And I fill in "field_parents[0][target_id]" with "Parent"
-    And I fill in "field_children[0][target_id]" with "Dog"
+    And I fill in "field_children[0][target_id]" with "[Dog]"
     And I press the "Save" button
     Then I am visiting "/discuss/parent/testtitle"
     And I should see "Dog" displayed from the "field_children" field
