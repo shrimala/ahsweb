@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_ancestry_plain
     - node.type.discussion
   module:
+    - ahs_discussions
     - node
     - user
 id: discussions_autocomplete
@@ -230,20 +231,18 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts:
-        changed:
-          id: changed
-          table: node_field_data
-          field: changed
+        last_comment_timestamp:
+          id: last_comment_timestamp
+          table: comment_entity_statistics
+          field: last_comment_timestamp
           relationship: none
           group_type: group
           admin_label: ''
-          order: ASC
+          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
-          entity_type: node
-          entity_field: changed
           plugin_id: date
       header: {  }
       footer: {  }
@@ -261,19 +260,22 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_ancestry_plain'
-  entity_reference_1:
-    display_plugin: entity_reference
-    id: entity_reference_1
-    display_title: 'Entity Reference'
+  entity_reference_enhanced_1:
+    display_plugin: entity_reference_enhanced
+    id: entity_reference_enhanced_1
+    display_title: 'Possible children'
     position: 1
     display_options:
       display_extenders: {  }
       style:
-        type: entity_reference
+        type: entity_reference_enhanced
         options:
           search_fields:
             field_ancestry_plain: field_ancestry_plain
             title: title
+          concatenate_search_fields: 1
+          match_with_interruptions: 1
+          block_typed_in_matches: 1
       row:
         type: entity_reference
         options:
@@ -281,6 +283,104 @@ display:
           inline: {  }
           separator: ''
           hide_empty: false
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_ancestry_plain'
+  entity_reference_enhanced_2:
+    display_plugin: entity_reference_enhanced
+    id: entity_reference_enhanced_2
+    display_title: 'Possible parents'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      style:
+        type: entity_reference_enhanced
+        options:
+          search_fields:
+            field_ancestry_plain: field_ancestry_plain
+            title: title
+          concatenate_search_fields: 1
+          match_with_interruptions: 1
+          block_typed_in_matches: 0
+      row:
+        type: entity_reference
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            discussion: discussion
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        field_finished_value:
+          id: field_finished_value
+          table: node__field_finished
+          field: field_finished_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '0'
+          group: '1'
+          exposed: false
+          expose:
+            operator_id: false
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: 0
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:

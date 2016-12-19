@@ -18,11 +18,11 @@ Feature: Ancestry that shows a hierarchy based on first parents
     Given "discussion" content:
       | title      |
       | Parent     |
-    Given a discussion content with the title "grandchild"
+    Given a discussion content with the title "Grandchild"
     When I visit "/discuss/add"
     When I fill in "title[0][value]" with "Child"
     And I fill in "field_parents[0][target_id]" with "Parent"
-    And I fill in "field_children[0][target_id]" with "Grandchild"
+    And I fill in "field_children[0][target_id]" with "[Grandchild]"
     And I press the "Save" button
     Then I am visiting "/discuss/parent/child"
     And I should see "Grandchild" displayed from the "field_children" field

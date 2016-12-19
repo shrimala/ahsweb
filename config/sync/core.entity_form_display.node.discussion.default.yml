@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.discussion.field_top_level_category
     - node.type.discussion
   module:
+    - ahs_discussions
     - comment
     - file
     - path
@@ -67,10 +68,10 @@ content:
     weight: 36
     settings:
       match_operator: CONTAINS
-      size: 60
+      size: '60'
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: ahs_entity_reference_with_views_autocreate
   field_comments_with_changes:
     weight: 38
     settings: {  }

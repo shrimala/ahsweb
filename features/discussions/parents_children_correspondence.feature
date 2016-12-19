@@ -101,7 +101,7 @@ Feature: Discussions Corresponding Entity References
       | Parent1     | Child1         |
     When I am at "/admin/content"
     When I click "Parent1"
-    When I fill in "field_children[0][target_id]" with "Child2"
+    When I fill in "field_children[0][target_id]" with "[Child2]"
     And I fill in "field_children[1][target_id]" with "Cer_autocreate_notcleanedup"
     And I press the "Save" button
     When I am at "/admin/content"
