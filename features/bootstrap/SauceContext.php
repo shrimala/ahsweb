@@ -31,6 +31,17 @@ class SauceContext implements SnippetAcceptingContext
       $username,
       $access_key
     );
+    
+    if (empty($platform)) {
+      $platform ="Windows 10";
+    }
+    if (empty($platform)) {
+      $browser_name ="firefox";
+    }
+    if (empty($version)) {
+      $platform ="latest";
+    }
+    
     $desired_capabilities = new stdClass;
     $desired_capabilities->platform = $platform;
     $desired_capabilities->browserName = $browser_name;
