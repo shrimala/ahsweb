@@ -1,6 +1,7 @@
 <?php
 
 use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Mink\Element\NodeElement;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
@@ -186,5 +187,5 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $string = preg_replace("/[\s_]/", "-", $string);
     return $string;
   }
-
+  
 }

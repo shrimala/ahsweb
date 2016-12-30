@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bb8fe9219264ba91920bf9cacd7b6ba0",
-    "content-hash": "cd181a8ff58b977050c18066f52461f9",
+    "hash": "8f4bf266addd25e4c92d19409ba77865",
+    "content-hash": "eff549c007c99f092a45294de0aaa1af",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1993,12 +1993,12 @@
             "version": "1.0.0-rc9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/hechoendrupal/DrupalConsole.git",
+                "url": "https://github.com/hechoendrupal/drupal-console.git",
                 "reference": "13f2b089194a93a126929a358de397e16c738c15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/13f2b089194a93a126929a358de397e16c738c15",
+                "url": "https://api.github.com/repos/hechoendrupal/drupal-console/zipball/13f2b089194a93a126929a358de397e16c738c15",
                 "reference": "13f2b089194a93a126929a358de397e16c738c15",
                 "shasum": ""
             },
@@ -3950,6 +3950,53 @@
                 "scraper"
             ],
             "time": "2015-11-05 12:58:44"
+        },
+        {
+            "name": "facebook/webdriver",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/php-webdriver.git",
+                "reference": "af21de3ae5306a8ca0bcc02a19735dadc43e83f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/af21de3ae5306a8ca0bcc02a19735dadc43e83f3",
+                "reference": "af21de3ae5306a8ca0bcc02a19735dadc43e83f3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": "^5.5 || ~7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "php-mock/php-mock-phpunit": "^1.1",
+                "phpunit/phpunit": "4.6.* || ~5.0",
+                "squizlabs/php_codesniffer": "^2.6"
+            },
+            "suggest": {
+                "phpdocumentor/phpdocumentor": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Facebook\\WebDriver\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "A PHP client for WebDriver",
+            "homepage": "https://github.com/facebook/php-webdriver",
+            "keywords": [
+                "facebook",
+                "php",
+                "selenium",
+                "webdriver"
+            ],
+            "time": "2016-10-14 15:16:51"
         },
         {
             "name": "gabordemooij/redbean",

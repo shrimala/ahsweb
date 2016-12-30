@@ -72,7 +72,8 @@
         "drupal/linkit": "5.0-beta3",
         "drupal/chosen": "dev-2.x@dev",
         "drupal/field_group": "1.x-dev",
-        "drupal/r4032login": "1.x-dev"
+        "drupal/r4032login": "1.x-dev",
+        "facebook/webdriver": "^1.2"
     },
     "require-dev": {
         "behat/mink": "~1.7",
