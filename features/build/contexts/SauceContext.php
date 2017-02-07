@@ -14,7 +14,6 @@ use Behat\Gherkin\Node\TableNode;
 
 class SauceContext implements SnippetAcceptingContext
 {
-//export SAUCE_ACCESS_KEY=0231db21-369a-4f7e-8608-14478e1a0922
 
   /** @BeforeScenario */
   public function before($scope)

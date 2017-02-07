@@ -54,3 +54,29 @@ Feature: Site Installation
   Scenario: Token is installed
     When I visit "admin/structure/display-modes/view/manage/node.token"
     Then the response status code should be 200
+
+  Scenario: Modules are installed
+    Given the "Flysystem" module is installed
+    Given the "Flysystem Dropbox" module is installed
+    Given the "Media entity" module is installed
+    Given the "Media entity audio" module is installed
+    Given the "Video Embed Field" module is installed
+    Given the "Video Embed Media" module is installed
+    Given the "File (Field) Paths" module is installed
+    Given the "File Field Sources" module is installed
+    Given the "Paragraphs" module is installed
+    Given the "Pathauto" module is installed
+    Given the "Token" module is installed
+    Given the "Chaos tools" module is installed
+    Given the "Email Registration" module is installed
+    Given the "Corresponding Entity References" module is installed
+    Given the "Discussions" module is installed
+    Given the "User management" module is installed
+    Given the "Miscellaneous" module is installed
+    Given the "Changes" module is installed
+    Given the "Field Group" module is installed
+    Given the "Chosen Field" module is installed
+    Given the "Diff" module is installed
+    Given the "Block Visibility Groups" module is installed
+    Given the "Redirect 403 to User Login" module is installed
+    Given the "Linkit" module is installed

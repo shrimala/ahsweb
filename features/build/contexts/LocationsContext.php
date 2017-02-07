@@ -76,18 +76,19 @@ class LocationsContext extends RawMinkContext  implements SnippetAcceptingContex
   }
 
   /**
-   * Allow locating of named Drupal blocks.
+   * Allow locating of named Drupal Views blocks.
    * 
-   * @Transform /(.*)in the "(.*)" block(.*)/
+   * @Transform /(.*)in the "(.*)" "(.*)" views block(.*)/
    *
    * @param string $before
    * @param string $locator
    * @param string $after
    * @return string
    */
-  public function blockLocation($before="", $locator, $after ="")
+  public function blockLocation($before="", $block, $view, $after ="")
   {
-    return $before . 'in the "block-bartik-' . $this->stringToClassName($locator) . '" "named:id" location' . $after;
+    $id = 'block-views-block-' . $this->stringToClassName($view) . '-' . $this->stringToClassName($block);
+    return $before . 'in the "' . $id . '" "named:id" location' . $after;
   }
 
   /**

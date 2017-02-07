@@ -61,6 +61,25 @@ function ahs_user_management_email_registration_name(UserInterface $account) {
   return $userName;
 }
 
+
+/**
+ * Implements hook_module_implements_alter
+ *
+ * Moves our hook ahs_user_management_form_user_form_alter
+ * so that it fires last and can undo the work of other modules.
+ */
+function ahs_user_management_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'form_alter') {
+    // Move our form alter to the end, to give it priority over menu module's.
+    if (isset($implementations['ahs_user_management'])) {
+      $group = $implementations['ahs_user_management'];
+      unset($implementations['ahs_user_management']);
+      $implementations['ahs_user_management'] = $group;
+    }
+  }
+}
+
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
