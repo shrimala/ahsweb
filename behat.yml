@@ -2,7 +2,7 @@ default:
   autoload:
     - %paths.base%/features/build/contexts
   suites:
-    default: &default
+    default:
       paths:
         - %paths.base%/features
       filters:
@@ -18,10 +18,6 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\EntityContext
-    local:
-      <<: *default
-      filters:
-        tags: "~@skip&&~@email"
   extensions:
     Behat\MinkExtension:
       files_path: %paths.base%/features/build/files
