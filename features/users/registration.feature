@@ -4,7 +4,7 @@ Feature: User registration
   As a new user
   I need to be able to register
 
-  @email
+  @email @hasDrupalError @hasDrupalWarning
   Scenario: User can register
     Given I am on "/user/register"
     When I fill in the following:
