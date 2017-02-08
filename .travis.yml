@@ -30,7 +30,6 @@ before_script:
   - sleep 3
 script:
   - cd $TRAVIS_BUILD_DIR
-  - vendor/bin/behat -V
   - vendor/bin/behat --profile travis
 notifications:
   email: false

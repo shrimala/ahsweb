@@ -1,22 +1,42 @@
 default:
+  autoload:
+    - %paths.base%/features/build/contexts
   suites:
-    default:
+    default: &default
       paths:
-        features: features
-        bootstrap: features/bootstrap
+        - %paths.base%/features
       filters:
         tags: "~@skip"
       contexts:
         - FeatureContext
-        - ExtendedMinkContext
+        - MinkContext
         - FormElementVisibilityContext
+        - ErrorAndWarningContext
+        - LogContext
+        - Drupal\DrupalExtension\Context\MarkupContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\EntityContext
+    local:
+      <<: *default
+      filters:
+        tags: "~@skip&&~@email"
   extensions:
     Behat\MinkExtension:
-      goutte: ~
+      files_path: %paths.base%/features/build/files
+      javascript_session: 'sauce'
+      sessions:
+        default:
+          goutte: ~
+        sauce:
+          sauce_labs:
+            connect: true
+            username: 'shrimala'
+            access-key: '0231db21-369a-4f7e-8608-14478e1a0922'
+            capabilities:
+              custom-data:
+                musthave: somenonsensevalue
       base_url: http://localhost:80
     Drupal\DrupalExtension:
       blackbox: ~
@@ -27,12 +47,38 @@ default:
         drupal_root: './web'
       text:
         username_field: "E-mail"
+      selectors:
+        error_message_selector: '.alert-danger'
+        warning_message_selector: '.alert-warning'
+      region_map:
+        Help wanted discussions: ".view-display-id-help .views-row"
+        My tasks: ".view-display-id-tasks .views-row"
+        My discussions: ".view-display-id-my_discussions .views-row"
+        Active discussions: ".view-display-id-active .views-row"
+        Browse categories: ".view-display-id-browse .views-row"
+        Search results: ".view-display-id-search .views-row"
+        Title field: "span.field--name-title"
+        Ancestry field: "span.field--name-field-ancestry-plain"
+        Discussion comments: "div.field--name-field-comments-with-changes > div > div > article"
+        Comment body: "div.field--name-comment-body"
 travis:
   extensions:
     Behat\MinkExtension:
       base_url: http://localhost:8080
+sauce:
+  extensions:
+    Behat\MinkExtension:
+      sessions:
+        default:
+          sauce_labs:
+            connect: true
+            username: shrimala
+            access-key: 0231db21-369a-4f7e-8608-14478e1a0922
+            capabilities:
+              custom-data:
+                musthave: somenonsensevalue
 logs:
   extensions:
     Lakion\Behat\MinkDebugExtension:
-      directory: %paths.base%/features/logs
+      directory: %paths.base%/features/build/logs
       screenshot: true
