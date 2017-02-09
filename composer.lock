@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bb8fe9219264ba91920bf9cacd7b6ba0",
-    "content-hash": "cd181a8ff58b977050c18066f52461f9",
+    "hash": "c65d8ab20492f3efcdb4eed5b7d8d449",
+    "content-hash": "5445adcd9e670cb8731cf4f90e6cfe5b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1993,12 +1993,12 @@
             "version": "1.0.0-rc9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/hechoendrupal/DrupalConsole.git",
+                "url": "https://github.com/hechoendrupal/drupal-console.git",
                 "reference": "13f2b089194a93a126929a358de397e16c738c15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/13f2b089194a93a126929a358de397e16c738c15",
+                "url": "https://api.github.com/repos/hechoendrupal/drupal-console/zipball/13f2b089194a93a126929a358de397e16c738c15",
                 "reference": "13f2b089194a93a126929a358de397e16c738c15",
                 "shasum": ""
             },
@@ -2625,16 +2625,16 @@
         },
         {
             "name": "drupal/drupal-driver",
-            "version": "dev-EntityContext",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/shrimala/DrupalDriver.git",
-                "reference": "410599df6d037e81f716a579bbf3e5e789d6ae78"
+                "url": "https://github.com/jhedstrom/DrupalDriver.git",
+                "reference": "da5e6672bb5dbd5ab87809356641b10807b502bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shrimala/DrupalDriver/zipball/410599df6d037e81f716a579bbf3e5e789d6ae78",
-                "reference": "410599df6d037e81f716a579bbf3e5e789d6ae78",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/da5e6672bb5dbd5ab87809356641b10807b502bb",
+                "reference": "da5e6672bb5dbd5ab87809356641b10807b502bb",
                 "shasum": ""
             },
             "require": {
@@ -2652,6 +2652,9 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.2.x-dev"
+                },
+                "patches_applied": {
+                    "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch"
                 }
             },
             "autoload": {
@@ -2661,6 +2664,7 @@
                     "Drupal\\Tests\\Driver": "tests/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
             ],
@@ -2677,23 +2681,20 @@
                 "test",
                 "web"
             ],
-            "support": {
-                "source": "https://github.com/shrimala/DrupalDriver/tree/EntityContext"
-            },
-            "time": "2016-09-29 09:15:14"
+            "time": "2017-01-03 14:21:15"
         },
         {
             "name": "drupal/drupal-extension",
-            "version": "dev-EntityContext",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/shrimala/drupalextension.git",
-                "reference": "5bb09573bbb501a11d55a71b41c49949435fafad"
+                "url": "https://github.com/jhedstrom/drupalextension.git",
+                "reference": "8d2eea92396b7079f3f9ac6f67c8987aa1e911a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shrimala/drupalextension/zipball/5bb09573bbb501a11d55a71b41c49949435fafad",
-                "reference": "5bb09573bbb501a11d55a71b41c49949435fafad",
+                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/8d2eea92396b7079f3f9ac6f67c8987aa1e911a5",
+                "reference": "8d2eea92396b7079f3f9ac6f67c8987aa1e911a5",
                 "shasum": ""
             },
             "require": {
@@ -2715,6 +2716,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "4.0.x-dev"
+                },
+                "patches_applied": {
+                    "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
+                    "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch"
                 }
             },
             "autoload": {
@@ -2724,6 +2729,7 @@
                     "Drupal\\DrupalExtension": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
             ],
@@ -2740,18 +2746,21 @@
                 "test",
                 "web"
             ],
-            "support": {
-                "source": "https://github.com/shrimala/drupalextension/tree/EntityContext"
-            },
-            "time": "2016-10-03 20:34:06"
+            "time": "2017-02-03 08:39:12"
         },
         {
             "name": "drupal/email_registration",
-            "version": "dev-1.x",
+            "version": "1.0.0-rc4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/email_registration",
-                "reference": "30e81ee75ca32288c4c1146d3d077d299c399a0a"
+                "reference": "8.x-1.0-rc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/email_registration-8.x-1.0-rc4.zip",
+                "reference": null,
+                "shasum": "442a441f71a254e6bc87ab7d774518838d64882e"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2762,8 +2771,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc3+2-dev",
-                    "datestamp": "1478012639"
+                    "version": "8.x-1.0-rc4",
+                    "datestamp": "1482843783"
+                },
+                "patches_applied": {
+                    "Add support for Behat tests (use AuthenticationManager)": "https://www.drupal.org/files/issues/2843505-8.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2792,8 +2804,7 @@
             "homepage": "https://www.drupal.org/project/email_registration",
             "support": {
                 "source": "http://cgit.drupalcode.org/email_registration"
-            },
-            "time": "2016-11-01 15:00:39"
+            }
         },
         {
             "name": "drupal/entity",
@@ -3950,6 +3961,99 @@
                 "scraper"
             ],
             "time": "2015-11-05 12:58:44"
+        },
+        {
+            "name": "facebook/webdriver",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/php-webdriver.git",
+                "reference": "af21de3ae5306a8ca0bcc02a19735dadc43e83f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/af21de3ae5306a8ca0bcc02a19735dadc43e83f3",
+                "reference": "af21de3ae5306a8ca0bcc02a19735dadc43e83f3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": "^5.5 || ~7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "php-mock/php-mock-phpunit": "^1.1",
+                "phpunit/phpunit": "4.6.* || ~5.0",
+                "squizlabs/php_codesniffer": "^2.6"
+            },
+            "suggest": {
+                "phpdocumentor/phpdocumentor": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Facebook\\WebDriver\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "A PHP client for WebDriver",
+            "homepage": "https://github.com/facebook/php-webdriver",
+            "keywords": [
+                "facebook",
+                "php",
+                "selenium",
+                "webdriver"
+            ],
+            "time": "2016-10-14 15:16:51"
+        },
+        {
+            "name": "friends-of-behat/service-container-extension",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfBehat/ServiceContainerExtension.git",
+                "reference": "203d0f30a3d17d47e7bb1a6842c8266911f30e45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfBehat/ServiceContainerExtension/zipball/203d0f30a3d17d47e7bb1a6842c8266911f30e45",
+                "reference": "203d0f30a3d17d47e7bb1a6842c8266911f30e45",
+                "shasum": ""
+            },
+            "require": {
+                "behat/behat": "^3.1",
+                "php": "^5.6|^7.0"
+            },
+            "require-dev": {
+                "friends-of-behat/cross-container-extension": "^0.1",
+                "friends-of-behat/test-context": "^0.3",
+                "symfony/process": "^2.7|^3.0"
+            },
+            "suggest": {
+                "friends-of-behat/cross-container-extension": "^0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FriendsOfBehat\\ServiceContainerExtension\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kamil Kokot",
+                    "email": "kamil@kokot.me",
+                    "homepage": "http://kamil.kokot.me"
+                }
+            ],
+            "description": "Allows to declare own services inside Behat container without writing an extension.",
+            "time": "2016-11-03 09:47:50"
         },
         {
             "name": "gabordemooij/redbean",
@@ -8464,14 +8568,7 @@
             "time": "2015-06-21 13:59:46"
         }
     ],
-    "aliases": [
-        {
-            "alias": "dev-master",
-            "alias_normalized": "9999999-dev",
-            "version": "dev-EntityContext",
-            "package": "drupal/drupal-driver"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/flysystem": 20,
@@ -8490,7 +8587,6 @@
         "drupal/file_checker": 20,
         "drupal/bootstrap": 20,
         "drupal/diff": 20,
-        "drupal/email_registration": 20,
         "drupal/chosen": 20,
         "drupal/field_group": 20,
         "drupal/r4032login": 20

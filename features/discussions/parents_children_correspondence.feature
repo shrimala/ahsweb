@@ -102,13 +102,13 @@ Feature: Discussions Corresponding Entity References
     When I am at "/admin/content"
     When I click "Parent1"
     When I fill in "field_children[0][target_id]" with "[Child2]"
-    And I fill in "field_children[1][target_id]" with "Cer_autocreate_notcleanedup"
+    And I fill in "field_children[1][target_id]" with "Child3"
     And I press the "Save" button
     When I am at "/admin/content"
     And I click "Parent1"
     Then I should not see "Child1" displayed from the "field_children" field
     And I should see "Child2" displayed from the "field_children" field
-    And I should see "Cer_autocreate_notcleanedup" displayed from the "field_children" field
+    And I should see "Child3" displayed from the "field_children" field
     When I am at "/admin/content"
     And I click "Child1"
     Then I should not see "Parent1" displayed from the "field_parents" field
@@ -116,8 +116,14 @@ Feature: Discussions Corresponding Entity References
     And I click "Child2"
     Then I should see "Parent1" displayed from the "field_parents" field
     When I am at "/admin/content"
-    And I click "Cer_autocreate_notcleanedup"
+    And I click "Child3"
     Then I should see "Parent1" displayed from the "field_parents" field
+    # Clean up autocreated discussion
+    When I am at "/admin/content"
+    And I click "Delete" in the "Child3" row
+    And I press "Delete"
+    And I am at "/admin/content"
+    Then I should not see "Child3"
 
   Scenario: Updating a child with a new parent reference sets the child reference on the parent
     Given "discussion" content:
@@ -155,11 +161,13 @@ Feature: Discussions Corresponding Entity References
     And I click "Parent1"
     Then I should see "Child1" displayed from the "field_children" field
 
+  @hasDrupalError
   Scenario: Cannot autocreate a parent reference
     Given a discussion content with the title "Child1"
     When I am at "/admin/content"
     And I click "Child1"
     And I fill in "field_parents[0][target_id]" with "Autocreated_should_not_exist"
     And I press the "Save" button
+    Then I should see the error message "There are no entities matching"
     When I am at "/admin/content"
     Then I should not see "Autocreated_should_not_exist"

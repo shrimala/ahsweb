@@ -1,12 +1,14 @@
 <?php
 
 use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Mink\Element\NodeElement;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Exception\ExpectationException;
 use Behat\Mink\Exception\ElementNotFoundException;
+use Drupal\DrupalExtension\Hook\Scope\EntityScope;
 
 /**
  * Defines application features from the specific context.
@@ -63,6 +65,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       throw new ExpectationException($message, $this->getSession());
     }
   }
+  
   /**
    * Checks that an attribute exists in an element.
    *
@@ -187,4 +190,129 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     return $string;
   }
 
+  /**
+   * Checks if a set of elements matches the values in a table.
+   *
+   * @Then I should see :elements_css( elements):
+   *
+   * @param $elements_css
+   *   string The id|name|title|alt|value (css selector) of the element that constitutes the list item
+   *
+   * @throws \Exception
+   *   If elements do not match table.
+   */
+  public function assertElements(TableNode $table, $elements_css) {
+    $page =$this->getSession()->getPage();
+    $list = $this->findByRegionOrCss($page,'findAll', $elements_css);
+    $expectedItems = $table->getHash();
+
+    // Prepare text output for error messages
+    $listText = "\n";
+    foreach ($list as $listItem) {
+      $listText .= $listItem->getText() . "\n";
+    }
+
+    if (empty($list)) {
+      throw new \Exception(sprintf("No '%s' were found on the page %s", $elements_css, $this->getSession()
+        ->getCurrentUrl()));
+    }
+    if (count($list) !== count($expectedItems)) {
+      throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. The found items were:", count($list), $elements_css, $this->getSession()
+        ->getCurrentUrl(), count($expectedItems), $listText));
+    }
+
+    foreach ($expectedItems as $n => $expectedItem) {
+      $rowElement = $list[$n];
+      foreach ($expectedItem as $expectedItemType => $expectedItemValue) {
+
+        // If the value in the column for this row is blank, skip it.
+        if (empty($expectedItemValue)) {
+          break;
+        }
+
+        $rowMessage = sprintf('#%s of the "%s" on the page %s', $n + 1, $elements_css, $this->getSession()
+          ->getCurrentUrl());
+        $sharedMessage = $rowMessage;
+
+        // A test for text anywhere in row element is requested.
+        if ($expectedItemType === 'contains'
+          || $expectedItemType === ':contains'
+          || $expectedItemType === ': contains') {
+          $find = FALSE;
+          $contains = TRUE;
+          $element = $rowElement;
+        }
+        // A test using a more specific sub-element is requested.
+        else {
+          // Prepare to test presence of a sub-element
+          $find = TRUE;
+          $contains = FALSE;
+          $selector = $expectedItemType;
+
+          // Prepare to test for text in a sub-element
+          if (substr($expectedItemType, -9, 9) === ':contains') {
+            $contains = TRUE;
+            $selector = substr($expectedItemType, 0, strlen($expectedItemType) - 9);
+          }
+          if (substr($expectedItemType, -10, 10) === ': contains') {
+            $contains = TRUE;
+            $selector = substr($expectedItemType, 0, strlen($expectedItemType) - 10);
+          }
+          if (strtolower($expectedItemValue) !== 'yes' && strtolower($expectedItemValue) !== 'no') {
+            $contains = TRUE;
+          }
+        }
+
+        // Set up test expectations
+        $expected = TRUE;
+        if (strtolower($expectedItemValue) === 'no') {
+          $expected = FALSE;
+        }
+        $negationText = $expected ? "not " : "";
+
+        // Find the sub-element
+        if ($find) {
+          $element = $this->findByRegionOrCss($rowElement, 'find', $selector);
+          $actual = !($element === null);
+
+          $message = sprintf('"%s" was %sfound in %s', $selector, $negationText, $sharedMessage);
+          $sharedMessage = sprintf('in the "%s" in %s', $selector, $sharedMessage);
+        }
+
+        // Test element contains text
+        if ($contains && $element) {
+          $regex = '/' . preg_quote($expectedItemValue, '/') . '/ui';
+          $actual =  (((bool) preg_match($regex, $element->getText())));
+          $message = sprintf('The text "%s" was not found in %s. The actual text was "%s". The full list was: %s', $expectedItemValue, $sharedMessage, $element->getText(), $listText);
+        }
+
+        // Classes can additionally match on element as within element
+        if (substr($expectedItemType, 0, 1) === '.'
+          && strpos($expectedItemType, ":") === FALSE
+          && $actual === FALSE) {
+          $class = substr($expectedItemType, 1);
+          $actual = $rowElement->hasClass($class);
+          $message = sprintf('The "%s" class was %sfound on or in %s', $class, $negationText, $rowMessage);
+        }
+
+        if ($expected !== $actual) {
+          throw new \Exception($message);
+        }
+
+
+      }
+    }
+  }
+
+  protected function findByRegionOrCss($element, $method, $selector) {
+    try {
+      $found = $element->$method('region', $selector);
+    }
+    catch (Exception $e) {
+      $found = $element->$method('css', $selector);
+    }
+    return $found;
+  }
+
+  
 }

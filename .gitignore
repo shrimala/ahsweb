@@ -14,7 +14,7 @@ web/sites/*/files
 .idea
 
 # Ignores added by Jonathan
-features/logs
+features/build/logs
 *.patch
 web/sites/simpletest
 web/web
