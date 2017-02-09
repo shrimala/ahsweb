@@ -9,6 +9,9 @@ Feature: Discussions listed on home page
       | name        | status |
       | Fred Bloggs  | 1      |
       | Jane Doe     | 1      |
+    Given I am logged in as an "administrator"
+    When I visit "/admin/content"
+    Then I should not see "Test"
 
   Scenario: Help wanted
     # See: Help wanted, promoted, Not finished, not private, not participant, not assigned
