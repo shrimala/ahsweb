@@ -206,13 +206,19 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $list = $this->findByRegionOrCss($page,'findAll', $elements_css);
     $expectedItems = $table->getHash();
 
+    // Prepare text output for error messages
+    $listText = "\n";
+    foreach ($list as $listItem) {
+      $listText .= $listItem->getText() . "\n";
+    }
+
     if (empty($list)) {
       throw new \Exception(sprintf("No '%s' were found on the page %s", $elements_css, $this->getSession()
         ->getCurrentUrl()));
     }
     if (count($list) !== count($expectedItems)) {
-      throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. ", count($list), $elements_css, $this->getSession()
-        ->getCurrentUrl(), count($expectedItems)));
+      throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. The found items were:", count($list), $elements_css, $this->getSession()
+        ->getCurrentUrl(), count($expectedItems), $listText));
     }
 
     foreach ($expectedItems as $n => $expectedItem) {
@@ -277,7 +283,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
         if ($contains && $element) {
           $regex = '/' . preg_quote($expectedItemValue, '/') . '/ui';
           $actual =  (((bool) preg_match($regex, $element->getText())));
-          $message = sprintf('The text "%s" was not found in %s. The actual text was "%s".', $expectedItemValue, $sharedMessage, $element->getText());
+          $message = sprintf('The text "%s" was not found in %s. The actual text was "%s". The full list was: %s', $expectedItemValue, $sharedMessage, $element->getText(), $listText);
         }
 
         // Classes can additionally match on element as within element
