@@ -77,6 +77,10 @@ class MinkContext extends DrupalExtensionMinkContext implements SnippetAccepting
   public function iComment($comment) {
     $this->fillField('comment[value]', $comment);
     $this->pressButton('Save');
+    // Wait for just over 1 second, so that when sorted by time
+    // comments or commented nodes have non-equal times.
+    // (Because Views has a minimum granularity of seconds for time ordering).
+    sleep(1);
   }
 
 
