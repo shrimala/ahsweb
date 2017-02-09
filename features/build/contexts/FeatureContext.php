@@ -277,7 +277,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
         if ($contains && $element) {
           $regex = '/' . preg_quote($expectedItemValue, '/') . '/ui';
           $actual =  (((bool) preg_match($regex, $element->getText())));
-          $message = sprintf('The text "%s" was not found in %s', $expectedItemValue, $sharedMessage);
+          $message = sprintf('The text "%s" was not found in %s. The actual text was "%s".', $expectedItemValue, $sharedMessage, $element->getText());
         }
 
         // Classes can additionally match on element as within element
