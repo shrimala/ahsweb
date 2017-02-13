@@ -109,7 +109,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
        else {
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
-         if ($item->right_rid !== $entity->getRevisionId()) {
+         if ($item->right_rid != $entity->getRevisionId()) {
            // Trigger exclusion of interactive items like on preview.
            $right_revision->in_preview = TRUE;
            $view_builder = \Drupal::entityTypeManager()
