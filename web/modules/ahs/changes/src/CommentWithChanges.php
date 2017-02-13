@@ -75,7 +75,7 @@ class CommentWithChanges {
     $isLastWithinPeriod = TRUE; //((REQUEST_TIME - $lastTime) < 30);
     $isLastChangeRecord = ($lastSubject === 'Change record');
     $isNewChangeRecord = ($comment['subject'] === 'Change record');
-    if ($lastComment && $hasLastSameAuthor && $isLastWithinPeriod && ($isLastChangeRecord || $isNewChangeRecord)) {
+    if ($lastComment && $hasLastSameAuthor && $isLastWithinPeriod && $isLastChangeRecord && $isNewChangeRecord) {
       $this->updateLast($comment, $oldRevisionId, $newRevisionId, $diffFieldName, $entity, $lastComment);
     }
     else {

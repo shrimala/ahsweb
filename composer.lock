@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c65d8ab20492f3efcdb4eed5b7d8d449",
-    "content-hash": "5445adcd9e670cb8731cf4f90e6cfe5b",
+    "hash": "d7968579550a639a9d5da4d81c42a50e",
+    "content-hash": "517a96bd7aa1445f8485f4b735cc2e34",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2719,7 +2719,8 @@
                 },
                 "patches_applied": {
                     "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
-                    "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch"
+                    "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch",
+                    "Do not assume nodes of all types have 'body' fields": "https://github.com/jhedstrom/drupalextension/pull/263.patch"
                 }
             },
             "autoload": {
@@ -2759,7 +2760,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/email_registration-8.x-1.0-rc4.zip",
-                "reference": null,
+                "reference": "8.x-1.0-rc4",
                 "shasum": "442a441f71a254e6bc87ab7d774518838d64882e"
             },
             "require": {

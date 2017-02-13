@@ -61,7 +61,9 @@ default:
         Title field: "span.field--name-title"
         Ancestry field: "span.field--name-field-ancestry-plain"
         Discussion comments: "div.field--name-field-comments-with-changes > div > div > article"
-        Comment body: "div.field--name-comment-body"
+        Comment body field: "div.field--name-comment-body"
+        Changes field: "div.field--name-field-changes"
+
 travis:
   extensions:
     Behat\MinkExtension:
