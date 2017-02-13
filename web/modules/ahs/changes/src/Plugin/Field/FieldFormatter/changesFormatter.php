@@ -109,13 +109,18 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
        else {
          $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         $elements[$delta] = [
-           '#type' => 'details',
-           '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
-         ];
+         //$elements[$delta] = [
+         //  '#type' => 'details',
+         //  '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
+         //];
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
          if ($item->right_rid !== $entity->getRevisionId()) {
+           $elements[$delta] = [
+             '#type' => 'details',
+             '#title' => 'Original version',
+           ];
+            return $elements;
            // Trigger exclusion of interactive items like on preview.
            $right_revision->in_preview = TRUE;
            $view_builder = \Drupal::entityTypeManager()
