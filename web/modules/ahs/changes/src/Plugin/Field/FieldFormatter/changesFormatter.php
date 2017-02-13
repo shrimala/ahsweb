@@ -107,6 +107,10 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          $elements[$delta] = $plugin->build($left_revision, $right_revision, $entity);
        }
        else {
+         $elements[$delta] = [
+           '#type' => 'details',
+           '#title' => 'Original version',
+         ];
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
          if ($item->right_rid != $entity->getRevisionId()) {
