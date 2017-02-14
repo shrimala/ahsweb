@@ -109,6 +109,10 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
        else {
          $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
+         dpm("right_rid", $item->right_rid);
+         dpm("getRevisionId", $entity->getRevisionId());
+         dpm("Strict:" . $strict);
+         dpm("Loose:" . $loose);
          //$elements[$delta] = [
          //  '#type' => 'details',
          //  '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
