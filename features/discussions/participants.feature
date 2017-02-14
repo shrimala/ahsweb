@@ -1,4 +1,4 @@
-@api
+@api @debug
 Feature: Mark which users as participants
   In order to highlight discussions to the right users
   As any user allowed to edit a discussion
