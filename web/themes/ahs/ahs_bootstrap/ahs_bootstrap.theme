@@ -5,3 +5,33 @@
  *
  * Place your custom PHP code in this file.
  */
+
+function ahs_bootstrap_preprocess_comment__field_comments_with_changes(&$variables) {
+  // This example is from rdf_preprocess_image(). It adds an RDF attribute
+  // to the image hook's variables.
+  //kint(array_keys($variables['content']['field_changes']['0']));
+  //kint($variables['content']);
+  $test = $variables['content']['field_changes']['0'];
+  reset($test);
+  $key = key($test);
+  if ($test[$key] == '<p>test</p>') {
+    drupal_set_message("preprocesscommentfield");
+  };
+
+  //$variables['attributes']['typeof'] = array('foaf:Image');
+}
+
+function ahs_bootstrap_preprocess_field__field_changes(&$variables) {
+  // This example is from rdf_preprocess_image(). It adds an RDF attribute
+  // to the image hook's variables.
+  //kint(array_keys($variables['content']['field_changes']['0']));
+  //kint($variables);
+  $test = $variables['element']['0'];
+  reset($test);
+  $key = key($test);
+  if ($test[$key] == '<p>test</p>') {
+    drupal_set_message("preprocesschanges");
+  };
+
+  //$variables['attributes']['typeof'] = array('foaf:Image');
+}
