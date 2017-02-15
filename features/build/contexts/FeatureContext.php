@@ -209,7 +209,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     // Prepare text output for error messages
     $listText = "\n";
     foreach ($list as $listItem) {
-      $listText .= $listItem->getText() . "\n";
+      $listText .= $listItem->getText() . "\n" . $listItem->getHtml() . "\n";
     }
 
     if (empty($list)) {
