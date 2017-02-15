@@ -53,8 +53,7 @@ class DebugContext extends RawDrupalContext implements TranslatableContext {
   public function prepareDebugOutput(AfterStepScope $scope) {
     //if ($this->debug) {
     $this->output[] = $scope->getStep()->getText();
-    
-    if (!is_null($this->getSession())) {
+    try {
       $this->output[] = $this->getSession()->getCurrentUrl();
       $messageTypes = ['error', 'warning', 'success'];
       foreach ($messageTypes as $messageType) {
@@ -66,11 +65,16 @@ class DebugContext extends RawDrupalContext implements TranslatableContext {
           $this->output[] = $message->getText();
         }
       }
-      if (99 === $scope->getTestResult()->getResultCode()) {
-        throw new \Exception(sprintf("Extra debugging information is available: \n %s", join("\n", $this->output)));
-      }
     }
-    //}
+    catch(Exception $e) {}
+
+
+    if (99 === $scope->getTestResult()->getResultCode()) {
+      throw new \Exception(sprintf("Extra debugging information is available: \n %s", join("\n", $this->output)));
+    }
+
   }
+
+
 
 }

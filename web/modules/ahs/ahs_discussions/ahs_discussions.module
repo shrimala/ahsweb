@@ -17,12 +17,14 @@ function ahs_discussions_entity_view_alter(array &$build, Drupal\Core\Entity\Ent
 
   if ($entity->getEntityTypeId() === 'comment') {
     //kint(print_r($build['field_changes'], TRUE));
-    $test = $build['field_changes']['0'];
-    reset($test);
-    $key = key($test);
-if ($test[$key] == '<p>test</p>') {
-  drupal_set_message("entityviewalter");
-};
+    if (isset($build['field_changes']['0'])) {
+      $test = $build['field_changes']['0'];
+      reset($test);
+      $key = key($test);
+      if ($test[$key] == '<p>test</p>') {
+        drupal_set_message("entityviewalter");
+      };
+    }
     //kint($test['#items']->getValue(TRUE));
   //kint($build['field_changes']);
   }
