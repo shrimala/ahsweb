@@ -125,17 +125,20 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
              '#type' => 'details',
              '#title' => 'Original version',
            ];
-            return $elements;
-           // Trigger exclusion of interactive items like on preview.
-           $right_revision->in_preview = TRUE;
-           $view_builder = \Drupal::entityTypeManager()
-             ->getViewBuilder($entityType);
-           $original = $view_builder->view($right_revision);
            $elements[$delta] = [
-             '#type' => 'details',
-             '#title' => 'Original version',
+             '#markup' => '<p>test</p>',
            ];
-           $elements[$delta]['original'] = $original;
+
+           // Trigger exclusion of interactive items like on preview.
+           //$right_revision->in_preview = TRUE;
+           //$view_builder = \Drupal::entityTypeManager()
+           //  ->getViewBuilder($entityType);
+           //$original = $view_builder->view($right_revision);
+           //$elements[$delta] = [
+           //  '#type' => 'details',
+           //  '#title' => 'Original version',
+           //];
+           //$elements[$delta]['original'] = $original;
          }
        }
      }
