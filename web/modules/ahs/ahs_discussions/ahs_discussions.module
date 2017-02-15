@@ -12,6 +12,31 @@ use \Drupal\node\NodeInterface;
 use \Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 
+
+function ahs_discussions_entity_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+
+  if ($entity->getEntityTypeId() === 'comment') {
+    //kint(print_r($build['field_changes'], TRUE));
+    $test = $build['field_changes']['0'];
+    reset($test);
+    $key = key($test);
+if ($test[$key] == '<p>test</p>') {
+  drupal_set_message("entityviewalter");
+};
+    //kint($test['#items']->getValue(TRUE));
+  //kint($build['field_changes']);
+  }
+  /*
+  if (isset($build['an_additional_field'])) {
+    // Change its weight.
+    $build['an_additional_field']['#weight'] = -10;
+
+    // Add a #post_render callback to act on the rendered HTML of the entity.
+    $build['#post_render'][] = 'my_module_node_post_render';
+  }
+*/
+}
+
 /**
  * Implements hook_node_update().
  *
