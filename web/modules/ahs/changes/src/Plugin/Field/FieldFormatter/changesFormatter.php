@@ -109,10 +109,10 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
        else {
          $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         dpm("right_rid", $item->right_rid);
-         dpm("getRevisionId", $entity->getRevisionId());
-         dpm("Strict:" . $strict);
-         dpm("Loose:" . $loose);
+         drupal_set_message("right_rid" . $item->right_rid);
+         drupal_set_message("getRevisionId" . $entity->getRevisionId());
+         drupal_set_message("Strict:" . $strict);
+         drupal_set_message("Loose:" . $loose);
          //$elements[$delta] = [
          //  '#type' => 'details',
          //  '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
@@ -120,6 +120,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
          if ($item->right_rid !== $entity->getRevisionId()) {
+           drupal_set_message("Inside the if");
            $elements[$delta] = [
              '#type' => 'details',
              '#title' => 'Original version',
