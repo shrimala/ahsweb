@@ -5,7 +5,7 @@ php:
 #get obscure Drupal problem with changes fields if use the default Ubuntu 12
 dist: trusty
 
-sudo: false
+sudo: required
 
 env:
   global:
