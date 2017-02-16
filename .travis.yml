@@ -2,6 +2,9 @@ language: php
 php:
   - 7.0
 
+#get obscure Drupal problem with changes fields if use the default Ubuntu 12
+dist: trusty
+
 sudo: false
 
 env:
