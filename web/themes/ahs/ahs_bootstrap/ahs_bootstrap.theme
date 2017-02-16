@@ -11,29 +11,26 @@ function ahs_bootstrap_preprocess_comment__field_comments_with_changes(&$variabl
   // to the image hook's variables.
   //kint(array_keys($variables['content']['field_changes']['0']));
   //kint($variables['content']);
+  $result = "NO";
   if (isset($variables['content']['field_changes']['0'])) {
     $test = $variables['content']['field_changes']['0'];
     reset($test);
     $key = key($test);
     if ($test[$key] == '<p>test</p>') {
-      drupal_set_message("preprocesscommentfield");
+      $result = "YES";
     }
   }
+  drupal_set_message("preprocesscommentfield:" . $result);
 
-  //$variables['attributes']['typeof'] = array('foaf:Image');
 }
 
 function ahs_bootstrap_preprocess_field__field_changes(&$variables) {
-  // This example is from rdf_preprocess_image(). It adds an RDF attribute
-  // to the image hook's variables.
-  //kint(array_keys($variables['content']['field_changes']['0']));
-  //kint($variables);
+  $result = "NO";
   $test = $variables['element']['0'];
   reset($test);
   $key = key($test);
   if ($test[$key] == '<p>test</p>') {
-    drupal_set_message("preprocesschanges");
+    $result = "YES";
   };
-
-  //$variables['attributes']['typeof'] = array('foaf:Image');
+  drupal_set_message("preprocessfieldchanges:" . $result);
 }

@@ -13,30 +13,83 @@ use \Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 
 
+function ahs_discussions_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  if (isset($build['field_changes'])) {
+    $result = "NO";
+    if (isset($build['field_changes']['0'])) {
+      $test = $build['field_changes']['0'];
+      reset($test);
+      $key = key($test);
+      if ($test[$key] == '<p>test</p>') {
+        $result = "YES";
+      }
+    }
+    drupal_set_message("entityview:" . $result);
+  }
+}
+
+function ahs_discussions_entity_display_build_alter(&$build, $context) {
+  if (isset($build['field_changes'])) {
+    $result = "NO";
+    if (isset($build['field_changes']['0'])) {
+      $test = $build['field_changes']['0'];
+      reset($test);
+      $key = key($test);
+      if ($test[$key] == '<p>test</p>') {
+        $result = "YES";
+      }
+    }
+    drupal_set_message("entitydisplaybuildalter:" . $result);
+  }
+}
+
 function ahs_discussions_entity_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
 
   if ($entity->getEntityTypeId() === 'comment') {
+    $result = "NO";
     //kint(print_r($build['field_changes'], TRUE));
     if (isset($build['field_changes']['0'])) {
       $test = $build['field_changes']['0'];
       reset($test);
       $key = key($test);
       if ($test[$key] == '<p>test</p>') {
-        drupal_set_message("entityviewalter");
+        $result = "YES";
       };
     }
-    //kint($test['#items']->getValue(TRUE));
-  //kint($build['field_changes']);
+    drupal_set_message("entityviewalter:" . $result);
   }
-  /*
-  if (isset($build['an_additional_field'])) {
-    // Change its weight.
-    $build['an_additional_field']['#weight'] = -10;
+}
 
-    // Add a #post_render callback to act on the rendered HTML of the entity.
-    $build['#post_render'][] = 'my_module_node_post_render';
+function ahs_discussions_comment_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  if (isset($build['field_changes'])) {
+    $result = "NO";
+    if (isset($build['field_changes']['0'])) {
+      $test = $build['field_changes']['0'];
+      reset($test);
+      $key = key($test);
+      if ($test[$key] == '<p>test</p>') {
+        $result = "YES";
+      }
+    }
+    drupal_set_message("commentview:" . $result);
   }
-*/
+}
+
+function ahs_discussions_comment_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+
+  if ($entity->getEntityTypeId() === 'comment') {
+    $result = "NO";
+    //kint(print_r($build['field_changes'], TRUE));
+    if (isset($build['field_changes']['0'])) {
+      $test = $build['field_changes']['0'];
+      reset($test);
+      $key = key($test);
+      if ($test[$key] == '<p>test</p>') {
+        $result = "YES";
+      };
+    }
+    drupal_set_message("commentviewalter:" . $result);
+  }
 }
 
 /**
