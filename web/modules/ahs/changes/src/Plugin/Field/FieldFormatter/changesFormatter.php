@@ -96,7 +96,9 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
 
 
    foreach ($items as $delta => $item) {
+     drupal_set_message("Delta:" . $delta);
      if (!empty($item->right_rid)) {
+       drupal_set_message("Notemptyright");
        $storage = \Drupal::entityManager()->getStorage($entityType);
        $right_revision = $storage->loadRevision($item->right_rid);
        $entity = $storage->load($right_revision->id());
@@ -110,12 +112,14 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          ];
        }
        else {
-//         $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-//         $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-//         drupal_set_message("right_rid" . $item->right_rid);
-//         drupal_set_message("getRevisionId" . $entity->getRevisionId());
-//         drupal_set_message("Strict:" . $strict);
-//         drupal_set_message("Loose:" . $loose);
+         drupal_set_message("Emptyright");
+         $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
+         $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
+         drupal_set_message("right_rid" . $item->right_rid);
+         drupal_set_message("getRevisionId" . $entity->getRevisionId());
+         drupal_set_message("Strict:" . $strict);
+         drupal_set_message("Loose:" . $loose);
+
          //$elements[$delta] = [
          //  '#type' => 'details',
          //  '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
