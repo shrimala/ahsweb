@@ -122,7 +122,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          //];
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
-//         if ($item->right_rid !== $entity->getRevisionId()) {
+         if ($item->right_rid !== $entity->getRevisionId()) {
            drupal_set_message("Inside the if");
            $elements[$delta] = [
              '#type' => 'details',
@@ -142,7 +142,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
            //  '#title' => 'Original version',
            //];
            //$elements[$delta]['original'] = $original;
-//         }
+         }
        }
      }
     }
