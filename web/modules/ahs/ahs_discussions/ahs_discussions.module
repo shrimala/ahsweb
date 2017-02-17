@@ -298,6 +298,19 @@ function ahs_discussions_module_implements_alter(&$implementations, $hook) {
       $implementations['ahs_discussions'] = $group;
     }
   }
+
+  if ($hook === 'comment_view_alter' ||
+    $hook === 'entity_view_alter' ||
+    $hook === 'entity_view'
+  ) {
+    // Move our form alter to the end, to give it priority over menu module's.
+    if (isset($implementations['ahs_discussions'])) {
+      $group = $implementations['ahs_discussions'];
+      unset($implementations['ahs_discussions']);
+      $implementations['ahs_discussions'] = $group;
+    }
+  }
+
 }
 
   /**
