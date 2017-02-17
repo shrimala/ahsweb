@@ -96,14 +96,14 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
 
 
    foreach ($items as $delta => $item) {
-     drupal_set_message("Delta:" . $delta);
+     drupal_set_message("Delta:" . $delta . '-' . time());
      if (!empty($item->right_rid)) {
-       drupal_set_message("Notemptyright");
+       drupal_set_message("Notemptyright" . '-' . time());
        $storage = \Drupal::entityManager()->getStorage($entityType);
        $right_revision = $storage->loadRevision($item->right_rid);
        $entity = $storage->load($right_revision->id());
        if (!empty($item->left_rid)) {
-         drupal_set_message("NotEmptyleft");
+         drupal_set_message("NotEmptyleft" . '-' . time());
          // We have a pair of revisions
          //$left_revision = $storage->loadRevision($item->left_rid);
          //$plugin = $this->diffLayoutManager->createInstance('changes');
@@ -113,13 +113,13 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          ];
        }
        else {
-         drupal_set_message("Emptyleft");
+         drupal_set_message("Emptyleft" . '-' . time());
          $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         drupal_set_message("right_rid" . $item->right_rid);
-         drupal_set_message("getRevisionId" . $entity->getRevisionId());
-         drupal_set_message("Strict:" . $strict);
-         drupal_set_message("Loose:" . $loose);
+         drupal_set_message("right_rid" . $item->right_rid . '-' . time());
+         drupal_set_message("getRevisionId" . $entity->getRevisionId() . '-' . time());
+         drupal_set_message("Strict:" . $strict . '-' . time());
+         drupal_set_message("Loose:" . $loose) . '-' . time();
 
          //$elements[$delta] = [
          //  '#type' => 'details',
@@ -128,7 +128,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
          if ($item->right_rid !== $entity->getRevisionId()) {
-           drupal_set_message("RightNotCurrent");
+           drupal_set_message("RightNotCurrent" . '-' . time());
            $elements[$delta] = [
              '#type' => 'details',
              '#title' => 'Original version',
