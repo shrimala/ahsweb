@@ -92,14 +92,14 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
 
     // This field should be on a comment.
     // Get the entity type of the entity this comment is attached to.
-    //$entityType = $items->getEntity()->get('entity_type')->value;
+    $entityType = $items->getEntity()->get('entity_type')->value;
 
 
    foreach ($items as $delta => $item) {
      if (!empty($item->right_rid)) {
-       //$storage = \Drupal::entityManager()->getStorage($entityType);
-       //$right_revision = $storage->loadRevision($item->right_rid);
-       //$entity = $storage->load($right_revision->id());
+       $storage = \Drupal::entityManager()->getStorage($entityType);
+       $right_revision = $storage->loadRevision($item->right_rid);
+       $entity = $storage->load($right_revision->id());
        if (!empty($item->left_rid)) {
          // We have a pair of revisions
          //$left_revision = $storage->loadRevision($item->left_rid);
