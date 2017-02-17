@@ -96,14 +96,14 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
 
 
    foreach ($items as $delta => $item) {
-     drupal_set_message("Delta:" . $delta . '-' . time());
+     drupal_set_message("Delta:" . $delta . '-' . $items->getEntity()->id());
      if (!empty($item->right_rid)) {
-       drupal_set_message("Notemptyright" . '-' . time());
+       drupal_set_message("Notemptyright" . '-' . $items->getEntity()->id());
        $storage = \Drupal::entityManager()->getStorage($entityType);
        $right_revision = $storage->loadRevision($item->right_rid);
        $entity = $storage->load($right_revision->id());
        if (!empty($item->left_rid)) {
-         drupal_set_message("NotEmptyleft" . '-' . time());
+         drupal_set_message("NotEmptyleft" . '-' . $items->getEntity()->id());
          // We have a pair of revisions
          //$left_revision = $storage->loadRevision($item->left_rid);
          //$plugin = $this->diffLayoutManager->createInstance('changes');
@@ -113,7 +113,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          ];
        }
        else {
-         drupal_set_message("Emptyleft" . '-' . time());
+         drupal_set_message("Emptyleft" . '-' . $items->getEntity()->id());
          $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          drupal_set_message("right_rid" . $item->right_rid . '-' . time());
@@ -128,7 +128,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
          if ($item->right_rid !== $entity->getRevisionId()) {
-           drupal_set_message("RightNotCurrent" . '-' . time());
+           drupal_set_message("RightNotCurrent" . '-' . $items->getEntity()->id());
            $elements[$delta] = [
              '#type' => 'details',
              '#title' => 'Original version',
