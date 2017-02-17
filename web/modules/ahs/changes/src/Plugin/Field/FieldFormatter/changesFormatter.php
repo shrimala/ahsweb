@@ -103,6 +103,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
        $right_revision = $storage->loadRevision($item->right_rid);
        $entity = $storage->load($right_revision->id());
        if (!empty($item->left_rid)) {
+         drupal_set_message("NotEmptyleft");
          // We have a pair of revisions
          //$left_revision = $storage->loadRevision($item->left_rid);
          //$plugin = $this->diffLayoutManager->createInstance('changes');
@@ -112,7 +113,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          ];
        }
        else {
-         drupal_set_message("Emptyright");
+         drupal_set_message("Emptyleft");
          $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          drupal_set_message("right_rid" . $item->right_rid);
@@ -127,7 +128,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
          if ($item->right_rid !== $entity->getRevisionId()) {
-           drupal_set_message("Inside the if");
+           drupal_set_message("RightNotCurrent");
            $elements[$delta] = [
              '#type' => 'details',
              '#title' => 'Original version',
