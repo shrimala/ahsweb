@@ -92,34 +92,37 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
 
     // This field should be on a comment.
     // Get the entity type of the entity this comment is attached to.
-    $entityType = $items->getEntity()->get('entity_type')->value;
+    //$entityType = $items->getEntity()->get('entity_type')->value;
 
 
    foreach ($items as $delta => $item) {
      if (!empty($item->right_rid)) {
-       $storage = \Drupal::entityManager()->getStorage($entityType);
-       $right_revision = $storage->loadRevision($item->right_rid);
-       $entity = $storage->load($right_revision->id());
+       //$storage = \Drupal::entityManager()->getStorage($entityType);
+       //$right_revision = $storage->loadRevision($item->right_rid);
+       //$entity = $storage->load($right_revision->id());
        if (!empty($item->left_rid)) {
          // We have a pair of revisions
-         $left_revision = $storage->loadRevision($item->left_rid);
-         $plugin = $this->diffLayoutManager->createInstance('changes');
-         $elements[$delta] = $plugin->build($left_revision, $right_revision, $entity);
+         //$left_revision = $storage->loadRevision($item->left_rid);
+         //$plugin = $this->diffLayoutManager->createInstance('changes');
+         //$elements[$delta] = $plugin->build($left_revision, $right_revision, $entity);
+         $elements[$delta] = [
+           '#markup' => '<p>diff</p>',
+         ];
        }
        else {
-         $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         drupal_set_message("right_rid" . $item->right_rid);
-         drupal_set_message("getRevisionId" . $entity->getRevisionId());
-         drupal_set_message("Strict:" . $strict);
-         drupal_set_message("Loose:" . $loose);
+//         $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
+//         $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
+//         drupal_set_message("right_rid" . $item->right_rid);
+//         drupal_set_message("getRevisionId" . $entity->getRevisionId());
+//         drupal_set_message("Strict:" . $strict);
+//         drupal_set_message("Loose:" . $loose);
          //$elements[$delta] = [
          //  '#type' => 'details',
          //  '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
          //];
          // We have just a single revision, the original of this entity.
          // Only link to it if it is not the current revision.
-         if ($item->right_rid !== $entity->getRevisionId()) {
+//         if ($item->right_rid !== $entity->getRevisionId()) {
            drupal_set_message("Inside the if");
            $elements[$delta] = [
              '#type' => 'details',
@@ -139,7 +142,7 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
            //  '#title' => 'Original version',
            //];
            //$elements[$delta]['original'] = $original;
-         }
+//         }
        }
      }
     }
