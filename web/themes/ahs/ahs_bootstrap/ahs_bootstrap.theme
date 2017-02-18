@@ -20,7 +20,8 @@ function ahs_bootstrap_preprocess_comment__field_comments_with_changes(&$variabl
       $result = "YES";
     }
   }
-  drupal_set_message("preprocesscommentfield:" . $result . '-' . $variables['comment']->id());
+  //$variables['comment']->id()
+  drupal_set_message("preprocesscommentfield:" . $result . '-' . rand());
 
 }
 
