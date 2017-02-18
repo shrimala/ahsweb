@@ -24,7 +24,7 @@ function ahs_discussions_entity_view(array &$build, \Drupal\Core\Entity\EntityIn
         $result = "YES";
       }
     }
-    drupal_set_message("entityview:" . $result);
+    drupal_set_message("entityview:" . $result . '-' . $entity->id());
   }
 }
 
@@ -56,7 +56,7 @@ function ahs_discussions_entity_view_alter(array &$build, Drupal\Core\Entity\Ent
         $result = "YES";
       };
     }
-    drupal_set_message("entityviewalter:" . $result);
+    drupal_set_message("entityviewalter:" . $result . '-' . $entity->id());
   }
 }
 
@@ -71,7 +71,7 @@ function ahs_discussions_comment_view(array &$build, \Drupal\Core\Entity\EntityI
         $result = "YES";
       }
     }
-    drupal_set_message("commentview:" . $result);
+    drupal_set_message("commentview:" . $result . '-' . $entity->id());
   }
 }
 
@@ -88,7 +88,7 @@ function ahs_discussions_comment_view_alter(array &$build, Drupal\Core\Entity\En
         $result = "YES";
       };
     }
-    drupal_set_message("commentviewalter:" . $result);
+    drupal_set_message("commentviewalter:" . $result . '-' . $entity->id());
   }
 }
 

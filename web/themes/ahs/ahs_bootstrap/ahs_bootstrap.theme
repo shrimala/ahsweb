@@ -20,7 +20,7 @@ function ahs_bootstrap_preprocess_comment__field_comments_with_changes(&$variabl
       $result = "YES";
     }
   }
-  drupal_set_message("preprocesscommentfield:" . $result);
+  drupal_set_message("preprocesscommentfield:" . $result . '-' . $variables['comment']->id());
 
 }
 
@@ -32,5 +32,5 @@ function ahs_bootstrap_preprocess_field__field_changes(&$variables) {
   if ($test[$key] == '<p>test</p>') {
     $result = "YES";
   };
-  drupal_set_message("preprocessfieldchanges:" . $result);
+  drupal_set_message("preprocessfieldchanges:" . $result . '-' . $variables['element']['#object']->id());
 }

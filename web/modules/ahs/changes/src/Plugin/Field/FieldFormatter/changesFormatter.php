@@ -116,10 +116,10 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          drupal_set_message("Emptyleft" . '-' . $items->getEntity()->id());
          $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
          $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         drupal_set_message("right_rid" . $item->right_rid . '-' . time());
-         drupal_set_message("getRevisionId" . $entity->getRevisionId() . '-' . time());
-         drupal_set_message("Strict:" . $strict . '-' . time());
-         drupal_set_message("Loose:" . $loose) . '-' . time();
+         drupal_set_message("right_rid" . $item->right_rid . '-' . $items->getEntity()->id());
+         drupal_set_message("getRevisionId" . $entity->getRevisionId() . '-' . $items->getEntity()->id());
+         drupal_set_message("Strict:" . $strict . '-' . $items->getEntity()->id());
+         drupal_set_message("Loose:" . $loose . '-' . $items->getEntity()->id());
 
          //$elements[$delta] = [
          //  '#type' => 'details',
