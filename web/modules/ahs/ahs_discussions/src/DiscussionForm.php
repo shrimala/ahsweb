@@ -200,12 +200,6 @@ class DiscussionForm extends ContentEntityForm {
     if ($this->entity->id()) {
       $this->considerNewRevision($form_state, $original);
     }
-
-    // Add using as a participant comes after considering new revision,
-    // because we don't want to trigger a new revision when a user makes
-    // a comment (in which case they will get added as a participant).
-    //$this->addUserAsParticipant($original);
-
   }
 
   protected function considerNewRevision(FormStateInterface $form_state, $original) {
@@ -316,71 +310,6 @@ class DiscussionForm extends ContentEntityForm {
       $form_state->setRebuild();
     }
 
-  }
-
-  protected function addUserAsParticipant($original) {
-    $currentUser = \Drupal::currentUser()->id();
-    if (!is_null($original)) {
-      foreach ($original->field_participants->getValue() as $originalParticipants) {
-        // If the current user was originally listed, then he is either
-        // still there, or was deliberately removed.
-        // Either way, he should not be added and so nothing to do here.
-        if ($originalParticipants['target_id'] === $currentUser) {
-          return;
-        }
-      }
-    }
-    foreach ($this->entity->field_participants->getValue() as $participant) {
-      // If the current user is listed, then nothing to do here.
-      if ($participant['target_id'] === $currentUser) {
-        return;
-      }
-    }
-    // If not originally or currently listed, add the current user.
-    $values = $this->entity->field_participants->getValue();
-    $values[]= ['target_id' => $currentUser];
-    $this->entity->field_participants->setValue($values);
-  }
-
-  // deprecated, remove
-  protected function addComment (array $form, FormStateInterface $form_state, $insert, $update) {
-    $hasComment = !empty($form_state->getValue('comment')['value']);
-    $newRevisionId = NULL;
-    if ($update) {
-      $newRevisionId = $this->entity->getRevisionId();
-    }
-
-    // Prepare the comment data
-    $comment = [
-      'comment_type' => 'comments_with_changes',
-      'field_name' => 'field_comments_with_changes',
-    ];
-    if ($hasComment) {
-      $comment['comment_body'] = $form_state->getValue('comment');
-    }
-    else {
-      $comment['subject'] = 'Change record';
-    }
-
-    //Create the comment
-    if ($insert) {
-      $comment['comment_body'] = [
-        'value' => "<p>Started this discussion.</p>",
-        'format' => "full_html",
-      ];
-      \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $this->entity, NULL, $this->entity->getRevisionId(), 'field_changes');
-    }
-    elseif ($hasComment) {
-      //\Drupal::service('changes.comment_with_changes')
-      //  ->add($comment, $this->entity, $this->entity->oldRevisionId, $newRevisionId, 'field_changes');
-      \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $this->entity, NULL, NULL, NULL);
-    }
-
-    if ($hasComment) {
-      drupal_set_message(t('Your comment has been shared.'));
-    }
   }
 
 }

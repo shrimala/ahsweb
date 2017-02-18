@@ -2,10 +2,7 @@ language: php
 php:
   - 7.0
 
-#get obscure Drupal problem with changes fields if use the default Ubuntu 12
-dist: trusty
-
-sudo: required
+sudo: false
 
 env:
   global:
@@ -14,7 +11,6 @@ env:
   matrix:
 
 before_install:
-  #echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
   - composer self-update
   - composer --version
