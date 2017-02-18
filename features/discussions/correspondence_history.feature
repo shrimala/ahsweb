@@ -21,9 +21,9 @@ Feature: Changes to parents/children are reflected in their history
     Then the "field_participants[]" select field should have "Fred Bloggs, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
 
   Scenario: Adding a parent makes me a participant in the parent, and a change record
     Given a "discussion" with the title "Child"
@@ -36,9 +36,9 @@ Feature: Changes to parents/children are reflected in their history
     Then the "field_participants[]" select field should have "Fred Bloggs, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
 
   Scenario: Creator is automatically participant but not assigned when autocreating
     Given I am logged in as "Fred Bloggs"
@@ -49,6 +49,6 @@ Feature: Changes to parents/children are reflected in their history
     Then the "field_participants[]" select field should have "Fred Bloggs" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |

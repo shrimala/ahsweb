@@ -6,32 +6,3 @@
  * Place your custom PHP code in this file.
  */
 
-function ahs_bootstrap_preprocess_comment__field_comments_with_changes(&$variables) {
-  // This example is from rdf_preprocess_image(). It adds an RDF attribute
-  // to the image hook's variables.
-  //kint(array_keys($variables['content']['field_changes']['0']));
-  //kint($variables['content']);
-  $result = "NO";
-  if (isset($variables['content']['field_changes']['0'])) {
-    $test = $variables['content']['field_changes']['0'];
-    reset($test);
-    $key = key($test);
-    if ($test[$key] == '<p>test</p>') {
-      $result = "YES";
-    }
-  }
-  //$variables['comment']->id()
-  drupal_set_message("preprocesscommentfield:" . $result . '-' . rand());
-
-}
-
-function ahs_bootstrap_preprocess_field__field_changes(&$variables) {
-  $result = "NO";
-  $test = $variables['element']['0'];
-  reset($test);
-  $key = key($test);
-  if ($test[$key] == '<p>test</p>') {
-    $result = "YES";
-  };
-  drupal_set_message("preprocessfieldchanges:" . $result . '-' . $variables['element']['#object']->id());
-}

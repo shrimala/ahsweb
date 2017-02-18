@@ -64,7 +64,7 @@ default:
         Discussion comments: "div.field--name-field-comments-with-changes > div > div > article"
         Comment body field: "div.field--name-comment-body"
         Changes field: "div.field--name-field-changes"
-
+        Changes diff: "div.field--name-field-changes .diff"
 travis:
   extensions:
     Behat\MinkExtension:

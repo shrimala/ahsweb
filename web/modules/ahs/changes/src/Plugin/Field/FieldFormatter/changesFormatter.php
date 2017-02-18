@@ -105,52 +105,35 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
        if (!empty($item->left_rid)) {
          drupal_set_message("NotEmptyleft" . '-' . $items->getEntity()->id());
          // We have a pair of revisions
-         //$left_revision = $storage->loadRevision($item->left_rid);
-         //$plugin = $this->diffLayoutManager->createInstance('changes');
-         //$elements[$delta] = $plugin->build($left_revision, $right_revision, $entity);
-         $elements[$delta] = [
-           '#markup' => '<p>diff</p>',
-         ];
+         $left_revision = $storage->loadRevision($item->left_rid);
+         $plugin = $this->diffLayoutManager->createInstance('changes');
+         $elements[$delta] = $plugin->build($left_revision, $right_revision, $entity);
        }
        else {
-         drupal_set_message("Emptyleft" . '-' . $items->getEntity()->id());
-         $loose = ($item->right_rid == $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         $strict = ($item->right_rid === $entity->getRevisionId()) ? 'TRUE' : 'FALSE';
-         drupal_set_message("right_rid" . $item->right_rid . '-' . $items->getEntity()->id());
-         drupal_set_message("getRevisionId" . $entity->getRevisionId() . '-' . $items->getEntity()->id());
-         drupal_set_message("Strict:" . $strict . '-' . $items->getEntity()->id());
-         drupal_set_message("Loose:" . $loose . '-' . $items->getEntity()->id());
-         $elements[$delta] = [
-           '#cache' => array(
-             'tags' => $entity->getCacheTags(),
-           ),
-         ];
-         //$elements[$delta] = [
-         //  '#type' => 'details',
-         //  '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
-         //];
-         // We have just a single revision, the original of this entity.
-         // Only link to it if it is not the current revision.
+         // If there is no right revision, this left revision must be
+         // the first revision of an entity. Only display a diff if the entity
+         // has moved on from this irst revision.
          if ($item->right_rid !== $entity->getRevisionId()) {
-           drupal_set_message("RightNotCurrent" . '-' . $items->getEntity()->id());
+           //Trigger exclusion of interactive items like on preview.
+           $right_revision->in_preview = TRUE;
+           $view_builder = \Drupal::entityTypeManager()
+             ->getViewBuilder($entityType);
+           $original = $view_builder->view($right_revision);
            $elements[$delta] = [
              '#type' => 'details',
              '#title' => 'Original version',
            ];
+           $elements[$delta]['original'] = $original;
+         }
+         else {
+           // As the commented entity is still on its first revision
+           // prepare to invalidate the cache once it gets edited.
            $elements[$delta] = [
-             '#markup' => '<p>test</p>',
+             '#cache' => array(
+               'tags' => $entity->getCacheTags(),
+             ),
            ];
 
-           // Trigger exclusion of interactive items like on preview.
-           //$right_revision->in_preview = TRUE;
-           //$view_builder = \Drupal::entityTypeManager()
-           //  ->getViewBuilder($entityType);
-           //$original = $view_builder->view($right_revision);
-           //$elements[$delta] = [
-           //  '#type' => 'details',
-           //  '#title' => 'Original version',
-           //];
-           //$elements[$delta]['original'] = $original;
          }
        }
      }

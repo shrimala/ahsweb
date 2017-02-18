@@ -12,86 +12,6 @@ use \Drupal\node\NodeInterface;
 use \Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 
-
-function ahs_discussions_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
-  if (isset($build['field_changes'])) {
-    $result = "NO";
-    if (isset($build['field_changes']['0'])) {
-      $test = $build['field_changes']['0'];
-      reset($test);
-      $key = key($test);
-      if ($test[$key] == '<p>test</p>') {
-        $result = "YES";
-      }
-    }
-    drupal_set_message("entityview:" . $result . '-' . $entity->id());
-  }
-}
-
-function ahs_discussions_entity_display_build_alter(&$build, $context) {
-  if (isset($build['field_changes'])) {
-    $result = "NO";
-    if (isset($build['field_changes']['0'])) {
-      $test = $build['field_changes']['0'];
-      reset($test);
-      $key = key($test);
-      if ($test[$key] == '<p>test</p>') {
-        $result = "YES";
-      }
-    }
-    drupal_set_message("entitydisplaybuildalter:" . $result);
-  }
-}
-
-function ahs_discussions_entity_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
-
-  if ($entity->getEntityTypeId() === 'comment') {
-    $result = "NO";
-    //kint(print_r($build['field_changes'], TRUE));
-    if (isset($build['field_changes']['0'])) {
-      $test = $build['field_changes']['0'];
-      reset($test);
-      $key = key($test);
-      if ($test[$key] == '<p>test</p>') {
-        $result = "YES";
-      };
-    }
-    drupal_set_message("entityviewalter:" . $result . '-' . $entity->id());
-  }
-}
-
-function ahs_discussions_comment_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
-  if (isset($build['field_changes'])) {
-    $result = "NO";
-    if (isset($build['field_changes']['0'])) {
-      $test = $build['field_changes']['0'];
-      reset($test);
-      $key = key($test);
-      if ($test[$key] == '<p>test</p>') {
-        $result = "YES";
-      }
-    }
-    drupal_set_message("commentview:" . $result . '-' . $entity->id());
-  }
-}
-
-function ahs_discussions_comment_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
-
-  if ($entity->getEntityTypeId() === 'comment') {
-    $result = "NO";
-    //kint(print_r($build['field_changes'], TRUE));
-    if (isset($build['field_changes']['0'])) {
-      $test = $build['field_changes']['0'];
-      reset($test);
-      $key = key($test);
-      if ($test[$key] == '<p>test</p>') {
-        $result = "YES";
-      };
-    }
-    drupal_set_message("commentviewalter:" . $result . '-' . $entity->id());
-  }
-}
-
 /**
  * Implements hook_node_update().
  *
@@ -298,19 +218,6 @@ function ahs_discussions_module_implements_alter(&$implementations, $hook) {
       $implementations['ahs_discussions'] = $group;
     }
   }
-
-  if ($hook === 'comment_view_alter' ||
-    $hook === 'entity_view_alter' ||
-    $hook === 'entity_view'
-  ) {
-    // Move our form alter to the end, to give it priority over menu module's.
-    if (isset($implementations['ahs_discussions'])) {
-      $group = $implementations['ahs_discussions'];
-      unset($implementations['ahs_discussions']);
-      $implementations['ahs_discussions'] = $group;
-    }
-  }
-
 }
 
   /**

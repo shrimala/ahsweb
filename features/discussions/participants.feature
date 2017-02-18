@@ -61,9 +61,9 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
 
   Scenario: Simply add oneself as participant while commenting
     Given a "discussion" by "Fred Bloggs" with the title "Test"
@@ -75,10 +75,10 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
-      | Some comment             | No            |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
+      | Some comment             | No            | No               |
 
   Scenario: Simply add oneself as participant while editing
     Given a "discussion" by "Fred Bloggs" with the title "Test"
@@ -90,9 +90,9 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
 
   Scenario: Add someone else as participant
     Given a "discussion" by "Fred Bloggs" with the title "Test"
@@ -103,9 +103,9 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs, Hans Schmidt, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
 
   Scenario: Add someone else as participant while commenting
     Given a "discussion" by "Fred Bloggs" with the title "Test"
@@ -117,10 +117,10 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs, Hans Schmidt, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
-      | Some comment             | No            |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
+      | Some comment             | No            | No               |
 
   Scenario: Add someone else as participant while editing
     Given a "discussion" by "Fred Bloggs" with the title "Test"
@@ -132,9 +132,9 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs, Hans Schmidt, Jane Doe" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | No                       | Yes           |                  |
 
   Scenario: If already a participant, editing or commenting does not remove
     Given I am logged in as "Fred Bloggs"
@@ -142,24 +142,24 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | No            |
+      | Comment body field       | Changes diff  | Changes field       |
+      | Started this discussion. | No            | -                   |
     When I comment "Some comment 1"
     Then the "field_participants[]" select field should have "Fred Bloggs" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | No            |
-      | Some comment 1           | No            |
+      | Comment body field       | Changes diff  | Changes field       |
+      | Started this discussion. | No            | -                   |
+      | Some comment 1           | No            | No                  |
     When I fill in "title[0][value]" with "Test2"
     And I press "Save"
     Then the "field_participants[]" select field should have "Fred Bloggs" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      | Some comment 1           | No            |
-      |                          | Yes           |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | Some comment 1           | No            | No               |
+      | No                       | Yes           |                  |
     When I comment "Some comment 2"
     And I fill in "title[0][value]" with "Test3"
     And I fill in "comment[value]" with "Some comment 3"
@@ -167,13 +167,13 @@ Feature: Mark which users as participants
     Then the "field_participants[]" select field should have "Fred Bloggs" selected
     And the "field_assigned[]" select field should have nothing selected
     And I should see "Discussion comments":
-      | Comment body field       | Changes field |
-      | Started this discussion. | Yes           |
-      | Some comment 1           | No            |
-      |                          | Yes           |
-      | Some comment 2           | No            |
-      |                          | Yes           |
-      | Some comment 3           | No            |
+      | Comment body field       | Changes diff  | Changes field    |
+      | Started this discussion. | No            | Original version |
+      | Some comment 1           | No            | No               |
+      | No                       | Yes           |                  |
+      | Some comment 2           | No            | No               |
+      | No                       | Yes           |                  |
+      | Some comment 3           | No            | No               |
 
   Scenario: Participant can remove himself
     Given "discussion" content:

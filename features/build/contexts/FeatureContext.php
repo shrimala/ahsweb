@@ -209,7 +209,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     // Prepare text output for error messages
     $listText = "\n";
     foreach ($list as $listItem) {
-      $listText .= $listItem->getText() . "\n" . $listItem->getHtml() . "\n";
+      $listText .= $listItem->getText() . "\n";
     }
 
     if (empty($list)) {
@@ -281,9 +281,16 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
 
         // Test element contains text
         if ($contains && $element) {
-          $regex = '/' . preg_quote($expectedItemValue, '/') . '/ui';
-          $actual =  (((bool) preg_match($regex, $element->getText())));
-          $message = sprintf('Instead of the text "%s", the text "%s" was found in %s', $expectedItemValue, $element->getText(), $sharedMessage);
+          if ($expectedItemValue === '-') {
+            $actual = (trim($element->getText()) === '');
+            $message = sprintf('Instead of being empty, the text "%s" was found in %s', $element->getText(), $sharedMessage);
+          }
+          else {
+            $regex = '/' . preg_quote($expectedItemValue, '/') . '/ui';
+            $actual =  (((bool) preg_match($regex, $element->getText())));
+            $message = sprintf('Instead of the text "%s", the text "%s" was found in %s', $expectedItemValue, $element->getText(), $sharedMessage);
+          }
+
         }
 
         // Classes can additionally match on element as within element
