@@ -120,7 +120,11 @@ class changesFormatter extends FormatterBase  implements ContainerFactoryPluginI
          drupal_set_message("getRevisionId" . $entity->getRevisionId() . '-' . $items->getEntity()->id());
          drupal_set_message("Strict:" . $strict . '-' . $items->getEntity()->id());
          drupal_set_message("Loose:" . $loose . '-' . $items->getEntity()->id());
-
+         $elements[$delta] = [
+           '#cache' => array(
+             'tags' => $entity->getCacheTags(),
+           ),
+         ];
          //$elements[$delta] = [
          //  '#type' => 'details',
          //  '#title' => 'a:' . $item->right_rid . ' b:' . $entity->getRevisionId() . ' ' . $loose . ' ' . $strict
