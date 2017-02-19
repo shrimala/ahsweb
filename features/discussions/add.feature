@@ -42,14 +42,3 @@ Feature: Ancestry that shows a hierarchy based on first parents
     And I should see "Child" displayed from the "field_children" field
     When I click "Child"
     Then I am visiting "/discuss/testtitle/child"
-
-  Scenario: Discussion title is capitalised and sanitised
-    When I visit "/discuss/add"
-    And I fill in "title[0][value]" with "test / title"
-    And I press the "Save" button
-    Then I am visiting "/discuss/test-title"
-    And the "title[0][value]" field should contain "Test  title"
-    When I fill in "title[0][value]" with "test/title"
-    And I press the "Save" button
-    Then I am visiting "/discuss/testtitle"
-    And the "title[0][value]" field should contain "Testtitle"

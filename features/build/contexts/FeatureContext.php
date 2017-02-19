@@ -8,6 +8,7 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Exception\ExpectationException;
 use Behat\Mink\Exception\ElementNotFoundException;
+use Behat\Mink\Exception\ElementTextException;
 use Drupal\DrupalExtension\Hook\Scope\EntityScope;
 
 /**
@@ -392,4 +393,24 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
   }
 
+  /**
+   * Checks, that form field with specified id|name|label|value has specified value
+   * Example: Then the "username" field should contain "bwayne"
+   * Example: And the "username" field should contain "bwayne"
+   *
+   * @Then /^the "(?P<field>(?:[^"]|\\")*)" field should contain exactly "(?P<value>(?:[^"]|\\")*)"$/
+   */
+  public function assertFieldContains($field, $value) {
+    //$field = $this->fixStepArgument($field);
+    //$value = $this->fixStepArgument($value);
+    $node = $this->assertSession()->fieldExists($field);
+    $actual = $node->getValue();
+    $regex = '/^' . preg_quote($value, '/') . '$/u';
+
+    if (!preg_match($regex, $actual)) {
+      $message = sprintf('The field "%s" value is "%s", but "%s" expected.', $field, $actual, $value);
+      throw new ElementTextException($message, $this->getSession()->getDriver(), $node);
+    }
+  }
+  
 }
