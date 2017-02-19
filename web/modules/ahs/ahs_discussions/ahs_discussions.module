@@ -20,8 +20,8 @@ use Drupal\Core\Access\AccessResult;
  */
 function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) {
   if ($node->bundle() == 'discussion'){
-    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node, TRUE);
-    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node, TRUE);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
     \Drupal::service('ahs_discussions.ancestry')->updateChildren($node);
     
     // This comparison must not be strict (!==). For some strange reason,
@@ -56,25 +56,20 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
     // Initial comment creation must before cer updates on entity_insert,
     // otherwise the cerupdates will trigger a parent update and therefore an
     // comment before this initial comment is triggered.
-    // Skip this when programatically autocreating root node
-    // because the config has not been imported yet so will fail.
-    if ($node->label() !== "Discuss") {
-      $comment = [
-        'comment_type' => 'comments_with_changes',
-        'field_name' => 'field_comments_with_changes',
-        'subject' => 'Discussion started',
-        'comment_body' => [
-          'value' => "<p>Started this discussion.</p>",
-          'format' => "full_html",
-        ]
-      ];
-      \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $node, NULL, $node->getRevisionId(), 'field_changes');
-    }
+    $comment = [
+      'comment_type' => 'comments_with_changes',
+      'field_name' => 'field_comments_with_changes',
+      'subject' => 'Discussion started',
+      'comment_body' => [
+        'value' => "<p>Started this discussion.</p>",
+        'format' => "full_html",
+      ]
+    ];
+    \Drupal::service('changes.comment_with_changes')
+      ->add($comment, $node, NULL, $node->getRevisionId(), 'field_changes');
 
-
-    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node, TRUE);
-    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node, TRUE);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
     \Drupal::service('ahs_discussions.ancestry')->updateChildren($node);
   }
 }
@@ -85,9 +80,55 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
  * Update the ancestry when the first parent is changed.
  * No need to save or return modified entity.
  */
-function ahs_discussions_node_presave(\Drupal\Core\Entity\EntityInterface $node) {
-  if ($node->bundle() == 'discussion'){
+function ahs_discussions_node_presave(NodeInterface $node) {
+  if ($node->bundle() == 'discussion') {
     \Drupal::service('ahs_discussions.ancestry')->updateOwnAncestry($node);
+    ahs_discussions_add_editor_as_participant($node);
+  }
+}
+
+/**
+ * Adds the creator or editor of a discussion to the participants field in that
+ * discussion, unless he is already present or just now removed.
+ */
+function ahs_discussions_add_editor_as_participant(NodeInterface $node) {
+  // Identify the editor, using the creator if new.
+  if ($node->isNew()) {
+    $editor = $node->getOwnerId();
+  }
+  else {
+    $editor = \Drupal::currentUser()->id();
+  }
+  // If editor is anonymous, then cannot add as participant.
+  if ($editor == 0) {
+    return;
+  }
+  // See if user is already listed as participant
+  $alreadyListed = FALSE;
+  foreach ($node->field_participants->getValue() as $participant) {
+    // If the current user is listed, then nothing to do here.
+    if ($participant['target_id'] === $editor) {
+      $alreadyListed = TRUE;
+      break;
+    }
+  }
+
+  // See if user had been listed (and therefore just deliberately removed)
+  if (!$alreadyListed && $node->original) {
+    foreach ($node->original->field_participants->getValue() as $participant) {
+      // If the current user is listed, then nothing to do here.
+      if ($participant['target_id'] === $editor) {
+        $alreadyListed = TRUE;
+        break;
+      }
+    }
+  }
+
+  // If not already listed, add the current user.
+  if (!$alreadyListed) {
+    $values = $node->field_participants->getValue();
+    $values[] = ['target_id' => $editor];
+    $node->field_participants->setValue($values);
   }
 }
 

@@ -127,7 +127,8 @@
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
-                "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch"
+                "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch",
+                "Do not assume nodes of all types have 'body' fields": "https://github.com/jhedstrom/drupalextension/pull/263.patch"
             },
             "drupal/email_registration": {
                 "Add support for Behat tests (use AuthenticationManager)": "https://www.drupal.org/files/issues/2843505-8.patch"

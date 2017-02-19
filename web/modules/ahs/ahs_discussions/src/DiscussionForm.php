@@ -195,7 +195,6 @@ class DiscussionForm extends ContentEntityForm {
       $storage = \Drupal::entityManager()->getStorage('node');
       $original = $storage->loadUnchanged($this->entity->id());
     }
-    $this->addUserAsParticipant($original);
 
     // Set new revision if needed
     if ($this->entity->id()) {
@@ -204,7 +203,6 @@ class DiscussionForm extends ContentEntityForm {
   }
 
   protected function considerNewRevision(FormStateInterface $form_state, $original) {
-
     // Get a list of fields to evaluate for changes
     $entityManager = \Drupal::service('entity.manager');
     $fields = $entityManager->getFieldDefinitions('node', 'discussion');
@@ -215,7 +213,12 @@ class DiscussionForm extends ContentEntityForm {
 
     // If any field has changed, create a new revision.
     foreach ($fields as $fieldName => $field) {
-      if ($this->entity->$fieldName->getValue() != $original->$fieldName->getValue()) {
+      $newValue = $this->entity->$fieldName->getValue();
+      $oldValue = $original->$fieldName->getValue();
+      // Sometimes the value arrays can be in a different order
+      $this->sortNestedArray($newValue);
+      $this->sortNestedArray($oldValue);
+      if ($newValue != $oldValue) {
         // Create a new revision.
         $this->entity->oldRevisionId = $this->entity->getRevisionId();
         $this->entity->setNewRevision();
@@ -224,7 +227,18 @@ class DiscussionForm extends ContentEntityForm {
         break;
       }
     }
+  }
 
+  // Sort an array by its keys, and recursively any nested arrays
+  protected function sortNestedArray(&$array) {
+    if (is_array($array)) {
+      ksort($array);
+      foreach ($array as $key => &$value) {
+        if (is_array($value)) {
+          $this->sortNestedArray($value);
+        }
+      }
+    }
   }
 
   /**
@@ -232,26 +246,36 @@ class DiscussionForm extends ContentEntityForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
     $node = $this->entity;
+    $insert = $node->isNew();
+    $update = $node->isNewRevision();
+    $node->save();
 
     // Add a comment if the user entered one on the form
     $hasComment = !empty($form_state->getValue('comment')['value']);
     if ($hasComment) {
       $comment = [
+        'uid' => \Drupal::currentUser()->id(),
+        'langcode' => \Drupal::languageManager()->getCurrentLanguage()->getId(),
+        'entity_id' => $node->id(),
+        'entity_type' => $node->getEntityTypeId(),
+        'status' => 1,
         'comment_type' => 'comments_with_changes',
         'field_name' => 'field_comments_with_changes',
         'comment_body' => $form_state->getValue('comment'),
+        'subject' => Unicode::truncate(trim(Html::decodeEntities(strip_tags($form_state->getValue('comment')['value']))), 29, TRUE, TRUE),
       ];
-      \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $node);
+      // Edge cases where the comment body is populated only by HTML tags will
+      // require a default subject.
+      if ($comment['subject'] == '') {
+        $comment['subject'] = t('(No subject)');
+      }
+      $comment = Comment::create($comment);
+      $comment->setCreatedTime(REQUEST_TIME);
+      $comment->setChangedTime(REQUEST_TIME);
+      $comment->save();
       drupal_set_message(t('Your comment has been shared.'));
     }
-    //$this->addComment($form, $form_state, $insert, $update);
-
-
-    $insert = $node->isNew();
-    $update = $node->isNewRevision();
-    $node->save();
-
+    
     // Produce messages and logs
     $node_link = $node->link($this->t('View'));
     $context = array('@type' => $node->getType(), '%title' => $node->label(), 'link' => $node_link);
@@ -286,70 +310,6 @@ class DiscussionForm extends ContentEntityForm {
       $form_state->setRebuild();
     }
 
-  }
-
-  protected function addUserAsParticipant($original) {
-    $currentUser = \Drupal::currentUser()->id();
-    if (!is_null($original)) {
-      foreach ($original->field_participants->getValue() as $originalParticipants) {
-        // If the current user was originally listed, then he is either
-        // still there, or was deliberately removed.
-        if ($originalParticipants['target_id'] === $currentUser) {
-          return;
-        }
-      }
-    }
-    foreach ($this->entity->field_participants->getValue() as $participant) {
-      // If the current user is listed, then no need to do anything.
-      if ($participant['target_id'] === $currentUser) {
-        return;
-      }
-    }
-    // If not originally or currently listed, add the current user.
-    $values = $this->entity->field_participants->getValue();
-    $values[]= ['target_id' => $currentUser];
-    $this->entity->field_participants->setValue($values);
-  }
-
-  // deprecated, remove
-  protected function addComment (array $form, FormStateInterface $form_state, $insert, $update) {
-    $hasComment = !empty($form_state->getValue('comment')['value']);
-    $newRevisionId = NULL;
-    if ($update) {
-      $newRevisionId = $this->entity->getRevisionId();
-    }
-
-    // Prepare the comment data
-    $comment = [
-      'comment_type' => 'comments_with_changes',
-      'field_name' => 'field_comments_with_changes',
-    ];
-    if ($hasComment) {
-      $comment['comment_body'] = $form_state->getValue('comment');
-    }
-    else {
-      $comment['subject'] = 'Change record';
-    }
-
-    //Create the comment
-    if ($insert) {
-      $comment['comment_body'] = [
-        'value' => "<p>Started this discussion.</p>",
-        'format' => "full_html",
-      ];
-      \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $this->entity, NULL, $this->entity->getRevisionId(), 'field_changes');
-    }
-    elseif ($hasComment) {
-      //\Drupal::service('changes.comment_with_changes')
-      //  ->add($comment, $this->entity, $this->entity->oldRevisionId, $newRevisionId, 'field_changes');
-      \Drupal::service('changes.comment_with_changes')
-        ->add($comment, $this->entity, NULL, NULL, NULL);
-    }
-
-    if ($hasComment) {
-      drupal_set_message(t('Your comment has been shared.'));
-    }
   }
 
 }

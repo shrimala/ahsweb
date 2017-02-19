@@ -217,7 +217,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
         ->getCurrentUrl()));
     }
     if (count($list) !== count($expectedItems)) {
-      throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. The found items were:", count($list), $elements_css, $this->getSession()
+      throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. The found items were: %s", count($list), $elements_css, $this->getSession()
         ->getCurrentUrl(), count($expectedItems), $listText));
     }
 
@@ -230,8 +230,8 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
           break;
         }
 
-        $rowMessage = sprintf('#%s of the "%s" on the page %s', $n + 1, $elements_css, $this->getSession()
-          ->getCurrentUrl());
+        $rowMessage = sprintf('#%s of the "%s" on the page %s. The full list was: %s', $n + 1, $elements_css, $this->getSession()
+          ->getCurrentUrl(), $listText);
         $sharedMessage = $rowMessage;
 
         // A test for text anywhere in row element is requested.
@@ -281,9 +281,16 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
 
         // Test element contains text
         if ($contains && $element) {
-          $regex = '/' . preg_quote($expectedItemValue, '/') . '/ui';
-          $actual =  (((bool) preg_match($regex, $element->getText())));
-          $message = sprintf('The text "%s" was not found in %s. The actual text was "%s". The full list was: %s', $expectedItemValue, $sharedMessage, $element->getText(), $listText);
+          if ($expectedItemValue === '-') {
+            $actual = (trim($element->getText()) === '');
+            $message = sprintf('Instead of being empty, the text "%s" was found in %s', $element->getText(), $sharedMessage);
+          }
+          else {
+            $regex = '/' . preg_quote($expectedItemValue, '/') . '/ui';
+            $actual =  (((bool) preg_match($regex, $element->getText())));
+            $message = sprintf('Instead of the text "%s", the text "%s" was found in %s', $expectedItemValue, $element->getText(), $sharedMessage);
+          }
+
         }
 
         // Classes can additionally match on element as within element
@@ -314,5 +321,75 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     return $found;
   }
 
-  
+
+  /**
+   * Checks selections in multiple select field.
+   *
+   * @Then /^the "(?P<field>(?:[^"]|\\")*)" select field should have "(?P<value>(?:[^"]|\\")*)" selected$/
+   */
+  public function assertMultivalueFieldContains($field, $value)
+  {
+    $fieldNode = $this->assertSession()->fieldExists($field);
+    $options = $fieldNode->findAll('css', 'option');
+    $selected = array();
+    foreach ($options as $option) {
+      if ($option->isSelected()) {
+        $selected[] = $option->getText();
+      }
+    }
+    // Order appears to vary randomly, so sort alphabetically
+    sort($selected);
+    $selected = join(', ', $selected);
+    $regex = '/^' . preg_quote($value, '$/') . '/ui';
+    if (!preg_match($regex, $selected)) {
+      $message = sprintf('The field "%s" selections are "%s", but "%s" expected.', $field, $selected, $value);
+      throw new \Behat\Mink\Exception\ExpectationException($message, $this->getSession());
+    }
+  }
+
+  /**
+   * Checks select field has nothing selected.
+   *
+   * @Then /^the "(?P<field>(?:[^"]|\\")*)" select field should have nothing selected$/
+   */
+  public function assertMultivalueFieldEmpty($field)
+  {
+    $fieldNode = $this->assertSession()->fieldExists($field);
+    $options = $fieldNode->findAll('css', 'option');
+    $selected = array();
+    foreach ($options as $option) {
+      if ($option->isSelected()) {
+        $selected[] = $option->getText();
+      }
+    }
+    if (count($selected) > 0) {
+      $message = sprintf('The field "%s" selections are "%s", but have nothing selected.', $field, $selected);
+      throw new \Behat\Mink\Exception\ExpectationException($message, $this->getSession());
+    }
+  }
+
+  /**
+   * Creates content of the given type.
+   *
+   * @Given :name create(s) a/an :type (content ) with the title :title
+   * @Given I am viewing a/an :type (content )(created )by :name with the title :title
+   * @Given a/an :type (content )(created )by :name with the title :title
+   */
+  public function userCreatesNode($type, $title, $name) {
+    if ($name === 'me' || $name === 'I') {
+      $uid = $this->getUserManager()->getCurrentUser()->uid;
+    }
+    else {
+      $uid = $this->getUserManager()->getUser($name)->uid;
+    }
+    $node = (object) array(
+      'title' => $title,
+      'type' => $type,
+      'uid' => $uid,
+    );
+    $saved = $this->nodeCreate($node);
+    // Set internal page on the new node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
+  }
+
 }

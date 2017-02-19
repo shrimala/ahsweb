@@ -2,16 +2,17 @@ default:
   autoload:
     - %paths.base%/features/build/contexts
   suites:
-    default: &default
+    default: &defaultSuite
       paths:
         - %paths.base%/features
       filters:
         tags: "~@skip"
-      contexts:
+      contexts: &defaultContexts
         - FeatureContext
         - MinkContext
         - FormElementVisibilityContext
         - ErrorAndWarningContext
+        - DebugContext
         - LogContext
         - Drupal\DrupalExtension\Context\MarkupContext
         - Drupal\DrupalExtension\Context\DrupalContext
@@ -19,7 +20,7 @@ default:
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\EntityContext
     local:
-      <<: *default
+      <<: *defaultSuite
       filters:
         tags: "~@skip&&~@email"
   extensions:
@@ -61,7 +62,9 @@ default:
         Title field: "span.field--name-title"
         Ancestry field: "span.field--name-field-ancestry-plain"
         Discussion comments: "div.field--name-field-comments-with-changes > div > div > article"
-        Comment body: "div.field--name-comment-body"
+        Comment body field: "div.field--name-comment-body"
+        Changes field: "div.field--name-field-changes"
+        Changes diff: "div.field--name-field-changes .diff"
 travis:
   extensions:
     Behat\MinkExtension:

@@ -90,6 +90,9 @@ class simple_cer {
       // Tricky array nesting continued.
       $desiredReferences[] = $newReference[0];
       $correspondingField->setValue($desiredReferences);
+      $referencedEntity->setNewRevision();
+      $referencedEntity->setRevisionCreationTime(REQUEST_TIME);
+      $referencedEntity->setRevisionUserId(\Drupal::currentUser()->id());
       $referencedEntity->save();
     }
   }
@@ -108,6 +111,9 @@ class simple_cer {
     $currentReferences = $correspondingField->getValue();
     $desiredReferences = $this->nested_array_diff([['target_id' => $refererId]], $currentReferences);
     $correspondingField->setValue($desiredReferences);
+    $referencedEntity->setNewRevision();
+    $referencedEntity->setRevisionCreationTime(REQUEST_TIME);
+    $referencedEntity->setRevisionUserId(\Drupal::currentUser()->id());
     $referencedEntity->save();
   }
 
