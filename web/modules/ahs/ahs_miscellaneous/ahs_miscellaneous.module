@@ -37,7 +37,23 @@ function ahs_miscellaneous_install() {
  *
  */
 function ahs_miscellaneous_node_presave($node) {
-  $node->title->value = Unicode::ucfirst(strtolower($node->title->value));
-  $node->title->value = str_replace('/', '', $node->title->value);
+
+  $node->title->value = trim($node->title->value);
+
+  // If title is all upper case and has multiple words,
+  // assume the capitalisation is inappropriate
+  if ((mb_strtoupper($node->title->value, 'utf-8') === $node->title->value) &&
+    (strpos($node->title->value, " ") !== FALSE)) {
+    $node->title->value = strtolower($node->title->value);
+  }
+
+  // Always capitalise the first letter
+  $node->title->value = Unicode::ucfirst($node->title->value);
+
+  // Replace slashes with a space
+  $node->title->value = str_replace('/', ' ', $node->title->value);
+
+  // replace 2 or more spaces with single space
+  $node->title->value = $s = preg_replace("/ {2,}/", " ", $node->title->value);
 }
 
