@@ -7,6 +7,7 @@ function ahs_discussions_views_query_alter(Drupal\views\ViewExecutable $view, Dr
     if ($view->getDisplay()->display['id'] == 'tasks') {
       // Include discussions in 'My tasks' only if assigned to current user
       ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_assigned', 'field_assigned_target_id', TRUE);
+      $view->element['#cache']['contexts'][]='user';
     }
 
     if ($view->getDisplay()->display['id'] == 'my_discussions') {
@@ -19,6 +20,8 @@ function ahs_discussions_views_query_alter(Drupal\views\ViewExecutable $view, Dr
       ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_assigned', 'field_assigned_target_id', FALSE, 3);
       $query->addTable('node__field_finished');
       $query->addWhere(3, 'node__field_finished.field_finished_value', 1, '=');
+
+      $view->element['#cache']['contexts'][]='user';
     }
 
     if ($view->getDisplay()->display['id'] == 'active') {
@@ -27,6 +30,7 @@ function ahs_discussions_views_query_alter(Drupal\views\ViewExecutable $view, Dr
       // (as in that case they would already be in My Tasks or My Discussions.
       ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_participants', 'field_participants_target_id', FALSE);
       ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_assigned', 'field_assigned_target_id', FALSE);
+      $view->element['#cache']['contexts'][]='user';
     }
 
     if ($view->getDisplay()->display['id'] == 'search') {
@@ -37,6 +41,7 @@ function ahs_discussions_views_query_alter(Drupal\views\ViewExecutable $view, Dr
       ahs_discussions_views_where_value_in_field($query, $uid, 'node__field_assigned', 'field_assigned_target_id', TRUE, 2);
       $query->addTable('node__field_private');
       $query->addWhere(2, 'node__field_private.field_private_value', 0, '=');
+      $view->element['#cache']['contexts'][]='user';
     }
   }
 }

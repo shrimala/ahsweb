@@ -13,7 +13,30 @@ Feature: Discussions listed on home page
   # The initial sort order of these matches order of creation, but only because creation of them all
   # happens instantaneously and views date sorts have a minimum granularity of 1 second.
   # The exception is "Help wanted" which has an additional desc sort by ID.
-@test
+
+Scenario: Per user caching
+  Given "discussion" content:
+    | title      | field_participants | field_assigned |
+    | Testtitle3 | Jane Doe           |                |
+    | Testtitle4 | Jane Doe           | Jane Doe       |
+  Given I am logged in as "Fred Bloggs"
+  When I visit "/"
+  Then I should see no "My tasks" elements
+  And I should see no "My discussions" elements
+  And I should see "Active discussions":
+    | Title field |
+    | Testtitle3  |
+    | Testtitle4  |
+  Given I am logged in as "Jane Doe"
+  When I visit "/"
+  Then I should see "My tasks":
+    | Title field |
+    | Testtitle4  |
+  And I should see "My discussions":
+    | Title field |
+    | Testtitle3  |
+  And I should see no "Active discussions" elements
+
   Scenario: Help wanted
     # See: Help wanted, promoted, Not finished, not private, not participant, not assigned
     # See: Help wanted, promoted, Not finished, not private, participant, assigned to me
