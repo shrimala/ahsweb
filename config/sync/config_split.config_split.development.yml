@@ -1,0 +1,18 @@
+uuid: bfc25a4c-8bb9-4d1a-854b-1566412e1a38
+langcode: en
+status: true
+dependencies: {  }
+id: development
+label: Development
+folder: ../config/splits/development
+module:
+  config_inspector: 0
+  devel: 0
+  kint: 0
+theme: {  }
+blacklist:
+  - system.menu.devel
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0
