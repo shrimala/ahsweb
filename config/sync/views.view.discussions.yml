@@ -263,42 +263,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        timestamp:
-          id: timestamp
-          table: history
-          field: timestamp
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: ''
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: history_user_timestamp
         field_finished_value:
           id: field_finished_value
           table: node__field_finished
@@ -422,7 +386,7 @@ display:
       arguments: {  }
       block_hide_empty: true
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_interface'
         - 'user.node_grants:view'
@@ -628,6 +592,20 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
       filters:
         status:
           value: '1'
@@ -689,42 +667,6 @@ display:
           admin_label: ''
           operator: '='
           value: '0'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: boolean
-        field_help_wanted_value:
-          id: field_help_wanted_value
-          table: node__field_help_wanted
-          field: field_help_wanted_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: '1'
           group: 1
           exposed: false
           expose:
@@ -845,41 +787,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: 'A block of discussions that the current user is following, but is not assigned as a task.'
-      arguments:
-        field_participants_target_id:
-          id: field_participants_target_id
-          table: node__field_participants
-          field: field_participants_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: default
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: current_user
-          default_argument_options: {  }
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          break_phrase: false
-          not: false
-          plugin_id: numeric
+      arguments: {  }
       defaults:
         arguments: false
         filters: false
@@ -937,44 +845,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        timestamp:
-          id: timestamp
-          table: history
-          field: timestamp
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: ''
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: Unread
-            description: ''
-            use_operator: false
-            operator: timestamp_op
-            identifier: timestamp
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: history_user_timestamp
       filter_groups:
         operator: AND
         groups:
@@ -982,11 +852,9 @@ display:
       title: 'My discussions'
       block_hide_empty: true
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_interface'
-        - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -1256,42 +1124,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        timestamp:
-          id: timestamp
-          table: history
-          field: timestamp
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: ''
-          group: 2
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: history_user_timestamp
         field_finished_value:
           id: field_finished_value
           table: node__field_finished
@@ -1301,7 +1133,7 @@ display:
           admin_label: ''
           operator: '='
           value: '0'
-          group: 2
+          group: 1
           exposed: false
           expose:
             operator_id: ''
@@ -1340,53 +1172,16 @@ display:
         operator: AND
         groups:
           1: AND
-          2: OR
-      arguments:
-        field_assigned_target_id:
-          id: field_assigned_target_id
-          table: node__field_assigned
-          field: field_assigned_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: default
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: current_user
-          default_argument_options: {  }
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          break_phrase: false
-          not: false
-          plugin_id: numeric
+      arguments: {  }
       title: 'My tasks'
       block_hide_empty: true
       use_more: false
       use_more_always: false
       use_more_text: 'Show all my tasks'
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_interface'
-        - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

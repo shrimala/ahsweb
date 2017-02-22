@@ -10,3 +10,12 @@ div.main-container {
 .ahs-finished .field--name-title:focus{
     text-decoration:none;
 }
+
+div.ahs-markers {
+    display:inline-block;
+    padding-left:0.5em;
+}
+
+div.ahs-markers .label {
+    font-weight:normal;
+}

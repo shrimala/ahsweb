@@ -8,9 +8,16 @@ dependencies:
     - field.field.node.discussion.body
     - field.field.node.discussion.field_ancestry
     - field.field.node.discussion.field_ancestry_plain
+    - field.field.node.discussion.field_assigned
     - field.field.node.discussion.field_children
     - field.field.node.discussion.field_comments_with_changes
+    - field.field.node.discussion.field_files
+    - field.field.node.discussion.field_finished
+    - field.field.node.discussion.field_help_wanted
     - field.field.node.discussion.field_parents
+    - field.field.node.discussion.field_participants
+    - field.field.node.discussion.field_private
+    - field.field.node.discussion.field_top_level_category
     - node.type.discussion
   module:
     - comment
@@ -74,3 +81,4 @@ hidden:
   field_participants: true
   field_private: true
   field_top_level_category: true
+  langcode: true

@@ -86,6 +86,10 @@ class simple_cer {
 
     // Add the new reference if there is one
     if (!empty($newReference)) {
+      // Is there already new content on the node for the current user?
+      $lastCommentTimestamp = $referencedEntity->get('field_comments_with_changes')->getValue()[0]['last_comment_timestamp'];
+      $hasNewContent = (history_read($referencedEntity->id()) < $lastCommentTimestamp);
+
       $desiredReferences = $currentReferences;
       // Tricky array nesting continued.
       $desiredReferences[] = $newReference[0];
@@ -94,6 +98,13 @@ class simple_cer {
       $referencedEntity->setRevisionCreationTime(REQUEST_TIME);
       $referencedEntity->setRevisionUserId(\Drupal::currentUser()->id());
       $referencedEntity->save();
+
+      // If the node did not already have new content for the current user
+      // then pretend that the user has just read it, so that the edit we just
+      // made will not appear as new content for the user.
+      if (!$hasNewContent) {
+        history_write($referencedEntity->id());
+      }
     }
   }
 
@@ -107,6 +118,10 @@ class simple_cer {
    *   The referenced entity that needs its corresponding field updating.
    */
   public function removeCorrespondingReference($correspondingFieldName, $refererId, ContentEntityInterface $referencedEntity) {
+    // Is there already new content on the node for the current user?
+    $lastCommentTimestamp = $referencedEntity->get('field_comments_with_changes')->getValue()[0]['last_comment_timestamp'];
+    $hasNewContent = (history_read($referencedEntity->id()) < $lastCommentTimestamp);
+
     $correspondingField = $referencedEntity->get($correspondingFieldName);
     $currentReferences = $correspondingField->getValue();
     $desiredReferences = $this->nested_array_diff([['target_id' => $refererId]], $currentReferences);
@@ -115,6 +130,13 @@ class simple_cer {
     $referencedEntity->setRevisionCreationTime(REQUEST_TIME);
     $referencedEntity->setRevisionUserId(\Drupal::currentUser()->id());
     $referencedEntity->save();
+
+    // If the node did not already have new content for the current user
+    // then pretend that the user has just read it, so that the edit we just
+    // made will not appear as new content for the user.
+    if (!$hasNewContent) {
+      history_write($referencedEntity->id());
+    }
   }
 
   protected function nested_array_diff($a1, $a2) {

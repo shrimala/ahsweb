@@ -1,5 +1,5 @@
 @api
-Feature: Changes to parents/children are reflected in their history
+Feature: Changes to parents/children are reflected in their changes comments
   In order to track history of discussions
   As any user allowed to edit a discussion
   I need to have my participation recorded even if indirect.

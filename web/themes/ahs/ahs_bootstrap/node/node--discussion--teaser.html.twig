@@ -72,19 +72,15 @@
 {% set glyphicons = [] %}
 {%  if node.field_private.value == '1' %}
     {% set attributes = attributes.addClass('ahs-private') %}
-    {% set glyphicons = glyphicons|merge(['lock'])%}
 {%  endif %}
 {%  if node.field_assigned is not empty %}
     {% set attributes = attributes.addClass('ahs-assigned') %}
-    {% set glyphicons = glyphicons|merge(['pushpin'])%}
-{%  endif %}
-{%  if node.promote.value== '1' %}
-    {% set attributes = attributes.addClass('ahs-promote') %}
-    {% set glyphicons = glyphicons|merge(['bullhorn'])%}
 {%  endif %}
 {%  if  node.field_help_wanted.value == '1' %}
     {% set attributes = attributes.addClass('ahs-help-wanted') %}
-    {% set glyphicons = glyphicons|merge(['bell'])%}
+{%  endif %}
+{%  if  node.promote.value == '1' %}
+    {% set attributes = attributes.addClass('ahs-promote') %}
 {%  endif %}
 {%  if  node.field_finished.value == '1' %}
     {% set attributes = attributes.addClass('ahs-finished') %}
@@ -99,10 +95,8 @@
             {{ label }}
         </span>
     </a>
-        {%  for glyphicon in glyphicons %}
-            <span class="glyphicon glyphicon-{{ glyphicon }}" aria-hidden="true"></span>
-        {% endfor %}
 
+    {{ ahs_discussion_markers }}
 
   {#
   {% if display_submitted %}

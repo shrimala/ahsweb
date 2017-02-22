@@ -36,6 +36,7 @@ content:
     type: string_textfield
 hidden:
   contact: true
+  langcode: true
   language: true
   path: true
   timezone: true

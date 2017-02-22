@@ -6,3 +6,19 @@
  * Place your custom PHP code in this file.
  */
 
+
+function ahs_bootstrap_preprocess_node__discussion__teaser(&$variables) {
+  $variables['ahs_discussion_markers'] = [
+    '#theme'=> 'ahs_discussion_markers',
+    '#discussion' => $variables['node'],
+    '#view_mode' => 'teaser',
+  ];
+}
+
+function ahs_bootstrap_preprocess_node__discussion__ahs_child(&$variables) {
+  $variables['ahs_discussion_markers'] = [
+    '#theme'=> 'ahs_discussion_markers',
+    '#discussion' => $variables['node'],
+    '#view_mode' => 'teaser',
+  ];
+}

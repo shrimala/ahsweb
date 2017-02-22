@@ -66,7 +66,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       throw new ExpectationException($message, $this->getSession());
     }
   }
-  
+
   /**
    * Checks that an attribute exists in an element.
    *
@@ -169,7 +169,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
         }
       }
     }
-    
+
     throw new \Exception(sprintf("Unanticipated outcome, looking for the text '%s' in the field '%s' on the page %s", $text, $field, $this->getSession()->getCurrentUrl()));
   }
 
@@ -194,6 +194,26 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * Checks if a set of elements matches the values in a table.
    *
+   * @Then I should see :count :elements_css elements
+   *
+   * @param $elements_css
+   *   string The id|name|title|alt|value (css selector) of the element that constitutes the list item
+   *
+   * @throws \Exception
+   *   If elements do not match table.
+   */
+  public function assertNumberElements($count=9999, $elements_css) {
+    $page =$this->getSession()->getPage();
+    if ($count === 'no') {
+      $count = 0;
+    }
+    $count = (int) $count;
+    $this->assertElements($page, $elements_css, array(), $count);
+  }
+
+  /**
+   * Checks if a set of elements matches the values in a table.
+   *
    * @Then I should see :elements_css( elements):
    *
    * @param $elements_css
@@ -202,24 +222,35 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * @throws \Exception
    *   If elements do not match table.
    */
-  public function assertElements(TableNode $table, $elements_css) {
+  public function assertElementsTable(TableNode $table, $elements_css) {
     $page =$this->getSession()->getPage();
-    $list = $this->findByRegionOrCss($page,'findAll', $elements_css);
-    $expectedItems = $table->getHash();
+    $this->assertElements($page, $elements_css, $table->getHash());
+  }
+
+  protected function assertElements($container, $elements_css, $expectedItems = array(), $expectedCount = NULL) {
+    if (is_null($expectedCount)) {
+      $expectedCount = count($expectedItems);
+    }
+
+    $list = $this->findByRegionOrCss($container,'findAll', $elements_css);
 
     // Prepare text output for error messages
     $listText = "\n";
     foreach ($list as $listItem) {
       $listText .= $listItem->getText() . "\n";
     }
-
     if (empty($list)) {
-      throw new \Exception(sprintf("No '%s' were found on the page %s", $elements_css, $this->getSession()
-        ->getCurrentUrl()));
+      if ($expectedCount !== 0) {
+        throw new \Exception(sprintf("No '%s' were found on the page %s", $elements_css, $this->getSession()
+          ->getCurrentUrl()));
+      }
     }
-    if (count($list) !== count($expectedItems)) {
-      throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. The found items were: %s", count($list), $elements_css, $this->getSession()
-        ->getCurrentUrl(), count($expectedItems), $listText));
+    else {
+      if ($expectedCount !== 9999 &&
+        count($list) !== $expectedCount) {
+          throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. The found items were: %s", count($list), $elements_css, $this->getSession()
+            ->getCurrentUrl(), count($expectedItems), $listText));
+      }
     }
 
     foreach ($expectedItems as $n => $expectedItem) {
@@ -412,5 +443,5 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       throw new ElementTextException($message, $this->getSession()->getDriver(), $node);
     }
   }
-  
+
 }

@@ -16,16 +16,7 @@
     margin-bottom:0em;
 }
 
-.view-id-discussions .views-row .glyphicon {
-    color:#888888;
-    top:2px;
-}
-
-section.block-views-blockdiscussions-help .views-row .glyphicon-bullhorn,
-section.block-views-blockdiscussions-help .views-row .glyphicon-bell {
-    display:none;
-}
-section.block-views-blockdiscussions-tasks .views-row .glyphicon-pushpin {
+section.block-views-blockdiscussions-help .views-row .label.ahs-help-wanted {
     display:none;
 }
 
