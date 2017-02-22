@@ -35,7 +35,7 @@ before_script:
   - ./../vendor/bin/drush config-set "system.site" uuid "2748a6a9-0c67-43c6-aa47-71df4737a69f" --yes
   - for module in `cat ../modules.common`; do ./../vendor/bin/drush --yes pm-enable $module; done
   #- for module in `cat ../modules.dev`; do ./../vendor/bin/drush --yes pm-enable $module; done
-  - drush cc drush
+  - ./../vendor/bin/drush cc drush
   - drush config-split-import
   #- for module in `cat ../modules.dev`; do ./../vendor/bin/drush --yes pm-uninstall $module; done
   - for module in `cat ../modules.master`; do ./../vendor/bin/drush --yes pm-enable $module; done
