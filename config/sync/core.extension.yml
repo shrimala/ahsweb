@@ -39,10 +39,8 @@ module:
   help: 0
   history: 0
   image: 0
-  language: 0
   link: 0
   linkit: 0
-  locale: 0
   media_entity: 0
   media_entity_audio: 0
   menu_ui: 0
