@@ -16,13 +16,12 @@ module:
   color: 0
   comment: 0
   config: 0
-  config_inspector: 0
+  config_split: 0
   contact: 0
   contextual: 0
   ctools: 0
   datetime: 0
   dblog: 0
-  devel: 0
   diff: 0
   dynamic_page_cache: 0
   editor: 0
@@ -40,7 +39,6 @@ module:
   help: 0
   history: 0
   image: 0
-  kint: 0
   link: 0
   linkit: 0
   media_entity: 0

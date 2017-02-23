@@ -125,6 +125,11 @@ content:
     type: boolean_checkbox
   flag:
     weight: 10
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 30

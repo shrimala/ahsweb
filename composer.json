@@ -50,6 +50,7 @@
         "drupal/filefield_sources": "1.x-dev",
         "drupal/paragraphs": "1.x-dev",
         "drupal/devel": "1.x-dev",
+        "drupal/config_split": "1.0-beta2",
         "drupal/config_inspector": "1.x-dev",
         "drupal/config_readonly": "1.x-dev",
         "drupal/pathauto": "1.x-dev",

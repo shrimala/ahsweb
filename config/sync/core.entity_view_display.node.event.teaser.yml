@@ -34,3 +34,4 @@ hidden:
   field_leader: true
   field_sessions: true
   field_venue: true
+  langcode: true

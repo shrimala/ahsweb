@@ -108,6 +108,11 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
 // Passing the Flysystem schemes to Drupal
 $settings['flysystem'] = $schemes;
 
+
+// By default, do not use dev config and do use production config.
+$config['config_split.config_split.development']['status'] = FALSE;
+$config['config_split.config_split.production']['status'] = TRUE;
+
 // Local settings. These come last so that they can override anything.
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';

@@ -26,3 +26,5 @@ permissions:
   15: 'change own username'
   16: 'access user profiles'
   17: 'view own unpublished content'
+  18: 'access content overview'
+  19: 'view media'

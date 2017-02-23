@@ -71,6 +71,10 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
     \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
     \Drupal::service('ahs_discussions.ancestry')->updateChildren($node);
+
+    // Mark the node as read for its creator.
+    // Needed because the creator doesn't immediately view autocreated children.
+    history_write($node->id(), $node->getOwner());
   }
 }
 
@@ -352,3 +356,39 @@ function ahs_discussions_node_access(NodeInterface $node, $op, AccountInterface 
   }
 }
 */
+
+function ahs_discussions_theme($existing, $type, $theme, $path) {
+  return array(
+    'ahs_discussion_markers' => array(
+      'variables' => [
+        'discussion' => NULL, 
+        'view_mode' => 'teaser'
+      ],
+    ),
+  );
+}
+
+function template_preprocess_ahs_discussion_markers(&$variables) {
+  // Generate a default comment links render array,
+  // then plunder it to make a simpler 'New' mark.
+  $context = ['view_mode' => $variables['view_mode']];
+  $comment_links = \Drupal::service('comment.link_builder')->buildCommentedEntityLinks($variables['discussion'], $context);
+  $variables['ahs_new_comments'] = [
+    '#type' => 'link',
+    '#title' => $comment_links['comment__field_comments_with_changes']['#links']['comment-new-comments']['title'],
+    '#url' => $comment_links['comment__field_comments_with_changes']['#links']['comment-new-comments']['url'],
+    '#attributes'=> $comment_links['comment__field_comments_with_changes']['#links']['comment-new-comments']['attributes'],
+    '#cache' => $comment_links['comment__field_comments_with_changes']['#cache'],
+    '#attached' => $comment_links['comment__field_comments_with_changes']['#attached'],
+  ];
+
+  // Class is not an array, needs to be made into one
+  if (isset($variables['ahs_new_comments']['#attributes']['class']) &&
+    !is_array($variables['ahs_new_comments']['#attributes']['class'])) {
+    $variables['ahs_new_comments']['#attributes']['class'] = [$variables['ahs_new_comments']['#attributes']['class']];
+  }
+  // Make it a bootstrap label
+  $variables['ahs_new_comments']['#attributes']['class'][] = 'ahs-new';
+  $variables['ahs_new_comments']['#attributes']['class'][] = 'label';
+  $variables['ahs_new_comments']['#attributes']['class'][] = 'label-success';
+}

@@ -17,3 +17,4 @@ content:
     weight: 100
 hidden:
   field_elements: true
+  langcode: true

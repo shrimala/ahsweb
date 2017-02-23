@@ -78,3 +78,4 @@ hidden:
   field_participants: true
   field_private: true
   field_top_level_category: true
+  langcode: true

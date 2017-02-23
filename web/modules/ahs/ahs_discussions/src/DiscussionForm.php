@@ -165,6 +165,13 @@ class DiscussionForm extends ContentEntityForm {
       '#markup' => '<p class="ahs-preview-empty-message">No discussions have been included yet.</p>',
     ];
 */
+
+
+    // Mark an existing discussion as read
+    if ($this->entity->id()) {
+      history_write($this->entity->id());
+    }
+
     return $form;
   }
 

@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.email_teaching.body
+    - field.field.node.email_teaching.field_original
+    - field.field.node.email_teaching.field_teaching_tags
     - node.type.email_teaching
   module:
     - text
@@ -26,3 +28,4 @@ content:
 hidden:
   field_original: true
   field_teaching_tags: true
+  langcode: true

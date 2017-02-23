@@ -117,4 +117,5 @@ content:
 hidden:
   field_ancestry: true
   field_ancestry_plain: true
+  langcode: true
   links: true
