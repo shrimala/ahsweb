@@ -10,15 +10,11 @@ Feature: Discussions listed on home page
       | Fred Bloggs  | 1      |
       | Jane Doe     | 1      |
 
-  # The initial sort order of these matches order of creation, but only because creation of them all
-  # happens instantaneously and views date sorts have a minimum granularity of 1 second.
-  # The exception is "Help wanted" which has an additional desc sort by ID.
-
 Scenario: Per user caching
   Given "discussion" content:
     | title      | field_participants | field_assigned |
-    | Testtitle3 | Jane Doe           |                |
     | Testtitle4 | Jane Doe           | Jane Doe       |
+    | Testtitle3 | Jane Doe           |                |
   Given I am logged in as "Fred Bloggs"
   When I visit "/"
   Then I should see no "My tasks" elements
@@ -47,20 +43,20 @@ Scenario: Per user caching
     # Not see: Not help wanted, promoted, unfinished, not private, not participant, not assigned
     Given "discussion" content:
       | title      | field_participants | field_assigned | field_private | field_finished | field_help_wanted | promote |
-      | Testtitle0 | Fred Bloggs        |                | 0             | 0              | 1                 | 0       |
-      | Testtitle1 | Fred Bloggs        |                | 0             | 0              | 1                 | 1       |
-      | Testtitle2 | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 1                 | 1       |
-      | Testtitle3 | Fred Bloggs        |                | 1             | 0              | 1                 | 1       |
-      | Testtitle4 | Fred Bloggs        |                | 0             | 1              | 1                 | 1       |
-      | Testtitle5 | Fred Bloggs        |                | 0             | 0              | 0                 | 1       |
       | Testtitle6 | Fred Bloggs        |                | 0             | 0              | 0                 | 0       |
+      | Testtitle5 | Fred Bloggs        |                | 0             | 0              | 0                 | 1       |
+      | Testtitle4 | Fred Bloggs        |                | 0             | 1              | 1                 | 1       |
+      | Testtitle3 | Fred Bloggs        |                | 1             | 0              | 1                 | 1       |
+      | Testtitle2 | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 1                 | 1       |
+      | Testtitle1 | Fred Bloggs        |                | 0             | 0              | 1                 | 1       |
+      | Testtitle0 | Fred Bloggs        |                | 0             | 0              | 1                 | 0       |
     Given I am logged in as "Jane Doe"
     When I visit "/"
     Then I should see "Help wanted discussions":
       | Title field |
-      | Testtitle5  |
-      | Testtitle2  |
       | Testtitle1  |
+      | Testtitle2  |
+      | Testtitle5  |
     And I should see "Active discussions":
       | Title field |
       | Testtitle0  |
@@ -69,9 +65,9 @@ Scenario: Per user caching
     When I visit "/"
     Then I should see "Help wanted discussions":
       | Title field |
-      | Testtitle5  |
-      | Testtitle2  |
       | Testtitle1  |
+      | Testtitle2  |
+      | Testtitle5  |
     And I should see "My tasks":
       | Title field |
       | Testtitle2  |
@@ -100,18 +96,18 @@ Scenario: Per user caching
     # 10 See: Finished, not private, not participant, assigned to me and someone else
     Given "discussion" content:
       | title       | field_participants                | field_assigned        | field_private | field_finished |
-      | Testtitle1  | Jane Doe                          | Jane Doe              | 0             | 0              |
-      | Testtitle2  | Fred Bloggs, Jane Doe             | Jane Doe              | 0             | 0              |
-      | Testtitle3  | Fred Bloggs                       | Jane Doe              | 0             | 0              |
-      | Testtitle4  | Fred Bloggs                       | Jane Doe, Fred Bloggs | 0             | 0              |
-      | Testtitle5  | Fred Bloggs, Jane Doe             |                       | 0             | 0              |
-      | Testtitle6  | Fred Bloggs                       | Fred Bloggs           | 0             | 0              |
-      | Testtitle7  | Fred Bloggs                       |                       | 0             | 0              |
-      | Testtitle8  | Fred Bloggs                       | Jane Doe              | 0             | 1              |
-      | Testtitle9  | Fred Bloggs, Jane Doe             | Jane Doe              | 0             | 1              |
-      | Testtitle10 | Fred Bloggs                       | Fred Bloggs, Jane Doe | 0             | 1              |
-      | Testtitle11 | Fred Bloggs                       |                       | 0             | 1              |
       | Testtitle12 | Fred Bloggs                       | Jane Doe              | 1             | 0              |
+      | Testtitle11 | Fred Bloggs                       |                       | 0             | 1              |
+      | Testtitle10 | Fred Bloggs                       | Fred Bloggs, Jane Doe | 0             | 1              |
+      | Testtitle9  | Fred Bloggs, Jane Doe             | Jane Doe              | 0             | 1              |
+      | Testtitle8  | Fred Bloggs                       | Jane Doe              | 0             | 1              |
+      | Testtitle7  | Fred Bloggs                       |                       | 0             | 0              |
+      | Testtitle6  | Fred Bloggs                       | Fred Bloggs           | 0             | 0              |
+      | Testtitle5  | Fred Bloggs, Jane Doe             |                       | 0             | 0              |
+      | Testtitle4  | Fred Bloggs                       | Jane Doe, Fred Bloggs | 0             | 0              |
+      | Testtitle3  | Fred Bloggs                       | Jane Doe              | 0             | 0              |
+      | Testtitle2  | Fred Bloggs, Jane Doe             | Jane Doe              | 0             | 0              |
+      | Testtitle1  | Jane Doe                          | Jane Doe              | 0             | 0              |
     Given I am logged in as "Jane Doe"
     When I visit "discuss/testtitle8"
     And I visit "discuss/testtitle9"
@@ -143,19 +139,19 @@ Scenario: Per user caching
     #13 See: Finished, private, participant, not assigned
     Given "discussion" content:
       | title       | field_participants    | field_assigned        | field_private | field_finished |
-      | Testtitle1  | Jane Doe              |                       | 0             | 0              |
-      | Testtitle2  | Fred Bloggs, Jane Doe |                       | 0             | 0              |
-      | Testtitle3  | Jane Doe              | Fred Bloggs           | 0             | 0              |
-      | Testtitle4  | Jane Doe              |                       | 1             | 0              |
-      | Testtitle5  | Fred Bloggs, Jane Doe |                       | 1             | 0              |
-      | Testtitle6  | Fred Bloggs           |                       | 0             | 0              |
-      | Testtitle7  | Fred Bloggs           |                       | 1             | 0              |
-      | Testtitle8  | Jane Doe              | Jane Doe              | 0             | 0              |
-      | Testtitle9  | Jane Doe              | Jane Doe, Fred Bloggs | 0             | 0              |
-      | Testtitle10 | Fred Bloggs           | Jane Doe              | 0             | 0              |
-      | Testtitle11 | Jane Doe              |                       | 0             | 1              |
-      | Testtitle12 | Jane Doe              | Fred Bloggs           | 0             | 1              |
       | Testtitle13 | Jane Doe, Fred Bloggs |                       | 1             | 1              |
+      | Testtitle12 | Jane Doe              | Fred Bloggs           | 0             | 1              |
+      | Testtitle11 | Jane Doe              |                       | 0             | 1              |
+      | Testtitle10 | Fred Bloggs           | Jane Doe              | 0             | 0              |
+      | Testtitle9  | Jane Doe              | Jane Doe, Fred Bloggs | 0             | 0              |
+      | Testtitle8  | Jane Doe              | Jane Doe              | 0             | 0              |
+      | Testtitle7  | Fred Bloggs           |                       | 1             | 0              |
+      | Testtitle6  | Fred Bloggs           |                       | 0             | 0              |
+      | Testtitle5  | Fred Bloggs, Jane Doe |                       | 1             | 0              |
+      | Testtitle4  | Jane Doe              |                       | 1             | 0              |
+      | Testtitle3  | Jane Doe              | Fred Bloggs           | 0             | 0              |
+      | Testtitle2  | Fred Bloggs, Jane Doe |                       | 0             | 0              |
+      | Testtitle1  | Jane Doe              |                       | 0             | 0              |
     Given I am logged in as "Jane Doe"
     When I visit "/"
     Then I should see "My discussions":
@@ -180,14 +176,14 @@ Scenario: Per user caching
     # Not see: Not finished, not private, not participant, assigned to me and someone else
     Given "discussion" content:
       | title       | field_participants    | field_assigned        | field_private | field_finished |
-      | Testtitle1  | Fred Bloggs           |                       | 0             | 0              |
-      | Testtitle2  | Fred Bloggs           | Fred Bloggs           | 0             | 0              |
-      | Testtitle3  | Fred Bloggs           |                       | 0             | 1              |
-      | Testtitle4  | Fred Bloggs           |                       | 1             | 0              |
-      | Testtitle5  | Jane Doe              |                       | 0             | 0              |
-      | Testtitle6  | Fred Bloggs, Jane Doe |                       | 0             | 0              |
-      | Testtitle7  | Fred Bloggs           | Jane Doe              | 0             | 0              |
       | Testtitle8  | Fred Bloggs           | Jane Doe, Fred Bloggs | 0             | 0              |
+      | Testtitle7  | Fred Bloggs           | Jane Doe              | 0             | 0              |
+      | Testtitle6  | Fred Bloggs, Jane Doe |                       | 0             | 0              |
+      | Testtitle5  | Jane Doe              |                       | 0             | 0              |
+      | Testtitle4  | Fred Bloggs           |                       | 1             | 0              |
+      | Testtitle3  | Fred Bloggs           |                       | 0             | 1              |
+      | Testtitle2  | Fred Bloggs           | Fred Bloggs           | 0             | 0              |
+      | Testtitle1  | Fred Bloggs           |                       | 0             | 0              |
     Given I am logged in as "Jane Doe"
     When I visit "/"
     Then I should see "Active discussions":
@@ -198,11 +194,11 @@ Scenario: Per user caching
   Scenario: Browse
     Given "discussion" content:
       | title       | field_top_level_category | field_finished | field_private | field_participants |
-      | Testtitle1  | 1                        | 0              | 0             | Fred Bloggs        |
-      | Testtitle2  | 1                        | 0              | 1             | Jane Doe           |
-      | Testtitle3  | 0                        | 0              | 0             | Fred Bloggs        |
-      | Testtitle4  | 1                        | 1              | 0             | Fred Bloggs        |
       | Testtitle5  | 1                        | 0              | 1             | Fred Bloggs        |
+      | Testtitle4  | 1                        | 1              | 0             | Fred Bloggs        |
+      | Testtitle3  | 0                        | 0              | 0             | Fred Bloggs        |
+      | Testtitle2  | 1                        | 0              | 1             | Jane Doe           |
+      | Testtitle1  | 1                        | 0              | 0             | Fred Bloggs        |
     Given I am logged in as "Jane Doe"
     When I visit "/"
     # Privacy not yet enabled for Browse top-level categories
@@ -216,11 +212,11 @@ Scenario: Per user caching
   Scenario: Search with AJAX
     Given "discussion" content:
       | title       | field_participants    | field_private |
-      | Something   | Fred Bloggs           | 0             |
-      | Testtitle1  | Fred Bloggs           | 0             |
-      | Testtitle2  | Fred Bloggs, Jane Doe | 1             |
-      | Testtitle3  | Jane Doe              | 1             |
       | Testtitle4  | Fred Bloggs           | 1             |
+      | Testtitle3  | Jane Doe              | 1             |
+      | Testtitle2  | Fred Bloggs, Jane Doe | 1             |
+      | Testtitle1  | Fred Bloggs           | 0             |
+      | Something   | Fred Bloggs           | 0             |
     Given I am logged in as "Jane Doe"
     When I visit "/"
     And I fill in "title" with "Testtitle"
@@ -235,15 +231,15 @@ Scenario: Per user caching
   Scenario: Search without AJAX
     Given "discussion" content:
       | title       | field_participants    | field_private | field_assigned | field_help_wanted | promote | field_finished |
-      | Something   | Fred Bloggs           | 0             |                | 0                 | 0       | 0              |
-      | Testtitle1  | Fred Bloggs           | 0             |                | 0                 | 0       | 0              |
-      | Testtitle2  | Fred Bloggs, Jane Doe | 1             |                | 0                 | 0       | 0              |
-      | Testtitle3  | Jane Doe              | 1             |                | 0                 | 0       | 0              |
-      | Testtitle4  | Fred Bloggs           | 1             |                | 0                 | 0       | 0              |
-      | Testtitle5  | Fred Bloggs           | 0             | Fred Bloggs    | 0                 | 0       | 0              |
-      | Testtitle6  | Fred Bloggs           | 0             |                | 1                 | 0       | 0              |
-      | Testtitle7  | Fred Bloggs           | 0             |                | 1                 | 1       | 0              |
       | Testtitle8  | Fred Bloggs           | 0             |                | 0                 | 0       | 1              |
+      | Testtitle7  | Fred Bloggs           | 0             |                | 1                 | 1       | 0              |
+      | Testtitle6  | Fred Bloggs           | 0             |                | 1                 | 0       | 0              |
+      | Testtitle5  | Fred Bloggs           | 0             | Fred Bloggs    | 0                 | 0       | 0              |
+      | Testtitle4  | Fred Bloggs           | 1             |                | 0                 | 0       | 0              |
+      | Testtitle3  | Jane Doe              | 1             |                | 0                 | 0       | 0              |
+      | Testtitle2  | Fred Bloggs, Jane Doe | 1             |                | 0                 | 0       | 0              |
+      | Testtitle1  | Fred Bloggs           | 0             |                | 0                 | 0       | 0              |
+      | Something   | Fred Bloggs           | 0             |                | 0                 | 0       | 0              |
     Given I am logged in as "Jane Doe"
     When I visit "/"
     And I fill in "title" with "Testtitle"
@@ -271,9 +267,9 @@ Scenario: Per user caching
     When I visit "/"
     Then I should see "Active discussions":
       | Title field | Ancestry field          |
-      | Testtitle0  |                         |
-      | Testtitle1  | Testtitle0              |
       | Testtitle2  | Testtitle0 / Testtitle1 |
+      | Testtitle1  | Testtitle0              |
+      | Testtitle0  |                         |
 
   Scenario: Discussions I create appear in 'My discussions' not 'Active discussions'
     Given a "discussion" with the title "Something else"
@@ -281,16 +277,13 @@ Scenario: Per user caching
     When I visit "/discuss/add"
     And I fill in "title[0][value]" with "Parent"
     And I press the "Save" button
-    And I press the "Save" button
-    # Press save twice to try to ensure Child is created at least a second after Parent
-    # as views sort has a minimum granularity of 1 second
     And I fill in "field_children[0][target_id]" with "Child"
     And I press the "Save" button
     And I visit "/"
     Then I should see "My discussions":
-      | Title field |
-      | Child       |
-      | Parent      |
+      | Title field  |
+      | Child |
+      | Parent       |
     And I should see "Active discussions":
       | Title field   |
       | Something else|
@@ -298,15 +291,15 @@ Scenario: Per user caching
   Scenario: Double check exposure of finished discussions
     Given "discussion" content:
       | title       | field_participants    | field_private | field_assigned | field_help_wanted | promote | field_finished |
-      | Testtitle1  | Fred Bloggs           | 0             |                | 1                 | 1       | 1              |
-      | Testtitle2  | Fred Bloggs, Jane Doe | 0             | Jane Doe       | 1                 | 1       | 1              |
-      | Testtitle3  | Fred Bloggs, Jane Doe | 1             |                | 1                 | 1       | 1              |
-      | Testtitle4  | Fred Bloggs, Jane Doe | 0             | Jane Doe       | 0                 | 0       | 1              |
-      | Testtitle5  | Fred Bloggs, Jane Doe | 1             | Jane Doe       | 0                 | 0       | 1              |
-      | Testtitle6  | Fred Bloggs, Jane Doe | 0             |                | 0                 | 0       | 1              |
-      | Testtitle7  | Fred Bloggs, Jane Doe | 1             |                | 0                 | 0       | 1              |
-      | Testtitle8  | Fred Bloggs           | 0             |                | 0                 | 0       | 1              |
       | Testtitle9  | Fred Bloggs           | 1             |                | 0                 | 0       | 1              |
+      | Testtitle8  | Fred Bloggs           | 0             |                | 0                 | 0       | 1              |
+      | Testtitle7  | Fred Bloggs, Jane Doe | 1             |                | 0                 | 0       | 1              |
+      | Testtitle6  | Fred Bloggs, Jane Doe | 0             |                | 0                 | 0       | 1              |
+      | Testtitle5  | Fred Bloggs, Jane Doe | 1             | Jane Doe       | 0                 | 0       | 1              |
+      | Testtitle4  | Fred Bloggs, Jane Doe | 0             | Jane Doe       | 0                 | 0       | 1              |
+      | Testtitle3  | Fred Bloggs, Jane Doe | 1             |                | 1                 | 1       | 1              |
+      | Testtitle2  | Fred Bloggs, Jane Doe | 0             | Jane Doe       | 1                 | 1       | 1              |
+      | Testtitle1  | Fred Bloggs           | 0             |                | 1                 | 1       | 1              |
     Given I am logged in as "Jane Doe"
     When I visit "/"
     Then I should see no "Help wanted discussions" elements
@@ -323,16 +316,16 @@ Scenario: Per user caching
   Scenario: Sorted by most recently commented, except 'Help wanted' sorted by most recently created
     Given "discussion" content:
       | title       | field_participants | field_assigned | field_private | field_finished | field_help_wanted | promote |
-      | Testtitle0  | Jane Doe           |                | 0             | 0              | 1                 | 1       |
-      | Testtitle3  | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 0                 | 0       |
-      | Testtitle4  | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 0                 | 0       |
-      | Testtitle5  | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 0                 | 0       |
-      | Testtitle6  | Fred Bloggs        |                | 0             | 0              | 0                 | 0       |
-      | Testtitle7  | Fred Bloggs        |                | 0             | 0              | 0                 | 0       |
-      | Testtitle8  | Fred Bloggs        |                | 0             | 0              | 0                 | 0       |
-      | Testtitle9  | Jane Doe           |                | 0             | 0              | 0                 | 0       |
-      | Testtitle10 | Jane Doe           |                | 0             | 0              | 0                 | 0       |
       | Testtitle11 | Jane Doe           |                | 0             | 0              | 0                 | 0       |
+      | Testtitle10 | Jane Doe           |                | 0             | 0              | 0                 | 0       |
+      | Testtitle9  | Jane Doe           |                | 0             | 0              | 0                 | 0       |
+      | Testtitle8  | Fred Bloggs        |                | 0             | 0              | 0                 | 0       |
+      | Testtitle7  | Fred Bloggs        |                | 0             | 0              | 0                 | 0       |
+      | Testtitle6  | Fred Bloggs        |                | 0             | 0              | 0                 | 0       |
+      | Testtitle5  | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 0                 | 0       |
+      | Testtitle4  | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 0                 | 0       |
+      | Testtitle3  | Fred Bloggs        | Fred Bloggs    | 0             | 0              | 0                 | 0       |
+      | Testtitle0  | Jane Doe           |                | 0             | 0              | 1                 | 1       |
     Given I am logged in as "Jane Doe"
     When I visit "discuss/testtitle0"
     And I comment "some comment"
