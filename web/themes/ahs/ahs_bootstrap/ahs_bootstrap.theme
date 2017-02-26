@@ -22,3 +22,8 @@ function ahs_bootstrap_preprocess_node__discussion__ahs_child(&$variables) {
     '#view_mode' => 'teaser',
   ];
 }
+
+function ahs_bootstrap_preprocess_comment__field_comments_with_changes(&$variables) {
+  $comment = $variables['elements']['#comment'];
+  $variables['created'] = \Drupal::service('date.formatter')->formatTimeDiffSince($comment->getCreatedTime(), ['granularity' => 1]);
+}

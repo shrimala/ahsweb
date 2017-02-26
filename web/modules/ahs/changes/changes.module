@@ -1,6 +1,43 @@
 <?php
 
 /*
+function changes_theme($existing, $type, $theme, $path) {
+  return array(
+    'changes_diff' => array(
+      'variables' => [
+        'left_revision' => NULL,
+        'right_revision' => NULL,
+        'changed_items' =>
+      ],
+    ),
+  );
+}
+
+function template_preprocess_changes_diff(&$variables) {
+  $context = ['view_mode' => $variables['view_mode']];
+  $comment_links = \Drupal::service('comment.link_builder')->buildCommentedEntityLinks($variables['discussion'], $context);
+  $variables['ahs_new_comments'] = [
+    '#type' => 'link',
+    '#title' => $comment_links['comment__field_comments_with_changes']['#links']['comment-new-comments']['title'],
+    '#url' => $comment_links['comment__field_comments_with_changes']['#links']['comment-new-comments']['url'],
+    '#attributes'=> $comment_links['comment__field_comments_with_changes']['#links']['comment-new-comments']['attributes'],
+    '#cache' => $comment_links['comment__field_comments_with_changes']['#cache'],
+    '#attached' => $comment_links['comment__field_comments_with_changes']['#attached'],
+  ];
+
+  // Class is not an array, needs to be made into one
+  if (isset($variables['ahs_new_comments']['#attributes']['class']) &&
+    !is_array($variables['ahs_new_comments']['#attributes']['class'])) {
+    $variables['ahs_new_comments']['#attributes']['class'] = [$variables['ahs_new_comments']['#attributes']['class']];
+  }
+  // Make it a bootstrap label
+  $variables['ahs_new_comments']['#attributes']['class'][] = 'ahs-new';
+  $variables['ahs_new_comments']['#attributes']['class'][] = 'label';
+  $variables['ahs_new_comments']['#attributes']['class'][] = 'label-success';
+}
+*/
+
+/*
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\RevisionableInterface;
 use Drupal\field\Entity\FieldStorageConfig;

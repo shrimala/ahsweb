@@ -64,9 +64,10 @@ default:
         Discussion comments: "div.field--name-field-comments-with-changes > div > div > article"
         Comment body field: "div.field--name-comment-body"
         Changes field: "div.field--name-field-changes"
-        Changes diff: "div.field--name-field-changes .diff"
+        Changes diff: "div.field--name-field-changes .changes"
         Discussion parents: "div.field--name-field-parents .ahs-preview-preview > article"
         Discussion children: "div.field--name-field-children .ahs-preview-preview > article"
+        Change records: ".changes .change"
 travis:
   extensions:
     Behat\MinkExtension:

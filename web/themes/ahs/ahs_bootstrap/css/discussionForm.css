@@ -89,11 +89,15 @@ form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
 }
 .field--name-field-changes .panel-heading a.panel-title{
     font-size:inherit;
-    color: #23527c;
     padding:0;
-    display:inline-block;
-    border-bottom:1px dashed;
 }
+
+.field--name-field-changes .panel-heading .ahs-expand{
+    color: #23527c;
+    border-bottom: 1px dashed;
+    display:inline-block;
+}
+
 
 .field--name-field-changes table.diff td{
     border:none;
@@ -117,10 +121,18 @@ form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
     content:":";
 }
 
-form.node-discussion-ahs-discuss-form article.js-comment {
+form.node-discussion-ahs-discuss-form article.comment {
     margin-top:20px;
     padding-top:10px;
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid #e6e6e6;
+}
+
+form.node-discussion-ahs-discuss-form article.comment .media-body .change {
+    margin-bottom:0px;
+}
+form.node-discussion-ahs-discuss-form article.comment .media-heading .ahs-created {
+    display:inline-block;
+    padding-left:1em;
 }
 
 form.node-discussion-ahs-discuss-form button.form-submit.button--primary {
@@ -199,10 +211,11 @@ form.node-discussion-ahs-discuss-form .field-group-details a.panel-title:after {
     position: relative;
     top:2px;
 }
-
+/*
 form.node-discussion-ahs-discuss-form.ahs-assigned .field-group-details a.panel-title:after {
     content:' (Assigned)';
 }
+*/
 
 form.node-discussion-ahs-discuss-form .ahs-preview-edit .glyphicon{
     color:#555555;

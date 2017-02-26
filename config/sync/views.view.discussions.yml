@@ -183,6 +183,20 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
       title: Search
       header: {  }
       footer: {  }
@@ -793,6 +807,7 @@ display:
         filters: false
         filter_groups: false
         title: false
+        sorts: false
       filters:
         status:
           value: '1'
@@ -851,6 +866,49 @@ display:
           1: AND
       title: 'My discussions'
       block_hide_empty: true
+      sorts:
+        last_comment_timestamp:
+          id: last_comment_timestamp
+          table: comment_entity_statistics
+          field: last_comment_timestamp
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          plugin_id: date
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: 'Authored on'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
@@ -1168,6 +1226,7 @@ display:
         use_more: false
         use_more_always: false
         use_more_text: false
+        sorts: false
       filter_groups:
         operator: AND
         groups:
@@ -1178,6 +1237,49 @@ display:
       use_more: false
       use_more_always: false
       use_more_text: 'Show all my tasks'
+      sorts:
+        last_comment_timestamp:
+          id: last_comment_timestamp
+          table: comment_entity_statistics
+          field: last_comment_timestamp
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          plugin_id: date
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: 'Authored on'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:

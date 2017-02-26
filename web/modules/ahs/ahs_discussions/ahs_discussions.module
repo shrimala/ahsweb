@@ -20,13 +20,15 @@ use Drupal\Core\Access\AccessResult;
  */
 function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) {
   if ($node->bundle() == 'discussion'){
-    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
-    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
-    \Drupal::service('ahs_discussions.ancestry')->updateChildren($node);
-    
     // This comparison must not be strict (!==). For some strange reason,
     // one is an integer and the other a string.
     if ($node->getRevisionId() != $node->original->getRevisionId()) {
+
+      // Comment creation must be before cer updates,  otherwise the cerupdates
+      // may trigger a second update before the first is finished. When the
+      // first change record gets added after the second, it merges with it with
+      // the result that the change record ends up with the same left and right
+      // revision id.
       $comment = [
         'comment_type' => 'comments_with_changes',
         'field_name' => 'field_comments_with_changes',
@@ -35,6 +37,10 @@ function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) 
       \Drupal::service('changes.comment_with_changes')
         ->add($comment, $node, $node->original->getRevisionId(), $node->getRevisionId(), 'field_changes');
     }
+
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_children', 'field_parents', $node);
+    \Drupal::service('ahs_cer.simple_cer')->updateReferences('field_parents', 'field_children', $node);
+    \Drupal::service('ahs_discussions.ancestry')->updateChildren($node);
   }
 }
 
@@ -86,6 +92,13 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
  */
 function ahs_discussions_node_presave(NodeInterface $node) {
   if ($node->bundle() == 'discussion') {
+
+    // Add an owner to autocreated children (helps Behat cleanup).
+    if (($node->isNew()) && 
+      empty($node->getOwnerId()) && 
+      !empty(\Drupal::currentUser()->id())) {
+      $node->setOwnerId(\Drupal::currentUser()->id());
+    }
     \Drupal::service('ahs_discussions.ancestry')->updateOwnAncestry($node);
     ahs_discussions_add_editor_as_participant($node);
   }
