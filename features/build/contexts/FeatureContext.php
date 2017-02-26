@@ -192,9 +192,10 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
-   * Checks if a set of elements matches the values in a table.
+   * Checks if a certain number of elements are present.
    *
    * @Then I should see :count :elements_css elements
+   * @Then I should see :count :elements_css elements in the :container element:
    *
    * @param $elements_css
    *   string The id|name|title|alt|value (css selector) of the element that constitutes the list item
@@ -202,19 +203,20 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * @throws \Exception
    *   If elements do not match table.
    */
-  public function assertNumberElements($count=9999, $elements_css) {
+  public function assertNumberElements($count=9999, $elements_css, $container = NULL) {
     $page =$this->getSession()->getPage();
     if ($count === 'no') {
       $count = 0;
     }
     $count = (int) $count;
-    $this->assertElements($page, $elements_css, array(), $count);
+    $this->assertElements($elements_css, array(), $container, $count);
   }
 
   /**
    * Checks if a set of elements matches the values in a table.
    *
    * @Then I should see :elements_css( elements):
+   * @Then I should see :elements_css( elements) in the :container element:
    *
    * @param $elements_css
    *   string The id|name|title|alt|value (css selector) of the element that constitutes the list item
@@ -222,17 +224,28 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * @throws \Exception
    *   If elements do not match table.
    */
-  public function assertElementsTable(TableNode $table, $elements_css) {
-    $page =$this->getSession()->getPage();
-    $this->assertElements($page, $elements_css, $table->getHash());
+  public function assertElementsTable(TableNode $table, $elements_css, $container = NULL) {
+    $this->assertElements($elements_css, $table->getHash(), $container);
   }
 
-  protected function assertElements($container, $elements_css, $expectedItems = array(), $expectedCount = NULL) {
+  protected function assertElements($elements_css, $expectedItems = array(), $container = NULL, $expectedCount = NULL) {
+    $node = $this->getSession()->getPage();
+    $locationMessage = sprintf("on the page %s", $this->getSession()->getCurrentUrl());
+    if (!is_null($container)) {
+      $node = $this->findByRegionOrCss($node,'find', $container);
+      if (is_null($node)) {
+        throw new \Exception(sprintf("No '%s' element was found on the page %s", $container, $this->getSession()
+          ->getCurrentUrl()));
+      }
+      $locationMessage = sprintf("in the '%s' element %s", $container, $locationMessage);
+    }
+
+
     if (is_null($expectedCount)) {
       $expectedCount = count($expectedItems);
     }
 
-    $list = $this->findByRegionOrCss($container,'findAll', $elements_css);
+    $list = $this->findByRegionOrCss($node,'findAll', $elements_css);
 
     // Prepare text output for error messages
     $listText = "\n";
@@ -241,15 +254,13 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
     if (empty($list)) {
       if ($expectedCount !== 0) {
-        throw new \Exception(sprintf("No '%s' were found on the page %s", $elements_css, $this->getSession()
-          ->getCurrentUrl()));
+        throw new \Exception(sprintf("No '%s' were found %s", $elements_css, $locationMessage));
       }
     }
     else {
       if ($expectedCount !== 9999 &&
         count($list) !== $expectedCount) {
-          throw new \Exception(sprintf("%s '%s' were found on the page %s, but %s list items were expected. The found items were: %s", count($list), $elements_css, $this->getSession()
-            ->getCurrentUrl(), count($expectedItems), $listText));
+          throw new \Exception(sprintf("%s '%s' were found %s, but %s list items were expected. The found items were: %s", count($list), $elements_css, $locationMessage, count($expectedItems), $listText));
       }
     }
 
@@ -262,8 +273,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
           break;
         }
 
-        $rowMessage = sprintf('#%s of the "%s" on the page %s. The full list was: %s', $n + 1, $elements_css, $this->getSession()
-          ->getCurrentUrl(), $listText);
+        $rowMessage = sprintf('#%s of the "%s" %s. The full list was: %s', $n + 1, $elements_css, $locationMessage, $listText);
         $sharedMessage = $rowMessage;
 
         // A test for text anywhere in row element is requested.
@@ -343,7 +353,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
-  protected function findByRegionOrCss($element, $method, $selector) {
+    protected function findByRegionOrCss($element, $method, $selector) {
     try {
       $found = $element->$method('region', $selector);
     }

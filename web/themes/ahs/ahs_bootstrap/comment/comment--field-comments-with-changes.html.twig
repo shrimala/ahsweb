@@ -67,22 +67,27 @@
  */
 #}
 
-<article{{ attributes.addClass('js-comment') }}>
+<article{{ attributes.addClass('js-comment').addClass('comment') }}>
   {#
     Hide the "new" indicator by default, let a piece of JavaScript ask the
     server which comments are new for the user. Rendering the final "new"
     indicator here would break the render cache.
   #}
-  <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
+  <div class="media">
+    <div class="media-left">
+      {{ user_picture }}
+    </div>
 
-  <footer>
-    {{ user_picture }}
-    <p>{{ submitted }}</p>
-
-
-  </footer>
-
-  <div{{ content_attributes }}>
-    {{ content }}
+    <div{{ content_attributes.addClass('media-body') }}>
+      <div class="media-heading">
+        <span class="ahs-name">{{ author }}</span>
+        <small class="text-muted ahs-created">{{ created }} ago</small>
+        {#
+        Can't use js new marks, because things aren't being triggered as read on form load.
+        <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
+        #}
+      </div>
+      {{ content }}
+    </div>
   </div>
 </article>

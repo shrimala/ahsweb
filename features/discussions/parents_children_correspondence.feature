@@ -118,12 +118,6 @@ Feature: Discussions Corresponding Entity References
     When I am at "/admin/content"
     And I click "Child3"
     Then I should see "Parent1" displayed from the "field_parents" field
-    # Clean up autocreated discussion
-    When I am at "/admin/content"
-    And I click "Delete" in the "Child3" row
-    And I press "Delete"
-    And I am at "/admin/content"
-    Then I should not see "Child3"
 
   Scenario: Updating a child with a new parent reference sets the child reference on the parent
     Given "discussion" content:

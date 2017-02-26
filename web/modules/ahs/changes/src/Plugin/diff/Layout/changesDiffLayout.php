@@ -7,9 +7,11 @@ use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\diff\DiffEntityComparison;
 use Drupal\diff\DiffEntityParser;
 use Drupal\diff\DiffLayoutBase;
+use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use HtmlDiffAdvancedInterface;
@@ -84,7 +86,8 @@ class changesDiffLayout extends DiffLayoutBase {
     if (!$storage->exists('cache.php')) {
       $storage->save('cache.php', 'dummy');
     }
-    $html_diff->getConfig()->setPurifierCacheLocation(dirname($storage->getFullPath('cache.php')));
+    $html_diff->getConfig()
+      ->setPurifierCacheLocation(dirname($storage->getFullPath('cache.php')));
     $this->htmlDiff = $html_diff;
   }
 
@@ -111,19 +114,12 @@ class changesDiffLayout extends DiffLayoutBase {
    * {@inheritdoc}
    */
   public function build(EntityInterface $left_revision, EntityInterface $right_revision, EntityInterface $entity) {
-    
-    $fields = $this->entityComparison->compareRevisions($left_revision, $right_revision);
 
+    $fields = $this->entityComparison->compareRevisions($left_revision, $right_revision);
     // Build the diff rows for each field and append the field rows
     // to the table rows.
     $diff_rows = [];
-    foreach ($fields as $field) {
-      $field_row = [];
-      $field_row['label'] = [
-        'data' => !empty($field['#name']) ? $field['#name'] : '',
-        'class' => ['field-name'],
-      ];
-
+    foreach ($fields as $field_key => $field) {
       // Strip HTML
       $field_settings = $field['#settings'];
       if (!empty($field_settings['settings']['markdown'])) {
@@ -137,61 +133,215 @@ class changesDiffLayout extends DiffLayoutBase {
         $field['#data']['#right'] = $this->applyMarkdown('drupal_html_to_text', $field['#data']['#right']);
       }
 
-      // Process the array (split the strings into single line strings)
-      // and get line counts per field.
-      $this->entityComparison->processStateLine($field);
-
-      $field_diff_rows = $this->entityComparison->getRows(
-        $field['#data']['#left'],
-        $field['#data']['#right']
-      );
-
-      $final_diff = [];
-      $row_count = 0;
-      foreach ($field_diff_rows as $key => $value) {
-        $html_1 = isset($field_diff_rows[$key][1]['data']) ? $this->mb_trim(implode(' ', $field_diff_rows[$key][1]['data'])) : NULL;
-        $html_2 = isset($field_diff_rows[$key][3]['data']) ? $this->mb_trim(implode(' ', $field_diff_rows[$key][3]['data'])) : NULL;
-        // Ignore empty lines
-        $html_1 = ($html_1 == '&#160;' || $html_1 == '&nbsp;') ? '' : $html_1;
-        $html_2 = ($html_2 == '&#160;' || $html_1 == '&nbsp;') ? '' : $html_2;
-        if (!empty($html_1) || !empty($html_2)) {
-          $row_count++;
-          $this->htmlDiff->setOldHtml($html_1);
-          $this->htmlDiff->setNewHtml($html_2);
-          $this->htmlDiff->build();
-          $final_diff[] = [
-            '#markup' => $this->htmlDiff->getDifference(),
-          ];
-        }
+      // If nothing has changed, skip this field. This isn't completely reliable,
+      // as some things are not exactly equal but may still equivalent for diff
+      // puposes, e.g. references in a different order.
+      if ($field['#data']['#left'] === $field['#data']['#right']) {
+        continue;
       }
 
-      // Add the field row to the table only if there are changes to that field.
-      if (!empty($final_diff)) {
-        if ($row_count > 6) {
-          $final_diff = [
+      // Extract field machine name from $field_key as $field_id
+      list (, $field_id) = explode(':', $field_key);
+      list (, $field_id) = explode('.', $field_id);
+
+      switch ($field_id) {
+        case 'title':
+          $this->addSingleton($diff_rows, $field_id,
+            'Changed the title: <span class="diffchange"' . $this->processSingleLineText($field) . '.</span>');
+          break;
+        case 'body':
+          $diff_rows[$field_id] = [
             '#type' => 'details',
-            '#title' => t('Show changes'),
-            'details' => $final_diff,
+            '#title' => t('Changed the summary <span class="ahs-expand"> (show changes)</span>'),
+            'details' => $this->processMultiLineText($field),
           ];
-        }
-        $field_row['diff'] = [
-          'data' => $final_diff,
-        ];
-        $diff_rows[] = $field_row;
+          break;
+        case 'field_private':
+          $this->addSingleton($diff_rows, $field_id,
+            'Marked as ' . (($field['#data']['#right'] === 'Yes') ? 'private' : 'not private') . '.');
+          break;
+        case 'field_finished':
+          $this->addSingleton($diff_rows, $field_id,
+            'Marked as ' . (($field['#data']['#right'] === 'Yes') ? 'finished' : 'not finished') . '.');
+          break;
+        case 'field_help_wanted':
+          $this->addSingleton($diff_rows, $field_id,
+            'Marked as ' . (($field['#data']['#right'] === 'Yes') ? 'help wanted' : 'help not wanted') . '.');
+          break;
+        case 'promote':
+          $this->addSingleton($diff_rows, $field_id,
+            (($field['#data']['#right'] === 'Yes') ? 'Promoted to the front page' : 'Demoted from the front page') . '.');
+          break;
+        case 'field_top_level_category':
+          $this->addSingleton($diff_rows, $field_id,
+            (($field['#data']['#right'] === 'Yes') ? 'Marked as a top-level category' : 'Marked as not a top-level category') . '.');
+          break;
+        case 'field_participants':
+          $this->addParticipants($diff_rows, $field_id, $field, FALSE, 'Removed participant ', 'Removed participants ', $right_revision->getRevisionUser());
+          $this->addParticipants($diff_rows, $field_id, $field, TRUE, 'Added participant ', 'Added participants ', $right_revision->getRevisionUser());
+          break;
+        case 'field_assigned':
+          $this->addReferences($diff_rows, $field_id, $field, FALSE, 'Unassigned as a task from ', 'Unassigned as a task from ');
+          $this->addReferences($diff_rows, $field_id, $field, TRUE, 'Assigned as a task to ', 'Assigned as a task to ');
+          break;
+        case 'field_files':
+          $this->addReferences($diff_rows, $field_id, $field, FALSE, 'Removed file ', 'Removed files ');
+          $this->addReferences($diff_rows, $field_id, $field, TRUE, 'Added file ', 'Added files ');
+          break;
+        case 'field_children':
+          $this->addReferences($diff_rows, $field_id, $field, FALSE, 'Removed from being part of this ', 'Removed from being parts of this ', TRUE);
+          $this->addReferences($diff_rows, $field_id, $field, TRUE, 'Added as part of this ', 'Added as parts of this ', TRUE);
+          break;
+        case 'field_parents':
+          $this->addReferences($diff_rows, $field_id, $field, FALSE, 'Marked this as not part of ', 'Marked this as not part of ', TRUE);
+          $this->addReferences($diff_rows, $field_id, $field, TRUE, 'Marked this as part of ', 'Marked this as part of ', TRUE);
+          break;
       }
     }
 
-    $build['diff'] = [
-      '#type' => 'table',
-      '#rows' => $diff_rows,
-      '#weight' => 10,
-      '#empty' => $this->t('No visible changes'),
-      '#attributes' => [
-        'class' => ['diff'],
-      ],
-    ];
+    foreach ($diff_rows as $field_id => $diff) {
+      $build['diff'][$field_id] = [
+        '#type' => 'container',
+        'change' => $diff,
+        '#attributes' => [
+          'class' => ['change', $field_id],
+        ],
+      ];
+    }
+    $build['diff']['#type'] = 'container';
+    $build['diff']['#attributes']['class'] = ['changes', 'text-muted', 'small'];
+
+    if (count($diff_rows) === 0) {
+      $build['diff']['empty'] = [
+        '#markup' => 'No visible changes.'
+      ];
+    }
 
     return $build;
+  }
+
+  protected function addSingleton(&$diff_rows, $field_id, $value) {
+    if (!is_null($value)) {
+      $diff_rows[$field_id] = [
+        '#markup' => $value,
+      ];
+    }
+  }
+
+  protected function addMulti(&$diff_rows, $field_id, $values, $singular, $plural, $quote = FALSE) {
+    // Format the items as a nice string e.g. "Done something(s) to A, B and C."
+    if (count($values) > 0) {
+      // Optionally, wrap the values in quotes
+      if ($quote) {
+        foreach ($values as $key => $value) {
+          $values[$key] = "'" . $value . "'";
+        }
+      }
+
+      if (count($values) === 1) {
+        $text = $singular . array_values($values)[0] . '.';
+      }
+      else {
+        $first = array_slice($values, 0, -1);
+        $last = array_slice($values, -1)[0];
+        if (count($first) > 1) {
+          $firstText = implode(", ", $first);
+        }
+        else {
+          $firstText = $first[0];
+        }
+        $text = $plural . $firstText . ' and ' . $last . '.';
+      }
+      $this->addSingleton($diff_rows, $field_id, $text);
+    }
+  }
+
+  protected function addReferences(&$diff_rows, $field_id, $field, $additions, $singular, $plural, $quote = FALSE) {
+    $values = $this->processReferences($field, $additions);
+    $this->addMulti($diff_rows, $field_id, $values, $singular, $plural, $quote);
+  }
+
+  protected function addParticipants(&$diff_rows, $field_id, $field, $additions, $singular, $plural, UserInterface $editor) {
+    $values = $this->processReferences($field, $additions);
+    foreach($values as $key => $value) {
+      if ($value === $editor->getDisplayName()) {
+          unset($values[$key]);
+        }
+    }
+    $this->addMulti($diff_rows, $field_id, $values, $singular, $plural);
+  }
+
+  protected function processReferences($field, $additions, $quote = FALSE) {
+    // Find added or removed items
+    $right = explode(PHP_EOL, $field['#data']['#right']);
+    $left = explode(PHP_EOL, $field['#data']['#left']);
+    if ($additions) {
+      $modifications = array_diff($right, $left);
+    }
+    else {
+      $modifications = array_diff($left, $right);
+    }
+    // Remove any empty string items
+    $modifications = array_filter($modifications, 'strlen');
+    // Sort the array, otherwise the order can be rndom which makes testing hard.
+    sort($modifications);
+    return $modifications;
+  }
+
+
+  protected function processMultiLineText($field) {
+    // Process the array (split the strings into single line strings)
+    // and get line counts per field.
+    $this->entityComparison->processStateLine($field);
+    $field_diff_rows = $this->entityComparison->getRows(
+      $field['#data']['#left'],
+      $field['#data']['#right']
+    );
+    $final_diff = [];
+    foreach ($field_diff_rows as $key => $value) {
+      $processedText = $this->processText($field_diff_rows[$key]);
+      if (!is_null($processedText)) {
+        $final_diff[] = [
+          '#markup' => $processedText,
+        ];
+      }
+    }
+    return $final_diff;
+  }
+
+  protected function processSingleLineText($field) {
+    $row = [
+      NULL,
+      [
+        'data' =>
+          [
+            $field['#data']['#left']
+          ]
+      ],
+      NULL,
+      [
+        'data' => [
+          $field['#data']['#right']
+        ]
+      ]
+    ];
+    $text = $this->processText($row);
+    return $text;
+  }
+
+
+  protected function processText($row) {
+    $html_1 = isset($row[1]['data']) ? $this->mb_trim(implode(' ', $row[1]['data'])) : NULL;
+    $html_2 = isset($row[3]['data']) ? $this->mb_trim(implode(' ', $row[3]['data'])) : NULL;
+    // Ignore empty lines
+    $html_1 = ($html_1 == '&#160;' || $html_1 == '&nbsp;') ? '' : $html_1;
+    $html_2 = ($html_2 == '&#160;' || $html_1 == '&nbsp;') ? '' : $html_2;
+    if (!empty($html_1) || !empty($html_2)) {
+      $this->htmlDiff->setOldHtml($html_1);
+      $this->htmlDiff->setNewHtml($html_2);
+      $this->htmlDiff->build();
+      return $this->htmlDiff->getDifference();
+    }
   }
 
   /**
@@ -230,13 +380,12 @@ class changesDiffLayout extends DiffLayoutBase {
    * @param boolean trim the right?
    * @return String
    */
-  protected function mb_trim($string, $charlist='\\\\s', $ltrim=true, $rtrim=true)
-  {
+  protected function mb_trim($string, $charlist = '\\\\s', $ltrim = true, $rtrim = true) {
     $both_ends = $ltrim && $rtrim;
 
     $char_class_inner = preg_replace(
-      array( '/[\^\-\]\\\]/S', '/\\\{4}/S' ),
-      array( '\\\\\\0', '\\' ),
+      array('/[\^\-\]\\\]/S', '/\\\{4}/S'),
+      array('\\\\\\0', '\\'),
       $charlist
     );
 
@@ -244,20 +393,17 @@ class changesDiffLayout extends DiffLayoutBase {
     $ltrim && $left_pattern = '^' . $work_horse;
     $rtrim && $right_pattern = $work_horse . '$';
 
-    if($both_ends)
-    {
+    if ($both_ends) {
       $pattern_middle = $left_pattern . '|' . $right_pattern;
     }
-    elseif($ltrim)
-    {
+    elseif ($ltrim) {
       $pattern_middle = $left_pattern;
     }
-    else
-    {
+    else {
       $pattern_middle = $right_pattern;
     }
 
     return preg_replace("/$pattern_middle/usSD", '', $string);
-    }
+  }
 
 }
