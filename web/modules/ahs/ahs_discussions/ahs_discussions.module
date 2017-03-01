@@ -182,6 +182,7 @@ function ahs_discussions_editor_js_settings_alter(array &$settings) {
 function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$form_state) {
   // Remove the menu settings
   //$form['menu']['#access']=FALSE;
+
   // Remove the delete button
   $form['actions']['delete']['#access'] = FALSE;
   $form['actions']['submit']['#attributes']['data-spy'] = 'affix';
@@ -266,11 +267,14 @@ function ahs_discussions_field_widget_ahs_entity_reference_with_views_autocreate
  */
 function ahs_discussions_field_widget_comment_default_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
   $items = $context['items'];
+  //kint($element);
   $fieldName = $items->getFieldDefinition()->getName();
    if ($fieldName === 'field_comments_with_changes') {
      $element['status']['#access'] = FALSE;
+     unset($element['#group']);
     ahs_discussion_addPreview($element, $items,  $context['delta'], 'ahs_discuss');
   }
+  //kint($element);
 }
 
 /**
@@ -283,6 +287,10 @@ function ahs_discussions_field_widget_text_textarea_with_summary_form_alter(&$el
     ahs_discussion_addPreview($element, $items,  $context['delta'], 'default', FALSE);
     //$element['#prefix'] = '<div class="ahs-preview-hide-edit-requested">';
     //$element['#suffix'] = '</div>';
+
+    //kint(array_keys($items[$context['delta']]));
+    //kint(array_keys($items[(string) $context['delta']]));
+   // kint($element);
   }
 }
 
@@ -371,14 +379,14 @@ function ahs_discussions_node_access(NodeInterface $node, $op, AccountInterface 
 */
 
 function ahs_discussions_theme($existing, $type, $theme, $path) {
-  return array(
-    'ahs_discussion_markers' => array(
+  return [
+    'ahs_discussion_markers' => [
       'variables' => [
         'discussion' => NULL, 
         'view_mode' => 'teaser'
       ],
-    ),
-  );
+    ],
+  ];
 }
 
 function template_preprocess_ahs_discussion_markers(&$variables) {

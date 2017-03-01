@@ -61,7 +61,7 @@ default:
         Search results: ".view-display-id-search .views-row"
         Title field: ".field--name-title"
         Ancestry field: "span.field--name-field-ancestry-plain"
-        Discussion comments: "div.field--name-field-comments-with-changes > div > div > article"
+        Discussion comments: "div.field--name-field-comments-with-changes  div.ahs-preview-preview > article"
         Comment body field: "div.field--name-comment-body"
         Changes field: "div.field--name-field-changes"
         Changes diff: "div.field--name-field-changes .changes"

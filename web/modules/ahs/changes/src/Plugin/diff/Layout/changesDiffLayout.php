@@ -4,7 +4,7 @@ namespace Drupal\changes\Plugin\diff\Layout;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Datetime\DateFormatter;
-use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -113,7 +113,7 @@ class changesDiffLayout extends DiffLayoutBase {
   /**
    * {@inheritdoc}
    */
-  public function build(EntityInterface $left_revision, EntityInterface $right_revision, EntityInterface $entity) {
+  public function build(ContentEntityInterface $left_revision, ContentEntityInterface $right_revision, ContentEntityInterface $entity) {
 
     $fields = $this->entityComparison->compareRevisions($left_revision, $right_revision);
     // Build the diff rows for each field and append the field rows

@@ -15,15 +15,16 @@ Feature: Site Installation
     When I visit "admin/config/development/configuration"
     Then I should not see "The following items in your active configuration have changes since the last import that may be lost on the next import"
     And I should see "There are no configuration changes to import."
-    
+
   Scenario: Database updates have run
     When I visit "admin/reports/status"
-    Then I should see "Up to date" in the "Database updates" row
+    Then I should see "Database updates" under the "Checked" heading
+    And I should not see "Database updates" under the "Errors found" heading
 
-  @skip
   Scenario: Schema is up to date
     When I visit "admin/reports/status"
-    Then I should see "Up to date" in the "Entity/field definitions" row
+    Then I should see "Entity/field definitions" under the "Checked" heading
+    And I should not see "Entity/field definitions" under the "Errors found" heading
 
   Scenario: Flysystem is installed
     When I visit "admin/config/media/file-system/flysystem"
