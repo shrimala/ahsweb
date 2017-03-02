@@ -18,6 +18,7 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_elements:
     type: entity_reference_paragraphs
     weight: 32
@@ -28,16 +29,13 @@ content:
       add_mode: select
       form_display_mode: default
     third_party_settings: {  }
-  langcode:
-    type: language_select
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 30
     settings: {  }
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: -5
@@ -45,6 +43,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5
@@ -53,6 +52,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   promote: true
   sticky: true

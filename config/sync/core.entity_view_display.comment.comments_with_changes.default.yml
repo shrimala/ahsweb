@@ -20,15 +20,17 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_changes:
     weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: changes
+    region: content
   links:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-hidden:
-  langcode: true
+    region: content
+hidden: {  }

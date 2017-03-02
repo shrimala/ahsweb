@@ -20,5 +20,5 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
-hidden:
-  langcode: true
+    region: content
+hidden: {  }

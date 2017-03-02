@@ -31,8 +31,10 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   field_admin_tags: true
   field_clip: true
@@ -44,4 +46,3 @@ hidden:
   field_restricted: true
   field_session_type: true
   field_teaching_tags: true
-  langcode: true
