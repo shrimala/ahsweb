@@ -30,6 +30,7 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_admin_tags:
     weight: 105
     label: above
@@ -37,6 +38,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_clip:
     weight: 108
     label: above
@@ -46,6 +48,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_datetime:
     weight: 102
     label: above
@@ -54,6 +57,7 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_event:
     weight: 111
     label: above
@@ -61,6 +65,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_leader:
     weight: 103
     label: above
@@ -68,6 +73,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_media:
     weight: 109
     label: above
@@ -75,12 +81,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_original:
     weight: 110
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_restricted:
     weight: 107
     label: above
@@ -90,6 +98,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_session_type:
     weight: 106
     label: above
@@ -97,6 +106,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_teaching_tags:
     weight: 104
     label: above
@@ -104,9 +114,10 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
-hidden:
-  langcode: true
+    region: content
+hidden: {  }

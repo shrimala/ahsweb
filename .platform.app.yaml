@@ -70,7 +70,7 @@ hooks:
         drush --yes sql-sanitize --sanitize-email="no"
       fi
       drush cc drush
-      drush config-import --yes
+      drush config-split-import --yes
       drush -y entup
 
 

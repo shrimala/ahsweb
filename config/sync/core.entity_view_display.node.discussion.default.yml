@@ -34,6 +34,7 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_assigned:
     weight: 12
     label: above
@@ -41,6 +42,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_children:
     weight: 1
     label: inline
@@ -48,6 +50,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_comments_with_changes:
     weight: 4
     label: hidden
@@ -56,12 +59,14 @@ content:
       pager_id: 0
     third_party_settings: {  }
     type: comment_default
+    region: content
   field_files:
     weight: 17
     label: above
     settings: {  }
     third_party_settings: {  }
     type: file_default
+    region: content
   field_finished:
     weight: 16
     label: above
@@ -71,6 +76,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_help_wanted:
     weight: 13
     label: above
@@ -80,6 +86,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_parents:
     weight: 0
     label: inline
@@ -87,6 +94,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_participants:
     weight: 15
     label: above
@@ -94,6 +102,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_private:
     weight: 14
     label: above
@@ -103,6 +112,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_top_level_category:
     weight: 11
     label: above
@@ -112,10 +122,11 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   flag_help_wanted:
     weight: 10
+    region: content
 hidden:
   field_ancestry: true
   field_ancestry_plain: true
-  langcode: true
   links: true

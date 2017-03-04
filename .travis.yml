@@ -36,7 +36,7 @@ before_script:
   - for module in `cat ../modules.common`; do ./../vendor/bin/drush --yes pm-enable $module; done
   - for module in `cat ../modules.master`; do ./../vendor/bin/drush --yes pm-enable $module; done
   - ./../vendor/bin/drush cc drush
-  - ./../vendor/bin/drush config-import --yes
+  - ./../vendor/bin/drush config-split-import --yes
   - ./../vendor/bin/drush entup --yes
   - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
   - sleep 3

@@ -21,7 +21,7 @@
         {
             "type": "package",
             "package": {
-                "name": "drmonty/chosen",
+                "name": "harvesthq/chosen",
                 "version": "1.6.1",
                 "type": "drupal-library",
                 "dist": {
@@ -29,7 +29,7 @@
                     "type": "zip"
                 },
                 "require": {
-                    "composer/installers": "~1.0"
+                    "composer/installers": "^1.2.0"
                 }
             }
         }
@@ -38,7 +38,7 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.2.2",
+        "drupal/core": "8.3.0-rc1",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "drupal/flysystem": "1.x-dev",
@@ -48,12 +48,12 @@
         "drupal/video_embed_field": "~1.0",
         "drupal/filefield_paths": "1.x-dev",
         "drupal/filefield_sources": "1.x-dev",
-        "drupal/paragraphs": "1.x-dev",
+        "drupal/paragraphs": "~1.1",
         "drupal/devel": "1.x-dev",
         "drupal/config_split": "1.0-beta2",
         "drupal/config_inspector": "1.x-dev",
         "drupal/config_readonly": "1.x-dev",
-        "drupal/pathauto": "1.x-dev",
+        "drupal/pathauto": "1.0-rc1",
 		"drupal/drupal-driver": "dev-master",
 		"drupal/drupal-extension": "dev-master",
         "friends-of-behat/service-container-extension": "~0.3",
@@ -63,11 +63,11 @@
         "drupal/diff": "1.x-dev",
         "drupal/email_registration": "1.0-rc4",
         "drupal/block_visibility_groups": "^1.1",
-        "drupal/linkit": "5.0-beta3",
+        "drupal/linkit": "5.0-beta4",
         "drupal/chosen": "dev-2.x@dev",
+        "harvesthq/chosen": "1.6.1",
         "drupal/field_group": "1.x-dev",
-        "drupal/r4032login": "1.x-dev",
-        "facebook/webdriver": "^1.2"
+        "drupal/r4032login": "1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -117,11 +117,7 @@
         },
         "patches": {
             "drupal/core": {
-                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch",
-                "Views autocomplete does not match exactly": "https://www.drupal.org/files/issues/2809555-16.patch"
-            },
-            "drupal/linkit": {
-                "Stop rendering field token as plain text if field if empty": "https://www.drupal.org/files/issues/linkit-2827154-2.patch"
+                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch"
             },
             "drupal/drupal-driver": {
                 "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch"

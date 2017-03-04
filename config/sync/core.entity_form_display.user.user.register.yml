@@ -20,6 +20,7 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_first_name:
     weight: 0
     settings:
@@ -27,6 +28,7 @@ content:
       placeholder: 'Your first name'
     third_party_settings: {  }
     type: string_textfield
+    region: content
   field_last_name:
     weight: 1
     settings:
@@ -34,9 +36,9 @@ content:
       placeholder: 'Your last name'
     third_party_settings: {  }
     type: string_textfield
+    region: content
 hidden:
   contact: true
-  langcode: true
   language: true
   path: true
   timezone: true

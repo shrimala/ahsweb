@@ -26,12 +26,13 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   field_datetime: true
   field_event_type: true
   field_leader: true
   field_sessions: true
   field_venue: true
-  langcode: true
