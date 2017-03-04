@@ -1,4 +1,4 @@
-@api
+@api @skip
 Feature: User registration
   In order to be able to access the site
   As a new user
