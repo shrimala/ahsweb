@@ -24,7 +24,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
   field_last_name:
     weight: 7
     label: above
@@ -32,10 +31,8 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
   member_for:
     weight: 5
-    region: content
   user_picture:
     type: image
     weight: 0
@@ -44,5 +41,5 @@ content:
       image_link: content
     third_party_settings: {  }
     label: hidden
-    region: content
-hidden: {  }
+hidden:
+  langcode: true

@@ -26,8 +26,8 @@ content:
       image_link: content
     third_party_settings: {  }
     label: hidden
-    region: content
 hidden:
   field_first_name: true
   field_last_name: true
+  langcode: true
   member_for: true

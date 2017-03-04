@@ -36,13 +36,11 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_ancestry:
     weight: 34
     settings:
@@ -51,7 +49,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
   field_ancestry_plain:
     weight: 35
     settings:
@@ -59,7 +56,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
-    region: content
   field_assigned:
     weight: 40
     settings:
@@ -68,7 +64,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
   field_children:
     weight: 36
     settings:
@@ -77,34 +72,29 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: ahs_entity_reference_with_views_autocreate
-    region: content
   field_comments_with_changes:
     weight: 38
     settings: {  }
     third_party_settings: {  }
     type: comment_default
-    region: content
   field_files:
     weight: 45
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
-    region: content
   field_finished:
     weight: 44
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_help_wanted:
     weight: 41
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_parents:
     weight: 32
     settings:
@@ -113,7 +103,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
   field_participants:
     weight: 43
     settings:
@@ -122,44 +111,42 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
   field_private:
     weight: 42
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_top_level_category:
     weight: 39
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   flag:
     weight: 10
-    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
     settings: {  }
     third_party_settings: {  }
-    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 15
     third_party_settings: {  }
-    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 16
     third_party_settings: {  }
-    region: content
   title:
     type: string_textfield
     weight: -5
@@ -167,7 +154,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   uid:
     weight: 37
     settings:
@@ -176,5 +162,4 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
 hidden: {  }

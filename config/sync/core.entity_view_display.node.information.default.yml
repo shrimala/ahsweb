@@ -21,10 +21,9 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  langcode: true

@@ -32,14 +32,12 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_ancestry_plain:
     type: basic_string
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_ancestry: true
   field_assigned: true
@@ -52,4 +50,5 @@ hidden:
   field_participants: true
   field_private: true
   field_top_level_category: true
+  langcode: true
   links: true

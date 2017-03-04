@@ -16,7 +16,6 @@ module:
   color: 0
   comment: 0
   config: 0
-  config_filter: 0
   config_split: 0
   contact: 0
   contextual: 0
@@ -33,7 +32,6 @@ module:
   field_group: 0
   field_ui: 0
   file: 0
-  file_checker: 0
   filefield_paths: 0
   filter: 0
   flysystem: 0
@@ -79,6 +77,5 @@ theme:
   seven: 0
   bootstrap: 0
   ahs_bootstrap: 0
-profile: minimal
 _core:
   default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU

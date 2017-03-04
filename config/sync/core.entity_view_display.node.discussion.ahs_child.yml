@@ -34,7 +34,6 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_ancestry:
     weight: 104
     label: above
@@ -42,14 +41,12 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-    region: content
   field_ancestry_plain:
     weight: 105
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
-    region: content
   field_children:
     weight: 103
     label: above
@@ -57,7 +54,6 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-    region: content
   field_comments_with_changes:
     weight: 106
     label: above
@@ -66,7 +62,6 @@ content:
       pager_id: 0
     third_party_settings: {  }
     type: comment_default
-    region: content
   field_parents:
     weight: 102
     label: above
@@ -74,12 +69,10 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-    region: content
   links:
     weight: 100
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_assigned: true
   field_files: true
@@ -88,3 +81,4 @@ hidden:
   field_participants: true
   field_private: true
   field_top_level_category: true
+  langcode: true

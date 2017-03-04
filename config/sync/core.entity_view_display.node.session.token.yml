@@ -32,7 +32,6 @@ content:
       date_format: Y/m/d/Hi
     third_party_settings: {  }
     type: datetime_custom
-    region: content
 hidden:
   body: true
   field_admin_tags: true
@@ -44,4 +43,5 @@ hidden:
   field_restricted: true
   field_session_type: true
   field_teaching_tags: true
+  langcode: true
   links: true
