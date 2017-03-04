@@ -117,7 +117,7 @@
         },
         "patches": {
             "drupal/core": {
-                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-76-entity-reference-views.patch"
+                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-108.patch"
             },
             "drupal/drupal-driver": {
                 "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch"

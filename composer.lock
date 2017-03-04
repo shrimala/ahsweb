@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2f1bc8caf995bd1e7cc3f0e6c59d440d",
-    "content-hash": "5e4cc69606a7caf8a66bf4c78a4d45e4",
+    "hash": "21516428be2da489967aa230193d118c",
+    "content-hash": "d15e3337a597a95621a34062a9be1437",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1986,7 +1986,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/config_split-8.x-1.0-beta2.zip",
-                "reference": null,
+                "reference": "8.x-1.0-beta2",
                 "shasum": "8da1a961e4cdd2fcde02d0a371b5d21e8a30a898"
             },
             "require": {
@@ -2444,7 +2444,9 @@
             },
             "type": "drupal-core",
             "extra": {
-                "patches_applied": []
+                "patches_applied": {
+                    "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-108.patch"
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -3274,7 +3276,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/linkit-8.x-5.0-beta4.zip",
-                "reference": null,
+                "reference": "8.x-5.0-beta4",
                 "shasum": "464f59dfd93f2cd02c4096aeacaf097800182d35"
             },
             "require": {
@@ -3465,7 +3467,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.1.zip",
-                "reference": null,
+                "reference": "8.x-1.1",
                 "shasum": "c678e5704a98c6a0549e415412da081cfeb03a00"
             },
             "require": {
@@ -3533,7 +3535,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-rc1.zip",
-                "reference": null,
+                "reference": "8.x-1.0-rc1",
                 "shasum": "2460339ac8739317b3c4e66e9ce7142cc02adac3"
             },
             "require": {
