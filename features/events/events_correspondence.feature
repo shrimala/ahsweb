@@ -1,166 +1,128 @@
 @api
-Feature: Discussions Corresponding Entity References
-  In order to set both the parents and children of a discussion from the discussion
-  As any user editing a discussion
-  I need my changes to be synced to the parents and children
+Feature: Events Corresponding Entity References
+  In order to set sessions from an event and vice versa
+  As any user editing an event or a session
+  I need my changes to be synced from the event to the sessions, or from the session to the event
 
   #These tests assume normal entity reference widget behaviors.
-  #They still work even though these fields use the er_enhanced widget,
-  #because while that widget uses css/js to hide the form elements,
-  #they are still actually there on the non-js browser used here
-  #since these steps are not tagged @javascript.
 
   Background:
     Given I am logged in as an administrator
 
-  Scenario: Creating a parent with a child reference sets the parent reference on the child
-    Given a discussion content with the title "Child1"
-    Given "discussion" content:
-      | title       | field_children |
-      | Parent1     | Child1         |
+  Scenario: Creating an event with a session sets the event reference on the session
+    Given a session with the title "Session1"
+    Given "event" content:
+      | title      | field_sessions   |
+      | Event1     | Session1         |
     When I am at "/admin/content"
-    And I click "Parent1"
-    Then I should see "Child1" displayed from the "field_children" field
-    When I click "Child1"
-    Then I should see "Parent1" displayed from the "field_parents" field
+    And I click "Event1"
+    Then I should see "Session1" displayed from the "field_sessions" field
+    When I click "Session1"
+    Then I should see "Event1" displayed from the "field_event" field
 
-  Scenario: Creating a parent with 2 child references sets the parent reference on both children
-    Given a discussion content with the title "Child1"
-    Given a discussion content with the title "Child2"
-    Given "discussion" content:
-      | title       | field_children |
-      | Parent1     | Child1, Child2 |
+  Scenario: Creating an event with 2 sessions sets the event reference on both sessions
+    Given a session with the title "Session1"
+    Given a session with the title "Session2"
+    Given "event" content:
+      | title      | field_sessions     |
+      | Event1     | Session1, Session2 |
     When I am at "/admin/content"
-    When I click "Parent1"
-    Then I should see "Child1" displayed from the "field_children" field
-    When I click "Child1"
-    Then I should see "Parent1" displayed from the "field_parents" field
+    When I click "Event1"
+    Then I should see "Session1" displayed from the "field_sessions" field
+    When I click "Session1"
+    Then I should see "Event1" displayed from the "field_event" field
     When I am at "/admin/content"
-    When I click "Parent1"
-    Then I should see "Child2" displayed from the "field_children" field
-    When I click "Child2"
-    Then I should see "Parent1" displayed from the "field_parents" field
+    When I click "Event1"
+    Then I should see "Session2" displayed from the "field_sessions" field
+    When I click "Session2"
+    Then I should see "Event1" displayed from the "field_event" field
 
-  Scenario: Creating a parent with a child reference sets the parent reference on the child even if it already has a parent
-    Given a "discussion" content with the title "Child1"
-    Given "discussion" content:
-      | title       | field_children |
-      | Parent1     | Child1         |
-      | Parent2     | Child1         |
+  @skip
+  Scenario: An event cannot reference a session that is already referenced by another event
+    Given a session with the title "Session1"
+    Given "event" content:
+      | title      | field_sessions |
+      | Event1     | Session1       |
+      | Event2     |                |
     When I am at "/admin/content"
-    When I click "Parent1"
-    Then I should see "Child1" displayed from the "field_children" field
-    When I click "Child1"
-    Then I should see "Parent1" displayed from the "field_parents" field
-    When I am at "/admin/content"
-    When I click "Parent2"
-    Then I should see "Child1" displayed from the "field_children" field
-    When I click "Child1"
-    Then I should see "Parent2" displayed from the "field_parents" field
+    When I click "Event2"
+    Then I should not see "Event1" in the list!!!
 
-  Scenario: Deleting a parent reference on the child deletes the child reference on the parent
-    Given a discussion content with the title "Child1"
-    Given "discussion" content:
-      | title       | field_children |
-      | Parent1     | Child1         |
-    Given "discussion" content:
-      | title       | field_children |
-      | Parent2     | Child1         |
+  Scenario: Removing a session from an event removes the event reference on the session
+    Given a session with the title "Session1"
+    Given "event" content:
+      | title      | field_sessions |
+      | Event1     | Session1       |
     When I am at "/admin/content"
-    When I click "Child1"
-    And I empty the field "field_parents[0][target_id]"
+    When I click "Edit" in the "Event1" row
+    And I empty the field "field_sessions[0][target_id]"
     And I press the "Save" button
-    Then I should not see "Parent1" displayed from the "field_parents" field
-    Then I should see "Parent2" displayed from the "field_parents" field
+    Then I should not see "Session1" displayed from the "field_sessions" field
     When I am at "/admin/content"
-    And I click "Parent1"
-    Then I should not see "Child1" displayed from the "field_children" field
+    And I click "Session1"
+    Then I should not see "Event1" displayed from the "field_event" field
+  @skip
+  Scenario: Updating an event with a new session reference sets the event reference on the session
+    Given a session content with the title "Session1"
+    Given a session content with the title "Session2"
+    Given event content:
+      | title       | field_sessions |
+      | Event1     | Session1         |
     When I am at "/admin/content"
-    And I click "Parent2"
-    Then I should see "Child1" displayed from the "field_children" field
-
-  Scenario: Deleting a child reference on the parent deletes the parent reference on the child
-    Given a discussion content with the title "Child1"
-    Given "discussion" content:
-      | title       | field_children |
-      | Parent1     | Child1         |
-    When I am at "/admin/content"
-    When I click "Parent1"
-    And I empty the field "field_children[0][target_id]"
-    And I press the "Save" button
-    Then I should not see "Child1" displayed from the "field_children" field
-    When I am at "/admin/content"
-    And I click "Child1"
-    Then I should not see "Parent1" displayed from the "field_parents" field
-
-  Scenario: Updating a parent with a new child reference sets the parent reference on the child, also if autocreated
-    Given a discussion content with the title "Child1"
-    Given a discussion content with the title "Child2"
-    Given "discussion" content:
-      | title       | field_children |
-      | Parent1     | Child1         |
-    When I am at "/admin/content"
-    When I click "Parent1"
-    When I fill in "field_children[0][target_id]" with "[Child2]"
-    And I fill in "field_children[1][target_id]" with "Child3"
+    And I click "Edit" in the "Event1" row
+    And I fill in "field_sessions[0][target_id]" with "[Session2]"
     And I press the "Save" button
     When I am at "/admin/content"
-    And I click "Parent1"
-    Then I should not see "Child1" displayed from the "field_children" field
-    And I should see "Child2" displayed from the "field_children" field
-    And I should see "Child3" displayed from the "field_children" field
+    And I click "Event1"
+    Then I should not see "Session1" displayed from the "field_sessions" field
+    And I should see "Session2" displayed from the "field_sessions" field
     When I am at "/admin/content"
-    And I click "Child1"
-    Then I should not see "Parent1" displayed from the "field_parents" field
+    And I click "Session1"
+    Then I should not see "Event1" displayed from the "field_event" field
     When I am at "/admin/content"
-    And I click "Child2"
-    Then I should see "Parent1" displayed from the "field_parents" field
-    When I am at "/admin/content"
-    And I click "Child3"
-    Then I should see "Parent1" displayed from the "field_parents" field
+    And I click "Session2"
+    Then I should see "Event1" displayed from the "field_event" field
 
-  Scenario: Updating a child with a new parent reference sets the child reference on the parent
-    Given "discussion" content:
+  Scenario: Changing the event on a session adds a session reference on the event
+    Given event content:
       | title       |
-      | Parent1     |
-      | Parent2     |
-    Given "discussion" content:
-      | title      | field_parents   |
-      | Child1     | Parent1         |
+      | Event1     |
+      | Event2     |
+    Given session content:
+      | title      | field_event   |
+      | Session1     | Event1         |
     When I am at "/admin/content"
-    When I click "Child1"
-    When I fill in "field_parents[0][target_id]" with "Parent2"
+    When I click "Edit" in the "Session1" row
+    When I fill in "field_event[0][target_id]" with "Event2"
     And I press the "Save" button
     When I am at "/admin/content"
-    And I click "Child1"
-    Then I should not see "Parent1" displayed from the "field_parents" field
-    And I should see "Parent2" displayed from the "field_parents" field
+    And I click "Session1"
+    Then I should not see "Event1" displayed from the "field_event" field
+    And I should see "Event2" displayed from the "field_event" field
     When I am at "/admin/content"
-    And I click "Parent1"
-    Then I should not see "Child1" displayed from the "field_children" field
+    And I click "Event1"
+    Then I should not see "Session1" displayed from the "field_sessions" field
     When I am at "/admin/content"
-    And I click "Parent2"
-    Then I should see "Child1" displayed from the "field_children" field
-
-  Scenario: Can add a parent reference when there aren't any
-    Given "discussion" content:
-      | title       |
-      | Parent1     |
-    Given a discussion content with the title "Child1"
+    And I click "Event2"
+    Then I should see "Session1" displayed from the "field_sessions" field
+  @test
+  Scenario: Manually referencing an event from a session
+    Given an event with the title "Event1"
+    Given a session with the title "Session1"
     When I am at "/admin/content"
-    When I click "Child1"
-    When I fill in "field_parents[0][target_id]" with "Parent1"
+    When I click "Edit" in the "Session1" row
+    When I fill in "field_event[0][target_id]" with "Event1"
     And I press the "Save" button
     When I am at "/admin/content"
-    And I click "Parent1"
-    Then I should see "Child1" displayed from the "field_children" field
+    And I click "Event1"
+    Then I should see "Session1" displayed from the "field_sessions" field
 
-  @hasDrupalError
-  Scenario: Cannot autocreate a parent reference
-    Given a discussion content with the title "Child1"
+  @skip @hasDrupalError
+  Scenario: Cannot autocreate an event reference from a session
+    Given a discussion content with the title "Session1"
     When I am at "/admin/content"
-    And I click "Child1"
-    And I fill in "field_parents[0][target_id]" with "Autocreated_should_not_exist"
+    And I click "Session1"
+    And I fill in "field_event[0][target_id]" with "Autocreated_should_not_exist"
     And I press the "Save" button
     Then I should see the error message "There are no entities matching"
     When I am at "/admin/content"

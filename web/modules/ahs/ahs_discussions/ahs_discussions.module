@@ -87,19 +87,21 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
 /**
  * Implements hook_node_presave().
  *
- * Update the ancestry when the first parent is changed.
- * No need to save or return modified entity.
  */
 function ahs_discussions_node_presave(NodeInterface $node) {
   if ($node->bundle() == 'discussion') {
-
     // Add an owner to autocreated children (helps Behat cleanup).
     if (($node->isNew()) && 
       empty($node->getOwnerId()) && 
       !empty(\Drupal::currentUser()->id())) {
       $node->setOwnerId(\Drupal::currentUser()->id());
     }
+    
+    // Update the ancestry when the first parent is changed.
+    // No need to save or return modified entity.
     \Drupal::service('ahs_discussions.ancestry')->updateOwnAncestry($node);
+    
+    // Add creator or edit as participant
     ahs_discussions_add_editor_as_participant($node);
   }
 }

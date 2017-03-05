@@ -22,7 +22,7 @@ default:
     local:
       <<: *defaultSuite
       filters:
-        tags: "~@skip&&~@email"
+        tags: "~@skip&&~@skiplocal"
   extensions:
     Behat\MinkExtension:
       files_path: %paths.base%/features/build/files

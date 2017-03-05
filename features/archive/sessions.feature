@@ -10,6 +10,7 @@ Feature: Sessions archive
     When I visit "node/add/session"
     Then the response status code should be 200 
 
+  @skiplocal
   Scenario: Sessions have URL archive/sessions/year/month/day/hourminute/titleword1-titleword2-etc
     Given session content:
       | title           | field_datetime      |

@@ -37,7 +37,46 @@ function ahs_miscellaneous_install() {
  *
  */
 function ahs_miscellaneous_node_presave($node) {
+  ahs_miscellaneous_node_title_sanitise($node);
 
+}
+
+/**
+ * Implementation of hook_node_insert().
+ *
+ */
+function ahs_miscellaneous_node_insert($node) {
+  ahs_miscellaneous_event_session_correspond($node);
+}
+
+/**
+ * Implementation of hook_node_update().
+ *
+ */
+function ahs_miscellaneous_node_update($node) {
+  ahs_miscellaneous_event_session_correspond($node);
+}
+
+/**
+ * Enforce correspondence between events and sessions.
+ *
+ */
+function ahs_miscellaneous_event_session_correspond($node) {
+  if ($node->bundle() == 'event') {
+    \Drupal::service('ahs_cer.simple_cer')
+      ->updateReferences('field_sessions', 'field_event', $node);
+  }
+  if ($node->bundle() == 'session') {
+    \Drupal::service('ahs_cer.simple_cer')
+      ->updateReferences('field_event', 'field_sessions', $node);
+  }
+}
+
+/**
+ * Remove slashes and pretty up node titles.
+ *
+ */
+function ahs_miscellaneous_node_title_sanitise($node) {
   $node->title->value = trim($node->title->value);
 
   // If title is all upper case and has multiple words,
@@ -56,4 +95,3 @@ function ahs_miscellaneous_node_presave($node) {
   // replace 2 or more spaces with single space
   $node->title->value = $s = preg_replace("/ {2,}/", " ", $node->title->value);
 }
-
