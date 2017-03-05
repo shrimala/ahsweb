@@ -58,11 +58,13 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   field_assigned:
     type: chosen_select
     weight: 4
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_children:
     weight: 2
     settings:
@@ -71,11 +73,13 @@ content:
       placeholder: 'Pick or create a narrower discussion that is part of this one.'
     third_party_settings: {  }
     type: ahs_entity_reference_with_views_autocreate
+    region: content
   field_comments_with_changes:
     type: comment_default
     weight: 6
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_files:
     type: file_generic
     weight: 5
@@ -97,18 +101,21 @@ content:
             path: file_attach
             absolute: 0
             attach_mode: move
+    region: content
   field_finished:
     type: boolean_checkbox
     weight: 9
     settings:
       display_label: true
     third_party_settings: {  }
+    region: content
   field_help_wanted:
     type: boolean_checkbox
     weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
+    region: content
   field_parents:
     weight: 0
     settings:
@@ -117,32 +124,32 @@ content:
       placeholder: 'Pick a broader discussion that includes this one.'
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   field_participants:
     type: chosen_select
     weight: 5
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_private:
     type: boolean_checkbox
     weight: 6
     settings:
       display_label: true
     third_party_settings: {  }
+    region: content
   flag:
     weight: 3
     settings: {  }
     third_party_settings: {  }
-  langcode:
-    type: language_select
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
+    region: content
   promote:
     type: boolean_checkbox
     weight: 8
     settings:
       display_label: true
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 1
@@ -150,6 +157,7 @@ content:
       size: 150
       placeholder: 'The subject of this discussion'
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   field_ancestry: true

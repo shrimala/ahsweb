@@ -32,6 +32,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
 hidden:
   body: true
   field_ancestry_plain: true
@@ -45,5 +46,4 @@ hidden:
   field_participants: true
   field_private: true
   field_top_level_category: true
-  langcode: true
   links: true

@@ -32,6 +32,7 @@ module:
   field_group: 0
   field_ui: 0
   file: 0
+  file_checker: 0
   filefield_paths: 0
   filter: 0
   flysystem: 0
@@ -79,3 +80,4 @@ theme:
   ahs_bootstrap: 0
 _core:
   default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
+profile: minimal

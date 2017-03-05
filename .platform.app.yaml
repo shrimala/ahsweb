@@ -71,6 +71,7 @@ hooks:
       fi
       drush cc drush
       drush config-split-import --yes
+      drush -y entup
 
 
 # The configuration of scheduled execution. Minimum interval on platform.sh is 5 mins.

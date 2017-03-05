@@ -454,4 +454,49 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
-}
+
+  /**
+   * @Then I should see :text under the :heading heading
+   */
+  public function assertTextUnderHeading($text, $headingText) {
+    if (!$this->isTextUnderHeading($text, $headingText)) {
+      $message = sprintf('"%s" is not in the element that contains the heading "%s", on the page %s', $text, $headingText, $this->getSession()->getDriver());
+      throw new Exception($message);
+    }
+  }
+
+  /**
+   * @Then I should not see :text under the :heading heading
+   */
+  public function assertTextNotUnderHeading($text, $headingText) {
+    if ($this->isTextUnderHeading($text, $headingText)) {
+      $message = sprintf('"%s" is in the element that contains the heading "%s", on the page %s', $text, $headingText, $this->getSession()->getDriver());
+      throw new Exception($message);
+    }
+  }
+
+  protected function isTextUnderHeading($text, $headingText, $container = NULL) {
+    if (is_null($container)) {
+      $container = $this->getSession()->getPage();
+    }
+    foreach (array('h1', 'h2', 'h3', 'h4', 'h5', 'h6') as $tag) {
+      $headings = $container->findAll('css', $tag);
+      if (count($headings) === 0) {
+        $message = sprintf('No "%s" heading was found on the page %s', $text, $headingText, $this->getSession()->getDriver());
+        throw new Exception($message);
+      }
+      foreach ($headings as $result) {
+        if ($result->getText() == $headingText) {
+          $parentText = $result->getParent()->getText();
+          if (stripos($parentText, $text) !== False) {
+            return TRUE;
+          }
+          else {
+            return FALSE;
+          }
+        }
+      }
+    }
+  }
+
+  }

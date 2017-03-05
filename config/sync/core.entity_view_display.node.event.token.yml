@@ -27,11 +27,11 @@ content:
       date_format: Y/m/d
     third_party_settings: {  }
     type: datetime_custom
+    region: content
 hidden:
   body: true
   field_event_type: true
   field_leader: true
   field_sessions: true
   field_venue: true
-  langcode: true
   links: true

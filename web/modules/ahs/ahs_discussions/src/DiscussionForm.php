@@ -16,8 +16,19 @@ class DiscussionForm extends ContentEntityForm {
 
   protected $oldRevisionId;
 
+  /**
+   * Never show the revision UI.
+   *
+   * @return bool
+   *   TRUE if the form field should be added, FALSE otherwise.
+   */
+  protected function showRevisionUi() {
+    return FALSE;
+  }
+
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
+    
     /*
         // Move the revision log to be immediately after the body,
         // first moving all other items after body along to make way.
@@ -43,8 +54,9 @@ class DiscussionForm extends ContentEntityForm {
     );
 
     //$form['menu']['#access']=FALSE;
-    $form['revision_log']['#access'] = FALSE;
-    $form['actions']['delete']['#access'] = FALSE;
+    //$form['revision']['#access'] = FALSE;
+    //$form['revision_log']['#access'] = FALSE;
+    //$form['actions']['delete']['#access'] = FALSE;
 
 
     /*
@@ -76,6 +88,7 @@ class DiscussionForm extends ContentEntityForm {
     $user = \Drupal::currentUser();
     if ($user->hasPermission('access comments')) {
       $form['field_comments_with_changes']['#access'] = TRUE;
+      unset($form['field_comments_with_changes']['widget']['0']['#group']);
     }
 
     // Adjust the UI for parents and children fields.
@@ -156,6 +169,21 @@ class DiscussionForm extends ContentEntityForm {
     if ($this->entity->field_finished->value) {
       $form['#attributes']['class'][] = "ahs-finished";
     }
+
+    $form['field_comments_with_changes']['widget']['0']['#type'] = 'container';
+    /*
+    $form['body']['#theme_wrappers'] = [
+      'form_field_preview' => [
+        'field' => NULL,
+        'entity' => NULL,
+        'label' => 'pink',
+        'edit' => TRUE,
+        'empty_message' => NULL,
+        'empty_label' => TRUE,
+        'empty_preview' => TRUE,
+      ],
+    ];
+    */
     
     //if ($this->getEntity()->field_top_level_category == FALSE) {}
   //  $form['field_parents']['widget']['0']['target_id']['#required'] = TRUE;
@@ -175,17 +203,6 @@ class DiscussionForm extends ContentEntityForm {
     return $form;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  protected function prepareEntity() {
-    /** @var \Drupal\node\NodeInterface $node */
-    $node = $this->entity;
-    if (!$node->isNew()) {
-      // Remove the revision log message from the original node entity.
-      $node->revision_log = NULL;
-    }
-  }
 
   /**
    * {@inheritdoc}
@@ -229,8 +246,8 @@ class DiscussionForm extends ContentEntityForm {
         // Create a new revision.
         $this->entity->oldRevisionId = $this->entity->getRevisionId();
         $this->entity->setNewRevision();
-        $this->entity->setRevisionCreationTime(REQUEST_TIME);
-        $this->entity->setRevisionUserId(\Drupal::currentUser()->id());
+        $this->entity->setRevisionUserId($this->currentUser()->id());
+        $this->entity->setRevisionCreationTime($this->time->getRequestTime());
         break;
       }
     }
