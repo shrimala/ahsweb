@@ -1,0 +1,9 @@
+{
+  "name": "drupal/ahs_events",
+  "type": "drupal-module",
+  "description": "Events functionality for the Awakened Heart Sangha.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": { }
+}

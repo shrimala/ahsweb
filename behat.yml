@@ -53,21 +53,40 @@ default:
         warning_message_selector: '.alert-warning'
         success_message_selector: '.alert-success'
       region_map:
+        #Home page views
         Help wanted discussions: ".view-display-id-help .views-row"
         My tasks: ".view-display-id-tasks .views-row"
         My discussions: ".view-display-id-my_discussions .views-row"
         Active discussions: ".view-display-id-active .views-row"
         Browse categories: ".view-display-id-browse .views-row"
         Search results: ".view-display-id-search .views-row"
-        Title field: ".field--name-title"
-        Ancestry field: "span.field--name-field-ancestry-plain"
+        #Discussions
         Discussion comments: "div.field--name-field-comments-with-changes  div.ahs-preview-preview > article"
-        Comment body field: "div.field--name-comment-body"
-        Changes field: "div.field--name-field-changes"
         Changes diff: "div.field--name-field-changes .changes"
         Discussion parents: "div.field--name-field-parents .ahs-preview-preview > article"
         Discussion children: "div.field--name-field-children .ahs-preview-preview > article"
         Change records: ".changes .change"
+        #Fields
+        Title field: ".field--name-title,.field--name-node-title,.views-field-title"
+        Ancestry field: "span.field--name-field-ancestry-plain"
+        Comment body field: "div.field--name-comment-body"
+        Changes field: "div.field--name-field-changes"
+        Datetime field: ".field--name-field-datetime,.views-field-field-datetime"
+        Session type field: ".field--name-field-session-type"
+        Leader field: ".field--name-field-leader"
+        Event field: ".field--name-field-event"
+        #Events
+        Sessions in an IEF complex widget: ".field--name-field-sessions tr.ief-row-entity"
+        Sessions in an inline form: ".field--name-field-sessions tr > td.inline-entity-form-node-preview"
+        Next session: ".view-display-id-next .views-row"
+        Coming session day groupings: ".view-display-id-coming h3"
+        Coming sessions: ".view-display-id-coming .views-row"
+        Finished session headings: ".view-display-id-finished .panel .panel-heading"
+        Finished session bodies: ".view-display-id-finished .panel .panel-body"
+        #Navigation
+        Local tabs: "nav.tabs > ul.tabs--primary > li"
+        Admin local tabs: "nav > ul.tabs.primary > li"
+
 travis:
   extensions:
     Behat\MinkExtension:

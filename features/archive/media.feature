@@ -22,12 +22,12 @@ Feature: Media archive
   Scenario: Media audio type exists
     When I visit "media/add/audio"
     Then the response status code should be 200
-  
-   Scenario: Media audio display 
+
+  Scenario: Media audio display
     Given a "file" entity:
-    | uri               | 
-    | dropboxwebarchive://test.mp3 |
+      | uri               |
+      | dropboxwebarchive://test.mp3 |
     Given I am viewing an "audio" "media" entity:
-    | name          | Test audio   |
-    | field_dropbox | test.mp3     |
-    Then I should see the link "test.mp3"
+      | name          | Test audio   |
+      | field_dropbox | test.mp3     |
+    Then I should see an "audio source[src='http://localhost/_flysystem/dropboxwebarchive/test.mp3']" element

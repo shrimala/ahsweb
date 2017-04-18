@@ -1,0 +1,217 @@
+<?php
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\node\Entity\Node;
+
+CONST AHS_EVENTS_VENUE_DEFAULT_TIMEZONE = 'Europe/London';
+
+/**
+ * Implementation of hook_node_insert().
+ *
+ */
+function ahs_events_node_insert($node) {
+  ahs_events_event_session_correspond($node);
+}
+
+/**
+ * Implementation of hook_node_update().
+ *
+ */
+function ahs_events_node_update($node) {
+  ahs_events_venue_timezone_update($node);
+  ahs_events_event_session_correspond($node);
+}
+
+/**
+ * Enforce correspondence between events and sessions.
+ *
+ */
+function ahs_events_event_session_correspond($node) {
+  if ($node->bundle() == 'event') {
+    \Drupal::service('ahs_cer.simple_cer')
+      ->updateReferences('field_sessions', 'field_event', $node);
+  }
+  if ($node->bundle() == 'session') {
+    \Drupal::service('ahs_cer.simple_cer')
+      ->updateReferences('field_event', 'field_sessions', $node);
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter.
+ */
+function ahs_events_menu_local_tasks_alter(&$data, $route_name) {
+  // Rename 'View' local task as 'Overview', for event content.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!empty($node) && $node->bundle() === 'event') {
+    $data['tabs'][0]['entity.node.canonical']['#link']['title'] = t('Overview');
+    $data['tabs'][0]['entity.node.edit_form']['#link']['title'] = t('Edit event');
+  }
+}
+
+/**
+ * hook_entity_type_build.
+ */
+function ahs_events_entity_type_build(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  // Add a custom node form.
+  $entity_types['node']->setFormClass('administer', 'Drupal\node\NodeForm');
+  $entity_types['node']->setFormClass('children', 'Drupal\node\NodeForm');
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function ahs_events_field_widget_datetime_default_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  $field_definition = $context['items']->getFieldDefinition();
+  $entity_type = $field_definition->getTargetEntityTypeId();
+  $bundle = $field_definition->getTargetBundle();
+  $field_name = $field_definition->getName();
+  if ($entity_type === 'node' && $bundle === 'session' && $field_name === 'field_datetime') {
+    // All session input is assumed to be in venue time zone, where known.
+    $venueTimezone = ahs_events_get_event_timezone($context['items']->getEntity());
+    $element['value']['#date_timezone'] = $venueTimezone;
+    if ($element['value']['#default_value'] instanceof DrupalDateTime) {
+      $element['value']['#default_value']->setTimezone(new DateTimeZone($venueTimezone));
+    }
+  }
+  if ($entity_type === 'node' && $bundle === 'event' && $field_name === 'field_datetime') {
+    // All session input is assumed to be in venue time zone, where known.
+    $venueTimezone = ahs_events_get_event_timezone($context['items']->getEntity());
+    $element['value']['#date_timezone'] = $venueTimezone;
+    if ($element['value']['#default_value'] instanceof DrupalDateTime) {
+      $element['value']['#default_value']->setTimezone(new DateTimeZone($venueTimezone));
+    }
+  }
+}
+
+function ahs_events_venue_timezone_update(Drupal\Core\Entity\ContentEntityInterface $node) {
+  if ($node->bundle() === 'venue') {
+    if ($node->original->field_timezone->value != $node->field_timezone->value) {
+      // The time zone has changed on the venue.
+      // Update all events using this venue.
+      $eventIds = \Drupal::entityQuery('node')
+        ->condition('type', 'event')
+        ->condition('field_venue', $node->id())
+        ->execute();
+      $events = Node::loadMultiple($eventIds);
+      foreach ($events as $event) {
+        ahs_events_set_event_timezone($event, $node->original->field_timezone->value, $node->field_timezone->value);
+        $event->save();
+      }
+    }
+  }
+}
+
+function ahs_events_node_presave(Drupal\Core\Entity\ContentEntityInterface $node) {
+    // If the referenced venue has changed on the event...
+    if ($node->bundle() === 'event') {
+      $oldVenueId = empty($node->original) ? NULL : $node->original->get('field_venue')->target_id;
+      if ($oldVenueId !== $node->get('field_venue')->target_id) {
+        // Reinterpret event time. Even if the time has been changed too, that
+        // change will have been interpreted using the old time zone so needs
+        // updating.
+        $oldVenue = empty($node->original) ? NULL : $node->original->get('field_venue')->entity;
+        $oldTimezone = ahs_events_get_venue_timezone($oldVenue);
+        $newTimezone = ahs_events_get_venue_timezone($node->get('field_venue')->entity);
+        ahs_events_set_event_timezone($node, $oldTimezone, $newTimezone);
+      }
+    }
+    // If the referenced event has changed on the session...
+    elseif ($node->bundle() === 'session') {
+      $oldEventId = empty($node->original) ? NULL : $node->original->get('field_event')->target_id;
+      if ($oldEventId !== $node->get('field_event')->target_id) {
+        // Reinterpret session time. Even if the time has been changed too, that
+        // change will have been interpreted using the old time zone so needs
+        // updating.
+        $oldEvent = empty($node->original) ? NULL : $node->original->get('field_event')->entity;
+        $oldTimezone = ahs_events_get_event_timezone($oldEvent);
+        $newTimezone = ahs_events_get_event_timezone($node->get('field_event')->entity);
+        $node->set('field_datetime', ahs_events_reset_time($node->field_datetime->value, $oldTimezone, $newTimezone));
+      }
+    }
+}
+
+// Get the time zone from a venue, falling back to a default.
+// Also called from DateTimeUsingVenueTimezoneFormatter::getVenueTimezone().
+function ahs_events_get_venue_timezone($venue) {
+  $timezone = \Drupal::config('system.date')->get('timezone.default');
+  if (!empty($venue)) {
+    $timezone = !empty($venue->field_timezone->value) ? $venue->field_timezone->value : $timezone;
+  }
+  return $timezone;
+}
+
+// Get the time zone from a venue, falling back to a default.
+// Also called from DateTimeUsingVenueTimezoneFormatter::getVenueTimezone().
+function ahs_events_get_event_timezone($entity) {
+  $event = ahs_events_get_event($entity);
+  $venue = ahs_events_get_venue($event);
+  $timezone = ahs_events_get_venue_timezone($venue);
+  return $timezone;
+}
+
+// Get the event from a session or event.
+// Also called from DateTimeUsingVenueTimezoneFormatter::viewElements().
+function ahs_events_get_event($entity) {
+  $event = NULL;
+  if ($entity instanceof Drupal\Core\Entity\ContentEntityInterface) {
+    if ($entity->bundle() === 'session') {
+      $event = $entity->field_event->entity;
+    }
+    elseif ($entity->bundle() === 'event') {
+      $event = $entity;
+    }
+    else {
+      throw new Exception("The event can only be found from event or session content.");
+    }
+  }
+  return $event;
+}
+
+// Get the venue from an event.
+// Also called from DateTimeUsingVenueTimezoneFormatter::viewElements().
+function ahs_events_get_venue($event) {
+  $venue = NULL;
+  if ($event instanceof Drupal\Core\Entity\ContentEntityInterface) {
+    if ($event->bundle() !== 'event') {
+      throw new Exception("Cannot find venue from an entity that is not an event.");
+    }
+    $venue = $event->get('field_venue')->entity;
+  }
+  return $venue;
+}
+
+// Change time on event and associated sessions.
+function ahs_events_set_event_timezone(Drupal\Core\Entity\ContentEntityInterface &$event, $oldTimezone, $newTimezone) {
+  $date = $event->get('field_datetime')->value;
+  $event->set('field_datetime', ahs_events_reset_time($date, $oldTimezone, $newTimezone));
+  // Don't save the event change as we may already be in process of saving the event.
+
+  // Update the times of all sessions from this event.
+  $sessionIds = \Drupal::entityQuery('node')
+    ->condition('type', 'session')
+    ->condition('field_event', $event->id())
+    ->execute();
+  $sessions = Node::loadMultiple($sessionIds);
+  foreach ($sessions as $session) {
+    $session->set('field_datetime', ahs_events_reset_time($session->field_datetime->value, $oldTimezone, $newTimezone));
+    $session->save();
+  }
+}
+
+// Convert a time from one time zone to that same time of day in a different time zone.
+function ahs_events_reset_time($oldStorageDateString, $oldTimezone, $newTimezone) {
+  if (empty($oldStorageDateString)) {
+    return $oldStorageDateString;
+  }
+  else {
+    $oldDate = DrupalDateTime::createFromFormat(DATETIME_DATETIME_STORAGE_FORMAT, $oldStorageDateString, DATETIME_STORAGE_TIMEZONE);
+    $oldDate->setTimezone(new DateTimeZone($oldTimezone));
+    $oldLocalDateString = $oldDate->format(DATETIME_DATETIME_STORAGE_FORMAT);
+    $newDate = DrupalDateTime::createFromFormat(DATETIME_DATETIME_STORAGE_FORMAT, $oldLocalDateString, $newTimezone);
+    $newDate->setTimezone(new DateTimeZone(DATETIME_STORAGE_TIMEZONE));
+    $newStorageDateString = $newDate->format(DATETIME_DATETIME_STORAGE_FORMAT);
+    return $newStorageDateString;
+  }
+}

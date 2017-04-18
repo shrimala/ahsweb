@@ -2,6 +2,7 @@
 
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Mink\Element\NodeElement;
+use Behat\Mink\Element\Element;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
@@ -195,7 +196,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * Checks if a certain number of elements are present.
    *
    * @Then I should see :count :elements_css elements
-   * @Then I should see :count :elements_css elements in the :container element:
+   * @Then I should see :count :elements_css elements in the :container element
    *
    * @param $elements_css
    *   string The id|name|title|alt|value (css selector) of the element that constitutes the list item
@@ -460,7 +461,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function assertTextUnderHeading($text, $headingText) {
     if (!$this->isTextUnderHeading($text, $headingText)) {
-      $message = sprintf('"%s" is not in the element that contains the heading "%s", on the page %s', $text, $headingText, $this->getSession()->getDriver());
+      $message = sprintf('"%s" is not in the element that contains the heading "%s", on the page %s', $text, $headingText, $this->getSession()->getCurrentUrl());
       throw new Exception($message);
     }
   }
@@ -470,7 +471,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function assertTextNotUnderHeading($text, $headingText) {
     if ($this->isTextUnderHeading($text, $headingText)) {
-      $message = sprintf('"%s" is in the element that contains the heading "%s", on the page %s', $text, $headingText, $this->getSession()->getDriver());
+      $message = sprintf('"%s" is in the element that contains the heading "%s", on the page %s', $text, $headingText, $this->getSession()->getCurrentUrl()->getDriver());
       throw new Exception($message);
     }
   }
@@ -482,7 +483,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     foreach (array('h1', 'h2', 'h3', 'h4', 'h5', 'h6') as $tag) {
       $headings = $container->findAll('css', $tag);
       if (count($headings) === 0) {
-        $message = sprintf('No "%s" heading was found on the page %s', $text, $headingText, $this->getSession()->getDriver());
+        $message = sprintf('No "%s" heading was found on the page %s', $text, $headingText, $this->getSession()->getCurrentUrl());
         throw new Exception($message);
       }
       foreach ($headings as $result) {
@@ -497,6 +498,43 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
         }
       }
     }
+  }
+
+  /**
+   * Retrieve a table row containing specified text from a given element.
+   *
+   * @param \Behat\Mink\Element\Element
+   * @param string
+   *   The text to search for in the table row.
+   *
+   * @return \Behat\Mink\Element\NodeElement
+   *
+   * @throws \Exception
+   */
+  public function getTableRow(Element $element, $search) {
+    $rows = $element->findAll('css', 'tr');
+    if (empty($rows)) {
+      throw new \Exception(sprintf('No rows found on the page %s', $this->getSession()->getCurrentUrl()));
+    }
+    foreach ($rows as $row) {
+      if (strpos($row->getText(), $search) !== FALSE) {
+        return $row;
+      }
+    }
+    throw new \Exception(sprintf('Failed to find a row containing "%s" on the page %s', $search, $this->getSession()->getCurrentUrl()));
+  }
+
+  /**
+   * @When I press the :link button in the :rowText row
+   */
+  public function assertClickInTableRow($button, $rowText) {
+    $page = $this->getSession()->getPage();
+    if ($button = $this->getTableRow($page, $rowText)->findButton($button)) {
+      // Click the link and return.
+      $button->click();
+      return;
+    }
+    throw new \Exception(sprintf('Found a row containing "%s", but no "%s" button on the page %s', $rowText, $button, $this->getSession()->getCurrentUrl()));
   }
 
   }

@@ -1,0 +1,34 @@
+ahs_events.details:
+  path: '/node/{node}/details'
+  defaults:
+    _entity_view: 'node.details'
+  requirements:
+    _entity_access: 'node.view'
+    _node_type_is_event: 'true'
+ahs_events.online:
+  path: '/node/{node}/online'
+  defaults:
+    _entity_view: 'node.children'
+  requirements:
+    _entity_access: 'node.view'
+    _node_type_is_event: 'true'
+ahs_events.manage_online:
+  path: '/node/{node}/online/manage'
+  defaults:
+    _entity_form: node.administer
+    _title: 'Manage online event'
+  requirements:
+    _permission: 'create new session content'
+    _node_type_is_event: 'true'
+  options:
+    _admin_route: TRUE
+ahs_events.manage_recordings:
+  path: '/node/{node}/recordings/manage'
+  defaults:
+    _entity_form: node.children
+    _title: 'Manage recordings'
+  requirements:
+    _permission: 'edit any session content'
+    _node_type_is_event: 'true'
+  options:
+    _admin_route: TRUE

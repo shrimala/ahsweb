@@ -19,6 +19,10 @@
             "url": "https://github.com/shrimala/file_checker"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/shrimala/tzfield"
+        },
+        {
             "type": "package",
             "package": {
                 "name": "harvesthq/chosen",
@@ -67,7 +71,15 @@
         "drupal/chosen": "dev-2.x@dev",
         "harvesthq/chosen": "1.6.1",
         "drupal/field_group": "1.x-dev",
-        "drupal/r4032login": "1.x-dev"
+        "drupal/r4032login": "1.x-dev",
+        "drupal/token": "1.0-rc1",
+        "drupal/eva": "1.1-rc1",
+        "drupal/views_bootstrap": "3.x-dev",
+        "drupal/ds": "3.x-dev",
+        "drupal/inline_entity_form": "1.0-beta1",
+        "drupal/inline_entity_form_preview": "1.x-dev",
+        "drupal/auto_entitylabel": "2.0-beta1",
+        "drupal/tzfield" : "dev-master"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -129,6 +141,9 @@
             },
             "drupal/email_registration": {
                 "Add support for Behat tests (use AuthenticationManager)": "https://www.drupal.org/files/issues/2843505-8.patch"
+            },
+            "drupal/inline_entity_form_preview": {
+                "PreviewBuilder should use isNew": "https://www.drupal.org/files/issues/2759151-2.patch"
             }
         }
     },

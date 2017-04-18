@@ -33,43 +33,48 @@ function ahs_miscellaneous_install() {
 */
 
 /**
+ * Implements hook_preprocess_HOOK() for nodes.
+ */
+function ahs_miscellaneous_preprocess_node(&$variables) {
+  // Skip if the page variable is already set true.
+  if (isset($variables['page']) && $variables['page']) {
+    return;
+  }
+
+  // Skip if this is not the main node specified by the route
+  $route_match = \Drupal::routeMatch();
+  $page_node = $route_match->getParameter('node');
+  if (empty($page_node) || $page_node->id() != $variables['node']->id()) {
+    return;
+  }
+
+  // Skip if the route did not uses _entity_view
+  $route = $route_match->getRouteObject();
+  if (!$route->hasDefault('_entity_view')) {
+    return;
+  }
+
+  // Skip if _entity_view did not specify a view mode
+  $entity_view_string = $route->getDefault('_entity_view');
+  $periodPos = strpos($entity_view_string, ".");
+  if (!$periodPos) {
+    return;
+  }
+
+  // If the view mode being rendered is in the route, set the page variable.
+  $route_view_mode = substr($entity_view_string, $periodPos + 1);
+  if ($route_view_mode == $variables['view_mode']) {
+    $variables['page'] = TRUE;
+  }
+}
+
+/**
  * Implementation of hook_node_presave().
  *
  */
 function ahs_miscellaneous_node_presave($node) {
   ahs_miscellaneous_node_title_sanitise($node);
 
-}
-
-/**
- * Implementation of hook_node_insert().
- *
- */
-function ahs_miscellaneous_node_insert($node) {
-  ahs_miscellaneous_event_session_correspond($node);
-}
-
-/**
- * Implementation of hook_node_update().
- *
- */
-function ahs_miscellaneous_node_update($node) {
-  ahs_miscellaneous_event_session_correspond($node);
-}
-
-/**
- * Enforce correspondence between events and sessions.
- *
- */
-function ahs_miscellaneous_event_session_correspond($node) {
-  if ($node->bundle() == 'event') {
-    \Drupal::service('ahs_cer.simple_cer')
-      ->updateReferences('field_sessions', 'field_event', $node);
-  }
-  if ($node->bundle() == 'session') {
-    \Drupal::service('ahs_cer.simple_cer')
-      ->updateReferences('field_event', 'field_sessions', $node);
-  }
 }
 
 /**
@@ -82,7 +87,8 @@ function ahs_miscellaneous_node_title_sanitise($node) {
   // If title is all upper case and has multiple words,
   // assume the capitalisation is inappropriate
   if ((mb_strtoupper($node->title->value, 'utf-8') === $node->title->value) &&
-    (strpos($node->title->value, " ") !== FALSE)) {
+    (strpos($node->title->value, " ") !== FALSE)
+  ) {
     $node->title->value = strtolower($node->title->value);
   }
 
@@ -94,4 +100,20 @@ function ahs_miscellaneous_node_title_sanitise($node) {
 
   // replace 2 or more spaces with single space
   $node->title->value = $s = preg_replace("/ {2,}/", " ", $node->title->value);
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function ahs_miscellaneous_element_info_alter(array &$types) {
+  $types['datetime']['#process'][] = 'ahs_miscellaneous_datetime_set_format';
+}
+
+/**
+ * Element process callback for datetime fields.
+ */
+function ahs_miscellaneous_datetime_set_format($element) {
+  // Remove seconds in browsers that support HTML5 type=date.
+  $element['time']['#attributes']['step'] = 60;
+  return $element;
 }

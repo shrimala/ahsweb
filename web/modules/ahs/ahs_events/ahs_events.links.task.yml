@@ -1,0 +1,17 @@
+ahs_events.details:
+  title: Details
+  route_name: ahs_events.details
+  base_route: entity.node.canonical
+ahs_events.online:
+  title: Online
+  route_name: ahs_events.online
+  base_route: entity.node.canonical
+ahs_events.manage_online:
+  title: Manage online
+  route_name: ahs_events.manage_online
+  base_route: entity.node.canonical
+ahs_events.manage_recordings:
+  title: Manage recordings
+  route_name: ahs_events.manage_recordings
+  base_route: entity.node.canonical
+
