@@ -1,24 +1,25 @@
-uuid: 2d1e9b53-5d57-492c-9a86-cbce9617a313
+uuid: 8bb7c49a-9ec7-4190-ac79-801ec19c2132
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.condensed
     - field.field.media.audio.field_dropbox
     - field.field.media.audio.field_session
     - media_entity.bundle.audio
   module:
     - media_entity_audio
-id: media.audio.default
+id: media.audio.condensed
 targetEntityType: media
 bundle: audio
-mode: default
+mode: condensed
 content:
   field_dropbox:
     weight: 2
     label: hidden
     settings:
-      provide_download_link: true
       audio_attributes: controls
+      provide_download_link: 0
     third_party_settings: {  }
     type: audio_player_html5
     region: content

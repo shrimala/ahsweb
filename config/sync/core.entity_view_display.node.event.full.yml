@@ -1,8 +1,9 @@
-uuid: 026434d6-fea1-4505-8717-66f85aa69ab0
+uuid: 14bd656e-9511-4609-a9cb-26df9593375a
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.event.body
     - field.field.node.event.field_datetime
     - field.field.node.event.field_event_type
@@ -14,10 +15,10 @@ dependencies:
     - ahs_events
     - text
     - user
-id: node.event.default
+id: node.event.full
 targetEntityType: node
 bundle: event
-mode: default
+mode: full
 content:
   body:
     label: hidden
@@ -31,7 +32,7 @@ content:
     label: above
     settings:
       timezone_override: venue
-      format_type: long_day_with_time
+      format_type: long
     third_party_settings: {  }
     type: datetime_using_venue_timezone
     region: content

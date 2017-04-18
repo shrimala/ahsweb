@@ -1,9 +1,10 @@
-uuid: 9f359098-a103-4c02-b274-9b9adfdd5ee5
+uuid: 2d509d5d-ca88-4133-ba44-7207ff3fca10
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.token
+    - core.entity_form_mode.node.administer
+    - core.entity_form_mode.node.minimal
     - field.field.node.event.body
     - field.field.node.event.field_datetime
     - field.field.node.event.field_event_type
@@ -12,30 +13,31 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - ahs_events
-    - user
-id: node.event.token
+    - inline_entity_form
+id: node.event.administer
 targetEntityType: node
 bundle: event
-mode: token
+mode: administer
 content:
-  field_datetime:
-    weight: 102
-    label: above
+  field_sessions:
+    weight: 33
     settings:
-      timezone_override: venue
-      format_type: path_date
+      form_mode: minimal
+      override_labels: true
+      label_singular: session
+      label_plural: sessions
     third_party_settings: {  }
-    type: datetime_using_venue_timezone
+    type: inline_entity_form_simple
     region: content
 hidden:
   body: true
-  event_sessions_coming: true
-  event_sessions_finished: true
-  event_sessions_finished_form: true
-  event_sessions_next: true
+  created: true
+  field_datetime: true
   field_event_type: true
   field_leader: true
-  field_sessions: true
   field_venue: true
-  links: true
+  path: true
+  promote: true
+  sticky: true
+  title: true
+  uid: true

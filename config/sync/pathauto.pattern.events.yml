@@ -9,14 +9,14 @@ label: Events
 type: 'canonical_entities:node'
 pattern: 'events/[node:field_datetime]/[node:title]'
 selection_criteria:
-  e357cf34-97ce-48bf-8b48-71aaf59437c5:
+  41826f1e-a326-40ac-aeba-f2e12ba97922:
     id: node_type
     bundles:
       event: event
     negate: false
     context_mapping:
       node: node
-    uuid: e357cf34-97ce-48bf-8b48-71aaf59437c5
+    uuid: 41826f1e-a326-40ac-aeba-f2e12ba97922
 selection_logic: and
 weight: -5
 relationships: {  }

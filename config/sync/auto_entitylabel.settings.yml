@@ -1,0 +1,8 @@
+node_type_session_status: '2'
+node_type_session_pattern: '[node:field_session_type:entity]'
+node_type_session_php: 0
+submit: 'Save configuration'
+form_build_id: form-EixCBQXauUtCKWafJgH70hi1cf0pGgwSs5JNjRLdC_M
+form_token: 0hr5JVg-MnaT1SlB5N3rdUlNl3_gdsmqxHgrcCI6_KU
+form_id: auto_entitylabel_settings_form
+op: 'Save configuration'

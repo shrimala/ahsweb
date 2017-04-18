@@ -1,8 +1,10 @@
 module:
   ahs_cer: 0
   ahs_discussions: 0
+  ahs_events: 0
   ahs_miscellaneous: 0
   ahs_user_management: 0
+  auto_entitylabel: 0
   automated_cron: 0
   block: 0
   block_content: 0
@@ -28,6 +30,7 @@ module:
   email_registration: 0
   entity: 0
   entity_reference_revisions: 0
+  eva: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -40,6 +43,9 @@ module:
   help: 0
   history: 0
   image: 0
+  inline_entity_form: 0
+  inline_entity_form_preview: 0
+  layout_discovery: 0
   link: 0
   linkit: 0
   media_entity: 0
@@ -61,11 +67,14 @@ module:
   token: 0
   toolbar: 0
   tour: 0
+  tzfield: 0
   update: 0
   user: 0
   video_embed_field: 0
   video_embed_media: 0
+  views_bootstrap: 0
   views_ui: 0
+  ds: 1
   filefield_sources: 1
   menu_link_content: 1
   pathauto: 1

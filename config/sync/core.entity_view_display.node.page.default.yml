@@ -6,8 +6,36 @@ dependencies:
     - field.field.node.page.body
     - node.type.page
   module:
+    - ds
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - node_title
+        - body
+        - links
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
 _core:
   default_config_hash: oZ-7vpIJxjxL2up9B5KrJGD0lazQ9aN0P-fIPo6OrSU
 id: node.page.default
@@ -21,8 +49,10 @@ content:
     weight: 100
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: ds_content
   links:
     weight: 101
-    region: content
+    region: ds_content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

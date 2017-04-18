@@ -1,9 +1,9 @@
-uuid: 9f359098-a103-4c02-b274-9b9adfdd5ee5
+uuid: 57b8eb90-9763-490a-8b92-9a4d6a714205
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.token
+    - core.entity_view_mode.node.parent
     - field.field.node.event.body
     - field.field.node.event.field_datetime
     - field.field.node.event.field_event_type
@@ -12,21 +12,21 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - ahs_events
+    - datetime
     - user
-id: node.event.token
+id: node.event.parent
 targetEntityType: node
 bundle: event
-mode: token
+mode: parent
 content:
   field_datetime:
     weight: 102
-    label: above
+    label: hidden
     settings:
-      timezone_override: venue
-      format_type: path_date
+      timezone_override: ''
+      format_type: medium_day_date
     third_party_settings: {  }
-    type: datetime_using_venue_timezone
+    type: datetime_default
     region: content
 hidden:
   body: true

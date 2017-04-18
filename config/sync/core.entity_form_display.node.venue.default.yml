@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.venue.body
+    - field.field.node.venue.field_timezone
     - node.type.venue
   module:
     - path
     - text
+    - tzfield
 id: node.venue.default
 targetEntityType: node
 bundle: venue
@@ -27,6 +29,12 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_timezone:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: tzfield_default
     region: content
   path:
     type: path

@@ -1,0 +1,46 @@
+uuid: cb504e93-888e-4dd1-b0ff-59e5cf93f4f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.children
+    - field.field.node.event.body
+    - field.field.node.event.field_datetime
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_leader
+    - field.field.node.event.field_sessions
+    - field.field.node.event.field_venue
+    - node.type.event
+  module:
+    - inline_entity_form_preview
+id: node.event.children
+targetEntityType: node
+bundle: event
+mode: children
+content:
+  field_sessions:
+    weight: 33
+    settings:
+      form_mode: children
+      override_labels: true
+      label_singular: session
+      label_plural: sessions
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      view_mode: minimal
+    third_party_settings: {  }
+    type: inline_entity_form_preview
+    region: content
+hidden:
+  body: true
+  created: true
+  field_datetime: true
+  field_event_type: true
+  field_leader: true
+  field_venue: true
+  path: true
+  promote: true
+  sticky: true
+  title: true
+  uid: true

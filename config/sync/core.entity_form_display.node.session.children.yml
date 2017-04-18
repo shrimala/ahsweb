@@ -1,8 +1,9 @@
-uuid: c0d95ff3-4833-4b7f-af90-7c7096f85577
+uuid: 5fecba59-beb1-4a2e-9f3d-ac7a15f02497
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.node.children
     - field.field.node.session.body
     - field.field.node.session.field_admin_tags
     - field.field.node.session.field_clip
@@ -17,16 +18,34 @@ dependencies:
     - node.type.session
   module:
     - datetime
-    - inline_entity_form_preview
+    - field_group
+    - inline_entity_form
     - text
-id: node.session.default
+third_party_settings:
+  field_group:
+    group_details:
+      children:
+        - field_leader
+        - body
+        - field_admin_tags
+        - field_clip
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Details
+id: node.session.children
 targetEntityType: node
 bundle: session
-mode: default
+mode: children
 content:
   body:
     type: text_textarea_with_summary
-    weight: 31
+    weight: 33
     settings:
       rows: 9
       summary_rows: 3
@@ -45,27 +64,18 @@ content:
   field_clip:
     weight: 38
     settings:
-      display_label: true
+      display_label: false
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_datetime:
-    weight: 5
+    weight: 0
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
-  field_event:
-    type: entity_reference_autocomplete
-    weight: -10
-    region: content
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_leader:
-    weight: 10
+    weight: 31
     settings:
       match_operator: CONTAINS
       size: 60
@@ -74,25 +84,17 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_media:
-    weight: 34
+    weight: 10
     settings:
       form_mode: default
       override_labels: true
       label_singular: recording
       label_plural: recordings
       allow_new: true
-      allow_existing: true
       match_operator: CONTAINS
-      view_mode: default!
+      allow_existing: false
     third_party_settings: {  }
-    type: inline_entity_form_preview
-    region: content
-  field_restricted:
-    weight: 37
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
+    type: inline_entity_form_complex
     region: content
   field_session_type:
     weight: 5
@@ -102,7 +104,7 @@ content:
     region: content
   title:
     type: string_textfield
-    weight: 0
+    weight: -5
     settings:
       size: 60
       placeholder: ''
@@ -110,7 +112,9 @@ content:
     region: content
 hidden:
   created: true
+  field_event: true
   field_original: true
+  field_restricted: true
   field_teaching_tags: true
   path: true
   promote: true

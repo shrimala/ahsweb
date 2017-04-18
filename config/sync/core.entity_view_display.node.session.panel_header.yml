@@ -1,0 +1,78 @@
+uuid: 55147293-94b3-4e0d-b4ff-387b5c4f781c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.panel_header
+    - field.field.node.session.body
+    - field.field.node.session.field_admin_tags
+    - field.field.node.session.field_clip
+    - field.field.node.session.field_datetime
+    - field.field.node.session.field_event
+    - field.field.node.session.field_leader
+    - field.field.node.session.field_media
+    - field.field.node.session.field_original
+    - field.field.node.session.field_restricted
+    - field.field.node.session.field_session_type
+    - field.field.node.session.field_teaching_tags
+    - node.type.session
+  module:
+    - ahs_events
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - node_title
+        - field_datetime
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          wrapper: h3
+          class: ''
+          link: false
+id: node.session.panel_header
+targetEntityType: node
+bundle: session
+mode: panel_header
+content:
+  field_datetime:
+    weight: 10
+    label: hidden
+    settings:
+      timezone_override: venue
+      format_type: long_day_with_time
+    third_party_settings: {  }
+    type: datetime_using_venue_timezone
+    region: ds_content
+hidden:
+  body: true
+  field_admin_tags: true
+  field_clip: true
+  field_event: true
+  field_leader: true
+  field_media: true
+  field_original: true
+  field_restricted: true
+  field_session_type: true
+  field_teaching_tags: true
+  links: true

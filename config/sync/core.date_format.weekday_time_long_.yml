@@ -1,0 +1,8 @@
+uuid: 7f78e1f2-ea58-4e93-8c69-b8d4f7102066
+langcode: en
+status: true
+dependencies: {  }
+id: weekday_time_long_
+label: 'Weekday & time (long)'
+locked: false
+pattern: 'l g:ia'

@@ -1,8 +1,9 @@
-uuid: c0d95ff3-4833-4b7f-af90-7c7096f85577
+uuid: b490b3b2-7e7d-4d8c-bc43-1dd9113e3525
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.node.minimal
     - field.field.node.session.body
     - field.field.node.session.field_admin_tags
     - field.field.node.session.field_clip
@@ -17,92 +18,70 @@ dependencies:
     - node.type.session
   module:
     - datetime
-    - inline_entity_form_preview
+    - field_group
     - text
-id: node.session.default
+third_party_settings:
+  field_group:
+    group_details:
+      children:
+        - body
+        - field_leader
+        - field_clip
+      parent_name: ''
+      weight: 25
+      format_type: details
+      format_settings:
+        label: Details
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Details
+id: node.session.minimal
 targetEntityType: node
 bundle: session
-mode: default
+mode: minimal
 content:
   body:
     type: text_textarea_with_summary
-    weight: 31
+    weight: 0
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
-    region: content
-  field_admin_tags:
-    weight: 35
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_clip:
-    weight: 38
+    type: boolean_checkbox
+    weight: 5
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_datetime:
-    weight: 5
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
-  field_event:
-    type: entity_reference_autocomplete
-    weight: -10
-    region: content
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_leader:
-    weight: 10
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
     settings:
       match_operator: CONTAINS
       size: 60
-      placeholder: ''
+      placeholder: 'Name of the person teaching or leading the session'
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_media:
-    weight: 34
-    settings:
-      form_mode: default
-      override_labels: true
-      label_singular: recording
-      label_plural: recordings
-      allow_new: true
-      allow_existing: true
-      match_operator: CONTAINS
-      view_mode: default!
-    third_party_settings: {  }
-    type: inline_entity_form_preview
-    region: content
-  field_restricted:
-    weight: 37
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_session_type:
-    weight: 5
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   title:
     type: string_textfield
-    weight: 0
+    weight: 20
     settings:
       size: 60
       placeholder: ''
@@ -110,7 +89,11 @@ content:
     region: content
 hidden:
   created: true
+  field_admin_tags: true
+  field_event: true
+  field_media: true
   field_original: true
+  field_restricted: true
   field_teaching_tags: true
   path: true
   promote: true

@@ -1,17 +1,18 @@
-uuid: 6f5012b0-17b2-489f-9525-77f2357a34d1
+uuid: db9be189-1294-4df0-a563-f248d672eff6
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.condensed
     - field.field.media.youtube.field_media_video_embed_field
     - field.field.media.youtube.field_session
     - media_entity.bundle.youtube
   module:
     - video_embed_field
-id: media.youtube.default
+id: media.youtube.condensed
 targetEntityType: media
 bundle: youtube
-mode: default
+mode: condensed
 content:
   field_media_video_embed_field:
     type: video_embed_field_video
@@ -21,7 +22,7 @@ content:
       responsive: true
       width: 854
       height: 480
-      autoplay: true
+      autoplay: false
     third_party_settings: {  }
     region: content
 hidden:

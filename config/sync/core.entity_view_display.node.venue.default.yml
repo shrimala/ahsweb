@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.venue.body
+    - field.field.node.venue.field_timezone
     - node.type.venue
   module:
     - text
@@ -20,7 +21,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_timezone:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
