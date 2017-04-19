@@ -17,32 +17,38 @@ dependencies:
     - field.field.node.session.field_teaching_tags
     - node.type.session
   module:
-    - text
+    - datetime
     - user
 id: node.session.teaser
 targetEntityType: node
 bundle: session
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+  field_datetime:
+    type: datetime_default
+    weight: 0
+    region: content
+    label: above
     settings:
-      trim_length: 600
+      format_type: medium
+      timezone_override: ''
     third_party_settings: {  }
+  field_leader:
+    type: entity_reference_label
+    weight: 0
     region: content
-  links:
-    weight: 100
-    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
 hidden:
+  body: true
   field_admin_tags: true
   field_clip: true
-  field_datetime: true
   field_event: true
-  field_leader: true
   field_media: true
   field_original: true
   field_restricted: true
   field_session_type: true
   field_teaching_tags: true
+  links: true

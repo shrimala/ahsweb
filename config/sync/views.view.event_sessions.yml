@@ -348,10 +348,12 @@ display:
           empty_zero: 0
           hide_alter_empty: 1
           click_sort_column: value
-          type: datetime_default
+          type: datetime_using_venue_timezone
           settings:
-            timezone_override: ''
+            timezone_override: venue
             format_type: time
+            add_user_timezone: 0
+            user_timezone_format_type: medium
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -477,10 +479,12 @@ display:
           empty_zero: 0
           hide_alter_empty: 1
           click_sort_column: value
-          type: datetime_default
+          type: datetime_using_venue_timezone
           settings:
-            timezone_override: ''
+            timezone_override: venue
             format_type: long_day
+            add_user_timezone: 0
+            user_timezone_format_type: medium
           group_column: value
           group_columns: {  }
           group_rows: true

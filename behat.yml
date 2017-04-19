@@ -53,6 +53,8 @@ default:
         warning_message_selector: '.alert-warning'
         success_message_selector: '.alert-success'
       region_map:
+        #General
+        Views rows: ".views-row"
         #Home page views
         Help wanted discussions: ".view-display-id-help .views-row"
         My tasks: ".view-display-id-tasks .views-row"
@@ -73,8 +75,9 @@ default:
         Changes field: "div.field--name-field-changes"
         Datetime field: ".field--name-field-datetime,.views-field-field-datetime"
         Session type field: ".field--name-field-session-type"
-        Leader field: ".field--name-field-leader"
+        Leader field: ".field--name-field-leader,.views-field-field-leader"
         Event field: ".field--name-field-event"
+        Venue field: ".field--name-field-venue,.views-field-field-venue"
         #Events
         Sessions in an IEF complex widget: ".field--name-field-sessions tr.ief-row-entity"
         Sessions in an inline form: ".field--name-field-sessions tr > td.inline-entity-form-node-preview"

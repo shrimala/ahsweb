@@ -32,6 +32,8 @@ content:
     settings:
       timezone_override: venue
       format_type: long_day_with_time
+      user_timezone_format_type: medium
+      add_user_timezone: false
     third_party_settings: {  }
     type: datetime_using_venue_timezone
     region: content

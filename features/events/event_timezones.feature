@@ -32,6 +32,19 @@ Feature: Event time zones
     When I visit "events/2035/12/29/event1"
     Then I should see "Saturday 29 December 2035, 12:00pm"
 
+  Scenario: Editing event does not change start time unexpectedly
+    Given I am logged in as "Fred Midway"
+    When I visit "events/2035/12/29/event1"
+    Then I should see "Saturday 29 December 2035, 12:00pm"
+    When I click "Edit event"
+    And I fill in "title[0][value]" with "Event4"
+    And I press "Save and keep published"
+    And I visit "events/2035/12/29/event4"
+    Then I should see "Saturday 29 December 2035, 12:00pm"
+    Given I am logged in as "Jane Tokyo"
+    When I visit "events/2035/12/29/event4"
+    Then I should see "Saturday 29 December 2035, 12:00pm"
+
   Scenario: Event start shown in default time zone if no venue
     Given I am logged in as "Fred Midway"
     When I visit "events/2035/12/29/event2"

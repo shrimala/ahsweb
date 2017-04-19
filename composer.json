@@ -42,7 +42,7 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.3.0-rc1",
+        "drupal/core": "~8.3",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "drupal/flysystem": "1.x-dev",
@@ -129,7 +129,8 @@
         },
         "patches": {
             "drupal/core": {
-                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-108.patch"
+                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-135-entity-reference.patch",
+                "Cannot use relationship for rendered entity on Views": "https://www.drupal.org/files/issues/cannot_use_relationship-2457999-123.patch"
             },
             "drupal/drupal-driver": {
                 "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch"

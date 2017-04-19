@@ -7,6 +7,8 @@ Feature: Event sessions
   Background:
     # Pacific/Midway (UTC -11), Africa/Nairobi (UTC + 3), Asia/Kolkata (UTC + 05:30)
     # and America/Phoenix (UTC -7) never have DST.
+    # So if a session is at 12pm for an event in Phoenix, that will be 00:30  the next
+    # day for a user in Kolkata.
     Given users:
       | name          | timezone          | status | roles         |
       | Fred Midway   | Pacific/Midway    | 1      | Administrator |
@@ -106,3 +108,65 @@ Feature: Event sessions
     Then I should see "Sessions in an inline form":
       | Title field | Datetime field      |
       | Session1    | Sat 29 Dec, 12:00pm |
+
+  Scenario: Sessions in coming and past sections use venue time zone
+  Given "youtube" "media" entities:
+    | name    | field_media_video_embed_field               |
+    | Video1  | https://www.youtube.com/watch?v=9bZkp7q19f0 |
+    Given session content:
+      | title           | field_datetime      | field_event | field_session_type | field_media |
+      | Session4        | 2035-12-30 12:00:00 | Event1      | Teaching           |             |
+      | Session5        | 2035-12-31 12:00:00 | Event1      | Teaching           |             |
+      | Session6        | 2005-12-30 12:00:00 | Event1      | Teaching           | Video1      |
+  And I am logged in as "Fred Midway"
+  When I visit "events/2035/12/29/event1"
+  And I click "Online"
+  Then I should see "Coming session day groupings":
+    | contains           |
+    | Sunday 30 December |
+    | Monday 31 December |
+  And I should see "Coming sessions":
+      | Title field | Datetime field |
+      | Session4    | 12:00pm        |
+      | Session5    | 12:00pm        |
+  And I should see "Finished session headings":
+      | Title field | Datetime field              |
+      | Session6    | Friday 30 December, 12:00pm |
+  Given I am logged in as "Jane Kolkata"
+  When I visit "events/2035/12/29/event1"
+  And I click "Online"
+  Then I should see "Coming session day groupings":
+    | contains           |
+    | Sunday 30 December |
+    | Monday 31 December |
+  And I should see "Coming sessions":
+    | Title field | Datetime field |
+    | Session4    | 12:00pm        |
+    | Session5    | 12:00pm        |
+  And I should see "Finished session headings":
+    | Title field | Datetime field              |
+    | Session6    | Friday 30 December, 12:00pm |
+
+  Scenario: Viewing and editing an individual session directly
+    Given I am logged in as "Fred Midway"
+    And session content:
+      | title           | field_datetime      | field_event | field_session_type |
+      | Session4        | 2035-12-28 12:00:00 | Event1      | Teaching           |
+    When I visit "events/2035/12/29/event1"
+    And I click "Session4"
+    Then I should see "Friday 28 December 2035, 12:00pm" in the "Datetime field"
+    # Editing the session does not mess with the date
+    When I click "Edit"
+    And I fill in "title[0][value]" with "Session5"
+    And I press "Save and keep published"
+    Then I should see "Friday 28 December 2035, 12:00pm" in the "Datetime field"
+    When I click "Edit"
+    # Deliberate change to the date save OK using venue time zone.
+    And I fill in "field_datetime[0][value][time]" with "10:00"
+    And I press "Save and keep published"
+    Then I should see "Friday 28 December 2035, 10:00am" in the "Datetime field"
+    When I visit "events/2035/12/29/event1"
+    And I click "Online"
+    Then I should see "Next session":
+      | Title field | Datetime field                |
+      | Session5    | Friday 28 December, 10:00am(Friday 6:00am in your time Pacific/Midway) |

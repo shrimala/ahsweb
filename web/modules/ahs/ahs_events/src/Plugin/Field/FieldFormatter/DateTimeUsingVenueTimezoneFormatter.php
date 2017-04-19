@@ -86,16 +86,12 @@ class DateTimeUsingVenueTimezoneFormatter extends DateTimeDefaultFormatter {
 
       // Make the element provided by the parent be a child inside a container.
       unset($elements[$delta]);
-      $elements[$delta]['#type'] = 'container';
+      //$elements[$delta]['#type'] = 'container';
       $elements[$delta]['in_venue_timezone'] = $element;
-      $elements[$delta]['#attributes'] = $element['#attributes'];
-      unset($elements[$delta]['in_venue_timezone']['#attributes']);
-      if (isset($elements[$delta]['in_venue_timezone']['#attributes']['class'])) {
-        $elements[$delta]['in_venue_timezone']['#attributes']['class'][] = 'in-venue-timezone';
-      }
-      else {
-        $elements[$delta]['in_venue_timezone']['#attributes']['class'] = ['in-venue-timezone'];
-      }
+      //$elements[$delta]['#attributes'] = $element['#attributes'];
+      //$elements[$delta]['#attributes']['class'][] = 'container-inline';
+      //unset($elements[$delta]['in_venue_timezone']['#attributes']);
+      $elements[$delta]['in_venue_timezone']['#attributes']['class'][] = 'in-venue-timezone';
       $elements[$delta]['#cache'] = $elements[$delta]['in_venue_timezone']['#cache'];
 
       // Add cache tags to depend on the event or venue.

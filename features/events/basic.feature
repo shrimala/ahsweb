@@ -22,7 +22,7 @@ Feature: Events listings
     When I visit "events/2005/10/01/event-3"
     When I visit "events/2005/10/01/event-and-4"
     Then the response status code should be 200
-@test
+
   Scenario: Events url use venue time zone
     # Event times are interpreted in site default time (Europe/London)
     # by Behat, but then reinterpreted using venue time zone at presave.

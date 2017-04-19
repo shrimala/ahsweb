@@ -50,8 +50,7 @@ Feature: Event sessions
       | title  | field_sessions   |
       | Event1 | Session1, Session2, Session3, Session4, Session5, Session6, Session7, Session8, Session9 |
       | Event2 | Session11, Session12                                         |
-      | Event3 |                                                            |
-    #Then I break
+      | Event3 |                                                              |
     When I visit "admin/content"
     And I click "Event1"
     And I click "Online"

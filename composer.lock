@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "58b7c2ac6179c415e6885bb891dfb549",
-    "content-hash": "759fbf5a4d6d03ac1ae6981910591625",
+    "hash": "a3a6401096580ed895d8bc24b841ca36",
+    "content-hash": "fa2ef75a5651cd3c0b02aa267a1f79df",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2337,16 +2337,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.3.0-rc1",
+            "version": "8.3.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-core.git",
-                "reference": "f9f055385da1f94bb255179f7335ed3a5dbdf28f"
+                "reference": "cbf5f87e70b0a2b3fbebf3d175d9252d3237dad3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/f9f055385da1f94bb255179f7335ed3a5dbdf28f",
-                "reference": "f9f055385da1f94bb255179f7335ed3a5dbdf28f",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/cbf5f87e70b0a2b3fbebf3d175d9252d3237dad3",
+                "reference": "cbf5f87e70b0a2b3fbebf3d175d9252d3237dad3",
                 "shasum": ""
             },
             "require": {
@@ -2486,17 +2486,18 @@
             "require-dev": {
                 "behat/mink": "1.7.x-dev",
                 "behat/mink-goutte-driver": "~1.2",
-                "drupal/coder": "8.2.10",
+                "drupal/coder": "8.2.11",
                 "jcalderonzumba/gastonjs": "~1.0.2",
                 "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
                 "mikey179/vfsstream": "~1.2",
-                "phpunit/phpunit": "~4.8",
+                "phpunit/phpunit": ">=4.8.28 <5",
                 "symfony/css-selector": "~2.8"
             },
             "type": "drupal-core",
             "extra": {
                 "patches_applied": {
-                    "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-108.patch"
+                    "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-135-entity-reference.patch",
+                    "Cannot use relationship for rendered entity on Views": "https://www.drupal.org/files/issues/cannot_use_relationship-2457999-123.patch"
                 }
             },
             "autoload": {
@@ -2520,7 +2521,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2017-03-01 15:35:49"
+            "time": "2017-03-15 21:19:09"
         },
         {
             "name": "drupal/ctools",
