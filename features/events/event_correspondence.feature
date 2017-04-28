@@ -74,7 +74,7 @@ Feature: Events Corresponding Entity References
     Then I should not see "Event1" displayed from the "field_event" field
 
   Scenario: Manually creating a session from an event
-    Given "Session type" terms:
+    Given session_type terms:
       | name       |
       | Meditation |
       | Teaching   |
@@ -93,7 +93,7 @@ Feature: Events Corresponding Entity References
     Then I should see "Event1" displayed from the "field_event" field
 
   Scenario: Manually referencing an event from a session
-    Given "Session type" terms:
+    Given session_type terms:
       | name       |
       | Meditation |
     And an event with the title "Event1"
@@ -110,7 +110,7 @@ Feature: Events Corresponding Entity References
     Then I should see "Session1" displayed from the "field_sessions" field
 
   Scenario: Changing the event on a session adds a session reference on the event
-    Given "Session type" terms:
+    Given session_type terms:
       | name       |
       | Meditation |
     Given event content:

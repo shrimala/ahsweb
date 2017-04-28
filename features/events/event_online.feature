@@ -24,7 +24,7 @@ Feature: Event sessions
       | name    | field_media_video_embed_field               |
       | Video1  | https://www.youtube.com/watch?v=9bZkp7q19f0 |
       | Video2  | https://www.youtube.com/watch?v=9bZkp7q19f0 |
-    Given "Session type" terms:
+    Given session_type terms:
       | name       |
       | Meditation |
       | Teaching   |

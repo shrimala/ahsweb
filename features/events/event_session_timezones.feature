@@ -25,7 +25,7 @@ Feature: Event sessions
       | Event1          | 2035-12-29 12:00:00 | A venue in Phoenix        |
       | Event2          | 2035-12-29 12:00:00 |                           |
       | Event3          | 2035-12-29 12:00:00 | A venue without time zone |
-    And "Session type" terms:
+    And session_type terms:
       | name       |
       | Teaching   |
     And session content:

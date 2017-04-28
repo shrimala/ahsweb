@@ -55,7 +55,7 @@ Feature: Sessions archive
     Given event content:
       | title           | field_datetime      |
       | Event1          | 2005-12-29 04:00:00 |
-    And "Session type" terms:
+    And session_type terms:
       | name       |
       | Teaching   |
     And teacher content:
