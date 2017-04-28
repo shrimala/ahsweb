@@ -27,3 +27,10 @@ linkit
 language
 locale
 config_split
+eva
+views_bootstrap
+ds
+inline_entity_form
+inline_entity_form_preview
+auto_entitylabel
+tzfield
