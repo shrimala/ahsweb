@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a3a6401096580ed895d8bc24b841ca36",
-    "content-hash": "fa2ef75a5651cd3c0b02aa267a1f79df",
+    "hash": "cc45e3ef2d53defb8f7fe4d7049f3522",
+    "content-hash": "3d953d88b01cb086ac20f7f955dafc97",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1659,6 +1659,9 @@
                 "drupal": {
                     "version": "8.x-2.0-beta1",
                     "datestamp": "1487875383"
+                },
+                "patches_applied": {
+                    "Integration with inline entity form": "https://www.drupal.org/files/issues/2848128-4.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1669,6 +1672,10 @@
                 {
                     "name": "Pravin Ajaaz",
                     "homepage": "https://www.drupal.org/user/2910049"
+                },
+                {
+                    "name": "RenatoG",
+                    "homepage": "https://www.drupal.org/user/3326031"
                 },
                 {
                     "name": "bforchhammer",
@@ -2798,7 +2805,8 @@
                     "dev-master": "1.2.x-dev"
                 },
                 "patches_applied": {
-                    "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch"
+                    "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch",
+                    "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch"
                 }
             },
             "autoload": {
@@ -2895,11 +2903,17 @@
         },
         {
             "name": "drupal/ds",
-            "version": "dev-3.x",
+            "version": "3.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/ds",
-                "reference": "f672539a9f0fa2f3ed055f882623c9b30296ff65"
+                "reference": "8.x-3.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ds-8.x-3.0-beta2.zip",
+                "reference": "8.x-3.0-beta2",
+                "shasum": "4e9ad1d29516fe1578912ff08cfc4e76ac665499"
             },
             "require": {
                 "drupal/core": "^8.3"
@@ -2914,8 +2928,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha1+3-dev",
-                    "datestamp": "1489594983"
+                    "version": "8.x-3.0-beta2",
+                    "datestamp": "1491592383"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2954,8 +2968,7 @@
                 "source": "http://git.drupal.org/project/ds.git",
                 "issues": "https://www.drupal.org/project/issues/ds",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            },
-            "time": "2017-03-15 22:06:57"
+            }
         },
         {
             "name": "drupal/email_registration",
@@ -5098,6 +5111,7 @@
                 }
             ],
             "description": "Flysystem adapter for Dropbox",
+            "abandoned": "spatie/flysystem-dropbox",
             "time": "2016-04-25 18:51:39"
         },
         {
@@ -9378,7 +9392,6 @@
         "drupal/field_group": 20,
         "drupal/r4032login": 20,
         "drupal/views_bootstrap": 20,
-        "drupal/ds": 20,
         "drupal/inline_entity_form_preview": 20,
         "drupal/tzfield": 20
     },

@@ -75,7 +75,7 @@
         "drupal/token": "1.0-rc1",
         "drupal/eva": "1.1-rc1",
         "drupal/views_bootstrap": "3.x-dev",
-        "drupal/ds": "3.x-dev",
+        "drupal/ds": "3.0-beta2",
         "drupal/inline_entity_form": "1.0-beta1",
         "drupal/inline_entity_form_preview": "1.x-dev",
         "drupal/auto_entitylabel": "2.0-beta1",
@@ -133,7 +133,8 @@
                 "Cannot use relationship for rendered entity on Views": "https://www.drupal.org/files/issues/cannot_use_relationship-2457999-123.patch"
             },
             "drupal/drupal-driver": {
-                "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch"
+                "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch",
+                "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch"
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
@@ -142,6 +143,9 @@
             },
             "drupal/email_registration": {
                 "Add support for Behat tests (use AuthenticationManager)": "https://www.drupal.org/files/issues/2843505-8.patch"
+            },
+            "drupal/auto_entitylabel": {
+                "Integration with inline entity form": "https://www.drupal.org/files/issues/2848128-4.patch"
             },
             "drupal/inline_entity_form_preview": {
                 "PreviewBuilder should use isNew": "https://www.drupal.org/files/issues/2759151-2.patch"

@@ -73,9 +73,7 @@ Feature: Sessions archive
       | field_leader       | Lama Shenpen        |
       | field_media        | Video1              |
     Then I should see "Event1" in the "Event field"
-    And I should see "Thu 29 Dec 2005" in the "Event field"
     And I should see "Teaching" in the "Session type field"
     And I should see "Lama Shenpen" in the "Leader field"
-    When I click "Event1"
-    Then I should see the heading "Recordings"
+    And I should see an "iframe[src='https://www.youtube.com/embed/9bZkp7q19f0?autoplay=0&start=0&rel=0']" element
 

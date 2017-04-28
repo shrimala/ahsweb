@@ -1,6 +1,6 @@
 uuid: 3b3cee79-3efa-45e9-a39e-abd9b763bef7
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.ahs_child

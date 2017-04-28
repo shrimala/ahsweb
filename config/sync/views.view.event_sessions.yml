@@ -794,6 +794,7 @@ display:
         - 'config:core.entity_view_display.node.event.default'
         - 'config:core.entity_view_display.node.event.details'
         - 'config:core.entity_view_display.node.event.full'
+        - 'config:core.entity_view_display.node.event.panel_header'
         - 'config:core.entity_view_display.node.event.parent'
         - 'config:core.entity_view_display.node.event.teaser'
         - 'config:core.entity_view_display.node.event.token'
