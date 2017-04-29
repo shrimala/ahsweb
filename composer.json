@@ -42,7 +42,7 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "~8.3",
+        "drupal/core": "^8.3",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "drupal/flysystem": "1.x-dev",
@@ -138,8 +138,7 @@
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
-                "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch",
-                "Do not assume nodes of all types have 'body' fields": "https://github.com/jhedstrom/drupalextension/pull/263.patch"
+                "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch"
             },
             "drupal/email_registration": {
                 "Add support for Behat tests (use AuthenticationManager)": "https://www.drupal.org/files/issues/2843505-8.patch"

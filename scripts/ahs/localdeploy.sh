@@ -11,4 +11,4 @@ drush cc drush
 drush --yes config-split-import
 
 drush --yes sql-sanitize --sanitize-email="no"
-drush entup --yes
+drush --yes entup
