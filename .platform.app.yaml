@@ -71,6 +71,7 @@ hooks:
       fi
       drush cc drush
       drush config-split-import --yes
+      drush config-split-import --yes
       drush -y entup
 
 
