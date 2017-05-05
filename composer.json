@@ -129,8 +129,7 @@
         },
         "patches": {
             "drupal/core": {
-                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-135-entity-reference.patch",
-                "Cannot use relationship for rendered entity on Views": "https://www.drupal.org/files/issues/cannot_use_relationship-2457999-123.patch"
+                "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-135-entity-reference.patch"
             },
             "drupal/drupal-driver": {
                 "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch",
@@ -148,6 +147,9 @@
             },
             "drupal/inline_entity_form_preview": {
                 "PreviewBuilder should use isNew": "https://www.drupal.org/files/issues/2759151-2.patch"
+            },
+            "drupal/views_bootstrap": {
+                "Regression: Raw field value displayed in accordion panel title": "https://www.drupal.org/files/issues/raw_field_value-2870642-2.patch"
             }
         }
     },

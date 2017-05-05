@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11ed689e0cabcfacb8c953e0b3c39558",
-    "content-hash": "b43d8dcf55d87e9aa3065faa56d42d95",
+    "hash": "fc5d273804a8e6f84a18e3e13fef632e",
+    "content-hash": "fbb328b8d369e73be8fe0cddc0301f05",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2369,16 +2369,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.3.1",
+            "version": "8.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/drupal-composer/drupal-core.git",
-                "reference": "53326f9503e5e9e406fab22e4fbae6ddb706f7be"
+                "url": "https://github.com/drupal/core.git",
+                "reference": "82c432cfe728458538d4826c9c4be57dcf35443b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/53326f9503e5e9e406fab22e4fbae6ddb706f7be",
-                "reference": "53326f9503e5e9e406fab22e4fbae6ddb706f7be",
+                "url": "https://api.github.com/repos/drupal/core/zipball/82c432cfe728458538d4826c9c4be57dcf35443b",
+                "reference": "82c432cfe728458538d4826c9c4be57dcf35443b",
                 "shasum": ""
             },
             "require": {
@@ -2411,6 +2411,9 @@
                 "twig/twig": "^1.23.1",
                 "zendframework/zend-diactoros": "~1.1",
                 "zendframework/zend-feed": "~2.4"
+            },
+            "conflict": {
+                "drush/drush": "<8.1.10"
             },
             "replace": {
                 "drupal/action": "self.version",
@@ -2528,8 +2531,7 @@
             "type": "drupal-core",
             "extra": {
                 "patches_applied": {
-                    "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-135-entity-reference.patch",
-                    "Cannot use relationship for rendered entity on Views": "https://www.drupal.org/files/issues/cannot_use_relationship-2457999-123.patch"
+                    "View output is not used for autocomplete display": "https://www.drupal.org/files/issues/2174633-135-entity-reference.patch"
                 }
             },
             "autoload": {
@@ -2553,7 +2555,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2017-04-19 16:07:22"
+            "time": "2017-05-03 17:12:42"
         },
         {
             "name": "drupal/ctools",
@@ -4134,6 +4136,9 @@
                 "drupal": {
                     "version": "8.x-3.x-dev",
                     "datestamp": "1490369283"
+                },
+                "patches_applied": {
+                    "Regression: Raw field value displayed in accordion panel title": "https://www.drupal.org/files/issues/raw_field_value-2870642-2.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
