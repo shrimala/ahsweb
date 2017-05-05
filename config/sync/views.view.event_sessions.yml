@@ -716,8 +716,7 @@ display:
       style:
         type: views_bootstrap_accordion
         options:
-          grouping: {  }
-          title_field: rendered_entity
+          panel_title_field: rendered_entity
       row:
         type: 'entity:node'
         options:
