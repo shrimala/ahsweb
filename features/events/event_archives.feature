@@ -16,7 +16,7 @@ Feature: Event archives
       | Event1          | 2005-12-29 12:00:00 | Hermitage        | Lama Shenpen |
       | Event2          | 2035-12-29 12:00:00 | Hermitage        | Lama Shenpen |
     And I am logged in as an administrator
-@test
+
   Scenario: See a list of past events
     When I visit "archives/events"
     Then I should see the heading "Archive of events"
