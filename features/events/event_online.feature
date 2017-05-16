@@ -115,4 +115,3 @@ Feature: Event sessions
     And I should not see the heading "Coming"
     And I should not see the heading "Recordings"
     When I should not see a "field_media_target_id" element
-
