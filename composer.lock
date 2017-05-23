@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "428dd1fa116c6104dc2493949c0ab6c5",
+    "content-hash": "82e60e71625c39390e94e90eea2b9d61",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3578,7 +3578,8 @@
             "homepage": "https://www.drupal.org/project/inline_entity_form_preview",
             "support": {
                 "source": "http://cgit.drupalcode.org/inline_entity_form_preview"
-            }
+            },
+            "time": "2016-06-06 17:23:49"
         },
         {
             "name": "drupal/linkit",
@@ -4168,7 +4169,8 @@
             ],
             "support": {
                 "source": "http://cgit.drupalcode.org/views_bootstrap"
-            }
+            },
+            "time": "2017-03-29 14:23:33"
         },
         {
             "name": "drush/drush",
