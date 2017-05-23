@@ -9,20 +9,24 @@
             "role": ""
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.org"
+        },
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-        {
+        "file_checker": {
             "type": "vcs",
             "url": "https://github.com/shrimala/file_checker"
         },
-        {
+        "tzfield": {
             "type": "vcs",
             "url": "https://github.com/shrimala/tzfield"
         },
-        {
+        "chosen": {
             "type": "package",
             "package": {
                 "name": "harvesthq/chosen",
@@ -37,7 +41,7 @@
                 }
             }
         }
-    ],
+    },
     "require": {
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
