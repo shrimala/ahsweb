@@ -17,7 +17,7 @@ build:
     # - phpenv rehash
     # - phpenv config-rm xdebug.ini
     - composer --verbose install
-    -ls
+    - ls
     - cd web
     - ./../vendor/bin/drush site-install minimal --verbose --yes --db-url=sqlite://tmp/site.sqlite
     - cd ..
