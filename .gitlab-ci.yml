@@ -1,23 +1,24 @@
 image: tetraweb/php:7.0
 
 variables:
-  - SIMPLETEST_DB=sqlite://tmp/site.sqlite
-  - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
-  # composer install should fail on bad patches.
-  - COMPOSER_EXIT_ON_PATCH_FAILURE=1
+  SIMPLETEST_DB: "sqlite://tmp/site.sqlite"
+  SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
+  COMPOSER_EXIT_ON_PATCH_FAILURE: "1"
 
-build:
-  - apt-get update
-#  - apt-get install zip unzip
-  - echo 'max_execution_time = 120' >> drupal.php.ini;
-  - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
-  - phpenv config-add drupal.php.ini
-  - phpenv rehash  
-#  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-#  - php composer-setup.php
-#  - php -r "unlink('composer-setup.php');"
-  - phpenv config-rm xdebug.ini
-  - php composer.phar --verbose install
+composer:
+  stage: build
+  script:
+    - apt-get update
+  #  - apt-get install zip unzip
+    - echo 'max_execution_time = 120' >> drupal.php.ini
+    - echo 'sendmail_path = /bin/true' >> drupal.php.ini
+    - phpenv config-add drupal.php.ini
+    - phpenv rehash
+  #  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  #  - php composer-setup.php
+  #  - php -r "unlink('composer-setup.php');"
+    - phpenv config-rm xdebug.ini
+    - php composer.phar --verbose install
 
   
 #    services:
