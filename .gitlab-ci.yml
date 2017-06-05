@@ -6,7 +6,8 @@ variables:
   COMPOSER_EXIT_ON_PATCH_FAILURE: "1"
 
 before_script:
-    - docker-php-ext-enable zip dom filter gd hash json pcre pdo session SimpleXML SPL tokenizer xml
+  - php -m
+  - docker-php-ext-enable gd
 
 build:
   stage: build
