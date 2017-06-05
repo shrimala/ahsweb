@@ -12,12 +12,12 @@ composer:
   #  - apt-get install zip unzip
     - echo 'max_execution_time = 120' >> drupal.php.ini
     - echo 'sendmail_path = /bin/true' >> drupal.php.ini
-    - phpenv config-add drupal.php.ini
-    - phpenv rehash
+   # - phpenv config-add drupal.php.ini
+   # - phpenv rehash
   #  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
   #  - php composer-setup.php
   #  - php -r "unlink('composer-setup.php');"
-    - phpenv config-rm xdebug.ini
+  #  - phpenv config-rm xdebug.ini
     - php composer.phar --verbose install
 
   
