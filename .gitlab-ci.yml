@@ -5,6 +5,9 @@ variables:
   SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
   COMPOSER_EXIT_ON_PATCH_FAILURE: "1"
 
+before_script:
+    - docker-php-ext-enable zip
+
 composer:
   stage: build
   script:
