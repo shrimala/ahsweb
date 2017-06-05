@@ -18,7 +18,7 @@ composer:
   #  - php composer-setup.php
   #  - php -r "unlink('composer-setup.php');"
   #  - phpenv config-rm xdebug.ini
-    - php composer.phar --verbose install
+    - composer --verbose install
 
   
 #    services:
