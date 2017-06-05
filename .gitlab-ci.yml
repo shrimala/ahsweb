@@ -8,37 +8,28 @@ variables:
 before_script:
     - docker-php-ext-enable zip
 
-composer:
+build:
   stage: build
   script:
-    - apt-get update
-  #  - apt-get install zip unzip
-    - echo 'max_execution_time = 120' >> drupal.php.ini
-    - echo 'sendmail_path = /bin/true' >> drupal.php.ini
-   # - phpenv config-add drupal.php.ini
-   # - phpenv rehash
-  #  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-  #  - php composer-setup.php
-  #  - php -r "unlink('composer-setup.php');"
-  #  - phpenv config-rm xdebug.ini
+    #- echo 'max_execution_time = 120' >> drupal.php.ini
+    # - echo 'sendmail_path = /bin/true' >> drupal.php.ini
+    # - phpenv config-add drupal.php.ini
+    # - phpenv rehash
+    # - phpenv config-rm xdebug.ini
     - composer --verbose install
+    -ls
+    - cd web
+    - ./../vendor/bin/drush site-install minimal --verbose --yes --db-url=sqlite://tmp/site.sqlite
+    - cd ..
+    - sh scripts/ahs/deploy.sh
+    - cd web
+    - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
+    - sleep 3
 
   
 #    services:
 #    - tetraweb/mysql
 
-#before_script:
-#  - cd $TRAVIS_BUILD_DIR/web
-#  - ./../vendor/bin/drush site-install minimal --verbose --yes --db-url=sqlite://tmp/site.sqlite
-#  - ./../vendor/bin/drush config-set "system.site" uuid "2748a6a9-0c67-43c6-aa47-71df4737a69f" --yes
-#  - for module in `cat ../modules.common`; do ./../vendor/bin/drush --yes pm-enable $module; done
-#  - for module in `cat ../modules.master`; do ./../vendor/bin/drush --yes pm-enable $module; done
-#  - ./../vendor/bin/drush cc drush
-#  - ./../vendor/bin/drush config-split-import --yes
-#  - ./../vendor/bin/drush config-split-import --yes
-#  - ./../vendor/bin/drush entup --yes
-#  - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
-#  - sleep 3
 
 #script:
 #  - cd $TRAVIS_BUILD_DIR
