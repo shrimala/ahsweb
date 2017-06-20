@@ -30,4 +30,5 @@ Feature: Media archive
     Given I am viewing an "audio" "media" entity:
       | name          | Test audio   |
       | field_dropbox | test.mp3     |
-    Then I should see an "audio source[src='http://localhost/_flysystem/dropboxwebarchive/test.mp3']" element
+    # Test src attribute ends with flysystem path
+    Then I should see an "audio source[src$='/_flysystem/dropboxwebarchive/test.mp3']" element
