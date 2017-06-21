@@ -1,0 +1,13 @@
+uuid: 7a9f45ab-30d9-4744-a269-a975d1ed53b7
+langcode: en
+status: true
+dependencies: {  }
+id: discussion_admin
+label: 'Discussion admin'
+weight: 2
+is_admin: null
+permissions:
+  - 'administer comments'
+  - 'delete any discussion content'
+  - 'delete discussion revisions'
+  - 'revert discussion revisions'

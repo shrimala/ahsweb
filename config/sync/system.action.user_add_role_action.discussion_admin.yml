@@ -1,0 +1,14 @@
+uuid: e0bd521d-04b2-43e9-be36-2408b271968b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.discussion_admin
+  module:
+    - user
+id: user_add_role_action.discussion_admin
+label: 'Add the Discussion admin role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: discussion_admin

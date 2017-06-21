@@ -185,9 +185,17 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
   // Remove the menu settings
   //$form['menu']['#access']=FALSE;
 
+  //if !($entity->access('delete', $account)) {
   // Remove the delete button
-  $form['actions']['delete']['#access'] = FALSE;
-  $form['actions']['submit']['#attributes']['data-spy'] = 'affix';
+  //$form['actions']['delete']['#access'] = FALSE;
+
+  $node = $form_state->getFormObject()->getEntity();
+  $form['actions']['delete']['#access'] = $node->access('delete');
+  $form['actions']['submit']['#dropbutton'] = 'save';
+  $form['actions']['delete']['#dropbutton'] = 'save';
+
+  //$form['actions']['submit']['#attributes']['data-spy'] = 'affix';
+  $form['actions']['#attributes']['data-spy'] = 'affix';
 
   // If there is no referenced parent, fake a 'Discuss' pseudo-breadcrumb
   // This is necessary because usually this root pseudo-breadcrumb comes

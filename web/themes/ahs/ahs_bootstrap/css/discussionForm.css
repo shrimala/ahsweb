@@ -135,7 +135,7 @@ form.node-discussion-ahs-discuss-form article.comment .media-heading .ahs-create
     padding-left:1em;
 }
 
-form.node-discussion-ahs-discuss-form button.form-submit.button--primary {
+form.node-discussion-ahs-discuss-form div.form-actions {
     margin-top:20px;
     bottom:10%;
     right:20px;
