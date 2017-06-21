@@ -7,16 +7,16 @@ dependencies:
 id: email_teachings
 label: 'Email teachings'
 type: 'canonical_entities:node'
-pattern: 'archive/emails/[node:created:custom:Y/m/d]/[node:title]'
+pattern: 'archive/emails/[node:created:path_date]/[node:title]'
 selection_criteria:
-  372fa2d8-ef5a-41fa-81fb-c5c8a1a37dbb:
+  1319eb51-4d82-4b09-aa41-9b6702ca1ad4:
     id: node_type
     bundles:
       email_teaching: email_teaching
     negate: false
     context_mapping:
       node: node
-    uuid: 372fa2d8-ef5a-41fa-81fb-c5c8a1a37dbb
+    uuid: 1319eb51-4d82-4b09-aa41-9b6702ca1ad4
 selection_logic: and
 weight: -5
 relationships: {  }

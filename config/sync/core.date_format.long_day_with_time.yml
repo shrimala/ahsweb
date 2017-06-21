@@ -1,0 +1,8 @@
+uuid: 16cf7aca-9d5a-441f-b920-5cf47a2539bd
+langcode: en
+status: true
+dependencies: {  }
+id: long_day_with_time
+label: 'Long day with time'
+locked: false
+pattern: 'l j F, g:ia'

@@ -1,0 +1,8 @@
+uuid: ea5772e3-dc95-464f-8de9-25b1c3b8de7d
+langcode: en
+status: true
+dependencies: {  }
+id: long_day
+label: 'Long day'
+locked: false
+pattern: 'l j F'

@@ -1,0 +1,8 @@
+uuid: a80b0633-39fe-46b9-822b-08ffd2c61e09
+langcode: en
+status: true
+dependencies: {  }
+id: short_day_with_time
+label: 'Short day with time'
+locked: false
+pattern: 'D j M, g:ia'

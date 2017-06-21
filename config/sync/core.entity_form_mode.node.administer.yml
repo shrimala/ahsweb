@@ -1,0 +1,10 @@
+uuid: 8d9082f9-e3da-4418-8134-ba77a9de73a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.administer
+label: Administer
+targetEntityType: node
+cache: true

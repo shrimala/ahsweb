@@ -1,0 +1,10 @@
+uuid: f5984d5f-3737-47e3-9626-56a9d2e85539
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.parent
+label: Parent
+targetEntityType: node
+cache: true

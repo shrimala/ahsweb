@@ -1,0 +1,10 @@
+uuid: 403ebf7f-29ff-46f3-bcb7-f1a03bf41616
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.condensed
+label: Condensed
+targetEntityType: media
+cache: true

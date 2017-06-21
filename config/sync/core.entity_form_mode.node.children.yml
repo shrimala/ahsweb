@@ -1,0 +1,10 @@
+uuid: 120386ef-0dee-4473-9b78-8dfca0d1af39
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.children
+label: Children
+targetEntityType: node
+cache: true

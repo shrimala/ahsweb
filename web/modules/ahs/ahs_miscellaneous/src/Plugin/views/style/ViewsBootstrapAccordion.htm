@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>views_bootstrap - For more information about this repository, visit the project page at http://drupal.org/project/views_bootstrap</title>
+<meta name='generator' content='cgit v0.12'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit-data/cgit.css'/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='http://cgit.drupalcode.org/views_bootstrap/atom/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x' type='application/atom+xml'/>
+<link rel='vcs-git' href='git://git.drupal.org/project/views_bootstrap.git' title='views_bootstrap Git repository'/>
+</head>
+<body>
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/'><img src='/cgit-data/logo.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/'>index</a> : <a title='views_bootstrap' href='/views_bootstrap/'>views_bootstrap</a></td><td class='form'><form method='get' action=''>
+<select name='h' onchange='this.form.submit();'>
+<option value='7.x-1.x'>7.x-1.x</option>
+<option value='7.x-2.x'>7.x-2.x</option>
+<option value='7.x-3.x'>7.x-3.x</option>
+<option value='8.x-3.x' selected='selected'>8.x-3.x</option>
+</select> <input type='submit' name='' value='switch'/></form></td></tr>
+<tr><td class='sub'>For more information about this repository, visit the project page at http://drupal.org/project/views_bootstrap</td><td class='sub right'>Drupal Git User (LDAP)</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/views_bootstrap/?h=8.x-3.x'>summary</a><a href='/views_bootstrap/refs/?h=8.x-3.x'>refs</a><a href='/views_bootstrap/log/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x'>log</a><a class='active' href='/views_bootstrap/tree/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x'>tree</a><a href='/views_bootstrap/commit/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x'>commit</a><a href='/views_bootstrap/diff/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x'>diff</a><a href='/views_bootstrap/stats/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x'>stats</a></td><td class='form'><form class='right' method='get' action='/views_bootstrap/log/src/Plugin/views/style/ViewsBootstrapAccordion.php'>
+<input type='hidden' name='h' value='8.x-3.x'/><select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/views_bootstrap/tree/?h=8.x-3.x'>root</a>/<a href='/views_bootstrap/tree/src?h=8.x-3.x'>src</a>/<a href='/views_bootstrap/tree/src/Plugin?h=8.x-3.x'>Plugin</a>/<a href='/views_bootstrap/tree/src/Plugin/views?h=8.x-3.x'>views</a>/<a href='/views_bootstrap/tree/src/Plugin/views/style?h=8.x-3.x'>style</a>/<a href='/views_bootstrap/tree/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x'>ViewsBootstrapAccordion.php</a></div><div class='content'>blob: 94678722ce09c1c9914d26e3cc498a1a0a3872d3 (<a href='/views_bootstrap/plain/src/Plugin/views/style/ViewsBootstrapAccordion.php?h=8.x-3.x'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+<a id='n15' href='#n15'>15</a>
+<a id='n16' href='#n16'>16</a>
+<a id='n17' href='#n17'>17</a>
+<a id='n18' href='#n18'>18</a>
+<a id='n19' href='#n19'>19</a>
+<a id='n20' href='#n20'>20</a>
+<a id='n21' href='#n21'>21</a>
+<a id='n22' href='#n22'>22</a>
+<a id='n23' href='#n23'>23</a>
+<a id='n24' href='#n24'>24</a>
+<a id='n25' href='#n25'>25</a>
+<a id='n26' href='#n26'>26</a>
+<a id='n27' href='#n27'>27</a>
+<a id='n28' href='#n28'>28</a>
+<a id='n29' href='#n29'>29</a>
+<a id='n30' href='#n30'>30</a>
+<a id='n31' href='#n31'>31</a>
+<a id='n32' href='#n32'>32</a>
+<a id='n33' href='#n33'>33</a>
+<a id='n34' href='#n34'>34</a>
+<a id='n35' href='#n35'>35</a>
+<a id='n36' href='#n36'>36</a>
+<a id='n37' href='#n37'>37</a>
+<a id='n38' href='#n38'>38</a>
+<a id='n39' href='#n39'>39</a>
+<a id='n40' href='#n40'>40</a>
+<a id='n41' href='#n41'>41</a>
+<a id='n42' href='#n42'>42</a>
+<a id='n43' href='#n43'>43</a>
+<a id='n44' href='#n44'>44</a>
+<a id='n45' href='#n45'>45</a>
+<a id='n46' href='#n46'>46</a>
+<a id='n47' href='#n47'>47</a>
+<a id='n48' href='#n48'>48</a>
+<a id='n49' href='#n49'>49</a>
+<a id='n50' href='#n50'>50</a>
+<a id='n51' href='#n51'>51</a>
+<a id='n52' href='#n52'>52</a>
+<a id='n53' href='#n53'>53</a>
+<a id='n54' href='#n54'>54</a>
+<a id='n55' href='#n55'>55</a>
+<a id='n56' href='#n56'>56</a>
+<a id='n57' href='#n57'>57</a>
+<a id='n58' href='#n58'>58</a>
+<a id='n59' href='#n59'>59</a>
+<a id='n60' href='#n60'>60</a>
+<a id='n61' href='#n61'>61</a>
+<a id='n62' href='#n62'>62</a>
+<a id='n63' href='#n63'>63</a>
+<a id='n64' href='#n64'>64</a>
+<a id='n65' href='#n65'>65</a>
+<a id='n66' href='#n66'>66</a>
+<a id='n67' href='#n67'>67</a>
+</pre></td>
+<td class='lines'><pre><code><style>.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #ffffff; }
+.highlight .c { color: #888888 } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { color: #008800; font-weight: bold } /* Keyword */
+.highlight .cm { color: #888888 } /* Comment.Multiline */
+.highlight .cp { color: #cc0000; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #888888 } /* Comment.Single */
+.highlight .cs { color: #cc0000; font-weight: bold; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #303030 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #606060 } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008800 } /* Keyword.Pseudo */
+.highlight .kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #888888; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #0000DD; font-weight: bold } /* Literal.Number */
+.highlight .s { color: #dd2200; background-color: #fff0f0 } /* Literal.String */
+.highlight .na { color: #336699 } /* Name.Attribute */
+.highlight .nb { color: #003388 } /* Name.Builtin */
+.highlight .nc { color: #bb0066; font-weight: bold } /* Name.Class */
+.highlight .no { color: #003366; font-weight: bold } /* Name.Constant */
+.highlight .nd { color: #555555 } /* Name.Decorator */
+.highlight .ne { color: #bb0066; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0066bb; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #336699; font-style: italic } /* Name.Label */
+.highlight .nn { color: #bb0066; font-weight: bold } /* Name.Namespace */
+.highlight .py { color: #336699; font-weight: bold } /* Name.Property */
+.highlight .nt { color: #bb0066; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #336699 } /* Name.Variable */
+.highlight .ow { color: #008800 } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #0000DD; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #0000DD; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #0000DD; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sb { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Backtick */
+.highlight .sc { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Char */
+.highlight .sd { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Doc */
+.highlight .s2 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Double */
+.highlight .se { color: #0044dd; background-color: #fff0f0 } /* Literal.String.Escape */
+.highlight .sh { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Heredoc */
+.highlight .si { color: #3333bb; background-color: #fff0f0 } /* Literal.String.Interpol */
+.highlight .sx { color: #22bb22; background-color: #f0fff0 } /* Literal.String.Other */
+.highlight .sr { color: #008800; background-color: #fff0ff } /* Literal.String.Regex */
+.highlight .s1 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Single */
+.highlight .ss { color: #aa6600; background-color: #fff0f0 } /* Literal.String.Symbol */
+.highlight .bp { color: #003388 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #336699 } /* Name.Variable.Class */
+.highlight .vg { color: #dd7700 } /* Name.Variable.Global */
+.highlight .vi { color: #3333bb } /* Name.Variable.Instance */
+.highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */</style><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @file</span>
+<span class="sd"> * Definition of Drupal\views_bootstrap\Plugin\views\style\ViewsBootstrapAccordion.</span>
+<span class="sd"> */</span>
+
+<span class="nx">namespace</span> <span class="nx">Drupal</span><span class="err">\</span><span class="nx">views_bootstrap</span><span class="err">\</span><span class="nx">Plugin</span><span class="err">\</span><span class="nx">views</span><span class="err">\</span><span class="nx">style</span><span class="p">;</span>
+
+<span class="nx">use</span> <span class="nx">Drupal</span><span class="err">\</span><span class="nx">Core</span><span class="err">\</span><span class="nx">Form</span><span class="err">\</span><span class="nx">FormStateInterface</span><span class="p">;</span>
+<span class="nx">use</span> <span class="nx">Drupal</span><span class="err">\</span><span class="nx">views</span><span class="err">\</span><span class="nx">Plugin</span><span class="err">\</span><span class="nx">views</span><span class="err">\</span><span class="nx">style</span><span class="err">\</span><span class="nx">StylePluginBase</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Style plugin to render each item as a row in a Bootstrap Accordion.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @ingroup views_style_plugins</span>
+<span class="sd"> *</span>
+<span class="sd"> * @ViewsStyle(</span>
+<span class="sd"> *   id = &quot;views_bootstrap_accordion&quot;,</span>
+<span class="sd"> *   title = @Translation(&quot;Bootstrap Accordion&quot;),</span>
+<span class="sd"> *   help = @Translation(&quot;Displays rows in a Bootstrap Accordion.&quot;),</span>
+<span class="sd"> *   theme = &quot;views_bootstrap_accordion&quot;,</span>
+<span class="sd"> *   display_types = {&quot;normal&quot;}</span>
+<span class="sd"> * )</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">ViewsBootstrapAccordion</span> <span class="k">extends</span> <span class="nx">StylePluginBase</span> <span class="p">{</span>
+  <span class="sd">/**</span>
+<span class="sd">   * Does the style plugin for itself support to add fields to it&#39;s output.</span>
+<span class="sd">   *</span>
+<span class="sd">   * @var bool</span>
+<span class="sd">   */</span>
+  <span class="k">protected</span> <span class="nv">$usesFields</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+
+  <span class="sd">/**</span>
+<span class="sd">   * Does the style plugin allows to use style plugins.</span>
+<span class="sd">   *</span>
+<span class="sd">   * @var bool</span>
+<span class="sd">   */</span>
+  <span class="k">protected</span> <span class="nv">$usesRowPlugin</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+
+  <span class="sd">/**</span>
+<span class="sd">   * Definition.</span>
+<span class="sd">   */</span>
+  <span class="k">protected</span> <span class="k">function</span> <span class="nf">defineOptions</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$options</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">defineOptions</span><span class="p">();</span>
+    
+    <span class="nv">$options</span><span class="p">[</span><span class="s1">&#39;title_field&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">());</span>
+
+    <span class="k">return</span> <span class="nv">$options</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="sd">/**</span>
+<span class="sd">   * Render the given style.</span>
+<span class="sd">   */</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">buildOptionsForm</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$form</span><span class="p">,</span> <span class="nx">FormStateInterface</span> <span class="nv">$form_state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">parent</span><span class="o">::</span><span class="na">buildOptionsForm</span><span class="p">(</span><span class="nv">$form</span><span class="p">,</span> <span class="nv">$form_state</span><span class="p">);</span>
+    
+    <span class="nv">$form</span><span class="p">[</span><span class="s1">&#39;title_field&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+      <span class="s1">&#39;#type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;select&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;#title&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Title field&#39;</span><span class="p">),</span>
+      <span class="s1">&#39;#options&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">displayHandler</span><span class="o">-&gt;</span><span class="na">getFieldLabels</span><span class="p">(</span><span class="k">TRUE</span><span class="p">),</span>
+      <span class="s1">&#39;#required&#39;</span> <span class="o">=&gt;</span> <span class="k">TRUE</span><span class="p">,</span>
+      <span class="s1">&#39;#default_value&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">[</span><span class="s1">&#39;title_field&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;#description&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select the field that will be used as the title.&#39;</span><span class="p">),</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div class='footer'>generated by <a href='http://git.zx2c4.com/cgit/about/'>cgit v0.12</a> at 2017-03-09 17:14:32 (GMT)</div>
+</div> <!-- id=cgit -->
+</body>
+</html>

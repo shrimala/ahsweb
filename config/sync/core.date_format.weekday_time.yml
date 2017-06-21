@@ -1,0 +1,8 @@
+uuid: 74ff503b-f5f3-48b0-bd17-47cf59d2cc32
+langcode: en
+status: true
+dependencies: {  }
+id: weekday_time
+label: 'Weekday & time (short)'
+locked: false
+pattern: 'D g:ia'

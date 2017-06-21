@@ -11,7 +11,7 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - datetime
+    - ahs_events
     - text
     - user
 id: node.event.default
@@ -30,10 +30,12 @@ content:
     weight: 102
     label: above
     settings:
-      format_type: medium
-      timezone_override: ''
+      timezone_override: venue
+      format_type: long_day_with_time
+      user_timezone_format_type: medium
+      add_user_timezone: false
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_using_venue_timezone
     region: content
   field_event_type:
     weight: 107
@@ -68,8 +70,12 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 100
+    weight: -10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  event_sessions_coming: true
+  event_sessions_finished: true
+  event_sessions_finished_form: true
+  event_sessions_next: true

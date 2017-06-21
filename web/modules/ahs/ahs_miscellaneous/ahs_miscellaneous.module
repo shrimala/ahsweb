@@ -33,17 +33,62 @@ function ahs_miscellaneous_install() {
 */
 
 /**
+ * Implements hook_preprocess_HOOK() for nodes.
+ */
+function ahs_miscellaneous_preprocess_node(&$variables) {
+  // Skip if the page variable is already set true.
+  if (isset($variables['page']) && $variables['page']) {
+    return;
+  }
+
+  // Skip if this is not the main node specified by the route
+  $route_match = \Drupal::routeMatch();
+  $page_node = $route_match->getParameter('node');
+  if (empty($page_node) || $page_node->id() != $variables['node']->id()) {
+    return;
+  }
+
+  // Skip if the route did not uses _entity_view
+  $route = $route_match->getRouteObject();
+  if (!$route->hasDefault('_entity_view')) {
+    return;
+  }
+
+  // Skip if _entity_view did not specify a view mode
+  $entity_view_string = $route->getDefault('_entity_view');
+  $periodPos = strpos($entity_view_string, ".");
+  if (!$periodPos) {
+    return;
+  }
+
+  // If the view mode being rendered is in the route, set the page variable.
+  $route_view_mode = substr($entity_view_string, $periodPos + 1);
+  if ($route_view_mode == $variables['view_mode']) {
+    $variables['page'] = TRUE;
+  }
+}
+
+/**
  * Implementation of hook_node_presave().
  *
  */
 function ahs_miscellaneous_node_presave($node) {
+  ahs_miscellaneous_node_title_sanitise($node);
 
+}
+
+/**
+ * Remove slashes and pretty up node titles.
+ *
+ */
+function ahs_miscellaneous_node_title_sanitise($node) {
   $node->title->value = trim($node->title->value);
 
   // If title is all upper case and has multiple words,
   // assume the capitalisation is inappropriate
   if ((mb_strtoupper($node->title->value, 'utf-8') === $node->title->value) &&
-    (strpos($node->title->value, " ") !== FALSE)) {
+    (strpos($node->title->value, " ") !== FALSE)
+  ) {
     $node->title->value = strtolower($node->title->value);
   }
 
@@ -57,3 +102,129 @@ function ahs_miscellaneous_node_presave($node) {
   $node->title->value = $s = preg_replace("/ {2,}/", " ", $node->title->value);
 }
 
+/**
+ * Implements hook_element_info_alter().
+ */
+function ahs_miscellaneous_element_info_alter(array &$types) {
+  $types['datetime']['#process'][] = 'ahs_miscellaneous_datetime_hide_seconds';
+}
+
+/**
+ * Element process callback for datetime fields.
+ */
+function ahs_miscellaneous_datetime_hide_seconds($element) {
+  // Remove seconds in browsers that support HTML5 type=date.
+  $element['time']['#attributes']['step'] = 60;
+  return $element;
+}
+
+use Drupal\Core\Block\BlockPluginInterface;
+/**
+ * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ *
+ * Adds a pre-render callback which allows changing the help text for display modes.
+ */
+function ahs_miscellaneous_block_view_help_block_alter(array &$build, BlockPluginInterface $block) {
+  $routeStart = substr(\Drupal::routeMatch()->getRouteName(),0,26);
+  if ($routeStart === 'entity.entity_view_display' ||
+    $routeStart === 'entity.entity_form_display' );
+  $build['#pre_render'][] = 'ahs_miscellaneous_display_mode_help';
+}
+
+/**
+ * Pre-render callback for block help_block.
+ *
+ * Remove default help and add a custom descriptions to each display mode.
+ */
+function ahs_miscellaneous_display_mode_help(array $build) {
+  $d = [];
+  $d['node']['session']['view']['default'] =
+    "On an individual session's canonical page.";
+  $d['node']['session']['view']['minimal'] =
+    "On an event's 'Manage recordings' tab in an IEF preview.";
+  $d['node']['session']['view']['panel_header'] =
+    "On events online page, in 'Finished sessions' display of 'Event sessions' view.";
+  $d['node']['session']['view']['panel_body'] =
+    "On events online page, in 'Finished sessions' display of 'Event sessions' view.";
+
+  $d['node']['discussion']['view']['default'] =
+    "Not used";
+  $d['node']['discussion']['view']['ancestry'] =
+    "On discussion page, used to display parent discussions.<br>" .
+    "Has custom template rendering ancestry field as breadcrumb"
+  ;
+  $d['node']['discussion']['view']['ahs_child'] =
+    "On discussion page, used to display child discussions.<br>" .
+    "Has custom template, rendering title as link with added classes."
+  ;
+  $d['node']['discussion']['view']['discuss'] =
+    "Used in previews on discussions view/edit page.<br>";
+  $d['node']['discussion']['view']['teaser'] =
+    "On home page for logged in users, from the Discussions view.<br>" .
+    "Has custom template, rendering title with ancestry and added classes."
+  ;
+
+  $d['node']['event']['view']['default'] =
+    "Not used.";
+  $d['node']['event']['view']['children'] =
+    "On the 'Online' tab for an event";
+  $d['node']['event']['view']['full'] =
+    "The main page (default tab) for an event";
+  $d['node']['event']['view']['token'] =
+    "Used to set the event's path.";
+
+
+  $d['media']['*']['view']['condensed'] =
+    "On session page, referenced by sessions 'default' view mode.<br>" .
+    "On events online page, referenced by sessions 'panel body' view mode."
+  ;
+  $d['media']['*']['form']['default'] =
+    "On a session's main edit page, in an inline entity form from the sessions's default form mode.<br>" .
+    "On an event's 'Manage recordings' tab in a nested IEF from a session's 'children' form mode."
+  ;
+
+  $d['node']['discussion']['form']['default'] =
+    "Used by administrators occasionally.";
+  $d['node']['discussion']['form']['discuss'] =
+    "Main discussion view/edit page at discuss/ancestry/title.";
+
+  $d['node']['event']['form']['default'] =
+    "Used by administrators occasionally.";
+  $d['node']['event']['form']['administer'] =
+    "Used by inline entity form at an event's 'Manage online' tab.";
+  $d['node']['event']['form']['children'] =
+    "Used by inline entity form at an event's 'Manage recordings' tab.'";
+
+  $d['node']['session']['form']['default'] =
+    "Used by administrators occasionally.";
+  $d['node']['session']['form']['children'] =
+    "On an event's 'Manage online' tab in an IEF from 'children' form mode.";
+  $d['node']['session']['form']['minimal'] =
+    "On an event's 'Manage recordings' tab in an IEF from its 'administer' form mode.";
+
+  // Identify the context
+  $route = \Drupal::routeMatch();
+  $display_mode_type = substr($route->getRouteName(),14,4);
+  if (substr($route->getRouteName(),-7) === 'default') {
+    $display_mode_name = 'default';
+  }
+  else {
+    $display_mode_name = $route->getParameter($display_mode_type . '_mode_name');
+  }
+  $entity_type = $route->getParameter('entity_type_id');
+  $bundle = $route->getParameter('bundle');
+
+  // Find the help text for a particular context, if there is some.
+  $build['content'] = [];
+  if (isset($d[$entity_type][$bundle][$display_mode_type][$display_mode_name])) {
+    $build['content'][] = [
+      '#markup' => "<p>" . $d[$entity_type][$bundle][$display_mode_type][$display_mode_name] . "</p>"
+    ];
+  }
+  elseif (isset($d[$entity_type]['*'][$display_mode_type][$display_mode_name])) {
+    $build['content'][] = [
+      '#markup' => "<p>" . $d[$entity_type]['*'][$display_mode_type][$display_mode_name] . "</p>"
+    ];
+  }
+  return $build;
+}

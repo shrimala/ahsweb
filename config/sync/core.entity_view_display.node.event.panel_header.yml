@@ -1,0 +1,59 @@
+uuid: 645d3a32-065b-43a6-8f0b-0607a8d861a2
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.panel_header
+    - field.field.node.event.body
+    - field.field.node.event.field_datetime
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_leader
+    - field.field.node.event.field_sessions
+    - field.field.node.event.field_venue
+    - node.type.event
+  module:
+    - ahs_events
+    - user
+id: node.event.panel_header
+targetEntityType: node
+bundle: event
+mode: panel_header
+content:
+  field_datetime:
+    weight: 102
+    label: hidden
+    settings:
+      timezone_override: venue
+      format_type: simple_date
+      user_timezone_format_type: medium
+      add_user_timezone: 0
+    third_party_settings: {  }
+    type: datetime_using_venue_timezone
+    region: content
+  field_leader:
+    weight: 108
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_label
+    region: content
+  field_venue:
+    weight: 104
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  body: true
+  event_sessions_coming: true
+  event_sessions_finished: true
+  event_sessions_finished_form: true
+  event_sessions_next: true
+  field_event_type: true
+  field_sessions: true
+  links: true

@@ -16,7 +16,8 @@ dependencies:
     - field.field.node.session.field_teaching_tags
     - node.type.session
   module:
-    - datetime
+    - ahs_events
+    - ds
     - text
     - user
 id: node.session.default
@@ -26,22 +27,23 @@ mode: default
 content:
   body:
     label: hidden
-    type: text_default
-    weight: 101
-    settings: {  }
+    type: text_summary_or_trimmed
+    weight: 140
+    settings:
+      trim_length: 600
     third_party_settings: {  }
     region: content
   field_admin_tags:
-    weight: 105
+    type: entity_reference_label
+    weight: 160
+    region: content
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_clip:
-    weight: 108
-    label: above
+    weight: 145
+    label: inline
     settings:
       format: default
       format_custom_false: ''
@@ -50,74 +52,69 @@ content:
     type: boolean
     region: content
   field_datetime:
-    weight: 102
-    label: above
+    weight: 100
+    label: hidden
     settings:
-      format_type: medium
-      timezone_override: ''
+      timezone_override: venue
+      format_type: long
+      user_timezone_format_type: medium
+      add_user_timezone: 0
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_using_venue_timezone
     region: content
   field_event:
-    weight: 111
-    label: above
+    type: entity_reference_label
+    weight: 115
+    region: content
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_leader:
-    weight: 103
-    label: above
+    weight: 110
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_media:
-    weight: 109
-    label: above
+    weight: 120
+    label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_original:
-    weight: 110
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
+      view_mode: condensed
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_entity_view
     region: content
   field_restricted:
-    weight: 107
+    type: boolean
+    weight: 146
+    region: content
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
-    region: content
   field_session_type:
-    weight: 106
-    label: above
+    weight: 105
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_teaching_tags:
-    weight: 104
+    type: entity_reference_label
+    weight: 150
+    region: content
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  field_original: true
+  links: true

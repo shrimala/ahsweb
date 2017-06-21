@@ -1,0 +1,5 @@
+services:
+  ahs_events.access_check.node_type_is_event:
+    class: Drupal\ahs_events\Access\AhsEventsNodeTypeIsEvent
+    tags:
+      - { name: access_check, applies_to: _node_type_is_event }

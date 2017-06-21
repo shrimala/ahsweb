@@ -4,6 +4,7 @@ namespace Drupal\ahs_cer;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\comment\Entity\Comment;
 
 /**
  * Class simple_cer.
@@ -87,8 +88,7 @@ class simple_cer {
     // Add the new reference if there is one
     if (!empty($newReference)) {
       // Is there already new content on the node for the current user?
-      $lastCommentTimestamp = $referencedEntity->get('field_comments_with_changes')->getValue()[0]['last_comment_timestamp'];
-      $hasNewContent = (history_read($referencedEntity->id()) < $lastCommentTimestamp);
+      $hasNewContent = $this->hasNewcontent($referencedEntity);
 
       $desiredReferences = $currentReferences;
       // Tricky array nesting continued.
@@ -119,8 +119,7 @@ class simple_cer {
    */
   public function removeCorrespondingReference($correspondingFieldName, $refererId, ContentEntityInterface $referencedEntity) {
     // Is there already new content on the node for the current user?
-    $lastCommentTimestamp = $referencedEntity->get('field_comments_with_changes')->getValue()[0]['last_comment_timestamp'];
-    $hasNewContent = (history_read($referencedEntity->id()) < $lastCommentTimestamp);
+    $hasNewContent = $this->hasNewcontent($referencedEntity);
 
     $correspondingField = $referencedEntity->get($correspondingFieldName);
     $currentReferences = $correspondingField->getValue();
@@ -153,4 +152,27 @@ class simple_cer {
     return (($leftId < $rightId) ? -1 : 1);
   }
 
+
+  protected function hasNewcontent($entity) {
+    $lastContentTimestamp = $entity->getChangedTime();
+    if (\Drupal::moduleHandler()->moduleExists('comment')) {
+      $lastComment = NULL;
+      $lastCid = \Drupal::entityQuery('comment')
+        ->condition('entity_id', $entity->id())
+        ->condition('entity_type', $entity->getEntityTypeId())
+        ->sort('cid', 'DESC')
+        ->range(0, 1)
+        ->execute();
+      $lastCid = reset($lastCid); // value of first element, or false if none.
+      if ($lastCid) {
+        $lastComment = Comment::load($lastCid);
+        if (!empty($lastComment)) {
+          $lastCommentTimestamp = $lastComment->getCreatedTime();
+          $lastContentTimestamp = max($lastCommentTimestamp, $lastContentTimestamp);
+        }
+      }
+
+    }
+    return (history_read($entity->id()) < $lastContentTimestamp);
+  }
 }

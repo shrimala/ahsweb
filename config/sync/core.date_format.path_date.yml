@@ -1,0 +1,8 @@
+uuid: 41dc8241-d2f0-4aef-aafa-c62dc99884cb
+langcode: en
+status: true
+dependencies: {  }
+id: path_date
+label: 'Path date'
+locked: false
+pattern: Y/m/d

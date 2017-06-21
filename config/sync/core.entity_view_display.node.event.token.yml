@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - datetime
+    - ahs_events
     - user
 id: node.event.token
 targetEntityType: node
@@ -23,13 +23,17 @@ content:
     weight: 102
     label: above
     settings:
-      timezone_override: ''
-      date_format: Y/m/d
+      timezone_override: venue
+      format_type: path_date
     third_party_settings: {  }
-    type: datetime_custom
+    type: datetime_using_venue_timezone
     region: content
 hidden:
   body: true
+  event_sessions_coming: true
+  event_sessions_finished: true
+  event_sessions_finished_form: true
+  event_sessions_next: true
   field_event_type: true
   field_leader: true
   field_sessions: true

@@ -1,0 +1,41 @@
+uuid: 57b8eb90-9763-490a-8b92-9a4d6a714205
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.parent
+    - field.field.node.event.body
+    - field.field.node.event.field_datetime
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_leader
+    - field.field.node.event.field_sessions
+    - field.field.node.event.field_venue
+    - node.type.event
+  module:
+    - datetime
+    - user
+id: node.event.parent
+targetEntityType: node
+bundle: event
+mode: parent
+content:
+  field_datetime:
+    weight: 102
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium_day_date
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+hidden:
+  body: true
+  event_sessions_coming: true
+  event_sessions_finished: true
+  event_sessions_finished_form: true
+  event_sessions_next: true
+  field_event_type: true
+  field_leader: true
+  field_sessions: true
+  field_venue: true
+  links: true

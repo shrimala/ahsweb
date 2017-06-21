@@ -1,0 +1,48 @@
+uuid: c6290d3f-3369-4de0-aa84-5a1c3fba58b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.children
+    - field.field.node.event.body
+    - field.field.node.event.field_datetime
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_leader
+    - field.field.node.event.field_sessions
+    - field.field.node.event.field_venue
+    - node.type.event
+  module:
+    - user
+id: node.event.children
+targetEntityType: node
+bundle: event
+mode: children
+content:
+  event_sessions_coming:
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  event_sessions_finished:
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  event_sessions_finished_form:
+    weight: 40
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  event_sessions_next:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_datetime: true
+  field_event_type: true
+  field_leader: true
+  field_sessions: true
+  field_venue: true
+  links: true

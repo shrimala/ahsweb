@@ -1,0 +1,7 @@
+name: Events
+type: module
+description: Events functionality for the Awakened Heart Sangha.
+core: 8.x
+package: AHS
+dependencies:
+  - ahs_cer

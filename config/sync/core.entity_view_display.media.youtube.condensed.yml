@@ -1,0 +1,33 @@
+uuid: db9be189-1294-4df0-a563-f248d672eff6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.condensed
+    - field.field.media.youtube.field_media_video_embed_field
+    - field.field.media.youtube.field_session
+    - media_entity.bundle.youtube
+  module:
+    - video_embed_field
+id: media.youtube.condensed
+targetEntityType: media
+bundle: youtube
+mode: condensed
+content:
+  field_media_video_embed_field:
+    type: video_embed_field_video
+    weight: 2
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_session: true
+  name: true
+  thumbnail: true
+  uid: true
