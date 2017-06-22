@@ -67,3 +67,18 @@ function ahs_bootstrap_preprocess_links__comment(&$variables) {
   $variables['links'] = ['comment-edit' => ['link' => $link]];
   $variables['attributes']['class'][] = 'ahs-edit-btn';
 }
+
+/**
+ * Implements theme_preprocess_block().
+ */
+function ahs_bootstrap_preprocess_block(&$variables) {
+  // Remove local block on 'discussion' content type.
+  // This could maybe be done using the Block layout UI, but it's difficult to
+  // hide on discussions without also hiding on comments.
+  if ($variables['plugin_id'] == 'local_tasks_block') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node && $node->getType() == 'discussion') {
+      $variables['content'] = [];
+    }
+  }
+}

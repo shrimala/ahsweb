@@ -288,10 +288,8 @@ form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
 
 
 /* comment edit button */
-form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes {
-    overflow:visible;
-}
-form.node-discussion-ahs-discuss-form .comment .media, form.node-discussion-ahs-discuss-form .comment .media-body {
+form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes,
+form.node-discussion-ahs-discuss-form .comment .media {
     overflow:visible;
 }
 form.node-discussion-ahs-discuss-form .comment .media-left {

@@ -189,11 +189,12 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
   // Remove the delete button
   //$form['actions']['delete']['#access'] = FALSE;
 
-  $node = $form_state->getFormObject()->getEntity();
-  $form['actions']['delete']['#access'] = $node->access('delete');
-  $form['actions']['submit']['#dropbutton'] = 'save';
-  $form['actions']['delete']['#dropbutton'] = 'save';
-
+  if (isset($form['actions']['delete'])) {
+    $node = $form_state->getFormObject()->getEntity();
+    $form['actions']['delete']['#access'] = $node->access('delete');
+    $form['actions']['submit']['#dropbutton'] = 'save';
+    $form['actions']['delete']['#dropbutton'] = 'save';
+  }
   //$form['actions']['submit']['#attributes']['data-spy'] = 'affix';
   $form['actions']['#attributes']['data-spy'] = 'affix';
 
