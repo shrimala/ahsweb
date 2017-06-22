@@ -287,6 +287,10 @@ form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
 }
 
 
+form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes .ahs-preview-preview {
+    float:none;
+}
+
 /* comment edit button */
 form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes,
 form.node-discussion-ahs-discuss-form .comment .media {

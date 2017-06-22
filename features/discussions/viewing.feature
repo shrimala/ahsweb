@@ -1,8 +1,5 @@
 @api
-Feature: Ancestry that shows a hierarchy based on first parents
-  In order to easily add new discussions
-  As any user allowed to create a discussion
-  I need to have a form for creating a new discussion.
+Feature: Miscellaneous aspects of viewing discussions
 
   Background:
     Given I am logged in as an "authenticated user"
@@ -24,3 +21,8 @@ Feature: Ancestry that shows a hierarchy based on first parents
     And I should see "Dog" displayed from the "field_children" field
     When I click "Dog"
     Then I am visiting "/discuss/parent/dog"
+
+  Scenario: Revision log is hidden
+    Given a "discussion" with the title "test"
+    When I visit "/discuss/test"
+    Then I should not see a ".field--name-revision-log" element

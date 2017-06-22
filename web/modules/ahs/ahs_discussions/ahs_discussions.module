@@ -425,12 +425,16 @@ function template_preprocess_ahs_discussion_markers(&$variables) {
 
 /*
  * Implements hook_comment_links_alter.
- * Removes the reply link.
+ * Removes the reply & delete links. We have to do this here, not in the
+ * comment entity preprocess, because only a lazy builder is exposed there.
 */
 function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
   $entity_bundle = \Drupal::entityTypeManager()->getStorage($comment->entity_type->value)->load($comment->entity_id->target_id)->bundle();
-  $links['#target_bundle'] = '$entity_bundle';
-  if ($entity_bundle === 'discussion') {
-    //$links['#theme'] = 'links__discussion_comment';
+  if ($comment->entity_type->value === 'node' && $entity_bundle === 'discussion') {
+    if (isset($links['ahs_discussion']['#links']['comment-edit'])) {
+      $links['ahs_discussion']['#links']['comment-edit'] = $links['comment']['#links']['comment-edit'];
+      $links['ahs_discussion']['#theme'] = 'links__comment__ahs_discussion';
+      unset($links['comment']);
+    }
   }
 }
