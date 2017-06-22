@@ -58,3 +58,12 @@ function ahs_bootstrap_preprocess_node__event__parent(&$variables) {
   $url = Url::fromRoute('ahs_events.online', array('node' => $variables['node']->id()));
   $variables['url'] = $url->toString();
 }
+
+function ahs_bootstrap_preprocess_links__comment(&$variables) {
+  $link = $variables['links']['comment-edit']['link'];
+  $link['#icon'] = \Drupal\bootstrap\Bootstrap::glyphicon('pencil');
+  $link['#icon_only'] = TRUE;
+  $link['#attributes']['class'] = ['btn', 'btn-sm', 'btn-default',];
+  $variables['links'] = ['comment-edit' => ['link' => $link]];
+  $variables['attributes']['class'][] = 'ahs-edit-btn';
+}

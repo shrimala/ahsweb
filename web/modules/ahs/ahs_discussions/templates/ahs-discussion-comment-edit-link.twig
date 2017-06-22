@@ -1,0 +1,15 @@
+
+{% set ahs_help_label_type = 'label-warning' %}
+{%  if  discussion.promote.value == '1' %}
+    {% set ahs_help_label_type = 'label-danger' %}
+{%  endif %}
+
+<div class="ahs-markers">
+    {{ ahs_new_comments }}
+    {%  if  discussion.field_private.value == '1' %}
+        <span class="label label-info ahs-private">Private</span>
+    {%  endif %}
+    {%  if  discussion.field_help_wanted.value == '1' %}
+        <span class="label {{ ahs_help_label_type }} ahs-help-wanted">Help</span>
+    {%  endif %}
+</div>

@@ -76,6 +76,9 @@
   <div class="media">
     <div class="media-left">
       {{ user_picture }}
+      <!-- start -->
+      {{ content.links }}
+      <!-- end -->
     </div>
 
     <div{{ content_attributes.addClass('media-body') }}>
@@ -87,13 +90,7 @@
         <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
         #}
       </div>
-      {{ permalink }}
-      {% if title %}
-        {{ title_prefix }}
-        <h3{{ title_attributes }}>{{ title }}</h3>
-        {{ title_suffix }}
-      {% endif %}
-      {{ content }}
+      {{ content|without('links') }}
     </div>
   </div>
 </article>

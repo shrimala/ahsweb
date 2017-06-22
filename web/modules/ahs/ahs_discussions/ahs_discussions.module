@@ -277,14 +277,12 @@ function ahs_discussions_field_widget_ahs_entity_reference_with_views_autocreate
  */
 function ahs_discussions_field_widget_comment_default_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
   $items = $context['items'];
-  //kint($element);
   $fieldName = $items->getFieldDefinition()->getName();
    if ($fieldName === 'field_comments_with_changes') {
      $element['status']['#access'] = FALSE;
      unset($element['#group']);
     ahs_discussion_addPreview($element, $items,  $context['delta'], 'ahs_discuss');
   }
-  //kint($element);
 }
 
 /**
@@ -422,4 +420,16 @@ function template_preprocess_ahs_discussion_markers(&$variables) {
   $variables['ahs_new_comments']['#attributes']['class'][] = 'ahs-new';
   $variables['ahs_new_comments']['#attributes']['class'][] = 'label';
   $variables['ahs_new_comments']['#attributes']['class'][] = 'label-success';
+}
+
+/*
+ * Implements hook_comment_links_alter.
+ * Removes the reply link.
+*/
+function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
+  $entity_bundle = \Drupal::entityTypeManager()->getStorage($comment->entity_type->value)->load($comment->entity_id->target_id)->bundle();
+  $links['#target_bundle'] = '$entity_bundle';
+  if ($entity_bundle === 'discussion') {
+    //$links['#theme'] = 'links__discussion_comment';
+  }
 }

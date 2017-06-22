@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Contains ahs_discussions hooks.
+ */
+
+/*
+ * Implements hook_update_n. Open comments on existing discussions, to allow editing.
+ */
+function ahs_discussions_update_8001() {
+  $nids = \Drupal::entityQuery('node')->condition('type','discussion')->execute();
+  $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+  foreach ($nodes as $node) {
+    $node->field_comments_with_changes->status = \Drupal\comment\Plugin\Field\FieldType\CommentItemInterface::OPEN;
+    $node->save();
+  }
+}

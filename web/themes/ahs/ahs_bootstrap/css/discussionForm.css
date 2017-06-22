@@ -217,7 +217,7 @@ form.node-discussion-ahs-discuss-form.ahs-assigned .field-group-details a.panel-
 }
 */
 
-form.node-discussion-ahs-discuss-form .ahs-preview-edit .glyphicon{
+form.node-discussion-ahs-discuss-form .ahs-preview-edit .glyphicon, form.node-discussion-ahs-discuss-form .ahs-edit-btn .glyphicon{
     color:#555555;
 
 }
@@ -284,4 +284,21 @@ form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
 
 .linkit-ui-autocomplete.ui-widget {
     z-index:2000;
+}
+
+
+/* comment edit button */
+form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes {
+    overflow:visible;
+}
+form.node-discussion-ahs-discuss-form .comment .media, form.node-discussion-ahs-discuss-form .comment .media-body {
+    overflow:visible;
+}
+form.node-discussion-ahs-discuss-form .comment .media-left {
+    position:relative;
+}
+form.node-discussion-ahs-discuss-form .ahs-edit-btn {
+    position:absolute;
+    left:-45px;
+    top:0px;
 }
