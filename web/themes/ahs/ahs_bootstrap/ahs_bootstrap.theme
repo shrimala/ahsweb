@@ -61,7 +61,6 @@ function ahs_bootstrap_preprocess_node__event__parent(&$variables) {
 
 
 function ahs_bootstrap_preprocess_links__comment(&$variables) {
-  kint($variables);
     if (isset($variables['links']['comment-edit'])) {
       $link = $variables['links']['comment-edit']['link'];
       $link['#icon'] = \Drupal\bootstrap\Bootstrap::glyphicon('pencil');

@@ -68,6 +68,7 @@ default:
         Discussion parents: "div.field--name-field-parents .ahs-preview-preview > article"
         Discussion children: "div.field--name-field-children .ahs-preview-preview > article"
         Change records: ".changes .change"
+        Comment edit link: ".ahs-edit-btn"
         #Fields
         Title field: ".field--name-title,.field--name-node-title,.views-field-title"
         Ancestry field: "span.field--name-field-ancestry-plain"
