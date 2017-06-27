@@ -1,0 +1,14 @@
+uuid: 75b5029a-2fcf-4fe2-91ea-e0062c461f15
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.discussion_admin
+  module:
+    - user
+id: user_remove_role_action.discussion_admin
+label: 'Remove the Discussion admin role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: discussion_admin

@@ -3,6 +3,10 @@
  */
 
 
+/**
+ * Parents and children
+ */
+
 .field--name-field-parents ol.breadcrumb {
     margin: 0px;
     background:inherit;
@@ -41,13 +45,6 @@ form.node-discussion-ahs-discuss-form .field--name-field-children table.field-mu
     display:none;
 }
 
-/*
-form.node-discussion-ahs-discuss-form .field--name-field-parents table.field-multiple-table th,
-form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table th{
-    padding: 0px;
-    border:none;
-}
-*/
 form.node-discussion-ahs-discuss-form .field--name-field-children table.field-multiple-table article p{
     margin: 0px;
 }
@@ -62,22 +59,40 @@ form.node-discussion-ahs-discuss-form .field--name-field-children .glyphicon {
     font-size:80%;
 }
 
-/*
-form.node-discussion-ahs-discuss-form .field-add-more-submit {
-    color:transparent;
-    width:2.5em;
-    background-color: lightgrey;
-    border-color: lightgrey;
+form.node-discussion-ahs-discuss-form .field--name-field-children .table-responsive,
+form.node-discussion-ahs-discuss-form .field--name-field-parents .table-responsive{
+    overflow-x:visible;
+    border:none;
 }
 
-form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
-    content: "\271A";
-    color:dimgrey;
-    width:1em;
-    float:left;
-    text-align:center;
+/* stop preview text clipping/overflowing on mobile */
+@media screen and (max-width: 767px) {
+    form.node-discussion-ahs-discuss-form .field--name-field-children .table-responsive td,
+    form.node-discussion-ahs-discuss-form .field--name-field-parents .table-responsive td{
+        white-space: normal;
+    }
 }
-*/
+
+/**
+ * Previews
+ */
+
+form.node-discussion-ahs-discuss-form .ahs-preview-preview.form-group {
+    margin-bottom:0px;
+}
+form.node-discussion-ahs-discuss-form .ahs-preview-edit .glyphicon, form.node-discussion-ahs-discuss-form .ahs-edit-btn .glyphicon{
+    color:#555555;
+}
+form.node-discussion-ahs-discuss-form .ahs-preview-hideui {
+    min-height:30px;
+}
+form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
+    color: #999999;
+}
+
+/**
+ * Change records
+ */
 
 .field--name-field-changes .panel {
     border:none;
@@ -97,7 +112,6 @@ form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
     border-bottom: 1px dashed;
     display:inline-block;
 }
-
 
 .field--name-field-changes table.diff td{
     border:none;
@@ -121,6 +135,9 @@ form.node-discussion-ahs-discuss-form .field-add-more-submit:before {
     content:":";
 }
 
+/**
+ * Comments
+ */
 form.node-discussion-ahs-discuss-form article.comment {
     margin-top:20px;
     padding-top:10px;
@@ -135,20 +152,26 @@ form.node-discussion-ahs-discuss-form article.comment .media-heading .ahs-create
     padding-left:1em;
 }
 
-form.node-discussion-ahs-discuss-form button.form-submit.button--primary {
-    margin-top:20px;
-    bottom:10%;
-    right:20px;
+form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes .ahs-preview-preview {
+    float:none;
 }
 
-form.node-discussion-ahs-discuss-form .field-label,
-form.node-discussion-ahs-discuss-form .control-label{
-    font-weight:normal;
+form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes,
+form.node-discussion-ahs-discuss-form .comment .media {
+    overflow:visible;
+}
+form.node-discussion-ahs-discuss-form .comment .media-left {
+    position:relative;
+}
+form.node-discussion-ahs-discuss-form .ahs-edit-btn {
+    position:absolute;
+    left:-45px;
+    top:0px;
 }
 
-form.node-discussion-ahs-discuss-form .field--name-field-comments-with-changes {
-    overflow:auto;
-}
+/**
+ * Title
+ */
 
 form.node-discussion-ahs-discuss-form .field--name-title label {
     display:none;
@@ -166,26 +189,11 @@ form.node-discussion-ahs-discuss-form .field--name-title input:focus{
     padding-left:5px;
 }
 
-form.node-discussion-ahs-discuss-form .ahs-preview-preview.form-group {
-    margin-bottom:0px;
-}
-form.node-discussion-ahs-discuss-form .field--name-field-children .table-responsive,
-form.node-discussion-ahs-discuss-form .field--name-field-parents .table-responsive{
-    overflow-x:visible;
-}
 
-/*
-.er-enhanced-hideui a.er-enhanced-edit {
-    display:none;
-}
-.er-enhanced-hideui:hover a.er-enhanced-edit {
-    display:block;
-}
-.er-enhanced-hideui:hover table.field-multiple-table tr{
-    background-color:#FBFBFB;
-}
-*/
 
+/**
+ * Participation?
+ */
 form.node-discussion-ahs-discuss-form .field-group-details.panel,
 form.node-discussion-ahs-discuss-form .field-group-details.panel .panel-heading {
     border:none;
@@ -196,10 +204,6 @@ form.node-discussion-ahs-discuss-form .field-group-details .panel-title {
     font-size:inherit;
     color: #23527c;
     padding:0px;
-    /*
-    border-bottom: 1px dashed;
-    display:inline-block;
-    */
 }
 form.node-discussion-ahs-discuss-form .field-group-details .panel-title:hover {
     text-decoration:underline;
@@ -211,17 +215,12 @@ form.node-discussion-ahs-discuss-form .field-group-details a.panel-title:after {
     position: relative;
     top:2px;
 }
-/*
-form.node-discussion-ahs-discuss-form.ahs-assigned .field-group-details a.panel-title:after {
-    content:' (Assigned)';
-}
-*/
 
-form.node-discussion-ahs-discuss-form .ahs-preview-edit .glyphicon{
-    color:#555555;
 
-}
 
+/**
+ * Files
+ */
 form.node-discussion-ahs-discuss-form .field--name-field-files td.checkbox {
     display:table-cell;
 }
@@ -267,21 +266,33 @@ form.node-discussion-ahs-discuss-form .field--name-field-files.ahs-preview-hideu
     padding:0px;
     width:1%;
 }
-/*
-form.node-discussion-ahs-discuss-form .field--name-field-parents,
-form.node-discussion-ahs-discuss-form .field--name-field-children,
-form.node-discussion-ahs-discuss-form .field--name-body,
-form.node-discussion-ahs-discuss-form .field--name-field-files {
-    min-height:30px;
-}
-*/
-form.node-discussion-ahs-discuss-form .ahs-preview-hideui {
-    min-height:30px;
-}
-form.node-discussion-ahs-discuss-form p.ahs-preview-empty {
-    color: #999999;
-}
 
+
+/**
+ * Misc
+ */
 .linkit-ui-autocomplete.ui-widget {
     z-index:2000;
+}
+
+form.node-discussion-ahs-discuss-form .field-label,
+form.node-discussion-ahs-discuss-form .control-label{
+    font-weight:normal;
+}
+
+/* Float the save button in bottom right*/
+form.node-discussion-ahs-discuss-form div.form-actions {
+    margin-top:20px;
+    bottom:10%;
+    right:20px;
+}
+
+/* Create space for edit buttons on left side of form on mobile*/
+form.node-discussion-ahs-discuss-form {
+    margin-left:35px;
+}
+@media (min-width: 830px) {
+    form.node-discussion-ahs-discuss-form {
+        margin-left:10px;
+    }
 }

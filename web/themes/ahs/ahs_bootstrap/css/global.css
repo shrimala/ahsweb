@@ -19,3 +19,9 @@ div.ahs-markers {
 div.ahs-markers .label {
     font-weight:normal;
 }
+
+/* Currently no navbar, so show no navbar toggle
+.navbar-default .navbar-toggle {
+    display:none;
+}
+/*

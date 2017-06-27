@@ -18,12 +18,14 @@ module:
   color: 0
   comment: 0
   config: 0
+  config_inspector: 0
   config_split: 0
   contact: 0
   contextual: 0
   ctools: 0
   datetime: 0
   dblog: 0
+  devel: 0
   diff: 0
   dynamic_page_cache: 0
   editor: 0
@@ -45,6 +47,7 @@ module:
   image: 0
   inline_entity_form: 0
   inline_entity_form_preview: 0
+  kint: 0
   layout_discovery: 0
   link: 0
   linkit: 0

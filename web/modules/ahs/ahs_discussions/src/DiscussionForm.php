@@ -53,21 +53,8 @@ class DiscussionForm extends ContentEntityForm {
       '#attributes' => ['placeholder' => t('Make a comment'),], // doesn't work with WYSIWYG
     );
 
-    //$form['menu']['#access']=FALSE;
-    //$form['revision']['#access'] = FALSE;
-    //$form['revision_log']['#access'] = FALSE;
-    //$form['actions']['delete']['#access'] = FALSE;
+    $form['revision_log']['#access'] = FALSE;
 
-
-    /*
-        $form['revision_log']['#states'] = [
-          'visible' => [
-            ':textarea[name="body[0][value]"]' => [
-              'data-editor-value-is-changed' => 'true'
-            ],
-          ],
-        ];
-    */
 
     $form['promote']['#states'] = [
       'visible' => [
@@ -77,7 +64,6 @@ class DiscussionForm extends ContentEntityForm {
       ],
     ];
 
-    //$form['#attached']['library'][] = 'ahs_discussions/revision_log';
     //$form['comment'] = $node->field_kbk->view(array('type' => 'some_formatter'));
 
     // Access is denied to the comments field
@@ -193,8 +179,7 @@ class DiscussionForm extends ContentEntityForm {
       '#markup' => '<p class="ahs-preview-empty-message">No discussions have been included yet.</p>',
     ];
 */
-
-
+    
     // Mark an existing discussion as read
     if ($this->entity->id()) {
       history_write($this->entity->id());

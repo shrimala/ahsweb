@@ -33,10 +33,10 @@ class MinkContext extends DrupalExtensionMinkContext implements SnippetAccepting
     }
     catch (UnsupportedDriverActionException $e) {
       // Simply continue on, as this driver doesn't support HTTP response codes.
-    }
-    if ($this->pageNotFound()) {
-      $message = sprintf('The page title contains "%s"', PAGE_NOT_FOUND);
-      throw new ExpectationException($message, $this->getSession());
+      if ($this->pageNotFound()) {
+        $message = sprintf('The page title contains "%s"', PAGE_NOT_FOUND);
+        throw new ExpectationException($message, $this->getSession());
+      }
     }
   }
 

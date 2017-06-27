@@ -537,4 +537,20 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     throw new \Exception(sprintf('Found a row containing "%s", but no "%s" button on the page %s', $rowText, $button, $this->getSession()->getCurrentUrl()));
   }
 
+  /**
+   * Click on the element with the provided CSS Selector
+   *
+   * @When /^I click on the "([^"]*)" element$/
+   */
+  public function iClickOnTheElement($cssSelector)
+  {
+    $session = $this->getSession();
+    $element = $session->getPage()->find(
+      'css', $cssSelector);
+    if (null === $element) {
+      throw new \InvalidArgumentException(sprintf('Could not find element: "%s"', $cssSelector));
+    }
+    $element->click();
+  }
+
   }

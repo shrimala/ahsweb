@@ -185,9 +185,18 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
   // Remove the menu settings
   //$form['menu']['#access']=FALSE;
 
+  //if !($entity->access('delete', $account)) {
   // Remove the delete button
-  $form['actions']['delete']['#access'] = FALSE;
-  $form['actions']['submit']['#attributes']['data-spy'] = 'affix';
+  //$form['actions']['delete']['#access'] = FALSE;
+
+  if (isset($form['actions']['delete'])) {
+    $node = $form_state->getFormObject()->getEntity();
+    $form['actions']['delete']['#access'] = $node->access('delete');
+    $form['actions']['submit']['#dropbutton'] = 'save';
+    $form['actions']['delete']['#dropbutton'] = 'save';
+  }
+  //$form['actions']['submit']['#attributes']['data-spy'] = 'affix';
+  $form['actions']['#attributes']['data-spy'] = 'affix';
 
   // If there is no referenced parent, fake a 'Discuss' pseudo-breadcrumb
   // This is necessary because usually this root pseudo-breadcrumb comes
@@ -269,14 +278,12 @@ function ahs_discussions_field_widget_ahs_entity_reference_with_views_autocreate
  */
 function ahs_discussions_field_widget_comment_default_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
   $items = $context['items'];
-  //kint($element);
   $fieldName = $items->getFieldDefinition()->getName();
    if ($fieldName === 'field_comments_with_changes') {
      $element['status']['#access'] = FALSE;
      unset($element['#group']);
     ahs_discussion_addPreview($element, $items,  $context['delta'], 'ahs_discuss');
   }
-  //kint($element);
 }
 
 /**
@@ -414,4 +421,23 @@ function template_preprocess_ahs_discussion_markers(&$variables) {
   $variables['ahs_new_comments']['#attributes']['class'][] = 'ahs-new';
   $variables['ahs_new_comments']['#attributes']['class'][] = 'label';
   $variables['ahs_new_comments']['#attributes']['class'][] = 'label-success';
+}
+
+/*
+ * Implements hook_comment_links_alter.
+ * Removes the reply & delete links. We have to do this here, not in the
+ * comment entity preprocess, because only a lazy builder is exposed there.
+*/
+function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
+  $entity_bundle = \Drupal::entityTypeManager()->getStorage($comment->entity_type->value)->load($comment->entity_id->target_id)->bundle();
+  if ($comment->entity_type->value === 'node' && $entity_bundle === 'discussion') {
+    if (isset($links['comment']['#links']['comment-edit']) &&
+      //$comment->getSubject() !== 'Change record' &&
+      $comment->getSubject() !== 'Discussion started'
+    ) {
+      $links['ahs_discussion']['#links']['comment-edit'] = $links['comment']['#links']['comment-edit'];
+      $links['ahs_discussion']['#theme'] = 'links__comment__ahs_discussion';
+    }
+    unset($links['comment']);
+  }
 }
