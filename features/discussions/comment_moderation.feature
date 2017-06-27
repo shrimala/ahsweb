@@ -53,7 +53,7 @@ Feature: Discussion comments can be edited by their owner
       | Comment body field       | Comment edit link  |
       | Started this discussion. | No                 |
       | My new comment           | Yes                |
-@test
+
   Scenario: Discussion admin can edit and delete others comments
     Given I am logged in as an "authenticated user"
     And a "discussion" with the title "test"
