@@ -8,9 +8,9 @@
 
 use Drupal\Core\Url;
 
+// Enable templates & hooks specific to a particular field in a particular
+// view mode of a particular bundle of an particular entity
 function ahs_bootstrap_theme_suggestions_field_alter(&$suggestions, $variables) {
-  // Enable templates & hooks specific to a particular field in a particular
-  // view mode of a particular bundle of an particular entity
   $suggestions[] = 'field__' .
     $variables['element']['#entity_type'] . '__' .
     $variables['element']['#field_name'] . '__' .
@@ -19,6 +19,8 @@ function ahs_bootstrap_theme_suggestions_field_alter(&$suggestions, $variables) 
 
 }
 
+// Add discussion markers (e.g. new comments, private, etc.) to discussion nodes
+// in teaser view mode
 function ahs_bootstrap_preprocess_node__discussion__teaser(&$variables) {
   $variables['ahs_discussion_markers'] = [
     '#theme'=> 'ahs_discussion_markers',
@@ -27,6 +29,8 @@ function ahs_bootstrap_preprocess_node__discussion__teaser(&$variables) {
   ];
 }
 
+// Add discussion markers (e.g. new comments, private, etc.) to discussion nodes
+// in ahs_child view mode
 function ahs_bootstrap_preprocess_node__discussion__ahs_child(&$variables) {
   $variables['ahs_discussion_markers'] = [
     '#theme'=> 'ahs_discussion_markers',
@@ -35,11 +39,13 @@ function ahs_bootstrap_preprocess_node__discussion__ahs_child(&$variables) {
   ];
 }
 
+// In discussion comments format time comment created as elapsed time
 function ahs_bootstrap_preprocess_comment__field_comments_with_changes(&$variables) {
   $comment = $variables['elements']['#comment'];
   $variables['created'] = \Drupal::service('date.formatter')->formatTimeDiffSince($comment->getCreatedTime(), ['granularity' => 1]);
 }
 
+// Add a header to EVA views displayed on entity display
 function ahs_bootstrap_preprocess_eva_display_entity_view(&$variables) {
   $variables['title'] = [
     '#type' => 'html_tag',
@@ -53,13 +59,13 @@ function ahs_bootstrap_preprocess_eva_display_entity_view(&$variables) {
   ];
 }
 
+// Link to the event's list of sessions, not its overview, in the parent view mode.
 function ahs_bootstrap_preprocess_node__event__parent(&$variables) {
-  // Link to the event's list of sessions, not its overview.
   $url = Url::fromRoute('ahs_events.online', array('node' => $variables['node']->id()));
   $variables['url'] = $url->toString();
 }
 
-
+// Add pencil icons for editable comments
 function ahs_bootstrap_preprocess_links__comment(&$variables) {
     if (isset($variables['links']['comment-edit'])) {
       $link = $variables['links']['comment-edit']['link'];
@@ -72,12 +78,12 @@ function ahs_bootstrap_preprocess_links__comment(&$variables) {
 }
 
 /**
+ * Hide local tasks tabs when viewing discussions.
+ * This could maybe be done using the Block layout UI, but it's difficult to
+ * hide on discussions without also hiding on comments.
  * Implements theme_preprocess_block().
  */
 function ahs_bootstrap_preprocess_block(&$variables) {
-  // Remove local block on 'discussion' content type.
-  // This could maybe be done using the Block layout UI, but it's difficult to
-  // hide on discussions without also hiding on comments.
   if ($variables['plugin_id'] == 'local_tasks_block') {
     $node = \Drupal::routeMatch()->getParameter('node');
     if ($node && $node->getType() == 'discussion') {
