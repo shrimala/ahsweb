@@ -4,6 +4,7 @@ module:
   ahs_events: 0
   ahs_miscellaneous: 0
   ahs_user_management: 0
+  allowed_formats: 0
   auto_entitylabel: 0
   automated_cron: 0
   block: 0
