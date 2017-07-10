@@ -3,11 +3,19 @@ div.main-container {
     margin:auto;
 }
 
-.ahs-finished .field--name-title {
+
+.ahs-finished > .field--name-title,
+.ahs-finished > a > .field--name-title,
+.ahs-finished .field--name-title input{
     text-decoration:line-through;
 }
-.ahs-finished .field--name-title:hover,
-.ahs-finished .field--name-title:focus{
+
+.ahs-finished > .field--name-title:hover,
+.ahs-finished > .field--name-title:focus,
+.ahs-finished > a > .field--name-title:hover,
+.ahs-finished > a > .field--name-title:focus,
+.ahs-finished .field--name-title input:hover,
+.ahs-finished .field--name-title input:focus{
     text-decoration:none;
 }
 

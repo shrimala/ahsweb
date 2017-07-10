@@ -22,7 +22,7 @@ settings:
   provider: views
   label_display: visible
   views_label: ''
-  items_per_page: '40'
+  items_per_page: none
 visibility:
   condition_group:
     id: condition_group

@@ -34,3 +34,5 @@ inline_entity_form
 inline_entity_form_preview
 auto_entitylabel
 tzfield
+views_infinite_scroll
+allowed_formats
