@@ -83,7 +83,9 @@
         "drupal/inline_entity_form": "1.0-beta1",
         "drupal/inline_entity_form_preview": "1.x-dev",
         "drupal/auto_entitylabel": "2.0-beta1",
-        "drupal/tzfield" : "dev-master"
+        "drupal/tzfield" : "dev-master",
+        "drupal/views_infinite_scroll": "^1.3",
+        "drupal/allowed_formats": "^1.1"
     },
     "require-dev": {
         "behat/mink": "~1.7",

@@ -90,6 +90,7 @@ default:
         #Navigation
         Local tabs: "nav.tabs > ul.tabs--primary > li"
         Admin local tabs: "nav > ul.tabs.primary > li"
+        User menu: "#block-ahs-bootstrap-account-menu"
 
 travis:
   extensions:

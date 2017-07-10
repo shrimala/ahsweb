@@ -296,3 +296,8 @@ form.node-discussion-ahs-discuss-form {
         margin-left:10px;
     }
 }
+
+/* Hide the filter selector and help link on long text fields*/
+form.node-discussion-ahs-discuss-form .filter-wrapper {
+    display:none;
+}
