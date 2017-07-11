@@ -23,3 +23,18 @@ section.block-views-blockdiscussions-help .views-row .label.ahs-help-wanted {
 .view-frontpage {
     display:none;
 }
+
+/* Views infinite scroll 'Show more' pagers */
+.pager {
+    margin: 0px;
+    text-align:inherit;
+}
+.pager li > a {
+    padding: 0px;
+    border:none;
+    background:none;
+}
+.pager li > a:hover {
+    background:none;
+    text-decoration: underline;
+}
