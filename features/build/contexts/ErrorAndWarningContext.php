@@ -67,11 +67,17 @@ class ErrorAndWarningContext extends RawDrupalContext implements TranslatableCon
    * @AfterStep
    */
   public function checkforDrupalErrorOrWarning($event) {
-    if (!$this->ignoreDrupalErrors) {
-      $this->assertMessageNotFound('error');
-    }
-    if (!$this->ignoreDrupalWarnings) {
-      $this->assertMessageNotFound('warning');
+    // Given steps can trigger irrelevant error, e.g. by triggering visits
+    // to pages to which the user might not be logged in.
+    /** @var \Behat\Behat\Hook\Scope\AfterStepScope $event */
+    $type = $event->getStep()->getKeywordType();
+    if ($type !== 'Given') {
+      if (!$this->ignoreDrupalErrors) {
+        $this->assertMessageNotFound('error');
+      }
+      if (!$this->ignoreDrupalWarnings) {
+        $this->assertMessageNotFound('warning');
+      }
     }
   }
 
