@@ -15,7 +15,7 @@ Feature: User login
     And I press "Log in"
     Then I should see the heading "Fred Bloggs"
 
-  @hasDrupalError
+  @ignoreDrupalErrors
   Scenario: Redirect on login
     Given users:
       | name        | mail            | pass |

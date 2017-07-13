@@ -4,6 +4,7 @@ use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\TranslatableContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Hook\Scope\AfterScenarioScope;
+use Behat\Mink\Exception\DriverException;
 
 /**
  * Uses hooks to monitor Drupal errors and warnings displayed on the page.
@@ -12,14 +13,14 @@ use Behat\Behat\Hook\Scope\AfterScenarioScope;
 class ErrorAndWarningContext extends RawDrupalContext implements TranslatableContext {
 
   /**
-   * Whether the scenario being evaluated has an @hasDrupalError tag
+   * Whether the scenario being evaluated has an @ignoreDrupalErrors tag
    */
-  private $hasDrupalError;
+  private $ignoreDrupalErrors;
 
   /**
-   * Whether the scenario being evaluated has an @hasDrupalError tag
+   * Whether the scenario being evaluated has an @ignoreDrupalWarnings tag
    */
-  private $hasDrupalWarning;
+  private $ignoreDrupalWarnings;
 
   /**
    * {@inheritDoc}
@@ -29,35 +30,35 @@ class ErrorAndWarningContext extends RawDrupalContext implements TranslatableCon
   }
 
   /**
-   * @BeforeScenario @hasDrupalError
+   * @BeforeScenario @ignoreDrupalErrors
    */
-  public function setHasDrupalError(BeforeScenarioScope $scope)
+  public function ignoreDrupalErrors(BeforeScenarioScope $scope)
   {
-    $this->hasDrupalError = true;
+    $this->ignoreDrupalErrors = true;
   }
 
   /**
-   * @AfterScenario @hasDrupalError
+   * @AfterScenario @ignoreDrupalErrors
    */
-  public function unsetHasDrupalError(AfterScenarioScope $scope)
+  public function alertDrupalErrors(AfterScenarioScope $scope)
   {
-    $this->hasDrupalError = false;
+    $this->ignoreDrupalErrors = false;
   }
 
   /**
-   * @BeforeScenario @hasDrupalWarning
+   * @BeforeScenario @ignoreDrupalWarnings
    */
-  public function setHasDrupalWarning(BeforeScenarioScope $scope)
+  public function ignoreDrupalWarnings(BeforeScenarioScope $scope)
   {
-    $this->hasDrupalWarning = true;
+    $this->ignoreDrupalWarnings = true;
   }
 
   /**
-   * @AfterScenario @hasDrupalWarning
+   * @AfterScenario @ignoreDrupalWarnings
    */
-  public function unsetHasDrupalWarning(AfterScenarioScope $scope)
+  public function alertDrupalWarnings(AfterScenarioScope $scope)
   {
-    $this->hasDrupalWarning = false;
+    $this->ignoreDrupalWarnings = false;
   }
 
   /**
@@ -66,15 +67,11 @@ class ErrorAndWarningContext extends RawDrupalContext implements TranslatableCon
    * @AfterStep
    */
   public function checkforDrupalErrorOrWarning($event) {
-    /** @var \Behat\Behat\Hook\Scope\AfterStepScope $event */
-    $type = $event->getStep()->getKeywordType();
-    if ($type !== 'Given') {
-      if (!$this->hasDrupalError) {
-        $this->assertMessageNotFound('error');
-      }
-      if (!$this->hasDrupalWarning) {
-        $this->assertMessageNotFound('warning');
-      }
+    if (!$this->ignoreDrupalErrors) {
+      $this->assertMessageNotFound('error');
+    }
+    if (!$this->ignoreDrupalWarnings) {
+      $this->assertMessageNotFound('warning');
     }
   }
 
@@ -89,7 +86,16 @@ class ErrorAndWarningContext extends RawDrupalContext implements TranslatableCon
    */
   protected function assertMessageNotFound($messageType) {
     $selector = $this->getDrupalSelector($messageType . '_message_selector');
-    $selectorObjects = $this->getSession()->getPage()->findAll("css", $selector);
+    // If no page has been visited, trying to find something on it fails,
+    // and there certainly is no Drupal message.
+    try {
+      $page = $this->getSession()->getPage();
+      $selectorObjects = $page->findAll("css", $selector);
+    }
+    catch (Exception $e) {
+      return;
+    }
+    // Messages have been found
     if (!empty($selectorObjects)) {
       throw new \Exception(sprintf('"%s" on %s', $selectorObjects[0]->getText(), $this->getSession()->getCurrentUrl()));
     }

@@ -155,7 +155,7 @@ Feature: Discussions Corresponding Entity References
     And I click "Parent1"
     Then I should see "Child1" displayed from the "field_children" field
 
-  @hasDrupalError
+  @ignoreDrupalErrors
   Scenario: Cannot autocreate a parent reference
     Given a discussion content with the title "Child1"
     When I am at "/admin/content"

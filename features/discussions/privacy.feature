@@ -21,7 +21,7 @@ Feature: Private discussions
     Then I am visiting "/discuss/testtitle"
     And the "Private" checkbox should be checked
 
-  @hasDrupalError
+  @ignoreDrupalErrors
   Scenario: Anonymous cannot access discussions of any kind
     Given "discussion" content:
       | title      | field_participants         | field_private |
@@ -37,7 +37,7 @@ Feature: Private discussions
     And I should see the error message "Access denied. You must log in to view this page"
     And I should not see "test title2"
 
-  @hasDrupalWarning
+  @ignoreDrupalWarnings
   Scenario: Non-participants cannot access private discussions
     Given "discussion" content:
       | title       | body      | field_participants    | field_private |
