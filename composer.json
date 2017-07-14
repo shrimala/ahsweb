@@ -139,11 +139,13 @@
             },
             "drupal/drupal-driver": {
                 "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch",
-                "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch"
+                "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch",
+                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch"
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
-                "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch"
+                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/drupalextension/pull/392.patch",
+                "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/393.patch"
             },
             "drupal/email_registration": {
                 "Add support for Behat tests (use AuthenticationManager)": "https://www.drupal.org/files/issues/2843505-8.patch"

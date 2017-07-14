@@ -1,26 +1,51 @@
 @api
-Feature: Mail sending can be tested
-  In order to make email teachings accessible later
-    we need an archive of them 
-  
-  Background:
-    Given I am logged in as a user with the "administrator" role
-    
-  Scenario: Email teachings content type exists
-    When I visit "node/add/email_teaching"
-    Then the response status code should be 200 
+Feature: MailContext
+  In order to prove the Mail context is working properly
+  As a developer
+  I need to use the step definitions of this context
 
-  Scenario: Email teachings have URL archive/emails/year/month/day/titleword1-titleword2-etc
-    Given email_teaching content:
-      | title           | created      |
-      | Email1          | 2005-12-30 13:12:01 |
-      | Email2          | 2005-10-01 11:05:00 |
-      | Email3          | 2005-10-01 00:00:00 |
-      | Email 4         | 2005-10-01 13:00:00 |
-      | Email, and 5    | 2005-10-01 13:00:00 |
-    When I visit "archive/emails/2005/12/30/email1"
-    When I visit "archive/emails/2005/10/01/email2"
-    When I visit "archive/emails/2005/10/01/email3"
-    When I visit "archive/emails/2005/10/01/email-4"
-    When I visit "archive/emails/2005/10/01/email-and-5"
-    Then the response status code should be 200 
+  Scenario: Mail is sent
+    When Drupal sends an email:
+      | to      | fred@example.com |
+      | subject | test             |
+      | body    | test body        |
+    And Drupal sends a mail:
+      | to      | jane@example.com |
+      | subject | test             |
+      | body    | test body 2      |
+    Then mails have been sent:
+      | to   | subject | body        |
+      | fred |         | test body   |
+      | jane | test    | body 2      |
+    When Drupal sends a mail:
+      | to      | jack@example.com          |
+      | subject | test                      |
+      | body    | test body with many words |
+    Then new email is sent:
+      | to   | subject | body | body       |
+      | jack | test    | test | many words |
+
+  Scenario: Mail is sent to
+    When Drupal sends a mail:
+      | to      | fred@example.com |
+      | subject | test 1           |
+    And Drupal sends a mail:
+      | to      | jane@example.com |
+      | subject | test 2           |
+    Then new mail is sent to fred:
+      | subject |
+      | test 1  |
+    And mail has been sent to "jane@example.com":
+      | subject |
+      | test 2  |
+
+  Scenario: No mail is sent
+    Then no mail has been sent
+
+  Scenario: I follow link in mail
+    When Drupal sends a mail:
+      | to      | fred@example.com                        |
+      | subject | test link                               |
+      | body    | A link to Google: http://www.Google.com |
+    And I follow the link to "google" from the mail with the subject "test link"
+    Then I should see "Search"
