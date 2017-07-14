@@ -18,6 +18,7 @@ default:
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\EntityContext        
         - Drupal\DrupalExtension\Context\MailContext
     local:
       <<: *defaultSuite
