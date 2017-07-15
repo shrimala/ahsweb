@@ -11,7 +11,7 @@ default:
         - FeatureContext
         - MinkContext
         - FormElementVisibilityContext
-        - ErrorAndWarningContext
+#        - ErrorAndWarningContext
         - DebugContext
         - LogContext
         - Drupal\DrupalExtension\Context\MarkupContext
