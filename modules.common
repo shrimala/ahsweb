@@ -36,3 +36,5 @@ auto_entitylabel
 tzfield
 views_infinite_scroll
 allowed_formats
+message
+message_notify

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0219535c02e76e9d7aeae73c0f68fc02",
+    "content-hash": "87bc8f237ecac6e69e073d33e38e26c6",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2866,8 +2866,7 @@
                 },
                 "patches_applied": {
                     "Fix d8 User Entity Reference fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/117.patch",
-                    "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch",
-                    "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch"
+                    "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch"
                 }
             },
             "autoload": {
@@ -2902,12 +2901,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/drupalextension.git",
-                "reference": "8b9e54853698f02033d187b528693d5fac8d90ea"
+                "reference": "0cc5400664d26943c4b90b693e059246221ffec3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/8b9e54853698f02033d187b528693d5fac8d90ea",
-                "reference": "8b9e54853698f02033d187b528693d5fac8d90ea",
+                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/0cc5400664d26943c4b90b693e059246221ffec3",
+                "reference": "0cc5400664d26943c4b90b693e059246221ffec3",
                 "shasum": ""
             },
             "require": {
@@ -2932,8 +2931,7 @@
                 },
                 "patches_applied": {
                     "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
-                    "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/drupalextension/pull/392.patch",
-                    "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/393.patch"
+                    "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/339.patch"
                 }
             },
             "autoload": {
@@ -2960,7 +2958,7 @@
                 "test",
                 "web"
             ],
-            "time": "2017-07-06 17:24:52"
+            "time": "2017-05-19 10:27:18"
         },
         {
             "name": "drupal/ds",
@@ -3816,6 +3814,88 @@
                 "source": "http://cgit.drupalcode.org/media_entity_audio"
             },
             "time": "2016-09-29 16:29:04"
+        },
+        {
+            "name": "drupal/message",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gizra/message.git",
+                "reference": "0193d08390365324338b0c59d461df6a72f1a5b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gizra/message/zipball/0193d08390365324338b0c59d461df6a72f1a5b6",
+                "reference": "0193d08390365324338b0c59d461df6a72f1a5b6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "drupal/coder": "^8.2"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Message",
+            "support": {
+                "source": "https://github.com/Gizra/message/tree/8.x-1.x",
+                "issues": "https://github.com/Gizra/message/issues"
+            },
+            "time": "2017-05-30 22:35:45"
+        },
+        {
+            "name": "drupal/message_notify",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/message_notify",
+                "reference": "8.x-1.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/message_notify-8.x-1.0-beta1.zip",
+                "reference": null,
+                "shasum": "085a628bd859b4fb861bb46a8c8a00d668a248ad"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/message": "~1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1490992382"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "RoySegall",
+                    "homepage": "https://www.drupal.org/user/1812910"
+                },
+                {
+                    "name": "amitaibu",
+                    "homepage": "https://www.drupal.org/user/57511"
+                },
+                {
+                    "name": "jhedstrom",
+                    "homepage": "https://www.drupal.org/user/208732"
+                }
+            ],
+            "description": "Notification framework for the Message module",
+            "homepage": "https://drupal.org/project/message_notify",
+            "support": {
+                "source": "https://cgit.drupalcode.org/message_notify",
+                "issues": "https://drupal.org/project/issues/message_notify",
+                "irc": "irc://irc.freenode.org/drupal"
+            }
         },
         {
             "name": "drupal/paragraphs",
@@ -9051,7 +9131,14 @@
             "time": "2015-06-21T13:59:46+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "1.0-beta1",
+            "alias_normalized": "1.0.0.0-beta1",
+            "version": "dev-8.x-1.x",
+            "package": "drupal/message"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/flysystem": 20,
@@ -9073,7 +9160,8 @@
         "drupal/r4032login": 20,
         "drupal/views_bootstrap": 20,
         "drupal/inline_entity_form_preview": 20,
-        "drupal/tzfield": 20
+        "drupal/tzfield": 20,
+        "drupal/message": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
