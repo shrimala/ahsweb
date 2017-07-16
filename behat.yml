@@ -11,14 +11,15 @@ default:
         - FeatureContext
         - MinkContext
         - FormElementVisibilityContext
-        - ErrorAndWarningContext
+#        - ErrorAndWarningContext
         - DebugContext
         - LogContext
         - Drupal\DrupalExtension\Context\MarkupContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
-        - Drupal\DrupalExtension\Context\EntityContext
+        - Drupal\DrupalExtension\Context\EntityContext        
+        - Drupal\DrupalExtension\Context\MailContext
     local:
       <<: *defaultSuite
       filters:
