@@ -55,6 +55,8 @@ module:
   media_entity: 0
   media_entity_audio: 0
   menu_ui: 0
+  message: 0
+  message_notify: 0
   node: 0
   options: 0
   page_cache: 0

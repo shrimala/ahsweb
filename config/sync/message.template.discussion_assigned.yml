@@ -1,0 +1,20 @@
+uuid: a19b6045-5095-43e6-80d9-4aa587751ac8
+langcode: en
+status: true
+dependencies: {  }
+template: discussion_assigned
+label: 'Discussion assigned'
+description: 'A discussion is assigned as a task.'
+text:
+  -
+    value: "<p>Assigned: [message:field_discussion:entity:title]</p>\r\n"
+    format: basic_html
+  -
+    value: "<p>[message:field_initiator:entity:name] assigned this as a task to you:</p>\r\n\r\n<p>[message:field_discussion:entity:field_ancestry_plain]:</p>\r\n\r\n<p>[message:field_discussion:entity:title]</p>\r\n\r\n<p>[message:field_discussion:entity:body]</p>\r\n\r\n<p>Discuss here:&nbsp;[message:field_discussion:entity:url:absolute]</p>\r\n"
+    format: basic_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

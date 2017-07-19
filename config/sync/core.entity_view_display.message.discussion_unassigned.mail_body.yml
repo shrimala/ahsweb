@@ -1,0 +1,23 @@
+uuid: 2dadcf95-7809-4f7e-a6ec-94e82c04f3dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.discussion_unassigned.field_discussion
+    - field.field.message.discussion_unassigned.field_initiator
+    - message.template.discussion_unassigned
+id: message.discussion_unassigned.mail_body
+targetEntityType: message
+bundle: discussion_unassigned
+mode: mail_body
+content:
+  partial_1:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_discussion: true
+  field_initiator: true
+  partial_0: true

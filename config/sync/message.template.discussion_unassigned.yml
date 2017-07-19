@@ -1,0 +1,20 @@
+uuid: 9ba7c1e6-43f5-4ef1-b3b3-b72d641996c1
+langcode: en
+status: true
+dependencies: {  }
+template: discussion_unassigned
+label: 'Discussion unassigned'
+description: 'When a discussion is unassigned as a task'
+text:
+  -
+    value: "<p>Unassigned: [message:field_discussion:entity:title]</p>\r\n"
+    format: basic_html
+  -
+    value: "<p>[message:field_initiator:entity:name] has unassigned this as a task from you:</p>\r\n\r\n<p>[message:field_discussion:entity:field_ancestry_plain]:</p>\r\n\r\n<p>[message:field_discussion:entity:title]</p>\r\n\r\n<p>Discuss here:&nbsp;[message:field_discussion:entity:url]</p>\r\n"
+    format: basic_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

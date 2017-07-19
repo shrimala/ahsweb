@@ -1,0 +1,20 @@
+uuid: c416a504-854f-4105-85a5-4ef4ffbe1e9f
+langcode: en
+status: true
+dependencies: {  }
+template: discussion_comment
+label: 'Discussion comment'
+description: 'A comment on a discussion'
+text:
+  -
+    value: "<p>[message:field_comment:entity:entity:title]</p>\r\n"
+    format: basic_html
+  -
+    value: "<p>In&nbsp;[message:field_discussion:entity:field_ancestry_plain] / [message:field_discussion:entity:title]</p>\r\n\r\n<p>[message:field_comment:entity:author] wrote:</p>\r\n\r\n<p>[message:field_comment:entity:body]</p>\r\n\r\n<p>Reply here:&nbsp;[message:field_discussion:entity:url]</p>\r\n"
+    format: basic_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

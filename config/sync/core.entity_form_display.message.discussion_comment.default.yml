@@ -1,0 +1,32 @@
+uuid: d53875e1-e2ce-49dd-9d11-4bc831767cdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.discussion_comment.field_comment
+    - field.field.message.discussion_comment.field_discussion
+    - message.template.discussion_comment
+id: message.discussion_comment.default
+targetEntityType: message
+bundle: discussion_comment
+mode: default
+content:
+  field_comment:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_discussion:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden: {  }

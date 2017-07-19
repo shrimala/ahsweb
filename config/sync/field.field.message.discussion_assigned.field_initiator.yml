@@ -1,0 +1,28 @@
+uuid: c2c7a4eb-ebc9-4622-a0d4-1d14cede3562
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_initiator
+    - message.template.discussion_assigned
+id: message.discussion_assigned.field_initiator
+field_name: field_initiator
+entity_type: message
+bundle: discussion_assigned
+label: Initiator
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

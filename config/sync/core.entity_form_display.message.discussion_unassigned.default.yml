@@ -1,0 +1,32 @@
+uuid: 2c2e34ca-1133-4654-928f-2ebe96430590
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.discussion_unassigned.field_discussion
+    - field.field.message.discussion_unassigned.field_initiator
+    - message.template.discussion_unassigned
+id: message.discussion_unassigned.default
+targetEntityType: message
+bundle: discussion_unassigned
+mode: default
+content:
+  field_discussion:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_initiator:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden: {  }
