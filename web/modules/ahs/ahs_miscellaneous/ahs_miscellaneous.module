@@ -149,20 +149,17 @@ function ahs_miscellaneous_display_mode_help(array $build) {
 
   $d['node']['discussion']['view']['default'] =
     "Not used";
-  $d['node']['discussion']['view']['ancestry'] =
+  $d['node']['discussion']['view']['ahs_ancestry'] =
     "On discussion page, used to display parent discussions.<br>" .
-    "Has custom template rendering ancestry field as breadcrumb"
-  ;
+    "Has custom template rendering ancestry field as a breadcrumb.";
   $d['node']['discussion']['view']['ahs_child'] =
     "On discussion page, used to display child discussions.<br>" .
-    "Has custom template, rendering title as link with added classes."
-  ;
-  $d['node']['discussion']['view']['discuss'] =
+    "Has custom template, rendering title as link with added classes.";
+  $d['node']['discussion']['view']['ahs_discuss'] =
     "Used in previews on discussions view/edit page.<br>";
   $d['node']['discussion']['view']['teaser'] =
     "On home page for logged in users, from the Discussions view.<br>" .
-    "Has custom template, rendering title with ancestry and added classes."
-  ;
+    "Has custom template, rendering title with ancestry and added classes.";
 
   $d['node']['event']['view']['default'] =
     "Not used.";
