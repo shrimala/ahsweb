@@ -37,7 +37,7 @@ Feature: Mark which users are assigned a discussion (as a task)
     And I select "Fred Bloggs" from "field_assigned[]"
     And I press "Save"
     Then the "field_assigned[]" select field should have "Fred Bloggs" selected
-    And new email is sent:
+    And a new email is sent:
       | to   | subject        | body     |
       | Fred | Assigned: Test | Jane Doe |
     Given I am logged in as "Fred Bloggs"
@@ -45,7 +45,7 @@ Feature: Mark which users are assigned a discussion (as a task)
     And I additionally select "Jane Doe" from "field_assigned[]"
     And I press "Save"
     Then the "field_assigned[]" select field should have "Fred Bloggs, Jane Doe" selected
-    And new email is sent:
+    And a new email is sent:
       | to   | subject        | body        |
       | Jane | Assigned: Test | Fred Bloggs |
     Given I am logged in as "Jane Doe"
@@ -54,7 +54,7 @@ Feature: Mark which users are assigned a discussion (as a task)
     And I select "Jane Doe" from "field_assigned[]"
     And I press "Save"
     Then the "field_assigned[]" select field should have "Jane Doe" selected
-    And new email is sent:
+    And a new email is sent:
       | to   | subject          | body     |
       | Fred | Unassigned: Test | Jane Doe |
 
@@ -67,14 +67,14 @@ Feature: Mark which users are assigned a discussion (as a task)
     And I additionally select "Hans Schmidt" from "field_assigned[]"
     And I press "Save"
     Then the "field_assigned[]" select field should have "Fred Bloggs, Hans Schmidt" selected
-    And new email is sent:
+    And new emails are sent:
       | to   | subject        | body     |
       | Fred | Assigned: Test | Jane Doe |
       | Hans | Assigned: Test | Jane Doe |
     When I select "Jane Doe" from "field_assigned[]"
     And I press "Save"
     Then the "field_assigned[]" select field should have "Jane Doe" selected
-    And new email is sent:
+    And new emails are sent:
       | to   | subject          | body     |
       | Fred | Unassigned: Test | Jane Doe |
       | Hans | Unassigned: Test | Jane Doe |
@@ -87,7 +87,7 @@ Feature: Mark which users are assigned a discussion (as a task)
     And I additionally select "Hans Schmidt" from "field_assigned[]"
     And I press "Save"
     Then the "field_assigned[]" select field should have "Fred Bloggs, Hans Schmidt" selected
-    And new email is sent:
+    And new emails are sent:
       | to   | subject        | body     |
       | Fred | Assigned: Test | Jane Doe |
       | Hans | Assigned: Test | Jane Doe |
@@ -96,7 +96,7 @@ Feature: Mark which users are assigned a discussion (as a task)
     Given "discussion" content:
       | title | field_assigned | field_finished |
       | test  | Fred Bloggs    | 1              |
-    Then new email is sent:
+    Then a new email is sent:
       | to   | subject        |
       | Fred | Assigned: Test |
     And I am logged in as "Jane Doe"
@@ -115,7 +115,7 @@ Feature: Mark which users are assigned a discussion (as a task)
       | grandparent |               |                |                     |
       | parent      | grandparent   |                |                     |
       | child       | parent        | Fred Bloggs    | Some body text here |
-    Then new email is sent:
+    Then a new email is sent:
       | to   | subject         | body                     | body  | body           |
       | Fred | Assigned: Child | grandparent / parent     | child | Some body text |
     Given I am logged in as "Fred Bloggs"
@@ -127,7 +127,7 @@ Feature: Mark which users are assigned a discussion (as a task)
     And I select "Jane Doe" from "field_assigned[]"
     And I fill in "field_parents[0][target_id]" with "[cousin]"
     And I press "Save"
-    Then new email is sent:
+    Then a new email is sent:
       | to   | subject           | body   | body  |
       | Fred | Unassigned: Child | cousin | child |
     Given I am logged in as "Fred Bloggs"

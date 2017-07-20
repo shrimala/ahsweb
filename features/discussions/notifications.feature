@@ -22,7 +22,7 @@ Feature: Discussion notifications
     When I comment "Jane's #1 comment"
     # Fred receives a notification of Jane's comment because of his
     # change record comment. Jane gets no notification of her own comment.
-    Then new email is sent:
+    Then a new email is sent:
       | to   | subject | body              |
       | Fred | Test1   | Jane's #1 comment |
     Given I am logged in as "Hans Schmidt"
@@ -30,7 +30,7 @@ Feature: Discussion notifications
     And I comment "Hans' #1 comment"
     # Jane gets a notification of Hans' comment because of her comment
     # Multiple emails can be sent.
-    Then new email is sent:
+    Then new emails are sent:
       | to   | subject | body             |
       | Fred | Test1   | Hans' #1 comment |
       | Jane | Test1   | Hans' #1 comment |
@@ -43,10 +43,10 @@ Feature: Discussion notifications
     Then no new email is sent
     And I comment "Jane's #2 comment"
     # Hans gets no notification as he is not listed as a participant.
-    Then new email is sent:
+    Then a new email is sent:
       | to   | subject | body              |
       | Fred | Test1   | Jane's #2 comment |
-@test
+  @test
   Scenario: Comment notifications have useful content
     Given users:
       | name         | mail              | status |
@@ -64,7 +64,7 @@ Feature: Discussion notifications
     When I visit "/discuss/grandparent/parent/child"
     And I comment "Jane's comment"
     And I press "Save"
-    Then new email is sent:
+    Then a new email is sent:
       | to   | subject | body           | body        | body                 | body  |
       | Fred | child   | Fred's comment | Fred Bloggs | grandparent / parent | child |
     Given I am logged in as "Fred Bloggs"
