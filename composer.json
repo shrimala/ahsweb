@@ -151,6 +151,7 @@
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
                 "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/drupalextension/pull/392.patch",
+                "Move getContext() into RawDrupalContext from DrupalSubContextBase": "https://github.com/jhedstrom/drupalextension/pull/396.patch",
                 "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/393.patch"
             },
             "drupal/email_registration": {

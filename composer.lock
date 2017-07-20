@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc76c17fbcc33062fbd3a3d56d951dd0",
+    "content-hash": "2a16d4e9923fec14963c118b0e389889",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2933,6 +2933,7 @@
                 "patches_applied": {
                     "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
                     "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/drupalextension/pull/392.patch",
+                    "Move getContext() into RawDrupalContext from DrupalSubContextBase": "https://github.com/jhedstrom/drupalextension/pull/396.patch",
                     "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/393.patch"
                 }
             },
