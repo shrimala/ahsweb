@@ -1,0 +1,28 @@
+uuid: 0c394814-e088-4c89-8f20-db693a784b54
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_discussion
+    - message.template.discussion_assigned
+    - node.type.discussion
+id: message.discussion_assigned.field_discussion
+field_name: field_discussion
+entity_type: message
+bundle: discussion_assigned
+label: Discussion
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      discussion: discussion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

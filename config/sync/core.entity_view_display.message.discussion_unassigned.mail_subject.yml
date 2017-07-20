@@ -1,0 +1,17 @@
+uuid: d5d829e0-8ca4-4bf6-906f-f668825a9093
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - message.template.discussion_unassigned
+id: message.discussion_unassigned.mail_subject
+targetEntityType: message
+bundle: discussion_unassigned
+mode: mail_subject
+content:
+  partial_0:
+    weight: 0
+    region: content
+hidden:
+  partial_1: true

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0219535c02e76e9d7aeae73c0f68fc02",
+    "content-hash": "fc76c17fbcc33062fbd3a3d56d951dd0",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3816,6 +3816,88 @@
                 "source": "http://cgit.drupalcode.org/media_entity_audio"
             },
             "time": "2016-09-29 16:29:04"
+        },
+        {
+            "name": "drupal/message",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gizra/message.git",
+                "reference": "0193d08390365324338b0c59d461df6a72f1a5b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gizra/message/zipball/0193d08390365324338b0c59d461df6a72f1a5b6",
+                "reference": "0193d08390365324338b0c59d461df6a72f1a5b6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "drupal/coder": "^8.2"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Message",
+            "support": {
+                "source": "https://github.com/Gizra/message/tree/8.x-1.x",
+                "issues": "https://github.com/Gizra/message/issues"
+            },
+            "time": "2017-05-30 22:35:45"
+        },
+        {
+            "name": "drupal/message_notify",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/message_notify",
+                "reference": "8.x-1.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/message_notify-8.x-1.0-beta1.zip",
+                "reference": "8.x-1.0-beta1",
+                "shasum": "085a628bd859b4fb861bb46a8c8a00d668a248ad"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/message": "~1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1490992382"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "RoySegall",
+                    "homepage": "https://www.drupal.org/user/1812910"
+                },
+                {
+                    "name": "amitaibu",
+                    "homepage": "https://www.drupal.org/user/57511"
+                },
+                {
+                    "name": "jhedstrom",
+                    "homepage": "https://www.drupal.org/user/208732"
+                }
+            ],
+            "description": "Notification framework for the Message module",
+            "homepage": "https://drupal.org/project/message_notify",
+            "support": {
+                "source": "https://cgit.drupalcode.org/message_notify",
+                "issues": "https://drupal.org/project/issues/message_notify",
+                "irc": "irc://irc.freenode.org/drupal"
+            }
         },
         {
             "name": "drupal/paragraphs",
@@ -9051,7 +9133,14 @@
             "time": "2015-06-21T13:59:46+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "1.0-beta1",
+            "alias_normalized": "1.0.0.0-beta1",
+            "version": "dev-8.x-1.x",
+            "package": "drupal/message"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/flysystem": 20,
@@ -9073,7 +9162,8 @@
         "drupal/r4032login": 20,
         "drupal/views_bootstrap": 20,
         "drupal/inline_entity_form_preview": 20,
-        "drupal/tzfield": 20
+        "drupal/tzfield": 20,
+        "drupal/message": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

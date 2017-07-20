@@ -1,0 +1,23 @@
+uuid: ad03fdcd-44a3-454c-9b6d-028f276f21c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.discussion_assigned.field_discussion
+    - field.field.message.discussion_assigned.field_initiator
+    - message.template.discussion_assigned
+id: message.discussion_assigned.mail_body
+targetEntityType: message
+bundle: discussion_assigned
+mode: mail_body
+content:
+  partial_1:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_discussion: true
+  field_initiator: true
+  partial_0: true

@@ -8,9 +8,11 @@
 use Drupal\Core\Url;
 
 use Drupal\comment\Entity\Comment;
-use \Drupal\node\NodeInterface;
-use \Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\message\Entity\Message;
 
 /**
  * Implements hook_node_update().
@@ -18,12 +20,11 @@ use Drupal\Core\Access\AccessResult;
  * Update the parents reference on child discussions,
  * and childrens reference on parent discussions.
  */
-function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) {
+function ahs_discussions_node_update(NodeInterface $node) {
   if ($node->bundle() == 'discussion'){
     // This comparison must not be strict (!==). For some strange reason,
     // one is an integer and the other a string.
     if ($node->getRevisionId() != $node->original->getRevisionId()) {
-
       // Comment creation must be before cer updates,  otherwise the cerupdates
       // may trigger a second update before the first is finished. When the
       // first change record gets added after the second, it merges with it with
@@ -52,7 +53,7 @@ function ahs_discussions_node_update(\Drupal\Core\Entity\EntityInterface $node) 
  * We have to use hook_entity_insert not hook_node_insert because of D#2604518.
  * @todo switch back to hook_node_insert when Drupal issue is fixed.
  */
-function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node) {
+function ahs_discussions_entity_insert(EntityInterface $node) {
   if (
     $node->getEntityTypeId() == 'node' &&
     $node->bundle() == 'discussion' &&
@@ -81,6 +82,9 @@ function ahs_discussions_entity_insert(\Drupal\Core\Entity\EntityInterface $node
     // Mark the node as read for its creator.
     // Needed because the creator doesn't immediately view autocreated children.
     history_write($node->id(), $node->getOwner());
+
+    // Needs to use an entity hook not a node hook so that it comes after pathauto.
+    ahs_discussions_notify_assignments($node);
   }
 }
 
@@ -103,6 +107,18 @@ function ahs_discussions_node_presave(NodeInterface $node) {
     
     // Add creator or edit as participant
     ahs_discussions_add_editor_as_participant($node);
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ *
+ * Sends a notification when a discusion is (un)assigned to someone.
+ */
+function ahs_discussions_entity_update(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'discussion') {
+    // Needs to use an entity hook not a node hook so that it comes after pathauto.
+    ahs_discussions_notify_assignments($entity);
   }
 }
 
@@ -148,6 +164,59 @@ function ahs_discussions_add_editor_as_participant(NodeInterface $node) {
     $values = $node->field_participants->getValue();
     $values[] = ['target_id' => $editor];
     $node->field_participants->setValue($values);
+  }
+}
+
+/*
+ * Send a notification email to anyone assigned/unassigned to/from a task
+ * by someone else.
+ */
+function ahs_discussions_notify_assignments(NodeInterface $node) {
+  $newAssigneds = array_column($node->field_assigned->getValue(), 'target_id');
+  if (is_null($node->original)) {
+    $oldAssigneds = [];
+  }
+  else {
+    $oldAssigneds = array_column($node->original->field_assigned->getValue(), 'target_id');
+  }
+
+  $uid = \Drupal::currentUser()->id();
+  $user = \Drupal\user\Entity\User::load($uid);
+
+  // Send notification to newly assigned.
+  $addedAssigneds = array_diff($newAssigneds, $oldAssigneds);
+  foreach ($addedAssigneds as $addedAssigned) {
+    // Don't notify user about her own actions.
+    if ($addedAssigned !== \Drupal::currentUser()->id()) {
+      $message = Message::create([
+        'template' => 'discussion_assigned',
+        'uid' => $addedAssigned,
+      ]);
+      $message->set('field_discussion', $node);
+      $message->set('field_initiator', $user);
+      $message->save();
+      $notifier = \Drupal::service('message_notify.sender');
+      $notifier->send($message);
+    }
+  }
+
+  // Send notification to newly unassigned, as long as discussion is unfinished.
+  if ($node->field_finished->value == FALSE) {
+    $removedAssigneds = array_diff($oldAssigneds, $newAssigneds);
+    foreach ($removedAssigneds as $removedAssigned) {
+      // Don't notify user about her own actions.
+      if ($removedAssigned !== \Drupal::currentUser()->id()) {
+        $message = Message::create([
+          'template' => 'discussion_unassigned',
+          'uid' => $removedAssigned,
+        ]);
+        $message->set('field_discussion', $node);
+        $message->set('field_initiator', $user);
+        $message->save();
+        $notifier = \Drupal::service('message_notify.sender');
+        $notifier->send($message);
+      }
+    }
   }
 }
 
@@ -225,30 +294,35 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
 /**
  * Implements hook_module_implements_alter
  *
- * Moves our hook ahs_discussions_form_node_discussion_ahs_discuss_form_alter
- * so that it fires last and can undo the work of other modules.
+ * Changes the sequence in which hooks fires, so we can control whether ours fire
+ * before or after those of other modules.
  */
 function ahs_discussions_module_implements_alter(&$implementations, $hook) {
-  if ($hook === 'entity_insert') {
-    // Move our entity insert hook to the end, so that comment module can prepare
-    // the statistics table before we create a comment. See  D#2604518.
+  if (
+    // Let the comment module prepare the statistics table before we create a
+    // comment. See  D#2604518.
     // @todo switch back to hook_node_insert when Drupal issue is fixed.
-    if (isset($implementations['ahs_discussions'])) {
-      $group = $implementations['ahs_discussions'];
-      unset($implementations['ahs_discussions']);
-      $implementations['ahs_discussions'] = $group;
-    }
-  }
-  if ($hook === 'form_alter') {
-    // Move our form alter to the end, to give it priority over menu module's.
-    if (isset($implementations['ahs_discussions'])) {
-      $group = $implementations['ahs_discussions'];
-      unset($implementations['ahs_discussions']);
-      $implementations['ahs_discussions'] = $group;
-    }
+    $hook === 'entity_insert' ||
+    // Let our form alter override the menu module's.
+    $hook === 'form_alter' ||
+    // Let node notifications use the path alias set by the pathauto module.
+    $hook === 'entity_insert' || $hook === 'entity_update'
+  ) {
+    ahs_discussions_move_hook_last($implementations);
   }
 }
 
+/**
+ * Moves our hook to the end of the hooks array so that it fires last and can
+ * undo the work of other modules.
+ */
+function ahs_discussions_move_hook_last(&$implementations) {
+  if (isset($implementations['ahs_discussions'])) {
+    $group = $implementations['ahs_discussions'];
+    unset($implementations['ahs_discussions']);
+    $implementations['ahs_discussions'] = $group;
+  }
+}
   /**
    * Implements hook_field_widget_form_alter().
    */
@@ -429,7 +503,10 @@ function template_preprocess_ahs_discussion_markers(&$variables) {
  * comment entity preprocess, because only a lazy builder is exposed there.
 */
 function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
-  $entity_bundle = \Drupal::entityTypeManager()->getStorage($comment->entity_type->value)->load($comment->entity_id->target_id)->bundle();
+  $entity_bundle = \Drupal::entityTypeManager()
+    ->getStorage($comment->entity_type->value)
+    ->load($comment->entity_id->target_id)
+    ->bundle();
   if ($comment->entity_type->value === 'node' && $entity_bundle === 'discussion') {
     if (isset($links['comment']['#links']['comment-edit']) &&
       //$comment->getSubject() !== 'Change record' &&
@@ -439,5 +516,69 @@ function ahs_discussions_comment_links_alter(array &$links, $comment, array &$co
       $links['ahs_discussion']['#theme'] = 'links__comment__ahs_discussion';
     }
     unset($links['comment']);
+  }
+}
+
+/*
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Send a notification email about a new comment (but not change records) 
+ * to all users who commented in the same discussion within the last week 
+ * and who are still listed as participants.
+ */
+function ahs_discussions_comment_insert($comment) {
+  $entity_type = $comment->entity_type->value;
+  if ($entity_type === 'node') {
+    $entity_id = $comment->entity_id->target_id;
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($entity_id);
+
+    // Send notifications about comments on discussions, but not change records.
+    if ($node->bundle() === 'discussion' && $comment->getSubject() !== 'Change record') {
+      \Drupal::logger('fff')->notice('discussion');
+      // Get people listed as participants
+      // (as people can choose to remove themselves from this).
+      $participantIds = array_column($node->field_participants->getValue(), 'target_id');
+
+      // Get recent comments on this discussion.
+      $query = \Drupal::entityQuery('comment')
+        ->condition('entity_id', $entity_id)
+        ->condition('entity_type', $entity_type)
+        // Changed within the last week.
+        ->condition('changed', REQUEST_TIME - 604800, '>')
+        // No point in notifying about one's own comment.
+        ->condition('uid', $comment->getOwnerId(), '!=')
+        // Can't notify anonymous user.
+        ->condition('uid', 0, '!=');
+      if ($participantIds) {
+        // Listed as participant.
+        $query->condition('uid', $participantIds, 'IN');
+      }
+      $recentCommentIds = $query->execute();
+      $recentComments = \Drupal::entityTypeManager()
+        ->getStorage('comment')
+        ->loadMultiple($recentCommentIds);
+
+      // Notify comment authors, but only once each.
+      $notifiedUserIds = [];
+      foreach ($recentComments as $recentComment) {
+        $uid = $recentComment->getOwnerId();
+        // If not already notified ...
+        if (!in_array($uid, $notifiedUserIds)) {
+          // Send this user a notification.
+          $message = Message::create([
+            'template' => 'discussion_comment',
+            'uid' => $uid,
+          ]);
+          $message->set('field_comment', $comment);
+          $message->set('field_discussion', $node);
+          $message->save();
+          $notifier = \Drupal::service('message_notify.sender');
+          $notifier->send($message);
+
+          // Add this user to the list of already notified people.
+          array_push($notifiedUserIds, $uid);
+        }
+      }
+    }
   }
 }

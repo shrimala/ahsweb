@@ -1,0 +1,28 @@
+uuid: f3736363-cdac-444e-9c83-d4103f267ebb
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comments_with_changes
+    - field.storage.message.field_comment
+    - message.template.discussion_comment
+id: message.discussion_comment.field_comment
+field_name: field_comment
+entity_type: message
+bundle: discussion_comment
+label: Comment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:comment'
+  handler_settings:
+    target_bundles:
+      comments_with_changes: comments_with_changes
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
