@@ -113,7 +113,8 @@ web:
                 '^/sites/default/files/(css|js)':
                     expires: 2w
 
-# The configuration of scheduled execution.
+# The configuration of scheduled execution. Minimum interval on platform.sh is 5 mins.
+crons:
     drupal:
         spec: "*/20 * * * *"
         cmd: "cd web ; drush core-cron"
