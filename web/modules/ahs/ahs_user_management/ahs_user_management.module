@@ -7,11 +7,11 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Implements hook_user_format_name_alter().
  */
-function ahs_user_management_user_format_name_alter(&$name, $account) {
+//function ahs_user_management_user_format_name_alter(&$name, $account) {
     //$name = t('@displayName', [
     //  '@displayName' => ahs_user_management_display_name($account),
     //]);
-}
+//}
 
 function ahs_user_management_display_name($account) {
   $user = \Drupal\user\Entity\User::load($account->id());
@@ -78,7 +78,6 @@ function ahs_user_management_module_implements_alter(&$implementations, $hook) {
     }
   }
 }
-
 
 /**
  * Implements hook_form_FORM_ID_alter().

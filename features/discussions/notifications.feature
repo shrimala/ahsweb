@@ -12,7 +12,7 @@ Feature: Discussion notifications
       | Hans Schmidt | hans@example.com  | 1      |
     Given a "discussion" with the title "Test0"
     Given I am logged in as "Fred Bloggs"
-    When I visit "/discuss/test0"
+    When I go to "/discuss/test0"
     When I fill in "title[0][value]" with "Test1"
     And I press "Save"
     # Fred gets no notification  of his change record comment
@@ -46,7 +46,7 @@ Feature: Discussion notifications
     Then a new email is sent:
       | to   | subject | body              |
       | Fred | Test1   | Jane's #2 comment |
-  @test
+
   Scenario: Comment notifications have useful content
     Given users:
       | name         | mail              | status |
