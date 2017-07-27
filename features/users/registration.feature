@@ -3,7 +3,7 @@ Feature: User registration
   In order to be able to access the site
   As a new user
   I need to be able to register
-
+@test
   Scenario: User can register
     Given I am on "/user/register"
     When I fill in the following:
@@ -15,9 +15,10 @@ Feature: User registration
     And I should see the success message "welcome message with further instructions has been sent to your email address"
     And I should not see the success message "currently pending approval by the site administrator"
   # Test is not working: And I should not see the error message "Access Denied"
+    # Implicitly test the site name and email are set correctly
     And new email is sent to "UICreated@example.com":
-      | subject |
-      | Welcome |
+      | subject                                      | from                |
+      | Welcome to the Awakened Heart Sangha website | jonathan@ahs.org.uk |
   # Activate by following email
     When I follow the link to "/user/reset/" from the email to "UICreated"
     Then I should see "This is a one-time login for UICreated User"
