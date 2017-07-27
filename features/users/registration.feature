@@ -31,8 +31,9 @@ Feature: User registration
     And I press "Save"
     Then I should see "New name"
   # Newly confirmed users are logged in
+    Given a discussion content with the title "Anything"
     When I visit "/"
-    Then I should see "Browse"
+    Then I should see "Active discussions"
   # New password works
     When I visit "/user/logout"
     And I visit "/user/login"
