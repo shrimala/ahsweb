@@ -32,7 +32,7 @@ Feature: User registration
     Then I should see "New name"
   # Newly confirmed users are logged in
     When I visit "/"
-    Then I should see "Active discussions"
+    Then I should see "Browse"
   # New password works
     When I visit "/user/logout"
     And I visit "/user/login"
