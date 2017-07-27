@@ -28,11 +28,11 @@ Feature: Private discussions
       | test title1 | Fred Bloggs                | 0             |
       | test title2 | Fred Bloggs                | 1             |
     Given I am not logged in
-    When I visit "/discuss/test-title1"
+    When I go to "/discuss/test-title1"
     Then I am visiting "/user/login"
     And I should see the error message "Access denied. You must log in to view this page"
     And I should not see "test title1"
-    When I visit "/discuss/test-title2"
+    When I go to "/discuss/test-title2"
     Then I am visiting "/user/login"
     And I should see the error message "Access denied. You must log in to view this page"
     And I should not see "test title2"

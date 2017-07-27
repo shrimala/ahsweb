@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation to display a menu.
+ * Displays the user menu as a dropdown under the user's name.
  *
  * Available variables:
  * - menu_name: The machine name of the menu.
@@ -22,6 +22,7 @@
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
 
+{% if logged_in %}
 <ul{{ attributes.addClass('menu', 'nav', 'navbar-nav', 'navbar-right', 'dropdown') }}>
   <li>
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -31,3 +32,6 @@
     {{ menus.menu_links(items, attributes, 1) }}
   </li>
 </ul>
+{% else %}
+  {{ menus.menu_links(items, attributes, 0) }}
+{% endif %}

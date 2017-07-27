@@ -1,0 +1,34 @@
+@api
+Feature: Password reset
+  In order to be able to regain site access if I forget my password
+  As a user
+  I need to be able to reset my password
+
+  Scenario: User resets password
+    Given users:
+      | name        | mail            | field_first_name | field_last_name |
+      | Fred Bloggs | fred@bloggs.com | Fred             | Bloggs          |
+    When I visit "user/login"
+    And I follow "Reset your password"
+    And I fill in "name" with "fred@bloggs.com"
+    And I press "Submit"
+    Then I am visiting "/user/login"
+    And I should see the success message "Further instructions have been sent to your email address"
+    And new email is sent to "fred@bloggs.com":
+      | subject        |
+      | Reset password |
+      # Activate by following email
+    When I follow the link to "/user/reset/" from the email to "fred@bloggs.com"
+    Then I should see "This is a one-time login for Fred Bloggs"
+    When I press "Log in"
+    And I fill in "pass[pass1]" with "password"
+    And I fill in "pass[pass2]" with "password"
+    And I press "Save"
+      # New password works
+    When I visit "/user/logout"
+    And I visit "/user/login"
+    When I fill in the following:
+      | E-mail   | fred@bloggs.com |
+      | Password | password              |
+    And I press "Log in"
+    Then I should see the heading "Fred Bloggs"
