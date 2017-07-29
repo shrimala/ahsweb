@@ -69,14 +69,8 @@ function ahs_user_management_email_registration_name(UserInterface $account) {
  * so that it fires last and can undo the work of other modules.
  */
 function ahs_user_management_module_implements_alter(&$implementations, $hook) {
-  if ($hook === 'form_alter') {
-    // Move our form alter to the end, to give it priority over menu module's.
-    if (isset($implementations['ahs_user_management'])) {
-      $group = $implementations['ahs_user_management'];
-      unset($implementations['ahs_user_management']);
-      $implementations['ahs_user_management'] = $group;
-    }
-  }
+  $targetHooks = ['form_alter'];
+  ahs_miscellaneous_move_hook_last($targetHooks, 'ahs_user_management', $implementations, $hook);
 }
 
 /**
@@ -85,4 +79,18 @@ function ahs_user_management_module_implements_alter(&$implementations, $hook) {
 function ahs_user_management_form_user_form_alter(&$form, FormStateInterface $form_state) {
   $form['account']['name']['#title'] = t('Sangha name');
   $form['account']['name']['#description'] = "The name by which you are known in the Sangha, and throughout this website. Typically this will be your first name and last name, e.g. 'Fred Bloggs'. If you have a Buddhist name or nickname you are commonly known by in the Sangha, you can combine this with your last name, e.g. 'Yeshe Bloggs'.";
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function ahs_user_management_user_login(\Drupal\user\UserInterface $account) {
+  // Redirect users to the home page after login.
+  $current_request = \Drupal::service('request_stack')->getCurrentRequest();
+  if (!$current_request->query->get('destination')) {
+    $current_request->query->set(
+      'destination',
+      \Drupal\Core\Url::fromRoute('<front>')->toString()
+    );
+  }
 }

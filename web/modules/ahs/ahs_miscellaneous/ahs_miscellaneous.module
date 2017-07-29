@@ -225,3 +225,19 @@ function ahs_miscellaneous_display_mode_help(array $build) {
   }
   return $build;
 }
+
+/**
+ * Moves our hook to the end of the hooks array so that it fires last and can
+ * undo the work of other modules.
+ */
+function ahs_miscellaneous_move_hook_last($targetHooks, $module, &$implementations, $hook) {
+  foreach ($targetHooks as $targetHook) {
+    if ($targetHook === $hook) {
+      if (isset($implementations[$module])) {
+        $group = $implementations[$module];
+        unset($implementations[$module]);
+        $implementations[$module] = $group;
+      }
+    }
+  }
+}
