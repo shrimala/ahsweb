@@ -309,8 +309,9 @@ function ahs_discussions_module_implements_alter(&$implementations, $hook) {
     'entity_insert',
     'entity_update',
   ];
-  ahs_miscellaneous_move_hook_last($targetHooks, 'ahs_user_management', $implementations, $hook);
-
+  if (function_exists('ahs_miscellaneous_move_hook_last')) {
+    ahs_miscellaneous_move_hook_last($targetHooks, 'ahs_user_management', $implementations, $hook);
+  }
 }
 
   /**
