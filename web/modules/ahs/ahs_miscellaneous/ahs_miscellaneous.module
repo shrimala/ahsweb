@@ -231,13 +231,11 @@ function ahs_miscellaneous_display_mode_help(array $build) {
  * undo the work of other modules.
  */
 function ahs_miscellaneous_move_hook_last($targetHooks, $module, &$implementations, $hook) {
-  foreach ($targetHooks as $targetHook) {
-    if ($targetHook === $hook) {
-      if (isset($implementations[$module])) {
-        $group = $implementations[$module];
-        unset($implementations[$module]);
-        $implementations[$module] = $group;
-      }
+  if (in_array($hook, $targetHooks)) {
+    if (isset($implementations[$module])) {
+      $group = $implementations[$module];
+      unset($implementations[$module]);
+      $implementations[$module] = $group;
     }
   }
 }
