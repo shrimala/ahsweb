@@ -34,7 +34,7 @@ Feature: Password reset
       | E-mail   | fred@bloggs.com |
       | Password | password              |
     And I press "Log in"
-    Then I should see the heading "Fred Bloggs"
+    Then I should see the heading "Active discussions"
 
   Scenario: User resetting password must choose new password
     Given users:

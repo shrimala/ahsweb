@@ -37,7 +37,7 @@ Feature: User registration
       | Password | password              |
     And I press "Log in"
     # Then you're logged in
-    Then I should see "UICreated User"
+    Then I should see "Active discussions"
     # Cleanup this user
     #Given I am logged in as an administrator
     #When I visit "/admin/people"
