@@ -595,6 +595,11 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   {
     var_dump("loggedIn:" . (string) $this->loggedIn());
     $this->dumpUserBlock();
+    $manager = $this->getUserManager();
+    // Change internal current user.
+    //var_dump('currentuser:' . $manager->getCurrentUser()->name);
+    var_dump($manager->getCurrentUser());
+    var_dump($manager->getUsers());
   }
 
   /**
