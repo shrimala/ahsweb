@@ -567,5 +567,17 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
-  
+
+  /**
+   * Dump the page to screen
+   *
+   * @Then I dump the page
+   */
+  public function iDumpThePage()
+  {
+    $session = $this->getSession();
+    $page = $session->getPage();
+    var_dump($page);
   }
+  
+}

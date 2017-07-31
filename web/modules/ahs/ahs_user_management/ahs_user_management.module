@@ -86,7 +86,7 @@ function ahs_user_management_form_user_form_alter(&$form, FormStateInterface $fo
 /**
  * Implements hook_user_login().
  */
-/*function ahs_user_management_user_login(\Drupal\user\UserInterface $account) {
+function ahs_user_management_user_login(\Drupal\user\UserInterface $account) {
   // Redirect users to the home page after login.
   $current_request = \Drupal::service('request_stack')->getCurrentRequest();
   if (!$current_request->query->get('destination')) {
@@ -95,4 +95,4 @@ function ahs_user_management_form_user_form_alter(&$form, FormStateInterface $fo
       \Drupal\Core\Url::fromRoute('<front>')->toString()
     );
   }
-}*/
+}
