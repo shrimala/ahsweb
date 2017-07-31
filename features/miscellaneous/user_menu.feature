@@ -10,6 +10,5 @@ Feature: User menu
       | Fred Bloggs | 1      |
     And I am logged in as "Fred Bloggs"
     When I visit "/"
-    Then I dump the page
     Then I should see "Fred Bloggs" in the "User menu" region
 

@@ -567,17 +567,25 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
-
   /**
-   * Dump the page to screen
-   *
-   * @Then I dump the page
+   * @AfterStep
    */
-  public function iDumpThePage()
+  public function dumpUserBlock()
   {
-    $session = $this->getSession();
-    $page = $session->getPage();
-    var_dump($page);
+    try {
+      $session = $this->getSession();
+      $element = $session->getPage()->find(
+        'css', "#block-ahs-bootstrap-account-menu");
+    }
+    catch(Exception $e){
+      return;
+    }
+    if (is_null($element)) {
+      var_dump('Account menu not found');
+    }
+    else {
+      var_dump($element->getText());
+    }
   }
-  
+
 }
