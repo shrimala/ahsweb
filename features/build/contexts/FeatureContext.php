@@ -588,4 +588,53 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
+  /**
+   * @BeforeStep
+   */
+  public function dumpIsLoggedIn()
+  {
+    var_dump("loggedIn:" . (string) $this->loggedIn());
+    $this->dumpUserBlock();
+  }
+
+  /**
+   * @Then explore login detecting methods
+   */
+  public function exploreLoginDetectingMethods() {
+    $session = $this->getSession();
+    $page = $session->getPage();
+
+    // Look for a css selector to determine if a user is logged in.
+    // Default is the logged-in class on the body tag.
+    // Which should work with almost any theme.
+    try {
+      var_dump("trying logged_in_selector");
+      if ($page->has('css', $this->getDrupalSelector('logged_in_selector'))) {
+      //  var_dump("detected by logged_in_selector");
+      //  return TRUE;
+      }
+    } catch (DriverException $e) {
+      // This test may fail if the driver did not load any site yet.
+    }
+
+    // Some themes do not add that class to the body, so lets check if the
+    // login form is displayed on /user/login.
+    $session->visit($this->locatePath('/user/login'));
+    var_dump("trying login_form_selector");
+    if ($page->has('css', 'form#user-login-form')) {
+      var_dump("detected by login_form_selector");
+      return FALSE;
+    }
+
+    $session->visit($this->locatePath('/'));
+
+    // As a last resort, if a logout link is found, we are logged in. While not
+    // perfect, this is how Drupal SimpleTests currently work as well.
+    var_dump("trying log_out");
+    if ($page->findLink($this->getDrupalText('log_out'))) {
+      var_dump("detected by log_out");
+      return TRUE;
+    }
+  }
+  
 }
