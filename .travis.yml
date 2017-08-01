@@ -45,6 +45,6 @@ before_script:
 
 script:
   - cd $TRAVIS_BUILD_DIR
-  - vendor/bin/behat --profile travis --suite default
+  - vendor/bin/behat features/miscellaneous/user_menu.feature --profile travis --suite default
 notifications:
   email: false
