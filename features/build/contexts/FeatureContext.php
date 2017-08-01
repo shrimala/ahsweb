@@ -604,6 +604,14 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
+   * @AfterStep
+   */
+  public function dumpAfterStep()
+  {
+    $this->dumpUserBlock();
+  }
+
+  /**
    * @Then explore login detecting methods
    */
   public function exploreLoginDetectingMethods() {
