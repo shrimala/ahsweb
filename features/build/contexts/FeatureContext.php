@@ -568,18 +568,19 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
-   * @AfterStep
    */
   public function dumpUserBlock()
   {
     try {
       $session = $this->getSession();
+      $url = ($session->getCurrentUrl());
       $element = $session->getPage()->find(
         'css', "#block-ahs-bootstrap-account-menu");
     }
     catch(Exception $e){
       return;
     }
+    var_dump($url);
     if (is_null($element)) {
       var_dump('Account menu not found');
     }
@@ -593,19 +594,20 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function dumpIsLoggedIn()
   {
-    var_dump("loggedIn:" . (string) $this->loggedIn());
+    //var_dump("loggedIn:" . (string) $this->loggedIn());
     $this->dumpUserBlock();
-    $manager = $this->getUserManager();
+    //$manager = $this->getUserManager();
     // Change internal current user.
     //var_dump('currentuser:' . $manager->getCurrentUser()->name);
-    var_dump($manager->getCurrentUser());
-    var_dump($manager->getUsers());
+    //var_dump($manager->getCurrentUser());
+    //var_dump($manager->getUsers());
   }
 
   /**
    * @Then explore login detecting methods
    */
   public function exploreLoginDetectingMethods() {
+    return;
     $session = $this->getSession();
     $page = $session->getPage();
 
