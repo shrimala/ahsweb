@@ -5,7 +5,6 @@ Feature: User menu
   I have a user menu
 
   Scenario: User menu uses own user name
-    Then explore login detecting methods
     Given users:
       | name        | status |
       | Fred Bloggs | 1      |

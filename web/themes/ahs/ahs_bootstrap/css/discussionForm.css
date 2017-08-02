@@ -74,6 +74,16 @@ form.node-discussion-ahs-discuss-form .field--name-field-parents .table-responsi
 }
 
 /**
+ * Edit button. Used for both previews and comments.
+ */
+form.node-discussion-ahs-discuss-form .ahs-edit-btn {
+    position:absolute;
+    left:-45px;
+    top:0px;
+}
+
+
+/**
  * Previews
  */
 
@@ -163,10 +173,12 @@ form.node-discussion-ahs-discuss-form .comment .media {
 form.node-discussion-ahs-discuss-form .comment .media-left {
     position:relative;
 }
-form.node-discussion-ahs-discuss-form .ahs-edit-btn {
-    position:absolute;
-    left:-45px;
-    top:0px;
+
+form.node-discussion-ahs-discuss-form .ahs-edit-btn li {
+    padding-bottom:3px;
+}
+form.node-discussion-ahs-discuss-form .ahs-edit-btn li:last-child {
+    padding-bottom:0px;
 }
 
 /**

@@ -493,22 +493,18 @@ function template_preprocess_ahs_discussion_markers(&$variables) {
  * Removes the reply & delete links. We have to do this here, not in the
  * comment entity preprocess, because only a lazy builder is exposed there.
 */
-function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
+/*function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
   $entity_bundle = \Drupal::entityTypeManager()
     ->getStorage($comment->entity_type->value)
     ->load($comment->entity_id->target_id)
     ->bundle();
   if ($comment->entity_type->value === 'node' && $entity_bundle === 'discussion') {
     if (isset($links['comment']['#links']['comment-edit']) &&
-      //$comment->getSubject() !== 'Change record' &&
       $comment->getSubject() !== 'Discussion started'
     ) {
-      $links['ahs_discussion']['#links']['comment-edit'] = $links['comment']['#links']['comment-edit'];
-      $links['ahs_discussion']['#theme'] = 'links__comment__ahs_discussion';
     }
-    unset($links['comment']);
   }
-}
+}*/
 
 /*
  * Implements hook_ENTITY_TYPE_insert().
