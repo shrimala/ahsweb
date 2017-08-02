@@ -71,6 +71,7 @@ default:
         Change records: ".changes .change"
         Comment edit link: "ul.links .comment-edit  a"
         Comment delete link: "ul.links .comment-delete  a"
+        Action links: "div#edit-actions"
         #Fields
         Title field: ".field--name-title,.field--name-node-title,.views-field-title"
         Ancestry field: "span.field--name-field-ancestry-plain"

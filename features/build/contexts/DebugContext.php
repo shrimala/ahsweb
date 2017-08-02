@@ -75,6 +75,12 @@ class DebugContext extends RawDrupalContext implements TranslatableContext {
 
   }
 
-
+  /**
+   * @Then I dump the page
+   */
+  public function testMailCollectorIsNotEnabled()
+  {
+    var_dump($this->getSession()->getPage()->getText());
+  }
 
 }
