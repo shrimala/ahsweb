@@ -5,6 +5,7 @@ Feature: User login
   I need to be able to login
 
   Scenario: User can login using email
+    Given a discussion with the title "test"
     Given users:
       | name        | mail            | pass |
       | Fred Bloggs | fred@bloggs.com | test |
@@ -13,7 +14,7 @@ Feature: User login
     | E-mail   | fred@bloggs.com |
     | Password | test            |
     And I press "Log in"
-    Then I should see the heading "Fred Bloggs"
+    Then I should see the heading "Active discussions"
 
   @ignoreDrupalErrors
   Scenario: Redirect on login
@@ -28,4 +29,4 @@ Feature: User login
       | Password | test            |
     And I press "Log in"
     Then I am visiting "/discuss/add"
-    And I should not see the heading "Fred Bloggs"
+    And I should not see the heading "Active discussions"

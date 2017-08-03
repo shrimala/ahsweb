@@ -13,7 +13,8 @@ Feature: Discussions can be deleted by discussion admin
     Then I should see "test discussion"
     When I visit "/discuss/test-discussion"
     Then I should see "Delete"
-    When I follow "Delete"
+    When I follow "Delete" in the "Action links"
+    Then I should see "Are you sure you want to delete the content"
     And I press the "Delete" button
     And I visit "/"
     Then I should not see "test discussion"

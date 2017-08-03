@@ -65,15 +65,37 @@ function ahs_bootstrap_preprocess_node__event__parent(&$variables) {
   $variables['url'] = $url->toString();
 }
 
-// Add pencil icons for editable comments
+// Add pencil & trash icons for editing & deleting comments
 function ahs_bootstrap_preprocess_links__comment(&$variables) {
-    if (isset($variables['links']['comment-edit'])) {
-      $link = $variables['links']['comment-edit']['link'];
-      $link['#icon'] = \Drupal\bootstrap\Bootstrap::glyphicon('pencil');
-      $link['#icon_only'] = TRUE;
-      $link['#attributes']['class'] = ['btn', 'btn-sm', 'btn-default',];
-      $variables['links'] = ['comment-edit' => ['link' => $link]];
-      $variables['attributes']['class'][] = 'ahs-edit-btn';
+  // Remove reply link
+  unset($variables['links']['comment-reply']);
+
+  // Add the class used in the discussion form for placing side buttons
+  $variables['attributes']['class'][] = 'ahs-edit-btn';
+
+  if (isset($variables['links']['comment-edit'])) {
+    // Move edit link to top
+    $variables['links'] = array('comment-edit' => $variables['links']['comment-edit']) + $variables['links'];
+
+    // Iconize the edit link
+    $variables['links']['comment-edit']['link']['#icon'] = \Drupal\bootstrap\Bootstrap::glyphicon('pencil');
+    $variables['links']['comment-edit']['link']['#icon_only'] = TRUE;
+    $variables['links']['comment-edit']['link']['#attributes']['class'] = [
+      'btn',
+      'btn-sm',
+      'btn-default',
+    ];
+  }
+
+  if (isset($variables['links']['comment-delete'])) {
+    // Iconize the delete link
+    $variables['links']['comment-delete']['link']['#icon'] = \Drupal\bootstrap\Bootstrap::glyphicon('trash');
+    $variables['links']['comment-delete']['link']['#icon_only'] = TRUE;
+    $variables['links']['comment-delete']['link']['#attributes']['class'] = [
+      'btn',
+      'btn-sm',
+      'btn-default',
+    ];
   }
 }
 
@@ -84,10 +106,15 @@ function ahs_bootstrap_preprocess_links__comment(&$variables) {
  * Implements theme_preprocess_block().
  */
 function ahs_bootstrap_preprocess_block(&$variables) {
-  if ($variables['plugin_id'] == 'local_tasks_block') {
-    $node = \Drupal::routeMatch()->getParameter('node');
-    if ($node && $node->getType() == 'discussion') {
-      $variables['content'] = [];
-    }
+  switch ($variables['plugin_id']) {
+
+    case 'local_tasks_block':
+      $node = \Drupal::routeMatch()->getParameter('node');
+      if ($node && $node->getType() == 'discussion') {
+        $variables['content'] = [];
+      }
+    
+    case 'system_menu_block:account':
+      $variables['#cache']['contexts'][] = 'user';
   }
 }

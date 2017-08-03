@@ -298,31 +298,22 @@ function ahs_discussions_form_node_discussion_ahs_discuss_form_alter(&$form, &$f
  * before or after those of other modules.
  */
 function ahs_discussions_module_implements_alter(&$implementations, $hook) {
-  if (
+  $targetHooks = [
     // Let the comment module prepare the statistics table before we create a
     // comment. See  D#2604518.
     // @todo switch back to hook_node_insert when Drupal issue is fixed.
-    $hook === 'entity_insert' ||
+    'entity_insert',
     // Let our form alter override the menu module's.
-    $hook === 'form_alter' ||
+    'form_alter',
     // Let node notifications use the path alias set by the pathauto module.
-    $hook === 'entity_insert' || $hook === 'entity_update'
-  ) {
-    ahs_discussions_move_hook_last($implementations);
+    'entity_insert',
+    'entity_update',
+  ];
+  if (function_exists('ahs_miscellaneous_move_hook_last')) {
+    ahs_miscellaneous_move_hook_last($targetHooks, 'ahs_discussions', $implementations, $hook);
   }
 }
 
-/**
- * Moves our hook to the end of the hooks array so that it fires last and can
- * undo the work of other modules.
- */
-function ahs_discussions_move_hook_last(&$implementations) {
-  if (isset($implementations['ahs_discussions'])) {
-    $group = $implementations['ahs_discussions'];
-    unset($implementations['ahs_discussions']);
-    $implementations['ahs_discussions'] = $group;
-  }
-}
   /**
    * Implements hook_field_widget_form_alter().
    */
@@ -502,22 +493,18 @@ function template_preprocess_ahs_discussion_markers(&$variables) {
  * Removes the reply & delete links. We have to do this here, not in the
  * comment entity preprocess, because only a lazy builder is exposed there.
 */
-function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
+/*function ahs_discussions_comment_links_alter(array &$links, $comment, array &$context) {
   $entity_bundle = \Drupal::entityTypeManager()
     ->getStorage($comment->entity_type->value)
     ->load($comment->entity_id->target_id)
     ->bundle();
   if ($comment->entity_type->value === 'node' && $entity_bundle === 'discussion') {
     if (isset($links['comment']['#links']['comment-edit']) &&
-      //$comment->getSubject() !== 'Change record' &&
       $comment->getSubject() !== 'Discussion started'
     ) {
-      $links['ahs_discussion']['#links']['comment-edit'] = $links['comment']['#links']['comment-edit'];
-      $links['ahs_discussion']['#theme'] = 'links__comment__ahs_discussion';
     }
-    unset($links['comment']);
   }
-}
+}*/
 
 /*
  * Implements hook_ENTITY_TYPE_insert().
