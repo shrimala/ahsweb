@@ -62,6 +62,7 @@ module:
   page_cache: 0
   paragraphs: 0
   path: 0
+  prlp: 0
   quickedit: 0
   r4032login: 0
   rdf: 0

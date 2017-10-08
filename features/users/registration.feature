@@ -5,6 +5,8 @@ Feature: User registration
   I need to be able to register
 
   Scenario: User can register
+    # A discussion is necessary in order to trigger 'Active discussions' on home page
+    Given a discussion content with the title "test"
     Given I am on "/user/register"
     When I fill in the following:
       | First name | UICreated             |
@@ -21,19 +23,11 @@ Feature: User registration
       | Welcome to the Awakened Heart Sangha website | jonathan@ahs.org.uk |
   # Activate by following email
     When I follow the link to "/user/reset/" from the email to "UICreated"
-    Then I should see "This is a one-time login for UICreated User"
-    When I press "Log in"
-  # Contact settings hidden on form
-    Then I should not see "Contact settings"
-    When I fill in "name" with "New name"
   # Set password
     And I fill in "pass[pass1]" with "password"
     And I fill in "pass[pass2]" with "password"
-    And I press "Save"
-    Then I should see "New name"
-  # Newly confirmed users are logged in
-    Given a discussion content with the title "Anything"
-    When I visit "/"
+    And I press "Log in"
+  # Newly confirmed users are logged in and redirected to home page
     Then I should see "Active discussions"
   # New password works
     When I visit "/user/logout"
@@ -42,7 +36,8 @@ Feature: User registration
       | E-mail   | UICreated@example.com |
       | Password | password              |
     And I press "Log in"
-    Then I should see the heading "New name"
+    # Then you're logged in
+    Then I should see "Active discussions"
     # Cleanup this user
     #Given I am logged in as an administrator
     #When I visit "/admin/people"
@@ -51,3 +46,16 @@ Feature: User registration
     #And I select "user_cancel_delete" from "user_cancel_method"
     #And I press "Cancel account"
     # Doesn't work because of the batch job. BatchContext requires JS.
+
+  Scenario: New users must set password
+    Given I am on "/user/register"
+    When I fill in the following:
+      | First name | UICreated2            |
+      | Last name  | User                  |
+      | E-mail     | UICreated2@example.com |
+    And I press "Create new account"
+    And I follow the link to "/user/reset/" from the email to "UICreated2"
+    Then I should see "Set password"
+    When I press "Log in"
+    # You're still on the form, it won't let you proceed
+    Then I should see "Set password"
