@@ -169,6 +169,9 @@
             },
             "drupal/views_bootstrap": {
                 "Regression: Raw field value displayed in accordion panel title": "https://www.drupal.org/files/issues/raw_field_value-2870642-2.patch"
+            },
+            "drupal/flysystem_dropbox": {
+                "Package league/flysystem-dropbox is abandoned": "https://www.drupal.org/files/issues/league-flysystem-dropbox-no-longer-supported-2885177-12.patch"
             }
         }
     },
