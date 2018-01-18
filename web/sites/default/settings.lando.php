@@ -5,7 +5,8 @@
  */
 // Configure the database if on Lando
 // FROM https://github.com/thinktandem/platformsh-example-drupal8/blob/master/web/sites/default/settings.lando.php
-if (isset($_SERVER['LANDO'])) {
+
+if (getenv('LANDO')) {
   // Set the database creds
   $databases['default']['default'] = [
     'database' => 'drupal8',
