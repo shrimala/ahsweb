@@ -1,0 +1,31 @@
+uuid: d72db5c2-0bbe-490d-bcd1-27b2767e20e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - image_effects
+name: standard_1984w
+label: 'Standard 1984w'
+effects:
+  905023d8-585e-4018-8a44-03491620f9b0:
+    uuid: 905023d8-585e-4018-8a44-03491620f9b0
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: freeform_1984_
+  6a621043-dd44-45df-8377-5c6d40744733:
+    uuid: 6a621043-dd44-45df-8377-5c6d40744733
+    id: image_scale
+    weight: 2
+    data:
+      width: 1984
+      height: null
+      upscale: false
+  8fff3511-9bd8-46f4-b641-bfc8369c5c10:
+    uuid: 8fff3511-9bd8-46f4-b641-bfc8369c5c10
+    id: image_effects_interlace
+    weight: 3
+    data:
+      type: Plane
+pipeline: __default__

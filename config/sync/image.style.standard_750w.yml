@@ -1,0 +1,31 @@
+uuid: e3e13204-9635-4d5e-a57d-5ed469afd0c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - image_effects
+name: standard_750w
+label: 'Standard 750w'
+effects:
+  284d24ef-e758-4752-aa8b-5be6d745e4a5:
+    uuid: 284d24ef-e758-4752-aa8b-5be6d745e4a5
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: freeform_750
+  ee84f515-5690-4125-9310-b4951e83ccd4:
+    uuid: ee84f515-5690-4125-9310-b4951e83ccd4
+    id: image_scale
+    weight: 2
+    data:
+      width: 750
+      height: null
+      upscale: true
+  32932e53-ddf9-446c-a982-f69dadee14df:
+    uuid: 32932e53-ddf9-446c-a982-f69dadee14df
+    id: image_effects_interlace
+    weight: 3
+    data:
+      type: Plane
+pipeline: __default__

@@ -6,7 +6,7 @@ dependencies:
     - field.field.user.user.field_first_name
     - field.field.user.user.field_last_name
     - field.field.user.user.user_picture
-    - image.style.thumbnail
+    - image.style.standard_750w
   module:
     - image
     - user
@@ -52,7 +52,7 @@ content:
     type: image_image
     settings:
       progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: standard_750w
     third_party_settings: {  }
     weight: 3
     region: content

@@ -1,0 +1,9 @@
+uuid: d49c1299-1284-4d8a-aef8-20629861f8cf
+langcode: en
+status: true
+dependencies: {  }
+id: title
+label: Title
+icon_uuid: null
+description: 'Title of a section'
+behavior_plugins: {  }

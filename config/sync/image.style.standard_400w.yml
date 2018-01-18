@@ -1,0 +1,31 @@
+uuid: 22a5ee49-9b5c-41ae-9937-b9fc4645661e
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - image_effects
+name: standard_400w
+label: 'Standard 400w'
+effects:
+  789b5fbf-97c7-4b2c-b6fe-f9201163839d:
+    uuid: 789b5fbf-97c7-4b2c-b6fe-f9201163839d
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: freeform_400_
+  236883b6-fa24-4abb-a03b-dfdabf601feb:
+    uuid: 236883b6-fa24-4abb-a03b-dfdabf601feb
+    id: image_scale
+    weight: 2
+    data:
+      width: 400
+      height: null
+      upscale: true
+  fc28f73d-9df9-4b69-91eb-38c9b759bcfd:
+    uuid: fc28f73d-9df9-4b69-91eb-38c9b759bcfd
+    id: image_effects_interlace
+    weight: 3
+    data:
+      type: Plane
+pipeline: __default__

@@ -1,0 +1,31 @@
+uuid: 940a5dab-3a3b-4e90-a8d2-49929ffa68a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - image_effects
+name: standard_1020w
+label: 'Standard 1020w'
+effects:
+  847ad064-44c2-4eaf-ab38-40f6b98e84a7:
+    uuid: 847ad064-44c2-4eaf-ab38-40f6b98e84a7
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: freeform_1020_
+  e6ed84e3-29be-43c1-82e3-5e7193ec1751:
+    uuid: e6ed84e3-29be-43c1-82e3-5e7193ec1751
+    id: image_scale
+    weight: 2
+    data:
+      width: 1020
+      height: null
+      upscale: true
+  4d8efc0e-f841-4e0c-88e8-fd637ecf9055:
+    uuid: 4d8efc0e-f841-4e0c-88e8-fd637ecf9055
+    id: image_effects_interlace
+    weight: 3
+    data:
+      type: Plane
+pipeline: __default__

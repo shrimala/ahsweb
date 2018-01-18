@@ -1,0 +1,31 @@
+uuid: 33da4441-1b09-43ff-b357-d89bfa708809
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.standard_1020w
+    - image.style.standard_1536w
+    - image.style.standard_1984w
+    - image.style.standard_200
+    - image.style.standard_2400w
+    - image.style.standard_400w
+    - image.style.standard_750w
+id: full_width
+label: 'Full width'
+image_style_mappings:
+  -
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - standard_2400w
+        - standard_1020w
+        - standard_1536w
+        - standard_1984w
+        - standard_200
+        - standard_400w
+        - standard_750w
+breakpoint_group: responsive_image
+fallback_image_style: standard_200

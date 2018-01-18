@@ -13,46 +13,36 @@ targetEntityType: node
 bundle: information
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_elements:
-    type: entity_reference_paragraphs
-    weight: 32
+    type: paragraphs
+    weight: 1
     settings:
       title: Element
       title_plural: Elements
       edit_mode: open
-      add_mode: select
+      closed_mode: preview
+      autocollapse: none
+      add_mode: modal
       form_display_mode: default
+      default_paragraph_type: _none
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 30
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     region: content
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    region: content
-  uid:
-    type: entity_reference_autocomplete
-    weight: 5
-    settings:
-      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     region: content
 hidden:
+  created: true
   promote: true
   sticky: true
+  uid: true

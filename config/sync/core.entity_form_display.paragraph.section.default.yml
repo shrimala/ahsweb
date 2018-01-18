@@ -1,0 +1,32 @@
+uuid: ddcbbc42-6734-48cb-be54-59f67ac88ee2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.section.field_content
+    - paragraphs.paragraphs_type.section
+  module:
+    - paragraphs
+id: paragraph.section.default
+targetEntityType: paragraph
+bundle: section
+mode: default
+content:
+  field_content:
+    type: paragraphs
+    weight: 0
+    settings:
+      title: Content
+      title_plural: Content
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: all
+      add_mode: modal
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

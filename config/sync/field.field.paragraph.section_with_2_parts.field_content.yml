@@ -1,0 +1,40 @@
+uuid: b3e80470-59df-41a3-94d4-5d200d9ef9a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - paragraphs.paragraphs_type.section
+    - paragraphs.paragraphs_type.section_with_2_parts
+    - paragraphs.paragraphs_type.section_with_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.section_with_2_parts.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: section_with_2_parts
+label: 'First part'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      section: section
+      section_with_2_parts: section_with_2_parts
+      section_with_cards: section_with_cards
+    target_bundles_drag_drop:
+      section:
+        enabled: true
+        weight: 4
+      section_with_2_parts:
+        enabled: true
+        weight: 5
+      section_with_cards:
+        enabled: true
+        weight: 6
+field_type: entity_reference_revisions

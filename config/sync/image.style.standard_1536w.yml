@@ -1,0 +1,31 @@
+uuid: 375344c0-c27a-4fec-a71c-2db2de11f2f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - image_effects
+name: standard_1536w
+label: 'Standard 1536w'
+effects:
+  b73d65c0-d86c-4cef-88ca-890d3d3aee0c:
+    uuid: b73d65c0-d86c-4cef-88ca-890d3d3aee0c
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: freeform_1536_
+  3b01c588-f1a1-409a-bc17-b3ae755f267e:
+    uuid: 3b01c588-f1a1-409a-bc17-b3ae755f267e
+    id: image_scale
+    weight: 2
+    data:
+      width: 1536
+      height: null
+      upscale: false
+  7aa34682-473f-4467-86bd-8b6eced698bd:
+    uuid: 7aa34682-473f-4467-86bd-8b6eced698bd
+    id: image_effects_interlace
+    weight: 3
+    data:
+      type: Plane
+pipeline: __default__

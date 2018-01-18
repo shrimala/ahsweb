@@ -1,0 +1,9 @@
+uuid: eebc7fa5-ea98-4c3a-97f0-e415e38cd554
+langcode: en
+status: true
+dependencies: {  }
+id: section
+label: Section
+icon_uuid: null
+description: 'A section of a page'
+behavior_plugins: {  }

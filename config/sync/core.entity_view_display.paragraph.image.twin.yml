@@ -1,0 +1,35 @@
+uuid: 6c8e5954-d6a0-4e12-a241-dc6682839235
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.twin
+    - field.field.paragraph.image.field_caption
+    - field.field.paragraph.image.field_image
+    - paragraphs.paragraphs_type.image
+    - responsive_image.styles.half_width
+  module:
+    - responsive_image
+    - text
+id: paragraph.image.twin
+targetEntityType: paragraph
+bundle: image
+mode: twin
+content:
+  field_caption:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: half_width
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+hidden: {  }

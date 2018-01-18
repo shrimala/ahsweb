@@ -1,0 +1,9 @@
+uuid: 071f114b-c33b-40f4-bf6c-e82331e80a09
+langcode: en
+status: true
+dependencies: {  }
+id: card
+label: Card
+icon_uuid: null
+description: 'A card with title, text, footer or image'
+behavior_plugins: {  }

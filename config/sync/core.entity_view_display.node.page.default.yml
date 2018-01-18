@@ -27,13 +27,14 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
+        - field_ljkh
         - node_title
         - body
         - links
     fields:
       node_title:
         plugin_id: node_title
-        weight: 0
+        weight: 1
         label: hidden
         formatter: default
 _core:
@@ -46,12 +47,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 100
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     region: ds_content
   links:
-    weight: 101
+    weight: 3
     region: ds_content
     settings: {  }
     third_party_settings: {  }

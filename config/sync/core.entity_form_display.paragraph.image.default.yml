@@ -1,0 +1,63 @@
+uuid: d25b275c-257a-4661-bea8-e127e19f9852
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image.field_caption
+    - field.field.paragraph.image.field_image
+    - image.style.standard_200
+    - paragraphs.paragraphs_type.image
+  module:
+    - allowed_formats
+    - filefield_sources
+    - image_widget_crop
+    - text
+id: paragraph.image.default
+targetEntityType: paragraph
+bundle: image
+mode: default
+content:
+  field_caption:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+    type: text_textfield
+    region: content
+  field_image:
+    weight: 0
+    settings:
+      show_default_crop: true
+      warn_multiple_usages: true
+      preview_image_style: standard_200
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - freeform_2400_
+      progress_indicator: throbber
+      show_crop_area: false
+    third_party_settings:
+      filefield_sources:
+        filefield_sources:
+          sources:
+            upload: true
+            remote: false
+            clipboard: false
+            reference: false
+            attach: false
+          source_reference:
+            autocomplete: '0'
+            search_all_fields: '0'
+          source_attach:
+            path: file_attach
+            absolute: 0
+            attach_mode: move
+    type: image_widget_crop
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

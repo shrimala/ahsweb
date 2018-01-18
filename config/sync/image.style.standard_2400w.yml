@@ -1,0 +1,31 @@
+uuid: c8b56b6d-fd88-4707-966d-0cea72b3624d
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - image_effects
+name: standard_2400w
+label: 'Standard 2400w'
+effects:
+  c1c68eca-ca8d-4d24-bf4a-fb08a984d955:
+    uuid: c1c68eca-ca8d-4d24-bf4a-fb08a984d955
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: freeform_2400_
+  294c8f65-a1dd-4b17-83ce-98fed0b69151:
+    uuid: 294c8f65-a1dd-4b17-83ce-98fed0b69151
+    id: image_scale
+    weight: 2
+    data:
+      width: 2400
+      height: null
+      upscale: false
+  480a2c36-328e-4060-8966-92bf5e452b84:
+    uuid: 480a2c36-328e-4060-8966-92bf5e452b84
+    id: image_effects_interlace
+    weight: 3
+    data:
+      type: Plane
+pipeline: __default__

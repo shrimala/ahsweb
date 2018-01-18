@@ -1,0 +1,35 @@
+uuid: 5a08af66-2ab3-4cc2-9e33-c6c807d1404f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - paragraphs.paragraphs_type.section
+    - paragraphs.paragraphs_type.section_with_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.section_with_cards.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: section_with_cards
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      section: section
+      section_with_cards: section_with_cards
+    target_bundles_drag_drop:
+      section:
+        enabled: true
+        weight: 3
+      section_with_cards:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

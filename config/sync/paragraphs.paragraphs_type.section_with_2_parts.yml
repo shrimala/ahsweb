@@ -1,0 +1,9 @@
+uuid: b0df7fb9-9432-4f65-9684-980c482cc170
+langcode: en
+status: true
+dependencies: {  }
+id: section_with_2_parts
+label: 'Section with 2 parts'
+icon_uuid: null
+description: 'A section (of a page) split into two parts'
+behavior_plugins: {  }

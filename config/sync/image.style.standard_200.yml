@@ -1,0 +1,31 @@
+uuid: a800c199-b14e-4f7b-8f06-8568400e6535
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - image_effects
+name: standard_200
+label: 'Standard 200w'
+effects:
+  40346b28-3357-49b8-a800-47eacf85014a:
+    uuid: 40346b28-3357-49b8-a800-47eacf85014a
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: freeform_200_
+  1253ebf6-be73-496d-9df8-4b1e8b1779fd:
+    uuid: 1253ebf6-be73-496d-9df8-4b1e8b1779fd
+    id: image_scale
+    weight: 2
+    data:
+      width: 200
+      height: null
+      upscale: true
+  54cf6133-5d92-458d-9491-1ebc3f240fe4:
+    uuid: 54cf6133-5d92-458d-9491-1ebc3f240fe4
+    id: image_effects_interlace
+    weight: 3
+    data:
+      type: Plane
+pipeline: __default__

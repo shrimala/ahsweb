@@ -1,0 +1,24 @@
+uuid: 30c7aa25-c9b4-48f1-85a5-fd149fc64201
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.subtitle.field_subtitle
+    - paragraphs.paragraphs_type.subtitle
+id: paragraph.subtitle.default
+targetEntityType: paragraph
+bundle: subtitle
+mode: default
+content:
+  field_subtitle:
+    weight: 0
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

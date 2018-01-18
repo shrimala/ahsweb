@@ -1,0 +1,13 @@
+uuid: b7c7304f-c199-4385-bf7d-ec6e50bdb013
+langcode: en
+status: true
+dependencies: {  }
+name: tinypng
+label: TinyPNG
+processors:
+  be54b601-c774-4992-9f45-69e9ad54d952:
+    uuid: be54b601-c774-4992-9f45-69e9ad54d952
+    id: tinypng
+    weight: '1'
+    data:
+      api_key: R9Ldrd15sH2xqw26fYCUSIe4ezYq7zNy

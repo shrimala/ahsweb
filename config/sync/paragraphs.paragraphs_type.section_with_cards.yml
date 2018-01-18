@@ -1,0 +1,9 @@
+uuid: 71e11c7c-49c8-45f1-b062-e60a77d4d4a8
+langcode: en
+status: true
+dependencies: {  }
+id: section_with_cards
+label: 'Section with cards'
+icon_uuid: null
+description: 'A section of a page with a set of cards'
+behavior_plugins: {  }

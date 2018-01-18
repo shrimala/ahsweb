@@ -116,3 +116,7 @@ logs:
     Lakion\Behat\MinkDebugExtension:
       directory: %paths.base%/features/build/logs
       screenshot: true
+lando:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://ahs.lndo.site

@@ -1,0 +1,9 @@
+uuid: ff6b4aff-15aa-41c2-a684-81c664a09124
+langcode: en
+status: true
+dependencies: {  }
+id: subtitle
+label: Subtitle
+icon_uuid: null
+description: 'Section subtitle'
+behavior_plugins: {  }

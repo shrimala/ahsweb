@@ -1,0 +1,31 @@
+uuid: e437e92d-7bbf-4f40-a287-948b0e021a43
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.standard_1020w
+    - image.style.standard_1536w
+    - image.style.standard_1984w
+    - image.style.standard_200
+    - image.style.standard_2400w
+    - image.style.standard_400w
+    - image.style.standard_750w
+id: half_width
+label: 'Half width'
+image_style_mappings:
+  -
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 50vw
+      sizes_image_styles:
+        - standard_1984w
+        - standard_1020w
+        - standard_1536w
+        - standard_200
+        - standard_2400w
+        - standard_400w
+        - standard_750w
+breakpoint_group: responsive_image
+fallback_image_style: standard_200

@@ -1,0 +1,9 @@
+uuid: fb6164d2-2418-4185-a8a7-c2554f210fca
+langcode: en
+status: true
+dependencies: {  }
+id: text
+label: Text
+icon_uuid: null
+description: 'Rich text'
+behavior_plugins: {  }

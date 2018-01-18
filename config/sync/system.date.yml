@@ -2,7 +2,7 @@ country:
   default: GB
 first_day: 1
 timezone:
-  default: Europe/London
+  default: Europe/Kiev
   user:
     configurable: true
     warn: false

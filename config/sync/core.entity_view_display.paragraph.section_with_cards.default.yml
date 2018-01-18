@@ -1,0 +1,33 @@
+uuid: 2fc0bb04-ae0f-4cfc-b515-3f1fcc1402ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.section_with_cards.field_content
+    - field.field.paragraph.section_with_cards.field_title
+    - paragraphs.paragraphs_type.section_with_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.section_with_cards.default
+targetEntityType: paragraph
+bundle: section_with_cards
+mode: default
+content:
+  field_content:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

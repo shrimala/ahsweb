@@ -1,0 +1,12 @@
+uuid: 6410ae29-15cf-47f8-8190-5639e522fc0d
+langcode: en
+status: true
+dependencies: {  }
+label: 'Freeform 1020+'
+id: freeform_1020_
+description: ''
+aspect_ratio: ''
+soft_limit_width: 1020
+soft_limit_height: null
+hard_limit_width: null
+hard_limit_height: null

@@ -239,3 +239,13 @@ function ahs_miscellaneous_move_hook_last($targetHooks, $module, &$implementatio
     }
   }
 }
+
+/**
+ * Make multiline input widgets available for short text fields.
+ *
+ * Implements hook_field_widget_info_alter().
+ */
+function ahs_miscellaneous_field_widget_info_alter(array &$info) {
+  $info['text_textarea']['field_types'][] = 'text';
+  $info['string_textarea']['field_types'][] = 'string';
+}

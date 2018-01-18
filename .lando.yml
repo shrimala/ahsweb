@@ -1,0 +1,23 @@
+name: ahs
+recipe: drupal8
+config:
+  webroot: web
+# Automatically run composer install on builds
+#      - cd $LANDO_MOUNT && composer install
+#      - "cd $LANDO_WEBROOT && drush si minimal -y --account-pass=password"
+#      - "cd $LANDO_MOUNT && ./scripts/ahs/local_deploy.sh"
+#services:
+#  appserver:
+#    build:
+#      - "cd $LANDO_MOUNT && composer install"
+#events:
+#  post-start:
+#    - "cd $LANDO_WEBROOT && chmod 777 sites/default/settings.php"
+#    - "cd $LANDO_WEBROOT && drush si minimal -y --account-pass=password"
+#    - "cd $LANDO_MOUNT && ./scripts/ahs/local_deploy.sh"
+tooling:
+  drush:
+    service: appserver
+    cmd:
+      - "drush"
+      - "--root=/app/web"

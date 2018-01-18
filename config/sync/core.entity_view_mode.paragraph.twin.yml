@@ -1,0 +1,10 @@
+uuid: cfb14858-e49e-4806-8c5e-dd123bb4fb80
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.twin
+label: Twin
+targetEntityType: paragraph
+cache: true

@@ -1,0 +1,56 @@
+uuid: f0fc65a1-3feb-4ad1-9ea3-c8146d10627e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.section_with_2_parts.field_content
+    - field.field.paragraph.section_with_2_parts.field_content_2
+    - field.field.paragraph.section_with_2_parts.field_title
+    - paragraphs.paragraphs_type.section_with_2_parts
+  module:
+    - paragraphs
+id: paragraph.section_with_2_parts.default
+targetEntityType: paragraph
+bundle: section_with_2_parts
+mode: default
+content:
+  field_content:
+    weight: 1
+    settings:
+      title: Content
+      title_plural: Content
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: all
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_content_2:
+    type: paragraphs
+    weight: 2
+    settings:
+      title: Content
+      title_plural: Content
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: all
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

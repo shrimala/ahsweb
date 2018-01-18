@@ -18,11 +18,13 @@ module:
   ckeditor: 0
   color: 0
   comment: 0
+  components: 0
   config: 0
   config_inspector: 0
   config_split: 0
   contact: 0
   contextual: 0
+  crop: 0
   ctools: 0
   datetime: 0
   dblog: 0
@@ -39,6 +41,9 @@ module:
   field_ui: 0
   file: 0
   file_checker: 0
+  file_mdm: 0
+  file_mdm_exif: 0
+  file_mdm_font: 0
   filefield_paths: 0
   filter: 0
   flysystem: 0
@@ -46,6 +51,9 @@ module:
   help: 0
   history: 0
   image: 0
+  image_effects: 0
+  image_widget_crop: 0
+  imageapi_optimize: 0
   inline_entity_form: 0
   inline_entity_form_preview: 0
   kint: 0
@@ -66,6 +74,7 @@ module:
   quickedit: 0
   r4032login: 0
   rdf: 0
+  responsive_image: 0
   search: 0
   shortcut: 0
   system: 0
