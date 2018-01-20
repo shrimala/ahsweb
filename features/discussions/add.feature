@@ -1,5 +1,5 @@
 @api
-Feature: Ancestry that shows a hierarchy based on first parents
+Feature: A page for adding new discussion
   In order to easily add new discussions
   As any user allowed to create a discussion
   I need to have a form for creating a new discussion.

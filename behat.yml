@@ -20,10 +20,6 @@ default:
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\EntityContext        
         - Drupal\DrupalExtension\Context\MailContext
-    local:
-      <<: *defaultSuite
-      filters:
-        tags: "~@skip&&~@skiplocal"
   extensions:
     Behat\MinkExtension:
       files_path: %paths.base%/features/build/files
@@ -117,6 +113,9 @@ logs:
       directory: %paths.base%/features/build/logs
       screenshot: true
 lando:
+  gherkin:
+    filters:
+      tags: "~@skip&&~@skiplocal"
   extensions:
     Behat\MinkExtension:
-      base_url: http://ahs.lndo.site
+      base_url: 'http://nginx'

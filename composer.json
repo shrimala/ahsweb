@@ -97,7 +97,8 @@
         "drupal/image_widget_crop": "2.1",
         "tinify/tinify": "~1.5",
         "drupal/imageapi_optimize": "2.0.0-alpha3",
-        "drupal/image_effects": "^2.0"
+        "drupal/image_effects": "^2.0",
+        "drupal/node_view_permissions": "1.1"
     },
     "require-dev": {
         "behat/mink": "~1.7",

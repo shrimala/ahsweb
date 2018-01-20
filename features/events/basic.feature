@@ -2,10 +2,9 @@
 Feature: Events listings
   In order to offer events and give context for teaching sessions
     we need a record of events 
-  
-  Background:
-    Given I am logged in as a user with the "administrator" role
-    
+
+  # Events are accessible to anonymous users.
+
   Scenario: Events content type exists
     When I visit "node/add/event"
     Then the response status code should be 200 

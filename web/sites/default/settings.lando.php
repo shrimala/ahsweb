@@ -3,10 +3,10 @@
  * @file
  * Lando settings.
  */
-// Configure the database if on Lando
+// Configure the database on Lando
 // FROM https://github.com/thinktandem/platformsh-example-drupal8/blob/master/web/sites/default/settings.lando.php
 
-if (getenv('LANDO')) {
+
   // Set the database creds
   $databases['default']['default'] = [
     'database' => 'drupal8',
@@ -18,4 +18,3 @@ if (getenv('LANDO')) {
   ];
   // And a bogus hashsalt for now
   $settings['hash_salt'] = json_encode($databases);
-}

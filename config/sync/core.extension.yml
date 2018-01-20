@@ -66,6 +66,7 @@ module:
   message: 0
   message_notify: 0
   node: 0
+  node_view_permissions: 0
   options: 0
   page_cache: 0
   paragraphs: 0

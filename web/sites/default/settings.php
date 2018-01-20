@@ -117,10 +117,12 @@ $config['config_split.config_split.production']['status'] = TRUE;
 
 // Local settings. These come last so that they can override anything.
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
 
-  // Local settings. These come last so that they can override anything.
+// Lando settings. These come last so that they can override anything.
+if (getenv('LANDO')) {
   if (file_exists($app_root . '/' . $site_path . '/settings.lando.php')) {
     include $app_root . '/' . $site_path . '/settings.lando.php';
   }
-  include $app_root . '/' . $site_path . '/settings.local.php';
 }

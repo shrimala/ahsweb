@@ -7,3 +7,4 @@ Feature: Mail collector
   @sendmail
   Scenario: Test mail collector is not enabled
     Then the test mail collector is not enabled
+    # php_mail is the OOTB default

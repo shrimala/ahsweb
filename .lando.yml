@@ -2,6 +2,7 @@ name: ahs
 recipe: drupal8
 config:
   webroot: web
+  via: nginx
 # Automatically run composer install on builds
 #      - cd $LANDO_MOUNT && composer install
 #      - "cd $LANDO_WEBROOT && drush si minimal -y --account-pass=password"
