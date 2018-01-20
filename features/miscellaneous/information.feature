@@ -1,4 +1,4 @@
-@api @test
+@api
 Feature: Information pages
     In order to offer informtion to the public
     We need static content pages

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "23666264c5fc5130f7dbbe33e68d2bd6",
+    "content-hash": "446e36a410d6a676ccef2e9609d3ecc8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3021,7 +3021,8 @@
                 },
                 "patches_applied": {
                     "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch",
-                    "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch"
+                    "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch",
+                    "Ignore access on D8 EntityReferenceHandler": "https://github.com/jhedstrom/DrupalDriver/pull/159.patch"
                 }
             },
             "autoload": {
