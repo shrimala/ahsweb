@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "22e7eb2743fd811d5e4d9b2afd5923c3",
+    "content-hash": "92120ab6a35019d4fb5cce10924adf52",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4961,7 +4961,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/views_bootstrap",
-                "reference": "ef95dac8dfeb8f2d61b0e5d40075a0a6e23e53ca"
+                "reference": "ec4e7872315db6a7287014b029c3167962647588"
             },
             "require": {
                 "drupal/core": "*"
@@ -4972,11 +4972,12 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.x-dev",
-                    "datestamp": "1490369283"
-                },
-                "patches_applied": {
-                    "Regression: Raw field value displayed in accordion panel title": "https://www.drupal.org/files/issues/raw_field_value-2870642-2.patch"
+                    "version": "8.x-3.0+1-dev",
+                    "datestamp": "1507396144",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5009,7 +5010,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/views_bootstrap"
             },
-            "time": "2017-03-29T14:23:33+00:00"
+            "time": "2017-10-07T17:46:52+00:00"
         },
         {
             "name": "drupal/views_infinite_scroll",

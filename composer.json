@@ -174,9 +174,6 @@
             "drupal/prlp": {
                 "Login redirect not working #2785087": "https://www.drupal.org/files/issues/login_redirect_not-2785087-8.patch"
             },
-            "drupal/views_bootstrap": {
-                "Regression: Raw field value displayed in accordion panel title": "https://www.drupal.org/files/issues/raw_field_value-2870642-2.patch"
-            },
             "drupal/page_manager": {
                 "Warning: Missing argument 1 for PageVariantContextsForm::getContextClass()": "https://www.drupal.org/files/issues/2799885-page_manager-context_adding_fix.patch"
             }
