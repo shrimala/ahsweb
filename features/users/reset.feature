@@ -11,7 +11,12 @@ Feature: Password reset
       | name        | mail            | field_first_name | field_last_name |
       | Fred Bloggs | fred@bloggs.com | Fred             | Bloggs          |
     When I visit "user/login"
-    And I follow "Reset your password"
+    And I fill in the following:
+      | E-mail   | bademail@nowhere.com |
+      | Password | badpassword          |
+    And I press "Log in"
+    Then I should see the error message "Unrecognized username or password"
+    When I follow "Forgot your password?"
     And I fill in "name" with "fred@bloggs.com"
     And I press "Submit"
     Then I am visiting "/user/login"
@@ -41,7 +46,11 @@ Feature: Password reset
       | name        | mail            | field_first_name | field_last_name |
       | Fred Bloggs | fred@bloggs.com | Fred             | Bloggs          |
     When I visit "user/login"
-    And I follow "Reset your password"
+    And I fill in the following:
+      | E-mail   | bademail@nowhere.com |
+      | Password | badpassword          |
+    And I press "Log in"
+    And I follow "Forgot your password?"
     And I fill in "name" with "fred@bloggs.com"
     And I press "Submit"
     And I follow the link to "/user/reset/" from the email to "fred@bloggs.com"

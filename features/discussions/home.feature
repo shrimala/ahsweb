@@ -244,7 +244,7 @@ Scenario: Per user caching
     When I visit "/"
     And I fill in "title" with "Testtitle"
     And I press "Search"
-    Then I am visiting "/node"
+    Then I am visiting "/frontpage"
     And I should see "Search results":
       | Title field | .ahs-finished | .ahs-private | .ahs-assigned | .ahs-help-wanted | .ahs-promote |
       | Testtitle1  | No            | No           | No            | No               | No           |

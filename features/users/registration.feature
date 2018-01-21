@@ -13,7 +13,7 @@ Feature: User registration
       | Last name  | User                  |
       | E-mail     | UICreated@example.com |
     And I press "Create new account"
-    Then I am visiting "/user/login"
+    Then I should see "Thankyou for registering"
     And I should see the success message "welcome message with further instructions has been sent to your email address"
     And I should not see the success message "currently pending approval by the site administrator"
   # Test is not working: And I should not see the error message "Access Denied"

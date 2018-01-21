@@ -78,6 +78,5 @@ Feature: Site Installation
     Given the "Field Group" module is installed
     Given the "Chosen Field" module is installed
     Given the "Diff" module is installed
-    Given the "Block Visibility Groups" module is installed
     Given the "Redirect 403 to User Login" module is installed
     Given the "Linkit" module is installed

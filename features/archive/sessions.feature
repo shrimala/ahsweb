@@ -77,3 +77,10 @@ Feature: Sessions archive
     And I should see "Lama Shenpen" in the "Leader field"
     And I should see an "iframe[src='https://www.youtube.com/embed/9bZkp7q19f0?autoplay=0&start=0&rel=0']" element
 
+  Scenario: Sessions not accessible to anonymous at alias
+    Given I am not logged in
+    And session content:
+      | title       | path         |
+      | abra page   | /abracadabra |
+    When I visit "abracadabra"
+    Then I should see the error message "Access denied"

@@ -1,0 +1,45 @@
+uuid: b1ab633c-91fb-4c0e-8ea5-e30cd4072ec1
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.front_page
+  module:
+    - ctools
+    - panels
+id: front_page-panels_variant-1
+label: Default
+variant: panels_variant
+variant_settings:
+  blocks:
+    e58cd016-0b23-4523-a221-6167dd664ea5:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: default
+      region: content
+      weight: 0
+      uuid: e58cd016-0b23-4523-a221-6167dd664ea5
+      context_mapping:
+        entity: front_page
+  id: panels_variant
+  uuid: 56c29438-e78a-4a57-9960-78ee7ac39db6
+  label: null
+  weight: 0
+  layout: layout_onecol
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: front_page-panels_variant-1
+  builder: standard
+page: front_page
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context:
+  front_page:
+    label: 'Front page'
+    type: 'entity:node'
+    description: 'A piece of content to show on the front page for anonymous users.'
+    value: 47e449c8-e19a-465b-b292-a7e3b941d3ef

@@ -107,7 +107,8 @@ Feature: Keep track of what users have read
       | Child       | Yes      |
 
   Scenario: Autocreated children are not new
-    Given a "discussion" with the title "Test"
+    Given I am logged in as an "authenticated user"
+    And a "discussion" with the title "Test"
     When I visit "/discuss/test"
     When I fill in "field_children[0][target_id]" with "Child"
     And I press the "Save" button
@@ -116,8 +117,9 @@ Feature: Keep track of what users have read
       | Child       | No       |
 
   Scenario: Removing a parent doesn't mark it as new
-    Given a discussion content with the title "Child"
-    Given "discussion" content:
+    Given I am logged in as an "authenticated user"
+    And a discussion content with the title "Child"
+    And "discussion" content:
       | title       | field_children |
       | Parent      | Child          |
     When I visit "/discuss/parent"
@@ -130,8 +132,9 @@ Feature: Keep track of what users have read
       | Parent      | No       |
 
   Scenario: Adding a child doesn't mark it as new
-    Given a discussion content with the title "Parent"
-    Given a discussion content with the title "Child"
+    Given I am logged in as an "authenticated user"
+    And a discussion content with the title "Parent"
+    And a discussion content with the title "Child"
     When I visit "/discuss/child"
     And I visit "/discuss/parent"
     When I fill in "field_children[0][target_id]" with "[Child]"

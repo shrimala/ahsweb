@@ -567,4 +567,18 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
+  /**
+   * The site timezone is configured correctly.
+   *
+   * @Then the site timezone is ":timezone"
+   */
+  public function siteTimezone($timezone)
+  {
+    $siteConfig = \Drupal::configFactory()->get('system.date');
+    $timezoneConfigured =  $siteConfig->get('timezone.default');
+    if ($timezoneConfigured !== $timezone) {
+      throw new \Exception(sprintf("The configured timezone is '%s' not '%s'", $timezoneConfigured, $timezone));
+    }
+  }
+
 }

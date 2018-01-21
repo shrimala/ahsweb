@@ -2,6 +2,7 @@
 
 use \Drupal\node\Entity\Node;
 use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Implements hook_install().
@@ -33,6 +34,12 @@ function ahs_miscellaneous_install() {
 */
 
 /**
+ * If the node view mode being rendered is in the route, set the page variable.
+ * If the node view mode is full or default and the route is the front page,
+ * set the page variable.
+ * Introduced in f4cabf2c3c5acc718ee2b000daa976a47d7038e5, not sure why.
+ * Something to do with the events/archives.
+ *
  * Implements hook_preprocess_HOOK() for nodes.
  */
 function ahs_miscellaneous_preprocess_node(&$variables) {
@@ -40,31 +47,49 @@ function ahs_miscellaneous_preprocess_node(&$variables) {
   if (isset($variables['page']) && $variables['page']) {
     return;
   }
+  if (!isset($variables['view_mode'])) {
+    return;
+  }
 
-  // Skip if this is not the main node specified by the route
   $route_match = \Drupal::routeMatch();
+  $route = $route_match->getRouteObject();
   $page_node = $route_match->getParameter('node');
+
+  // See if this is the canonical node for the front page.
+  $variant = $route_match->getParameter('page_manager_page_variant');
+  $contexts = empty($variant) ? NULL : $variant->getContexts();
+  $front_page_context = isset($contexts['front_page']) ? $contexts['front_page'] : NULL;
+  $page_node = (empty($page_node) && !empty($front_page_context)) ? $front_page_context->getContextValue() : NULL;
+
+  // Skip if the route entity does not match the current node.
   if (empty($page_node) || $page_node->id() != $variables['node']->id()) {
     return;
   }
 
-  // Skip if the route did not uses _entity_view
-  $route = $route_match->getRouteObject();
-  if (!$route->hasDefault('_entity_view')) {
+  // Set the page variable for the front page.
+  $full_view = $variables['view_mode'] === 'default' || $variables['view_mode'] === 'full';
+  if (!empty($front_page_context) && $full_view) {
+    $variables['page'] = TRUE;
     return;
   }
 
-  // Skip if _entity_view did not specify a view mode
+  // On pages other than the front page, the route view mode must match
+  // the $variables view mode.
+
+  // Get the view mode from _entity_view.
+  if (!$route->hasDefault('_entity_view')) {
+    return;
+  }
   $entity_view_string = $route->getDefault('_entity_view');
   $periodPos = strpos($entity_view_string, ".");
   if (!$periodPos) {
     return;
   }
+  $route_view_mode = substr($entity_view_string, $periodPos + 1);
 
   // If the view mode being rendered is in the route, set the page variable.
-  $route_view_mode = substr($entity_view_string, $periodPos + 1);
   if ($route_view_mode == $variables['view_mode']) {
-    $variables['page'] = TRUE;
+    //$variables['page'] = TRUE;
   }
 }
 
@@ -74,7 +99,6 @@ function ahs_miscellaneous_preprocess_node(&$variables) {
  */
 function ahs_miscellaneous_node_presave($node) {
   ahs_miscellaneous_node_title_sanitise($node);
-
 }
 
 /**
@@ -248,4 +272,50 @@ function ahs_miscellaneous_move_hook_last($targetHooks, $module, &$implementatio
 function ahs_miscellaneous_field_widget_info_alter(array &$info) {
   $info['text_textarea']['field_types'][] = 'text';
   $info['string_textarea']['field_types'][] = 'string';
+}
+
+define('AHS_CONFIGURED_PAGES', [
+  'home' => [
+    'title' => 'Home page',
+    'uuid' => '47e449c8-e19a-465b-b292-a7e3b941d3ef',
+  ],
+  'registered' => [
+    'title' => 'Thankyou for  registering',
+    'uuid' => 'ac8371f8-6281-4650-9d10-b76cc0e03d04',
+  ],
+]);
+
+/**
+ * Create a configured page if it does not exist.
+ *
+ * Implements hook_rebuild().
+ */
+function ahs_miscellaneous_rebuild() {
+  foreach (AHS_CONFIGURED_PAGES as $page) {
+    $node = \Drupal::service('entity.repository')
+      ->loadEntityByUuid('node', $page['uuid']);
+    if (empty($node)) {
+      $node = Node::create([
+        'type' => 'information',
+        'title' => $page['title'],
+        'uuid' => $page['uuid']
+      ]);
+      $node->save();
+    }
+  }
+}
+
+/**
+ * Prevent configured pages from being deleted.
+ *
+ * Implements hook_node_access().
+ */
+function ahs_miscellaneous_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+  if ($op == 'delete') {
+    $uuids = array_column(AHS_CONFIGURED_PAGES, 'uuid');
+    if (in_array($node->uuid(), $uuids)) {
+      return AccessResult::forbidden();
+    }
+    return AccessResult::neutral();
+  }
 }

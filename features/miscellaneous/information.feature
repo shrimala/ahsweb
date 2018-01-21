@@ -4,8 +4,9 @@ Feature: Information pages
     We need static content pages
 
   Scenario: Information is accessible to anonymous at alias
-    Given information content:
+    Given I am not logged in
+    And information content:
       | title       | path        |
       | abra page   | /abracadabra |
     When I visit "abracadabra"
-    Then the response status code should be 200 
+    Then I am visiting "/abracadabra"

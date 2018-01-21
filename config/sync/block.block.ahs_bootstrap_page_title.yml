@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
   theme:
     - ahs_bootstrap
@@ -25,9 +24,4 @@ visibility:
     id: request_path
     pages: "/discuss/*\r\n<front>"
     negate: true
-    context_mapping: {  }
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
     context_mapping: {  }

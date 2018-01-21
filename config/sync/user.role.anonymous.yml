@@ -9,6 +9,7 @@ label: 'Anonymous user'
 weight: 0
 is_admin: false
 permissions:
+  - 'access content'
   - 'access kint'
   - 'access site-wide contact form'
   - 'search content'
@@ -22,4 +23,5 @@ permissions:
   - 'view own information content'
   - 'view own page content'
   - 'view own teacher content'
+  - 'view own unpublished content'
   - 'view own venue content'

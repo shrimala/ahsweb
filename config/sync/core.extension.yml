@@ -9,7 +9,6 @@ module:
   automated_cron: 0
   block: 0
   block_content: 0
-  block_visibility_groups: 0
   breakpoint: 0
   changes: 0
   chosen: 0
@@ -26,6 +25,7 @@ module:
   contextual: 0
   crop: 0
   ctools: 0
+  ctools_block: 0
   datetime: 0
   dblog: 0
   devel: 0
@@ -69,6 +69,9 @@ module:
   node_view_permissions: 0
   options: 0
   page_cache: 0
+  page_manager: 0
+  page_manager_ui: 0
+  panels: 0
   paragraphs: 0
   path: 0
   prlp: 0

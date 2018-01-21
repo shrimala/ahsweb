@@ -1,0 +1,104 @@
+uuid: 283b5b28-9d57-42a2-a901-b97212ee13ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.front_page
+    - views.view.discussions
+  module:
+    - panels
+    - user
+    - views
+id: front_page-panels_variant-0
+label: Authenticated
+variant: panels_variant
+variant_settings:
+  blocks:
+    4db3374e-d35f-4eeb-bcb2-bf69552eae97:
+      id: 'views_block:discussions-help'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 4db3374e-d35f-4eeb-bcb2-bf69552eae97
+      context_mapping: {  }
+    7c9bb659-c60c-4ebf-93b1-590f512caeb0:
+      id: 'views_block:discussions-tasks'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 7c9bb659-c60c-4ebf-93b1-590f512caeb0
+      context_mapping: {  }
+    fb77d9ab-32e5-4cc4-96d0-b714dec1f9a4:
+      id: 'views_block:discussions-my_discussions'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: fb77d9ab-32e5-4cc4-96d0-b714dec1f9a4
+      context_mapping: {  }
+    dc297bfa-ff93-4d61-947b-d2e85cce54ba:
+      id: 'views_block:discussions-active'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: dc297bfa-ff93-4d61-947b-d2e85cce54ba
+      context_mapping: {  }
+    aa83b6a3-4541-4e37-a53d-ccf56a3d5a16:
+      id: 'views_block:discussions-browse'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: aa83b6a3-4541-4e37-a53d-ccf56a3d5a16
+      context_mapping: {  }
+    712a0e17-41b5-4146-b728-3d1598c3772f:
+      id: 'views_block:discussions-search'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 712a0e17-41b5-4146-b728-3d1598c3772f
+      context_mapping: {  }
+  id: panels_variant
+  uuid: f3af0442-f185-467a-90b4-783732dad191
+  label: null
+  weight: 0
+  layout: layout_onecol
+  layout_settings: {  }
+  page_title: ''
+  storage_type: page_manager
+  storage_id: front_page-panels_variant-0
+  builder: standard
+page: front_page
+weight: 0
+selection_criteria:
+  -
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: current_user
+selection_logic: and
+static_context: {  }

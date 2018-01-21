@@ -20,10 +20,6 @@ section.block-views-blockdiscussions-help .views-row .label.ahs-help-wanted {
     display:none;
 }
 
-.view-frontpage {
-    display:none;
-}
-
 /* Views infinite scroll 'Show more' pagers */
 .pager {
     margin: 0px;

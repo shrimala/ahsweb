@@ -96,3 +96,24 @@ function ahs_user_management_user_login(\Drupal\user\UserInterface $account) {
     );
   }
 }
+
+/**
+ * Redirect user to a thaknyou page node after registering.
+ * AHS_CONFIGURED_PAGES are nodes defined in ahs_miscellaneous and guaranteed
+ * to exist.
+ */
+function ahs_user_management_user_register_redirect($form,
+                                                      FormStateInterface $form_state) {
+  $node = \Drupal::service('entity.repository')
+    ->loadEntityByUuid('node', AHS_CONFIGURED_PAGES['registered']['uuid']);
+  if (empty($node)) {
+    throw new \Exception("Cannot load post-registration page node");
+  }
+  $form_state->setRedirect('entity.node.canonical', ['node' => $node->id()]);
+}
+function ahs_user_management_form_alter(array &$form, FormStateInterface $form_state,
+                             $form_id) {
+  if ($form_id == 'user_register_form') {
+    $form['actions']['submit']['#submit'][] = 'ahs_user_management_user_register_redirect';
+  }
+}
