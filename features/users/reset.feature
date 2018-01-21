@@ -3,7 +3,7 @@ Feature: Password reset
   In order to be able to regain site access if I forget my password
   As a user
   I need to be able to reset my password
-
+@test
   Scenario: User resets password
     # A discussion is necessary in order to trigger 'Active discussions' on home page
     Given a discussion content with the title "Anything"
@@ -15,7 +15,7 @@ Feature: Password reset
       | E-mail   | bademail@nowhere.com |
       | Password | badpassword          |
     And I press "Log in"
-    Then I should see the error message "Unrecognized username or password"
+    Then I should see the error message "Unrecognised email or password"
     When I follow "Forgot your password?"
     And I fill in "name" with "fred@bloggs.com"
     And I press "Submit"

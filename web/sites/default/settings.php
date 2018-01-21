@@ -110,6 +110,13 @@ if (isset($_ENV["PLATFORM_ENVIRONMENT"])) {
 // Passing the Flysystem schemes to Drupal
 $settings['flysystem'] = $schemes;
 
+// Tweak the wording to reflect login by email.
+$settings['locale_custom_strings_en'][''] = [
+    'Unrecognized username or password. <a href=":password">Forgot your password?</a>' =>
+      'Unrecognised email or password. <a href=":password">Forgot your password?</a>',
+];
+
+
 
 // By default, do not use dev config and do use production config.
 $config['config_split.config_split.development']['status'] = FALSE;

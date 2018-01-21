@@ -22,3 +22,8 @@ tooling:
     cmd:
       - "drush"
       - "--root=/app/web"
+  behat:
+    service: appserver
+    cmd:
+      - "vendor/bin/behat"
+      - "-p lando"
