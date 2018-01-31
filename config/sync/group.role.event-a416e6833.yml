@@ -1,0 +1,17 @@
+uuid: 0186e624-72b2-4f03-8491-ff806e0d5139
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.event
+  enforced:
+    config:
+      - user.role.administrator
+id: event-a416e6833
+label: Administrator
+weight: 3
+internal: true
+audience: outsider
+group_type: event
+permissions_ui: false
+permissions: {  }

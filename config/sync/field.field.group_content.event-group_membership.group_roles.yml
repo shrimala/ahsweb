@@ -1,0 +1,22 @@
+uuid: 1876db89-0102-4e54-a1dd-873543e66ec2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.group_roles
+    - group.content_type.event-group_membership
+id: group_content.event-group_membership.group_roles
+field_name: group_roles
+entity_type: group_content
+bundle: event-group_membership
+label: Roles
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'group_type:group_role'
+  handler_settings:
+    group_type_id: event
+field_type: entity_reference

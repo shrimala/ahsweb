@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - ahs_events
+    - datetime
     - text
     - user
 id: node.event.full
@@ -28,13 +28,13 @@ content:
     third_party_settings: {  }
     region: content
   field_datetime:
-    weight: 102
+    weight: 109
     label: above
     settings:
-      timezone_override: venue
-      format_type: long
+      format_type: medium
+      timezone_override: ''
     third_party_settings: {  }
-    type: datetime_using_venue_timezone
+    type: datetime_default
     region: content
   field_event_type:
     weight: 107

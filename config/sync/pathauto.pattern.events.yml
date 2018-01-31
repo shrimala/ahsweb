@@ -1,22 +1,23 @@
-uuid: 7cfbb556-c7b2-4b08-a4d3-ccb45e54b99e
+uuid: 67f935be-3714-4daf-a6f9-8cf32f676106
 langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - ctools
+    - group
 id: events
 label: Events
-type: 'canonical_entities:node'
-pattern: 'events/[node:field_datetime]/[node:title]'
+type: 'canonical_entities:group'
+pattern: 'events/[group:field_dates:start_date:path_date]/[group:title]'
 selection_criteria:
-  41826f1e-a326-40ac-aeba-f2e12ba97922:
-    id: node_type
+  40e0676b-59bc-4beb-9c2a-a58aa9497549:
+    id: 'entity_bundle:group'
     bundles:
       event: event
     negate: false
     context_mapping:
-      node: node
-    uuid: 41826f1e-a326-40ac-aeba-f2e12ba97922
+      group: group
+    uuid: 40e0676b-59bc-4beb-9c2a-a58aa9497549
 selection_logic: and
 weight: -5
 relationships: {  }

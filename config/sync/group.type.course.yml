@@ -1,0 +1,10 @@
+uuid: 530f866d-b021-4530-8d52-efae1a7d0e92
+langcode: en
+status: true
+dependencies: {  }
+id: course
+label: Course
+description: ''
+creator_membership: false
+creator_wizard: true
+creator_roles: {  }

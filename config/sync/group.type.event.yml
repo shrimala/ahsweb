@@ -1,0 +1,10 @@
+uuid: d72327f4-07ae-4b6b-80b3-6e1cf39e8f82
+langcode: en
+status: true
+dependencies: {  }
+id: event
+label: Event
+description: ''
+creator_membership: false
+creator_wizard: false
+creator_roles: {  }

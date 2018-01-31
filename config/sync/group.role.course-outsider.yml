@@ -1,0 +1,14 @@
+uuid: 284df14d-331e-40fb-ab80-a6f5b626d9df
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.course
+id: course-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: course
+permissions_ui: true
+permissions: {  }

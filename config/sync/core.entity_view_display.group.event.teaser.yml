@@ -1,0 +1,62 @@
+uuid: 42c12650-00b1-40b2-8bd9-663c2e31f955
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.teaser
+    - field.field.group.event.field_dates
+    - field.field.group.event.field_description
+    - field.field.group.event.field_event_type
+    - field.field.group.event.field_leaders
+    - field.field.group.event.field_venue
+    - group.type.event
+  module:
+    - datetime_range
+    - text
+id: group.event.teaser
+targetEntityType: group
+bundle: event
+mode: teaser
+content:
+  field_dates:
+    weight: -4
+    label: hidden
+    settings:
+      timezone_override: Europe/London
+      format_type: short_day_with_time_year
+      separator: '-'
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_description:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_summary_or_trimmed
+    region: content
+  field_leaders:
+    weight: -2
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: entity_reference_label
+    region: content
+  field_venue:
+    weight: -3
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_event_type: true
+  label: true
+  uid: true

@@ -1,0 +1,24 @@
+uuid: 76125623-5511-4667-a7fd-34dd7ccfe6cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.event
+id: event-admin
+label: Admin
+weight: 100
+internal: false
+audience: member
+group_type: event
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'administer group'
+  - 'delete group'
+  - 'edit group'
+  - 'view group'
+  - 'administer members'
+  - 'update own group_membership content'
+  - 'leave group'
+  - 'view group_membership content'
+  - 'access group_node overview'

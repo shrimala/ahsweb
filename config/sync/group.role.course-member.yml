@@ -1,0 +1,14 @@
+uuid: c28a8207-0b82-4b99-bb8e-3994c7316713
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.course
+id: course-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: course
+permissions_ui: true
+permissions: {  }

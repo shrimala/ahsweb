@@ -1,0 +1,19 @@
+uuid: 6e5f5ac7-8d9a-4f50-a7c6-7a36ec058eba
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.event
+    - node.type.session
+  module:
+    - gnode
+    - node
+id: event-group_node-session
+label: 'Event: Group node (Session)'
+description: 'Adds <em class="placeholder">Session</em> content to groups both publicly and privately.'
+group_type: event
+content_plugin: 'group_node:session'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

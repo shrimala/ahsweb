@@ -17,7 +17,7 @@ dependencies:
     - field.field.node.session.field_teaching_tags
     - node.type.session
   module:
-    - ahs_events
+    - datetime
     - ds
     - user
 third_party_settings:
@@ -56,16 +56,14 @@ bundle: session
 mode: panel_header
 content:
   field_datetime:
-    weight: 10
-    label: hidden
+    weight: 11
+    label: above
     settings:
-      timezone_override: venue
-      format_type: long_day_with_time
-      user_timezone_format_type: medium
-      add_user_timezone: false
+      format_type: medium
+      timezone_override: ''
     third_party_settings: {  }
-    type: datetime_using_venue_timezone
-    region: ds_content
+    type: datetime_default
+    region: content
 hidden:
   body: true
   field_admin_tags: true

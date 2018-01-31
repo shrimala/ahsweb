@@ -1,0 +1,17 @@
+uuid: 672e19e1-c145-49c8-bb63-e737d550e53f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.course
+  enforced:
+    config:
+      - user.role.discussion_admin
+id: course-21daabb7f
+label: 'Discussion admin'
+weight: 2
+internal: true
+audience: outsider
+group_type: course
+permissions_ui: false
+permissions: {  }

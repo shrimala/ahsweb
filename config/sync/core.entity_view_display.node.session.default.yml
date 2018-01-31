@@ -16,7 +16,7 @@ dependencies:
     - field.field.node.session.field_teaching_tags
     - node.type.session
   module:
-    - ahs_events
+    - datetime
     - ds
     - text
     - user
@@ -52,15 +52,13 @@ content:
     type: boolean
     region: content
   field_datetime:
-    weight: 100
-    label: hidden
+    weight: 161
+    label: above
     settings:
-      timezone_override: venue
-      format_type: long
-      user_timezone_format_type: medium
-      add_user_timezone: 0
+      format_type: medium
+      timezone_override: ''
     third_party_settings: {  }
-    type: datetime_using_venue_timezone
+    type: datetime_default
     region: content
   field_event:
     type: entity_reference_label

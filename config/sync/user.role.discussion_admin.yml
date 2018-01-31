@@ -11,3 +11,5 @@ permissions:
   - 'delete any discussion content'
   - 'delete discussion revisions'
   - 'revert discussion revisions'
+  - 'view any session content'
+  - 'view own session content'

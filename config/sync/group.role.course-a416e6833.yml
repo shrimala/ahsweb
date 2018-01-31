@@ -1,0 +1,17 @@
+uuid: 24685722-f70b-4daa-85ea-c85c32cb4a1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.course
+  enforced:
+    config:
+      - user.role.administrator
+id: course-a416e6833
+label: Administrator
+weight: 3
+internal: true
+audience: outsider
+group_type: course
+permissions_ui: false
+permissions: {  }

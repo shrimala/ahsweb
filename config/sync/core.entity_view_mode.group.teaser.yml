@@ -1,0 +1,10 @@
+uuid: 0b365ee9-8f75-445f-8c72-4035ce526748
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.teaser
+label: Teaser
+targetEntityType: group
+cache: true

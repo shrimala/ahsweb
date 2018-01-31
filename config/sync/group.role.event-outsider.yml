@@ -1,0 +1,15 @@
+uuid: 91f97494-7a8e-45f6-b4c5-5f497229e52c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.event
+id: event-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: event
+permissions_ui: true
+permissions:
+  - 'view group'

@@ -1,0 +1,18 @@
+uuid: 1fbadb82-fe12-4ce0-ba57-e52619321c44
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.event
+  enforced:
+    config:
+      - user.role.discussion_admin
+id: event-21daabb7f
+label: 'Discussion admin'
+weight: 2
+internal: true
+audience: outsider
+group_type: event
+permissions_ui: false
+permissions:
+  - 'view group_node:session entity'

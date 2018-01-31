@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - ahs_events
+    - datetime
     - user
 id: node.event.panel_header
 targetEntityType: node
@@ -20,15 +20,13 @@ bundle: event
 mode: panel_header
 content:
   field_datetime:
-    weight: 102
-    label: hidden
+    weight: 109
+    label: above
     settings:
-      timezone_override: venue
-      format_type: simple_date
-      user_timezone_format_type: medium
-      add_user_timezone: 0
+      format_type: medium
+      timezone_override: ''
     third_party_settings: {  }
-    type: datetime_using_venue_timezone
+    type: datetime_default
     region: content
   field_leader:
     weight: 108

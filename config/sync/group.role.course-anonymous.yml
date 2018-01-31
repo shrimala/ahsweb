@@ -1,0 +1,14 @@
+uuid: c81b49b0-3d41-42d2-ac1a-d3e4858d7a38
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.course
+id: course-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: course
+permissions_ui: true
+permissions: {  }

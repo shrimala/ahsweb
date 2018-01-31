@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - ahs_events
+    - datetime
     - user
 id: node.event.token
 targetEntityType: node
@@ -20,13 +20,13 @@ bundle: event
 mode: token
 content:
   field_datetime:
-    weight: 102
+    weight: 103
     label: above
     settings:
-      timezone_override: venue
-      format_type: path_date
+      format_type: medium
+      timezone_override: ''
     third_party_settings: {  }
-    type: datetime_using_venue_timezone
+    type: datetime_default
     region: content
 hidden:
   body: true

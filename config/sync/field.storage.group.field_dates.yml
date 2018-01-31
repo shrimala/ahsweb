@@ -1,0 +1,20 @@
+uuid: b172074f-3e13-4a88-bed9-41ada040c85f
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - group
+id: group.field_dates
+field_name: field_dates
+entity_type: group
+type: daterange
+settings:
+  datetime_type: datetime
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

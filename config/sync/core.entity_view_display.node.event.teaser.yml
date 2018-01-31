@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.event.field_venue
     - node.type.event
   module:
-    - ahs_events
+    - datetime
     - field_group
     - user
 third_party_settings:
@@ -41,16 +41,14 @@ bundle: event
 mode: teaser
 content:
   field_datetime:
-    type: datetime_using_venue_timezone
-    weight: 1
-    region: content
-    label: hidden
+    weight: 31
+    label: above
     settings:
+      format_type: medium
       timezone_override: ''
-      format_type: simple_date
-      user_timezone_format_type: medium
-      add_user_timezone: 0
     third_party_settings: {  }
+    type: datetime_default
+    region: content
   field_event_type:
     type: entity_reference_label
     weight: 30
