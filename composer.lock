@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "92120ab6a35019d4fb5cce10924adf52",
+    "content-hash": "e8438fdd5ab47dc7ee330da9c6dd2755",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3763,6 +3763,48 @@
                 "source": "http://cgit.drupalcode.org/flysystem_dropbox"
             },
             "time": "2016-07-21T02:10:43+00:00"
+        },
+        {
+            "name": "drupal/group",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/group",
+                "reference": "19495976aa76c52bcac96461e1b8af4a883eff6d"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-rc1+11-dev",
+                    "datestamp": "1513697584",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "kristiaanvandeneynde",
+                    "homepage": "https://www.drupal.org/user/1345130"
+                }
+            ],
+            "description": "This module allows you to group users, content and other entities",
+            "homepage": "https://www.drupal.org/project/group",
+            "support": {
+                "source": "http://cgit.drupalcode.org/group"
+            },
+            "time": "2017-12-19T15:44:02+00:00"
         },
         {
             "name": "drupal/image_effects",
@@ -10195,7 +10237,8 @@
         "drupal/views_bootstrap": 20,
         "drupal/inline_entity_form_preview": 20,
         "drupal/tzfield": 20,
-        "drupal/message": 20
+        "drupal/message": 20,
+        "drupal/group": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -69,7 +69,7 @@ default:
         Comment delete link: "ul.links .comment-delete  a"
         Action links: "div#edit-actions"
         #Fields
-        Title field: ".field--name-title,.field--name-node-title,.views-field-title"
+        Title field: ".field--name-title,.field--name-node-title,.views-field-title,.field--name-label"
         Ancestry field: "span.field--name-field-ancestry-plain"
         Comment body field: "div.field--name-comment-body"
         Changes field: "div.field--name-field-changes"
@@ -78,6 +78,9 @@ default:
         Leader field: ".field--name-field-leader,.views-field-field-leader"
         Event field: ".field--name-field-event"
         Venue field: ".field--name-field-venue,.views-field-field-venue"
+        Leaders field: ".field--name-field-leaders"
+        Dates field: ".field--name-field-dates"
+        Description field: ".field--name-field-description"
         #Events
         Sessions in an IEF complex widget: ".field--name-field-sessions tr.ief-row-entity"
         Sessions in an inline form: ".field--name-field-sessions tr > td.inline-entity-form-node-preview"
@@ -86,6 +89,7 @@ default:
         Coming sessions: ".view-display-id-coming .views-row"
         Finished session headings: ".view-display-id-finished .panel .panel-heading"
         Finished session bodies: ".view-display-id-finished .panel .panel-body"
+        Coming events: ".view-id-events .views-row"
         #Navigation
         Local tabs: "nav.tabs > ul.tabs--primary > li"
         Admin local tabs: "nav > ul.tabs.primary > li"

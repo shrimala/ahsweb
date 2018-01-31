@@ -1,4 +1,4 @@
-@api
+@api @skip
 Feature: Events Corresponding Entity References
   In order to set sessions from an event and vice versa
   As any user editing an event or a session

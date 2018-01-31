@@ -98,32 +98,42 @@ function ahs_miscellaneous_preprocess_node(&$variables) {
  *
  */
 function ahs_miscellaneous_node_presave($node) {
-  ahs_miscellaneous_node_title_sanitise($node);
+  $node->title->value = ahs_miscellaneous_label_sanitise($node->title->value);
+}
+
+/**
+ * Implementation of hook_group_presave().
+ *
+ */
+function ahs_miscellaneous_group_presave($group) {
+  $group->label->value = ahs_miscellaneous_label_sanitise($group->label->value);
 }
 
 /**
  * Remove slashes and pretty up node titles.
  *
  */
-function ahs_miscellaneous_node_title_sanitise($node) {
-  $node->title->value = trim($node->title->value);
+function ahs_miscellaneous_label_sanitise($label) {
+  $label = trim($label);
 
   // If title is all upper case and has multiple words,
   // assume the capitalisation is inappropriate
-  if ((mb_strtoupper($node->title->value, 'utf-8') === $node->title->value) &&
-    (strpos($node->title->value, " ") !== FALSE)
+  if ((mb_strtoupper($label, 'utf-8') === $label) &&
+    (strpos($label, " ") !== FALSE)
   ) {
-    $node->title->value = strtolower($node->title->value);
+    $label = strtolower($label);
   }
 
   // Always capitalise the first letter
-  $node->title->value = Unicode::ucfirst($node->title->value);
+  $label = Unicode::ucfirst($label);
 
   // Replace slashes with a space
-  $node->title->value = str_replace('/', ' ', $node->title->value);
+  $label = str_replace('/', ' ', $label);
 
-  // replace 2 or more spaces with single space
-  $node->title->value = $s = preg_replace("/ {2,}/", " ", $node->title->value);
+  // Replace 2 or more spaces with single space
+  $label = $s = preg_replace("/ {2,}/", " ", $label);
+
+  return $label;
 }
 
 /**

@@ -1,4 +1,4 @@
-@api
+@api @skip
 Feature: Event recordings
   In order to manage recordings from a session
   As any user with access to manage recordings

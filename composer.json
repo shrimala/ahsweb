@@ -99,7 +99,8 @@
         "drupal/image_effects": "^2.0",
         "drupal/node_view_permissions": "1.1",
         "drupal/panels": "^4.2",
-        "drupal/page_manager": "^4.0"
+        "drupal/page_manager": "^4.0",
+        "drupal/group": "1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -154,7 +155,8 @@
             "drupal/drupal-driver": {
                 "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch",
                 "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch",
-                "Ignore access on D8 EntityReferenceHandler": "https://github.com/jhedstrom/DrupalDriver/pull/159.patch"
+                "Ignore access on D8 EntityReferenceHandler": "https://github.com/jhedstrom/DrupalDriver/pull/159.patch",
+                "Daterange handler": "https://github.com/jhedstrom/DrupalDriver/pull/161.patch"
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",

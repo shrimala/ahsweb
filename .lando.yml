@@ -3,6 +3,19 @@ recipe: drupal8
 config:
   webroot: web
   via: nginx
+proxy:
+  mailhog:
+    # assumes site is ahs.lndo.site
+    - mail.ahs.lndo.site
+services:
+  appserver:
+    # doesn't work on windows 10; xdebug: true
+    config:
+      conf: xdebug.ini
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
 # Automatically run composer install on builds
 #      - cd $LANDO_MOUNT && composer install
 #      - "cd $LANDO_WEBROOT && drush si minimal -y --account-pass=password"

@@ -1,4 +1,4 @@
-@api
+@api @skip
 Feature: Event time zones
   In order to understand times of events
   As any user with access to events

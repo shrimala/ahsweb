@@ -1,4 +1,4 @@
-@api
+@api @skip
 Feature: Event sessions
   In order to participate in an event remotely or retrospectively
   As any user with access to event sessions

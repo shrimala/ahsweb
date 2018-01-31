@@ -455,6 +455,23 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
+  /**
+   * Checks, that text is present with this capitalisation
+   *
+   * @Then I should see exactly :text
+   */
+  public function assertTextContainsExactly($text)
+  {
+    $page = $this->getSession()->getPage();
+    $pageText = $page->getText();
+    //$actual = preg_replace('/\s+/u', ' ', $actual);
+    $regex = '/' . preg_quote($text, '/') . '/u';
+
+    if (!preg_match($regex, $pageText)) {
+      $message = sprintf('The exact text "%s" was not found anywhere in the text of the current page.', $text);
+      throw new ElementTextException($message, $this->getSession()->getDriver(), $page);
+    }
+  }
 
   /**
    * @Then I should see :text under the :heading heading
