@@ -1,0 +1,46 @@
+uuid: 09e2fbc0-e630-4111-a07a-7f30f0ca43da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.expandable_panel.field_content
+    - field.field.paragraph.expandable_panel.field_panel_link
+    - paragraphs.paragraphs_type.expandable_panel
+  module:
+    - allowed_formats
+    - paragraphs
+    - text
+id: paragraph.expandable_panel.default
+targetEntityType: paragraph
+bundle: expandable_panel
+mode: default
+content:
+  field_content:
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_panel_link:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -14,4 +14,5 @@ internal: true
 audience: outsider
 group_type: course
 permissions_ui: false
-permissions: {  }
+permissions:
+  - 'administer group'

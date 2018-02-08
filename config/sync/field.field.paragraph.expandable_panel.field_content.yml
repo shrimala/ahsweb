@@ -1,0 +1,62 @@
+uuid: babdf57f-32ad-42f7-afc2-9f4b3d4eaf19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - paragraphs.paragraphs_type.expandable_panel
+    - paragraphs.paragraphs_type.section
+    - paragraphs.paragraphs_type.section_with_2_parts
+    - paragraphs.paragraphs_type.section_with_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.expandable_panel.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: expandable_panel
+label: 'Panel content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      section: section
+      section_with_2_parts: section_with_2_parts
+      section_with_cards: section_with_cards
+    target_bundles_drag_drop:
+      expandable_panel:
+        weight: 11
+        enabled: false
+      call_to_action:
+        weight: 12
+        enabled: false
+      card:
+        weight: 13
+        enabled: false
+      image:
+        weight: 14
+        enabled: false
+      section:
+        enabled: true
+        weight: 15
+      section_with_2_parts:
+        enabled: true
+        weight: 16
+      section_with_cards:
+        enabled: true
+        weight: 17
+      subtitle:
+        weight: 18
+        enabled: false
+      text:
+        weight: 19
+        enabled: false
+      title:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

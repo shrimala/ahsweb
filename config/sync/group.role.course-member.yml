@@ -11,4 +11,6 @@ internal: true
 audience: member
 group_type: course
 permissions_ui: true
-permissions: {  }
+permissions:
+  - 'view group'
+  - 'view group_membership content'

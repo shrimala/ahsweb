@@ -1,0 +1,9 @@
+uuid: 7810256a-4c04-4bba-b7fd-ddd122bf476b
+langcode: en
+status: true
+dependencies: {  }
+id: expandable_panel
+label: 'Expandable panel'
+icon_uuid: null
+description: 'A panel that will expand on the spot to reveal more information when a link is clicked.'
+behavior_plugins: {  }

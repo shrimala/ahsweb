@@ -1,0 +1,28 @@
+uuid: fd528369-ac45-40d6-a1d7-e279c3f247d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_panel_link
+    - paragraphs.paragraphs_type.expandable_panel
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    restricted_html: restricted_html
+    basic_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: paragraph.expandable_panel.field_panel_link
+field_name: field_panel_link
+entity_type: paragraph
+bundle: expandable_panel
+label: 'Panel link'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

@@ -1,0 +1,33 @@
+uuid: 08bfb86b-8883-4b1f-9802-a938819afa4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.expandable_panel.field_content
+    - field.field.paragraph.expandable_panel.field_panel_link
+    - paragraphs.paragraphs_type.expandable_panel
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.expandable_panel.default
+targetEntityType: paragraph
+bundle: expandable_panel
+mode: default
+content:
+  field_content:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_panel_link:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }
