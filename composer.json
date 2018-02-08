@@ -14,6 +14,10 @@
             "type": "composer",
             "url": "https://packagist.org"
         },
+        "asset-packagist" : {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -48,8 +52,9 @@
     },
     "require": {
         "composer/installers": "^1.0.20",
+        "oomphinc/composer-installers-extender": "^1.1",
         "drupal-composer/drupal-scaffold": "^2.0.1",
-        "cweagans/composer-patches": "1.6.0",
+        "cweagans/composer-patches": "1.6.4",
         "drupal/core": "^8.3",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
@@ -100,7 +105,8 @@
         "drupal/node_view_permissions": "1.1",
         "drupal/panels": "^4.2",
         "drupal/page_manager": "^4.0",
-        "drupal/group": "1.x-dev"
+        "drupal/group": "1.x-dev",
+        "bower-asset/jquery-visible": "1.2"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -128,6 +134,10 @@
         ]
     },
     "extra": {
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
@@ -139,7 +149,9 @@
                 "type:drupal-profile"
             ],
             "web/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
@@ -154,9 +166,7 @@
             },
             "drupal/drupal-driver": {
                 "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch",
-                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch",
-                "Ignore access on D8 EntityReferenceHandler": "https://github.com/jhedstrom/DrupalDriver/pull/159.patch",
-                "Daterange handler": "https://github.com/jhedstrom/DrupalDriver/pull/161.patch"
+                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch"
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",

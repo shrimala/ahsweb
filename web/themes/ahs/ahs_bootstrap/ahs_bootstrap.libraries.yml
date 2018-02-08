@@ -5,3 +5,16 @@ global-styling:
       css/students.css: {}
       css/bootstrap-chosen.css: {}
       css/global.css: {}
+jquery-visible:
+  js:
+    /libraries/jquery-visible/jquery.visible.js: {}
+  dependencies:
+    - core/jquery
+panel-enhance:
+  version: 1.x
+  js:
+    js/panel-enhance.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - ahs_bootstrap/jquery-visible

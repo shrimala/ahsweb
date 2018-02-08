@@ -32,3 +32,19 @@ ahs_events.manage_recordings:
     _node_type_is_event: 'true'
   options:
     _admin_route: TRUE
+ahs_events.about:
+  path: '/group/{group}/about'
+  defaults:
+    _entity_view: 'group.full'
+  requirements:
+    _group_permission: 'view group'
+    _group_type: 'course'
+    _group_member: 'TRUE'
+ahs_events.participation:
+  path: '/group/{group}/participation'
+  defaults:
+    _entity_view: 'group.participant'
+  requirements:
+    _group_permission: 'administer group'
+    _group_type: 'course'
+    _group_member: 'FALSE'

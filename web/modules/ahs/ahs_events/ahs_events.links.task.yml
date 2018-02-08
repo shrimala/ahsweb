@@ -14,4 +14,11 @@ ahs_events.manage_recordings:
   title: Manage recordings
   route_name: ahs_events.manage_recordings
   base_route: entity.node.canonical
-
+ahs_events.about:
+  title: About
+  route_name: ahs_events.about
+  base_route: entity.group.canonical
+ahs_events.participation:
+  title: Participation
+  route_name: ahs_events.participation
+  base_route: entity.group.canonical

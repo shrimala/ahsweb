@@ -285,13 +285,29 @@ function ahs_miscellaneous_field_widget_info_alter(array &$info) {
 }
 
 define('AHS_CONFIGURED_PAGES', [
+  // Home page called by page manager
   'home' => [
     'title' => 'Home page',
     'uuid' => '47e449c8-e19a-465b-b292-a7e3b941d3ef',
   ],
+/*  // Training page, part of main menu configuration
+  'training' => [
+    'title' => 'Training',
+    'uuid' => 'ee5d9b0b-bad6-40f9-a86a-34e3bf08d4e1',
+  ],
+  // About us page, part of main menu configuration
+  'about' => [
+    'title' => 'About us',
+    'uuid' => '38b78f2f-108d-4f50-b3f6-b7cf9346e39b',
+  ],*/
+  // Destination redirected to after registering
   'registered' => [
     'title' => 'Thankyou for  registering',
     'uuid' => 'ac8371f8-6281-4650-9d10-b76cc0e03d04',
+  ],
+  'getting_started' => [
+    'title' => 'Getting started',
+    'uuid' => '21a8a160-7fd3-41a2-865a-59f141abce8e',
   ],
 ]);
 

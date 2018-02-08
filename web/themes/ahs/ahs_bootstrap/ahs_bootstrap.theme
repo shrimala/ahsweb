@@ -100,21 +100,34 @@ function ahs_bootstrap_preprocess_links__comment(&$variables) {
 }
 
 /**
- * Hide local tasks tabs when viewing discussions.
- * This could maybe be done using the Block layout UI, but it's difficult to
- * hide on discussions without also hiding on comments.
  * Implements theme_preprocess_block().
  */
 function ahs_bootstrap_preprocess_block(&$variables) {
   switch ($variables['plugin_id']) {
-
+    // Hide local tasks tabs when viewing discussions.
+    // This could maybe be done using the Block layout UI, but it's difficult to
+    // hide on discussions without also hiding on comments.
     case 'local_tasks_block':
       $node = \Drupal::routeMatch()->getParameter('node');
       if ($node && $node->getType() == 'discussion') {
         $variables['content'] = [];
       }
-    
+      break;
+
+    // Showing username in menu requires caching menu per user.
     case 'system_menu_block:account':
       $variables['#cache']['contexts'][] = 'user';
+      break;
   }
+}
+
+/**
+ * Make the expandable panel paragraph type use the details element.
+ */
+function ahs_bootstrap_preprocess_paragraph__expandable_panel(&$variables) {
+  $details = [];
+  $details['#type'] = 'details';
+  $details['#title'] = $variables['content']['field_panel_link'];
+  $details['body'] = $variables['content']['field_content'];
+  $variables['content'] = $details;
 }

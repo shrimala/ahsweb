@@ -3,7 +3,7 @@ Feature: User registration
   In order to be able to access the site
   As a new user
   I need to be able to register
-
+@test
   Scenario: User can register
     # A discussion is necessary in order to trigger 'Active discussions' on home page
     Given a discussion content with the title "test"

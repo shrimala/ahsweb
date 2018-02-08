@@ -47,6 +47,10 @@ function ahs_events_menu_local_tasks_alter(&$data, $route_name) {
     $data['tabs'][0]['entity.node.canonical']['#link']['title'] = t('Overview');
     $data['tabs'][0]['entity.node.edit_form']['#link']['title'] = t('Edit event');
   }
+  $group = \Drupal::routeMatch()->getParameter('group');
+  if (!empty($group) && $group->bundle() === 'event') {
+    $data['tabs'][0]['entity.group.canonical']['#link']['title'] = t('Overview');
+  }
 }
 
 /**
@@ -215,3 +219,17 @@ function ahs_events_reset_time($oldStorageDateString, $oldTimezone, $newTimezone
     return $newStorageDateString;
   }
 }
+
+
+// Show the Participant view mode to course group members
+function ahs_events_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+  if ($entity->getEntityTypeId() == 'group' &&
+    $entity->bundle() === 'course' &&
+    $view_mode == 'full') {
+
+    if ($entity->getMember(\Drupal::currentUser())) {
+      $view_mode = 'participant';
+    }
+  }
+}
+

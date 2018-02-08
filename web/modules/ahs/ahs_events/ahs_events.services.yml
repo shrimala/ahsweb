@@ -3,3 +3,7 @@ services:
     class: Drupal\ahs_events\Access\AhsEventsNodeTypeIsEvent
     tags:
       - { name: access_check, applies_to: _node_type_is_event }
+  ahs_events.access_check.group_type:
+    class: Drupal\ahs_events\Access\AhsEventsGroupType
+    tags:
+      - { name: access_check, applies_to: _group_type }
