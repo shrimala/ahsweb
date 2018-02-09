@@ -26,3 +26,22 @@ Feature: Miscellaneous aspects of viewing discussions
     Given a "discussion" with the title "test"
     When I visit "/discuss/test"
     Then I should not see a ".field--name-revision-log" element
+
+  Scenario: Redirect when visiting old titles
+    Given "discussion" content:
+      | title   |
+      | Parent  |
+    Given "discussion" content:
+      | title   | field_parents |
+      | Dog     | Parent        |
+    When I visit "/discuss/parent/dog"
+    Then the "title[0][value]" field should contain "dog"
+    When I fill in "title[0][value]" with "cat"
+    And I press the "Save" button
+    Then I am visiting "/discuss/parent/cat"
+    And the "title[0][value]" field should contain "cat"
+    When I visit "/discuss/parent/dog"
+    Then I am visiting "/discuss/parent/cat"
+    And the "title[0][value]" field should contain "cat"
+
+

@@ -106,7 +106,8 @@
         "drupal/panels": "^4.2",
         "drupal/page_manager": "^4.0",
         "drupal/group": "1.x-dev",
-        "bower-asset/jquery-visible": "1.2"
+        "bower-asset/jquery-visible": "1.2",
+        "drupal/redirect": "1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -166,7 +167,8 @@
             },
             "drupal/drupal-driver": {
                 "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch",
-                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch"
+                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch",
+                "Daterange handler": "https://github.com/jhedstrom/DrupalDriver/pull/161.patch"
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
