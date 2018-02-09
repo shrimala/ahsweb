@@ -15,12 +15,11 @@ Feature: Coming events
       | Event 3       | 2035-10-02 13:00:00 - 2005-10-01 15:00:00 | 1               | 0             | test description 3  |
       | Event, and 4  | 2035-10-01 13:00:00 - 2005-10-01 13:00:00 | 1               | 0             | test description 4  |
     When I visit "/events"
-    Then I break
     Then I should see "Coming events":
       | h2           | Dates field |
       | Event, and 4 | 1 Oct 2035  |
       | Event2       | 2 Oct 2035  |
       | Event 3      | 2 Oct 2035  |
       | Event1       | 30 Dec 2035 |
-    When I click "event2"
+    When I follow "Event2"
     Then I should see "test description 2"

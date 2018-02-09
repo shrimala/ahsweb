@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "646e3117b994fe00c98efd55751e4ce6",
+    "content-hash": "31f1eed3a22d9a3afa3bd51d527e1777",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3016,7 +3016,7 @@
                 "patches_applied": {
                     "Infer timezone in DateTime field handler": "https://github.com/jhedstrom/DrupalDriver/pull/126.patch",
                     "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/DrupalDriver/pull/134.patch",
-                    "Daterange handler": "https://github.com/jhedstrom/DrupalDriver/pull/161.patch"
+                    "Daterange handler": "https://github.com/jhedstrom/DrupalDriver/pull/167.patch"
                 }
             },
             "autoload": {
