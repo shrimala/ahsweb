@@ -227,7 +227,7 @@ Scenario: Per user caching
       | Testtitle1  |
       | Testtitle2  |
       | Testtitle3  |
-
+@test
   Scenario: Search without AJAX
     Given "discussion" content:
       | title       | field_participants    | field_private | field_assigned | field_help_wanted | promote | field_finished |
@@ -244,7 +244,7 @@ Scenario: Per user caching
     When I visit "/"
     And I fill in "title" with "Testtitle"
     And I press "Search"
-    Then I am visiting "/frontpage"
+    Then I am visiting "/"
     And I should see "Search results":
       | Title field | .ahs-finished | .ahs-private | .ahs-assigned | .ahs-help-wanted | .ahs-promote |
       | Testtitle1  | No            | No           | No            | No               | No           |

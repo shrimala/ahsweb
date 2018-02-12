@@ -1,0 +1,5 @@
+name: News
+type: module
+description: Email news and other opt-in emails.
+core: 8.x
+package: AHS

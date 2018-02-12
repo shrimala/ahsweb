@@ -1,0 +1,6 @@
+services:
+  ahs_news.simplenews_spool_storage:
+    class: Drupal\ahs_news\SimplenewsSpoolStorage
+    decorates: simplenews.spool_storage
+    public: false
+    arguments: ['@simplenews.spool_storage.inner', '@database', '@lock', '@config.factory', '@module_handler']

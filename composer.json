@@ -22,6 +22,10 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
+        "drupal-extension": {
+            "type": "vcs",
+            "url": "https://github.com/shrimala/drupalextension"
+        },
         "file_checker": {
             "type": "vcs",
             "url": "https://github.com/shrimala/file_checker"
@@ -71,9 +75,8 @@
         "drupal/config_inspector": "1.x-dev",
         "drupal/config_readonly": "1.x-dev",
         "drupal/pathauto": "1.0-rc1",
-		"drupal/drupal-driver": "dev-master",
-		"drupal/drupal-extension": "dev-master",
-        "friends-of-behat/service-container-extension": "~0.3",
+        "drupal/core-utility": "^8.4",
+		"drupal/drupal-extension": "dev-driver-dev",
         "drupal/file_checker": "dev-8.x-1.x",
         "drupal/bootstrap": "3.x-dev",
         "lakion/mink-debug-extension": "^1.2",
@@ -172,9 +175,7 @@
             },
             "drupal/drupal-extension": {
                 "Create EntityContext": "https://github.com/jhedstrom/drupalextension/pull/300.patch",
-                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/drupalextension/pull/392.patch",
-                "Move getContext() into RawDrupalContext from DrupalSubContextBase": "https://github.com/jhedstrom/drupalextension/pull/396.patch",
-                "Create an AuthenticationManager service": "https://github.com/jhedstrom/drupalextension/pull/393.patch"
+                "Support for testing emails sent from Drupal": "https://github.com/jhedstrom/drupalextension/pull/392.patch"
             },
             "drupal/email_registration": {
                 "Add support for Behat tests (use AuthenticationManager)": "https://www.drupal.org/files/issues/2843505-8.patch"

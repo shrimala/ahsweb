@@ -1,0 +1,9 @@
+<?php
+
+function ahs_news_field_info_alter(&$info) {
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('simplenews')){
+    // Change the default behavior of simplenews_issue field.
+    $info['simplenews_issue']['class'] = '\\Drupal\\ahs_news\\SimplenewsIssueFieldType';
+  }
+}

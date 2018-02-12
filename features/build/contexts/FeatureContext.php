@@ -578,7 +578,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   public function testMailCollectorIsNotEnabled()
   {
     $mailConfig = \Drupal::configFactory()->get('system.mail');
-    $mailSystem =  $mailConfig->get('interface.default');
+    $mailSystem =  $mailConfig->getOriginal('interface.default', FALSE);
     if ($mailSystem === 'test_mail_collector') {
       throw new \Exception('The test mail collector is enabled.');
     }

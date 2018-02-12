@@ -521,7 +521,6 @@ function ahs_discussions_comment_insert($comment) {
 
     // Send notifications about comments on discussions, but not change records.
     if ($node->bundle() === 'discussion' && $comment->getSubject() !== 'Change record') {
-      \Drupal::logger('fff')->notice('discussion');
       // Get people listed as participants
       // (as people can choose to remove themselves from this).
       $participantIds = array_column($node->field_participants->getValue(), 'target_id');

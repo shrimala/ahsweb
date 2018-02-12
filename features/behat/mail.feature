@@ -1,4 +1,4 @@
-@api @d8
+@api @d8 @testmail
 Feature: MailContext
   In order to prove the Mail context is working properly
   As a developer
